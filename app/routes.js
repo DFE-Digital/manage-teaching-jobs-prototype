@@ -51,7 +51,7 @@ router.get('/active-jobs', checkIsAuthenticated, jobsController.index)
 
 router.post('/jobs/new/method', (req, res) => {
 
-  if(req.body['create-job'].method == 'Yes') {
+  if(req.body['create-job'] && req.body['create-job'].method == 'Yes') {
     res.redirect('/jobs/new/email-address')
   } else {
     res.redirect('/jobs/new/how')
@@ -61,7 +61,7 @@ router.post('/jobs/new/method', (req, res) => {
 
 router.post('/jobs/new/upload', (req, res) => {
 
-  if(req.body['create-job'].upload == 'Yes') {
+  if(req.body['create-job'] && req.body['create-job'].upload == 'Yes') {
     res.redirect('/jobs/new/file')
   } else {
     res.redirect('/jobs/new/check')
