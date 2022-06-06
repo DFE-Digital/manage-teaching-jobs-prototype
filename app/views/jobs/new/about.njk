@@ -1,0 +1,132 @@
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/"
+  }) }}
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Create job listing - section 6 of 6
+      </span>
+      <h1 class="govuk-heading-l">
+        About the role
+      </h1>
+
+      <form action="/jobs/new/upload">
+
+        {{ govukCharacterCount({
+          id: "create-job[skills]",
+          name: "create-job[skills]",
+          label: {
+            html: 'What skills and experience are you looking for?',
+            classes: 'govuk-label--m'
+          },
+          maxwords: 150
+        }) }}
+
+        {{ govukCharacterCount({
+          id: "create-job[benefits]",
+          name: "create-job[benefits]",
+          label: {
+            html: 'What are the benefits of working at your organisation?',
+            classes: 'govuk-label--m'
+          },
+          maxwords: 150
+        }) }}
+
+        {% set safeguardingNoticeDetails %}
+          {{ govukCharacterCount({
+            id: "create-job[safeguarding-notice-details]",
+            name: "create-job[safeguarding-notice-details]",
+            label: {
+              text: "Information about your commitment to safeguarding",
+              classes: "govuk-label--s"
+            },
+            maxwords: 150
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: "create-job[safeguarding-notice]",
+          name: "create-job[safeguarding-notice]",
+          fieldset: {
+            legend: {
+              text: "Do you want to provide information about your commitment to safeguarding?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: safeguardingNoticeDetails
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {% set otherInformationDetails %}
+          {{ govukCharacterCount({
+            id: "create-job[other-information-details]",
+            name: "create-job[other-information-details]",
+            label: {
+              text: "Further details about the role",
+              classes: "govuk-label--s"
+            },
+            maxwords: 150
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: "create-job[other-information]",
+          name: "create-job[other-information]",
+          fieldset: {
+            legend: {
+              text: "Do you want to add further details about the role?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: otherInformationDetails
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

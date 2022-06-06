@@ -1,0 +1,67 @@
+
+{% extends "layout.njk" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+    {% if 1 == 2 %}
+      {{ govukPanel({
+        titleText: "Job listing published"
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Next steps
+      </h2>
+
+      <p>You can:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="#">view the job listing</a>
+        </li>
+        <li>
+          <a href="">manage jobs</a>
+        </li>
+      </ul>
+
+    {% else %}
+      {{ govukPanel({
+        titleText: "Job listing scheduled for publication"
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Next steps
+      </h2>
+
+      <p>Your job listing will be published on 7 June 2022 at 9am.</p>
+
+      <p>You can:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="#">make changes to the job listing</a> before it’s published
+        </li>
+        <li>
+          <a href="">manage jobs</a>
+        </li>
+      </ul>
+    {% endif %}
+
+
+    {# <p>Your job listing has been published.</p> #}
+
+
+    <h2 class="govuk-heading-m">
+      Give feedback
+    </h2>
+
+    <p class="govuk-body">
+      <a href="#" class="govuk-link">Give feedback about this service</a> (takes 30 seconds).
+    </p>
+
+    </div>
+  </div>
+
+{% endblock %}

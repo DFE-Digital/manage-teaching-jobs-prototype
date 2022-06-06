@@ -1,0 +1,137 @@
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobs/new/pay"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          Create job listing - section 3 of 6
+        </span>
+        Date the job starts
+      {% endset %}
+
+        {% set dateHtml %}
+          {{ govukDateInput({
+            id: "date",
+            name: "date",
+            fieldset: {
+              legend: {
+                text: "Date",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "For example, 31 3 2023"
+            }
+          }) }}
+        {% endset %}
+
+        {% set rangeHtml %}
+          {{ govukDateInput({
+            id: "date",
+            name: "date",
+            fieldset: {
+              legend: {
+                text: "Date from",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "For example, 31 3 2023"
+            }
+          }) }}
+
+          {{ govukDateInput({
+            id: "date",
+            name: "date",
+            fieldset: {
+              legend: {
+                text: "Date to",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "For example, 31 4 2023"
+            }
+          }) }}
+        {% endset %}
+
+        {% set otherHtml %}
+          {{ govukInput({
+            id: "create-job[start-date-details]",
+            name: "create-job[start-date-details]",
+            label: {
+              text: "Details",
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "For example ‘Easter term’"
+            }
+          }) }}
+        {% endset %}
+
+
+      <form action="/jobs/new/method">
+        {{ govukRadios({
+          idPrefix: "create-job[start-date]",
+          name: "create-job[start-date]",
+          fieldset: {
+            legend: {
+              html: h1,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Specific date",
+              text: "Specific date",
+              conditional: {
+                html: dateHtml
+              }
+            },
+            {
+              value: "Date range",
+              text: "Date range",
+              conditional: {
+                html: rangeHtml
+              }
+            },
+            {
+              value: "Other",
+              text: "Other",
+              conditional: {
+                html: otherHtml
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+
+      </form>
+
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

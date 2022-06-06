@@ -1,0 +1,124 @@
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/active-jobs"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {# {% set h1 %} #}
+        <span class="govuk-caption-l">
+          Create job listing - section 1 of 6
+        </span>
+        <h1 class="govuk-heading-l">
+          Job role
+        </h1>
+      {# {% endset %} #}
+
+      <form action="/jobs/new/location">
+        {{ govukRadios({
+          idPrefix: "create-job[type-of-role]",
+          name: "create-job[type-of-role]",
+          fieldset: {
+            legend: {
+              html: 'Type of role',
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: 'Teacher',
+              text: 'Teacher'
+            },
+            {
+              value: 'Headteacher, deputy or assistant headteacher',
+              text: 'Headteacher, deputy or assistant headteacher'
+            },
+            {
+              value: 'Head of year, department or phase',
+              text: 'Head of year, department or phase'
+            },
+            {
+              value: 'Teaching assistant',
+              text: 'Teaching assistant'
+            },
+            {
+              value: 'Learning support, cover supervisor or tutor',
+              text: 'Learning support, cover supervisor or tutor'
+            },
+            {
+              value: 'SENDCo (special educational needs and disabilities coordinator)',
+              text: 'SENDCo (special educational needs and disabilities coordinator)'
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "create-job[suitable-1]",
+          name: "create-job[suitable-1]",
+          fieldset: {
+            legend: {
+              html: 'Is the role suitable for early career teachers?',
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: 'Yes',
+              text: 'Yes'
+            },
+            {
+              value: 'No',
+              text: 'No'
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "create-job[suitable-2]",
+          name: "create-job[suitable2]",
+          fieldset: {
+            legend: {
+              html: 'Does the role have SEND (special educational needs and disability) responsibilities?',
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: 'Yes',
+              text: 'Yes'
+            },
+            {
+              value: 'No',
+              text: 'No'
+            }
+          ]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+
+      </form>
+
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,97 @@
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobs/new/method"
+  }) }}
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          Create job listing - section 4 of 6
+        </span>
+        Do you want candidates to download an application form or a visit link to your school or council website?
+      {% endset %}
+
+      {% set firstOption %}
+        {{ govukFileUpload({
+          id: "create-job[upload-application-form]",
+          name: "create-job[upload-application-form]",
+          label: {
+            text: "Upload application form",
+            classes: 'govuk-label--s'
+          },
+          hint: {
+            text: "[Details]"
+          }
+        }) }}
+      {% endset %}
+
+      {% set secondOption %}
+        {{ govukInput({
+          id: "create-job[website-url]",
+          name: "create-job[website-url]",
+          label: {
+            text: "Link to website",
+            classes: 'govuk-label--s'
+          },
+          hint: {
+            text: "For example, https://www.example.com"
+          }
+        }) }}
+
+      {% endset %}
+
+      <form action="/jobs/new/email-address">
+
+        {{ govukRadios({
+          idPrefix: "create-job[how]",
+          name: "create-job[how]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "A form for candidates to download",
+              text: "A form for candidates to download",
+              conditional: {
+                html: firstOption
+              }
+            },
+            {
+              value: "A link to your school or council website",
+              text: "A link to your school or council website",
+              conditional: {
+                html: secondOption
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

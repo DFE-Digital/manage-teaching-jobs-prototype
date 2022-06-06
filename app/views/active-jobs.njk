@@ -1,0 +1,65 @@
+
+{% extends "layout.njk" %}
+
+
+
+{% block content %}
+  {{appPageHeader({
+    heading: {
+      text: 'Active jobs',
+      classes: 'govuk-heading-l'
+    },
+    items: [{
+      text: 'Create job listing',
+      href: '/jobs/new/role'
+    }]
+  })}}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      {# <p>Sort by: &nbsp;<span>Closing date (soonest)</span>&nbsp; | &nbsp;<a href="#">Job title (a to z)</a></a></p> #}
+
+      {{ govukTable({
+        head: [
+          {
+            text: "Title"
+          },
+          {
+            text: "Applications"
+          },
+          {
+            text: "Closing date"
+          }
+        ],
+        rows: [
+          [
+            {
+              html: '<a href="#">Maths teacher</a>'
+            },
+            {
+              html: "0 applications"
+            },
+            {
+              html: "1 August 2022 at 4pm"
+            }
+          ],
+          [
+            {
+              html: '<a href="#">English teacher</a>'
+            },
+            {
+              html: '2 applications'
+            },
+            {
+              html: "1 August 2022 at 4pm"
+            }
+          ]
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

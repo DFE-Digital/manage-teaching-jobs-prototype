@@ -1,0 +1,60 @@
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/"
+  }) }}
+{% endblock %}
+{% block content %}
+
+
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          Create job listing - section 1 of 6
+        </span>
+        {# <h1 class="govuk-heading-l"> #}
+          Job title
+        {# </h1> #}
+      {% endset %}
+
+      <form action="/jobs/new/contract">
+
+        {{ govukCharacterCount({
+          id: "create-job[title]",
+          name: "create-job[title]",
+          label: {
+            html: h1,
+            classes: 'govuk-label--l'
+          },
+          hint: {
+            text: 'For example ‘Teacher of KS1’'
+          },
+          rows: 1,
+          maxlength: 75
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

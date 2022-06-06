@@ -1,0 +1,135 @@
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobs/new/title"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Create job listing - section 2 of 6
+      </span>
+      <h1 class="govuk-heading-l">
+        Pay package
+      </h1>
+
+      <form action="/jobs/new/listing-dates">
+
+        <div class="govuk-form-group govuk-form-group--erro">
+
+          {% call govukFieldset({
+            legend: {
+              html: 'Salary details',
+              classes: "govuk-fieldset__legend--m",
+              isPageHeading: true
+            }
+          }) %}
+
+          <p>You must enter the full time equivalent salary, actual salary or pay scale. You can enter more than one.</p>
+
+          {# <p class="govuk-error-message"> Full time equivalent salary, actual salary or pay scale </p> #}
+
+          {{ govukInput({
+            id: "bla",
+            name: "bla",
+            label: {
+              text: "Full time equivalent salary",
+              classes: 'govuk-label--s'
+            },
+            hint: {
+              text: 'This is what the annual salary would be for someone worked full time'
+            },
+            classes: "govuk-input--width-10",
+            prefix: {
+              text: "£"
+            } if 1==2
+          }) }}
+
+          {{ govukInput({
+            id: "bla",
+            name: "bla",
+            label: {
+              text: "Actual salary",
+
+              classes: 'govuk-label--s'
+            },
+            prefix: {
+              text: "£"
+            } if 1==2,
+            classes: "govuk-input--width-10"
+          }) }}
+
+          {{ govukInput({
+            id: "bla",
+            name: "bla",
+            label: {
+              text: "Pay scale",
+              classes: 'govuk-label--s'
+            }
+          }) }}
+
+        {% endcall %}
+        </div>
+
+        {% set additional %}
+          {{ govukTextarea({
+            id: "additional",
+            name: "additional",
+            label: {
+              text: "Details of additional allowances or payments",
+              classes: "govuk-label--s"
+            }
+          }) }}
+        {% endset %}
+        {{ govukRadios({
+          idPrefix: "create-job[has-allowances-or-payments]",
+          name: "create-job[has-allowances-or-payments]",
+          fieldset: {
+            legend: {
+              text: "Does this job have any additional allowances and payments like special educational needs (SEN) or teaching and learning responsibility (TLR)?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: additional
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+
+
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

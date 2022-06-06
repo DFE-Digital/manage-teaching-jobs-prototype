@@ -1,0 +1,32 @@
+[
+  {
+    "id": "195631",
+    "organisation": {
+      "type": "school",
+      "name": "Okuneva, Cronin and Gusikowski",
+      "locations": [
+        {
+          "id": "0325609b-9fa5-410e-b568-6c57cdf1095f",
+          "name": "Boom Primary School",
+          "address": {
+            "address1": "123 Main Street",
+            "town": "Some town",
+            "postcode": "AB1 2CD"
+          }
+        }
+      ]
+    },
+    "location": {
+      "id": "0325609b-9fa5-410e-b568-6c57cdf1095f",
+      "name": "Boom Primary School",
+      "address": {
+        "address1": "123 Main Street",
+        "town": "Some town",
+        "postcode": "AB1 2CD"
+      }
+    },
+    "role": "Middle leader",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "roleHasSendResponsibilities": "Yes"
+  }
+]

@@ -1,0 +1,24 @@
+{{ appPrimaryNavigation({
+  items: [
+    {
+      href: "/active-jobs",
+      text: "Active jobs",
+      active: true
+    },
+    {
+      href: "#",
+      text: "Closed jobs",
+      active: primaryNavId == '#'
+    },
+    {
+      href: "#",
+      text: "Scheduled jobs",
+      active: primaryNavId == '#'
+    },
+    {
+      href: "#",
+      text: "Draft jobs",
+      active: primaryNavId == '#'
+    }
+  ]
+}) if pageId != 'start'}}

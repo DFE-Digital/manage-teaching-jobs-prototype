@@ -1,0 +1,150 @@
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobs/new/title"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          Create job listing - section 1 of 6
+        </span>
+        {# <h1 class="govuk-heading-l"> #}
+          Working pattern
+        {# </h1> #}
+      {% endset %}
+
+      {% set fullTimeDetails %}
+        {{ govukCharacterCount({
+          name: "create-job[full-time-details]",
+          id: "create-job[full-time-details]",
+          maxwords: 50,
+          label: {
+            text: "Details (optional)",
+            classes: 'govuk-label--s'
+          }
+        }) }}
+      {% endset %}
+
+      {% set partTimeDetails %}
+        {{ govukCharacterCount({
+          name: "create-job[part-time-details]",
+          id: "create-job[part-time-details]",
+          maxwords: 50,
+          label: {
+            text: "Details (optional)",
+            classes: 'govuk-label--s'
+          }
+        }) }}
+      {% endset %}
+
+      {% set flexibleDetails %}
+        {{ govukCharacterCount({
+          name: "create-job[flexible-details]",
+          id: "create-job[flexible-details]",
+          maxwords: 50,
+          label: {
+            text: "Details (optional)",
+            classes: 'govuk-label--s'
+          }
+        }) }}
+      {% endset %}
+
+      {% set jobShareDetails %}
+        {{ govukCharacterCount({
+          name: "create-job[job-share-details]",
+          id: "create-job[job-share-details]",
+          maxwords: 50,
+          label: {
+            text: "Details (optional)",
+            classes: 'govuk-label--s'
+          }
+        }) }}
+      {% endset %}
+
+      <form action="/jobs/new/pay">
+
+        {{ govukCheckboxes({
+          idPrefix: "create-job[working-patterns]",
+          name: "create-job[working-patterns]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Full time",
+              text: "Full time",
+              conditional: {
+                html: fullTimeDetails
+              }
+            },
+            {
+              value: "Part time",
+              text: "Part time",
+              conditional: {
+                html: partTimeDetails
+              }
+            },
+            {
+              value: "Flexible",
+              text: "Flexible",
+              conditional: {
+                html: flexibleDetails
+              }
+            },
+            {
+              value: "Job share",
+              text: "Job share",
+              conditional: {
+                html: jobShareDetails
+              }
+            },
+            {
+              value: "Term time",
+              text: "Term time"
+            }
+          ]
+        }) }}
+
+
+        {# {{ govukTextarea({
+          id: "create-job[working-pattern-details]",
+          name: "create-job[working-pattern-details]",
+          label: {
+            text: "Etc",
+            classes: "govuk-label--m"
+          },
+          hint: {
+            text: "Etc"
+          }
+        }) }} #}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

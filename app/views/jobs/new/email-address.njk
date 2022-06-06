@@ -1,0 +1,83 @@
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/"
+  }) }}
+{% endblock %}
+{% block content %}
+
+
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          Create job listing - section 5 of 6
+        </span>
+        Email address for candidates to send applications or ask questions
+      {% endset %}
+
+      {% set emailAddress %}
+        {{ govukInput({
+          id: "create-job[email-address]",
+          name: "create-job[email-address]",
+          label: {
+            text: "Email address",
+            classes: 'govuk-label--s'
+          },
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false
+        }) }}
+      {% endset %}
+
+      <form action="/jobs/new/phone">
+
+        {{ govukRadios({
+          idPrefix: "create-job[email]",
+          name: "create-job[email]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "existing.email@example.com",
+              text: "existing.email@example.com"
+            },
+            {
+              value: "A different email address",
+              text: "A different email address",
+              conditional: {
+                html: emailAddress
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

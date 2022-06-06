@@ -1,0 +1,86 @@
+
+{% extends "layout.njk" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        Create job listing - section 6 of 6
+      </span>
+      <h1 class="govuk-heading-l">
+        Upload additional documents
+      </h1>
+
+       <h2 class="govuk-heading-m">Files added</h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "File 1"
+          },
+          value: {
+            html: '<a download href="#">job-description.pdf</a>, 2MB'
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Delete",
+                visuallyHiddenText: "file 1"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+      <form action="/jobs/new/check">
+
+        {{ govukRadios({
+          idPrefix: "create-job[add-another-file]",
+          name: "create-job[add-another-file]",
+          fieldset: {
+            legend: {
+              text: "Do you want to upload another document?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
