@@ -37,7 +37,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/role",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -46,7 +46,7 @@
           },
           {
             key: {
-              text: "Is the role suitable for early careeer teachers?"
+              text: "Is the role suitable for early careeer teachers (ECT)?"
             },
             value: {
               text: "No"
@@ -54,7 +54,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/role",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -71,7 +71,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/role",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -88,7 +88,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/location",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -105,7 +105,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/title",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -122,7 +122,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "jobs/new/contract",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -139,7 +139,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "jobs/new/patterns",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -156,7 +156,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/patterns",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -182,7 +182,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/pay",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -199,7 +199,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/pay",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -216,41 +216,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Does this job have any additional allowances and payments like special educational needs (SEN) or teaching and learning responsibility (TLR)?"
-            },
-            value: {
-              text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Details of additional allowances or payments"
-            },
-            value: {
-              text: "TLR"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
+                  href: "/jobs/new/pay",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -353,7 +319,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/method",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -413,40 +379,6 @@
           },
           {
             key: {
-              text: "Do you want to provide a contact phone number?"
-            },
-            value: {
-              text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Phone number"
-            },
-            value: {
-              text: "0207 3456 3746"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
               text: "Do you want to advertise that candidates can arrange a school visit?"
             },
             value: {
@@ -478,22 +410,13 @@
                 }
               ]
             }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m">
-        About the role
-      </h2>
-
-      {{ govukSummaryList({
-        rows: [
+          },
           {
             key: {
-              text: "Skills, experience and responsibilities"
+              text: "Email address for questions about the job"
             },
             value: {
-              text: "You need to have at least 5 years experience teaching in a public school. You’ll be responsible for a class of 30 students."
+              html: 'molly@example.com'
             },
             actions: {
               items: [
@@ -507,24 +430,7 @@
           },
           {
             key: {
-              text: "Benefits of working at your school or trust"
-            },
-            value: {
-              text: "You’ll get regularl training etc."
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Do you want to add a safeguarding notice?"
+              text: "Do you want to provide a contact phone number?"
             },
             value: {
               text: "Yes"
@@ -541,7 +447,85 @@
           },
           {
             key: {
-              text: "Safeguarding notice"
+              text: "Phone number"
+            },
+            value: {
+              text: "0207 3456 3746"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        About the role
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "What skills and experience does the job require?"
+            },
+            value: {
+              text: "You need to have at least 5 years experience teaching in a public school. You’ll be responsible for a class of 30 students."
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What can the school offer its staff?"
+            },
+            value: {
+              text: "You’ll get regularl training etc."
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you want to provide information about your commitment to safeguarding?
+Yes"
+            },
+            value: {
+              text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Information about your commitment to safeguarding"
             },
             value: {
               text: "St Laurence School is committed to safeguarding and promoting the welfare of children and young people and expects all staff and volunteers to share this commitment. All applicants will be subject to
@@ -559,7 +543,7 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
           },
           {
             key: {
-              text: "Do you want to add any other information about the role?"
+              text: "Do you want to add further details about the role?"
             },
             value: {
               text: "Yes"
@@ -576,7 +560,7 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
           },
           {
             key: {
-              text: "Other information about the role"
+              text: "Further details about the role"
             },
             value: {
               text: "Ut eget dolor at libero commodo tincidunt vel egestas diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam aliquet risus eget ante viverra tincidunt. Etiam pulvinar metus dolor, in eleifend massa pharetra eget."

@@ -36,9 +36,9 @@
 
           {# <p class="govuk-error-message"> Full time equivalent salary, actual salary or pay scale </p> #}
 
-          {{ govukInput({
-            id: "bla",
-            name: "bla",
+        {{ govukInput({
+            id: "create-job[full-time-salary]",
+            name: "create-job[full-time-salary]",
             label: {
               text: "Full time equivalent salary",
               classes: 'govuk-label--s'
@@ -46,29 +46,22 @@
             hint: {
               text: 'This is what the annual salary would be for someone working full time'
             },
-            classes: "govuk-input--width-10",
-            prefix: {
-              text: "£"
-            } if 1==2
-          }) }}
-
-          {{ govukInput({
-            id: "bla",
-            name: "bla",
-            label: {
-              text: "Actual salary",
-
-              classes: 'govuk-label--s'
-            },
-            prefix: {
-              text: "£"
-            } if 1==2,
             classes: "govuk-input--width-10"
           }) }}
 
           {{ govukInput({
-            id: "bla",
-            name: "bla",
+            id: "create-job[actual-salary]",
+            name: "create-job[actual-salary]",
+            label: {
+              text: "Actual salary",
+              classes: 'govuk-label--s'
+            },
+            classes: "govuk-input--width-10"
+          }) }}
+
+          {{ govukInput({
+            id: "create-job[pay-scale]",
+            name: "create-job[pay-scale]",
             label: {
               text: "Pay scale",
               classes: 'govuk-label--s'
