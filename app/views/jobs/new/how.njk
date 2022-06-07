@@ -14,7 +14,7 @@
 
       {% set h1 %}
         <span class="govuk-caption-l">
-          Create job listing - section 4 of 6
+          Create job listing - section 4 of 5
         </span>
         Do you want candidates to download an application form or a visit link to your school or council website?
       {% endset %}
@@ -48,7 +48,7 @@
 
       {% endset %}
 
-      <form action="/jobs/new/email-address">
+      <form action="/jobs/new/how" method="post">
 
         {{ govukRadios({
           idPrefix: "create-job[how]",

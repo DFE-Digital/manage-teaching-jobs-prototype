@@ -7,25 +7,41 @@
     href: "/"
   }) }}
 {% endblock %}
-
 {% block content %}
+
+
+
+
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       {% set h1 %}
         <span class="govuk-caption-l">
-          Create job listing - section 5 of 5
+          Create job listing - section 4 of 5
         </span>
-        Do you want to upload additional documents like a job description or person specification?
+        Email address for candidates to send their application
       {% endset %}
 
+      {% set emailAddress %}
+        {{ govukInput({
+          id: "create-job[application-email-address]",
+          name: "create-job[application-email-address]",
+          label: {
+            text: "Email address",
+            classes: 'govuk-label--s'
+          },
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false
+        }) }}
+      {% endset %}
 
-      <form action="/jobs/new/upload" method="post">
+      <form action="/jobs/new/phone">
 
         {{ govukRadios({
-          idPrefix: "create-job[upload]",
-          name: "create-job[upload]",
+          idPrefix: "create-job[application-email]",
+          name: "create-job[application-email]",
           fieldset: {
             legend: {
               html: h1,
@@ -35,12 +51,15 @@
           },
           items: [
             {
-              value: "Yes",
-              text: "Yes"
+              value: "existing.email@example.com",
+              text: "existing.email@example.com"
             },
             {
-              value: "No",
-              text: "No"
+              value: "A different email address",
+              text: "A different email address",
+              conditional: {
+                html: emailAddress
+              }
             }
           ]
         }) }}

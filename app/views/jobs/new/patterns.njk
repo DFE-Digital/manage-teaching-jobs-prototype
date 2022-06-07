@@ -15,14 +15,14 @@
 
       {% set h1 %}
         <span class="govuk-caption-l">
-          Create job listing - section 1 of 6
+          Create job listing - section 1 of 5
         </span>
         {# <h1 class="govuk-heading-l"> #}
           Working pattern
         {# </h1> #}
       {% endset %}
 
-      {% set fullTimeDetails %}
+      {# {% set fullTimeDetails %}
         {{ govukCharacterCount({
           name: "create-job[full-time-details]",
           id: "create-job[full-time-details]",
@@ -32,7 +32,7 @@
             classes: 'govuk-label--s'
           }
         }) }}
-      {% endset %}
+      {% endset %} #}
 
       {% set partTimeDetails %}
         {{ govukCharacterCount({
@@ -85,10 +85,7 @@
           items: [
             {
               value: "Full time",
-              text: "Full time",
-              conditional: {
-                html: fullTimeDetails
-              }
+              text: "Full time"
             },
             {
               value: "Part time",
