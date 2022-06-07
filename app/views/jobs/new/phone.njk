@@ -16,7 +16,7 @@
         <span class="govuk-caption-l">
           Create job listing - section 5 of 6
         </span>
-        Do you want to provide a phone number for candidates to ask questions about the role?
+        Do you want to provide a contact phone number?
       {% endset %}
 
       {% set phone %}
@@ -31,7 +31,7 @@
 
       {% endset %}
 
-      <form action="/jobs/new/visits">
+      <form action="/jobs/new/school-visits">
 
         {{ govukRadios({
           idPrefix: "create-job[phone]",

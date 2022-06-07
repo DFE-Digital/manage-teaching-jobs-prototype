@@ -1,0 +1,144 @@
+
+{% extends "layout.njk" %}
+
+{% set pageId = '' %}
+
+{% block header %}
+  {% include "includes/header.njk" %}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "#"
+    },
+    {
+      text: "Search results",
+      href: "#"
+    }
+  ]
+}) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+    Teacher of Geography
+  </h1>
+  <p class="govuk-body-l"><a href="#">The Thinking Schools Academy Trust</a>, Chatham, ME4 6NR</p>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukButton({
+        text: "Get an alert for similar jobs",
+        classes: "govuk-button--secondary"
+      }) }}
+
+      {{ govukButton({
+        text: "Save job for later",
+        classes: "govuk-button--secondary govuk-!-margin-left-2"
+      }) }}
+
+      <h2 class="govuk-heading-l">
+        Summary
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Salary"
+            },
+            value: {
+              text: "Item value"
+            }
+          },
+          {
+            key: {
+              text: "Item label"
+            },
+            value: {
+              text: "Item value"
+            }
+          },
+          {
+            key: {
+              text: "Item label"
+            },
+            value: {
+              text: "Item value"
+            }
+          }
+        ]
+      }) }}
+
+      {# <h2 class="govuk-heading-l">
+        About the role
+      </h2> #}
+
+      <p>This school encourages school visits. Visiting the school has been shown to increase your chance of success. To arrange a visit:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          email them at
+        </li>
+        <li>
+          phone them at
+        </li>
+      </ul>
+
+      <h2 class="govuk-heading-l">
+        What skills and experience the job is looking for
+      </h2>
+
+      <p>Morbi sodales efficitur ex, ut finibus metus malesuada non. Curabitur suscipit, ante quis pellentesque vehicula, nibh arcu aliquam quam, sit amet aliquet dui mi sit amet lacus. Duis ut dictum mauris. Vestibulum pharetra arcu in est finibus finibus. Aliquam dignissim a dui nec malesuada. Aenean condimentum odio at sem accumsan, at suscipit ipsum accumsan. Vivamus nisl risus, accumsan sit amet facilisis vitae, condimentum sit amet magna.</p>
+
+      <h2 class="govuk-heading-l">
+        What the school offers its staff
+      </h2>
+
+      <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. Nulla vehicula ex quis ipsum bibendum, ut iaculis diam tristique. Phasellus imperdiet arcu consectetur fermentum finibus. </p>
+
+      <h2 class="govuk-heading-l">
+        Further information about the role
+      </h2>
+
+      <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. Nulla vehicula ex quis ipsum bibendum, ut iaculis diam tristique. Phasellus imperdiet arcu consectetur fermentum finibus. </p>
+
+      <h2 class="govuk-heading-l">
+        About The Thinking Schools Academy Trust
+      </h2>
+
+      <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. </p>
+
+      <h2 class="govuk-heading-l">
+        Additional documents
+      </h2>
+
+      <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. Nulla vehicula ex quis ipsum bibendum, ut iaculis diam tristique. Phasellus imperdiet arcu consectetur fermentum finibus. Nunc massa ligula, lobortis vitae risus at, vulputate dignissim sem. Integer congue accumsan dapibus. Morbi ac commodo velit. Maecenas in nisl non felis convallis accumsan auctor eu metus.</p>
+
+      <h2 class="govuk-heading-l">
+        Location
+      </h2>
+
+      <p>[Map]</p>
+
+      {# <h2 class="govuk-heading-l">
+        Location
+      </h2>
+
+      <p>[Map]</p> #}
+
+
+      <h2 class="govuk-heading-l">
+        Our commitment to safeguarding
+      </h2>
+
+      <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. Nulla vehicula ex quis ipsum bibendum, ut iaculis diam tristique. Phasellus imperdiet arcu consectetur fermentum finibus. </p>
+
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -22,7 +22,7 @@
       </h1>
 
       <h2 class="govuk-heading-m">
-        Job summary
+        Job details
       </h2>
 
        {{ govukSummaryList({
@@ -167,7 +167,7 @@
       }) }}
 
       <h2 class="govuk-heading-m">
-        Pay package
+        Pay
       </h2>
 
       {{ govukSummaryList({
@@ -365,7 +365,7 @@
               text: "Do you want candidates to download an application form or a visit link to your school or council website?"
             },
             value: {
-              text: "A link to your school or council website"
+              text: "A form for candidates to download"
             },
             actions: {
               items: [
@@ -379,36 +379,10 @@
           },
           {
             key: {
-              text: "Link to website"
+              text: "Application form"
             },
             value: {
-              text: "https://www.example.com"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m">
-        Contact details
-      </h2>
-
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Email address for candidates to send applications or ask questions"
-            },
-            value: {
-              text: "some.email@example.com"
+              html: '<a href="">form.pdf</a>'
             },
             actions: {
               items: [
@@ -422,7 +396,24 @@
           },
           {
             key: {
-              text: "Do you want to provide a phone number for candidates to ask questions about the role?"
+              text: "Email address for candidates to send applications"
+            },
+            value: {
+              html: 'molly@example.com'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you want to provide a contact phone number?"
             },
             value: {
               text: "Yes"
@@ -460,6 +451,23 @@
             },
             value: {
               text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address for candidates to arrange a school visit"
+            },
+            value: {
+              text: "adam@example.com"
             },
             actions: {
               items: [

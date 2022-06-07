@@ -20,13 +20,13 @@
         <span class="govuk-caption-l">
           Create job listing - section 5 of 6
         </span>
-        Contact email address
+        Email address for candidates to arrange a school visit
       {% endset %}
 
       {% set emailAddress %}
         {{ govukInput({
-          id: "create-job[contact-email-address]",
-          name: "create-job[contact-email-address]",
+          id: "create-job[school-visits-email-address]",
+          name: "create-job[school-visits-email-address]",
           label: {
             text: "Email address",
             classes: 'govuk-label--s'
@@ -37,7 +37,7 @@
         }) }}
       {% endset %}
 
-      <form action="/jobs/new/phone">
+      <form action="/jobs/new/check">
 
         {{ govukRadios({
           idPrefix: "create-job[email]",

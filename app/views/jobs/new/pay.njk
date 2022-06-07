@@ -17,7 +17,7 @@
         Create job listing - section 2 of 6
       </span>
       <h1 class="govuk-heading-l">
-        Pay package
+        Pay
       </h1>
 
       <form action="/jobs/new/listing-dates">
@@ -77,43 +77,6 @@
 
         {% endcall %}
         </div>
-
-        {% set additional %}
-          {{ govukTextarea({
-            id: "additional",
-            name: "additional",
-            label: {
-              text: "Details of additional allowances or payments",
-              classes: "govuk-label--s"
-            }
-          }) }}
-        {% endset %}
-        {{ govukRadios({
-          idPrefix: "create-job[has-allowances-or-payments]",
-          name: "create-job[has-allowances-or-payments]",
-          fieldset: {
-            legend: {
-              text: "Does this job have any additional allowances and payments like special educational needs (SEN) or teaching and learning responsibility (TLR)?",
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes",
-              conditional: {
-                html: additional
-              }
-            },
-            {
-              value: "No",
-              text: "No"
-            }
-          ]
-        }) }}
-
-
-
 
 
         {{ govukButton({

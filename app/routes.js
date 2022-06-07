@@ -69,4 +69,14 @@ router.post('/jobs/new/upload', (req, res) => {
 
 })
 
+router.post('/jobs/new/school-visits', (req, res) => {
+
+  if(req.body['create-job'] && req.body['create-job']['school-visits'] == 'Yes') {
+    res.redirect('/jobs/new/school-visits-email-address')
+  } else {
+    res.redirect('/jobs/new/about')
+  }
+
+})
+
 module.exports = router

@@ -20,11 +20,11 @@
       {% endset %}
 
 
-      <form action="/jobs/new/about">
+      <form action="/jobs/new/school-visits" method="post">
 
         {{ govukRadios({
-          idPrefix: "create-job[visits]",
-          name: "create-job[visits]",
+          idPrefix: "create-job[school-visits]",
+          name: "create-job[school-visits]",
           fieldset: {
             legend: {
               html: h1,
