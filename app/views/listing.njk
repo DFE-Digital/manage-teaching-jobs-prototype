@@ -23,14 +23,12 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-2">
     Teacher of Geography
   </h1>
   <p class="govuk-body-l"><a href="#">The Thinking Schools Academy Trust</a>, Chatham, ME4 6NR</p>
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
-      {{ govukButton({
+  {{ govukButton({
         text: "Get an alert for similar jobs",
         classes: "govuk-button--secondary"
       }) }}
@@ -40,104 +38,241 @@
         classes: "govuk-button--secondary govuk-!-margin-left-2"
       }) }}
 
-      <h2 class="govuk-heading-l">
-        Summary
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <p>TODO DATES</p>
+
+
+      <h2 class="govuk-heading-m">
+        Job details
       </h2>
 
       {{ govukSummaryList({
         rows: [
           {
             key: {
-              text: "Salary"
+              text: "Job role"
             },
             value: {
-              text: "Item value"
+              html: 'Teacher'
             }
           },
           {
             key: {
-              text: "Item label"
+              text: "Is the role suitable for early careeer teachers (ECT)?"
             },
             value: {
-              text: "Item value"
+              html: 'Yes'
             }
           },
           {
             key: {
-              text: "Item label"
+              text: "Does the role have SEND (special educational needs and disability) responsibilities?"
             },
             value: {
-              text: "Item value"
+              html: 'Yes'
+            }
+          },
+          {
+            key: {
+              text: "Key stage"
+            },
+            value: {
+              html: 'KS1'
+            }
+          },
+          {
+            key: {
+              text: "Working patterns"
+            },
+            value: {
+              html: 'Part time - 3 days a week<br><br>Flexible - you can choose mornings or afternoons'
+            }
+          },
+          {
+            key: {
+              text: "Contract"
+            },
+            value: {
+              html: 'Permanent'
             }
           }
         ]
       }) }}
 
-      {# <h2 class="govuk-heading-l">
-        About the role
-      </h2> #}
-
-      <p>This school encourages school visits. Visiting the school has been shown to increase your chance of success. To arrange a visit:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          email them at
-        </li>
-        <li>
-          phone them at
-        </li>
-      </ul>
-
-      <h2 class="govuk-heading-l">
-        What skills and experience the job is looking for
+      <h2 class="govuk-heading-m">
+        Salary details
       </h2>
 
-      <p>Morbi sodales efficitur ex, ut finibus metus malesuada non. Curabitur suscipit, ante quis pellentesque vehicula, nibh arcu aliquam quam, sit amet aliquet dui mi sit amet lacus. Duis ut dictum mauris. Vestibulum pharetra arcu in est finibus finibus. Aliquam dignissim a dui nec malesuada. Aenean condimentum odio at sem accumsan, at suscipit ipsum accumsan. Vivamus nisl risus, accumsan sit amet facilisis vitae, condimentum sit amet magna.</p>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Full time equivalent salary"
+            },
+            value: {
+              text: "£25,000 to £35,000"
+            }
+          },
+          {
+            key: {
+              text: "Actual salary"
+            },
+            value: {
+              text: "£17,000 to £26,000"
+            }
+          },
+          {
+            key: {
+              text: "Pay scale"
+            },
+            value: {
+              text: "MP1 to MP6"
+            }
+          }
+        ]
+      }) }}
 
-      <h2 class="govuk-heading-l">
+      <h2 class="govuk-heading-m">
+        Skills and experience required to do the job
+      </h2>
+
+      <p>Morbi sodales efficitur ex, ut finibus metus malesuada non. Curabitur suscipit, ante quis pellentesque vehicula.</p>
+
+      <h2 class="govuk-heading-m">
         What the school offers its staff
       </h2>
 
       <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. Nulla vehicula ex quis ipsum bibendum, ut iaculis diam tristique. Phasellus imperdiet arcu consectetur fermentum finibus. </p>
 
-      <h2 class="govuk-heading-l">
+      <h2 class="govuk-heading-m">
         Further information about the role
       </h2>
 
       <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. Nulla vehicula ex quis ipsum bibendum, ut iaculis diam tristique. Phasellus imperdiet arcu consectetur fermentum finibus. </p>
 
-      <h2 class="govuk-heading-l">
-        About The Thinking Schools Academy Trust
-      </h2>
-
-      <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. </p>
-
-      <h2 class="govuk-heading-l">
+      <h2 class="govuk-heading-m">
         Additional documents
       </h2>
 
-      <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. Nulla vehicula ex quis ipsum bibendum, ut iaculis diam tristique. Phasellus imperdiet arcu consectetur fermentum finibus. Nunc massa ligula, lobortis vitae risus at, vulputate dignissim sem. Integer congue accumsan dapibus. Morbi ac commodo velit. Maecenas in nisl non felis convallis accumsan auctor eu metus.</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="">Job description (2MB)</a>
+        </li>
+        <li>
+          <a href="">Person specification (8MB)</a>
+        </li>
+      </ul>
 
-      <h2 class="govuk-heading-l">
+      <h2 class="govuk-heading-m">
+        About Swinnow Primary School
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "School type"
+            },
+            value: {
+              text: "Local authority maintained school"
+            }
+          },
+          {
+            key: {
+              text: "Education phase"
+            },
+            value: {
+              text: "Primary"
+            }
+          },
+          {
+            key: {
+              text: "School size"
+            },
+            value: {
+              text: "266 pupils enrolled"
+            }
+          },
+          {
+            key: {
+              text: "Age range"
+            },
+            value: {
+              text: "2 to 11"
+            }
+          },
+          {
+            key: {
+              text: "Ofsted report"
+            },
+            value: {
+              html: '<a href="">View Ofsted report (opens in new tab)</a>'
+            }
+          },
+          {
+            key: {
+              text: "Website"
+            },
+            value: {
+              html: '<a href="">https://www.swinnowprimary.com</a>'
+            }
+          }
+        ]
+      }) }}
+
+      <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. </p>
+
+      <h2 class="govuk-heading-m">
+        Arranging a visit to Swinnow Primary School
+      </h2>
+
+      <p>To arrange a visit and increase the chance of a successful application email <a href="#">	recruitment@swinnowprimary.com</a>.</p>
+
+      <h2 class="govuk-heading-m">
+        Applying for the job
+      </h2>
+
+      {{ govukButton({
+        text: "Download application form (PDF), 7MB"
+      }) }}
+
+      <p>Send your application to <a href="">recruitment@swinnowprimary.com</a>.</p>
+
+      <p>You can also contact the school by:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          emailing <a href="">recruitment@swinnowprimary.com</a>
+        </li>
+        <li>
+          phoning <a href="">0207 984 384</a>
+        </li>
+      </ul>
+
+
+      <h2 class="govuk-heading-m">
         Location
       </h2>
 
-      <p>[Map]</p>
+      <p><img src="/public/images/map.png" style="max-width: 100%"></p>
 
-      {# <h2 class="govuk-heading-l">
-        Location
-      </h2>
-
-      <p>[Map]</p> #}
-
-
-      <h2 class="govuk-heading-l">
+      <h2 class="govuk-heading-m">
         Our commitment to safeguarding
       </h2>
 
-      <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. Nulla vehicula ex quis ipsum bibendum, ut iaculis diam tristique. Phasellus imperdiet arcu consectetur fermentum finibus. </p>
+      <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. Nulla vehicula ex quis ipsum bibendum, ut iaculis diam tristique.</p>
 
 
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {# <h2 class="govuk-heading-m">
+        More jobs from Swinnow Primary School
+      </h2>
+
+      <p>Etc</p> #}
     </div>
   </div>
 
