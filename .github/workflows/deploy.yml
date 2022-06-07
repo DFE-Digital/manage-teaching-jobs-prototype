@@ -1,0 +1,22 @@
+name: Deploy to GOV.UK PaaS
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency: deploy-${{ github.ref }}
+
+jobs:
+  deploy:
+    name: Deploy to GOV.UK PaaS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: DFE-Digital/github-actions/setup-cf-cli@master
+        with:
+          CF_USERNAME: ${{ secrets.CF_USERNAME }}
+          CF_PASSWORD: ${{ secrets.CF_PASSWORD }}
+          CF_SPACE_NAME: teaching-vacancies-prototype
+      - name: Push application
+        run: cf push manage-teaching-jobs-prototype
