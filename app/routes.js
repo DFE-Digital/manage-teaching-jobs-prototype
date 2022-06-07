@@ -52,7 +52,7 @@ router.get('/active-jobs', checkIsAuthenticated, jobsController.index)
 router.post('/jobs/new/method', (req, res) => {
 
   if(req.body['create-job'] && req.body['create-job'].method == 'Yes') {
-    res.redirect('/jobs/new/email-address')
+    res.redirect('/jobs/new/school-visits')
   } else {
     res.redirect('/jobs/new/how')
   }
@@ -64,7 +64,7 @@ router.post('/jobs/new/how', (req, res) => {
   if(req.body['create-job'] && req.body['create-job'].how == 'A form for candidates to download') {
     res.redirect('/jobs/new/application-email-address')
   } else {
-    res.redirect('/jobs/new/email-address')
+    res.redirect('/jobs/new/school-visits')
   }
 
 })
@@ -84,7 +84,7 @@ router.post('/jobs/new/school-visits', (req, res) => {
   if(req.body['create-job'] && req.body['create-job']['school-visits'] == 'Yes') {
     res.redirect('/jobs/new/school-visits-email-address')
   } else {
-    res.redirect('/jobs/new/about')
+    res.redirect('/jobs/new/email-address')
   }
 
 })
