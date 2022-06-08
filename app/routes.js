@@ -32,7 +32,7 @@ router.all('*', (req, res, next) => {
 
 router.get('/sign-in', authenticationController.signIn)
 router.post('/sign-in', passport.authenticate('local', {
-  successRedirect: '/active-jobs',
+  successRedirect: '/jobs',
   failureRedirect: '/sign-in',
   failureFlash: 'Enter valid sign-in details'
 }))
@@ -43,7 +43,7 @@ router.get('/sign-out', authenticationController.signOut)
 /// Manage jobs
 /// ------------------------------------------------------------------------ ///
 
-router.get('/active-jobs', checkIsAuthenticated, jobsController.index)
+router.get('/jobs', checkIsAuthenticated, jobsController.index)
 
 /// ------------------------------------------------------------------------ ///
 /// Create job listing

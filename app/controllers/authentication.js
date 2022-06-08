@@ -2,7 +2,7 @@
 exports.signIn = (req, res) => {
   // if already authenticated just go home
   if (req.session.passport) {
-    res.redirect('/active-jobs')
+    res.redirect('/jobs')
   } else {
     const flash = req.flash()
     res.render('../views/auth/index', {
