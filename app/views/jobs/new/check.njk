@@ -4,7 +4,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/"
+    href: "javascript:history.back();"
   }) }}
 {% endblock %}
 
@@ -167,7 +167,7 @@
       }) }}
 
       <h2 class="govuk-heading-m">
-        Pay
+        Salary details
       </h2>
 
       {{ govukSummaryList({
@@ -182,7 +182,7 @@
             actions: {
               items: [
                 {
-                  href: "/jobs/new/pay",
+                  href: "/jobs/new/salary",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -199,7 +199,7 @@
             actions: {
               items: [
                 {
-                  href: "/jobs/new/pay",
+                  href: "/jobs/new/salary",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -216,7 +216,7 @@
             actions: {
               items: [
                 {
-                  href: "/jobs/new/pay",
+                  href: "/jobs/new/salary",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }

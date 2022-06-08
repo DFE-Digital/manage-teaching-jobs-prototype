@@ -4,7 +4,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/jobs/new/title"
+    href: "javascript:history.back();"
   }) }}
 {% endblock %}
 
@@ -17,22 +17,8 @@
         <span class="govuk-caption-l">
           Create job listing - section 1 of 5
         </span>
-        {# <h1 class="govuk-heading-l"> #}
-          Working pattern
-        {# </h1> #}
+        Working patterns
       {% endset %}
-
-      {# {% set fullTimeDetails %}
-        {{ govukCharacterCount({
-          name: "create-job[full-time-details]",
-          id: "create-job[full-time-details]",
-          maxwords: 50,
-          label: {
-            text: "Details (optional)",
-            classes: 'govuk-label--s'
-          }
-        }) }}
-      {% endset %} #}
 
       {% set partTimeDetails %}
         {{ govukCharacterCount({
@@ -70,7 +56,7 @@
         }) }}
       {% endset %}
 
-      <form action="/jobs/new/pay">
+      <form action="/jobs/new/salary">
 
         {{ govukCheckboxes({
           idPrefix: "create-job[working-patterns]",
