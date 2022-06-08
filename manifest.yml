@@ -7,3 +7,4 @@ applications:
     env:
       USERNAME: teaching
       PASSWORD: vacancies
+      USE_AUTH: false
