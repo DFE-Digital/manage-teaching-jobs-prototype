@@ -38,7 +38,6 @@ $app-images-path: "/public/images/";
 }
 
 .app-panel {
-  border: 1px solid govuk-colour('mid-grey');
+  background-color: govuk-colour('light-grey');
   padding: govuk-spacing(4) govuk-spacing(3);
-  max-width: 375px;
 }

@@ -29,31 +29,7 @@
           id: "create-job[part-time-details]",
           maxwords: 50,
           label: {
-            text: "Details (optional)",
-            classes: 'govuk-label--s'
-          }
-        }) }}
-      {% endset %}
-
-      {% set flexibleDetails %}
-        {{ govukCharacterCount({
-          name: "create-job[flexible-details]",
-          id: "create-job[flexible-details]",
-          maxwords: 50,
-          label: {
-            text: "Details (optional)",
-            classes: 'govuk-label--s'
-          }
-        }) }}
-      {% endset %}
-
-      {% set jobShareDetails %}
-        {{ govukCharacterCount({
-          name: "create-job[job-share-details]",
-          id: "create-job[job-share-details]",
-          maxwords: 50,
-          label: {
-            text: "Details (optional)",
+            text: "Details",
             classes: 'govuk-label--s'
           }
         }) }}
@@ -82,40 +58,9 @@
               conditional: {
                 html: partTimeDetails
               }
-            },
-            {
-              value: "Flexible",
-              text: "Flexible",
-              conditional: {
-                html: flexibleDetails
-              }
-            },
-            {
-              value: "Job share",
-              text: "Job share",
-              conditional: {
-                html: jobShareDetails
-              }
-            },
-            {
-              value: "Term time",
-              text: "Term time"
             }
           ]
         }) }}
-
-
-        {# {{ govukTextarea({
-          id: "create-job[working-pattern-details]",
-          name: "create-job[working-pattern-details]",
-          label: {
-            text: "Etc",
-            classes: "govuk-label--m"
-          },
-          hint: {
-            text: "Etc"
-          }
-        }) }} #}
 
         {{ govukButton({
           text: "Save and continue"

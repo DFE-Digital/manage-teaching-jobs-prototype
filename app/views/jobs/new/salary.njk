@@ -1,5 +1,7 @@
 {% extends "layout.njk" %}
 
+{% set version = 2 %}
+
 {% set heading = 'Salary details' %}
 {% set caption = 'Create job listing - section 2 of 5' %}
 {% set title = heading + ' - ' + caption %}
@@ -13,67 +15,150 @@
 
 {% block content %}
 
+  {% set salary %}
+    {{ govukInput({
+      id: "create-job[salary]",
+      name: "create-job[salary]",
+      label: {
+        text: "Salary",
+        classes: 'govuk-label--s'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
+  {% endset %}
+
+  {% set payscale %}
+    {{ govukInput({
+      id: "create-job[pay-scale]",
+      name: "create-job[pay-scale]",
+      label: {
+        text: "Pay scale",
+        classes: 'govuk-label--s'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
+  {% endset %}
+
+  {% set actualSalary %}
+    {{ govukInput({
+      id: "create-job[take-home]",
+      name: "create-job[take-home]",
+      label: {
+        text: "Actual salary",
+        classes: 'govuk-label--s'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
+  {% endset %}
+
+  {% set fulltime %}
+    {{ govukInput({
+      id: "create-job[full-home]",
+      name: "create-job[full-home]",
+      label: {
+        text: "Full time salary",
+        classes: 'govuk-label--s'
+      },
+      classes: "govuk-input--width-20"
+    }) }}
+  {% endset %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set h1 %}
+      {% if version == 1 %}
         <span class="govuk-caption-l">
           {{caption}}
         </span>
-        {{heading}}
-      {% endset %}
+        <h1 class="govuk-heading-l">
+          {{heading}}
+        </h1>
+      {% else %}
+        {% set h1 %}
+          <span class="govuk-caption-l">
+            {{caption}}
+          </span>
+          {{heading}}
+        {% endset %}
+      {% endif %}
 
       <form action="/jobs/new/listing-dates">
 
-        <div class="govuk-form-group govuk-form-group--erro">
+        {% if version == 1 %}
 
-          {% call govukFieldset({
-            legend: {
-              html: h1,
-              classes: "govuk-fieldset__legend--l",
-              isPageHeading: true
-            }
-          }) %}
+          {{ govukRadios({
+            idPrefix: "create-job[paid-term-time]",
+            name: "create-job[paid-term-time]",
+            fieldset: {
+              legend: {
+                text: "Is this role paid for term time only?",
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes",
+                conditional: {
+                  html: takehome
+                }
+              },
+              {
+                value: "No",
+                text: "No",
+                conditional: {
+                  html: fulltime
+                }
+              }
+            ]
+          }) }}
 
-          <p>You must enter the full time equivalent salary, actual salary or pay scale. You can enter more than one.</p>
 
-          {# <p class="govuk-error-message"> Full time equivalent salary, actual salary or pay scale </p> #}
-
-        {{ govukInput({
-            id: "create-job[full-time-salary]",
-            name: "create-job[full-time-salary]",
-            label: {
-              text: "Full time equivalent salary",
-              classes: 'govuk-label--s'
+        {% else %}
+           {{ govukCheckboxes({
+            idPrefix: "create-job[salary-details]",
+            name: "create-job[salary-details]",
+            fieldset: {
+              legend: {
+                html: h1,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
             },
             hint: {
-              text: 'This is what the annual salary would be for someone working full time'
+              text: 'Select all options that you want to include in the advert'
             },
-            classes: "govuk-input--width-10"
+            items: [
+              {
+                value: "Full time equivalent salary",
+                text: "Full time equivalent salary",
+                hint: {
+                  text: 'This is what the annual salary would be for someone working full time'
+                },
+                conditional: {
+                  html: salary
+                }
+              },
+              {
+                value: "Actual salary",
+                text: "Actual salary",
+                hint: {
+                  text: 'This is the annual amount someone will take home'
+                },
+                conditional: {
+                  html: actualSalary
+                }
+              },
+              {
+                value: "Pay scale",
+                text: "Pay scale",
+                conditional: {
+                  html: payscale
+                }
+              }
+            ]
           }) }}
-
-          {{ govukInput({
-            id: "create-job[actual-salary]",
-            name: "create-job[actual-salary]",
-            label: {
-              text: "Actual salary",
-              classes: 'govuk-label--s'
-            },
-            classes: "govuk-input--width-10"
-          }) }}
-
-          {{ govukInput({
-            id: "create-job[pay-scale]",
-            name: "create-job[pay-scale]",
-            label: {
-              text: "Pay scale",
-              classes: 'govuk-label--s'
-            }
-          }) }}
-
-        {% endcall %}
-        </div>
-
+        {% endif %}
 
         {{ govukButton({
           text: "Save and continue"
