@@ -27,6 +27,35 @@
         Job details
       </h2>
 
+      {% set workingPatterns %}
+        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+          <li>
+            <p>Full-time</p>
+          </li>
+          <li class="govuk-!-margin-bottom-0">
+            <p class="govuk-!-margin-bottom-0">Part-time:<br>
+            3 days a week</p>
+          </li>
+        </ul>
+      {% endset %}
+
+      {% set salaryDetails %}
+        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+          <li>
+            <p>Full-time equivalent salary:<br>
+            £25,000 to £35,000</p>
+          </li>
+          <li>
+            <p>Actual salary:<br>
+            £17,000 to £26,000</p>
+          </li>
+          <li class="govuk-!-margin-bottom-0">
+            <p class="govuk-!-margin-bottom-0">Pay scale:<br>
+            MP1 to MP6</p>
+          </li>
+        </ul>
+      {% endset %}
+
        {{ govukSummaryList({
         rows: [
           {
@@ -133,10 +162,10 @@
           },
           {
             key: {
-              text: "Working pattern"
+              text: "Working patterns"
             },
             value: {
-              text: "Part time"
+              html: workingPatterns
             },
             actions: {
               items: [
@@ -150,70 +179,10 @@
           },
           {
             key: {
-              text: "Working pattern details"
+              text: "Salary details"
             },
             value: {
-              text: "3 days a weeks"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/patterns",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m">
-        Salary details
-      </h2>
-
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Full time equivalent salary"
-            },
-            value: {
-              text: "£25,000 to £35,000"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/salary",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Actual salary"
-            },
-            value: {
-              text: "£17,000 to £26,000"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/salary",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Pay scale"
-            },
-            value: {
-              text: "MP1 to MP6"
+              html: salaryDetails
             },
             actions: {
               items: [
