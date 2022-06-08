@@ -1,5 +1,8 @@
-
 {% extends "layout.njk" %}
+
+{% set heading = 'Managing applications' %}
+{% set caption = 'Create job listing - section 4 of 5' %}
+{% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -12,10 +15,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <span class="govuk-caption-l">
-        Create job listing - section 4 of 5
+        {{caption}}
       </span>
       <h1 class="govuk-heading-l">
-        Managing applications
+        {{heading}}
       </h1>
 
       {% set whyHtml %}

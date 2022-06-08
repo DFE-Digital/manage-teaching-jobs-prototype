@@ -1,5 +1,8 @@
-
 {% extends "layout.njk" %}
+
+{% set heading = 'Do you want to upload additional documents like a job description or person specification?' %}
+{% set caption = 'Create job listing - section 5 of 5' %}
+{% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -15,9 +18,9 @@
 
       {% set h1 %}
         <span class="govuk-caption-l">
-          Create job listing - section 5 of 5
+          {{caption}}
         </span>
-        Do you want to upload additional documents like a job description or person specification?
+        {{heading}}
       {% endset %}
 
 

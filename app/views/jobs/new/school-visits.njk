@@ -1,5 +1,8 @@
-
 {% extends "layout.njk" %}
+
+{% set heading = 'Do you want to advertise that candidates can arrange a school visit?' %}
+{% set caption = 'Create job listing - section 4 of 5' %}
+{% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -14,9 +17,9 @@
 
       {% set h1 %}
         <span class="govuk-caption-l">
-          Create job listing - section 4 of 5
+          {{caption}}
         </span>
-        Do you want to advertise that candidates can arrange a school visit?
+        {{heading}}
       {% endset %}
 
       <form action="/jobs/new/school-visits" method="post">

@@ -1,5 +1,8 @@
-
 {% extends "layout.njk" %}
+
+{% set heading = 'Job role' %}
+{% set caption = 'Create job listing - section 1 of 5' %}
+{% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -13,14 +16,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {# {% set h1 %} #}
-        <span class="govuk-caption-l">
-          Create job listing - section 1 of 5
-        </span>
-        <h1 class="govuk-heading-l">
-          Job role
-        </h1>
-      {# {% endset %} #}
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
 
       <form action="/jobs/new/location">
         {{ govukRadios({

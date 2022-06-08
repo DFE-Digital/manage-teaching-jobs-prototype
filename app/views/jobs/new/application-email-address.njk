@@ -1,5 +1,8 @@
-
 {% extends "layout.njk" %}
+
+{% set heading = 'Email address for candidates to send their application' %}
+{% set caption = 'Create job listing - section 4 of 5' %}
+{% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -15,9 +18,9 @@
 
       {% set h1 %}
         <span class="govuk-caption-l">
-          Create job listing - section 4 of 5
+          {{caption}}
         </span>
-        Email address for candidates to send their application
+        {{heading}}
       {% endset %}
 
       {% set emailAddress %}

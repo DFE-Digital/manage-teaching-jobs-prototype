@@ -1,5 +1,8 @@
-
 {% extends "layout.njk" %}
+
+{% set heading = 'Working patterns' %}
+{% set caption = 'Create job listing - section 1 of 5' %}
+{% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -15,9 +18,9 @@
 
       {% set h1 %}
         <span class="govuk-caption-l">
-          Create job listing - section 1 of 5
+          {{caption}}
         </span>
-        Working patterns
+        {{heading}}
       {% endset %}
 
       {% set partTimeDetails %}

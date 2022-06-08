@@ -1,5 +1,8 @@
-
 {% extends "layout.njk" %}
+
+{% set heading = 'Publish and closing dates' %}
+{% set caption = 'Create job listing - section 3 of 5' %}
+{% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -14,11 +17,10 @@
     <div class="govuk-grid-column-two-thirds">
 
       <span class="govuk-caption-l">
-        Create job listing - section 3 of 5
+        {{caption}}
       </span>
       <h1 class="govuk-heading-l">
-        {# Dates and deadlines #}
-        Publish and closing dates
+        {{heading}}
       </h1>
 
       {% set specificDate %}

@@ -1,5 +1,8 @@
-
 {% extends "layout.njk" %}
+
+{% set heading = 'Job title' %}
+{% set caption = 'Create job listing - section 1 of 5' %}
+{% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -15,11 +18,9 @@
 
       {% set h1 %}
         <span class="govuk-caption-l">
-          Create job listing - section 1 of 5
+          {{caption}}
         </span>
-        {# <h1 class="govuk-heading-l"> #}
-          Job title
-        {# </h1> #}
+        {{heading}}
       {% endset %}
 
       <form action="/jobs/new/contract">
