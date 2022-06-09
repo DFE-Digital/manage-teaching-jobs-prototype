@@ -4,20 +4,17 @@
 {% block content %}
   {{appPageHeader({
     heading: {
-      text: 'Jobs',
+      text: 'Job listings (3)',
       classes: 'govuk-heading-l'
     },
     items: [{
       text: 'Create job listing',
-      href: '/jobs/new/copy'
+      href: '/jobs/new/schools'
     }]
   })}}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-
-      {# <p>Sort by: &nbsp;<span>Closing date (soonest)</span>&nbsp; | &nbsp;<a href="#">Job title (a to z)</a></a></p> #}
+    <div class="govuk-grid-column-full">
 
       {{ govukTable({
         head: [
@@ -29,6 +26,12 @@
           },
           {
             text: "Closing date"
+          },
+          {
+            text: "Status"
+          },
+          {
+            text: ""
           }
         ],
         rows: [
@@ -37,10 +40,16 @@
               html: '<a href="#">Maths teacher</a>'
             },
             {
-              html: "0 applications"
+              html: '<a href="#">2 applications</a>'
             },
             {
-              html: "1 August 2022 at 4pm"
+              html: "1 August 2022 at 11:59pm"
+            },
+            {
+              html: govukTag({ text: 'Published', classes: 'govuk-tag--green'})
+            },
+            {
+              html: '<a href="/jobs/new/copied">Copy job listing</a>'
             }
           ],
           [
@@ -48,10 +57,33 @@
               html: '<a href="#">English teacher</a>'
             },
             {
-              html: '2 applications'
+              html: '0 applications'
             },
             {
-              html: "1 August 2022 at 4pm"
+              html: "8 August 2022 at 11:59pm"
+            },
+            {
+              html: govukTag({ text: 'Scheduled', classes: 'govuk-tag--yellow'})
+            },
+            {
+              html: '<a href="/jobs/new/copied">Copy job listing</a>'
+            }
+          ],
+          [
+            {
+              html: '<a href="#">English teacher</a>'
+            },
+            {
+              html: '0 applications'
+            },
+            {
+              html: "1 September 2022 at 4pm"
+            },
+            {
+              html: govukTag({ text: 'Draft', classes: 'govuk-tag--grey'})
+            },
+            {
+              html: '<a href="/jobs/new/copied">Copy job listing</a>'
             }
           ]
         ]
