@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Job title' %}
+{% set heading = 'Subjects' %}
 {% set caption = 'Create job listing - section 1 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -23,24 +23,37 @@
         {{heading}}
       {% endset %}
 
-      <form action="/jobs/new/key-stage">
+      {# <form action="/jobs/new/contract"> #}
+      <form action="/jobs/new/contract">
 
-        {{ govukCharacterCount({
-          id: "create-job[title]",
-          name: "create-job[title]",
-          label: {
-            html: h1,
-            classes: 'govuk-label--l'
+        {{ govukCheckboxes({
+          idPrefix: "create-job[subjects]",
+          name: "create-job[subjects]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
           },
-          hint: {
-            text: 'For example ‘Teacher of KS1’'
-          },
-          rows: 1,
-          maxlength: 75
-        }) }}
-
-        {{ govukInsetText({
-          text: "The advert will say that this is a secondary role"
+          items: [
+            {
+              value: "English",
+              text: "English"
+            },
+            {
+              value: "Maths",
+              text: "Maths"
+            },
+            {
+              value: "Science",
+              text: "Science"
+            },
+            {
+              value: "Geography",
+              text: "Geography"
+            }
+          ]
         }) }}
 
         {{ govukButton({
