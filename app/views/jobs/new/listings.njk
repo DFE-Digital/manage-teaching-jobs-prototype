@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Do you want to copy a job listing?' %}
+{% set heading = 'Job listings' %}
 {% set caption = 'Create job listing' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -22,26 +22,24 @@
         {{heading}}
       {% endset %}
 
-      <form action="/jobs/new/copy" method="post">
-
+      <form action="/jobs/new/copied">
         {{ govukRadios({
-          idPrefix: "create-job[copy]",
-          name: "create-job[copy]",
+          idPrefix: "create-job[school]",
+          name: "create-job[school]",
           fieldset: {
             legend: {
               html: h1,
-              isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           items: [
             {
-              value: "Yes",
-              text: "Yes"
+              value: 'Maths teacher',
+              text: 'Maths teacher'
             },
             {
-              value: "No",
-              text: "No"
+              value: 'Teacher of KS1',
+              text: 'Teacher of KS1'
             }
           ]
         }) }}
@@ -49,7 +47,9 @@
         {{ govukButton({
           text: "Continue"
         }) }}
+
       </form>
+
       <p><a href="#">Cancel</a></p>
 
 

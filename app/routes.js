@@ -52,7 +52,7 @@ router.get('/jobs', checkIsAuthenticated, jobsController.index)
 router.post('/jobs/new/copy', (req, res) => {
 
   if(req.body['create-job'] && req.body['create-job'].copy == 'Yes') {
-    res.redirect('/jobs/new/listing')
+    res.redirect('/jobs/new/listings')
   } else {
     res.redirect('/jobs/new/schools')
   }
