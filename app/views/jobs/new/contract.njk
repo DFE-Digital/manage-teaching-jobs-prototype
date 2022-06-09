@@ -22,6 +22,28 @@
         {{heading}}
       {% endset %}
 
+      {% set fixed %}
+        {{ govukInput({
+          id: "create-job[fixed-duration]",
+          name: "create-job[fixed-duration]",
+          label: {
+            text: "Duration of contract",
+            classes: "govuk-label--s"
+          }
+        }) }}
+      {% endset %}
+
+      {% set maternity %}
+        {{ govukInput({
+          id: "create-job[fixed-maternity]",
+          name: "create-job[fixed-maternity]",
+          label: {
+            text: "Duration of contract",
+            classes: "govuk-label--s"
+          }
+        }) }}
+      {% endset %}
+
       <form action="/jobs/new/patterns">
 
         {{ govukRadios({
@@ -41,11 +63,17 @@
             },
             {
               value: "Fixed term",
-              text: "Fixed term"
+              text: "Fixed term",
+              conditional: {
+                html: fixed
+              }
             },
             {
               value: "Maternity or parental leave cover",
-              text: "Maternity or parental leave cover"
+              text: "Maternity or parental leave cover",
+              conditional: {
+                html: maternity
+              }
             }
           ]
         }) }}

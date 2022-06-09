@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Location' %}
+{% set heading = 'Schools' %}
 {% set caption = 'Create job listing - section 1 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -22,10 +22,10 @@
         {{heading}}
       {% endset %}
 
-      <form action="/jobs/new/title">
-        {{ govukRadios({
-          idPrefix: "create-job[location]",
-          name: "create-job[location]",
+      <form action="/jobs/new/role">
+        {{ govukCheckboxes({
+          idPrefix: "create-job[school]",
+          name: "create-job[school]",
           fieldset: {
             legend: {
               html: h1,

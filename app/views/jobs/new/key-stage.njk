@@ -1,0 +1,96 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Phase' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {# {% set h1 %} #}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        <h1 class="govuk-heading-l">
+        {{heading}}
+        </h1>
+      {# {% endset %} #}
+
+      {# <form action="/jobs/new/contract"> #}
+      <form action="/jobs/new/phase">
+
+        {{ govukInsetText({
+          text: "The advert will say that this is a secondary role"
+        }) }}
+
+        {# {{ govukRadios({
+          idPrefix: "create-job[phase]",
+          name: "create-job[phase]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Primary",
+              text: "Primary"
+            },
+            {
+              value: "Secondary",
+              text: "Secondary"
+            },
+            {
+              value: "16 to 19",
+              text: "16 to 19"
+            },
+            {
+              value: "Through school",
+              text: "Through school"
+            }
+          ]
+        }) }} #}
+
+
+        {# {{ govukCharacterCount({
+          id: "create-job[title]",
+          name: "create-job[title]",
+          label: {
+            html: h1,
+            classes: 'govuk-label--l'
+          },
+          hint: {
+            text: 'For example ‘Teacher of KS1’'
+          },
+          rows: 1,
+          maxlength: 75
+        }) }} #}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
