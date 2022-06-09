@@ -49,6 +49,16 @@ router.get('/jobs', checkIsAuthenticated, jobsController.index)
 /// Create job listing
 /// ------------------------------------------------------------------------ ///
 
+router.post('/jobs/new/copy', (req, res) => {
+
+  if(req.body['create-job'] && req.body['create-job'].copy == 'Yes') {
+    res.redirect('/jobs/new/listing')
+  } else {
+    res.redirect('/jobs/new/schools')
+  }
+
+})
+
 router.post('/jobs/new/method', (req, res) => {
 
   if(req.body['create-job'] && req.body['create-job'].method == 'Yes') {
