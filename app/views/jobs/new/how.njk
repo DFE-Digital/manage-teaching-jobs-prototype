@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Do you want candidates to download an application form or a visit link to your school or council website?' %}
+{% set heading = 'How would you like applications to be submitted?' %}
 {% set caption = 'Create job listing - section 3 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -65,15 +65,15 @@
           },
           items: [
             {
-              value: "A form for candidates to download",
-              text: "A form for candidates to download",
+              value: "Download and send an application form",
+              text: "Download and send an application form",
               conditional: {
                 html: firstOption
               }
             },
             {
-              value: "A link to your school or council website",
-              text: "A link to your school or council website",
+              value: "Complete an online application on your school or council website",
+              text: "Complete an online application on your school or council website",
               conditional: {
                 html: secondOption
               }

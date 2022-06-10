@@ -71,7 +71,7 @@ router.post('/jobs/new/method', (req, res) => {
 
 router.post('/jobs/new/how', (req, res) => {
 
-  if(req.body['create-job'] && req.body['create-job'].how == 'A form for candidates to download') {
+  if(req.body['create-job'] && req.body['create-job'].how == 'Download and send an application form') {
     res.redirect('/jobs/new/application-email-address')
   } else {
     res.redirect('/jobs/new/school-visits')

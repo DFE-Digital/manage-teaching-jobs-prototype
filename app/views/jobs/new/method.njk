@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Managing applications' %}
+{% set heading = 'Receiving applications' %}
 {% set caption = 'Create job listing - section 3 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -43,7 +43,7 @@
           </li>
         </ul>
 
-            {# - always up to date with the keeping children safe in education guidelines
+            {# - always up to date with the   keeping children safe in education guidelines
       - the same as the ‘quick apply’ feature on TES
       - fastest/easiest process for candidates
       - manage applications more easily/streamlined #}
@@ -65,25 +65,29 @@
           name: "create-job[method]",
           fieldset: {
             legend: {
-              html: "Do you want to manage applications through this service?",
+              html: "How do you want to receive applications?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }
           },
           items: [
             {
-              value: "Yes",
-              text: "Yes",
+              value: "Through this service",
+              text: "Through this service",
               hint: {
-                text: "This is the fastest and easiest route for candidates"
+                text: "This is the fastest and easiest way to receive applications"
               }
             },
             {
-              value: "No",
-              text: "No",
+              value: "By email",
+              text: "By email",
               hint: {
-                text: 'You’ll need to provide details about how the candidate can apply'
+                text: "You’ll need to upload an application form"
               }
+            },
+            {
+              value: "Through your school or council website",
+              text: "Through your school or council website"
             }
           ]
         }) }}
