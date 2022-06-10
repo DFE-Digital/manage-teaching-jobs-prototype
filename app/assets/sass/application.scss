@@ -41,3 +41,13 @@ $app-images-path: "/public/images/";
   background-color: govuk-colour('light-grey');
   padding: govuk-spacing(4) govuk-spacing(3);
 }
+
+h1 .govuk-tag {
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.app-field-highlight {
+  border-left: 5px solid govuk-colour('blue');
+  padding-left: govuk-spacing(4)
+}

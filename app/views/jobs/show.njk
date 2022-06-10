@@ -1,29 +1,38 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Check details and publish job listing' %}
-{% set heading = 'Check details and schedule job listing' %}
-{% set caption = 'Create job listing' %}
-{% set title = heading + ' - ' + caption %}
-
-{% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:history.back();"
-  }) }}
-{% endblock %}
-
 {% block content %}
+
+  {{ govukNotificationBanner({
+    text: "There’s a thing to deal with below Molly"
+  }) }}
+
+  {# <span class="govuk-caption-l">
+    Job listing
+  </span> #}
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+    Maths teacher
+    {{ govukTag({
+      text: "Scheduled",
+      classes: 'govuk-tag--yellow'
+    }) }}
+  </h1>
+
+  <p>
+    <a href="#">Publish</a>&nbsp;&nbsp;
+    <a href="#">Preview</a>&nbsp;&nbsp;
+    <a href="#">Copy</a>&nbsp;&nbsp;
+    <a href="#">End early</a>&nbsp;&nbsp;
+    <a href="#">Delete</a>&nbsp;&nbsp;
+  </p>
+
+
+
+
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">
-        {{caption}}
-      </span>
-      <h1 class="govuk-heading-l">
-        {{heading}}
-      </h1>
-
-      <h2 class="govuk-heading-m">
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">
         Job details
       </h2>
 
@@ -235,6 +244,11 @@
         Dates
       </h2>
 
+      {% set publishDateHtml %}
+        <div class="app-field-highlight">
+          Today (6 June 2022)
+        </div>
+      {% endset %}
        {{ govukSummaryList({
         rows: [
           {
@@ -242,7 +256,7 @@
               text: "Date job listing will be published"
             },
             value: {
-              text: "Today (6 June 2022)"
+              html: publishDateHtml
             },
             actions: {
               items: [
@@ -616,24 +630,6 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
           }
         ]
       }) }}
-
-
-      <p><a href="#">Preview job listing (opens in new tab)</a>.</p>
-
-      <p>By publishing this job listing you agree to the <a href="#">terms and conditions</a>.</p>
-
-      <form action="/jobs/new/confirmation">
-
-        {{ govukButton({
-          text: "Publish job listing",
-          text: "Schedule job listing"
-        }) }}
-
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
-      </form>
 
     </div>
   </div>
