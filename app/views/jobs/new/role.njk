@@ -16,12 +16,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">
-        {{caption}}
-      </span>
-      <h1 class="govuk-heading-l">
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
         {{heading}}
-      </h1>
+      {% endset %}
 
       <form action="/jobs/new/title">
         {{ govukRadios({
@@ -29,8 +29,8 @@
           name: "create-job[type-of-role]",
           fieldset: {
             legend: {
-              html: 'Type of role',
-              classes: "govuk-fieldset__legend--m"
+              html: h1,
+              classes: "govuk-fieldset__legend--l"
             }
           },
           items: [
@@ -61,12 +61,12 @@
           ]
         }) }}
 
-        {{ govukRadios({
+        {# {{ govukRadios({
           idPrefix: "create-job[suitable-1]",
           name: "create-job[suitable-1]",
           fieldset: {
             legend: {
-              html: 'Is the role suitable for early career teachers (ECT)?',
+              html: 'Is the role only for early career teachers (ECT)?',
               classes: "govuk-fieldset__legend--m"
             }
           },
@@ -80,7 +80,35 @@
               text: 'No'
             }
           ]
-        }) }}
+        }) }} #}
+
+        {# {{ govukCheckboxes({
+          idPrefix: "create-job[suitable-1]",
+          name: "create-job[suitable-1]",
+          fieldset: {
+            legend: {
+              html: 'What levels of experience is needed?',
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: 'Highly experienced',
+              text: 'Highly experienced'
+            },
+            {
+              value: 'Experienced',
+              text: 'Experienced'
+            },
+            {
+              value: 'No experience',
+              text: 'No experience',
+              hint: {
+                text: 'Early career teachers (ECT) may apply'
+              }
+            }
+          ]
+        }) }} #}
 
         {# {{ govukRadios({
           idPrefix: "create-job[suitable-2]",

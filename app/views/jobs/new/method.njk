@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Receiving applications' %}
+{% set heading = 'Managing applications' %}
 {% set caption = 'Create job listing - section 3 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -49,12 +49,12 @@
       - manage applications more easily/streamlined #}
       {% endset %}
       {{ govukDetails({
-        summaryText: "The benefits of managing applications through this service",
+        summaryText: "The benefits of using this service’s application form",
         html: whyHtml
       }) }}
 
       {{ govukDetails({
-        summaryText: "Take a look at an example form via TV",
+        summaryText: "Take a look at an example application form",
         text: "Text"
       }) }}
 
@@ -65,29 +65,22 @@
           name: "create-job[method]",
           fieldset: {
             legend: {
-              html: "How do you want to receive applications?",
+              html: "Do you want to use this service’s application form?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }
           },
           items: [
             {
-              value: "Through this service",
-              text: "Through this service",
+              value: "Yes",
+              text: "Yes",
               hint: {
-                text: "This is the fastest and easiest way to receive applications"
+                text: "This uses this service’s application form which provides the best experience"
               }
             },
             {
-              value: "By email",
-              text: "By email",
-              hint: {
-                text: "You’ll need to upload an application form"
-              }
-            },
-            {
-              value: "Through your school or council website",
-              text: "Through your school or council website"
+              value: "No",
+              text: "No"
             }
           ]
         }) }}
