@@ -61,22 +61,13 @@ router.post('/jobs/new/copy', (req, res) => {
 
 router.post('/jobs/new/method', (req, res) => {
 
-  if(req.body['create-job'] && req.body['create-job'].method == 'Yes') {
+  if(req.body['create-job'] && req.body['create-job'].method == 'Through this service') {
     res.redirect('/jobs/new/school-visits')
+  } else if(req.body['create-job'] && req.body['create-job'].method == 'By email') {
+    res.redirect('/jobs/new/form')
   } else {
-    res.redirect('/jobs/new/how')
+    res.redirect('/jobs/new/link')
   }
-
-})
-
-router.post('/jobs/new/how', (req, res) => {
-
-  if(req.body['create-job'] && req.body['create-job'].how == 'Download and send an application form') {
-    res.redirect('/jobs/new/application-email-address')
-  } else {
-    res.redirect('/jobs/new/school-visits')
-  }
-
 })
 
 router.post('/jobs/new/upload', (req, res) => {

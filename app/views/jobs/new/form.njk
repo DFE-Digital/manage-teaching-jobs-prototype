@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Email address to send applications' %}
+{% set heading = 'Receiving applications' %}
 {% set caption = 'Create job listing - section 3 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -16,12 +16,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set h1 %}
-        <span class="govuk-caption-l">
-          {{caption}}
-        </span>
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
         {{heading}}
-      {% endset %}
+      </h1>
 
       {% set emailAddress %}
         {{ govukInput({
@@ -39,14 +39,25 @@
 
       <form action="/jobs/new/school-visits">
 
+        {{ govukFileUpload({
+          id: "create-job[upload-application-form]",
+          name: "create-job[upload-application-form]",
+          label: {
+            text: "Upload application form",
+            classes: 'govuk-label--m'
+          },
+          hint: {
+            text: "You can only upload a PDF or DOCX file under 8MB"
+          }
+        }) }}
+
         {{ govukRadios({
           idPrefix: "create-job[application-email]",
           name: "create-job[application-email]",
           fieldset: {
             legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
+              html: 'Email address to receive applications',
+              classes: "govuk-fieldset__legend--m"
             }
           },
           items: [
