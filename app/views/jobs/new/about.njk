@@ -25,6 +25,83 @@
 
       <form action="/jobs/new/upload">
 
+        {{ govukRadios({
+          idPrefix: "create-job[suitability]",
+          name: "create-job[suitability]",
+          fieldset: {
+            legend: {
+              text: "Suitability for early career teachers (ECT)",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Early career teachers were previously called newly qualified teachers (NQT)"
+          },
+          items: [
+            {
+              value: "We will only accept an ECT",
+              text: "We will only accept an ECT"
+            },
+            {
+              value: "We will consider an ECT",
+              text: "We will consider an ECT"
+            },
+            {
+              value: "We will not consider an ECT",
+              text: "We will not consider an ECT"
+            }
+          ]
+        }) }}
+
+        {# {{ govukRadios({
+          idPrefix: "create-job[suitable-1]",
+          name: "create-job[suitable-1]",
+          fieldset: {
+            legend: {
+              html: 'Would you accept an early career teacher (ECT)?',
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: 'Yes, we would accept an early career teacher',
+              text: 'Yes, we would accept an early career teacher'
+            },
+            {
+              value: 'No, we would not accept an early career teacher',
+              text: 'No, we would not accept an early career teacher'
+            }
+          ]
+        }) }} #}
+
+        {# {{ govukCheckboxes({
+          idPrefix: "create-job[suitable-1]",
+          name: "create-job[suitable-1]",
+          fieldset: {
+            legend: {
+              html: 'What experience would you accept for the role?',
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: 'Highly experienced',
+              text: 'Highly experienced'
+            },
+            {
+              value: 'Some experience',
+              text: 'Some experience'
+            },
+            {
+              value: 'No teaching experience yet',
+              text: 'No teaching experience yet',
+              hint: {
+                text: 'Early career teachers (ECT) may apply'
+              }
+            }
+          ]
+        }) }} #}
+
         {{ govukCharacterCount({
           id: "create-job[skills]",
           name: "create-job[skills]",

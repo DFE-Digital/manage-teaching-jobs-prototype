@@ -94,23 +94,6 @@
           },
           {
             key: {
-              text: "Is the role suitable for early careeer teachers (ECT)?"
-            },
-            value: {
-              text: "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/role",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
               text: "Does the role have SEND (special educational needs and disability) responsibilities?"
             },
             value: {
@@ -459,6 +442,23 @@
 
       {{ govukSummaryList({
         rows: [
+         {
+            key: {
+              text: "Suitability for early career teachers (ECT)"
+            },
+            value: {
+              text: "We will consider an ECT"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/role",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
           {
             key: {
               text: "What skills and experience are you looking for?"
