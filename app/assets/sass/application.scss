@@ -49,5 +49,17 @@ h1 .govuk-tag {
 
 .app-field-highlight {
   border-left: 5px solid govuk-colour('blue');
-  padding-left: govuk-spacing(4)
+  padding-left: govuk-spacing(4);
+}
+
+.app-field-highlight__instruction {
+  font-weight: bold;
+  color: govuk-colour('blue');
+  margin-bottom: govuk-spacing(2);
+}
+
+.app-notification-banner-summary__list {
+  font-weight: bold;
+  margin-bottom: 0;
+
 }

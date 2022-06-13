@@ -11,7 +11,7 @@ const checkIsAuthenticated = (req, res, next) => {
     // the signed in user
     res.locals.passport = req.session.passport
     // the base URL for navigation
-    res.locals.baseUrl = `/organisations/${req.params.organisationId}/cycles/${req.params.cycleId}`
+    // res.locals.baseUrl = `/organisations/${req.params.organisationId}/cycles/${req.params.cycleId}`
     next()
   } else {
     delete req.session.data
@@ -43,7 +43,7 @@ router.get('/sign-out', authenticationController.signOut)
 /// Manage jobs
 /// ------------------------------------------------------------------------ ///
 
-router.get('/jobs', checkIsAuthenticated, jobsController.index)
+// router.get('/jobs', checkIsAuthenticated, jobsController.index)
 
 /// ------------------------------------------------------------------------ ///
 /// Create job listing

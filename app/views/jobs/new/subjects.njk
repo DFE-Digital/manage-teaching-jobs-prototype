@@ -26,6 +26,18 @@
       {# <form action="/jobs/new/contract"> #}
       <form action="/jobs/new/contract">
 
+        {% set otherInput %}
+          {{ govukInput({
+            id: "create-job[subjects--other]",
+            name: "create-job[subjects--other]",
+            label: {
+              text: "Subject",
+              classes: 'govuk-label--s'
+            },
+            classes: 'govuk-input--width-20'
+          }) }}
+        {% endset %}
+
         {{ govukCheckboxes({
           idPrefix: "create-job[subjects]",
           name: "create-job[subjects]",
@@ -52,6 +64,13 @@
             {
               value: "Geography",
               text: "Geography"
+            },
+            {
+              value: "Other",
+              text: "Other",
+              conditional: {
+                html: otherInput
+              }
             }
           ]
         }) }}

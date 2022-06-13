@@ -1,0 +1,638 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+  {% set notificationBannerHtml %}
+    <h2 class="govuk-heading-m">
+      There’s a problem
+    </h2>
+    <div class="app-notification-banner-summary__body">
+      <ul class="govuk-list app-notification-banner-summary__list">
+        <li>
+          <a href="#publish-date">The publish date must be in the future</a>
+        </li>
+      </ul>
+    </div>
+
+  {% endset %}
+
+  {{ govukNotificationBanner({
+    html: notificationBannerHtml
+  }) }}
+
+  {# <span class="govuk-caption-l">
+    Job listing
+  </span> #}
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+    Maths teacher
+    {{ govukTag({
+      text: "Scheduled",
+      classes: 'govuk-tag--yellow'
+    }) }}
+  </h1>
+
+  <p>
+    <a href="#">Publish</a>&nbsp;&nbsp;
+    <a href="#">Preview</a>&nbsp;&nbsp;
+    <a href="#">Copy</a>&nbsp;&nbsp;
+    <a href="#">End early</a>&nbsp;&nbsp;
+    <a href="#">Delete</a>&nbsp;&nbsp;
+  </p>
+
+
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">
+        Job details
+      </h2>
+
+      {% set workingPatterns %}
+        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+          <li>
+            <p>Full-time</p>
+          </li>
+          <li class="govuk-!-margin-bottom-0">
+            <p class="govuk-!-margin-bottom-0">Part-time:<br>
+            3 days a week</p>
+          </li>
+        </ul>
+      {% endset %}
+
+      {% set salaryDetails %}
+        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+          <li>
+            <p>Full-time equivalent salary:<br>
+            £25,000 to £35,000</p>
+          </li>
+          <li>
+            <p>Actual salary:<br>
+            £17,000 to £26,000</p>
+          </li>
+          <li class="govuk-!-margin-bottom-0">
+            <p class="govuk-!-margin-bottom-0">Pay scale:<br>
+            MP1 to MP6</p>
+          </li>
+        </ul>
+      {% endset %}
+
+       {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Schools where the job is based"
+            },
+            value: {
+              text: "Farnham Heath End, Hale Reeds, Farnham, Surrey, GU9 9BN"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/schools",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Type of role"
+            },
+            value: {
+              text: "Teacher"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/role",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Job title"
+            },
+            value: {
+              text: "Teacher of KS1"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/title",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Key stage"
+            },
+            value: {
+              text: "Key stage 1, key stage 2"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/key-stage",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Subjects"
+            },
+            value: {
+              text: "Maths"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/key-stage",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Contract type"
+            },
+            value: {
+              text: "Permanent"
+            },
+            actions: {
+              items: [
+                {
+                  href: "jobs/new/contract",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Working patterns"
+            },
+            value: {
+              html: workingPatterns
+            },
+            actions: {
+              items: [
+                {
+                  href: "jobs/new/patterns",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Salary details"
+            },
+            value: {
+              html: salaryDetails
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/salary",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Dates
+      </h2>
+
+      {% set publishDateHtml %}
+        <div class="app-field-highlight" id="publish-date">
+          <p class="app-field-highlight__instruction">The publish date must be in the future</p>
+
+
+          Today (6 June 2022)
+        </div>
+      {% endset %}
+
+       {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Publish date"
+            },
+            value: {
+              html: publishDateHtml
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Closing date"
+            },
+            value: {
+              text: "1 September 2022"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Closing time"
+            },
+            value: {
+              text: "9am"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Start date"
+            },
+            value: {
+              text: "30 October 2022"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Application process
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Do you want to manage applications through this service?"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/method",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "How would you like applications to be submitted?"
+            },
+            value: {
+              text: "Download and send an application form"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Application form"
+            },
+            value: {
+              html: '<a href="">form.pdf</a>, 2MB'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address to receive applications"
+            },
+            value: {
+              html: 'molly@example.com'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you want to offer school visits?"
+            },
+            value: {
+              text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address to arrange a school visit"
+            },
+            value: {
+              text: "adam@example.com"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address for questions about the job"
+            },
+            value: {
+              html: 'molly@example.com'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you want to give a contact phone number?"
+            },
+            value: {
+              text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              text: "0207 3456 3746"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        About the role
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Suitability for early career teachers (ECT)"
+            },
+            value: {
+              text: "We will consider an ECT"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/role",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What skills and experience are you looking for?"
+            },
+            value: {
+              text: "You need to have at least 5 years experience teaching in a public school. You’ll be responsible for a class of 30 students."
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What does your school offer?"
+            },
+            value: {
+              text: "You’ll get regularl training etc."
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you want to give information about your commitment to safeguarding?
+Yes"
+            },
+            value: {
+              text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Information about your commitment to safeguarding"
+            },
+            value: {
+              text: "St Laurence School is committed to safeguarding and promoting the welfare of children and young people and expects all staff and volunteers to share this commitment. All applicants will be subject to
+a full Disclosure and Barring Service check (previously CRB check) before appointment is confirmed."
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you want to add further details about the role?"
+            },
+            value: {
+              text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Further details about the role"
+            },
+            value: {
+              text: "Ut eget dolor at libero commodo tincidunt vel egestas diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam aliquet risus eget ante viverra tincidunt. Etiam pulvinar metus dolor, in eleifend massa pharetra eget."
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you want to upload any additional documents?"
+            },
+            value: {
+              text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Additional documents"
+            },
+            value: {
+              html: '<a href="#">person-spec.pdf</a>, 2MB'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
