@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Managing applications' %}
+{% set heading = 'Using the service’s application form' %}
 {% set caption = 'Create job listing - section 3 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -21,40 +21,28 @@
         {{heading}}
       </h1>
 
-      {% set whyHtml %}
-
-        <p>Manage applications through this service means that you can:</p>
+      <p>This service’s application form:</p>
 
         <ul class="govuk-list govuk-list--bullet">
           <li>
-            set up an application process for your job listing with one click, saving time and money
+            is always up to date with the ‘keeping children safe in education’ guidelines
           </li>
           <li>
-            view applicant information in a structured way, making it easier to shortlist candidates
+           provides the easiest and faster experience
           </li>
           <li>
-            manage all jobs in a single place, whether you’re hiring for a single school or a multi-academy trust
-          </li>
-          <li>
-            easily notify successful and unsuccessful candidates
-          </li>
-          <li>
-            be sure that you’re complying with the latest recruitment legislation
+            makes it much easier to shortlist or reject applications
           </li>
         </ul>
 
-            {# - always up to date with the   keeping children safe in education guidelines
-      - the same as the ‘quick apply’ feature on TES
-      - fastest/easiest process for candidates
-      - manage applications more easily/streamlined #}
-      {% endset %}
-      {{ govukDetails({
-        summaryText: "The benefits of using this service’s application form",
+      {% set whyHtml %}      {% endset %}
+      {# {{ govukDetails({
+        summaryText: "The advantages of this service’s application form",
         html: whyHtml
-      }) }}
+      }) }} #}
 
       {{ govukDetails({
-        summaryText: "Take a look at an example application form",
+        summaryText: "What an application made through this service looks like",
         text: "Text"
       }) }}
 
@@ -73,14 +61,14 @@
           items: [
             {
               value: "Yes",
-              text: "Yes",
-              hint: {
-                text: "This uses this service’s application form which provides the best experience"
-              }
+              text: "Yes"
             },
             {
               value: "No",
-              text: "No"
+              text: "No",
+              hint: {
+                text: 'You’ll need to provide additional details about how to apply'
+              }
             }
           ]
         }) }}
