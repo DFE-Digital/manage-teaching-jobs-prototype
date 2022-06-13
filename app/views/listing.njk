@@ -27,37 +27,32 @@
   <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
     Teacher of Geography
   </h1>
-  <p class="govuk-body-"><a href="#">The Thinking Schools Academy Trust</a>, Chatham, ME4 6NR</p>
+  {# <p class="govuk-body-"><a href="#">The Thinking Schools Academy Trust</a>, Chatham, ME4 6NR</p> #}
 
-  {{ govukButton({
-    text: "Apply for job"
-  }) }}
-
-  {{ govukButton({
-    text: "Save job for later",
-    classes: "govuk-button--secondary govuk-!-margin-left-2"
-  }) }}
-
-  {{ govukButton({
-    text: "Get alert for similar jobs",
-    classes: "govuk-button--secondary govuk-!-margin-left-2"
-  }) }}
-
+  {% set inset %}
+    <p>This job listing ends in 16 days (16 June 2022 at 11:59pm).</p>
+    {{ govukButton({
+      text: "Apply for job",
+      classes: "govuk-!-margin-bottom-0"
+    }) }}
+    {{ govukButton({
+      text: "Save job for later",
+      classes: "govuk-button--secondary govuk-!-margin-left-2 govuk-!-margin-bottom-0"
+    }) }}
+  {% endset %}
   {{ govukInsetText({
-    text: "16 days left to apply"
+    html: inset,
+    classes: 'govuk-!-margin-top-4 govuk-!-padding-bottom-4'
   }) }}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <div class="app-panel">
-        Stuff
-      </div>
 
-
-      <h2 class="govuk-heading-m">
+      {# <h2 class="govuk-heading-m">
         Job details
-      </h2>
+      </h2> #}
 
       {{ govukSummaryList({
         rows: [
@@ -71,18 +66,18 @@
           },
           {
             key: {
-              text: "Suitability for early career teachers (ECT)"
-            },
-            value: {
-              html: 'We will consider an ECT'
-            }
-          },
-          {
-            key: {
               text: "Key stage"
             },
             value: {
               html: 'KS1'
+            }
+          },
+          {
+            key: {
+              text: "Suitability for early career teachers (ECT)"
+            },
+            value: {
+              html: 'We will consider an ECT'
             }
           },
           {
@@ -100,16 +95,15 @@
             value: {
               html: 'Permanent'
             }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m">
-        Salary details
-      </h2>
-
-      {{ govukSummaryList({
-        rows: [
+          },
+          {
+            key: {
+              text: "Start date"
+            },
+            value: {
+              text: "19 October 2022"
+            }
+          },
           {
             key: {
               text: "Full time equivalent salary"
@@ -137,14 +131,16 @@
         ]
       }) }}
 
+      </div>
+
       <h2 class="govuk-heading-m">
-        Skills and experience required to do the job
+        What skills and experience we’re looking for
       </h2>
 
       <p>Morbi sodales efficitur ex, ut finibus metus malesuada non. Curabitur suscipit, ante quis pellentesque vehicula.</p>
 
       <h2 class="govuk-heading-m">
-        What the school offers its staff
+        What the school offers
       </h2>
 
       <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. Nulla vehicula ex quis ipsum bibendum, ut iaculis diam tristique. Phasellus imperdiet arcu consectetur fermentum finibus. </p>
@@ -234,7 +230,7 @@
       <p>To arrange a visit and increase the chance of a successful application email <a href="#">	recruitment@swinnowprimary.com</a>.</p>
 
       <h2 class="govuk-heading-m">
-        Applying for the job
+        Apply for the job
       </h2>
 
       {{ govukButton({
