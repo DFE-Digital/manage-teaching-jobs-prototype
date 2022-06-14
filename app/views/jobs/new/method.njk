@@ -207,10 +207,52 @@
             }
           ]
         }) }}
+
+        <h2 class="govuk-heading-m">
+          Disability support and other needs
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Do you want to ask for support so that you can attend an interview?"
+              },
+              value: {
+                html: "Yes<br>Sit iusto voluptatum. Natus autem minima."
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Declarations
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Do you have any family or close relationship with people within Bexleyheath Academy?"
+              },
+              value: {
+                html: "No"
+              }
+            },
+            {
+              key: {
+                text: "Do you have the right to work in the UK?"
+              },
+              value: {
+                html: "Yes"
+              }
+            }
+          ]
+        }) }}
       {% endset %}
 
       {{ govukDetails({
-        summaryText: "What an application made through this service looks like",
+        summaryText: "See what an application looks like",
         html: example
       }) }}
 
