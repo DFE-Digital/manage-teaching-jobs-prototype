@@ -32,6 +32,7 @@
     <p>This job listing ends in 16 days (16 June 2022 at 11:59pm).</p>
     {{ govukButton({
       text: "Apply for job",
+      href: '#apply',
       classes: "govuk-!-margin-bottom-0"
     }) }}
     {{ govukButton({
@@ -223,36 +224,48 @@
       <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. </p>
 
       <h2 class="govuk-heading-m">
-        Arranging a visit to Swinnow Primary School
-      </h2>
+        Contact the school for questions about the job
+      </h3>
 
-      <p>To arrange a visit and increase the chance of a successful application email <a href="#">	recruitment@swinnowprimary.com</a>.</p>
-
-      <h2 class="govuk-heading-m">
-        Apply for the job
-      </h2>
-
-      {{ govukButton({
-        text: "Download application form (PDF), 7MB"
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              html: '<a href="">recruitment@swinnowprimary.com</a>'
+            }
+          },
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              html: '<a href="">0207 984 384</a>'
+            }
+          }
+        ]
       }) }}
 
-      <p>Send your application to <a href="">recruitment@swinnowprimary.com</a>.</p>
-
-      <p>You can also contact the school by:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
+      {# <ul class="govuk-list govuk-list--bullet">
         <li>
           emailing <a href="">recruitment@swinnowprimary.com</a>
         </li>
         <li>
           phoning <a href="">0207 984 384</a>
         </li>
-      </ul>
+      </ul> #}
 
+      <h2 class="govuk-heading-m">
+        Arranging a visit to Swinnow Primary School
+      </h3>
+
+      <p>To arrange a visit and increase the chance of a successful application email <a href="#">	recruitment@swinnowprimary.com</a>.</p>
 
       <h2 class="govuk-heading-m">
         Location
-      </h2>
+      </h3>
 
       <p class="govuk-body-">Swinnow Primary Schools<br> Swinnow Road<br> Leeds<br> West Yorkshire<br> LS13 4PG</p>
 
@@ -264,16 +277,33 @@
 
       <p> Etiam id laoreet odio, a congue mi. Nam et odio diam. Integer eget purus tincidunt odio ullamcorper sagittis id vulputate mauris. Nulla vehicula ex quis ipsum bibendum, ut iaculis diam tristique.</p>
 
+      <h2 class="govuk-heading-m" id="apply">
+        Apply for the job
+      </h2>
+
+      <p>Download and send your application form to <a href="#">recruitment@swinnowprimary.com</a>.</p>
+
+      {{ govukButton({
+        text: "Application form (PDF), 7MB"
+      }) }}
+
 
     </div>
     <div class="govuk-grid-column-one-third">
       <h2 class="govuk-heading-m">
-        Get a job alert for similar jobs
+        Set up a job alert
       </h2>
 
-      <p>Some blurb about how cool this is</p>
+      <p>You can set up a job alert for similar jobs.</p>
 
-      <p><a href="">Set up a job alert</a></p>
+      <p><a href="#">Set up a job alert</a></p>
+
+      <h2 class="govuk-heading-m">
+        Similar jobs
+      </h2>
+
+      <p>[Something goes here]</p>
+
     </div>
   </div>
 

@@ -2,27 +2,20 @@
 
 {% block content %}
 
-  {{ govukNotificationBanner({
-    text: "There’s a thing to deal with below Molly"
-  }) }}
-
   {# <span class="govuk-caption-l">
     Job listing
   </span> #}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
     Maths teacher
     {{ govukTag({
-      text: "Scheduled",
-      classes: 'govuk-tag--yellow'
+      text: "Published",
+      classes: 'govuk-tag--green'
     }) }}
   </h1>
 
   <p>
-    <a href="#">Publish</a>&nbsp;&nbsp;
-    <a href="#">Preview</a>&nbsp;&nbsp;
     <a href="#">Copy</a>&nbsp;&nbsp;
     <a href="#">End early</a>&nbsp;&nbsp;
-    <a href="#">Delete</a>&nbsp;&nbsp;
   </p>
 
 
@@ -73,15 +66,6 @@
             },
             value: {
               text: "Farnham Heath End, Hale Reeds, Farnham, Surrey, GU9 9BN"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/schools",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -90,15 +74,6 @@
             },
             value: {
               text: "Teacher"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/role",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -107,15 +82,6 @@
             },
             value: {
               text: "Teacher of KS1"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/title",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -124,15 +90,6 @@
             },
             value: {
               text: "Key stage 1, key stage 2"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/key-stage",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -141,15 +98,6 @@
             },
             value: {
               text: "Maths"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/key-stage",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -158,15 +106,6 @@
             },
             value: {
               text: "Permanent"
-            },
-            actions: {
-              items: [
-                {
-                  href: "jobs/new/contract",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -175,15 +114,6 @@
             },
             value: {
               html: workingPatterns
-            },
-            actions: {
-              items: [
-                {
-                  href: "jobs/new/patterns",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -192,15 +122,6 @@
             },
             value: {
               html: salaryDetails
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/salary",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           }
         ]
@@ -210,29 +131,14 @@
         Dates
       </h2>
 
-      {% set publishDateHtml %}
-        <div class="app-field-highlight">
-          Today (6 June 2022)
-        </div>
-      {% endset %}
-
-       {{ govukSummaryList({
+      {{ govukSummaryList({
         rows: [
           {
             key: {
               text: "Publish date"
             },
             value: {
-              html: publishDateHtml
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
+              html: 'Today (6 June 2022)'
             }
           },
           {
@@ -241,15 +147,6 @@
             },
             value: {
               text: "1 September 2022"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -258,15 +155,6 @@
             },
             value: {
               text: "9am"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -275,15 +163,6 @@
             },
             value: {
               text: "30 October 2022"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           }
         ]
@@ -318,15 +197,6 @@
             },
             value: {
               text: "Download and send an application form"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -335,15 +205,6 @@
             },
             value: {
               html: '<a href="">form.pdf</a>, 2MB'
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -352,15 +213,6 @@
             },
             value: {
               html: 'molly@example.com'
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -369,15 +221,6 @@
             },
             value: {
               text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -386,15 +229,6 @@
             },
             value: {
               text: "adam@example.com"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -403,49 +237,22 @@
             },
             value: {
               html: 'molly@example.com'
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
             key: {
-              text: "Do you want to give a contact phone number?"
+              text: "Do you want to give a contact phone number for questions about the job?"
             },
             value: {
               text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
             key: {
-              text: "Phone number"
+              text: "Phone number for questions about the job"
             },
             value: {
               text: "0207 3456 3746"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           }
         ]
@@ -480,15 +287,6 @@
             },
             value: {
               text: "You need to have at least 5 years experience teaching in a public school. You’ll be responsible for a class of 30 students."
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -497,15 +295,6 @@
             },
             value: {
               text: "You’ll get regularl training etc."
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -515,15 +304,6 @@ Yes"
             },
             value: {
               text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -533,15 +313,6 @@ Yes"
             value: {
               text: "St Laurence School is committed to safeguarding and promoting the welfare of children and young people and expects all staff and volunteers to share this commitment. All applicants will be subject to
 a full Disclosure and Barring Service check (previously CRB check) before appointment is confirmed."
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -550,15 +321,6 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
             },
             value: {
               text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -567,15 +329,6 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
             },
             value: {
               text: "Ut eget dolor at libero commodo tincidunt vel egestas diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam aliquet risus eget ante viverra tincidunt. Etiam pulvinar metus dolor, in eleifend massa pharetra eget."
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -584,15 +337,6 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
             },
             value: {
               text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           },
           {
@@ -601,15 +345,6 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
             },
             value: {
               html: '<a href="#">person-spec.pdf</a>, 2MB'
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
             }
           }
         ]
