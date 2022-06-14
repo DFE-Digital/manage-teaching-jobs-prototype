@@ -25,8 +25,8 @@
 
       <form action="/jobs/new/title">
         {{ govukRadios({
-          idPrefix: "create-job[type-of-role]",
-          name: "create-job[type-of-role]",
+          idPrefix: "create-job[role]",
+          name: "create-job[role]",
           fieldset: {
             legend: {
               html: h1,
@@ -36,101 +36,36 @@
           items: [
             {
               value: 'Teacher',
-              text: 'Teacher'
+              text: 'Teacher',
+              checked: checked("['create-job']['role']", "Teacher")
             },
             {
               value: 'Headteacher, deputy or assistant headteacher',
-              text: 'Headteacher, deputy or assistant headteacher'
+              text: 'Headteacher, deputy or assistant headteacher',
+              checked: checked("['create-job']['role']", "Headteacher, deputy or assistant headteacher")
             },
             {
-              value: 'Head of year, department or phase',
-              text: 'Head of year, department or phase'
+              value: 'Head of year, department, curriculum or phase',
+              text: 'Head of year, department, curriculum or phase',
+              checked: checked("['create-job']['role']", "Head of year, department, curriculum or phase")
             },
             {
               value: 'Teaching assistant',
-              text: 'Teaching assistant'
+              text: 'Teaching assistant',
+              checked: checked("['create-job']['role']", "Teaching assistant")
             },
             {
               value: 'Learning support, cover supervisor or tutor',
-              text: 'Learning support, cover supervisor or tutor'
+              text: 'Learning support, cover supervisor or tutor',
+              checked: checked("['create-job']['role']", "Learning support, cover supervisor or tutor")
             },
             {
               value: 'SENDCo (special educational needs and disabilities coordinator)',
-              text: 'SENDCo (special educational needs and disabilities coordinator)'
+              text: 'SENDCo (special educational needs and disabilities coordinator)',
+              checked: checked("['create-job']['role']", "SENDCo (special educational needs and disabilities coordinator)")
             }
           ]
         }) }}
-
-        {# {{ govukRadios({
-          idPrefix: "create-job[suitable-1]",
-          name: "create-job[suitable-1]",
-          fieldset: {
-            legend: {
-              html: 'Is the role only for early career teachers (ECT)?',
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: [
-            {
-              value: 'Yes',
-              text: 'Yes'
-            },
-            {
-              value: 'No',
-              text: 'No'
-            }
-          ]
-        }) }} #}
-
-        {# {{ govukCheckboxes({
-          idPrefix: "create-job[suitable-1]",
-          name: "create-job[suitable-1]",
-          fieldset: {
-            legend: {
-              html: 'What levels of experience is needed?',
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: [
-            {
-              value: 'Highly experienced',
-              text: 'Highly experienced'
-            },
-            {
-              value: 'Experienced',
-              text: 'Experienced'
-            },
-            {
-              value: 'No experience',
-              text: 'No experience',
-              hint: {
-                text: 'Early career teachers (ECT) may apply'
-              }
-            }
-          ]
-        }) }} #}
-
-        {# {{ govukRadios({
-          idPrefix: "create-job[suitable-2]",
-          name: "create-job[suitable2]",
-          fieldset: {
-            legend: {
-              html: 'Does the role have SEND (special educational needs and disability) responsibilities?',
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: [
-            {
-              value: 'Yes',
-              text: 'Yes'
-            },
-            {
-              value: 'No',
-              text: 'No'
-            }
-          ]
-        }) }} #}
-
 
         {{ govukButton({
           text: "Save and continue"

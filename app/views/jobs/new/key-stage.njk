@@ -26,8 +26,8 @@
       <form action="/jobs/new/subjects">
 
         {{ govukCheckboxes({
-          idPrefix: "create-job[key-stage]",
-          name: "create-job[key-stage]",
+          idPrefix: "create-job[key-stages]",
+          name: "create-job[key-stages]",
           fieldset: {
             legend: {
               html: h1,
@@ -38,19 +38,23 @@
           items: [
             {
               value: "Key stage 1",
-              text: "Key stage 1"
+              text: "Key stage 1",
+              checked: checked("['create-job']['key-stages']", "Key stage 1")
             },
             {
               value: "Key stage 2",
-              text: "Key stage 2"
+              text: "Key stage 2",
+              checked: checked("['create-job']['key-stages']", "Key stage 2")
             },
             {
               value: "Key stage 3",
-              text: "Key stage 3"
+              text: "Key stage 3",
+              checked: checked("['create-job']['key-stages']", "Key stage 3")
             },
             {
               value: "Key stage 4",
-              text: "Key stage 4"
+              text: "Key stage 4",
+              checked: checked("['create-job']['key-stages']", "Key stage 4")
             }
           ]
         }) }}

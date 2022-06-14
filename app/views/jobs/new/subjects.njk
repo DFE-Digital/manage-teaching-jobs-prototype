@@ -34,7 +34,8 @@
               text: "Subject",
               classes: 'govuk-label--s'
             },
-            classes: 'govuk-input--width-20'
+            classes: 'govuk-input--width-20',
+            value: data['create-job']['subjects--other']
           }) }}
         {% endset %}
 
@@ -51,23 +52,28 @@
           items: [
             {
               value: "English",
-              text: "English"
+              text: "English",
+              checked: checked("['create-job']['subjects']", "English")
             },
             {
               value: "Maths",
-              text: "Maths"
+              text: "Maths",
+              checked: checked("['create-job']['subjects']", "Maths")
             },
             {
               value: "Science",
-              text: "Science"
+              text: "Science",
+              checked: checked("['create-job']['subjects']", "Science")
             },
             {
               value: "Geography",
-              text: "Geography"
+              text: "Geography",
+              checked: checked("['create-job']['subjects']", "Geography")
             },
             {
               value: "Other",
               text: "Other",
+              checked: checked("['create-job']['subjects']", "Other"),
               conditional: {
                 html: otherInput
               }
