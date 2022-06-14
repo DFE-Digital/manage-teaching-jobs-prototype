@@ -1,15 +1,39 @@
 [
   {
     "type": "school",
-    "name": "Jacobi, Medhurst and O'Conner",
+    "name": "Boom Primary School",
     "locations": [
       {
-        "id": "40ee9307-3961-48fb-b131-bfe507b9d666",
+        "id": "a7408cbf-8581-4096-8b63-8b960c8b2c15",
         "name": "Boom Primary School",
         "address": {
           "address1": "123 Main Street",
           "town": "Some town",
           "postcode": "AB1 2CD"
+        }
+      }
+    ]
+  },
+  {
+    "type": "mat",
+    "name": "Boom Academy Trust",
+    "locations": [
+      {
+        "id": "d1635560-fa0a-4f3b-9ce3-29c61f18887a",
+        "name": "Boom Primary School",
+        "address": {
+          "address1": "123 Main Street",
+          "town": "Some town",
+          "postcode": "AB1 2CD"
+        }
+      },
+      {
+        "id": "7102ea5b-e4e3-4a5d-8396-a3996d0ca28c",
+        "name": "Town Primary School",
+        "address": {
+          "address1": "321 Main Street",
+          "town": "Some place",
+          "postcode": "AB2 3CD"
         }
       }
     ]

@@ -215,12 +215,9 @@ if (useAutoStoreData === 'true') {
 passport.serializeUser((user, done) => {
   done(null, user)
 })
-
 passport.deserializeUser((user, done) => {
   done(null, user)
 })
-
-// Authentication
 passport.use(new LocalStrategy(
   (username, password, done) => {
     const user = authenticationModel.findOne({
@@ -231,7 +228,6 @@ passport.use(new LocalStrategy(
     return done(null, false)
   }
 ))
-
 app.use(passport.initialize())
 app.use(passport.session())
 

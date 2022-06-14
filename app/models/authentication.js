@@ -1,18 +1,14 @@
+const orgs = require('../data/orgs.json')
+
 exports.findOne = (params) => {
   const users = [{
     username: 'anne@example.com',
     password: 'bat',
-    everthing: {},
-    about: {},
-    the: {},
-    user: {}
+    organisation: orgs.find(org => org.name == 'Boom Academy Trust')
   }, {
     username: 'susy@example.com',
-    password: 'wrong',
-    everthing: {},
-    about: {},
-    the: {},
-    user: {}
+    password: 'bat',
+    organisation: orgs.find(org => org.name == 'Boom Primary School')
   }]
   let user = {}
 

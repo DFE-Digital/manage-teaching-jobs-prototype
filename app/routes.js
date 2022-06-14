@@ -1,23 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const passport = require('passport')
-
 const authenticationController = require('./controllers/authentication.js')
-const jobsController = require('./controllers/jobs.js')
 
 // Authentication middleware
-const checkIsAuthenticated = (req, res, next) => {
-  if (req.session.passport) {
-    // the signed in user
-    res.locals.passport = req.session.passport
-    // the base URL for navigation
-    // res.locals.baseUrl = `/organisations/${req.params.organisationId}/cycles/${req.params.cycleId}`
-    next()
-  } else {
-    delete req.session.data
-    res.redirect('/sign-in')
-  }
-}
+
 
 router.all('*', (req, res, next) => {
   res.locals.referrer = req.query.referrer
@@ -39,61 +26,6 @@ router.post('/sign-in', passport.authenticate('local', {
 
 router.get('/sign-out', authenticationController.signOut)
 
-/// ------------------------------------------------------------------------ ///
-/// Manage jobs
-/// ------------------------------------------------------------------------ ///
-
-// router.get('/jobs', checkIsAuthenticated, jobsController.index)
-
-/// ------------------------------------------------------------------------ ///
-/// Create job listing
-/// ------------------------------------------------------------------------ ///
-
-// router.post('/jobs/new/copy', (req, res) => {
-
-//   if(req.body['create-job'] && req.body['create-job'].copy == 'Yes') {
-//     res.redirect('/jobs/new/listings')
-//   } else {
-//     res.redirect('/jobs/new/schools')
-//   }
-
-// })
-
-router.post('/jobs/new/method', (req, res) => {
-
-  if(req.body['create-job'] && req.body['create-job'].method == 'Yes') {
-    res.redirect('/jobs/new/school-visits')
-  } else {
-    res.redirect('/jobs/new/process')
-  }
-})
-
-router.post('/jobs/new/process', (req, res) => {
-  if(req.body['create-job'] && req.body['create-job'].process == 'By email') {
-    res.redirect('/jobs/new/form')
-  } else {
-    res.redirect('/jobs/new/link')
-  }
-})
-
-router.post('/jobs/new/upload', (req, res) => {
-
-  if(req.body['create-job'] && req.body['create-job'].upload == 'Yes') {
-    res.redirect('/jobs/new/file')
-  } else {
-    res.redirect('/jobs/new/check')
-  }
-
-})
-
-router.post('/jobs/new/school-visits', (req, res) => {
-
-  if(req.body['create-job'] && req.body['create-job']['school-visits'] == 'Yes') {
-    res.redirect('/jobs/new/school-visits-email-address')
-  } else {
-    res.redirect('/jobs/new/email-address')
-  }
-
-})
+require('./routes/create-job-listing')(router)
 
 module.exports = router

@@ -21,7 +21,13 @@ const generateOrgs = () => {
   const orgs = []
 
   orgs.push(generateOrg({
-    type: 'school'
+    type: 'school',
+    name: 'Boom Primary School'
+  }))
+
+  orgs.push(generateOrg({
+    type: 'mat',
+    name: 'Boom Academy Trust'
   }))
 
   return orgs
