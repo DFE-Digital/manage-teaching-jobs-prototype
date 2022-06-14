@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Using the service’s application form' %}
+{% set heading = 'Using the application form' %}
 {% set caption = 'Create job listing - section 3 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -21,7 +21,7 @@
         {{heading}}
       </h1>
 
-      <p>This service’s application form:</p>
+      <p>This application form provided by the service:</p>
 
       <ul class="govuk-list govuk-list--bullet">
         <li>
@@ -252,7 +252,7 @@
       {% endset %}
 
       {{ govukDetails({
-        summaryText: "See what an application looks like",
+        summaryText: "See what an application form looks like",
         html: example
       }) }}
 
@@ -263,7 +263,7 @@
           name: "create-job[method]",
           fieldset: {
             legend: {
-              html: "Do you want to use this service’s application form?",
+              html: "Do you want to use the application form?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--m"
             }
