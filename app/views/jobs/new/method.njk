@@ -23,27 +23,195 @@
 
       <p>This service’s application form:</p>
 
-        <ul class="govuk-list govuk-list--bullet">
-          <li>
-            is always up to date with the ‘keeping children safe in education’ guidelines
-          </li>
-          <li>
-           provides a simple experience
-          </li>
-          <li>
-            makes it easy to shortlist or reject applications
-          </li>
-        </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          is always up to date with the ‘keeping children safe in education’ guidelines
+        </li>
+        <li>
+          provides a simple experience
+        </li>
+        <li>
+          makes it easy to shortlist or reject applications
+        </li>
+      </ul>
 
-      {# {% set whyHtml %}      {% endset %} #}
-      {# {{ govukDetails({
-        summaryText: "The advantages of this service’s application form",
-        html: whyHtml
-      }) }} #}
+      {% set example %}
+        <h2 class="govuk-heading-m">
+          Personal details
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "First name"
+              },
+              value: {
+                text: "Roy"
+              }
+            },
+            {
+              key: {
+                text: "Last name"
+              },
+              value: {
+                text: "Smith"
+              }
+            },
+            {
+              key: {
+                text: "Address"
+              },
+              value: {
+                html: '50 Lawrence Street<br>London<br>N1 4SP'
+              }
+            },
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                text: "roy.smith@example.com"
+              }
+            },
+            {
+              key: {
+                text: "Phone number"
+              },
+              value: {
+                text: "07903 451 321"
+              }
+            },
+            {
+              key: {
+                text: "Teacher reference number (TRN)"
+              },
+              value: {
+                text: "1234567"
+              }
+            },
+            {
+              key: {
+                text: "National Insurance number"
+              },
+              value: {
+                text: "QQ 12 34 56 A"
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Professional status
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Do you have qualified teacher status (QTS)?"
+              },
+              value: {
+                text: "I’m on track to receive my QTS"
+              }
+            },
+            {
+              key: {
+                text: "Have you completed your statutory induction year?"
+              },
+              value: {
+                text: "Yes"
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Qualifications
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Stuff"
+              },
+              value: {
+                text: "Stuff"
+              }
+            },
+            {
+              key: {
+                text: "Stuff"
+              },
+              value: {
+                text: "Stuff"
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Work history
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Stuff"
+              },
+              value: {
+                text: "Stuff"
+              }
+            },
+            {
+              key: {
+                text: "Stuff"
+              },
+              value: {
+                text: "Stuff"
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Personal statement
+        </h2>
+
+        <p>Nunc non diam ac felis placerat vestibulum id a purus. Nam venenatis efficitur feugiat. Nunc tincidunt nulla lobortis, blandit purus quis, lacinia nisl. Donec malesuada augue eu nisl gravida, et eleifend ipsum tristique.</p>
+        <p>Quisque mollis, enim non volutpat tristique, est nibh lacinia nisi, quis varius ex enim tempor orci. Sed in dignissim ex.</p>
+
+        <h2 class="govuk-heading-m">
+          References
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Stuff"
+              },
+              value: {
+                text: "Stuff"
+              }
+            },
+            {
+              key: {
+                text: "Stuff"
+              },
+              value: {
+                text: "Stuff"
+              }
+            }
+          ]
+        }) }}
+      {% endset %}
 
       {{ govukDetails({
         summaryText: "What an application made through this service looks like",
-        text: "Text"
+        html: example
       }) }}
 
       <form action="/jobs/new/method" method="post">
