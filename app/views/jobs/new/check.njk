@@ -56,7 +56,7 @@
         </ul>
       {% endset %}
 
-       {{ govukSummaryList({
+      {{ govukSummaryList({
         rows: [
           {
             key: {
@@ -94,23 +94,6 @@
           },
           {
             key: {
-              text: "Does the role have SEND (special educational needs and disability) responsibilities?"
-            },
-            value: {
-              text: "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/role",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          } if 1 == 2,
-          {
-            key: {
               text: "Job title"
             },
             value: {
@@ -128,10 +111,10 @@
           },
           {
             key: {
-              text: "Key stage"
+              text: "Key stages"
             },
             value: {
-              text: "Key stage 1, key stage 2"
+              text: data['create-job']['key-stages'] | join(', ')
             },
             actions: {
               items: [
@@ -142,18 +125,18 @@
                 }
               ]
             }
-          },
+          } if data['create-job']['key-stages'],
           {
             key: {
               text: "Subjects"
             },
             value: {
-              text: "Maths"
+              text: data['create-job']['subjects'] | join(', ') or 'None'
             },
             actions: {
               items: [
                 {
-                  href: "/jobs/new/key-stage",
+                  href: "/jobs/new/subjects",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
