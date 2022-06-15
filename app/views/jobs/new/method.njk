@@ -271,11 +271,13 @@
           items: [
             {
               value: "Yes",
-              text: "Yes"
+              text: "Yes",
+              checked: checked("['create-job']['method']", "Yes")
             },
             {
               value: "No",
               text: "No",
+              checked: checked("['create-job']['method']", "No"),
               hint: {
                 text: 'You’ll need to provide additional details about how to apply'
               }

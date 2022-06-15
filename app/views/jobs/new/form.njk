@@ -25,23 +25,24 @@
 
       {% set emailAddress %}
         {{ govukInput({
-          id: "create-job[application-email-address]",
-          name: "create-job[application-email-address]",
+          id: "create-job[application-email-address--another]",
+          name: "create-job[application-email-address--another]",
           label: {
             text: "Email address",
             classes: 'govuk-label--s'
           },
           type: "email",
           autocomplete: "email",
-          spellcheck: false
+          spellcheck: false,
+          value: data['create-job']['application-email-address--another']
         }) }}
       {% endset %}
 
       <form action="/jobs/new/school-visits">
 
         {{ govukFileUpload({
-          id: "create-job[upload-application-form]",
-          name: "create-job[upload-application-form]",
+          id: "create-job[application-form]",
+          name: "create-job[application-form]",
           label: {
             text: "Upload application form",
             classes: 'govuk-label--m'
@@ -52,8 +53,8 @@
         }) }}
 
         {{ govukRadios({
-          idPrefix: "create-job[application-email]",
-          name: "create-job[application-email]",
+          idPrefix: "create-job[application-email-address]",
+          name: "create-job[application-email-address]",
           fieldset: {
             legend: {
               html: 'Email address to receive applications',
@@ -63,11 +64,13 @@
           items: [
             {
               value: "existing.email@example.com",
-              text: "existing.email@example.com"
+              text: "existing.email@example.com",
+              checked: checked("['create-job']['application-email-address']", "existing.email@example.com")
             },
             {
-              value: "A different email address",
-              text: "A different email address",
+              value: "Another email address",
+              text: "Another email address",
+              checked: checked("['create-job']['application-email-address']", "Another email address"),
               conditional: {
                 html: emailAddress
               }

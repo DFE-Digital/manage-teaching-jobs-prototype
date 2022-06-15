@@ -25,8 +25,8 @@
       <form action="/jobs/new/school-visits">
 
         {{ govukInput({
-          id: "create-job[website-url]",
-          name: "create-job[website-url]",
+          id: "create-job[website]",
+          name: "create-job[website]",
           label: {
             html: h1,
             isPageHeading: true,
@@ -34,7 +34,8 @@
           },
           hint: {
             text: "For example, https://www.example.com"
-          }
+          },
+          value: data['create-job']['website']
         }) }}
 
         {{ govukButton({
