@@ -56,4 +56,12 @@ module.exports = router => {
     }
   })
 
+  router.post('/jobs/new/file-check', (req, res) => {
+    if(req.body['create-job'] && req.body['create-job']['add-another-file'] == 'Yes') {
+      res.redirect('/jobs/new/file')
+    } else {
+      res.redirect('/jobs/new/check')
+    }
+  })
+
 }

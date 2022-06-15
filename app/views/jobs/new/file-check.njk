@@ -25,29 +25,29 @@
 
        <h2 class="govuk-heading-m">Files added</h2>
 
-    {{ govukSummaryList({
-      rows: [
-        {
-          key: {
-            text: "File 1"
-          },
-          value: {
-            html: '<a download href="#">job-description.pdf</a>, 2MB'
-          },
-          actions: {
-            items: [
-              {
-                href: "#",
-                text: "Delete",
-                visuallyHiddenText: "file 1"
-              }
-            ]
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "File 1"
+            },
+            value: {
+              html: '<a download href="#">job-description.pdf</a>, 2MB'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Delete",
+                  visuallyHiddenText: "file 1"
+                }
+              ]
+            }
           }
-        }
-      ]
-    }) }}
+        ]
+      }) }}
 
-      <form action="/jobs/new/check">
+      <form action="/jobs/new/file-check" method="post">
 
         {{ govukRadios({
           idPrefix: "create-job[add-another-file]",
@@ -60,11 +60,11 @@
           },
           items: [
             {
-              value: "yes",
+              value: "Yes",
               text: "Yes"
             },
             {
-              value: "no",
+              value: "No",
               text: "No"
             }
           ]
@@ -80,8 +80,6 @@
         }) }}
       </form>
       <p><a href="#">Cancel</a></p>
-
-
 
     </div>
   </div>
