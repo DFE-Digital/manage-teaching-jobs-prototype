@@ -25,13 +25,14 @@
 
       {% set partTimeDetails %}
         {{ govukCharacterCount({
-          name: "create-job[part-time-details]",
-          id: "create-job[part-time-details]",
+          name: "create-job[part-time--details]",
+          id: "create-job[part-time--details]",
           maxwords: 50,
           label: {
             text: "Details",
             classes: 'govuk-label--s'
-          }
+          },
+          value: data['create-job']['part-time--details']
         }) }}
       {% endset %}
 
@@ -50,11 +51,13 @@
           items: [
             {
               value: "Full time",
-              text: "Full time"
+              text: "Full time",
+              checked: checked("['create-job']['working-patterns']", "Full time")
             },
             {
               value: "Part time",
               text: "Part time",
+              checked: checked("['create-job']['working-patterns']", "Full time"),
               conditional: {
                 html: partTimeDetails
               }

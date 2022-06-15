@@ -17,13 +17,27 @@
 
   {% set salary %}
     {{ govukInput({
-      id: "create-job[salary]",
-      name: "create-job[salary]",
+      id: "create-job[full-time-salary]",
+      name: "create-job[full-time-salary]",
       label: {
         text: "Full-time equivalent salary",
         classes: 'govuk-label--s'
       },
-      classes: "govuk-input--width-20"
+      classes: "govuk-input--width-20",
+      value: data['create-job']['full-time-salary']
+    }) }}
+  {% endset %}
+
+  {% set actualSalary %}
+    {{ govukInput({
+      id: "create-job[actual-salary]",
+      name: "create-job[actual-salary]",
+      label: {
+        text: "Actual salary",
+        classes: 'govuk-label--s'
+      },
+      classes: "govuk-input--width-20",
+      value: data['create-job']['actual-salary']
     }) }}
   {% endset %}
 
@@ -35,19 +49,8 @@
         text: "Pay scale",
         classes: 'govuk-label--s'
       },
-      classes: "govuk-input--width-20"
-    }) }}
-  {% endset %}
-
-  {% set actualSalary %}
-    {{ govukInput({
-      id: "create-job[take-home]",
-      name: "create-job[take-home]",
-      label: {
-        text: "Actual salary",
-        classes: 'govuk-label--s'
-      },
-      classes: "govuk-input--width-20"
+      classes: "govuk-input--width-20",
+      value: data['create-job']['pay-scale']
     }) }}
   {% endset %}
 
@@ -79,6 +82,7 @@
             {
               value: "Full-time equivalent salary",
               text: "Full-time equivalent salary",
+              checked: checked("['create-job']['salary-details']", "Full-time equivalent salary"),
               hint: {
                 text: 'This is what the annual salary would be for someone working full time'
               },
@@ -89,6 +93,7 @@
             {
               value: "Actual salary",
               text: "Actual salary",
+              checked: checked("['create-job']['salary-details']", "Actual salary"),
               hint: {
                 text: 'This is the annual amount someone will take home'
               },
@@ -99,6 +104,7 @@
             {
               value: "Pay scale",
               text: "Pay scale",
+              checked: checked("['create-job']['salary-details']", "Pay scale"),
               conditional: {
                 html: payscale
               }
