@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Subjects' %}
+{% set heading = 'Subjects (optional)' %}
 {% set caption = 'Create job listing - section 1 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -23,21 +23,7 @@
         {{heading}}
       {% endset %}
 
-      {# <form action="/jobs/new/contract"> #}
       <form action="/jobs/new/contract">
-
-        {% set otherInput %}
-          {{ govukInput({
-            id: "create-job[subjects--other]",
-            name: "create-job[subjects--other]",
-            label: {
-              text: "Subject",
-              classes: 'govuk-label--s'
-            },
-            classes: 'govuk-input--width-20',
-            value: data['create-job']['subjects--other']
-          }) }}
-        {% endset %}
 
         {{ govukCheckboxes({
           idPrefix: "create-job[subjects]",
@@ -69,17 +55,11 @@
               value: "Geography",
               text: "Geography",
               checked: checked("['create-job']['subjects']", "Geography")
-            },
-            {
-              value: "Other",
-              text: "Other",
-              checked: checked("['create-job']['subjects']", "Other"),
-              conditional: {
-                html: otherInput
-              }
             }
           ]
         }) }}
+
+        {# <p class="govuk-!-margin-bottom-7"><a href="/jobs/new/contract">Continue without adding a subject</a></p> #}
 
         {{ govukButton({
           text: "Save and continue"
