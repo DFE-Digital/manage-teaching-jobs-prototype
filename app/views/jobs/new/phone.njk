@@ -30,7 +30,11 @@
           label: {
             text: "Phone number for questions about the job",
             classes: 'govuk-label--s'
-          }
+          },
+          type: "tel",
+          autocomplete: "tel",
+          classes: "govuk-input--width-20",
+          value: data['create-job']['phone-number']
         }) }}
 
       {% endset %}
@@ -38,8 +42,8 @@
       <form action="/jobs/new/about">
 
         {{ govukRadios({
-          idPrefix: "create-job[phone]",
-          name: "create-job[phone]",
+          idPrefix: "create-job[provide-phone-number]",
+          name: "create-job[provide-phone-number]",
           fieldset: {
             legend: {
               html: h1,
@@ -51,13 +55,15 @@
             {
               value: "Yes",
               text: "Yes",
+              checked: checked("['create-job']['provide-phone-number']", "Yes"),
               conditional: {
                 html: phone
               }
             },
             {
               value: "No",
-              text: "No"
+              text: "No",
+              checked: checked("['create-job']['provide-phone-number']", "No")
             }
           ]
         }) }}

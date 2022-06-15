@@ -24,23 +24,24 @@
 
       {% set emailAddress %}
         {{ govukInput({
-          id: "create-job[contact-email-address]",
-          name: "create-job[contact-email-address]",
+          id: "create-job[questions-email-address--another]",
+          name: "create-job[questions-email-address--another]",
           label: {
             text: "Email address",
             classes: 'govuk-label--s'
           },
           type: "email",
           autocomplete: "email",
-          spellcheck: false
+          spellcheck: false,
+          value: data['create-job']['questions-email-address--another']
         }) }}
       {% endset %}
 
       <form action="/jobs/new/phone">
 
         {{ govukRadios({
-          idPrefix: "create-job[email]",
-          name: "create-job[email]",
+          idPrefix: "create-job[questions-email-address]",
+          name: "create-job[questions-email-address]",
           fieldset: {
             legend: {
               html: h1,
@@ -51,11 +52,13 @@
           items: [
             {
               value: "existing.email@example.com",
-              text: "existing.email@example.com"
+              text: "existing.email@example.com",
+              checked: checked("['create-job']['questions-email-address']", "existing.email@example.com")
             },
             {
-              value: "A different email address",
-              text: "A different email address",
+              value: "Another email address",
+              text: "Another email address",
+              checked: checked("['create-job']['questions-email-address']", "Another email address"),
               conditional: {
                 html: emailAddress
               }
