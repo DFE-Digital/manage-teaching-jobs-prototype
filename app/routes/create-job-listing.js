@@ -48,13 +48,13 @@ module.exports = router => {
     }
   })
 
-  router.post('/jobs/new/school-visits', (req, res) => {
-    if(req.body['create-job'] && req.body['create-job']['school-visits'] == 'Yes') {
-      res.redirect('/jobs/new/school-visits-email-address')
-    } else {
-      res.redirect('/jobs/new/email-address')
-    }
-  })
+  // router.post('/jobs/new/school-visits', (req, res) => {
+  //   if(req.body['create-job'] && req.body['create-job']['school-visits'] == 'Yes') {
+  //     res.redirect('/jobs/new/school-visits-email-address')
+  //   } else {
+  //     res.redirect('/jobs/new/email-address')
+  //   }
+  // })
 
   router.post('/jobs/new/file-check', (req, res) => {
     if(req.body['create-job'] && req.body['create-job']['add-another-file'] == 'Yes') {

@@ -1,0 +1,130 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Contact details' %}
+{% set caption = 'Create job listing - section 3 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+      {% if data['create-job']['school-visits'] == 'Yes' %}
+        <p>Give contact details to arrange a school visit and ask question about the job.</p>
+      {% else %}
+        <p>Give contact details to ask question about the job.</p>
+      {% endif %}
+      {% set emailAddress %}
+        {{ govukInput({
+          id: "create-job[contact-details--another]",
+          name: "create-job[contact-details--another]",
+          label: {
+            text: "Email address",
+            classes: 'govuk-label--s'
+          },
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false
+        }) }}
+      {% endset %}
+
+      <form action="/jobs/new/about">
+
+        {{ govukRadios({
+          idPrefix: "create-job[school-visits-email-address]",
+          name: "create-job[school-visits-email-address]",
+          fieldset: {
+            legend: {
+              text: 'Email address',
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "existing.email@example.com",
+              text: "existing.email@example.com",
+              checked: checked("['create-job']['school-visits-email-address']", "existing.email@example.com")
+            },
+            {
+              value: "Another email address",
+              text: "Another email address",
+              checked: checked("['create-job']['school-visits-email-address']", "Another email address"),
+              conditional: {
+                html: emailAddress
+              }
+            }
+          ]
+        }) }}
+
+        {% set phone %}
+          {{ govukInput({
+            id: "create-job[phone-number]",
+            name: "create-job[phone-number]",
+            label: {
+              text: "Phone number",
+              classes: 'govuk-label--s'
+            },
+            type: "tel",
+            autocomplete: "tel",
+            classes: "govuk-input--width-20",
+            value: data['create-job']['phone-number']
+          }) }}
+
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: "create-job[provide-phone-number]",
+          name: "create-job[provide-phone-number]",
+          fieldset: {
+            legend: {
+              text: 'Do you want to give a contact phone number?',
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("['create-job']['provide-phone-number']", "Yes"),
+              conditional: {
+                html: phone
+              }
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("['create-job']['provide-phone-number']", "No")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

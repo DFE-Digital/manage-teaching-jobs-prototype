@@ -142,7 +142,7 @@
                 }
               ]
             }
-          },
+          } if data['create-job']['subjects'],
           {
             key: {
               text: "Contract type"
@@ -367,7 +367,7 @@
           },
           {
             key: {
-              text: "Email address to arrange a school visit"
+              text: "Email address"
             },
             value: {
               text: "adam@example.com"
@@ -375,7 +375,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/contact-details",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -384,24 +384,7 @@
           },
           {
             key: {
-              text: "Email address for questions about the job"
-            },
-            value: {
-              html: 'molly@example.com'
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Do you want to give a contact phone number for questions about the job?"
+              text: "Do you want to give a contact phone number?"
             },
             value: {
               text: "Yes"
@@ -409,7 +392,7 @@
             actions: {
               items: [
                 {
-                  href: "/jobs/new/phone",
+                  href: "/jobs/new/contact-details",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -418,7 +401,7 @@
           },
           {
             key: {
-              text: "Phone number for questions about the job"
+              text: "Phone number"
             },
             value: {
               text: "0207 3456 3746"
