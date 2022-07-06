@@ -5,8 +5,6 @@ module.exports = router => {
 
   router.get('/jobs/new/schools', authentication.checkIsAuthenticated, (req, res) => {
 
-    console.log(req.session.user)
-
     if(req.session.user.organisation.locations.length < 2) {
       res.redirect('/jobs/new/role')
     } else {
