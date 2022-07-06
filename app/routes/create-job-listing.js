@@ -24,6 +24,23 @@ module.exports = router => {
     }
   })
 
+  router.get('/jobs/new/age-groups', authentication.checkIsAuthenticated, (req, res) => {
+    const ageGroupCheckboxes = [{
+      value: 'Primary',
+      text: 'Primary'
+    }, {
+      value: 'Secondary',
+      text: 'Secondary'
+    }, {
+      value: '16 to 19',
+      text: '16 to 19'
+    }]
+
+    res.render('jobs/new/age-groups', {
+      ageGroupCheckboxes
+    })
+  })
+
   router.post('/jobs/new/method', (req, res) => {
     if(req.body['create-job'] && req.body['create-job'].method == 'Yes') {
       res.redirect('/jobs/new/school-visits')
