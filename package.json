@@ -7,7 +7,7 @@
     "node": ">=12.0.0 <17.0.0"
   },
   "scripts": {
-    "generate-data": "node ./scripts/generate-organisations.js && node ./scripts/generate-jobs.js",
+    "generate-data": "node ./scripts/generate-organisations.js && node ./scripts/generate-jobs.js && node ./scripts/generate-users.js",
     "postinstall": "npm run generate-data",
     "start": "node start.js",
     "lint": "standard",
@@ -42,8 +42,6 @@
     "marked": "^4.0.10",
     "notifications-node-client": "^5.1.0",
     "nunjucks": "^3.2.1",
-    "passport": "^0.6.0",
-    "passport-local": "^1.0.0",
     "portscanner": "^2.1.1",
     "require-dir": "^1.0.0",
     "sass": "^1.49.9",

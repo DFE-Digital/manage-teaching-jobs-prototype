@@ -1,7 +1,7 @@
 const checkIsAuthenticated = (req, res, next) => {
-  if (req.session.passport) {
+  if (req.session.user) {
     // the signed in user
-    res.locals.passport = req.session.passport
+    res.locals.user = req.session.user
     next()
   } else {
     delete req.session.data

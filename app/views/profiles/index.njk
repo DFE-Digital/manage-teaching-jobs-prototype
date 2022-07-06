@@ -6,50 +6,13 @@
 {% block content %}
 
   <h1 class="govuk-heading-l">
-    Jobseeker profiles (6)
+    Teacher profiles (602)
   </h1>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      {{ govukTable({
-        head: [
-          {
-            text: "Title"
-          },
-          {
-            text: "Applications"
-          },
-          {
-            text: "Closing date"
-          },
-          {
-            text: "Status"
-          },
-          {
-            text: ""
-          }
-        ],
-        rows: [
-          [
-            {
-              html: '<a href="/jobs/show">Maths teacher</a>'
-            },
-            {
-              html: '<a href="#">2 applications</a>'
-            },
-            {
-              html: "1 August 2022 at 11:59pm"
-            },
-            {
-              html: govukTag({ text: 'Published', classes: 'govuk-tag--green'})
-            },
-            {
-              html: '<a href="/jobs/new/copied">Copy job listing</a>'
-            }
-          ]
-        ]
-      }) }}
+
 
     </div>
   </div>

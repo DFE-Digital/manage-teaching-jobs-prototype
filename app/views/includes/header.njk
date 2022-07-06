@@ -1,35 +1,38 @@
-{% if pageId == "start" %}
+{% if not user %}
 {% set navigationItems = [{
-    href: "/start",
+    href: "/create-account",
+    text: "Create account"
+  }, {
+    href: "/sign-in",
     text: "Sign in"
   }]
 %}
 {% else %}
-{% set navigationItems = [
-  {
-    href: "#",
-    text: "Settings",
-    active: primaryNavId == 'org-settings'
-  },
-  {
-    href: "#",
-    text: "Notifications",
-    active: primaryNavId == 'notifications'
-  },
-  {
-    href: "#",
-    text: "Guides",
-    active: primaryNavId == 'notifications'
-  },
-  {
-    href: "/account",
-    text: "Account",
-    active: primaryNavId == 'account'
-  } if 1 == 2, {
-    href: "/sign-out",
-    text: "Sign out"
-  }]
-%}
+  {% set navigationItems = [
+    {
+      href: "#",
+      text: "Settings",
+      active: primaryNavId == 'org-settings'
+    },
+    {
+      href: "#",
+      text: "Notifications",
+      active: primaryNavId == 'notifications'
+    },
+    {
+      href: "#",
+      text: "Guides",
+      active: primaryNavId == 'notifications'
+    },
+    {
+      href: "/account",
+      text: "Account",
+      active: primaryNavId == 'account'
+    } if 1 == 2, {
+      href: "/sign-out",
+      text: "Sign out"
+    }]
+  %}
 {% endif %}
 
 {{ govukHeader({

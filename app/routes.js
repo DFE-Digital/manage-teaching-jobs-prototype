@@ -1,30 +1,32 @@
 const express = require('express')
 const router = express.Router()
-const passport = require('passport')
-const authenticationController = require('./controllers/authentication.js')
-
-// Authentication middleware
-
+const users = require('./data/users.json')
 
 router.all('*', (req, res, next) => {
   res.locals.referrer = req.query.referrer
   res.locals.query = req.query
+  res.locals.user = req.session.user
   res.locals.flash = req.flash('success') // pass through 'success' messages only
   next()
 })
 
-/// ------------------------------------------------------------------------ ///
-/// AUTHENTICATION ROUTES
-/// ------------------------------------------------------------------------ ///
+router.post('/sign-in', (req, res) => {
+  res.locals.user = req.session.user = users[0]
+  res.redirect('/jobs')
+})
 
-router.get('/sign-in', authenticationController.signIn)
-router.post('/sign-in', passport.authenticate('local', {
-  successRedirect: '/jobs',
-  failureRedirect: '/sign-in',
-  failureFlash: 'Enter valid sign-in details'
-}))
+router.get('/sign-out', (req, res) => {
+  res.locals.user = req.session.user = null
+  res.redirect('/')
+})
 
-router.get('/sign-out', authenticationController.signOut)
+router.post('/create-account', (req, res) => {
+  res.locals.user = req.session.user = {
+    username: req.body.emailAddress,
+    password: req.body.password
+  }
+  res.redirect('/create-account/confirmation')
+})
 
 require('./routes/create-job-listing')(router)
 

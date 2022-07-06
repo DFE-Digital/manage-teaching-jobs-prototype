@@ -14,9 +14,6 @@ const sessionInMemory = require('express-session')
 
 // Added dependencies
 const flash = require('connect-flash')
-const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy
-const authenticationModel = require('./app/models/authentication')
 
 // Run before other code to make sure variables from .env are available
 dotenv.config()
@@ -211,25 +208,6 @@ if (useAutoStoreData === 'true') {
     utils.addCheckedFunction(nunjucksV6Env)
   }
 }
-
-passport.serializeUser((user, done) => {
-  done(null, user)
-})
-passport.deserializeUser((user, done) => {
-  done(null, user)
-})
-passport.use(new LocalStrategy(
-  (username, password, done) => {
-    const user = authenticationModel.findOne({
-      username: username,
-      password: password
-    })
-    if (user) { return done(null, user) }
-    return done(null, false)
-  }
-))
-app.use(passport.initialize())
-app.use(passport.session())
 
 app.use(flash())
 

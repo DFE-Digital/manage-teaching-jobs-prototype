@@ -4,10 +4,13 @@ const authentication = require('../middleware/authenticaton')
 module.exports = router => {
 
   router.get('/jobs/new/schools', authentication.checkIsAuthenticated, (req, res) => {
-    if(req.session.passport.user.organisation.locations.length < 2) {
+
+    console.log(req.session.user)
+
+    if(req.session.user.organisation.locations.length < 2) {
       res.redirect('/jobs/new/role')
     } else {
-      let locationCheckboxes = req.session.passport.user.organisation.locations.map(item => {
+      let locationCheckboxes = req.session.user.organisation.locations.map(item => {
         return {
           text: item.name,
           value: item.name,
