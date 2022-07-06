@@ -25,7 +25,7 @@ module.exports = router => {
   })
 
   router.get('/jobs/new/age-groups', authentication.checkIsAuthenticated, (req, res) => {
-    const ageGroupCheckboxes = [{
+    const options = [{
       value: 'Primary',
       text: 'Primary'
     }, {
@@ -34,10 +34,13 @@ module.exports = router => {
     }, {
       value: '16 to 19',
       text: '16 to 19'
+    }, {
+      value: 'Multiple age groups',
+      text: 'Multiple age groups'
     }]
 
     res.render('jobs/new/age-groups', {
-      ageGroupCheckboxes
+      options
     })
   })
 

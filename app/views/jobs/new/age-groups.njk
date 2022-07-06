@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Age groups' %}
+{% set heading = 'Age group' %}
 {% set caption = 'Create job listing - section 1 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -23,7 +23,7 @@
       {% endset %}
 
       <form action="/jobs/new/role" method="post">
-        {{ govukCheckboxes({
+        {{ govukRadios({
           idPrefix: "create-job[ageGroups]",
           name: "create-job[ageGroups]",
           fieldset: {
@@ -32,7 +32,7 @@
               classes: "govuk-fieldset__legend--l"
             }
           },
-          items: ageGroupCheckboxes
+          items: options
         }) }}
 
         {{ govukButton({
