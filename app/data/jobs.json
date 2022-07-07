@@ -1,48 +1,25 @@
 [
   {
-    "id": "491577",
+    "id": "201947",
     "organisation": {
-      "type": "mat",
-      "name": "Boom Academy Trust",
-      "locations": [
-        {
-          "id": "33431c8d-4e01-48c7-8b23-8e119a663da6",
-          "name": "Boom Primary School",
-          "address": {
-            "address1": "123 Main Street",
-            "town": "Some town",
-            "postcode": "AB1 2CD"
-          }
-        },
-        {
-          "id": "eda15272-a4af-4c75-8fe0-c63f47e7b45d",
-          "name": "Town Primary School",
-          "address": {
-            "address1": "321 Main Street",
-            "town": "Some place",
-            "postcode": "AB2 3CD"
-          }
-        }
-      ]
-    },
-    "location": {
-      "id": "eda15272-a4af-4c75-8fe0-c63f47e7b45d",
-      "name": "Town Primary School",
+      "type": "School",
+      "name": "Boom School",
       "address": {
-        "address1": "321 Main Street",
-        "town": "Some place",
-        "postcode": "AB2 3CD"
+        "address1": "123 Main Street",
+        "town": "Some town",
+        "postcode": "AB1 2CD"
       }
     },
-    "role": "SENDCo",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "roleHasSendResponsibilities": "Yes",
-    "title": "English teacher",
-    "contractType": "Maternity or parental leave cover",
-    "subjects": "Geography",
-    "workingPatterns": "Job share",
-    "workingPatternDetails": "Monday to Wedensday",
-    "salary": "A1/B1 depending on experience",
-    "additionalAllowances": null
+    "location": "c",
+    "role": "Leadership",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "roleHasSendResponsibilities": "No",
+    "title": "Teacher of computing",
+    "contractType": "Fixed term",
+    "subjects": "Politics",
+    "workingPatterns": "Full time",
+    "workingPatternDetails": "20 hours per week",
+    "salary": "£20,852 (pro rata)",
+    "additionalAllowances": "TLR"
   }
 ]

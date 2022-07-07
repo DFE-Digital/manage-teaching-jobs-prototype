@@ -3,7 +3,7 @@ const users = require('../data/users.json')
 module.exports = router => {
 
   router.post('/sign-in', (req, res) => {
-    res.locals.user = req.session.user = users[0]
+    res.locals.user = req.session.user = users[1]
     res.redirect('/jobs')
   })
 

@@ -1,39 +1,79 @@
 [
   {
-    "type": "school",
-    "name": "Boom Primary School",
-    "locations": [
+    "type": "School",
+    "name": "Boom School",
+    "address": {
+      "address1": "123 Main Street",
+      "town": "Some town",
+      "postcode": "AB1 2CD"
+    }
+  },
+  {
+    "type": "MAT",
+    "name": "Boom Academy",
+    "address": {
+      "address1": "123 Main Street",
+      "town": "Some town",
+      "postcode": "AB1 2CD"
+    },
+    "schools": [
       {
-        "id": "7711b472-09a7-4c1a-9868-c2b653903e9e",
-        "name": "Boom Primary School",
+        "name": "Simonis LLC School",
         "address": {
-          "address1": "123 Main Street",
-          "town": "Some town",
-          "postcode": "AB1 2CD"
+          "address1": "1 Owl Way",
+          "town": "London",
+          "postcode": "W9 4PT"
+        }
+      },
+      {
+        "name": "Hettinger - Boyer School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        }
+      },
+      {
+        "name": "Feil Inc School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
         }
       }
     ]
   },
   {
-    "type": "mat",
-    "name": "Boom Academy Trust",
-    "locations": [
+    "type": "LA",
+    "name": "Boom Local Authority",
+    "address": {
+      "address1": "123 Main Street",
+      "town": "Some town",
+      "postcode": "AB1 2CD"
+    },
+    "schools": [
       {
-        "id": "33431c8d-4e01-48c7-8b23-8e119a663da6",
-        "name": "Boom Primary School",
+        "name": "West Group School",
         "address": {
-          "address1": "123 Main Street",
-          "town": "Some town",
-          "postcode": "AB1 2CD"
+          "address1": "1 Owl Way",
+          "town": "London",
+          "postcode": "W9 4PT"
         }
       },
       {
-        "id": "eda15272-a4af-4c75-8fe0-c63f47e7b45d",
-        "name": "Town Primary School",
+        "name": "Beier, MacGyver and Smith School",
         "address": {
-          "address1": "321 Main Street",
-          "town": "Some place",
-          "postcode": "AB2 3CD"
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        }
+      },
+      {
+        "name": "Stamm Inc School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
         }
       }
     ]

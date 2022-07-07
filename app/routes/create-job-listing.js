@@ -5,15 +5,27 @@ const Validator = require('../helpers/validator')
 module.exports = router => {
 
   router.get('/jobs/new', authentication.checkIsAuthenticated, (req, res) => {
-    if(req.session.user.organisation.locations.length < 2) {
-      res.redirect('/jobs/new/role')
-    } else {
+    let org = req.session.user.organisation
+    if(org.schools && org.schools.length > 1) {
       res.redirect('/jobs/new/locations')
+    } else {
+      res.redirect('/jobs/new/role')
     }
   })
 
   router.get('/jobs/new/locations', (req, res) => {
-    let locationCheckboxes = req.session.user.organisation.locations.map(item => {
+    let org = req.session.user.organisation
+
+    let locationOptions = [{
+      text: 'Head office',
+      value: 'Head office',
+      hint: {
+        text: [org.address.address1, org.address.town, org.address.postcode].join(', ')
+      },
+      checked: req.session.data['createJob'] && req.session.data['createJob'].locations && req.session.data['createJob'].locations.find(location => location == 'Head office')
+    }]
+
+    let schoolOptions = req.session.user.organisation.schools.map(item => {
       return {
         text: item.name,
         value: item.name,
@@ -24,8 +36,10 @@ module.exports = router => {
       }
     })
 
+    locationOptions = locationOptions.concat(schoolOptions)
+
     res.render('jobs/new/locations', {
-      locationCheckboxes
+      locationOptions
     })
   })
 

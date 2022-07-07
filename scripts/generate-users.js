@@ -19,13 +19,18 @@ const generateUsers = () => {
   const users = []
 
   users.push(generateUser({
-    username: 'anne@example.com',
-    organisation: organisations[0]
+    username: 'anne@boomschool.com',
+    organisation: organisations.find(org => org.name == 'Boom School')
   }))
 
   users.push(generateUser({
-    username: 'susy@example.com',
-    organisation: organisations[1]
+    username: 'susy@boomacademy.com',
+    organisation: organisations.find(org => org.name == 'Boom Academy')
+  }))
+
+  users.push(generateUser({
+    username: 'samsusy@boomla.com',
+    organisation: organisations.find(org => org.name == 'Boom Local Authority')
   }))
 
   return users
