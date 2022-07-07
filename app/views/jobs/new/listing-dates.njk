@@ -25,8 +25,8 @@
 
       {% set specificDate %}
         {{ govukDateInput({
-          id: "create-job[publish-date--another-date]",
-          name: "create-job[publish-another-date]",
+          id: "createJob[publish-date--another-date]",
+          name: "createJob[publish-another-date]",
           fieldset: {
             legend: {
               text: "Another date",
@@ -37,28 +37,28 @@
             text: "For example, 31 3 2023"
           },
           items: [{
-            name: "create-job[publish-date--another-date][day]",
+            name: "createJob[publish-date--another-date][day]",
             label: "Day",
             classes: "govuk-input--width-2",
-            value: data['create-job']['publish-date--another-date'].day
+            value: data['createJob']['publish-date--another-date'].day
           }, {
-            name: "create-job[publish-date--another-date][month]",
+            name: "createJob[publish-date--another-date][month]",
             label: "Month",
             classes: "govuk-input--width-2",
-            value: data['create-job']['publish-date--another-date'].month
+            value: data['createJob']['publish-date--another-date'].month
           }, {
-            name: "create-job[publish-date--another-date][year]",
+            name: "createJob[publish-date--another-date][year]",
             label: "Year",
             classes: "govuk-input--width-4",
-            value: data['create-job']['publish-date--another-date'].year
+            value: data['createJob']['publish-date--another-date'].year
           }]
         }) }}
       {% endset %}
 
       {% set timeHtml %}
         {{ govukInput({
-          id: "create-job[closing-time--another-time]",
-          name: "create-job[closing-time--another-time]",
+          id: "createJob[closing-time--another-time]",
+          name: "createJob[closing-time--another-time]",
           label: {
             text: "Time",
             classes: 'govuk-label--s'
@@ -67,15 +67,15 @@
           hint: {
             text: "For example, 2pm or 14:30"
           },
-          value: data['create-job']['closing-time--another-time']
+          value: data['createJob']['closing-time--another-time']
         }) }}
       {% endset %}
 
 
       <form action="/jobs/new/start-date">
         {{ govukRadios({
-          idPrefix: "create-job[publish-date]",
-          name: "create-job[publish-date]",
+          idPrefix: "createJob[publish-date]",
+          name: "createJob[publish-date]",
           fieldset: {
             legend: {
               text: "Publish date",
@@ -86,17 +86,17 @@
             {
               value: "Today (6 June 2022)",
               text: "Today (6 June 2022)",
-              checked: checked("['create-job']['publish-date']", "Today (6 June 2022)")
+              checked: checked("['createJob']['publish-date']", "Today (6 June 2022)")
             },
             {
               value: "Tomorrow (7 June 2022)",
               text: "Tomorrow (7 June 2022)",
-              checked: checked("['create-job']['publish-date']", "Tomorrow (7 June 2022)")
+              checked: checked("['createJob']['publish-date']", "Tomorrow (7 June 2022)")
             },
             {
               value: "Another date",
               text: "Another date",
-              checked: checked("['create-job']['publish-date']", "Another date"),
+              checked: checked("['createJob']['publish-date']", "Another date"),
               conditional: {
                 html: specificDate
               }
@@ -106,8 +106,8 @@
 
 
         {{ govukDateInput({
-          id: "create-job-list[closing-date]",
-          name: "create-job-list[closing-date]",
+          id: "createJob-list[closing-date]",
+          name: "createJob-list[closing-date]",
           fieldset: {
             legend: {
               text: "Closing date",
@@ -118,26 +118,26 @@
             text: "For example, 31 3 2023"
           },
           items: [{
-            name: "create-job[closing-date][day]",
+            name: "createJob[closing-date][day]",
             label: "Day",
             classes: "govuk-input--width-2",
-            value: data['create-job']['closing-date'].day
+            value: data['createJob']['closing-date'].day
           }, {
-            name: "create-job[closing-date][month]",
+            name: "createJob[closing-date][month]",
             label: "Month",
             classes: "govuk-input--width-2",
-            value: data['create-job']['closing-date'].month
+            value: data['createJob']['closing-date'].month
           }, {
-            name: "create-job[closing-date][year]",
+            name: "createJob[closing-date][year]",
             label: "Year",
             classes: "govuk-input--width-4",
-            value: data['create-job']['closing-date'].year
+            value: data['createJob']['closing-date'].year
           }]
         }) }}
 
         {{ govukRadios({
-          idPrefix: "create-job[closing-time]",
-          name: "create-job[closing-time]",
+          idPrefix: "createJob[closing-time]",
+          name: "createJob[closing-time]",
           fieldset: {
             legend: {
               text: "Closing time",
@@ -148,22 +148,22 @@
             {
               value: "9am",
               text: "9am",
-              checked: checked("['create-job']['closing-time']", "9am")
+              checked: checked("['createJob']['closing-time']", "9am")
             },
             {
               value: "12pm (midday)",
               text: "12pm (midday)",
-              checked: checked("['create-job']['closing-time']", "12pm (midday)")
+              checked: checked("['createJob']['closing-time']", "12pm (midday)")
             },
             {
               value: "11:59pm",
               text: "11:59pm",
-              checked: checked("['create-job']['closing-time']", "11:59pm")
+              checked: checked("['createJob']['closing-time']", "11:59pm")
             },
             {
               value: "Another time",
               text: "Another time",
-              checked: checked("['create-job']['closing-time']", "Another time"),
+              checked: checked("['createJob']['closing-time']", "Another time"),
               conditional: {
                 html: timeHtml
               }

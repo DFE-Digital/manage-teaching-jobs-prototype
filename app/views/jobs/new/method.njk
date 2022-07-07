@@ -259,8 +259,8 @@
       <form action="/jobs/new/method" method="post">
 
         {{ govukRadios({
-          idPrefix: "create-job[method]",
-          name: "create-job[method]",
+          idPrefix: "createJob[method]",
+          name: "createJob[method]",
           fieldset: {
             legend: {
               html: "Do you want to use the application form?",
@@ -272,12 +272,12 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("['create-job']['method']", "Yes")
+              checked: checked("['createJob']['method']", "Yes")
             },
             {
               value: "No",
               text: "No",
-              checked: checked("['create-job']['method']", "No"),
+              checked: checked("['createJob']['method']", "No"),
               hint: {
                 text: 'You’ll need to provide additional details about how to apply'
               }

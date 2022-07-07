@@ -22,15 +22,15 @@
         {{heading}}
       </h1>
 
-      {% if data['create-job']['school-visits'] == 'Yes' %}
+      {% if data['createJob']['school-visits'] == 'Yes' %}
         <p>Give contact details to arrange a school visit and ask question about the job.</p>
       {% else %}
         <p>Give contact details to ask question about the job.</p>
       {% endif %}
       {% set emailAddress %}
         {{ govukInput({
-          id: "create-job[contact-details--another]",
-          name: "create-job[contact-details--another]",
+          id: "createJob[contact-details--another]",
+          name: "createJob[contact-details--another]",
           label: {
             text: "Email address",
             classes: 'govuk-label--s'
@@ -44,8 +44,8 @@
       <form action="/jobs/new/about">
 
         {{ govukRadios({
-          idPrefix: "create-job[school-visits-email-address]",
-          name: "create-job[school-visits-email-address]",
+          idPrefix: "createJob[school-visits-email-address]",
+          name: "createJob[school-visits-email-address]",
           fieldset: {
             legend: {
               text: 'Email address',
@@ -56,12 +56,12 @@
             {
               value: "existing.email@example.com",
               text: "existing.email@example.com",
-              checked: checked("['create-job']['school-visits-email-address']", "existing.email@example.com")
+              checked: checked("['createJob']['school-visits-email-address']", "existing.email@example.com")
             },
             {
               value: "Another email address",
               text: "Another email address",
-              checked: checked("['create-job']['school-visits-email-address']", "Another email address"),
+              checked: checked("['createJob']['school-visits-email-address']", "Another email address"),
               conditional: {
                 html: emailAddress
               }
@@ -71,8 +71,8 @@
 
         {% set phone %}
           {{ govukInput({
-            id: "create-job[phone-number]",
-            name: "create-job[phone-number]",
+            id: "createJob[phone-number]",
+            name: "createJob[phone-number]",
             label: {
               text: "Phone number",
               classes: 'govuk-label--s'
@@ -80,14 +80,14 @@
             type: "tel",
             autocomplete: "tel",
             classes: "govuk-input--width-20",
-            value: data['create-job']['phone-number']
+            value: data['createJob']['phone-number']
           }) }}
 
         {% endset %}
 
         {{ govukRadios({
-          idPrefix: "create-job[provide-phone-number]",
-          name: "create-job[provide-phone-number]",
+          idPrefix: "createJob[provide-phone-number]",
+          name: "createJob[provide-phone-number]",
           fieldset: {
             legend: {
               text: 'Do you want to give a contact phone number?',
@@ -98,7 +98,7 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("['create-job']['provide-phone-number']", "Yes"),
+              checked: checked("['createJob']['provide-phone-number']", "Yes"),
               conditional: {
                 html: phone
               }
@@ -106,7 +106,7 @@
             {
               value: "No",
               text: "No",
-              checked: checked("['create-job']['provide-phone-number']", "No")
+              checked: checked("['createJob']['provide-phone-number']", "No")
             }
           ]
         }) }}

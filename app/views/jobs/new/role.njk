@@ -25,8 +25,8 @@
 
       <form action="/jobs/new/title">
         {{ govukRadios({
-          idPrefix: "create-job[role]",
-          name: "create-job[role]",
+          idPrefix: "createJob[role]",
+          name: "createJob[role]",
           fieldset: {
             legend: {
               html: h1,
@@ -37,32 +37,32 @@
             {
               value: 'Teacher',
               text: 'Teacher',
-              checked: checked("['create-job']['role']", "Teacher")
+              checked: checked("['createJob']['role']", "Teacher")
             },
             {
               value: 'Headteacher, deputy or assistant headteacher',
               text: 'Headteacher, deputy or assistant headteacher',
-              checked: checked("['create-job']['role']", "Headteacher, deputy or assistant headteacher")
+              checked: checked("['createJob']['role']", "Headteacher, deputy or assistant headteacher")
             },
             {
               value: 'Head of year, department, curriculum or phase',
               text: 'Head of year, department, curriculum or phase',
-              checked: checked("['create-job']['role']", "Head of year, department, curriculum or phase")
+              checked: checked("['createJob']['role']", "Head of year, department, curriculum or phase")
             },
             {
               value: 'Teaching assistant',
               text: 'Teaching assistant',
-              checked: checked("['create-job']['role']", "Teaching assistant")
+              checked: checked("['createJob']['role']", "Teaching assistant")
             },
             {
               value: 'Learning support, cover supervisor or tutor',
               text: 'Learning support, cover supervisor or tutor',
-              checked: checked("['create-job']['role']", "Learning support, cover supervisor or tutor")
+              checked: checked("['createJob']['role']", "Learning support, cover supervisor or tutor")
             },
             {
               value: 'SENDCo (special educational needs and disabilities coordinator)',
               text: 'SENDCo (special educational needs and disabilities coordinator)',
-              checked: checked("['create-job']['role']", "SENDCo (special educational needs and disabilities coordinator)")
+              checked: checked("['createJob']['role']", "SENDCo (special educational needs and disabilities coordinator)")
             }
           ]
         }) }}

@@ -20,6 +20,11 @@ const generateUsers = () => {
 
   users.push(generateUser({
     username: 'anne@example.com',
+    organisation: organisations[0]
+  }))
+
+  users.push(generateUser({
+    username: 'susy@example.com',
     organisation: organisations[1]
   }))
 

@@ -25,8 +25,8 @@
 
       {% set emailAddress %}
         {{ govukInput({
-          id: "create-job[application-email-address--another]",
-          name: "create-job[application-email-address--another]",
+          id: "createJob[application-email-address--another]",
+          name: "createJob[application-email-address--another]",
           label: {
             text: "Email address",
             classes: 'govuk-label--s'
@@ -34,15 +34,15 @@
           type: "email",
           autocomplete: "email",
           spellcheck: false,
-          value: data['create-job']['application-email-address--another']
+          value: data['createJob']['application-email-address--another']
         }) }}
       {% endset %}
 
       <form action="/jobs/new/school-visits">
 
         {{ govukFileUpload({
-          id: "create-job[application-form]",
-          name: "create-job[application-form]",
+          id: "createJob[application-form]",
+          name: "createJob[application-form]",
           label: {
             text: "Upload application form",
             classes: 'govuk-label--m'
@@ -53,8 +53,8 @@
         }) }}
 
         {{ govukRadios({
-          idPrefix: "create-job[application-email-address]",
-          name: "create-job[application-email-address]",
+          idPrefix: "createJob[application-email-address]",
+          name: "createJob[application-email-address]",
           fieldset: {
             legend: {
               html: 'Email address to receive applications',
@@ -65,12 +65,12 @@
             {
               value: "existing.email@example.com",
               text: "existing.email@example.com",
-              checked: checked("['create-job']['application-email-address']", "existing.email@example.com")
+              checked: checked("['createJob']['application-email-address']", "existing.email@example.com")
             },
             {
               value: "Another email address",
               text: "Another email address",
-              checked: checked("['create-job']['application-email-address']", "Another email address"),
+              checked: checked("['createJob']['application-email-address']", "Another email address"),
               conditional: {
                 html: emailAddress
               }

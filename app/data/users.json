@@ -3,11 +3,30 @@
     "username": "anne@example.com",
     "password": "tv",
     "organisation": {
+      "type": "school",
+      "name": "Boom Primary School",
+      "locations": [
+        {
+          "id": "7711b472-09a7-4c1a-9868-c2b653903e9e",
+          "name": "Boom Primary School",
+          "address": {
+            "address1": "123 Main Street",
+            "town": "Some town",
+            "postcode": "AB1 2CD"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "username": "susy@example.com",
+    "password": "tv",
+    "organisation": {
       "type": "mat",
       "name": "Boom Academy Trust",
       "locations": [
         {
-          "id": "d525ab3e-3de2-4a2e-9fd1-aa31debb10b7",
+          "id": "33431c8d-4e01-48c7-8b23-8e119a663da6",
           "name": "Boom Primary School",
           "address": {
             "address1": "123 Main Street",
@@ -16,7 +35,7 @@
           }
         },
         {
-          "id": "5bea9e47-5c37-4f87-b7b5-b1e5202792cf",
+          "id": "eda15272-a4af-4c75-8fe0-c63f47e7b45d",
           "name": "Town Primary School",
           "address": {
             "address1": "321 Main Street",

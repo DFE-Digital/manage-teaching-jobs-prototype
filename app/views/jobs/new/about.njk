@@ -26,8 +26,8 @@
       <form action="/jobs/new/upload">
 
         {{ govukRadios({
-          idPrefix: "create-job[suitability]",
-          name: "create-job[suitability]",
+          idPrefix: "createJob[suitability]",
+          name: "createJob[suitability]",
           fieldset: {
             legend: {
               text: "Suitability for early career teachers (ECT)",
@@ -54,8 +54,8 @@
         }) }}
 
         {# {{ govukRadios({
-          idPrefix: "create-job[suitable-1]",
-          name: "create-job[suitable-1]",
+          idPrefix: "createJob[suitable-1]",
+          name: "createJob[suitable-1]",
           fieldset: {
             legend: {
               html: 'Would you accept an early career teacher (ECT)?',
@@ -75,8 +75,8 @@
         }) }} #}
 
         {# {{ govukCheckboxes({
-          idPrefix: "create-job[suitable-1]",
-          name: "create-job[suitable-1]",
+          idPrefix: "createJob[suitable-1]",
+          name: "createJob[suitable-1]",
           fieldset: {
             legend: {
               html: 'What experience would you accept for the role?',
@@ -103,8 +103,8 @@
         }) }} #}
 
         {{ govukCharacterCount({
-          id: "create-job[skills]",
-          name: "create-job[skills]",
+          id: "createJob[skills]",
+          name: "createJob[skills]",
           label: {
             html: 'What skills and experience are you looking for?',
             classes: 'govuk-label--m'
@@ -113,8 +113,8 @@
         }) }}
 
         {{ govukCharacterCount({
-          id: "create-job[benefits]",
-          name: "create-job[benefits]",
+          id: "createJob[benefits]",
+          name: "createJob[benefits]",
           label: {
             html: 'What does your school offer?',
             classes: 'govuk-label--m'
@@ -124,8 +124,8 @@
 
         {% set safeguardingNoticeDetails %}
           {{ govukCharacterCount({
-            id: "create-job[safeguarding-notice-details]",
-            name: "create-job[safeguarding-notice-details]",
+            id: "createJob[safeguarding-notice-details]",
+            name: "createJob[safeguarding-notice-details]",
             label: {
               text: "Information about your commitment to safeguarding",
               classes: "govuk-label--s"
@@ -135,8 +135,8 @@
         {% endset %}
 
         {{ govukRadios({
-          idPrefix: "create-job[safeguarding-notice]",
-          name: "create-job[safeguarding-notice]",
+          idPrefix: "createJob[safeguarding-notice]",
+          name: "createJob[safeguarding-notice]",
           fieldset: {
             legend: {
               text: "Do you want to give information about your commitment to safeguarding?",
@@ -160,8 +160,8 @@
 
         {% set otherInformationDetails %}
           {{ govukCharacterCount({
-            id: "create-job[other-information-details]",
-            name: "create-job[other-information-details]",
+            id: "createJob[other-information-details]",
+            name: "createJob[other-information-details]",
             label: {
               text: "Further details about the role",
               classes: "govuk-label--s"
@@ -171,8 +171,8 @@
         {% endset %}
 
         {{ govukRadios({
-          idPrefix: "create-job[other-information]",
-          name: "create-job[other-information]",
+          idPrefix: "createJob[other-information]",
+          name: "createJob[other-information]",
           fieldset: {
             legend: {
               text: "Do you want to add further details about the role?",

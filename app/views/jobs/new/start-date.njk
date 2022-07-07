@@ -25,8 +25,8 @@
 
         {% set dateHtml %}
           {{ govukDateInput({
-            id: "create-job[start-date--specific]",
-            name: "create-job[start-date--specific]",
+            id: "createJob[start-date--specific]",
+            name: "createJob[start-date--specific]",
             fieldset: {
               legend: {
                 text: "Date",
@@ -37,28 +37,28 @@
               text: "For example, 31 3 2023"
             },
             items: [{
-              name: "create-job[start-date--specific][day]",
+              name: "createJob[start-date--specific][day]",
               label: "Day",
               classes: "govuk-input--width-2",
-              value: data['create-job']['start-date--specific'].day
+              value: data['createJob']['start-date--specific'].day
             }, {
-              name: "create-job[start-date--specific][month]",
+              name: "createJob[start-date--specific][month]",
               label: "Month",
               classes: "govuk-input--width-2",
-              value: data['create-job']['start-date--specific'].month
+              value: data['createJob']['start-date--specific'].month
             }, {
-              name: "create-job[start-date--specific][year]",
+              name: "createJob[start-date--specific][year]",
               label: "Year",
               classes: "govuk-input--width-4",
-              value: data['create-job']['start-date--specific'].year
+              value: data['createJob']['start-date--specific'].year
             }]
           }) }}
         {% endset %}
 
         {% set rangeHtml %}
           {{ govukDateInput({
-            id: "create-job[start-date--from]",
-            name: "create-job[start-date--from]",
+            id: "createJob[start-date--from]",
+            name: "createJob[start-date--from]",
             fieldset: {
               legend: {
                 text: "Date from",
@@ -69,26 +69,26 @@
               text: "For example, 31 3 2023"
             },
             items: [{
-              name: "create-job[start-date--from][day]",
+              name: "createJob[start-date--from][day]",
               label: "Day",
               classes: "govuk-input--width-2",
-              value: data['create-job']['start-date--from'].day
+              value: data['createJob']['start-date--from'].day
             }, {
-              name: "create-job[start-date--from][month]",
+              name: "createJob[start-date--from][month]",
               label: "Month",
               classes: "govuk-input--width-2",
-              value: data['create-job']['start-date--from'].month
+              value: data['createJob']['start-date--from'].month
             }, {
-              name: "create-job[start-date--from][year]",
+              name: "createJob[start-date--from][year]",
               label: "Year",
               classes: "govuk-input--width-4",
-              value: data['create-job']['start-date--from'].year
+              value: data['createJob']['start-date--from'].year
             }]
           }) }}
 
           {{ govukDateInput({
-            id: "create-job[start-date--to]",
-            name: "create-job[start-date--to]",
+            id: "createJob[start-date--to]",
+            name: "createJob[start-date--to]",
             fieldset: {
               legend: {
                 text: "Date to",
@@ -99,28 +99,28 @@
               text: "For example, 31 4 2023"
             },
             items: [{
-              name: "create-job[start-date--to][day]",
+              name: "createJob[start-date--to][day]",
               label: "Day",
               classes: "govuk-input--width-2",
-              value: data['create-job']['start-date--to'].day
+              value: data['createJob']['start-date--to'].day
             }, {
-              name: "create-job[start-date--to][month]",
+              name: "createJob[start-date--to][month]",
               label: "Month",
               classes: "govuk-input--width-2",
-              value: data['create-job']['start-date--to'].month
+              value: data['createJob']['start-date--to'].month
             }, {
-              name: "create-job[start-date--to][year]",
+              name: "createJob[start-date--to][year]",
               label: "Year",
               classes: "govuk-input--width-4",
-              value: data['create-job']['start-date--to'].year
+              value: data['createJob']['start-date--to'].year
             }]
           }) }}
         {% endset %}
 
         {% set otherHtml %}
           {{ govukInput({
-            id: "create-job[start-date--other]",
-            name: "create-job[start-date--other]",
+            id: "createJob[start-date--other]",
+            name: "createJob[start-date--other]",
             label: {
               text: "Details",
               classes: "govuk-label--s"
@@ -128,15 +128,15 @@
             hint: {
               text: "For example ‘Easter term’"
             },
-            value: data['create-job']['start-date--other']
+            value: data['createJob']['start-date--other']
           }) }}
         {% endset %}
 
 
       <form action="/jobs/new/method">
         {{ govukRadios({
-          idPrefix: "create-job[start-date]",
-          name: "create-job[start-date]",
+          idPrefix: "createJob[start-date]",
+          name: "createJob[start-date]",
           fieldset: {
             legend: {
               html: h1,
@@ -147,7 +147,7 @@
             {
               value: "Specific date",
               text: "Specific date",
-              checked: checked("['create-job']['start-date']", "Specific date"),
+              checked: checked("['createJob']['start-date']", "Specific date"),
               conditional: {
                 html: dateHtml
               }
@@ -155,7 +155,7 @@
             {
               value: "Date range",
               text: "Date range",
-              checked: checked("['create-job']['start-date']", "Date range"),
+              checked: checked("['createJob']['start-date']", "Date range"),
               conditional: {
                 html: rangeHtml
               }
@@ -163,7 +163,7 @@
             {
               value: "Other",
               text: "Other",
-              checked: checked("['create-job']['start-date']", "Other"),
+              checked: checked("['createJob']['start-date']", "Other"),
               conditional: {
                 html: otherHtml
               }

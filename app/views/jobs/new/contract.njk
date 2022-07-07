@@ -24,33 +24,33 @@
 
       {% set fixed %}
         {{ govukInput({
-          id: "create-job[fixed--length]",
-          name: "create-job[fixed--length]",
+          id: "createJob[fixed--length]",
+          name: "createJob[fixed--length]",
           label: {
             text: "Length of contract",
             classes: "govuk-label--s"
           },
-          value: data['create-job']['fixed--length']
+          value: data['createJob']['fixed--length']
         }) }}
       {% endset %}
 
       {% set maternity %}
         {{ govukInput({
-          id: "create-job[maternity--length]",
-          name: "create-job[maternity--length]",
+          id: "createJob[maternity--length]",
+          name: "createJob[maternity--length]",
           label: {
             text: "Length of contract",
             classes: "govuk-label--s"
           },
-          value: data['create-job']['maternity--length']
+          value: data['createJob']['maternity--length']
         }) }}
       {% endset %}
 
       <form action="/jobs/new/working-patterns">
 
         {{ govukRadios({
-          idPrefix: "create-job[contract]",
-          name: "create-job[contract]",
+          idPrefix: "createJob[contract]",
+          name: "createJob[contract]",
           fieldset: {
             legend: {
               html: h1,
@@ -62,12 +62,12 @@
             {
               value: "Permanent",
               text: "Permanent",
-              checked: checked("['create-job']['contract']", "Permanent")
+              checked: checked("['createJob']['contract']", "Permanent")
             },
             {
               value: "Fixed term",
               text: "Fixed term",
-              checked: checked("['create-job']['contract']", "Fixed term"),
+              checked: checked("['createJob']['contract']", "Fixed term"),
               conditional: {
                 html: fixed
               }
@@ -75,7 +75,7 @@
             {
               value: "Maternity or parental leave cover",
               text: "Maternity or parental leave cover",
-              checked: checked("['create-job']['contract']", "Maternity or parental leave cover"),
+              checked: checked("['createJob']['contract']", "Maternity or parental leave cover"),
               conditional: {
                 html: maternity
               }

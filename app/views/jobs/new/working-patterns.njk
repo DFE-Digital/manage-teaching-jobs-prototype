@@ -32,15 +32,15 @@
 
       {% set partTimeDetails %}
         {{ govukCharacterCount({
-          name: "create-job[partTimeDetails]",
-          id: "create-job[partTimeDetails]",
+          name: "createJob[partTimeDetails]",
+          id: "createJob[partTimeDetails]",
           maxwords: 50,
           label: {
             text: "Details",
             classes: 'govuk-label--s'
           },
-          value: data['create-job']['partTimeDetails'],
-          errorMessage: inlineErrors['create-job'].partTimeDetails
+          value: data['createJob']['partTimeDetails'],
+          errorMessage: inlineErrors['createJob'].partTimeDetails
         }) }}
       {% endset %}
 
@@ -49,8 +49,8 @@
         {{data | log}}
 
         {{ govukCheckboxes({
-          idPrefix: "create-job[workingPatterns]",
-          name: "create-job[workingPatterns]",
+          idPrefix: "createJob[workingPatterns]",
+          name: "createJob[workingPatterns]",
           fieldset: {
             legend: {
               html: h1,
@@ -58,12 +58,12 @@
               classes: "govuk-fieldset__legend--l"
             }
           },
-          errorMessage: inlineErrors['create-job'].workingPatterns,
+          errorMessage: inlineErrors['createJob'].workingPatterns,
           items: [
             {
               value: "Full time",
               text: "Full time",
-              checked: checked("['create-job']['workingPatterns']", "Full time"),
+              checked: checked("['createJob']['workingPatterns']", "Full time"),
               hint: {
                 text: 'Usually 35 hours or more per week, Monday to Friday'
               }
@@ -71,7 +71,7 @@
             {
               value: "Part time",
               text: "Part time",
-              checked: checked("['create-job']['workingPatterns']", "Part time"),
+              checked: checked("['createJob']['workingPatterns']", "Part time"),
               conditional: {
                 html: partTimeDetails
               }

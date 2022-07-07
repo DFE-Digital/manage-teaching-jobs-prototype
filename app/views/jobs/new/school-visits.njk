@@ -25,8 +25,8 @@
       <form action="/jobs/new/contact-details" method="post">
 
         {{ govukRadios({
-          idPrefix: "create-job[school-visits]",
-          name: "create-job[school-visits]",
+          idPrefix: "createJob[school-visits]",
+          name: "createJob[school-visits]",
           fieldset: {
             legend: {
               html: h1,
@@ -38,12 +38,12 @@
             {
               value: "Yes",
               text: "Yes",
-              checked: checked("['create-job']['school-visits']", "Yes")
+              checked: checked("['createJob']['school-visits']", "Yes")
             },
             {
               value: "No",
               text: "No",
-              checked: checked("['create-job']['school-visits']", "No")
+              checked: checked("['createJob']['school-visits']", "No")
             }
           ]
         }) }}

@@ -17,40 +17,40 @@
 
   {% set salary %}
     {{ govukInput({
-      id: "create-job[full-time-salary]",
-      name: "create-job[full-time-salary]",
+      id: "createJob[full-time-salary]",
+      name: "createJob[full-time-salary]",
       label: {
         text: "Full-time equivalent salary",
         classes: 'govuk-label--s'
       },
       classes: "govuk-input--width-20",
-      value: data['create-job']['full-time-salary']
+      value: data['createJob']['full-time-salary']
     }) }}
   {% endset %}
 
   {% set actualSalary %}
     {{ govukInput({
-      id: "create-job[actual-salary]",
-      name: "create-job[actual-salary]",
+      id: "createJob[actual-salary]",
+      name: "createJob[actual-salary]",
       label: {
         text: "Actual salary",
         classes: 'govuk-label--s'
       },
       classes: "govuk-input--width-20",
-      value: data['create-job']['actual-salary']
+      value: data['createJob']['actual-salary']
     }) }}
   {% endset %}
 
   {% set payscale %}
     {{ govukInput({
-      id: "create-job[pay-scale]",
-      name: "create-job[pay-scale]",
+      id: "createJob[pay-scale]",
+      name: "createJob[pay-scale]",
       label: {
         text: "Pay scale",
         classes: 'govuk-label--s'
       },
       classes: "govuk-input--width-20",
-      value: data['create-job']['pay-scale']
+      value: data['createJob']['pay-scale']
     }) }}
   {% endset %}
 
@@ -66,8 +66,8 @@
 
       <form action="/jobs/new/listing-dates">
           {{ govukCheckboxes({
-          idPrefix: "create-job[salary-details]",
-          name: "create-job[salary-details]",
+          idPrefix: "createJob[salary-details]",
+          name: "createJob[salary-details]",
           fieldset: {
             legend: {
               html: h1,
@@ -82,7 +82,7 @@
             {
               value: "Full-time equivalent salary",
               text: "Full-time equivalent salary",
-              checked: checked("['create-job']['salary-details']", "Full-time equivalent salary"),
+              checked: checked("['createJob']['salary-details']", "Full-time equivalent salary"),
               hint: {
                 text: 'This is what the annual salary would be for someone working full time'
               },
@@ -93,7 +93,7 @@
             {
               value: "Actual salary",
               text: "Actual salary",
-              checked: checked("['create-job']['salary-details']", "Actual salary"),
+              checked: checked("['createJob']['salary-details']", "Actual salary"),
               hint: {
                 text: 'This is the annual amount someone will take home'
               },
@@ -104,7 +104,7 @@
             {
               value: "Pay scale",
               text: "Pay scale",
-              checked: checked("['create-job']['salary-details']", "Pay scale"),
+              checked: checked("['createJob']['salary-details']", "Pay scale"),
               conditional: {
                 html: payscale
               }

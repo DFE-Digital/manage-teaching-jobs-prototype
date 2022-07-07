@@ -26,8 +26,8 @@
       <form action="/jobs/new/key-stage">
 
         {{ govukCharacterCount({
-          id: "create-job[title]",
-          name: "create-job[title]",
+          id: "createJob[title]",
+          name: "createJob[title]",
           label: {
             html: h1,
             classes: 'govuk-label--l'
@@ -37,7 +37,7 @@
           },
           rows: 1,
           maxlength: 75,
-          value: data['create-job'].title
+          value: data['createJob'].title
         }) }}
 
         {{ govukInsetText({

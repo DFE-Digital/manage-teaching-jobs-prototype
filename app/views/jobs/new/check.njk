@@ -68,13 +68,13 @@
             actions: {
               items: [
                 {
-                  href: "/jobs/new/schools",
+                  href: "/jobs/new/locations",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
               ]
             }
-          },
+          } if data.createJob.locations,
           {
             key: {
               text: "Role"
@@ -114,7 +114,7 @@
               text: "Key stages"
             },
             value: {
-              text: data['create-job']['key-stages'] | join(', ')
+              text: data['createJob']['key-stages'] | join(', ')
             },
             actions: {
               items: [
@@ -125,13 +125,13 @@
                 }
               ]
             }
-          } if data['create-job']['key-stages'],
+          } if data['createJob']['key-stages'],
           {
             key: {
               text: "Subjects"
             },
             value: {
-              text: data['create-job']['subjects'] | join(', ') or 'None'
+              text: data['createJob']['subjects'] | join(', ') or 'None'
             },
             actions: {
               items: [
@@ -142,7 +142,7 @@
                 }
               ]
             }
-          } if data['create-job']['subjects'],
+          } if data['createJob']['subjects'],
           {
             key: {
               text: "Contract type"

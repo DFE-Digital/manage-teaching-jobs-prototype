@@ -4,26 +4,29 @@ const Validator = require('../helpers/validator')
 
 module.exports = router => {
 
-  router.get('/jobs/new/schools', (req, res) => {
-
+  router.get('/jobs/new', authentication.checkIsAuthenticated, (req, res) => {
     if(req.session.user.organisation.locations.length < 2) {
       res.redirect('/jobs/new/role')
     } else {
-      let locationCheckboxes = req.session.user.organisation.locations.map(item => {
-        return {
-          text: item.name,
-          value: item.name,
-          hint: {
-            text: [item.address.address1, item.address.town, item.address.postcode].join(', ')
-          },
-          checked: req.session.data['create-job'] && req.session.data['create-job'].locations && req.session.data['create-job'].locations.find(location => location == item.name)
-        }
-      })
-
-      res.render('jobs/new/schools', {
-        locationCheckboxes
-      })
+      res.redirect('/jobs/new/locations')
     }
+  })
+
+  router.get('/jobs/new/locations', (req, res) => {
+    let locationCheckboxes = req.session.user.organisation.locations.map(item => {
+      return {
+        text: item.name,
+        value: item.name,
+        hint: {
+          text: [item.address.address1, item.address.town, item.address.postcode].join(', ')
+        },
+        checked: req.session.data['createJob'] && req.session.data['createJob'].locations && req.session.data['createJob'].locations.find(location => location == item.name)
+      }
+    })
+
+    res.render('jobs/new/locations', {
+      locationCheckboxes
+    })
   })
 
   router.get('/jobs/new/age-groups', (req, res) => {
@@ -47,7 +50,7 @@ module.exports = router => {
   })
 
   router.post('/jobs/new/method', (req, res) => {
-    if(req.body['create-job'] && req.body['create-job'].method == 'Yes') {
+    if(req.body['createJob'] && req.body['createJob'].method == 'Yes') {
       res.redirect('/jobs/new/school-visits')
     } else {
       res.redirect('/jobs/new/process')
@@ -55,7 +58,7 @@ module.exports = router => {
   })
 
   router.post('/jobs/new/process', (req, res) => {
-    if(req.body['create-job'] && req.body['create-job'].process == 'By email') {
+    if(req.body['createJob'] && req.body['createJob'].process == 'By email') {
       res.redirect('/jobs/new/form')
     } else {
       res.redirect('/jobs/new/link')
@@ -63,7 +66,7 @@ module.exports = router => {
   })
 
   router.post('/jobs/new/upload', (req, res) => {
-    if(req.body['create-job'] && req.body['create-job'].upload == 'Yes') {
+    if(req.body['createJob'] && req.body['createJob'].upload == 'Yes') {
       res.redirect('/jobs/new/file')
     } else {
       res.redirect('/jobs/new/check')
@@ -71,7 +74,7 @@ module.exports = router => {
   })
 
   router.post('/jobs/new/file-check', (req, res) => {
-    if(req.body['create-job'] && req.body['create-job']['add-another-file'] == 'Yes') {
+    if(req.body['createJob'] && req.body['createJob']['add-another-file'] == 'Yes') {
       res.redirect('/jobs/new/file')
     } else {
       res.redirect('/jobs/new/check')
@@ -82,7 +85,7 @@ module.exports = router => {
     const validator = new Validator(req, res);
 
     validator.add({
-      name: 'create-job.workingPatterns',
+      name: 'createJob.workingPatterns',
       rules: [{
         fn: (value) => {
           let valid = true;
@@ -95,9 +98,9 @@ module.exports = router => {
       }]
     });
 
-    if(req.body['create-job'].workingPatterns !== '_unchecked') {
+    if(req.body['createJob'].workingPatterns == 'Part time') {
       validator.add({
-        name: 'create-job.partTimeDetails',
+        name: 'createJob.partTimeDetails',
         rules: [{
           fn: (value) => {
             let valid = true;
