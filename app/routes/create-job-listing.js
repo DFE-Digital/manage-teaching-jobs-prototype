@@ -1,9 +1,10 @@
 
 const authentication = require('../middleware/authenticaton')
+const Validator = require('../helpers/validator')
 
 module.exports = router => {
 
-  router.get('/jobs/new/schools', authentication.checkIsAuthenticated, (req, res) => {
+  router.get('/jobs/new/schools', (req, res) => {
 
     if(req.session.user.organisation.locations.length < 2) {
       res.redirect('/jobs/new/role')
@@ -25,7 +26,7 @@ module.exports = router => {
     }
   })
 
-  router.get('/jobs/new/age-groups', authentication.checkIsAuthenticated, (req, res) => {
+  router.get('/jobs/new/age-groups', (req, res) => {
     const options = [{
       value: 'Primary',
       text: 'Primary'
@@ -69,19 +70,51 @@ module.exports = router => {
     }
   })
 
-  // router.post('/jobs/new/school-visits', (req, res) => {
-  //   if(req.body['create-job'] && req.body['create-job']['school-visits'] == 'Yes') {
-  //     res.redirect('/jobs/new/school-visits-email-address')
-  //   } else {
-  //     res.redirect('/jobs/new/email-address')
-  //   }
-  // })
-
   router.post('/jobs/new/file-check', (req, res) => {
     if(req.body['create-job'] && req.body['create-job']['add-another-file'] == 'Yes') {
       res.redirect('/jobs/new/file')
     } else {
       res.redirect('/jobs/new/check')
+    }
+  })
+
+  router.post('/jobs/new/working-patterns', (req, res) => {
+    const validator = new Validator(req, res);
+
+    validator.add({
+      name: 'create-job.workingPatterns',
+      rules: [{
+        fn: (value) => {
+          let valid = true;
+          if(value == '_unchecked') {
+            valid = false;
+          }
+          return valid;
+        },
+        message: 'Select a working pattern'
+      }]
+    });
+
+    if(req.body['create-job'].workingPatterns !== '_unchecked') {
+      validator.add({
+        name: 'create-job.partTimeDetails',
+        rules: [{
+          fn: (value) => {
+            let valid = true;
+            if(!value || value.trim().length == 0) {
+              valid = false;
+            }
+            return valid;
+          },
+          message: 'Enter part time details'
+        }]
+      })
+    }
+
+    if(validator.validate()) {
+      res.redirect('/jobs/new/salary')
+    } else {
+      res.render('jobs/new/working-patterns');
     }
   })
 

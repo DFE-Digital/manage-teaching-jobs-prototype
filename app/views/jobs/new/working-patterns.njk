@@ -16,6 +16,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {% if errorSummary.items.length %}
+        {{ govukErrorSummary({
+          titleText: 'There’s a problem',
+          errorList: errorSummary.items
+        }) }}
+      {% endif %}
+
       {% set h1 %}
         <span class="govuk-caption-l">
           {{caption}}
@@ -25,22 +32,25 @@
 
       {% set partTimeDetails %}
         {{ govukCharacterCount({
-          name: "create-job[part-time--details]",
-          id: "create-job[part-time--details]",
+          name: "create-job[partTimeDetails]",
+          id: "create-job[partTimeDetails]",
           maxwords: 50,
           label: {
             text: "Details",
             classes: 'govuk-label--s'
           },
-          value: data['create-job']['part-time--details']
+          value: data['create-job']['partTimeDetails'],
+          errorMessage: inlineErrors['create-job'].partTimeDetails
         }) }}
       {% endset %}
 
-      <form action="/jobs/new/salary">
+      <form action="/jobs/new/working-patterns" method="post">
+
+        {{data | log}}
 
         {{ govukCheckboxes({
-          idPrefix: "create-job[working-patterns]",
-          name: "create-job[working-patterns]",
+          idPrefix: "create-job[workingPatterns]",
+          name: "create-job[workingPatterns]",
           fieldset: {
             legend: {
               html: h1,
@@ -48,11 +58,12 @@
               classes: "govuk-fieldset__legend--l"
             }
           },
+          errorMessage: inlineErrors['create-job'].workingPatterns,
           items: [
             {
               value: "Full time",
               text: "Full time",
-              checked: checked("['create-job']['working-patterns']", "Full time"),
+              checked: checked("['create-job']['workingPatterns']", "Full time"),
               hint: {
                 text: 'Usually 35 hours or more per week, Monday to Friday'
               }
@@ -60,7 +71,7 @@
             {
               value: "Part time",
               text: "Part time",
-              checked: checked("['create-job']['working-patterns']", "Full time"),
+              checked: checked("['create-job']['workingPatterns']", "Part time"),
               conditional: {
                 html: partTimeDetails
               }
