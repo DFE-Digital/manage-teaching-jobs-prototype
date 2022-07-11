@@ -9,7 +9,7 @@ module.exports = router => {
     if(org.schools && org.schools.length > 1) {
       res.redirect('/jobs/new/locations')
     } else {
-      res.redirect('/jobs/new/age-group')
+      res.redirect('/jobs/new/role')
     }
   })
 
