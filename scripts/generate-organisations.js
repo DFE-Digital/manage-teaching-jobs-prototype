@@ -39,11 +39,11 @@ const generateOrg = (params = {}) => {
   }
 
   if(org.type == 'School') {
-    org.schoolType = params.schoolType || 'Primary'
+    org.schoolType = params.schoolType || 'primary'
   }
 
   if(org.type == 'MAT') {
-    org.trustType = params.trustType || 'Primary'
+    org.trustType = params.trustType || 'primary'
   }
 
   return org
