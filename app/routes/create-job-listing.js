@@ -9,7 +9,7 @@ module.exports = router => {
     if(org.schools && org.schools.length > 1) {
       res.redirect('/jobs/new/locations')
     } else {
-      res.redirect('/jobs/new/role')
+      res.redirect('/jobs/new/age-group')
     }
   })
 
@@ -43,10 +43,13 @@ module.exports = router => {
     })
   })
 
-  router.get('/jobs/new/age-groups', (req, res) => {
+  router.get('/jobs/new/age-group', (req, res) => {
     const options = [{
       value: 'Primary',
       text: 'Primary'
+    }, {
+      value: 'Middle',
+      text: 'Middle'
     }, {
       value: 'Secondary',
       text: 'Secondary'
@@ -58,7 +61,7 @@ module.exports = router => {
       text: 'Multiple age groups'
     }]
 
-    res.render('jobs/new/age-groups', {
+    res.render('jobs/new/age-group', {
       options
     })
   })
