@@ -34,6 +34,16 @@ const generateOrg = (params = {}) => {
 
   if(org.type == 'MAT' || org.type == "LA") {
     org.schools = params.schools || generateSchools()
+  } else {
+
+  }
+
+  if(org.type == 'School') {
+    org.schoolType = params.schoolType || 'Primary'
+  }
+
+  if(org.type == 'MAT') {
+    org.trustType = params.trustType || 'Primary'
   }
 
   return org
@@ -64,17 +74,25 @@ const generateOrgs = () => {
 
   orgs.push(generateOrg({
     type: 'School',
-    name: 'Boom School'
+    name: 'Courtland Primary School',
+    schoolType: 'primary'
+  }))
+
+  orgs.push(generateOrg({
+    type: 'School',
+    name: 'Bushey Meads Secondary School',
+    schoolType: 'secondary'
   }))
 
   orgs.push(generateOrg({
     type: 'MAT',
-    name: 'Boom Academy'
+    name: 'Royal Academy Trust',
+    trustType: 'primary'
   }))
 
   orgs.push(generateOrg({
     type: 'LA',
-    name: 'Boom Local Authority'
+    name: 'Barnet Local Authority'
   }))
 
   return orgs

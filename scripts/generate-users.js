@@ -19,18 +19,23 @@ const generateUsers = () => {
   const users = []
 
   users.push(generateUser({
-    username: 'anne@boomschool.com',
-    organisation: organisations.find(org => org.name == 'Boom School')
+    username: 'peter@courtland.sch.uk',
+    organisation: organisations.find(org => org.name == 'Courtland Primary School')
   }))
 
   users.push(generateUser({
-    username: 'susy@boomacademy.com',
-    organisation: organisations.find(org => org.name == 'Boom Academy')
+    username: 'susy@busheymeads.sch.uk',
+    organisation: organisations.find(org => org.name == 'Bushey Meads Secondary School')
   }))
 
   users.push(generateUser({
-    username: 'samsusy@boomla.com',
-    organisation: organisations.find(org => org.name == 'Boom Local Authority')
+    username: 'alison@royalacademytrust.uk',
+    organisation: organisations.find(org => org.name == 'Royal Academy Trust')
+  }))
+
+  users.push(generateUser({
+    username: 'laura@barnet.la.uk',
+    organisation: organisations.find(org => org.name == 'Barnet Local Authority')
   }))
 
   return users

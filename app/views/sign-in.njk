@@ -12,7 +12,23 @@
 
       <form method="post">
 
-        {{ govukInput({
+        {{ govukRadios({
+          idPrefix: "emailAddress",
+          name: "emailAddress",
+          fieldset: {
+            legend: {
+              text: "User profiles",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: options
+        }) }}
+
+
+
+
+
+        {# {{ govukInput({
           label: {
             text: "Email address",
             classes: "govuk-label--m"
@@ -32,7 +48,7 @@
             classes: "govuk-label--m"
           },
           type: "password"
-        }) }}
+        }) }} #}
 
 
 

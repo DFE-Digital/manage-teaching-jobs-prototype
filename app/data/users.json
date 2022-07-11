@@ -1,23 +1,38 @@
 [
   {
-    "username": "anne@boomschool.com",
+    "username": "peter@courtland.sch.uk",
     "password": "tv",
     "organisation": {
       "type": "School",
-      "name": "Boom School",
+      "name": "Courtland Primary School",
       "address": {
         "address1": "123 Main Street",
         "town": "Some town",
         "postcode": "AB1 2CD"
-      }
+      },
+      "schoolType": "primary"
     }
   },
   {
-    "username": "susy@boomacademy.com",
+    "username": "susy@busheymeads.sch.uk",
+    "password": "tv",
+    "organisation": {
+      "type": "School",
+      "name": "Bushey Meads Secondary School",
+      "address": {
+        "address1": "123 Main Street",
+        "town": "Some town",
+        "postcode": "AB1 2CD"
+      },
+      "schoolType": "secondary"
+    }
+  },
+  {
+    "username": "alison@royalacademytrust.uk",
     "password": "tv",
     "organisation": {
       "type": "MAT",
-      "name": "Boom Academy",
+      "name": "Royal Academy Trust",
       "address": {
         "address1": "123 Main Street",
         "town": "Some town",
@@ -25,7 +40,7 @@
       },
       "schools": [
         {
-          "name": "Simonis LLC School",
+          "name": "Hartmann - West School",
           "address": {
             "address1": "1 Owl Way",
             "town": "London",
@@ -33,7 +48,7 @@
           }
         },
         {
-          "name": "Hettinger - Boyer School",
+          "name": "Pfannerstill - Bergnaum School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -41,22 +56,23 @@
           }
         },
         {
-          "name": "Feil Inc School",
+          "name": "Lockman - Hintz School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
             "postcode": "N19 4PT"
           }
         }
-      ]
+      ],
+      "trustType": "primary"
     }
   },
   {
-    "username": "samsusy@boomla.com",
+    "username": "laura@barnet.la.uk",
     "password": "tv",
     "organisation": {
       "type": "LA",
-      "name": "Boom Local Authority",
+      "name": "Barnet Local Authority",
       "address": {
         "address1": "123 Main Street",
         "town": "Some town",
@@ -64,7 +80,7 @@
       },
       "schools": [
         {
-          "name": "West Group School",
+          "name": "Reilly LLC School",
           "address": {
             "address1": "1 Owl Way",
             "town": "London",
@@ -72,7 +88,7 @@
           }
         },
         {
-          "name": "Beier, MacGyver and Smith School",
+          "name": "Klein - MacGyver School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -80,7 +96,7 @@
           }
         },
         {
-          "name": "Stamm Inc School",
+          "name": "Okuneva, Walsh and Batz School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",

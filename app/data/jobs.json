@@ -1,25 +1,51 @@
 [
   {
-    "id": "201947",
+    "id": "850898",
     "organisation": {
-      "type": "School",
-      "name": "Boom School",
+      "type": "LA",
+      "name": "Barnet Local Authority",
       "address": {
         "address1": "123 Main Street",
         "town": "Some town",
         "postcode": "AB1 2CD"
-      }
+      },
+      "schools": [
+        {
+          "name": "Reilly LLC School",
+          "address": {
+            "address1": "1 Owl Way",
+            "town": "London",
+            "postcode": "W9 4PT"
+          }
+        },
+        {
+          "name": "Klein - MacGyver School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          }
+        },
+        {
+          "name": "Okuneva, Walsh and Batz School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          }
+        }
+      ]
     },
-    "location": "c",
-    "role": "Leadership",
+    "location": "a",
+    "role": "Teacher",
     "isRoleSuitableForEarlyCareeerTeachers": "Yes",
     "roleHasSendResponsibilities": "No",
-    "title": "Teacher of computing",
-    "contractType": "Fixed term",
-    "subjects": "Politics",
-    "workingPatterns": "Full time",
-    "workingPatternDetails": "20 hours per week",
-    "salary": "£20,852 (pro rata)",
-    "additionalAllowances": "TLR"
+    "title": "Teacher of religious education",
+    "contractType": "Maternity or parental leave cover",
+    "subjects": "Statistics",
+    "workingPatterns": "Flexible",
+    "workingPatternDetails": null,
+    "salary": "Main pay range 1 to Main pay range 6, £25,714 to £36,961",
+    "additionalAllowances": null
   }
 ]
