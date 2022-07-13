@@ -25,15 +25,13 @@
 
       <form action="/jobs/new/contract">
 
-        {{ govukCheckboxes({
-          idPrefix: "createJob[subjects]",
-          name: "createJob[subjects]",
-          fieldset: {
-            legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
+        {{ appCheckboxFilter({
+          idPrefix: "subjects",
+          name: "subjects",
+          legend: {
+            html: h1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
           },
           items: [
             {
@@ -254,11 +252,8 @@
               value: "Statistics",
               text: "Statistics",
               checked: checked("['createJob']['subjects']", "Statistics")
-            }
-          ]
+            }]
         }) }}
-
-        {# <p class="govuk-!-margin-bottom-7"><a href="/jobs/new/contract">Continue without adding a subject</a></p> #}
 
         {{ govukButton({
           text: "Save and continue"
@@ -276,4 +271,15 @@
     </div>
   </div>
 
+{% endblock %}
+
+{% block pageScripts %}
+  <script type="text/javascript">
+    new AppFrontend.CheckboxFilter({
+      container: $('#subjects'),
+      textBox: {
+        label: 'Search for subject'
+      }
+    })
+  </script>
 {% endblock %}
