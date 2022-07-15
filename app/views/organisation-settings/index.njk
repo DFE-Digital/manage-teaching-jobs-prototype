@@ -1,0 +1,107 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Organisation settings' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <p><a href="#">View school page</a></p>
+
+      {% set address %}
+        {% for part, value in user.organisation.address %}
+          {{value}}{% if not loop.last %}, {% endif %}
+        {% endfor %}
+      {% endset %}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: user.organisation.name
+            }
+          },
+          {
+            key: {
+              text: "URN (Unique reference number)"
+            },
+            value: {
+              text: "1234567"
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              text: address
+            }
+          },
+          {
+            key: {
+              text: "Age group"
+            },
+            value: {
+              text: "Item value"
+            }
+          },
+          {
+            key: {
+              text: "Type"
+            },
+            value: {
+              text: "Item value"
+            }
+          },
+          {
+            key: {
+              text: "Website"
+            },
+            value: {
+              html: '<a href="https://www.busheymeads.sch.uk">https://www.busheymeads.sch.uk (opens in new tab)</a>'
+            },
+            actions: {
+              items: [
+                {
+                  href: "Item URL",
+                  text: "Change",
+                  visuallyHiddenText: "Item label"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Description"
+            },
+            value: {
+              html: 'Our school is the best.'
+            },
+            actions: {
+              items: [
+                {
+                  href: "Item URL",
+                  text: "Change",
+                  visuallyHiddenText: "Item label"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

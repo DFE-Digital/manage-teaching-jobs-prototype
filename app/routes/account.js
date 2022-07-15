@@ -1,4 +1,5 @@
 const users = require('../data/users.json')
+const organisations = require('../data/orgs.json')
 
 module.exports = router => {
 
@@ -35,7 +36,8 @@ module.exports = router => {
   router.post('/account/new', (req, res) => {
     res.locals.user = req.session.user = {
       username: req.body.emailAddress,
-      password: req.body.password
+      password: req.body.password,
+      organisation: organisations.find(org => org.name == 'Bushey Meads Secondary School')
     }
     res.redirect('/account/new/confirmation')
   })
