@@ -25,8 +25,8 @@
 
       {% set specificDate %}
         {{ govukDateInput({
-          id: "createJob[publish-date--another-date]",
-          name: "createJob[publish-another-date]",
+          id: "createJob[publishDate--anotherDate]",
+          name: "createJob[publish--anotherDate]",
           fieldset: {
             legend: {
               text: "Another date",
@@ -37,20 +37,20 @@
             text: "For example, 31 3 2023"
           },
           items: [{
-            name: "createJob[publish-date--another-date][day]",
+            name: "createJob[publishDate--anotherDate][day]",
             label: "Day",
             classes: "govuk-input--width-2",
-            value: data['createJob']['publish-date--another-date'].day
+            value: data['createJob']['publishDate--anotherDate'].day
           }, {
-            name: "createJob[publish-date--another-date][month]",
+            name: "createJob[publishDate--anotherDate][month]",
             label: "Month",
             classes: "govuk-input--width-2",
-            value: data['createJob']['publish-date--another-date'].month
+            value: data['createJob']['publishDate--anotherDate'].month
           }, {
-            name: "createJob[publish-date--another-date][year]",
+            name: "createJob[publishDate--anotherDate][year]",
             label: "Year",
             classes: "govuk-input--width-4",
-            value: data['createJob']['publish-date--another-date'].year
+            value: data['createJob']['publishDate--anotherDate'].year
           }]
         }) }}
       {% endset %}
@@ -74,8 +74,8 @@
 
       <form action="/jobs/new/start-date">
         {{ govukRadios({
-          idPrefix: "createJob[publish-date]",
-          name: "createJob[publish-date]",
+          idPrefix: "createJob[publishDate]",
+          name: "createJob[publishDate]",
           fieldset: {
             legend: {
               text: "Publish date",
@@ -86,17 +86,17 @@
             {
               value: "Today (6 June 2022)",
               text: "Today (6 June 2022)",
-              checked: checked("['createJob']['publish-date']", "Today (6 June 2022)")
+              checked: checked("['createJob']['publishDate']", "Today (6 June 2022)")
             },
             {
               value: "Tomorrow (7 June 2022)",
               text: "Tomorrow (7 June 2022)",
-              checked: checked("['createJob']['publish-date']", "Tomorrow (7 June 2022)")
+              checked: checked("['createJob']['publishDate']", "Tomorrow (7 June 2022)")
             },
             {
               value: "Another date",
               text: "Another date",
-              checked: checked("['createJob']['publish-date']", "Another date"),
+              checked: checked("['createJob']['publishDate']", "Another date"),
               conditional: {
                 html: specificDate
               }
