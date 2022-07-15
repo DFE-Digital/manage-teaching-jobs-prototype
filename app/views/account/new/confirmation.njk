@@ -1,0 +1,36 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Account created' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: title
+      }) }}
+
+      <p>You can change your details in <a href="/account">your account</a>.</p>
+
+      <h2 class="govuk-heading-m">
+        Next steps
+      </h2>
+
+      <p>You can now:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="/jobs/new">manage job listings</a>
+        </li>
+        <li>
+          <a href="#">add information about your school</a>
+        </li>
+        <li>
+          <a href="#">view jobseeker profiles</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+{% endblock %}

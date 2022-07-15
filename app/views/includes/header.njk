@@ -1,6 +1,6 @@
 {% if not user %}
 {% set navigationItems = [{
-    href: "/create-account",
+    href: "/account/new",
     text: "Create account"
   }, {
     href: "/sign-in",
@@ -11,24 +11,24 @@
   {% set navigationItems = [
     {
       href: "#",
-      text: "Settings",
+      text: "Organisation settings",
       active: primaryNavId == 'org-settings'
     },
     {
       href: "#",
       text: "Notifications",
       active: primaryNavId == 'notifications'
-    },
+    } if 1 == 2,
     {
       href: "#",
       text: "Guides",
       active: primaryNavId == 'notifications'
-    },
+    } if 1 == 2,
     {
       href: "/account",
-      text: "Account",
+      text: "Your account",
       active: primaryNavId == 'account'
-    } if 1 == 2, {
+    }, {
       href: "/sign-out",
       text: "Sign out"
     }]

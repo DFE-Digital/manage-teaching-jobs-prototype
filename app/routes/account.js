@@ -32,12 +32,12 @@ module.exports = router => {
     res.redirect('/')
   })
 
-  router.post('/create-account', (req, res) => {
+  router.post('/account/new', (req, res) => {
     res.locals.user = req.session.user = {
       username: req.body.emailAddress,
       password: req.body.password
     }
-    res.redirect('/create-account/confirmation')
+    res.redirect('/account/new/confirmation')
   })
 
 }

@@ -1,14 +1,17 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'Sign in' %}
+{% set heading = 'User profile' %}
+
+{% set title = heading + ' ' + caption %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">
-        {{title}}
-      </h1>
+
+      {% set h1 %}
+        {{heading}}
+      {% endset %}
 
       <form method="post">
 
@@ -17,8 +20,9 @@
           name: "emailAddress",
           fieldset: {
             legend: {
-              text: "User profiles",
-              classes: "govuk-fieldset__legend--m"
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
             }
           },
           items: options
