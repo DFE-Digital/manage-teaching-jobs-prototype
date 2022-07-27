@@ -69,14 +69,12 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {# {% set h1 %} #}
-        <h1 class="govuk-heading-l">
-          <span class="govuk-caption-l">
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">
           {{caption}}
         </span>
         {{heading}}
-        </h1>
-      {# {% endset %} #}
+      </h1>
 
       <form action="/jobs/new/listing-dates">
         {{ govukCheckboxes({
@@ -131,9 +129,12 @@
           name: "blah",
           fieldset: {
             legend: {
-              text: "Do you want to include allowances like SEN (Special educational needs) or TLR (teaching and learning responsibility payments)?",
+              text: "Do you want to include additional allowances?",
               classes: "govuk-fieldset__legend--m"
             }
+          },
+          hint: {
+            text: 'For example, special educational needs (SEN) or teaching and learning responsibility (TLR) payments'
           },
           items: [
             {
