@@ -2,7 +2,7 @@
 
 {% set version = 2 %}
 
-{% set heading = 'Salary details' %}
+{% set heading = 'Salary and allowances' %}
 {% set caption = 'Create job listing - section 1 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -54,25 +54,39 @@
     }) }}
   {% endset %}
 
+  {% set allowances %}
+    {{ govukTextarea({
+      id: "createJob[allowances]",
+      name: "createJob[allowances]",
+      label: {
+        text: "Additional allowances",
+        classes: 'govuk-label--s'
+      },
+      value: data['createJob']['allowances']
+    }) }}
+  {% endset %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set h1 %}
-        <span class="govuk-caption-l">
+      {# {% set h1 %} #}
+        <h1 class="govuk-heading-l">
+          <span class="govuk-caption-l">
           {{caption}}
         </span>
         {{heading}}
-      {% endset %}
+        </h1>
+      {# {% endset %} #}
 
       <form action="/jobs/new/listing-dates">
-          {{ govukCheckboxes({
+        {{ govukCheckboxes({
           idPrefix: "createJob[salary-details]",
           name: "createJob[salary-details]",
           fieldset: {
             legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
+              html: 'Salary details',
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
             }
           },
           hint: {
@@ -111,6 +125,31 @@
             }
           ]
         }) }}
+
+        {{ govukRadios({
+          idPrefix: "blah",
+          name: "blah",
+          fieldset: {
+            legend: {
+              text: "Do you want to include allowances like SEN (Special educational needs) or TLR (teaching and learning responsibility payments)?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: allowances
+              }
+            }, {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+
 
         {{ govukButton({
           text: "Save and continue"
