@@ -30,6 +30,20 @@
         {{heading}}
       {% endset %}
 
+      {% set fullTimeDetails %}
+        {{ govukCharacterCount({
+          name: "createJob[fullTimeDetails]",
+          id: "createJob[fullTimeDetails]",
+          maxwords: 50,
+          label: {
+            text: "Details",
+            classes: 'govuk-label--s'
+          },
+          value: data['createJob']['fullTimeDetails'],
+          errorMessage: inlineErrors['createJob'].partTimeDetails
+        }) }}
+      {% endset %}
+
       {% set partTimeDetails %}
         {{ govukCharacterCount({
           name: "createJob[partTimeDetails]",
@@ -65,7 +79,11 @@
               text: "Full time",
               checked: checked("['createJob']['workingPatterns']", "Full time"),
               hint: {
-                text: 'Usually 35 hours or more per week, Monday to Friday'
+                text: 'Usually 27.5 hours or more per week, Monday to Friday (Teacher, Head, phase, SENDCo)',
+                text: 'Usually 36.5 hours or more per week, Monday to Friday (HLTA, TA, Learning support)'
+              },
+              conditional: {
+                html: fullTimeDetails
               }
             },
             {

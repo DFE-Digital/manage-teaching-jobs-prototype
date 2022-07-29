@@ -1,61 +1,46 @@
 
 {% extends "layout.njk" %}
 
-{% set heading = 'Job listing published' %}
-{% set heading = 'Job listing scheduled' %}
+{% set publishingToday = (data.createJob.publishDate == 'Today (6 June 2022)') %}
+
+{% if not publishingToday %}
+  {% set heading = 'Job listing scheduled' %}
+{% else %}
+  {% set heading = 'Job listing published' %}
+{% endif %}
+
 {% set caption = 'Create job listing' %}
 {% set title = heading + ' - ' + caption %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+    {{ govukPanel({
+      titleText: heading
+    }) }}
 
-    {% if 1 == 2 %}
-      {{ govukPanel({
-        titleText: heading
-      }) }}
-
-      <h2 class="govuk-heading-m">
-        Next steps
-      </h2>
-
-      <p>You can:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="#">view the job listing</a>
-        </li>
-        <li>
-          <a href="/jobs">manage jobs</a>
-        </li>
-      </ul>
-
-    {% else %}
-      {{ govukPanel({
-        titleText: heading
-      }) }}
-
-      <h2 class="govuk-heading-m">
-        Next steps
-      </h2>
-
+    {% if not publishingToday %}
       <p>Your job listing will be published on 7 June 2022 at 9am.</p>
-
-      <p>You can:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          <a href="#">make changes to the job listing</a> before it’s published
-        </li>
-        <li>
-          <a href="/jobs">manage jobs</a>
-        </li>
-      </ul>
     {% endif %}
 
+    <h2 class="govuk-heading-m">
+      Next steps
+    </h2>
 
-    {# <p>Your job listing has been published.</p> #}
 
+    <p>You can:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="#">view the job listing</a>
+      </li>
+      <li>
+        <a href="#">make changes to the job listing</a>
+      </li>
+      <li>
+        <a href="/jobs">manage jobs</a>
+      </li>
+    </ul>
 
     <h2 class="govuk-heading-m">
       Give feedback
