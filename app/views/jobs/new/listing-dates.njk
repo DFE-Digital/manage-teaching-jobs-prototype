@@ -156,6 +156,11 @@
               checked: checked("['createJob']['closing-time']", "12pm (midday)")
             },
             {
+              value: "5pm",
+              text: "5pm",
+              checked: checked("['createJob']['closing-time']", "5pm")
+            },
+            {
               value: "11:59pm",
               text: "11:59pm",
               checked: checked("['createJob']['closing-time']", "11:59pm")
@@ -167,7 +172,7 @@
               conditional: {
                 html: timeHtml
               }
-            }
+            } if 1 == 2
           ]
         }) }}
 
