@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Publish and closing dates' %}
-{% set caption = 'Create job listing - section 2 of 4' %}
+{% set heading = 'Setup dates and publish job listing' %}
+{# {% set caption = 'Create job listing - section 2 of 3' %} #}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -72,7 +72,7 @@
       {% endset %}
 
 
-      <form action="/jobs/new/start-date">
+      <form action="/jobs/new/confirmation">
         {{ govukRadios({
           idPrefix: "createJob[publishDate]",
           name: "createJob[publishDate]",
@@ -164,30 +164,24 @@
               value: "11:59pm",
               text: "11:59pm",
               checked: checked("['createJob']['closing-time']", "11:59pm")
-            },
-            {
-              value: "Another time",
-              text: "Another time",
-              checked: checked("['createJob']['closing-time']", "Another time"),
-              conditional: {
-                html: timeHtml
-              }
-            } if 1 == 2
+            }
           ]
         }) }}
 
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
+        <p>By publishing this job listing you agree to the <a href="#">terms and conditions</a>.</p>
 
         {{ govukButton({
+          text: "Publish job listing"
+        }) }}
+
+        {# {{ govukButton({
           text: 'Save and finish later',
           classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        }) }} #}
 
       </form>
 
-      <p><a href="#">Cancel</a></p>
+      {# <p><a href="#">Cancel</a></p> #}
 
 
 

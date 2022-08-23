@@ -2,27 +2,6 @@
 
 {% block content %}
 
-  {% set notificationBannerHtml %}
-    <h2 class="govuk-heading-m">
-      There’s a problem
-    </h2>
-    <div class="app-notification-banner-summary__body">
-      <ul class="govuk-list app-notification-banner-summary__list">
-        <li>
-          <a href="#publish-date">The publish date must be in the future</a>
-        </li>
-      </ul>
-    </div>
-
-  {% endset %}
-
-  {# {{ govukNotificationBanner({
-    html: notificationBannerHtml
-  }) }} #}
-
-  {# <span class="govuk-caption-l">
-    Job listing
-  </span> #}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
     English teacher
     {{ govukTag({

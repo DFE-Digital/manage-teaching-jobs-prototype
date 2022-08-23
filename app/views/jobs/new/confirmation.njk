@@ -1,13 +1,13 @@
 
 {% extends "layout.njk" %}
 
-{% set publishingToday = (data.createJob.publishDate == 'Today (6 June 2022)') %}
+{# {% set publishingToday = (data.createJob.publishDate == 'Today (6 June 2022)') %} #}
 
-{% if not publishingToday %}
-  {% set heading = 'Job listing scheduled' %}
-{% else %}
+{# {% if not publishingToday %} #}
+  {# {% set heading = 'Job listing scheduled' %} #}
+{# {% else %} #}
   {% set heading = 'Job listing published' %}
-{% endif %}
+{# {% endif %} #}
 
 {% set caption = 'Create job listing' %}
 {% set title = heading + ' - ' + caption %}

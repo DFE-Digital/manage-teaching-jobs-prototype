@@ -1,36 +1,30 @@
 {% extends "layout.njk" %}
 
-{# {% set scheduling = data.createJob and data.createJob.publishDate != 'Today (6 June 2022)' %} #}
-{% if scheduling %}
-  {% set buttonText = 'Publish or schedule job listing' %}
-  {% set heading = 'Check details and schedule job listing' %}
-{% else %}
-  {% set buttonText = 'Publish or schedule job listing' %}
-  {% set heading = 'Check details and publish job listing' %}
-{% endif %}
-
-{% set caption = 'Create job listing' %}
-{% set title = heading + ' - ' + caption %}
-
-{% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:history.back();"
-  }) }}
-{% endblock %}
-
 {% block content %}
+
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+    Science teacher
+    {{ govukTag({
+      text: "Draft",
+      classes: 'govuk-tag--grey'
+    }) }}
+  </h1>
+
+  <p>
+    <a href="#">Publish or schedule</a>&nbsp;&nbsp;
+    <a href="#">Preview</a>&nbsp;&nbsp;
+    {# <a href="#">Copy</a>&nbsp;&nbsp; #}
+    <a href="#">Delete</a>&nbsp;&nbsp;
+  </p>
+
+  {# <div class="app-box">
+
+  </div> #}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">
-        {{caption}}
-      </span>
-      <h1 class="govuk-heading-l">
-        {{heading}}
-      </h1>
-
-      <h2 class="govuk-heading-m">
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">
         Job details
       </h2>
 
@@ -63,7 +57,7 @@
         </ul>
       {% endset %}
 
-      {{ govukSummaryList({
+       {{ govukSummaryList({
         rows: [
           {
             key: {
@@ -81,7 +75,7 @@
                 }
               ]
             }
-          } if data.createJob.locations,
+          },
           {
             key: {
               text: "Role"
@@ -118,10 +112,10 @@
           },
           {
             key: {
-              text: "Key stages"
+              text: "Key stage"
             },
             value: {
-              text: data['createJob']['key-stages'] | join(', ')
+              text: "Key stage 1, key stage 2"
             },
             actions: {
               items: [
@@ -132,24 +126,24 @@
                 }
               ]
             }
-          } if data['createJob']['key-stages'],
+          },
           {
             key: {
               text: "Subjects"
             },
             value: {
-              text: data['createJob']['subjects'] | join(', ') or 'None'
+              text: "Maths"
             },
             actions: {
               items: [
                 {
-                  href: "/jobs/new/subjects",
+                  href: "/jobs/new/key-stage",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
               ]
             }
-          } if data['createJob']['subjects'],
+          },
           {
             key: {
               text: "Contract type"
@@ -203,40 +197,6 @@
           },
           {
             key: {
-              text: "Do you want to include additional allowances?"
-            },
-            value: {
-              html: 'Yes'
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/salary",
-                  text: "Change",
-                  visuallyHiddenText: "whether you want to include additional allowances"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Additional allowances"
-            },
-            value: {
-              html: 'TLR is available'
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/salary",
-                  text: "Change",
-                  visuallyHiddenText: "additional allowances"
-                }
-              ]
-            }
-          },
-          {
-            key: {
               text: "Start date"
             },
             value: {
@@ -280,15 +240,15 @@
           },
           {
             key: {
-              text: "How do you want to receive applications?"
+              text: "How would you like applications to be submitted?"
             },
             value: {
-              text: "By email"
+              text: "Download and send an application form"
             },
             actions: {
               items: [
                 {
-                  href: "/jobs/new/process",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -305,7 +265,7 @@
             actions: {
               items: [
                 {
-                  href: "/jobs/new/form",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -322,7 +282,7 @@
             actions: {
               items: [
                 {
-                  href: "/jobs/new/form",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -351,12 +311,12 @@
               text: "Email address"
             },
             value: {
-              text: "adam@example.com"
+              html: 'molly@example.com'
             },
             actions: {
               items: [
                 {
-                  href: "/jobs/new/contact-details",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -373,7 +333,7 @@
             actions: {
               items: [
                 {
-                  href: "/jobs/new/contact-details",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -390,7 +350,7 @@
             actions: {
               items: [
                 {
-                  href: "/jobs/new/phone",
+                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -406,7 +366,7 @@
 
       {{ govukSummaryList({
         rows: [
-         {
+          {
             key: {
               text: "Is this role suitable for an early career teacher (ECT)?"
             },
@@ -563,27 +523,6 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
           }
         ]
       }) }}
-
-      <h2 class="govuk-heading-m">
-        Preview and publish job listing
-      </h2>
-
-      <p><a href="#">Preview job listing (opens in new tab)</a>.</p>
-
-      {# <p>By publishing this job listing you agree to the <a href="#">terms and conditions</a>.</p> #}
-
-      {# <form action="/jobs/new/confirmation"> #}
-
-        {{ govukButton({
-          text: buttonText,
-          href: '/jobs/new/listing-dates'
-        }) }}
-
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
-      {# </form> #}
 
     </div>
   </div>
