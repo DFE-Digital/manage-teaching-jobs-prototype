@@ -3,22 +3,16 @@
 {% block content %}
 
   {% set notificationBannerHtml %}
-    <h2 class="govuk-heading-m">
-      There’s a problem
-    </h2>
-    <div class="app-notification-banner-summary__body">
-      <ul class="govuk-list app-notification-banner-summary__list">
-        <li>
-          <a href="#publish-date">The publish date must be in the future</a>
-        </li>
-      </ul>
-    </div>
-
+    <p class="govuk-notification-banner__heading">
+      Your job listing is incomplete.
+      <a class="govuk-notification-banner__link" href="#">Finish job listing</a>.
+    </p>
   {% endset %}
 
   {{ govukNotificationBanner({
     html: notificationBannerHtml
   }) }}
+
 
   {# <span class="govuk-caption-l">
     Job listing
@@ -32,10 +26,10 @@
   </h1>
 
   <p>
-    <a href="#">Publish or schedule</a>&nbsp;&nbsp;
+    {# <a href="#">Publish or schedule</a>&nbsp;&nbsp; #}
     {# <a href="#">Schedule</a>&nbsp;&nbsp; #}
-    <a href="#">Preview</a>&nbsp;&nbsp;
-    <a href="#">Copy</a>&nbsp;&nbsp;
+    {# <a href="#">Preview</a>&nbsp;&nbsp; #}
+    {# <a href="#">Copy</a>&nbsp;&nbsp; #}
     <a href="#">Delete</a>&nbsp;&nbsp;
   </p>
 
@@ -225,8 +219,8 @@
       </h2>
 
       {% set publishDateHtml %}
-        <div class="app-field-highlight" id="publish-date">
-          <p class="app-field-highlight__instruction">The publish date must be in the future</p>
+        <div class="app-field-highlightxxx" id="publish-date">
+          {# <p class="app-field-highlight__instruction">The publish date must be in the future</p> #}
 
           Today (6 June 2022)
         </div>
@@ -331,11 +325,16 @@
         ]
       }) }}
 
-      <p>Finish creating this job listing.</p>
+      {# <p>Finish creating this job listing.</p> #}
 
-      {{ govukButton({
-        text: "Finish job listing"
-      }) }}
+      {# <div class="app-field-highlight">
+        <p class="app-field-highlight__instruction">The job listing needs to be completed</p>
+
+        {{ govukButton({
+          text: "Finish job listing",
+          classes: 'govuk-!-margin-bottom-1'
+        }) }}
+      </div> #}
 
 
     </div>
