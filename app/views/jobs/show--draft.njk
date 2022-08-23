@@ -2,7 +2,7 @@
 
 {% block content %}
 
-  {% set notificationBannerHtml %}
+  {# {% set notificationBannerHtml %}
     <p class="govuk-notification-banner__heading">
       Your job listing is incomplete.
       <a class="govuk-notification-banner__link" href="#">Finish job listing</a>.
@@ -11,7 +11,7 @@
 
   {{ govukNotificationBanner({
     html: notificationBannerHtml
-  }) }}
+  }) }} #}
 
 
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
@@ -22,15 +22,20 @@
     }) }}
   </h1>
 
-  <p>
-    {# <a href="#">Publish or schedule</a>&nbsp;&nbsp; #}
-    {# <a href="#">Schedule</a>&nbsp;&nbsp; #}
-    {# <a href="#">Preview</a>&nbsp;&nbsp; #}
-    {# <a href="#">Copy</a>&nbsp;&nbsp; #}
-    <a href="#">Delete</a>&nbsp;&nbsp;
-  </p>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
 
+
+      <div class="app-box">
+        <p> Your job listing is incomplete - <a href="#">finish job listing</a>.</p>
+        <p>
+          <a href="#">Delete</a>&nbsp;&nbsp;
+        </p>
+      </div>
+    </div>
+  </div>
 
 
 
