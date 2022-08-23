@@ -10,16 +10,26 @@
     }) }}
   </h1>
 
+  {% set insetHtml %}
+    <p>The job listing needs to be published.</p>
+    <div class="govuk-button-group">
+      {{ govukButton({
+        text: "Publish job listing",
+        classes: 'govuk-!-margin-bottom-0 govuk-!-margin-right-3'
+      }) }}
+
+      <a href="#">Preview</a>&nbsp;&nbsp;&nbsp;
+      <a href="#">Copy</a>&nbsp;&nbsp;&nbsp;
+      <a href="#">Delete</a>&nbsp;&nbsp;&nbsp;
+    </div>
+  {% endset %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
-      <div class="app-box">
-        <p>
-          <a href="#">Publish or schedule</a>&nbsp;&nbsp;
-          <a href="#">Preview</a>&nbsp;&nbsp;
-          <a href="#">Copy</a>&nbsp;&nbsp;
-        </p>
-      </div>
+      {{ govukInsetText({
+        html: insetHtml,
+        classes: 'govuk-!-margin-top-2'
+      }) }}
     </div>
   </div>
 

@@ -22,20 +22,39 @@
     }) }}
   </h1>
 
+  {% set insetHtml %}
+    <p>The job listing needs to be completed.</p>
+    <div class="govuk-button-group">
+      <a href="#">Finish job listing</a>&nbsp;&nbsp;&nbsp;
+      <a href="#">Preview job listing</a>&nbsp;&nbsp;&nbsp;
+      <a href="#">Copy job listing</a>&nbsp;&nbsp;&nbsp;
+      <a href="#">Delete job listing</a>&nbsp;&nbsp;&nbsp;
+    </div>
+  {% endset %}
 
   <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukInsetText({
+        html: insetHtml,
+        classes: 'govuk-!-margin-top-2'
+      }) }}
+    </div>
+  </div>
+
+
+  {# <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
 
 
       <div class="app-box">
-        <p> Your job listing is incomplete - <a href="#">finish job listing</a>.</p>
+
         <p>
           <a href="#">Delete</a>&nbsp;&nbsp;
         </p>
       </div>
     </div>
-  </div>
+  </div> #}
 
 
 
