@@ -32,8 +32,9 @@
   </h1>
 
   <p>
-    {# <a href="#">Publish</a>&nbsp;&nbsp; #}
-    {# <a href="#">Preview</a>&nbsp;&nbsp; #}
+    <a href="#">Publish or schedule</a>&nbsp;&nbsp;
+    {# <a href="#">Schedule</a>&nbsp;&nbsp; #}
+    <a href="#">Preview</a>&nbsp;&nbsp;
     <a href="#">Copy</a>&nbsp;&nbsp;
     <a href="#">Delete</a>&nbsp;&nbsp;
   </p>
@@ -224,9 +225,8 @@
       </h2>
 
       {% set publishDateHtml %}
-        <div class="app-field-highlightxxxx" id="publish-date">
-          {# <p class="app-field-highlight__instruction">The publish date must be in the future</p> #}
-
+        <div class="app-field-highlight" id="publish-date">
+          <p class="app-field-highlight__instruction">The publish date must be in the future</p>
 
           Today (6 June 2022)
         </div>
