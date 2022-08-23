@@ -16,9 +16,9 @@
 
   {% endset %}
 
-  {{ govukNotificationBanner({
+  {# {{ govukNotificationBanner({
     html: notificationBannerHtml
-  }) }}
+  }) }} #}
 
   {# <span class="govuk-caption-l">
     Job listing
@@ -32,7 +32,7 @@
   </h1>
 
   <p>
-    <a href="#">Publish</a>&nbsp;&nbsp;
+    <a href="#">Unschedule</a>&nbsp;&nbsp;
     <a href="#">Preview</a>&nbsp;&nbsp;
     <a href="#">Copy</a>&nbsp;&nbsp;
     <a href="#">Delete</a>&nbsp;&nbsp;
@@ -224,8 +224,8 @@
       </h2>
 
       {% set publishDateHtml %}
-        <div class="app-field-highlight" id="publish-date">
-          <p class="app-field-highlight__instruction">The publish date must be in the future</p>
+        <div class="app-field-highlightxxx" id="publish-date">
+          {# <p class="app-field-highlight__instruction">The publish date must be in the future</p> #}
 
 
           Today (6 June 2022)
