@@ -18,9 +18,6 @@
   </p>
 
 
-
-
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -189,75 +186,6 @@
               items: [
                 {
                   href: "/jobs/new/salary",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m">
-        Dates
-      </h2>
-
-      {% set publishDateHtml %}
-        <div class="app-field-highlightxxx" id="publish-date">
-          {# <p class="app-field-highlight__instruction">The publish date must be in the future</p> #}
-
-
-          Today (6 June 2022)
-        </div>
-      {% endset %}
-
-       {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Publish date"
-            },
-            value: {
-              html: publishDateHtml
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Closing date"
-            },
-            value: {
-              text: "1 September 2022"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Closing time"
-            },
-            value: {
-              text: "9am"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
