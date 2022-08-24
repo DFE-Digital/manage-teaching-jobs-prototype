@@ -1,12 +1,14 @@
 
 {% extends "layout.njk" %}
 
+{% set title = 'Job listings (5)' %}
+
 {% set primaryNavId = 'jobs' %}
 
 {% block content %}
   {{appPageHeader({
     heading: {
-      text: 'Job listings (3)',
+      text: title,
       classes: 'govuk-heading-l'
     },
     items: [{

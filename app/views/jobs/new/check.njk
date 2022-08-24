@@ -1,13 +1,6 @@
 {% extends "layout.njk" %}
 
-{# {% set scheduling = data.createJob and data.createJob.publishDate != 'Today (6 June 2022)' %} #}
-{% if scheduling %}
-  {% set buttonText = 'Publish or schedule job listing' %}
-  {% set heading = 'Check details and schedule job listing' %}
-{% else %}
-  {% set buttonText = 'Publish or schedule job listing' %}
-  {% set heading = 'Check details and publish job listing' %}
-{% endif %}
+{% set heading = 'Check details and schedule job listing' %}
 
 {% set caption = 'Create job listing' %}
 {% set title = heading + ' - ' + caption %}
@@ -575,7 +568,7 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
       {# <form action="/jobs/new/confirmation"> #}
 
         {{ govukButton({
-          text: buttonText,
+          text: 'Continue to publish',
           href: '/jobs/new/listing-dates'
         }) }}
 
