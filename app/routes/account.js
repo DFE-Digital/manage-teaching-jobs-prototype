@@ -1,5 +1,5 @@
 const users = require('../data/users.json')
-const organisations = require('../data/orgs.json')
+const organisations = require('../data/organisations.json')
 
 module.exports = router => {
 

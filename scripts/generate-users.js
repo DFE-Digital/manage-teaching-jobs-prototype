@@ -3,7 +3,7 @@ const path = require('path')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 
-const organisations = require('../app/data/orgs.json')
+const organisations = require('../app/data/organisations.json')
 
 const generateUser = (params = {}) => {
   let user = {}

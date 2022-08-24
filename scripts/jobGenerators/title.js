@@ -1,7 +1,7 @@
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 
-module.exports = (params) => {
+module.exports = ({organisation, role}) => {
   const titles = [
     'Maths teacher',
     'Science teacher',
@@ -10,6 +10,12 @@ module.exports = (params) => {
     'Teacher of religious education',
     'Teacher of computing'
   ]
+
+  if(organisation) {
+
+  }
+
+
 
   return faker.helpers.arrayElement(titles)
 }

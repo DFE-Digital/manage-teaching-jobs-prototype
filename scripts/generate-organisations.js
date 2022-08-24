@@ -10,6 +10,7 @@ const generateSchool = (params = {}) => {
   let school = {}
   school.name = params.name || faker.company.companyName({format: 5}) + ' School'
   school.address = params.address || { address1: '10 Seed Street', town: 'London', postcode: 'N19 4PT' }
+  school.type = params.type || 'Primary'
   return school
 }
 
@@ -17,7 +18,8 @@ const generateSchools = (params = {}) => {
   const schools = []
 
   schools.push(generateSchool({
-    address: { address1: '1 Owl Way', town: 'London', postcode: 'W9 4PT' }
+    address: { address1: '1 Owl Way', town: 'London', postcode: 'W9 4PT' },
+    type: 'Secondary'
   }))
   schools.push(generateSchool())
   schools.push(generateSchool())
@@ -34,8 +36,6 @@ const generateOrg = (params = {}) => {
 
   if(org.type == 'MAT' || org.type == "LA") {
     org.schools = params.schools || generateSchools()
-  } else {
-
   }
 
   if(org.type == 'School') {
@@ -120,4 +120,4 @@ const generateOrgsFile = (filePath) => {
   )
 }
 
-generateOrgsFile(path.join(__dirname, '../app/data/orgs.json'))
+generateOrgsFile(path.join(__dirname, '../app/data/organisations.json'))

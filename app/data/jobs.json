@@ -1,26 +1,65 @@
 [
   {
-    "id": "693668",
+    "id": "355783",
     "organisation": {
-      "type": "School",
-      "name": "Courtland Primary School",
+      "type": "MAT",
+      "name": "Royal Academy Trust",
       "address": {
         "address1": "123 Main Street",
         "town": "Some town",
         "postcode": "AB1 2CD"
       },
-      "schoolType": "primary"
+      "schools": [
+        {
+          "name": "West, Wiegand and Mraz School",
+          "address": {
+            "address1": "1 Owl Way",
+            "town": "London",
+            "postcode": "W9 4PT"
+          },
+          "type": "Secondary"
+        },
+        {
+          "name": "Grant, Beahan and Kunze School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "type": "Primary"
+        },
+        {
+          "name": "Marvin, Rogahn and Doyle School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "type": "Primary"
+        }
+      ],
+      "trustType": "primary"
     },
-    "location": "c",
-    "role": "Teacher",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "locations": [
+      {
+        "name": "Royal Academy Trust",
+        "address": {
+          "address1": "123 Main Street",
+          "town": "Some town",
+          "postcode": "AB1 2CD"
+        },
+        "trustType": "primary"
+      }
+    ],
+    "role": "Headteacher, deputy or assistant headteacher",
+    "title": "Science teacher",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
     "roleHasSendResponsibilities": "No",
-    "title": "English teacher",
     "contractType": "Fixed term",
-    "subjects": "Sociology",
-    "workingPatterns": "Job share",
-    "workingPatternDetails": null,
-    "salary": "Main Pay Scale 1 -6/UPS 1-3",
-    "additionalAllowances": "TLR"
+    "subjects": "Humanities",
+    "workingPatterns": "Full time",
+    "workingPatternDetails": "20 hours per week",
+    "salary": "£20,852 (pro rata)",
+    "additionalAllowances": null
   }
 ]

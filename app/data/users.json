@@ -40,28 +40,31 @@
       },
       "schools": [
         {
-          "name": "Dibbert, McCullough and Smith School",
+          "name": "West, Wiegand and Mraz School",
           "address": {
             "address1": "1 Owl Way",
             "town": "London",
             "postcode": "W9 4PT"
-          }
+          },
+          "type": "Secondary"
         },
         {
-          "name": "Pouros LLC School",
+          "name": "Grant, Beahan and Kunze School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
             "postcode": "N19 4PT"
-          }
+          },
+          "type": "Primary"
         },
         {
-          "name": "Kuphal - Larson School",
+          "name": "Marvin, Rogahn and Doyle School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
             "postcode": "N19 4PT"
-          }
+          },
+          "type": "Primary"
         }
       ],
       "trustType": "primary"
@@ -80,28 +83,31 @@
       },
       "schools": [
         {
-          "name": "Rohan - Doyle School",
+          "name": "Cole, Bergnaum and West School",
           "address": {
             "address1": "1 Owl Way",
             "town": "London",
             "postcode": "W9 4PT"
-          }
+          },
+          "type": "Secondary"
         },
         {
-          "name": "Kemmer Inc School",
+          "name": "Rau - Considine School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
             "postcode": "N19 4PT"
-          }
+          },
+          "type": "Primary"
         },
         {
-          "name": "Haley LLC School",
+          "name": "Adams, Cremin and Purdy School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
             "postcode": "N19 4PT"
-          }
+          },
+          "type": "Primary"
         }
       ]
     }

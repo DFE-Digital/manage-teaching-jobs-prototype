@@ -3,10 +3,12 @@ const path = require('path')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 
-const organisations = require('../app/data/orgs.json')
+const organisationHelper = require('../app/helpers/organisation')
+
+const organisations = require('../app/data/organisations.json')
+const roles = require('../app/data/roles.js')
 
 // generators
-const generateJobRole = require('./jobGenerators/role')
 const generateRoleIsSuitableForEarlyCareerTeachers = require('./jobGenerators/role-is-suitable-for-early-career-teachers')
 const generateRoleHasSENDResponsibilities = require('./jobGenerators/role-has-send-responsibilites')
 const generateTitle = require('./jobGenerators/title')
@@ -16,20 +18,20 @@ const generateWorkingPatterns = require('./jobGenerators/working-patterns')
 
 const generateJob = (params = {}) => {
   let job = {}
-
   job.id = params.id || ('' + faker.datatype.number({min: 123456, max: 999999}))
-
   job.organisation = params.organisation || faker.helpers.arrayElement(organisations)
 
-  job.location = params.location || faker.helpers.arrayElement(job.organisation.locations)
+  // For now the default includes all possible locations but hiring stafff can select a subset.
+  job.locations = params.locations || organisationHelper.getLocations(job.organisation)
 
-  job.role = params.role || generateJobRole()
+  job.role = params.role || faker.helpers.arrayElement(roles)
+
+  job.title = params.title || generateTitle({organisation: job.organisation, role: job.role})
 
   job.isRoleSuitableForEarlyCareeerTeachers = params.isRoleSuitableForEarlyCareeerTeachers || generateRoleIsSuitableForEarlyCareerTeachers()
 
   job.roleHasSendResponsibilities = params.roleHasSendResponsibilities || generateRoleHasSENDResponsibilities()
 
-  job.title = params.title || generateTitle()
 
   job.contractType = params.contractType || faker.helpers.arrayElement([
     'Permanent',
@@ -83,7 +85,8 @@ const generateJob = (params = {}) => {
 const generateJobs = () => {
   const jobs = []
 
-  jobs.push(generateJob())
+  jobs.push(generateJob({organisation: organisations.find(organisation => organisation.name == 'Royal Academy Trust')}))
+  // jobs.push(generateJob())
 
   return jobs
 }
