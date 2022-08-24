@@ -15,50 +15,65 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set h1 %}
+      {% if query.multipleLocationsMissing %}
         <span class="govuk-caption-l">
           {{caption}}
         </span>
-        {{heading}}
-      {% endset %}
-
-      <span class="govuk-caption-l">
-        {{caption}}
-      </span>
-      <h1 class="govuk-heading-l">
-        {{heading}}
-      </h1>
+        <h1 class="govuk-heading-l">
+          {{heading}}
+        </h1>
+      {% else %}
+        {% set h1 %}
+          <span class="govuk-caption-l">
+            {{caption}}
+          </span>
+          {{heading}}
+        {% endset %}
+      {% endif %}
 
       <form action="/jobs/new/role" method="post">
-        {{ govukRadios({
-          idPrefix: "createJob[ageGroups]",
-          name: "createJob[ageGroups]",
-          fieldset: {
-            legend: {
-              html: 'Education phase for [location 1]',
-              isPageHeading: true,
-              isPageHeading: false,
-              classes: "govuk-fieldset__legend--l",
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: options
-        }) }}
 
-        {{ govukRadios({
-          idPrefix: "createJob[ageGroups]",
-          name: "createJob[ageGroups]",
-          fieldset: {
-            legend: {
-              html: 'Education phase for [location 2]',
-              isPageHeading: true,
-              isPageHeading: false,
-              classes: "govuk-fieldset__legend--l",
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: options
-        }) }}
+        {% if query.multipleLocationsMissing %}
+          {{ govukRadios({
+            idPrefix: "createJob[phase]",
+            name: "createJob[phase]",
+            fieldset: {
+              legend: {
+                html: 'Education phase for [location 1]',
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: options
+          }) }}
+
+          {{ govukRadios({
+            idPrefix: "createJob[phase]",
+            name: "createJob[phase]",
+            fieldset: {
+              legend: {
+                html: 'Education phase for [location 2]',
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: options
+          }) }}
+        {% else %}
+          {{ govukRadios({
+            idPrefix: "createJob[phase]",
+            name: "createJob[phase]",
+            fieldset: {
+              legend: {
+                html: h1,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: options
+          }) }}
+        {% endif %}
+
+
+
 
         {{ govukButton({
           text: "Save and continue"
