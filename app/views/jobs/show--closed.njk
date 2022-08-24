@@ -1,0 +1,308 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+  {# <span class="govuk-caption-l">
+    Job listing
+  </span> #}
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+    Tutor
+    {{ govukTag({
+      text: "Closed",
+      classes: 'govuk-tag--red'
+    }) }}
+  </h1>
+
+  {% set insetHtml %}
+     <p>The job listing was published on 19 June 2022. It closed on 19 July 2022 at 9am.</p>
+      <p>
+        <a href="#">Preview</a>&nbsp;&nbsp;
+        <a href="#">Copy</a>&nbsp;&nbsp;
+        <a href="#">Extend deadline</a>&nbsp;&nbsp;
+      </p>
+  {% endset %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukInsetText({
+        html: insetHtml,
+        classes: 'govuk-!-margin-top-2'
+      }) }}
+    </div>
+  </div>
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">
+        Job details
+      </h2>
+
+      {% set workingPatterns %}
+        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+          <li>
+            <p>Full-time</p>
+          </li>
+          <li class="govuk-!-margin-bottom-0">
+            <p class="govuk-!-margin-bottom-0">Part-time:<br>
+            3 days a week</p>
+          </li>
+        </ul>
+      {% endset %}
+
+      {% set salaryDetails %}
+        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+          <li>
+            <p>Full-time equivalent salary:<br>
+            £25,000 to £35,000</p>
+          </li>
+          <li>
+            <p>Actual salary:<br>
+            £17,000 to £26,000</p>
+          </li>
+          <li class="govuk-!-margin-bottom-0">
+            <p class="govuk-!-margin-bottom-0">Pay scale:<br>
+            MP1 to MP6</p>
+          </li>
+        </ul>
+      {% endset %}
+
+       {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Locations where the job is based"
+            },
+            value: {
+              text: "Farnham Heath End, Hale Reeds, Farnham, Surrey, GU9 9BN"
+            }
+          },
+          {
+            key: {
+              text: "Role"
+            },
+            value: {
+              text: "Teacher"
+            }
+          },
+          {
+            key: {
+              text: "Job title"
+            },
+            value: {
+              text: "Teacher of KS1"
+            }
+          },
+          {
+            key: {
+              text: "Key stage"
+            },
+            value: {
+              text: "Key stage 1, key stage 2"
+            }
+          },
+          {
+            key: {
+              text: "Subjects"
+            },
+            value: {
+              text: "Maths"
+            }
+          },
+          {
+            key: {
+              text: "Contract type"
+            },
+            value: {
+              text: "Permanent"
+            }
+          },
+          {
+            key: {
+              text: "Working patterns"
+            },
+            value: {
+              html: workingPatterns
+            }
+          },
+          {
+            key: {
+              text: "Salary details"
+            },
+            value: {
+              html: salaryDetails
+            }
+          },
+          {
+            key: {
+              text: "Start date"
+            },
+            value: {
+              text: "30 October 2022"
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Application process
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Do you want to use the application form?"
+            },
+            value: {
+              text: "No"
+            }
+          },
+          {
+            key: {
+              text: "How would you like applications to be submitted?"
+            },
+            value: {
+              text: "Download and send an application form"
+            }
+          },
+          {
+            key: {
+              text: "Application form"
+            },
+            value: {
+              html: '<a href="">form.pdf</a>, 2MB'
+            }
+          },
+          {
+            key: {
+              text: "Email address to receive applications"
+            },
+            value: {
+              html: 'molly@example.com'
+            }
+          },
+          {
+            key: {
+              text: "Do you want to offer school visits?"
+            },
+            value: {
+              text: "Yes"
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              html: 'molly@example.com'
+            }
+          },
+          {
+            key: {
+              text: "Do you want to give a contact phone number?"
+            },
+            value: {
+              text: "Yes"
+            }
+          },
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              text: "0207 3456 3746"
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        About the role
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Is this role suitable for an early career teacher (ECT)?"
+            },
+            value: {
+              text: "Yes"
+            }
+          },
+          {
+            key: {
+              text: "What skills and experience are you looking for?"
+            },
+            value: {
+              text: "You need to have at least 5 years experience teaching in a public school. You’ll be responsible for a class of 30 students."
+            }
+          },
+          {
+            key: {
+              text: "What does your school offer?"
+            },
+            value: {
+              text: "You’ll get regularl training etc."
+            }
+          },
+          {
+            key: {
+              text: "Do you want to give information about your commitment to safeguarding?
+Yes"
+            },
+            value: {
+              text: "Yes"
+            }
+          },
+          {
+            key: {
+              text: "Information about your commitment to safeguarding"
+            },
+            value: {
+              text: "St Laurence School is committed to safeguarding and promoting the welfare of children and young people and expects all staff and volunteers to share this commitment. All applicants will be subject to
+a full Disclosure and Barring Service check (previously CRB check) before appointment is confirmed."
+            }
+          },
+          {
+            key: {
+              text: "Do you want to add further details about the role?"
+            },
+            value: {
+              text: "Yes"
+            }
+          },
+          {
+            key: {
+              text: "Further details about the role"
+            },
+            value: {
+              text: "Ut eget dolor at libero commodo tincidunt vel egestas diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam aliquet risus eget ante viverra tincidunt. Etiam pulvinar metus dolor, in eleifend massa pharetra eget."
+            }
+          },
+          {
+            key: {
+              text: "Do you want to upload any additional documents?"
+            },
+            value: {
+              text: "Yes"
+            }
+          },
+          {
+            key: {
+              text: "Additional documents"
+            },
+            value: {
+              html: '<a href="#">person-spec.pdf</a>, 2MB'
+            }
+          }
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
