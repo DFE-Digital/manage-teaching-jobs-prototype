@@ -11,11 +11,5 @@ module.exports = ({organisation, role}) => {
     'Teacher of computing'
   ]
 
-  if(organisation) {
-
-  }
-
-
-
   return faker.helpers.arrayElement(titles)
 }

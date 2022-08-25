@@ -3,96 +3,149 @@
     "type": "School",
     "name": "Courtland Primary School",
     "address": {
-      "address1": "123 Main Street",
-      "town": "Some town",
-      "postcode": "AB1 2CD"
+      "address1": "50 Lawrence Street",
+      "town": "Mill Hill",
+      "postcode": "NW7 4YK"
     },
-    "schoolType": "primary"
+    "phase": "Through school"
   },
   {
     "type": "School",
     "name": "Bushey Meads Secondary School",
     "address": {
-      "address1": "123 Main Street",
-      "town": "Some town",
-      "postcode": "AB1 2CD"
+      "address1": "50 Lawrence Street",
+      "town": "Mill Hill",
+      "postcode": "NW7 4YK"
     },
-    "schoolType": "secondary"
+    "phase": "Primary school"
   },
   {
     "type": "MAT",
     "name": "Royal Academy Trust",
     "address": {
-      "address1": "123 Main Street",
-      "town": "Some town",
-      "postcode": "AB1 2CD"
+      "address1": "50 Lawrence Street",
+      "town": "Mill Hill",
+      "postcode": "NW7 4YK"
     },
     "schools": [
       {
-        "name": "West, Wiegand and Mraz School",
+        "name": "Cummings, Barrows and Bartoletti School",
         "address": {
-          "address1": "1 Owl Way",
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "phase": "Nursery school"
+      },
+      {
+        "name": "Roob - Murphy School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "phase": "Primary school"
+      },
+      {
+        "name": "Boyle and Sons School",
+        "address": {
+          "address1": "2 Owl Way",
+          "town": "London",
+          "postcode": "W6 1PT"
+        },
+        "phase": "Middle school"
+      },
+      {
+        "name": "Huels and Sons School",
+        "address": {
+          "address1": "3 Owl Way",
+          "town": "London",
+          "postcode": "W7 2PT"
+        },
+        "phase": "Secondary school"
+      },
+      {
+        "name": "Howe, Bogan and Cormier School",
+        "address": {
+          "address1": "4 Owl Way",
+          "town": "London",
+          "postcode": "W8 3PT"
+        },
+        "phase": "Sixth form or college"
+      },
+      {
+        "name": "Walker - Littel School",
+        "address": {
+          "address1": "5 Owl Way",
           "town": "London",
           "postcode": "W9 4PT"
         },
-        "type": "Secondary"
-      },
-      {
-        "name": "Grant, Beahan and Kunze School",
-        "address": {
-          "address1": "10 Seed Street",
-          "town": "London",
-          "postcode": "N19 4PT"
-        },
-        "type": "Primary"
-      },
-      {
-        "name": "Marvin, Rogahn and Doyle School",
-        "address": {
-          "address1": "10 Seed Street",
-          "town": "London",
-          "postcode": "N19 4PT"
-        },
-        "type": "Primary"
+        "phase": "Through school"
       }
-    ],
-    "trustType": "primary"
+    ]
   },
   {
     "type": "LA",
     "name": "Barnet Local Authority",
     "address": {
-      "address1": "123 Main Street",
-      "town": "Some town",
-      "postcode": "AB1 2CD"
+      "address1": "50 Lawrence Street",
+      "town": "Mill Hill",
+      "postcode": "NW7 4YK"
     },
     "schools": [
       {
-        "name": "Cole, Bergnaum and West School",
+        "name": "Hermiston, Collins and Raynor School",
         "address": {
-          "address1": "1 Owl Way",
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "phase": "Nursery school"
+      },
+      {
+        "name": "Little, Schaefer and Marks School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "phase": "Primary school"
+      },
+      {
+        "name": "Jerde, Braun and Legros School",
+        "address": {
+          "address1": "2 Owl Way",
+          "town": "London",
+          "postcode": "W6 1PT"
+        },
+        "phase": "Middle school"
+      },
+      {
+        "name": "Harber, Stamm and O'Kon School",
+        "address": {
+          "address1": "3 Owl Way",
+          "town": "London",
+          "postcode": "W7 2PT"
+        },
+        "phase": "Secondary school"
+      },
+      {
+        "name": "Bahringer, Bogan and Anderson School",
+        "address": {
+          "address1": "4 Owl Way",
+          "town": "London",
+          "postcode": "W8 3PT"
+        },
+        "phase": "Sixth form or college"
+      },
+      {
+        "name": "Block - Hudson School",
+        "address": {
+          "address1": "5 Owl Way",
           "town": "London",
           "postcode": "W9 4PT"
         },
-        "type": "Secondary"
-      },
-      {
-        "name": "Rau - Considine School",
-        "address": {
-          "address1": "10 Seed Street",
-          "town": "London",
-          "postcode": "N19 4PT"
-        },
-        "type": "Primary"
-      },
-      {
-        "name": "Adams, Cremin and Purdy School",
-        "address": {
-          "address1": "10 Seed Street",
-          "town": "London",
-          "postcode": "N19 4PT"
-        },
-        "type": "Primary"
+        "phase": "Through school"
       }
     ]
   }

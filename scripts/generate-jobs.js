@@ -9,11 +9,10 @@ const organisations = require('../app/data/organisations.json')
 const roles = require('../app/data/roles.js')
 
 // generators
-const generateRoleIsSuitableForEarlyCareerTeachers = require('./jobGenerators/role-is-suitable-for-early-career-teachers')
-const generateRoleHasSENDResponsibilities = require('./jobGenerators/role-has-send-responsibilites')
 const generateTitle = require('./jobGenerators/title')
 const generateSubjects = require('./jobGenerators/subjects')
 const generateWorkingPatterns = require('./jobGenerators/working-patterns')
+const generateKeyStages = require('./jobGenerators/key-stages')
 
 
 const generateJob = (params = {}) => {
@@ -28,16 +27,15 @@ const generateJob = (params = {}) => {
 
   job.title = params.title || generateTitle({organisation: job.organisation, role: job.role})
 
-  job.isRoleSuitableForEarlyCareeerTeachers = params.isRoleSuitableForEarlyCareeerTeachers || generateRoleIsSuitableForEarlyCareerTeachers()
-
-  job.roleHasSendResponsibilities = params.roleHasSendResponsibilities || generateRoleHasSENDResponsibilities()
-
+  job.keyStages = params.keyStages || generateKeyStages({organisation: job.organisation})
 
   job.contractType = params.contractType || faker.helpers.arrayElement([
     'Permanent',
     'Fixed term',
     'Maternity or parental leave cover'
   ])
+
+  job.isRoleSuitableForEarlyCareeerTeachers = params.isRoleSuitableForEarlyCareeerTeachers || faker.helpers.arrayElement(['Yes', 'No'])
 
   job.subjects = params.subjects || generateSubjects()
 

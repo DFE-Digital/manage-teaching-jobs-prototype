@@ -3,14 +3,11 @@ const path = require('path')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 
-// generators
-const generateType = require('./organisationGenerators/type')
-
 const generateSchool = (params = {}) => {
   let school = {}
   school.name = params.name || faker.company.companyName({format: 5}) + ' School'
   school.address = params.address || { address1: '10 Seed Street', town: 'London', postcode: 'N19 4PT' }
-  school.type = params.type || 'Primary'
+  school.phase = params.phase || 'Primary school'
   return school
 }
 
@@ -18,11 +15,27 @@ const generateSchools = (params = {}) => {
   const schools = []
 
   schools.push(generateSchool({
-    address: { address1: '1 Owl Way', town: 'London', postcode: 'W9 4PT' },
-    type: 'Secondary'
+    phase: 'Nursery school'
   }))
-  schools.push(generateSchool())
-  schools.push(generateSchool())
+  schools.push(generateSchool({
+    phase: 'Primary school'
+  }))
+  schools.push(generateSchool({
+    address: { address1: '2 Owl Way', town: 'London', postcode: 'W6 1PT' },
+    phase: 'Middle school'
+  }))
+  schools.push(generateSchool({
+    address: { address1: '3 Owl Way', town: 'London', postcode: 'W7 2PT' },
+    phase: 'Secondary school'
+  }))
+  schools.push(generateSchool({
+    address: { address1: '4 Owl Way', town: 'London', postcode: 'W8 3PT' },
+    phase: 'Sixth form or college'
+  }))
+  schools.push(generateSchool({
+    address: { address1: '5 Owl Way', town: 'London', postcode: 'W9 4PT' },
+    phase: 'Through school'
+  }))
 
   return schools
 }
@@ -30,20 +43,23 @@ const generateSchools = (params = {}) => {
 const generateOrg = (params = {}) => {
   let org = {}
 
-  org.type = params.type || generateType()
+  org.type = params.type || faker.helpers.arrayElement([ 'School', 'MAT', 'LA' ])
   org.name = params.name || faker.company.companyName({format: 5})
-  org.address = params.address || { address1: '123 Main Street', town: 'Some town', postcode: 'AB1 2CD' }
+  org.address = params.address || { address1: '50 Lawrence Street', town: 'Mill Hill', postcode: 'NW7 4YK' }
 
   if(org.type == 'MAT' || org.type == "LA") {
     org.schools = params.schools || generateSchools()
   }
 
   if(org.type == 'School') {
-    org.schoolType = params.schoolType || 'primary'
-  }
-
-  if(org.type == 'MAT') {
-    org.trustType = params.trustType || 'primary'
+    org.phase = params.phase || faker.helpers.arrayElement([
+      'Nursery',
+      'Primary school',
+      'Middle school',
+      'Secondary school',
+      'Sixth form or college',
+      'Through school'
+    ])
   }
 
   return org
