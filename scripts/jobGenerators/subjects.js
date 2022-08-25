@@ -45,6 +45,6 @@ module.exports = (params) => {
     'Statistics'
   ]
 
-  return faker.helpers.arrayElement(subjects)
+  return faker.helpers.arrayElements(subjects, faker.datatype.number({ min: 1, max: 2 }))
 }
 

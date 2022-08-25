@@ -1,6 +1,6 @@
 [
   {
-    "id": "659863",
+    "id": "280405",
     "organisation": {
       "type": "MAT",
       "name": "Royal Academy Trust",
@@ -11,7 +11,7 @@
       },
       "schools": [
         {
-          "name": "Cummings, Barrows and Bartoletti School",
+          "name": "Davis, Kertzmann and White School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -20,7 +20,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Roob - Murphy School",
+          "name": "Schultz, Hoeger and Homenick School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -29,7 +29,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "Boyle and Sons School",
+          "name": "Durgan, Casper and Flatley School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -38,7 +38,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Huels and Sons School",
+          "name": "Gibson - Robel School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -47,7 +47,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Howe, Bogan and Cormier School",
+          "name": "Boyle, Jones and Zemlak School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -56,7 +56,7 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Walker - Littel School",
+          "name": "Herzog - Watsica School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
@@ -78,18 +78,18 @@
     ],
     "role": "SENDCo (special educational needs and disabilities coordinator)",
     "title": "Class teacher",
-    "keyStages": [
-      "Key stage 1",
-      "Key stage 2",
-      "Key stage 3",
-      "Key stage 4"
+    "subjects": [
+      "French",
+      "Biology"
     ],
     "contractType": "Maternity or parental leave cover",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "subjects": "German",
-    "workingPatterns": "Full time",
-    "workingPatternDetails": null,
-    "salary": "A1/B1 depending on experience",
-    "additionalAllowances": "TLR"
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Part time"
+    ],
+    "partTimeDetails": "20 hours a week",
+    "salary": "£20,852 (pro rata)",
+    "additionalAllowances": "TLR",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes"
   }
 ]

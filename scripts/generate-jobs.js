@@ -29,24 +29,27 @@ const generateJob = (params = {}) => {
 
   job.keyStages = params.keyStages || generateKeyStages({organisation: job.organisation})
 
+  job.subjects = params.subjects || generateSubjects()
+
   job.contractType = params.contractType || faker.helpers.arrayElement([
     'Permanent',
     'Fixed term',
     'Maternity or parental leave cover'
   ])
 
-  job.isRoleSuitableForEarlyCareeerTeachers = params.isRoleSuitableForEarlyCareeerTeachers || faker.helpers.arrayElement(['Yes', 'No'])
+  if(job.contractType == 'Fixed term' || job.contractType == 'Maternity or parental leave cover') {
+    job.contractLength = params.contractLength || '6 months'
+  }
 
-  job.subjects = params.subjects || generateSubjects()
+  job.workingPatterns = params.workingPatterns || faker.helpers.arrayElements(['Full time', 'Part time'])
 
-  job.workingPatterns = params.workingPatterns || generateWorkingPatterns()
+  if(job.workingPatterns.includes('Full time')) {
+    job.fullTimeDetails = params.fullTimeDetails || '5 days a week'
+  }
 
-  // should be null if .workingPatterns is full time
-  job.workingPatternDetails = params.workingPatternDetails || faker.helpers.arrayElement([
-    null,
-    '20 hours per week',
-    'Monday to Wedensday'
-  ])
+  if(job.workingPatterns.includes('Part time')) {
+    job.partTimeDetails = params.partTimeDetails || '20 hours a week'
+  }
 
   job.salary = params.salary || faker.helpers.arrayElement([
     'Main Pay Scale 1 -6/UPS 1-3',
@@ -71,11 +74,10 @@ const generateJob = (params = {}) => {
 
   // Application method (lots within)
 
+  // About role
+  job.isRoleSuitableForEarlyCareeerTeachers = params.isRoleSuitableForEarlyCareeerTeachers || faker.helpers.arrayElement(['Yes', 'No'])
+
   // Supporting documents
-
-  // job details
-
-  // school details
 
   return job
 }
