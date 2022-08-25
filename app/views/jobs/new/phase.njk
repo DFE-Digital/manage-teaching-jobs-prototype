@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 
 {% set heading = 'Education phase' %}
-{% set caption = 'Create job listing - section 1 of 3' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -58,7 +58,7 @@
             items: options
           }) }}
         {% else %}
-          {{ govukRadios({
+          {{ govukCheckboxes({
             idPrefix: "createJob[phase]",
             name: "createJob[phase]",
             fieldset: {
