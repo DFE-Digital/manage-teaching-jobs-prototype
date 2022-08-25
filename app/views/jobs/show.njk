@@ -14,13 +14,58 @@
   </h1>
 
   {% set insetHtml %}
-     <p>The job listing was published on 19 August 2022. It will close on 19 October 2022 at 9am.</p>
+     {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Publish date"
+          },
+          value: {
+            text: "19 August 2022"
+          }
+        },
+        {
+          key: {
+            text: "Closing date"
+          },
+          value: {
+            text: "19 October 2022"
+          },
+          actions: {
+            items: [
+              {
+                href: "Item URL",
+                text: "Change",
+                visuallyHiddenText: "Item label"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Job start date"
+          },
+          value: {
+            text: "1 December 2022"
+          },
+          actions: {
+            items: [
+              {
+                href: "Item URL",
+                text: "Change",
+                visuallyHiddenText: "Item label"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
 
       <p>
         <a href="#">Preview</a>&nbsp;&nbsp;
         <a href="#">Copy</a>&nbsp;&nbsp;
         <a href="#">End early</a>&nbsp;&nbsp;
-        <a href="#">Extend deadline</a>&nbsp;&nbsp;
+        {# <a href="#">Extend deadline</a>&nbsp;&nbsp; #}
       </p>
   {% endset %}
 
@@ -35,7 +80,7 @@
 
 
 
-  <div class="govuk-grid-row">
+ <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <h2 class="govuk-heading-m govuk-!-margin-top-6">
@@ -79,6 +124,15 @@
             },
             value: {
               text: "Farnham Heath End, Hale Reeds, Farnham, Surrey, GU9 9BN"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/locations",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -87,6 +141,15 @@
             },
             value: {
               text: "Teacher"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/role",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -95,6 +158,15 @@
             },
             value: {
               text: "Teacher of KS1"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/title",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -103,6 +175,15 @@
             },
             value: {
               text: "Key stage 1, key stage 2"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/key-stage",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -111,6 +192,15 @@
             },
             value: {
               text: "Maths"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/key-stage",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -119,6 +209,15 @@
             },
             value: {
               text: "Permanent"
+            },
+            actions: {
+              items: [
+                {
+                  href: "jobs/new/contract",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -127,6 +226,15 @@
             },
             value: {
               html: workingPatterns
+            },
+            actions: {
+              items: [
+                {
+                  href: "jobs/new/working-patterns",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -135,14 +243,15 @@
             },
             value: {
               html: salaryDetails
-            }
-          },
-          {
-            key: {
-              text: "Start date"
             },
-            value: {
-              text: "30 October 2022"
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/salary",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           }
         ]
@@ -160,6 +269,15 @@
             },
             value: {
               text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/method",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -168,6 +286,15 @@
             },
             value: {
               text: "Download and send an application form"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -176,6 +303,15 @@
             },
             value: {
               html: '<a href="">form.pdf</a>, 2MB'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -184,6 +320,15 @@
             },
             value: {
               html: 'molly@example.com'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -192,6 +337,15 @@
             },
             value: {
               text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -200,6 +354,15 @@
             },
             value: {
               html: 'molly@example.com'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -208,6 +371,15 @@
             },
             value: {
               text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -216,6 +388,15 @@
             },
             value: {
               text: "0207 3456 3746"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           }
         ]
@@ -232,7 +413,16 @@
               text: "Is this role suitable for an early career teacher (ECT)?"
             },
             value: {
-              text: "Yes"
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/role",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -241,6 +431,15 @@
             },
             value: {
               text: "You need to have at least 5 years experience teaching in a public school. You’ll be responsible for a class of 30 students."
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -249,6 +448,15 @@
             },
             value: {
               text: "You’ll get regularl training etc."
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -258,6 +466,15 @@ Yes"
             },
             value: {
               text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -267,6 +484,15 @@ Yes"
             value: {
               text: "St Laurence School is committed to safeguarding and promoting the welfare of children and young people and expects all staff and volunteers to share this commitment. All applicants will be subject to
 a full Disclosure and Barring Service check (previously CRB check) before appointment is confirmed."
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -275,6 +501,15 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
             },
             value: {
               text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -283,6 +518,15 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
             },
             value: {
               text: "Ut eget dolor at libero commodo tincidunt vel egestas diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam aliquet risus eget ante viverra tincidunt. Etiam pulvinar metus dolor, in eleifend massa pharetra eget."
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -291,6 +535,15 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
             },
             value: {
               text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -299,6 +552,15 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
             },
             value: {
               html: '<a href="#">person-spec.pdf</a>, 2MB'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           }
         ]

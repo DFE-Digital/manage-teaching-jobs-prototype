@@ -11,15 +11,69 @@
   </h1>
 
   {% set insetHtml %}
-     <p>The job listing will be published on 19 August 2022. It will close on 19 October 2022 at 9am.</p>
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Publish date"
+          },
+          value: {
+            text: "19 August 2022"
+          },
+          actions: {
+            items: [
+              {
+                href: "Item URL",
+                text: "Change",
+                visuallyHiddenText: "Publish date"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Closing date"
+          },
+          value: {
+            text: "19 October 2022"
+          },
+          actions: {
+            items: [
+              {
+                href: "Item URL",
+                text: "Change",
+                visuallyHiddenText: "Item label"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Job start date"
+          },
+          value: {
+            text: "1 December 2022"
+          },
+          actions: {
+            items: [
+              {
+                href: "Item URL",
+                text: "Change",
+                visuallyHiddenText: "Item label"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
 
-        <p>
-          <a href="#">Change publish dates</a>&nbsp;&nbsp;
-          <a href="#">Unschedule</a>&nbsp;&nbsp;
-          <a href="#">Preview</a>&nbsp;&nbsp;
-          <a href="#">Copy</a>&nbsp;&nbsp;
-          <a href="#">Delete</a>&nbsp;&nbsp;
-        </p>
+    <p>
+      {# <a href="#">Change publish dates</a>&nbsp;&nbsp; #}
+      <a href="#">Unschedule</a>&nbsp;&nbsp;
+      <a href="#">Preview</a>&nbsp;&nbsp;
+      <a href="#">Copy</a>&nbsp;&nbsp;
+      <a href="#">Delete</a>&nbsp;&nbsp;
+    </p>
   {% endset %}
 
   <div class="govuk-grid-row">
@@ -200,23 +254,6 @@
               items: [
                 {
                   href: "/jobs/new/salary",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Start date"
-            },
-            value: {
-              text: "30 October 2022"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
