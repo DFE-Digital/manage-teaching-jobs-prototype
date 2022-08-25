@@ -51,12 +51,23 @@ const generateJob = (params = {}) => {
     job.partTimeDetails = params.partTimeDetails || '20 hours a week'
   }
 
-  job.salary = params.salary || faker.helpers.arrayElement([
-    'Main Pay Scale 1 -6/UPS 1-3',
-    '£20,852 (pro rata)',
-    'A1/B1 depending on experience',
-    'Main pay range 1 to Main pay range 6, £25,714 to £36,961'
+  job.salaryDetails = params.salaryDetails || faker.helpers.arrayElements([
+    'Full-time equivalent salary',
+    'Actual salary',
+    'Pay scale'
   ])
+
+  if(job.salaryDetails.includes('Full-time equivalent salary')) {
+    job.fullTimeEquivalentSalaryDetails = params.fullTimeEquivalentSalaryDetails || '£42,000'
+  }
+
+  if(job.salaryDetails.includes('Actual salary')) {
+    job.actualSalaryDetails = params.actualSalaryDetails || '£31,000'
+  }
+
+  if(job.salaryDetails.includes('Pay scale')) {
+    job.payScaleDetails = params.payScaleDetails || 'MP4 to MP6'
+  }
 
   job.additionalAllowances = params.additionalAllowances || faker.helpers.arrayElement([
     null,
