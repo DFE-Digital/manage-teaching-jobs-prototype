@@ -69,11 +69,11 @@ const generateJob = (params = {}) => {
     job.payScaleDetails = params.payScaleDetails || 'MP4 to MP6'
   }
 
-  job.additionalAllowances = params.additionalAllowances || faker.helpers.arrayElement([
-    null,
-    'TLR',
-    'SEN'
-  ])
+  job.hasAdditionalAllowances = params.hasAdditionalAllowances || faker.helpers.arrayElement(['Yes', 'No'])
+
+  if(job.hasAdditionalAllowances == 'Yes') {
+    job.additionalAllowances = params.additionalAllowances || 'TLR is available.'
+  }
 
   // job.listingDate
 

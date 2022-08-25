@@ -10,7 +10,7 @@
         "town": "Mill Hill",
         "postcode": "NW7 4YK"
       },
-      "phase": "Middle school"
+      "phase": "Through school"
     }
   },
   {
@@ -24,7 +24,7 @@
         "town": "Mill Hill",
         "postcode": "NW7 4YK"
       },
-      "phase": "Sixth form or college"
+      "phase": "Nursery"
     }
   },
   {
@@ -40,7 +40,7 @@
       },
       "schools": [
         {
-          "name": "Davis, Kertzmann and White School",
+          "name": "Schultz Inc School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -49,7 +49,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Schultz, Hoeger and Homenick School",
+          "name": "Mosciski Group School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -58,7 +58,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "Durgan, Casper and Flatley School",
+          "name": "Boyer, Huels and Dicki School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -67,7 +67,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Gibson - Robel School",
+          "name": "Renner - Kirlin School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -76,7 +76,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Boyle, Jones and Zemlak School",
+          "name": "Aufderhar, Sanford and Johnson School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -85,7 +85,7 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Herzog - Watsica School",
+          "name": "Will Inc School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
@@ -109,7 +109,7 @@
       },
       "schools": [
         {
-          "name": "Crona, Paucek and Hoppe School",
+          "name": "Kshlerin - Huel School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -118,7 +118,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Hintz Inc School",
+          "name": "Morissette - Glover School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -127,7 +127,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "Ward, Hills and Schoen School",
+          "name": "Borer - Adams School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -136,7 +136,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Cassin - Wuckert School",
+          "name": "McClure, Olson and Abernathy School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -145,7 +145,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Goyette Inc School",
+          "name": "Dietrich, Watsica and Murray School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -154,7 +154,7 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Renner, Olson and Schaden School",
+          "name": "Lakin - Beier School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
