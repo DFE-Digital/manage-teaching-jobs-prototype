@@ -1,7 +1,9 @@
 const fs = require('fs')
 const path = require('path')
+// const { DateTime } = require('luxon')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
+
 
 const organisationHelper = require('../app/helpers/organisation')
 
@@ -20,7 +22,7 @@ const generateJob = (params = {}) => {
   let job = {}
   job.id = params.id || ('' + faker.datatype.number({min: 123456, max: 999999}))
 
-  job.status = params.status || faker.helpers.arrayElements(['Draft', 'Scheduled', 'Published', 'Closed'])
+  job.status = params.status || faker.helpers.arrayElement(['Draft', 'Scheduled', 'Published', 'Closed'])
 
   job.organisation = params.organisation || faker.helpers.arrayElement(organisations)
 
@@ -87,7 +89,11 @@ const generateJob = (params = {}) => {
 
     if(job.applicationMethod == 'By email') {
 
-      job.applicationForm = params.applicationForm || 'application.pdf'
+      job.applicationForm = params.applicationForm || {
+        file: 'application-form.pdf',
+        size: '2MB'
+      }
+
       job.emailAddressForApplications = params.emailAddressForApplications || faker.helpers.arrayElement(users).username
 
     }
@@ -112,12 +118,56 @@ const generateJob = (params = {}) => {
 
   }
 
-  // About role
   job.isRoleSuitableForEarlyCareeerTeachers = params.isRoleSuitableForEarlyCareeerTeachers || faker.helpers.arrayElement(['Yes', 'No'])
 
-  // Supporting documents
+  job.skillsAndExperience = params.skillsAndExperience || faker.lorem.word(30)
 
-  // Dates
+  job.whatSchoolOffers = params.whatSchoolOffers || faker.lorem.word(20)
+
+  job.hasSafeguardingCommitment = params.hasSafeguardingCommitment || faker.helpers.arrayElement(['Yes', 'No'])
+
+  if(job.hasSafeguardingCommitment == 'Yes') {
+
+    job.safeguardingCommitment = params.safeguardingCommitment || faker.lorem.word(30)
+
+  }
+
+  job.hasFurtherDetailsAboutTheRole = params.hasFurtherDetailsAboutTheRole || faker.helpers.arrayElement(['Yes', 'No'])
+
+  if(job.hasSafeguardingCommitment == 'Yes') {
+
+    job.furtherDetailsAboutTheRole = params.furtherDetailsAboutTheRole || faker.lorem.word(30)
+
+  }
+
+  job.hasAdditionalDocuments = params.hasAdditionalDocuments || faker.helpers.arrayElement(['Yes', 'No'])
+
+  if(job.hasAdditionalDocuments == 'Yes') {
+
+    job.additionalDocuments = params.additionalDocuments || faker.helpers.arrayElements([
+      {
+        file: 'job-description.pdf',
+        size: '6MB'
+      },
+      {
+        file: 'person-specification.pdf',
+        size: '5MB'
+      }
+    ])
+
+  }
+
+  if(job.status == 'Published' || job.status == 'Scheduled') {
+
+    job.publishDate = params.publishDate || faker.date.future(0)
+
+    job.closingDate = params.publishDate || faker.date.future(0, job.publishDate)
+
+    job.closingTime = params.closingTime || faker.helpers.arrayElement(['9am', '12pm (midday)', '5pm', '11:59pm'])
+
+    job.startDate = params.startDate || faker.date.future(0, job.closingDate)
+
+  }
 
   return job
 }
@@ -126,6 +176,10 @@ const generateJobs = () => {
   const jobs = []
 
   jobs.push(generateJob({organisation: organisations.find(organisation => organisation.name == 'Royal Academy Trust')}))
+  jobs.push(generateJob())
+  jobs.push(generateJob())
+  jobs.push(generateJob())
+  jobs.push(generateJob())
   jobs.push(generateJob())
 
   return jobs

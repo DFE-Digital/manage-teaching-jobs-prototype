@@ -10,7 +10,7 @@
         "town": "Mill Hill",
         "postcode": "NW7 4YK"
       },
-      "phase": "Secondary school"
+      "phase": "Through school"
     }
   },
   {
@@ -24,7 +24,7 @@
         "town": "Mill Hill",
         "postcode": "NW7 4YK"
       },
-      "phase": "Through school"
+      "phase": "Primary school"
     }
   },
   {
@@ -40,7 +40,7 @@
       },
       "schools": [
         {
-          "name": "Goodwin, Runte and Roberts School",
+          "name": "Gutmann Group School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -49,7 +49,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Haag, Frami and Hilpert School",
+          "name": "DuBuque - Wuckert School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -58,7 +58,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "Bosco LLC School",
+          "name": "Mayer, Wintheiser and Abernathy School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -67,7 +67,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Kovacek Group School",
+          "name": "McGlynn Inc School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -76,7 +76,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Brekke Group School",
+          "name": "Armstrong - West School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -85,7 +85,7 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Rippin - Ondricka School",
+          "name": "Orn, Herman and Mertz School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
@@ -109,7 +109,7 @@
       },
       "schools": [
         {
-          "name": "Wilkinson - Bruen School",
+          "name": "Emard, Lemke and Schinner School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -118,7 +118,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Reichert Inc School",
+          "name": "Sanford - Pacocha School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -127,7 +127,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "Walter - Corwin School",
+          "name": "Dickens, Hoppe and Frami School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -136,7 +136,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Bednar - Cole School",
+          "name": "Watsica Group School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -145,7 +145,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Schaden - Haley School",
+          "name": "McGlynn - Kuvalis School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -154,7 +154,7 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Leuschke Inc School",
+          "name": "Kuhic LLC School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
