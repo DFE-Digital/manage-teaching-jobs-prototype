@@ -2,11 +2,14 @@
 
 {% block content %}
 
+  {# <span class="govuk-caption-l">
+    Job listing
+  </span> #}
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    {{job.title}}
+    Maths teacher
     {{ govukTag({
-      text: job.status,
-    classes: job.status | jobStatusTagClass
+      text: "Published",
+      classes: 'govuk-tag--green'
     }) }}
   </h1>
 

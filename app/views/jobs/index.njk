@@ -41,7 +41,7 @@
         rows: [
           [
             {
-              html: '<a href="/jobs/show">Maths teacher</a>'
+              html: '<a href="/jobs/show--published">Maths teacher</a>'
             },
             {
               html: '<a href="#">2 applications</a>'
@@ -125,9 +125,92 @@
             }
           ]
         ]
-      }) }}
+      }) if 1 == 2 }}
+
 
     </div>
   </div>
 
+  <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+      {% include "includes/jobs-filter-panel.njk" %}
+    </div>
+
+    <div class="app-filter-layout__content">
+      {# {% include "includes/jobs-search-form.njk" %} #}
+
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
+      </div>
+
+      <div class="app-job-listings">
+        {% for job in user.jobs %}
+        <div class="app-job-listings__job">
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+            <a href="/jobs/{{job.id}}">{{job.title}}</a>
+          </h2>
+          {{ govukTag({
+            text: job.status,
+            classes: job.status | jobStatusTagClass
+          }) }}
+          <p class="app-job-listings__copy govuk-!-margin-bottom-0">
+            <a href="/jobs/new/copied">Copy</a>
+          </p>
+        </div>
+      {% endfor %}
+      </div>
+
+      {{ govukPagination({
+          next: {
+            href: "#"
+          },
+          items: [
+            {
+              number: 1,
+              href: "#",
+              current: true
+            },
+            {
+              number: 2,
+              href: "#"
+            },
+            {
+              number: 3,
+              href: "#"
+            }
+          ]
+        }) }}
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+
+    new AppFrontend.CheckboxFilter({
+      container: $('#subjects'),
+      textBox: {
+        label: 'Search for subject'
+      }
+    })
+  </script>
 {% endblock %}

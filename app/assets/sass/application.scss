@@ -20,6 +20,7 @@ $app-images-path: "/public/images/";
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 // Import local component styles
 @import "app/views/components/all.scss";
+@import "filter-layout";
 
 .govuk-header {
   border-bottom: 10px solid #1d70b8;
@@ -88,4 +89,31 @@ h1 .govuk-tag {
 
 
 
+}
+
+.app-job-listings {
+  margin-bottom: govuk-spacing(4);
+  border-top: 1px solid govuk-colour('mid-grey');
+}
+
+.app-job-listings__job {
+  padding: govuk-spacing(3) 0;
+  border-bottom: 1px solid govuk-colour('mid-grey');
+  position: relative;
+
+  h2 {
+    max-width: 280px;
+  }
+
+  .govuk-tag {
+    position: absolute;
+    top: govuk-spacing(3);
+    left: 300px;
+  }
+
+  .app-job-listings__copy {
+    position: absolute;
+    top: govuk-spacing(3);
+    right: 0;
+  }
 }

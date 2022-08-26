@@ -175,12 +175,13 @@ const generateJob = (params = {}) => {
 const generateJobs = () => {
   const jobs = []
 
-  jobs.push(generateJob({organisation: organisations.find(organisation => organisation.name == 'Royal Academy Trust')}))
-  jobs.push(generateJob())
-  jobs.push(generateJob())
-  jobs.push(generateJob())
-  jobs.push(generateJob())
-  jobs.push(generateJob())
+  users.forEach(user => {
+    for (let i = 0; i < 10; i++) {
+      jobs.push(generateJob({
+        organisation: user.organisation
+      }))
+    }
+  })
 
   return jobs
 }
