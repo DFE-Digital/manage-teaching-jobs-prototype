@@ -5,7 +5,7 @@ faker.setLocale('en_GB');
 
 const generateSchool = (params = {}) => {
   let school = {}
-  school.name = params.name || faker.company.companyName({format: 5}) + ' School'
+  school.name = params.name || faker.company.name() + ' School'
   school.address = params.address || { address1: '10 Seed Street', town: 'London', postcode: 'N19 4PT' }
   school.phase = params.phase || 'Primary school'
   return school

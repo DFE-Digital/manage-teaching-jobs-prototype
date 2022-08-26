@@ -6,6 +6,7 @@ faker.setLocale('en_GB');
 const organisationHelper = require('../app/helpers/organisation')
 
 const organisations = require('../app/data/organisations.json')
+const users = require('../app/data/users.json')
 const roles = require('../app/data/roles.js')
 
 // generators
@@ -18,6 +19,9 @@ const generateKeyStages = require('./jobGenerators/key-stages')
 const generateJob = (params = {}) => {
   let job = {}
   job.id = params.id || ('' + faker.datatype.number({min: 123456, max: 999999}))
+
+  job.status = params.status || faker.helpers.arrayElements(['Draft', 'Scheduled', 'Published', 'Closed'])
+
   job.organisation = params.organisation || faker.helpers.arrayElement(organisations)
 
   // For now the default includes all possible locations but hiring stafff can select a subset.
@@ -75,20 +79,45 @@ const generateJob = (params = {}) => {
     job.additionalAllowances = params.additionalAllowances || 'TLR is available.'
   }
 
-  // job.listingDate
+  job.isUsingApplicationForm = params.isUsingApplicationForm || faker.helpers.arrayElement(['Yes', 'No'])
 
-  // Closing date
+  if(job.hasAdditionalAllowances == 'No') {
 
-  // Closing time?
+    job.applicationMethod = params.applicationMethod || faker.helpers.arrayElement(['By email', 'Through a website'])
 
-  // Start date
+    if(job.applicationMethod == 'By email') {
 
-  // Application method (lots within)
+      job.applicationForm = params.applicationForm || 'application.pdf'
+      job.emailAddressForApplications = params.emailAddressForApplications || faker.helpers.arrayElement(users).username
+
+    }
+
+    if(job.applicationMethod == 'Through a website') {
+
+      job.linkToWebsite = params.linkToWebsite || 'https://www.school.uk'
+
+    }
+
+  }
+
+  job.offersSchoolVisits = params.offersSchoolVisits || faker.helpers.arrayElement(['Yes', 'No'])
+
+  job.contactEmailAddress = params.contactEmailAddress || faker.helpers.arrayElement(users).username
+
+  job.hasContactPhoneNumber = params.hasContactPhoneNumber || faker.helpers.arrayElement(['Yes', 'No'])
+
+  if(job.hasContactPhoneNumber == 'Yes') {
+
+    job.contactPhoneNumber = params.contactPhoneNumber || faker.phone.number('020# ### ###')
+
+  }
 
   // About role
   job.isRoleSuitableForEarlyCareeerTeachers = params.isRoleSuitableForEarlyCareeerTeachers || faker.helpers.arrayElement(['Yes', 'No'])
 
   // Supporting documents
+
+  // Dates
 
   return job
 }
@@ -97,7 +126,7 @@ const generateJobs = () => {
   const jobs = []
 
   jobs.push(generateJob({organisation: organisations.find(organisation => organisation.name == 'Royal Academy Trust')}))
-  // jobs.push(generateJob())
+  jobs.push(generateJob())
 
   return jobs
 }

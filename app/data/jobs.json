@@ -1,6 +1,12 @@
 [
   {
-    "id": "289263",
+    "id": "668072",
+    "status": [
+      "Draft",
+      "Closed",
+      "Published",
+      "Scheduled"
+    ],
     "organisation": {
       "type": "MAT",
       "name": "Royal Academy Trust",
@@ -11,7 +17,7 @@
       },
       "schools": [
         {
-          "name": "Schultz Inc School",
+          "name": "Goodwin, Runte and Roberts School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -20,7 +26,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Mosciski Group School",
+          "name": "Haag, Frami and Hilpert School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -29,7 +35,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "Boyer, Huels and Dicki School",
+          "name": "Bosco LLC School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -38,7 +44,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Renner - Kirlin School",
+          "name": "Kovacek Group School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -47,7 +53,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Aufderhar, Sanford and Johnson School",
+          "name": "Brekke Group School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -56,7 +62,7 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Will Inc School",
+          "name": "Rippin - Ondricka School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
@@ -76,29 +82,149 @@
         }
       }
     ],
-    "role": "SENDCo (special educational needs and disabilities coordinator)",
+    "role": "Headteacher, deputy or assistant headteacher",
     "title": "Maths teacher",
-    "keyStages": [
-      "Key stage 1",
-      "Key stage 2",
-      "Key stage 3",
-      "Key stage 4"
-    ],
     "subjects": [
-      "Spanish"
+      "Accounting"
     ],
-    "contractType": "Maternity or parental leave cover",
+    "contractType": "Fixed term",
     "contractLength": "6 months",
     "workingPatterns": [
+      "Part time",
       "Full time"
     ],
     "fullTimeDetails": "5 days a week",
+    "partTimeDetails": "20 hours a week",
     "salaryDetails": [
-      "Full-time equivalent salary"
+      "Actual salary",
+      "Full-time equivalent salary",
+      "Pay scale"
     ],
     "fullTimeEquivalentSalaryDetails": "£42,000",
+    "actualSalaryDetails": "£31,000",
+    "payScaleDetails": "MP4 to MP6",
     "hasAdditionalAllowances": "Yes",
     "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "No",
+    "contactEmailAddress": "laura@barnet.la.uk",
+    "hasContactPhoneNumber": "No",
+    "isRoleSuitableForEarlyCareeerTeachers": "No"
+  },
+  {
+    "id": "653235",
+    "status": [
+      "Draft",
+      "Published",
+      "Closed"
+    ],
+    "organisation": {
+      "type": "MAT",
+      "name": "Royal Academy Trust",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "schools": [
+        {
+          "name": "Goodwin, Runte and Roberts School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Nursery school"
+        },
+        {
+          "name": "Haag, Frami and Hilpert School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Primary school"
+        },
+        {
+          "name": "Bosco LLC School",
+          "address": {
+            "address1": "2 Owl Way",
+            "town": "London",
+            "postcode": "W6 1PT"
+          },
+          "phase": "Middle school"
+        },
+        {
+          "name": "Kovacek Group School",
+          "address": {
+            "address1": "3 Owl Way",
+            "town": "London",
+            "postcode": "W7 2PT"
+          },
+          "phase": "Secondary school"
+        },
+        {
+          "name": "Brekke Group School",
+          "address": {
+            "address1": "4 Owl Way",
+            "town": "London",
+            "postcode": "W8 3PT"
+          },
+          "phase": "Sixth form or college"
+        },
+        {
+          "name": "Rippin - Ondricka School",
+          "address": {
+            "address1": "5 Owl Way",
+            "town": "London",
+            "postcode": "W9 4PT"
+          },
+          "phase": "Through school"
+        }
+      ]
+    },
+    "locations": [
+      {
+        "name": "Royal Academy Trust",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "Teaching assistant",
+    "title": "Science teacher",
+    "keyStages": [
+      "Early years",
+      "Key stage 1",
+      "Key stage 2",
+      "Key stage 3",
+      "Key stage 4",
+      "Key stage 5"
+    ],
+    "subjects": [
+      "Biology",
+      "Classics"
+    ],
+    "contractType": "Permanent",
+    "workingPatterns": [
+      "Part time"
+    ],
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Actual salary"
+    ],
+    "actualSalaryDetails": "£31,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "By email",
+    "applicationForm": "application.pdf",
+    "emailAddressForApplications": "laura@barnet.la.uk",
+    "offersSchoolVisits": "Yes",
+    "contactEmailAddress": "laura@barnet.la.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0207 041 797",
     "isRoleSuitableForEarlyCareeerTeachers": "Yes"
   }
 ]
