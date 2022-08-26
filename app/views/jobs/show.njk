@@ -6,7 +6,7 @@
     {{job.title}}
     {{ govukTag({
       text: job.status,
-    classes: job.status | jobStatusTagClass
+      classes: job.status | jobStatusTagClass
     }) }}
   </h1>
 
@@ -62,7 +62,6 @@
         <a href="#">Preview</a>&nbsp;&nbsp;
         <a href="#">Copy</a>&nbsp;&nbsp;
         <a href="#">End early</a>&nbsp;&nbsp;
-        {# <a href="#">Extend deadline</a>&nbsp;&nbsp; #}
       </p>
   {% endset %}
 
