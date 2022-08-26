@@ -76,7 +76,7 @@
 
 
 
- <div class="govuk-grid-row">
+  <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <h2 class="govuk-heading-m govuk-!-margin-top-6">
@@ -85,30 +85,40 @@
 
       {% set workingPatterns %}
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-          <li>
-            <p>Full-time</p>
-          </li>
-          <li class="govuk-!-margin-bottom-0">
-            <p class="govuk-!-margin-bottom-0">Part-time:<br>
-            3 days a week</p>
-          </li>
+
+          {% for workingPattern in job.workingPatterns %}
+            <li>
+              <p class="govuk-!-margin-bottom-0">
+                {{workingPattern}} -
+                {% if workingPattern == 'Full time' %}
+                  {{job.fullTimeDetails}}
+                {% else %}
+                  {{job.partTimeDetails}}
+                {% endif %}
+              </p>
+            </li>
+          {% endfor %}
         </ul>
       {% endset %}
 
       {% set salaryDetails %}
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-          <li>
-            <p>Full-time equivalent salary:<br>
-            £25,000 to £35,000</p>
-          </li>
-          <li>
-            <p>Actual salary:<br>
-            £17,000 to £26,000</p>
-          </li>
-          <li class="govuk-!-margin-bottom-0">
-            <p class="govuk-!-margin-bottom-0">Pay scale:<br>
-            MP1 to MP6</p>
-          </li>
+
+          {% for salaryDetail in job.salaryDetails %}
+            <li>
+              <p>
+                {{salaryDetail}}:
+                <br>
+                {% if salaryDetail == 'Full-time equivalent salary' %}
+                  {{job.fullTimeEquivalentSalaryDetails}}
+                {% elseif salaryDetail == 'Actual salary' %}
+                  {{job.actualSalaryDetails}}
+                {% else %}
+                  {{job.payScaleDetails}}
+                {% endif %}
+              </p>
+            </li>
+          {% endfor %}
         </ul>
       {% endset %}
 
@@ -130,13 +140,13 @@
                 }
               ]
             }
-          },
+          } if job.organisation.schools,
           {
             key: {
               text: "Role"
             },
             value: {
-              text: "Teacher"
+              text: job.role
             },
             actions: {
               items: [
@@ -153,7 +163,7 @@
               text: "Job title"
             },
             value: {
-              text: "Teacher of KS1"
+              text: job.title
             },
             actions: {
               items: [
@@ -170,7 +180,7 @@
               text: "Key stage"
             },
             value: {
-              text: "Key stage 1, key stage 2"
+              text: job.keyStages | join(',')
             },
             actions: {
               items: [
@@ -187,7 +197,7 @@
               text: "Subjects"
             },
             value: {
-              text: "Maths"
+              text: job.subjects | join(',')
             },
             actions: {
               items: [
