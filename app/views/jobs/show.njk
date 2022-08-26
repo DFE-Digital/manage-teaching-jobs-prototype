@@ -11,58 +11,65 @@
   </h1>
 
   {% set insetHtml %}
-     {{ govukSummaryList({
-      rows: [
-        {
-          key: {
-            text: "Publish date"
-          },
-          value: {
-            text: "19 August 2022"
-          }
-        },
-        {
-          key: {
-            text: "Closing date"
-          },
-          value: {
-            text: "19 October 2022"
-          },
-          actions: {
-            items: [
-              {
-                href: "Item URL",
-                text: "Change",
-                visuallyHiddenText: "Item label"
-              }
-            ]
-          }
-        },
-        {
-          key: {
-            text: "Job start date"
-          },
-          value: {
-            text: "1 December 2022"
-          },
-          actions: {
-            items: [
-              {
-                href: "Item URL",
-                text: "Change",
-                visuallyHiddenText: "Item label"
-              }
-            ]
-          }
-        }
-      ]
-    }) }}
 
-      <p>
-        <a href="#">Preview</a>&nbsp;&nbsp;
-        <a href="#">Copy</a>&nbsp;&nbsp;
-        <a href="#">End early</a>&nbsp;&nbsp;
-      </p>
+    {% if job.status == 'Published' or job.status == 'Scheduled' or job.status == 'Closed'  %}
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Publish date"
+            },
+            value: {
+              text: "19 August 2022"
+            }
+          },
+          {
+            key: {
+              text: "Closing date"
+            },
+            value: {
+              text: "19 October 2022"
+            },
+            actions: {
+              items: [
+                {
+                  href: "Item URL",
+                  text: "Change",
+                  visuallyHiddenText: "Item label"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Job start date"
+            },
+            value: {
+              text: "1 December 2022"
+            },
+            actions: {
+              items: [
+                {
+                  href: "Item URL",
+                  text: "Change",
+                  visuallyHiddenText: "Item label"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+    {% endif %}
+
+    {% if job.status == 'Draft'  %}
+      <p>The job listing needs to be published.</p>
+    {% endif %}
+
+    <p>
+      <a href="#">Preview</a>&nbsp;&nbsp;
+      <a href="#">Copy</a>&nbsp;&nbsp;
+      <a href="#">End early</a>&nbsp;&nbsp;
+    </p>
   {% endset %}
 
   <div class="govuk-grid-row">
