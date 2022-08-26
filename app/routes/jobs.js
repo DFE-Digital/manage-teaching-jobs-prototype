@@ -7,13 +7,13 @@ module.exports = router => {
     res.render('jobs/index')
   })
 
-  router.get('/jobs/:id', authentication.checkIsAuthenticated, (req, res) => {
+  // router.get('/jobs/:id', authentication.checkIsAuthenticated, (req, res) => {
 
-    let job = req.session.user.jobs.find(job => job.id == req.params.id)
+  //   let job = req.session.user.jobs.find(job => job.id == req.params.id)
 
-    res.render('jobs/show', {
-      job
-    })
-  })
+  //   res.render('jobs/show', {
+  //     job
+  //   })
+  // })
 
 }
