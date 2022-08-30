@@ -34,11 +34,28 @@
     {% endif %}
 
     {% if job.status == 'Draft' %}
-      <p>This job listing needs to be completed before it can be published.</p>
+
+      {% if query.incomplete %}
+        <p>This job listing needs to be completed before it can be published.</p>
+      {% else %}
+        <p>This job listing needs to be published.</p>
+      {% endif %}
 
       <div class="govuk-button-group">
-        <a href="#">Complete job listing</a>
-        <a href="#" class="govuk-!-margin-left-2">Preview</a>
+        {# <a href="#">Complete job listing</a> #}
+
+        {% if query.incomplete %}
+          {{ govukButton({
+            text: "Complete job listing",
+            href: '#'
+          }) }}
+        {% else %}
+          {{ govukButton({
+            text: "Publish job listing",
+            href: '#'
+          }) }}
+        {% endif %}
+        <a href="#">Preview</a>
         <a href="#" class="govuk-!-margin-left-2">Copy</a>
         <a href="#" class="govuk-!-margin-left-2">Delete</a>
       </div>
