@@ -99,15 +99,13 @@
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
 
           {% for workingPattern in job.workingPatterns %}
-            <li>
-              <p class="govuk-!-margin-bottom-0">
-                {{workingPattern}} -
-                {% if workingPattern == 'Full time' %}
-                  {{job.fullTimeDetails}}
-                {% else %}
-                  {{job.partTimeDetails}}
-                {% endif %}
-              </p>
+            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
+              {{workingPattern}} -
+              {% if workingPattern == 'Full time' %}
+                {{job.fullTimeDetails}}
+              {% else %}
+                {{job.partTimeDetails}}
+              {% endif %}
             </li>
           {% endfor %}
         </ul>
@@ -116,10 +114,8 @@
       {% set salaryDetails %}
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
           {% for salaryDetail in job.salaryDetails %}
-            <li>
-              <p>
-                {{salaryDetail}}:
-                <br>
+            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
+                {{salaryDetail}}:<br>
                 {% if salaryDetail == 'Full-time equivalent salary' %}
                   {{job.fullTimeEquivalentSalaryDetails}}
                 {% elseif salaryDetail == 'Actual salary' %}
@@ -127,7 +123,6 @@
                 {% else %}
                   {{job.payScaleDetails}}
                 {% endif %}
-              </p>
             </li>
           {% endfor %}
         </ul>
@@ -136,7 +131,7 @@
       {% set additionalDocuments %}
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
           {% for document in job.additionalDocuments %}
-            <li>
+            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
               <a href="#">{{document.file}}, {{document.size}}</a>
             </li>
           {% endfor %}
