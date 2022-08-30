@@ -20,6 +20,7 @@ $app-images-path: "/public/images/";
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 // Import local component styles
 @import "app/views/components/all.scss";
+@import "filter-layout";
 
 .govuk-header {
   border-bottom: 10px solid #1d70b8;
@@ -67,4 +68,58 @@ h1 .govuk-tag {
   font-weight: bold;
   margin-bottom: 0;
 
+}
+
+.app-box {
+  border: 1px solid govuk-colour('mid-grey');
+  padding: govuk-spacing(4);
+  margin-bottom: govuk-spacing(4);
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  .govuk-summary-list:last-child {
+    margin-bottom: 0;
+  }
+
+  // .govuk-summary-list__row:last-child,
+  // .govuk-summary-list__row:last-child > * {
+  //   border-bottom: 0;
+  // }
+
+
+
+}
+
+.app-job-listings {
+  margin-bottom: govuk-spacing(4);
+  border-top: 1px solid govuk-colour('mid-grey');
+}
+
+.app-job-listings__job {
+  padding: govuk-spacing(3) 0;
+  border-bottom: 1px solid govuk-colour('mid-grey');
+
+  h2 {
+    max-width: 280px;
+    float: left;
+  }
+
+  .app-job-listings__job-row {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .govuk-tag {
+    float: right;
+    margin-bottom: govuk-spacing(1);
+  }
+
+  .app-job-listings__role {
+    float: left;
+  }
+
+  .app-job-listings__copy {
+    float: right;
+  }
 }

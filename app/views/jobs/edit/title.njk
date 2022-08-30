@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Age group' %}
+{% set heading = 'Job title' %}
 {% set caption = 'Create job listing - section 1 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -12,6 +12,7 @@
 {% endblock %}
 
 {% block content %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -22,18 +23,26 @@
         {{heading}}
       {% endset %}
 
-      <form action="/jobs/new/role" method="post">
-        {{ govukRadios({
-          idPrefix: "createJob[ageGroups]",
-          name: "createJob[ageGroups]",
-          fieldset: {
-            legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
+      <form action="/jobs/new/key-stage">
+
+        {{ govukCharacterCount({
+          id: "createJob[title]",
+          name: "createJob[title]",
+          label: {
+            html: h1,
+            isPageHeading: true,
+            classes: 'govuk-label--l'
           },
-          items: options
+          hint: {
+            text: 'For example ‘Teacher of KS1’'
+          },
+          rows: 1,
+          maxlength: 75,
+          value: data['createJob'].title
+        }) }}
+
+        {{ govukInsetText({
+          text: "The job listing will say it’s a " + (user.organisation.schoolType or user.organisation.trustType) + " role."
         }) }}
 
         {{ govukButton({
@@ -44,9 +53,7 @@
           text: 'Save and finish later',
           classes: 'govuk-!-margin-left-1 govuk-button--secondary'
         }) }}
-
       </form>
-
       <p><a href="#">Cancel</a></p>
 
 

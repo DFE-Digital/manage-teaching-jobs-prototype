@@ -1,0 +1,160 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'About the role' %}
+{% set caption = 'Create job listing - section 4 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+      <form action="/jobs/new/upload">
+
+        {{ govukRadios({
+          idPrefix: "createJob[suitability]",
+          name: "createJob[suitability]",
+          fieldset: {
+            legend: {
+              text: "Is this role suitable for an early career teacher (ECT)?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: 'Early career teachers were previously called newly qualified teachers (NQT)'
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukCharacterCount({
+          id: "createJob[skills]",
+          name: "createJob[skills]",
+          label: {
+            html: 'What skills and experience are you looking for?',
+            classes: 'govuk-label--m'
+          },
+          maxwords: 150
+        }) }}
+
+        {{ govukCharacterCount({
+          id: "createJob[benefits]",
+          name: "createJob[benefits]",
+          label: {
+            html: 'What does your school offer?',
+            classes: 'govuk-label--m'
+          },
+          maxwords: 150
+        }) }}
+
+        {% set safeguardingNoticeDetails %}
+          {{ govukCharacterCount({
+            id: "createJob[safeguarding-notice-details]",
+            name: "createJob[safeguarding-notice-details]",
+            label: {
+              text: "Information about your commitment to safeguarding",
+              classes: "govuk-label--s"
+            },
+            maxwords: 100
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: "createJob[safeguarding-notice]",
+          name: "createJob[safeguarding-notice]",
+          fieldset: {
+            legend: {
+              text: "Do you want to give information about your commitment to safeguarding?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: safeguardingNoticeDetails
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {% set otherInformationDetails %}
+          {{ govukCharacterCount({
+            id: "createJob[other-information-details]",
+            name: "createJob[other-information-details]",
+            label: {
+              text: "Further details about the role",
+              classes: "govuk-label--s"
+            },
+            maxwords: 100
+          }) }}
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: "createJob[other-information]",
+          name: "createJob[other-information]",
+          fieldset: {
+            legend: {
+              text: "Do you want to add further details about the role?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: otherInformationDetails
+              }
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

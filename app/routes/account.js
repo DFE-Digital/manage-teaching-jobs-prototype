@@ -1,5 +1,6 @@
 const users = require('../data/users.json')
-const organisations = require('../data/orgs.json')
+const organisations = require('../data/organisations.json')
+const jobs = require('../data/jobs.json')
 
 module.exports = router => {
 
@@ -19,11 +20,19 @@ module.exports = router => {
   })
 
   router.post('/sign-in', (req, res) => {
+
+    let user
+
     if(req.body.emailAddress) {
-      res.locals.user = req.session.user = users.find(user => user.username == req.body.emailAddress)
+      user = users.find(user => user.username == req.body.emailAddress)
     } else {
-      res.locals.user = req.session.user = users[0]
+      user = users[0]
     }
+
+    // add jobs to the user
+    user.jobs = jobs.filter(job => job.organisation.name == user.organisation.name)
+
+    res.locals.user = req.session.user = user
 
     res.redirect('/jobs')
   })

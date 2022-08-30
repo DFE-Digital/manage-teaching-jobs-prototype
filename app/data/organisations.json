@@ -1,0 +1,152 @@
+[
+  {
+    "type": "School",
+    "name": "Courtland Primary School",
+    "address": {
+      "address1": "50 Lawrence Street",
+      "town": "Mill Hill",
+      "postcode": "NW7 4YK"
+    },
+    "phase": "Primary school"
+  },
+  {
+    "type": "School",
+    "name": "Bushey Meads Secondary School",
+    "address": {
+      "address1": "50 Lawrence Street",
+      "town": "Mill Hill",
+      "postcode": "NW7 4YK"
+    },
+    "phase": "Sixth form or college"
+  },
+  {
+    "type": "MAT",
+    "name": "Royal Academy Trust",
+    "address": {
+      "address1": "50 Lawrence Street",
+      "town": "Mill Hill",
+      "postcode": "NW7 4YK"
+    },
+    "schools": [
+      {
+        "name": "Streich Group School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "phase": "Nursery school"
+      },
+      {
+        "name": "Bahringer, Stoltenberg and Pfannerstill School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "phase": "Primary school"
+      },
+      {
+        "name": "Gislason and Sons School",
+        "address": {
+          "address1": "2 Owl Way",
+          "town": "London",
+          "postcode": "W6 1PT"
+        },
+        "phase": "Middle school"
+      },
+      {
+        "name": "Bechtelar Inc School",
+        "address": {
+          "address1": "3 Owl Way",
+          "town": "London",
+          "postcode": "W7 2PT"
+        },
+        "phase": "Secondary school"
+      },
+      {
+        "name": "Steuber Group School",
+        "address": {
+          "address1": "4 Owl Way",
+          "town": "London",
+          "postcode": "W8 3PT"
+        },
+        "phase": "Sixth form or college"
+      },
+      {
+        "name": "Jenkins, Funk and Robel School",
+        "address": {
+          "address1": "5 Owl Way",
+          "town": "London",
+          "postcode": "W9 4PT"
+        },
+        "phase": "Through school"
+      }
+    ]
+  },
+  {
+    "type": "LA",
+    "name": "Barnet Local Authority",
+    "address": {
+      "address1": "50 Lawrence Street",
+      "town": "Mill Hill",
+      "postcode": "NW7 4YK"
+    },
+    "schools": [
+      {
+        "name": "Ullrich LLC School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "phase": "Nursery school"
+      },
+      {
+        "name": "Kreiger - Herman School",
+        "address": {
+          "address1": "10 Seed Street",
+          "town": "London",
+          "postcode": "N19 4PT"
+        },
+        "phase": "Primary school"
+      },
+      {
+        "name": "Langosh, Botsford and Greenfelder School",
+        "address": {
+          "address1": "2 Owl Way",
+          "town": "London",
+          "postcode": "W6 1PT"
+        },
+        "phase": "Middle school"
+      },
+      {
+        "name": "Paucek, Hoeger and Jacobs School",
+        "address": {
+          "address1": "3 Owl Way",
+          "town": "London",
+          "postcode": "W7 2PT"
+        },
+        "phase": "Secondary school"
+      },
+      {
+        "name": "Ankunding - Nader School",
+        "address": {
+          "address1": "4 Owl Way",
+          "town": "London",
+          "postcode": "W8 3PT"
+        },
+        "phase": "Sixth form or college"
+      },
+      {
+        "name": "Fritsch, Schneider and Nolan School",
+        "address": {
+          "address1": "5 Owl Way",
+          "town": "London",
+          "postcode": "W9 4PT"
+        },
+        "phase": "Through school"
+      }
+    ]
+  }
+]

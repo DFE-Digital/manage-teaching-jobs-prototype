@@ -1,51 +1,36 @@
 {% extends "layout.njk" %}
 
+{% set scheduling = data.createJob and data.createJob.publishDate != 'Today (6 June 2022)' %}
+{% if scheduling %}
+  {% set buttonText = 'Schedule job listing' %}
+  {% set heading = 'Check details and schedule job listing' %}
+{% else %}
+  {% set buttonText = 'Publish job listing' %}
+  {% set heading = 'Check details and publish job listing' %}
+{% endif %}
+
+{% set caption = 'Create job listing' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
 {% block content %}
-
-  {% set notificationBannerHtml %}
-    <h2 class="govuk-heading-m">
-      There’s a problem
-    </h2>
-    <div class="app-notification-banner-summary__body">
-      <ul class="govuk-list app-notification-banner-summary__list">
-        <li>
-          <a href="#publish-date">The publish date must be in the future</a>
-        </li>
-      </ul>
-    </div>
-
-  {% endset %}
-
-  {# {{ govukNotificationBanner({
-    html: notificationBannerHtml
-  }) }} #}
-
-  {# <span class="govuk-caption-l">
-    Job listing
-  </span> #}
-  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    English teacher
-    {{ govukTag({
-      text: "Scheduled",
-      classes: 'govuk-tag--yellow'
-    }) }}
-  </h1>
-
-  <p>
-    <a href="#">Unschedule</a>&nbsp;&nbsp;
-    <a href="#">Preview</a>&nbsp;&nbsp;
-    <a href="#">Copy</a>&nbsp;&nbsp;
-    <a href="#">Delete</a>&nbsp;&nbsp;
-  </p>
-
-
-
-
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h2 class="govuk-heading-m govuk-!-margin-top-6">
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+      <h2 class="govuk-heading-m">
         Job details
       </h2>
 
@@ -78,7 +63,7 @@
         </ul>
       {% endset %}
 
-       {{ govukSummaryList({
+      {{ govukSummaryList({
         rows: [
           {
             key: {
@@ -96,7 +81,7 @@
                 }
               ]
             }
-          },
+          } if data.createJob.locations,
           {
             key: {
               text: "Role"
@@ -136,7 +121,7 @@
               text: "Key stage"
             },
             value: {
-              text: "Key stage 1, key stage 2"
+              text: data['createJob']['key-stages'] | join(', ')
             },
             actions: {
               items: [
@@ -147,24 +132,24 @@
                 }
               ]
             }
-          },
+          } if data['createJob']['key-stages'],
           {
             key: {
               text: "Subjects"
             },
             value: {
-              text: "Maths"
+              text: data['createJob']['subjects'] | join(', ') or 'None'
             },
             actions: {
               items: [
                 {
-                  href: "/jobs/new/key-stage",
+                  href: "/jobs/new/subjects",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
               ]
             }
-          },
+          } if data['createJob']['subjects'],
           {
             key: {
               text: "Contract type"
@@ -215,89 +200,37 @@
                 }
               ]
             }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m">
-        Dates
-      </h2>
-
-      {% set publishDateHtml %}
-        <div class="app-field-highlightxxx" id="publish-date">
-          {# <p class="app-field-highlight__instruction">The publish date must be in the future</p> #}
-
-
-          Today (6 June 2022)
-        </div>
-      {% endset %}
-
-       {{ govukSummaryList({
-        rows: [
+          },
           {
             key: {
-              text: "Publish date"
+              text: "Do you want to include additional allowances?"
             },
             value: {
-              html: publishDateHtml
+              html: 'Yes'
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/salary",
                   text: "Change",
-                  visuallyHiddenText: "TODO"
+                  visuallyHiddenText: "whether you want to include additional allowances"
                 }
               ]
             }
           },
           {
             key: {
-              text: "Closing date"
+              text: "Additional allowances"
             },
             value: {
-              text: "1 September 2022"
+              html: 'TLR is available'
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/salary",
                   text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Closing time"
-            },
-            value: {
-              text: "9am"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Start date"
-            },
-            value: {
-              text: "30 October 2022"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
+                  visuallyHiddenText: "additional allowances"
                 }
               ]
             }
@@ -330,15 +263,15 @@
           },
           {
             key: {
-              text: "How would you like applications to be submitted?"
+              text: "How do you want to receive applications?"
             },
             value: {
-              text: "Download and send an application form"
+              text: "By email"
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/process",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -355,7 +288,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/form",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -372,7 +305,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/form",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -401,12 +334,12 @@
               text: "Email address"
             },
             value: {
-              html: 'molly@example.com'
+              text: "adam@example.com"
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/contact-details",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -423,7 +356,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/contact-details",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -440,7 +373,7 @@
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "/jobs/new/phone",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -456,7 +389,7 @@
 
       {{ govukSummaryList({
         rows: [
-          {
+         {
             key: {
               text: "Is this role suitable for an early career teacher (ECT)?"
             },
@@ -613,6 +546,23 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
           }
         ]
       }) }}
+
+      <p><a href="#">Preview job listing (opens in new tab)</a>.</p>
+
+      <p>By publishing this job listing you agree to the <a href="#">terms and conditions</a>.</p>
+
+      <form action="/jobs/new/confirmation">
+
+        {{ govukButton({
+          text: buttonText
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+
 
     </div>
   </div>

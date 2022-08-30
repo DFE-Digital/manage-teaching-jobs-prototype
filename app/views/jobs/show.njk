@@ -2,26 +2,93 @@
 
 {% block content %}
 
-  {# <span class="govuk-caption-l">
-    Job listing
-  </span> #}
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    Maths teacher
+    {{job.title}}
     {{ govukTag({
-      text: "Published",
-      classes: 'govuk-tag--green'
+      text: job.status,
+      classes: job.status | jobStatusTagClass
     }) }}
   </h1>
 
-  <p>
-    <a href="#">Copy</a>&nbsp;&nbsp;
-    <a href="#">End early</a>&nbsp;&nbsp;
-    <a href="#">Preview</a>&nbsp;&nbsp;
-  </p>
+  {% set insetHtml %}
 
+    {% if job.status == 'Published' %}
+      <p>This job listing was published on {{job.publishDate | date }}. It closes on {{job.closingDate | date}} at {{job.closingTime}}.</p>
 
+      <div class="govuk-button-group">
+        <a href="#">Copy</a>
+        <a href="#" class="govuk-!-margin-left-2">End early</a>
+      </div>
 
+    {% endif %}
 
+    {% if job.status == 'Scheduled' %}
+      <p>This job listing will be published on {{job.publishDate | date }}. It closes on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+
+      <div class="govuk-button-group">
+        <a href="#">Unschedule</a>
+        <a href="#" class="govuk-!-margin-left-2">Preview</a>
+        <a href="#" class="govuk-!-margin-left-2">Copy</a>
+        <a href="#" class="govuk-!-margin-left-2">Delete</a>
+      </div>
+    {% endif %}
+
+    {% if job.status == 'Draft' %}
+
+      {% if query.incomplete %}
+        <p>This job listing needs to be completed before it can be published.</p>
+      {% else %}
+        <p>This job listing needs to be published.</p>
+      {% endif %}
+
+      <div class="govuk-button-group">
+        {# <a href="#">Complete job listing</a> #}
+
+        {% if query.incomplete %}
+          {{ govukButton({
+            text: "Complete job listing",
+            href: '#',
+            classes: 'govuk-!-margin-bottom-0'
+          }) }}
+        {% else %}
+          {{ govukButton({
+            text: "Publish job listing",
+            href: '#',
+            classes: 'govuk-!-margin-bottom-0'
+          }) }}
+        {% endif %}
+        <a href="#">Preview</a>
+        <a href="#" class="govuk-!-margin-left-2">Copy</a>
+        <a href="#" class="govuk-!-margin-left-2">Delete</a>
+      </div>
+    {% endif %}
+
+    {% if job.status == 'Closed' %}
+      <p>This job listing was published on {{job.publishDate | date }}. It closed on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+
+      <div class="govuk-button-group">
+        <a href="#">Extend deadline</a>
+        <a href="#" class="govuk-!-margin-left-2">Preview</a>
+        <a href="#" class="govuk-!-margin-left-2">Copy</a>
+      </div>
+    {% endif %}
+
+  {% endset %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukInsetText({
+        html: insetHtml,
+        classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-2 govuk-!-padding-bottom-3'
+      }) }}
+    </div>
+  </div>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -32,30 +99,44 @@
 
       {% set workingPatterns %}
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-          <li>
-            <p>Full-time</p>
-          </li>
-          <li class="govuk-!-margin-bottom-0">
-            <p class="govuk-!-margin-bottom-0">Part-time:<br>
-            3 days a week</p>
-          </li>
+
+          {% for workingPattern in job.workingPatterns %}
+            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
+              {{workingPattern}} -
+              {% if workingPattern == 'Full time' %}
+                {{job.fullTimeDetails}}
+              {% else %}
+                {{job.partTimeDetails}}
+              {% endif %}
+            </li>
+          {% endfor %}
         </ul>
       {% endset %}
 
       {% set salaryDetails %}
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-          <li>
-            <p>Full-time equivalent salary:<br>
-            £25,000 to £35,000</p>
-          </li>
-          <li>
-            <p>Actual salary:<br>
-            £17,000 to £26,000</p>
-          </li>
-          <li class="govuk-!-margin-bottom-0">
-            <p class="govuk-!-margin-bottom-0">Pay scale:<br>
-            MP1 to MP6</p>
-          </li>
+          {% for salaryDetail in job.salaryDetails %}
+            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
+                {{salaryDetail}}:<br>
+                {% if salaryDetail == 'Full-time equivalent salary' %}
+                  {{job.fullTimeEquivalentSalaryDetails}}
+                {% elseif salaryDetail == 'Actual salary' %}
+                  {{job.actualSalaryDetails}}
+                {% else %}
+                  {{job.payScaleDetails}}
+                {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endset %}
+
+      {% set additionalDocuments %}
+        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+          {% for document in job.additionalDocuments %}
+            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
+              <a href="#">{{document.file}}, {{document.size}}</a>
+            </li>
+          {% endfor %}
         </ul>
       {% endset %}
 
@@ -67,14 +148,32 @@
             },
             value: {
               text: "Farnham Heath End, Hale Reeds, Farnham, Surrey, GU9 9BN"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/locations",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
-          },
+          } if job.organisation.schools,
           {
             key: {
               text: "Role"
             },
             value: {
-              text: "Teacher"
+              text: job.role
+            },
+            actions: {
+              items: [
+                {
+                  href: '/jobs/edit/' + job.id + '/role',
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -82,7 +181,16 @@
               text: "Job title"
             },
             value: {
-              text: "Teacher of KS1"
+              text: job.title
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/title",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -90,23 +198,50 @@
               text: "Key stage"
             },
             value: {
-              text: "Key stage 1, key stage 2"
+              text: job.keyStages | join(', ')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/key-stage",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
-          },
+          } if job.keyStages,
           {
             key: {
               text: "Subjects"
             },
             value: {
-              text: "Maths"
+              text: job.subjects | join(', ')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/key-stage",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
-          },
+          } if job.subjects,
           {
             key: {
               text: "Contract type"
             },
             value: {
-              text: "Permanent"
+              text: job.contractType + ' - ' + job.contractLength
+            },
+            actions: {
+              items: [
+                {
+                  href: "jobs/new/contract",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -115,6 +250,15 @@
             },
             value: {
               html: workingPatterns
+            },
+            actions: {
+              items: [
+                {
+                  href: "jobs/new/working-patterns",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -123,6 +267,15 @@
             },
             value: {
               html: salaryDetails
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/salary",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           }
         ]
@@ -139,7 +292,16 @@
               text: "Publish date"
             },
             value: {
-              html: 'Today (6 June 2022)'
+              text: job.publishDate | date
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/listing-dates",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -147,23 +309,33 @@
               text: "Closing date"
             },
             value: {
-              text: "1 September 2022"
+              text: job.closingDate | date + ' at ' + job.closingTime
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
             key: {
-              text: "Closing time"
+              text: "Job start date"
             },
             value: {
-              text: "9am"
-            }
-          },
-          {
-            key: {
-              text: "Start date"
+              html: job.startDate | date
             },
-            value: {
-              text: "30 October 2022"
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           }
         ]
@@ -180,7 +352,16 @@
               text: "Do you want to use the application form?"
             },
             value: {
-              text: "No"
+              text: job.isUsingApplicationForm
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/method",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -188,39 +369,101 @@
               text: "How would you like applications to be submitted?"
             },
             value: {
-              text: "Download and send an application form"
+              text: job.applicationMethod
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
-          },
+          } if job.applicationMethod,
           {
             key: {
               text: "Application form"
             },
             value: {
-              html: '<a href="">form.pdf</a>, 2MB'
+              html: '<a href="#">' + job.applicationForm.file + ', ' + job.applicationForm.size +'</a>'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
-          },
+          } if job.applicationForm,
           {
             key: {
               text: "Email address to receive applications"
             },
             value: {
-              html: 'molly@example.com'
+              html: job.emailAddressForApplications
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
-          },
+          } if job.emailAddressForApplications,
+          {
+            key: {
+              text: "Application form"
+            },
+            value: {
+              html: job.linkToWebsite
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.linkToWebsite,
           {
             key: {
               text: "Do you want to offer school visits?"
             },
             value: {
-              text: "Yes"
+              text: job.offersSchoolVisits
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
-          },
+          } if job.offersSchoolVisits,
           {
             key: {
               text: "Email address"
             },
             value: {
-              html: 'molly@example.com'
+              html: job.contactEmailAddress
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -228,7 +471,16 @@
               text: "Do you want to give a contact phone number?"
             },
             value: {
-              text: "Yes"
+              text: job.hasContactPhoneNumber
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -237,8 +489,17 @@
             },
             value: {
               text: "0207 3456 3746"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
-          }
+          } if job.contactPhoneNumber
         ]
       }) }}
 
@@ -253,7 +514,16 @@
               text: "Is this role suitable for an early career teacher (ECT)?"
             },
             value: {
-              text: "Yes"
+              text: job.isRoleSuitableForEarlyCareeerTeachers
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/role",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -261,7 +531,16 @@
               text: "What skills and experience are you looking for?"
             },
             value: {
-              text: "You need to have at least 5 years experience teaching in a public school. You’ll be responsible for a class of 30 students."
+              text: jobs.skilsAndExperience
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -269,7 +548,16 @@
               text: "What does your school offer?"
             },
             value: {
-              text: "You’ll get regularl training etc."
+              text: job.whatSchoolOffers
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -278,7 +566,16 @@
 Yes"
             },
             value: {
-              text: "Yes"
+              text: job.hasSafeguardingCommitment
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -286,16 +583,33 @@ Yes"
               text: "Information about your commitment to safeguarding"
             },
             value: {
-              text: "St Laurence School is committed to safeguarding and promoting the welfare of children and young people and expects all staff and volunteers to share this commitment. All applicants will be subject to
-a full Disclosure and Barring Service check (previously CRB check) before appointment is confirmed."
+              text: job.safeguardingCommitment
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
-          },
+          } if job.safeguardingCommitment,
           {
             key: {
               text: "Do you want to add further details about the role?"
             },
             value: {
-              text: "Yes"
+              text: job.hasFurtherDetailsAboutTheRole
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -303,15 +617,33 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
               text: "Further details about the role"
             },
             value: {
-              text: "Ut eget dolor at libero commodo tincidunt vel egestas diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam aliquet risus eget ante viverra tincidunt. Etiam pulvinar metus dolor, in eleifend massa pharetra eget."
+              text: job.furtherDetailsAboutTheRole
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
-          },
+          } if job.furtherDetailsAboutTheRole,
           {
             key: {
               text: "Do you want to upload any additional documents?"
             },
             value: {
-              text: "Yes"
+              text: job.hasAdditionalDocuments
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
           },
           {
@@ -319,9 +651,18 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
               text: "Additional documents"
             },
             value: {
-              html: '<a href="#">person-spec.pdf</a>, 2MB'
+              html: additionalDocuments
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
             }
-          }
+          } if job.additionalDocuments
         ]
       }) }}
 

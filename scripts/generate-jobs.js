@@ -1,35 +1,41 @@
 const fs = require('fs')
 const path = require('path')
+// const { DateTime } = require('luxon')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 
-const organisations = require('../app/data/orgs.json')
+
+const organisationHelper = require('../app/helpers/organisation')
+
+const organisations = require('../app/data/organisations.json')
+const users = require('../app/data/users.json')
+const roles = require('../app/data/roles.js')
 
 // generators
-const generateJobRole = require('./jobGenerators/role')
-const generateRoleIsSuitableForEarlyCareerTeachers = require('./jobGenerators/role-is-suitable-for-early-career-teachers')
-const generateRoleHasSENDResponsibilities = require('./jobGenerators/role-has-send-responsibilites')
 const generateTitle = require('./jobGenerators/title')
 const generateSubjects = require('./jobGenerators/subjects')
 const generateWorkingPatterns = require('./jobGenerators/working-patterns')
+const generateKeyStages = require('./jobGenerators/key-stages')
 
 
 const generateJob = (params = {}) => {
   let job = {}
-
   job.id = params.id || ('' + faker.datatype.number({min: 123456, max: 999999}))
+
+  job.status = params.status || faker.helpers.arrayElement(['Draft', 'Scheduled', 'Published', 'Closed'])
 
   job.organisation = params.organisation || faker.helpers.arrayElement(organisations)
 
-  job.location = params.location || faker.helpers.arrayElement(job.organisation.locations)
+  // For now the default includes all possible locations but hiring stafff can select a subset.
+  job.locations = params.locations || organisationHelper.getLocations(job.organisation)
 
-  job.role = params.role || generateJobRole()
+  job.role = params.role || faker.helpers.arrayElement(roles)
 
-  job.isRoleSuitableForEarlyCareeerTeachers = params.isRoleSuitableForEarlyCareeerTeachers || generateRoleIsSuitableForEarlyCareerTeachers()
+  job.title = params.title || generateTitle({organisation: job.organisation, role: job.role})
 
-  job.roleHasSendResponsibilities = params.roleHasSendResponsibilities || generateRoleHasSENDResponsibilities()
+  job.keyStages = params.keyStages || generateKeyStages({organisation: job.organisation})
 
-  job.title = params.title || generateTitle()
+  job.subjects = params.subjects || generateSubjects()
 
   job.contractType = params.contractType || faker.helpers.arrayElement([
     'Permanent',
@@ -37,45 +43,127 @@ const generateJob = (params = {}) => {
     'Maternity or parental leave cover'
   ])
 
-  job.subjects = params.subjects || generateSubjects()
+  if(job.contractType == 'Fixed term' || job.contractType == 'Maternity or parental leave cover') {
+    job.contractLength = params.contractLength || '6 months'
+  }
 
-  job.workingPatterns = params.workingPatterns || generateWorkingPatterns()
+  job.workingPatterns = params.workingPatterns || faker.helpers.arrayElements(['Full time', 'Part time'])
 
-  // should be null if .workingPatterns is full time
-  job.workingPatternDetails = params.workingPatternDetails || faker.helpers.arrayElement([
-    null,
-    '20 hours per week',
-    'Monday to Wedensday'
+  if(job.workingPatterns.includes('Full time')) {
+    job.fullTimeDetails = params.fullTimeDetails || '5 days a week'
+  }
+
+  if(job.workingPatterns.includes('Part time')) {
+    job.partTimeDetails = params.partTimeDetails || '20 hours a week'
+  }
+
+  job.salaryDetails = params.salaryDetails || faker.helpers.arrayElements([
+    'Full-time equivalent salary',
+    'Actual salary',
+    'Pay scale'
   ])
 
-  job.salary = params.salary || faker.helpers.arrayElement([
-    'Main Pay Scale 1 -6/UPS 1-3',
-    '£20,852 (pro rata)',
-    'A1/B1 depending on experience',
-    'Main pay range 1 to Main pay range 6, £25,714 to £36,961'
-  ])
+  if(job.salaryDetails.includes('Full-time equivalent salary')) {
+    job.fullTimeEquivalentSalaryDetails = params.fullTimeEquivalentSalaryDetails || '£42,000'
+  }
 
-  job.additionalAllowances = params.additionalAllowances || faker.helpers.arrayElement([
-    null,
-    'TLR',
-    'SEN'
-  ])
+  if(job.salaryDetails.includes('Actual salary')) {
+    job.actualSalaryDetails = params.actualSalaryDetails || '£31,000'
+  }
 
-  // job.listingDate
+  if(job.salaryDetails.includes('Pay scale')) {
+    job.payScaleDetails = params.payScaleDetails || 'MP4 to MP6'
+  }
 
-  // Closing date
+  job.hasAdditionalAllowances = params.hasAdditionalAllowances || faker.helpers.arrayElement(['Yes', 'No'])
 
-  // Closing time?
+  if(job.hasAdditionalAllowances == 'Yes') {
+    job.additionalAllowances = params.additionalAllowances || 'TLR is available.'
+  }
 
-  // Start date
+  job.isUsingApplicationForm = params.isUsingApplicationForm || faker.helpers.arrayElement(['Yes', 'No'])
 
-  // Application method (lots within)
+  if(job.isUsingApplicationForm == 'No') {
 
-  // Supporting documents
+    job.applicationMethod = params.applicationMethod || faker.helpers.arrayElement(['By email', 'Through a website'])
 
-  // job details
+    if(job.applicationMethod == 'By email') {
 
-  // school details
+      job.applicationForm = params.applicationForm || {
+        file: 'application-form.pdf',
+        size: '2MB'
+      }
+
+      job.emailAddressForApplications = params.emailAddressForApplications || faker.helpers.arrayElement(users).username
+
+    }
+
+    if(job.applicationMethod == 'Through a website') {
+
+      job.linkToWebsite = params.linkToWebsite || 'https://www.school.uk'
+
+    }
+
+  }
+
+  job.offersSchoolVisits = params.offersSchoolVisits || faker.helpers.arrayElement(['Yes', 'No'])
+
+  job.contactEmailAddress = params.contactEmailAddress || faker.helpers.arrayElement(users).username
+
+  job.hasContactPhoneNumber = params.hasContactPhoneNumber || faker.helpers.arrayElement(['Yes', 'No'])
+
+  if(job.hasContactPhoneNumber == 'Yes') {
+
+    job.contactPhoneNumber = params.contactPhoneNumber || faker.phone.number('020# ### ###')
+
+  }
+
+  job.isRoleSuitableForEarlyCareeerTeachers = params.isRoleSuitableForEarlyCareeerTeachers || faker.helpers.arrayElement(['Yes', 'No'])
+
+  job.skillsAndExperience = params.skillsAndExperience || faker.lorem.words(30)
+
+  job.whatSchoolOffers = params.whatSchoolOffers || faker.lorem.words(20)
+
+  job.hasSafeguardingCommitment = params.hasSafeguardingCommitment || faker.helpers.arrayElement(['Yes', 'No'])
+
+  if(job.hasSafeguardingCommitment == 'Yes') {
+
+    job.safeguardingCommitment = params.safeguardingCommitment || faker.lorem.words(30)
+
+  }
+
+  job.hasFurtherDetailsAboutTheRole = params.hasFurtherDetailsAboutTheRole || faker.helpers.arrayElement(['Yes', 'No'])
+
+  if(job.hasSafeguardingCommitment == 'Yes') {
+
+    job.furtherDetailsAboutTheRole = params.furtherDetailsAboutTheRole || faker.lorem.words(30)
+
+  }
+
+  job.hasAdditionalDocuments = params.hasAdditionalDocuments || faker.helpers.arrayElement(['Yes', 'No'])
+
+  if(job.hasAdditionalDocuments == 'Yes') {
+
+    job.additionalDocuments = params.additionalDocuments || faker.helpers.arrayElements([
+      {
+        file: 'job-description.pdf',
+        size: '6MB'
+      },
+      {
+        file: 'person-specification.pdf',
+        size: '5MB'
+      }
+    ])
+
+  }
+
+  job.publishDate = params.publishDate || faker.date.future(0)
+
+  job.closingDate = params.publishDate || faker.date.future(0, job.publishDate)
+
+  job.closingTime = params.closingTime || faker.helpers.arrayElement(['9am', '12pm (midday)', '5pm', '11:59pm'])
+
+  job.startDate = params.startDate || faker.date.future(0, job.closingDate)
 
   return job
 }
@@ -83,7 +171,40 @@ const generateJob = (params = {}) => {
 const generateJobs = () => {
   const jobs = []
 
-  jobs.push(generateJob())
+  users.forEach(user => {
+    jobs.push(generateJob({
+      organisation: user.organisation,
+      role: 'Teacher'
+    }))
+    jobs.push(generateJob({
+      organisation: user.organisation,
+      role: 'Teacher'
+    }))
+    for (let i = 0; i < 2; i++) {
+      jobs.push(generateJob({
+        organisation: user.organisation,
+        status: 'Published'
+      }))
+    }
+    for (let i = 0; i < 1; i++) {
+      jobs.push(generateJob({
+        organisation: user.organisation,
+        status: 'Scheduled'
+      }))
+    }
+    for (let i = 0; i < 1; i++) {
+      jobs.push(generateJob({
+        organisation: user.organisation,
+        status: 'Draft'
+      }))
+    }
+    for (let i = 0; i < 3; i++) {
+      jobs.push(generateJob({
+        organisation: user.organisation,
+        status: 'Closed'
+      }))
+    }
+  })
 
   return jobs
 }

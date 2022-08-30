@@ -43,25 +43,28 @@ module.exports = router => {
     })
   })
 
-  router.get('/jobs/new/age-group', (req, res) => {
+  router.get('/jobs/new/phase', (req, res) => {
     const options = [{
-      value: 'Primary',
-      text: 'Primary'
+      value: 'Nursery',
+      text: 'Nursery'
     }, {
-      value: 'Middle',
-      text: 'Middle'
+      value: 'Primary school',
+      text: 'Primary school'
     }, {
-      value: 'Secondary',
-      text: 'Secondary'
+      value: 'Middle school',
+      text: 'Middle school'
     }, {
-      value: '16 to 19',
-      text: '16 to 19'
+      value: 'Secondary school',
+      text: 'Secondary school'
     }, {
-      value: 'Multiple age groups',
-      text: 'Multiple age groups'
+      value: 'Sixth form or college',
+      text: 'Sixth form or college'
+    }, {
+      value: 'Through school',
+      text: 'Through school'
     }]
 
-    res.render('jobs/new/age-group', {
+    res.render('jobs/new/phase', {
       options
     })
   })

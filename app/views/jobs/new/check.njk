@@ -118,7 +118,7 @@
           },
           {
             key: {
-              text: "Key stages"
+              text: "Key stage"
             },
             value: {
               text: data['createJob']['key-stages'] | join(', ')
@@ -231,83 +231,6 @@
                   href: "/jobs/new/salary",
                   text: "Change",
                   visuallyHiddenText: "additional allowances"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m">
-        Dates
-      </h2>
-
-       {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Publish date"
-            },
-            value: {
-              text: "Today (6 June 2022)"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/listing-dates",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Closing date"
-            },
-            value: {
-              text: "1 September 2022"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/listing-dates",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Closing time"
-            },
-            value: {
-              text: "9am"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/listing-dates",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Start date"
-            },
-            value: {
-              text: "30 October 2022"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
                 }
               ]
             }
@@ -624,7 +547,6 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
         ]
       }) }}
 
-
       <p><a href="#">Preview job listing (opens in new tab)</a>.</p>
 
       <p>By publishing this job listing you agree to the <a href="#">terms and conditions</a>.</p>
@@ -640,6 +562,7 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
           classes: 'govuk-!-margin-left-1 govuk-button--secondary'
         }) }}
       </form>
+
 
     </div>
   </div>

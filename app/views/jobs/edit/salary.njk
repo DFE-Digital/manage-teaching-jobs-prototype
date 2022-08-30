@@ -1,0 +1,171 @@
+{% extends "layout.njk" %}
+
+{% set version = 2 %}
+
+{% set heading = 'Salary and allowances' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  {% set salary %}
+    {{ govukInput({
+      id: "createJob[full-time-salary]",
+      name: "createJob[full-time-salary]",
+      label: {
+        text: "Full-time equivalent salary",
+        classes: 'govuk-label--s'
+      },
+      classes: "govuk-input--width-20",
+      value: data['createJob']['full-time-salary']
+    }) }}
+  {% endset %}
+
+  {% set actualSalary %}
+    {{ govukInput({
+      id: "createJob[actual-salary]",
+      name: "createJob[actual-salary]",
+      label: {
+        text: "Actual salary",
+        classes: 'govuk-label--s'
+      },
+      classes: "govuk-input--width-20",
+      value: data['createJob']['actual-salary']
+    }) }}
+  {% endset %}
+
+  {% set payscale %}
+    {{ govukInput({
+      id: "createJob[pay-scale]",
+      name: "createJob[pay-scale]",
+      label: {
+        text: "Pay scale",
+        classes: 'govuk-label--s'
+      },
+      classes: "govuk-input--width-20",
+      value: data['createJob']['pay-scale']
+    }) }}
+  {% endset %}
+
+  {% set allowances %}
+    {{ govukTextarea({
+      id: "createJob[allowances]",
+      name: "createJob[allowances]",
+      label: {
+        text: "Additional allowances",
+        classes: 'govuk-label--s'
+      },
+      value: data['createJob']['allowances']
+    }) }}
+  {% endset %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      </h1>
+
+      <form action="/jobs/new/listing-dates">
+        {{ govukCheckboxes({
+          idPrefix: "createJob[salary-details]",
+          name: "createJob[salary-details]",
+          fieldset: {
+            legend: {
+              html: 'Salary details',
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: 'Select all that apply'
+          },
+          items: [
+            {
+              value: "Full-time equivalent salary",
+              text: "Full-time equivalent salary",
+              checked: checked("['createJob']['salary-details']", "Full-time equivalent salary"),
+              hint: {
+                text: 'This is what the annual salary would be for someone working full time'
+              },
+              conditional: {
+                html: salary
+              }
+            },
+            {
+              value: "Actual salary",
+              text: "Actual salary",
+              checked: checked("['createJob']['salary-details']", "Actual salary"),
+              hint: {
+                text: 'This is the annual amount someone will take home'
+              },
+              conditional: {
+                html: actualSalary
+              }
+            },
+            {
+              value: "Pay scale",
+              text: "Pay scale",
+              checked: checked("['createJob']['salary-details']", "Pay scale"),
+              conditional: {
+                html: payscale
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "blah",
+          name: "blah",
+          fieldset: {
+            legend: {
+              text: "Do you want to include additional allowances?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: 'For example, special educational needs (SEN) or teaching and learning responsibility (TLR) payments'
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: allowances
+              }
+            }, {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
