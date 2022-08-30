@@ -10,7 +10,7 @@
         "town": "Mill Hill",
         "postcode": "NW7 4YK"
       },
-      "phase": "Sixth form or college"
+      "phase": "Nursery"
     }
   },
   {
@@ -24,7 +24,7 @@
         "town": "Mill Hill",
         "postcode": "NW7 4YK"
       },
-      "phase": "Middle school"
+      "phase": "Secondary school"
     }
   },
   {
@@ -40,7 +40,7 @@
       },
       "schools": [
         {
-          "name": "Goyette, Kunde and Casper School",
+          "name": "Herman LLC School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -49,7 +49,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Sipes, Cartwright and Robel School",
+          "name": "Klein - Bednar School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -58,7 +58,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "Weber Inc School",
+          "name": "Hermann - Dooley School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -67,7 +67,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Berge Inc School",
+          "name": "Kutch and Sons School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -76,7 +76,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Pacocha, Christiansen and Green School",
+          "name": "Legros, Hintz and Boyle School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -85,7 +85,7 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Lemke - Olson School",
+          "name": "Bahringer, Nader and Jones School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
@@ -109,7 +109,7 @@
       },
       "schools": [
         {
-          "name": "Schneider Group School",
+          "name": "Morissette Group School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -118,7 +118,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Klein - Mosciski School",
+          "name": "Hettinger and Sons School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -127,7 +127,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "Skiles, Anderson and Senger School",
+          "name": "Nolan LLC School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -136,7 +136,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Barrows LLC School",
+          "name": "Boyle - Reichel School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -145,7 +145,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Towne and Sons School",
+          "name": "Sawayn, Bernier and Bradtke School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -154,7 +154,7 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Denesik - Cole School",
+          "name": "McKenzie LLC School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",

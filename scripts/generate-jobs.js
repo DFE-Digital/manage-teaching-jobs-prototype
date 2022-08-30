@@ -157,17 +157,13 @@ const generateJob = (params = {}) => {
 
   }
 
-  if(job.status == 'Published' || job.status == 'Scheduled') {
+  job.publishDate = params.publishDate || faker.date.future(0)
 
-    job.publishDate = params.publishDate || faker.date.future(0)
+  job.closingDate = params.publishDate || faker.date.future(0, job.publishDate)
 
-    job.closingDate = params.publishDate || faker.date.future(0, job.publishDate)
+  job.closingTime = params.closingTime || faker.helpers.arrayElement(['9am', '12pm (midday)', '5pm', '11:59pm'])
 
-    job.closingTime = params.closingTime || faker.helpers.arrayElement(['9am', '12pm (midday)', '5pm', '11:59pm'])
-
-    job.startDate = params.startDate || faker.date.future(0, job.closingDate)
-
-  }
+  job.startDate = params.startDate || faker.date.future(0, job.closingDate)
 
   return job
 }
