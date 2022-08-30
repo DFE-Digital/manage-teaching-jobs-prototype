@@ -4,7 +4,7 @@ const jobs = require('../data/jobs.json')
 
 module.exports = router => {
 
-  router.get('/sign-in', (req, res) => {
+  router.get('/account/sign-in', (req, res) => {
     var options = users.map(user => {
       return {
         text: user.username,
@@ -14,12 +14,12 @@ module.exports = router => {
         }
       }
     })
-    res.render('sign-in', {
+    res.render('account/sign-in', {
       options
     })
   })
 
-  router.post('/sign-in', (req, res) => {
+  router.post('/account/sign-in', (req, res) => {
 
     let user
 
@@ -34,7 +34,11 @@ module.exports = router => {
 
     res.locals.user = req.session.user = user
 
-    res.redirect('/jobs')
+    if(req.body.returnUrl) {
+      res.redirect(req.body.returnUrl)
+    } else {
+      res.redirect('/jobs')
+    }
   })
 
   router.get('/sign-out', (req, res) => {

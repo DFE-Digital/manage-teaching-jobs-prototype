@@ -19,24 +19,35 @@
   {% set insetHtml %}
 
     {% if job.status == 'Published' %}
-      <p>This job listing was published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+      <p class="govuk-!-width-two-thirds">This job listing was published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
 
       <div class="govuk-button-group">
-        <a href="#">Extend closing date</a>
+        <a href="#">View (opens in new tab)</a>
         <a href="#" class="govuk-!-margin-left-3">Copy</a>
+        <a href="#" class="govuk-!-margin-left-3">Extend closing date</a>
         <a href="#" class="govuk-!-margin-left-3">Close early</a>
       </div>
 
     {% endif %}
 
     {% if job.status == 'Scheduled' %}
-      <p>This job listing will be published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+      <p class="govuk-!-width-two-thirds">This job listing will be published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
 
       <div class="govuk-button-group">
-        <a href="#">Convert to draft</a>
-        <a href="#" class="govuk-!-margin-left-3">Preview</a>
+        <a href="#" class="govuk-!-margin-left-">Preview (opens in new tab)</a>
         <a href="#" class="govuk-!-margin-left-3">Copy</a>
         <a href="#" class="govuk-!-margin-left-3">Delete</a>
+        <a href="#" class="govuk-!-margin-left-3">Convert to draft</a>
+      </div>
+    {% endif %}
+
+    {% if job.status == 'Closed' %}
+      <p class="govuk-!-width-two-thirds">This job listing was published on {{job.publishDate | date }}. It closed on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+
+      <div class="govuk-button-group">
+        <a href="#">View (opens in new tab)</a>
+        <a href="#" class="govuk-!-margin-left-3">Copy</a>
+        <a href="#" class="govuk-!-margin-left-3">Extend closing date</a>
       </div>
     {% endif %}
 
@@ -49,8 +60,6 @@
       {% endif %}
 
       <div class="govuk-button-group">
-        {# <a href="#">Complete job listing</a> #}
-
         {% if query.incomplete %}
           {{ govukButton({
             text: "Complete job listing",
@@ -64,32 +73,20 @@
             classes: 'govuk-!-margin-bottom-0'
           }) }}
         {% endif %}
-        <a href="#">Preview</a>
+        <a href="#">Preview (opens in new tab)</a>
         <a href="#" class="govuk-!-margin-left-3">Copy</a>
         <a href="#" class="govuk-!-margin-left-3">Delete</a>
       </div>
     {% endif %}
 
-    {% if job.status == 'Closed' %}
-      <p>This job listing was published on {{job.publishDate | date }}. It closed on {{job.closingDate | date}} at {{job.closingTime}}.</p>
 
-      <div class="govuk-button-group">
-        <a href="#">Extend closing date</a>
-        <a href="#" class="govuk-!-margin-left-3">Preview</a>
-        <a href="#" class="govuk-!-margin-left-3">Copy</a>
-      </div>
-    {% endif %}
 
   {% endset %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      {{ govukInsetText({
-        html: insetHtml,
-        classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-2 govuk-!-padding-bottom-3'
-      }) }}
-    </div>
-  </div>
+  {{ govukInsetText({
+    html: insetHtml,
+    classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-2 govuk-!-padding-bottom-3'
+  }) }}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
