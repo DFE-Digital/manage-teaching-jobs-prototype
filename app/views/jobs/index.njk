@@ -1,7 +1,7 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'Job listings (5)' %}
+{% set title = 'Job listings (' + (user.jobs.length + 1) +')' %}
 
 {% set primaryNavId = 'jobs' %}
 
@@ -146,16 +146,21 @@
       <div class="app-job-listings">
         {% for job in user.jobs %}
         <div class="app-job-listings__job">
-          <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
-            <a href="/jobs/{{job.id}}">{{job.title}}</a>
-          </h2>
-          {{ govukTag({
-            text: job.status,
-            classes: job.status | jobStatusTagClass
-          }) }}
-          <p class="app-job-listings__copy govuk-!-margin-bottom-0">
-            <a href="/jobs/new/copied">Copy</a>
-          </p>
+          <div class="app-job-listings__job-row">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+              <a href="/jobs/{{job.id}}">{{job.title}}</a>
+            </h2>
+            {{ govukTag({
+              text: job.status,
+              classes: job.status | jobStatusTagClass
+            }) }}
+          </div>
+          <div class="app-job-listings__job-row">
+            <p class="app-job-listings__role govuk-!-margin-bottom-0">{{job.role}}</p>
+            <p class="app-job-listings__copy govuk-!-margin-bottom-0">
+              <a href="/jobs/new/copied">Copy</a>
+            </p>
+          </div>
         </div>
       {% endfor %}
       </div>

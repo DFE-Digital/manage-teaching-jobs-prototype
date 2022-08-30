@@ -83,7 +83,7 @@ const generateJob = (params = {}) => {
 
   job.isUsingApplicationForm = params.isUsingApplicationForm || faker.helpers.arrayElement(['Yes', 'No'])
 
-  if(job.hasAdditionalAllowances == 'No') {
+  if(job.isUsingApplicationForm == 'No') {
 
     job.applicationMethod = params.applicationMethod || faker.helpers.arrayElement(['By email', 'Through a website'])
 
@@ -120,15 +120,15 @@ const generateJob = (params = {}) => {
 
   job.isRoleSuitableForEarlyCareeerTeachers = params.isRoleSuitableForEarlyCareeerTeachers || faker.helpers.arrayElement(['Yes', 'No'])
 
-  job.skillsAndExperience = params.skillsAndExperience || faker.lorem.word(30)
+  job.skillsAndExperience = params.skillsAndExperience || faker.lorem.words(30)
 
-  job.whatSchoolOffers = params.whatSchoolOffers || faker.lorem.word(20)
+  job.whatSchoolOffers = params.whatSchoolOffers || faker.lorem.words(20)
 
   job.hasSafeguardingCommitment = params.hasSafeguardingCommitment || faker.helpers.arrayElement(['Yes', 'No'])
 
   if(job.hasSafeguardingCommitment == 'Yes') {
 
-    job.safeguardingCommitment = params.safeguardingCommitment || faker.lorem.word(30)
+    job.safeguardingCommitment = params.safeguardingCommitment || faker.lorem.words(30)
 
   }
 
@@ -136,7 +136,7 @@ const generateJob = (params = {}) => {
 
   if(job.hasSafeguardingCommitment == 'Yes') {
 
-    job.furtherDetailsAboutTheRole = params.furtherDetailsAboutTheRole || faker.lorem.word(30)
+    job.furtherDetailsAboutTheRole = params.furtherDetailsAboutTheRole || faker.lorem.words(30)
 
   }
 
@@ -176,9 +176,28 @@ const generateJobs = () => {
   const jobs = []
 
   users.forEach(user => {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 2; i++) {
       jobs.push(generateJob({
-        organisation: user.organisation
+        organisation: user.organisation,
+        status: 'Published'
+      }))
+    }
+    for (let i = 0; i < 1; i++) {
+      jobs.push(generateJob({
+        organisation: user.organisation,
+        status: 'Scheduled'
+      }))
+    }
+    for (let i = 0; i < 1; i++) {
+      jobs.push(generateJob({
+        organisation: user.organisation,
+        status: 'Draft'
+      }))
+    }
+    for (let i = 0; i < 3; i++) {
+      jobs.push(generateJob({
+        organisation: user.organisation,
+        status: 'Closed'
       }))
     }
   })

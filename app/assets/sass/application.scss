@@ -99,21 +99,27 @@ h1 .govuk-tag {
 .app-job-listings__job {
   padding: govuk-spacing(3) 0;
   border-bottom: 1px solid govuk-colour('mid-grey');
-  position: relative;
 
   h2 {
     max-width: 280px;
+    float: left;
+  }
+
+  .app-job-listings__job-row {
+    position: relative;
+    overflow: hidden;
   }
 
   .govuk-tag {
-    position: absolute;
-    top: govuk-spacing(3);
-    left: 300px;
+    float: right;
+    margin-bottom: govuk-spacing(1);
+  }
+
+  .app-job-listings__role {
+    float: left;
   }
 
   .app-job-listings__copy {
-    position: absolute;
-    top: govuk-spacing(3);
-    right: 0;
+    float: right;
   }
 }

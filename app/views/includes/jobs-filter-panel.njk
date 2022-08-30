@@ -6,6 +6,31 @@
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
+        text: "Status",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Publishe',
+      text: 'Published'
+    }, {
+      value: 'Scheduled',
+      text: 'Scheduled'
+    }, {
+      value: 'Draft',
+      text: 'Draft'
+    }, {
+      value: 'Closed',
+      text: 'Closed'
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "filters[role]",
+    name: "filters[role]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
         text: "Role",
         classes: "govuk-fieldset__legend--s"
       }

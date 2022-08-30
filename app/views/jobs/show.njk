@@ -81,8 +81,6 @@
     </div>
   </div>
 
-
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -110,7 +108,6 @@
 
       {% set salaryDetails %}
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-
           {% for salaryDetail in job.salaryDetails %}
             <li>
               <p>
@@ -124,6 +121,16 @@
                   {{job.payScaleDetails}}
                 {% endif %}
               </p>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endset %}
+
+      {% set additionalDocuments %}
+        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+          {% for document in job.additionalDocuments %}
+            <li>
+              <a href="#">{{document.file}}, {{document.size}}</a>
             </li>
           {% endfor %}
         </ul>
@@ -187,7 +194,7 @@
               text: "Key stage"
             },
             value: {
-              text: job.keyStages | join(',')
+              text: job.keyStages | join(', ')
             },
             actions: {
               items: [
@@ -198,13 +205,13 @@
                 }
               ]
             }
-          },
+          } if job.keyStages,
           {
             key: {
               text: "Subjects"
             },
             value: {
-              text: job.subjects | join(',')
+              text: job.subjects | join(', ')
             },
             actions: {
               items: [
@@ -215,13 +222,13 @@
                 }
               ]
             }
-          },
+          } if job.subjects,
           {
             key: {
               text: "Contract type"
             },
             value: {
-              text: "Permanent"
+              text: job.contractType + ' - ' + job.contractLength
             },
             actions: {
               items: [
@@ -281,7 +288,7 @@
               text: "Do you want to use the application form?"
             },
             value: {
-              text: "No"
+              text: job.isUsingApplicationForm
             },
             actions: {
               items: [
@@ -298,7 +305,7 @@
               text: "How would you like applications to be submitted?"
             },
             value: {
-              text: "Download and send an application form"
+              text: job.applicationMethod
             },
             actions: {
               items: [
@@ -309,13 +316,13 @@
                 }
               ]
             }
-          },
+          } if job.applicationMethod,
           {
             key: {
               text: "Application form"
             },
             value: {
-              html: '<a href="">form.pdf</a>, 2MB'
+              html: '<a href="#">' + job.applicationForm.file + ', ' + job.applicationForm.size +'</a>'
             },
             actions: {
               items: [
@@ -326,13 +333,13 @@
                 }
               ]
             }
-          },
+          } if job.applicationForm,
           {
             key: {
               text: "Email address to receive applications"
             },
             value: {
-              html: 'molly@example.com'
+              html: job.emailAddressForApplications
             },
             actions: {
               items: [
@@ -343,13 +350,30 @@
                 }
               ]
             }
-          },
+          } if job.emailAddressForApplications,
+          {
+            key: {
+              text: "Application form"
+            },
+            value: {
+              html: job.linkToWebsite
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.linkToWebsite,
           {
             key: {
               text: "Do you want to offer school visits?"
             },
             value: {
-              text: "Yes"
+              text: job.offersSchoolVisits
             },
             actions: {
               items: [
@@ -360,13 +384,13 @@
                 }
               ]
             }
-          },
+          } if job.offersSchoolVisits,
           {
             key: {
               text: "Email address"
             },
             value: {
-              html: 'molly@example.com'
+              html: job.contactEmailAddress
             },
             actions: {
               items: [
@@ -383,7 +407,7 @@
               text: "Do you want to give a contact phone number?"
             },
             value: {
-              text: "Yes"
+              text: job.hasContactPhoneNumber
             },
             actions: {
               items: [
@@ -411,7 +435,7 @@
                 }
               ]
             }
-          }
+          } if job.contactPhoneNumber
         ]
       }) }}
 
@@ -426,7 +450,7 @@
               text: "Is this role suitable for an early career teacher (ECT)?"
             },
             value: {
-              text: "No"
+              text: job.isRoleSuitableForEarlyCareeerTeachers
             },
             actions: {
               items: [
@@ -443,7 +467,7 @@
               text: "What skills and experience are you looking for?"
             },
             value: {
-              text: "You need to have at least 5 years experience teaching in a public school. You’ll be responsible for a class of 30 students."
+              text: jobs.skilsAndExperience
             },
             actions: {
               items: [
@@ -460,7 +484,7 @@
               text: "What does your school offer?"
             },
             value: {
-              text: "You’ll get regularl training etc."
+              text: job.whatSchoolOffers
             },
             actions: {
               items: [
@@ -478,7 +502,7 @@
 Yes"
             },
             value: {
-              text: "Yes"
+              text: job.hasSafeguardingCommitment
             },
             actions: {
               items: [
@@ -495,8 +519,7 @@ Yes"
               text: "Information about your commitment to safeguarding"
             },
             value: {
-              text: "St Laurence School is committed to safeguarding and promoting the welfare of children and young people and expects all staff and volunteers to share this commitment. All applicants will be subject to
-a full Disclosure and Barring Service check (previously CRB check) before appointment is confirmed."
+              text: job.safeguardingCommitment
             },
             actions: {
               items: [
@@ -507,13 +530,13 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
                 }
               ]
             }
-          },
+          } if job.safeguardingCommitment,
           {
             key: {
               text: "Do you want to add further details about the role?"
             },
             value: {
-              text: "Yes"
+              text: job.hasFurtherDetailsAboutTheRole
             },
             actions: {
               items: [
@@ -530,7 +553,7 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
               text: "Further details about the role"
             },
             value: {
-              text: "Ut eget dolor at libero commodo tincidunt vel egestas diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam aliquet risus eget ante viverra tincidunt. Etiam pulvinar metus dolor, in eleifend massa pharetra eget."
+              text: job.furtherDetailsAboutTheRole
             },
             actions: {
               items: [
@@ -541,13 +564,13 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
                 }
               ]
             }
-          },
+          } if job.furtherDetailsAboutTheRole,
           {
             key: {
               text: "Do you want to upload any additional documents?"
             },
             value: {
-              text: "Yes"
+              text: job.hasAdditionalDocuments
             },
             actions: {
               items: [
@@ -564,7 +587,7 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
               text: "Additional documents"
             },
             value: {
-              html: '<a href="#">person-spec.pdf</a>, 2MB'
+              html: additionalDocuments
             },
             actions: {
               items: [
@@ -575,7 +598,7 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
                 }
               ]
             }
-          }
+          } if job.additionalDocuments
         ]
       }) }}
 
