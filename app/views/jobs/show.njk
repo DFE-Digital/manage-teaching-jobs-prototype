@@ -19,11 +19,12 @@
   {% set insetHtml %}
 
     {% if job.status == 'Published' %}
-      <p>This job listing was published on {{job.publishDate | date }}. It closes on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+      <p>This job listing was published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
 
       <div class="govuk-button-group">
-        <a href="#">Copy</a>
-        <a href="#" class="govuk-!-margin-left-2">End early</a>
+        <a href="#">Extend closing date</a>
+        <a href="#" class="govuk-!-margin-left-3">Copy</a>
+        <a href="#" class="govuk-!-margin-left-3">Close early</a>
       </div>
 
     {% endif %}
@@ -32,10 +33,10 @@
       <p>This job listing will be published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
 
       <div class="govuk-button-group">
-        <a href="#">Unschedule</a>
-        <a href="#" class="govuk-!-margin-left-2">Preview</a>
-        <a href="#" class="govuk-!-margin-left-2">Copy</a>
-        <a href="#" class="govuk-!-margin-left-2">Delete</a>
+        <a href="#">Convert to draft</a>
+        <a href="#" class="govuk-!-margin-left-3">Preview</a>
+        <a href="#" class="govuk-!-margin-left-3">Copy</a>
+        <a href="#" class="govuk-!-margin-left-3">Delete</a>
       </div>
     {% endif %}
 
@@ -44,7 +45,7 @@
       {% if query.incomplete %}
         <p>This job listing needs to be completed before it can be published.</p>
       {% else %}
-        <p>This job listing needs to be published.</p>
+        <p>This job listing is complete and needs to be published.</p>
       {% endif %}
 
       <div class="govuk-button-group">
@@ -64,8 +65,8 @@
           }) }}
         {% endif %}
         <a href="#">Preview</a>
-        <a href="#" class="govuk-!-margin-left-2">Copy</a>
-        <a href="#" class="govuk-!-margin-left-2">Delete</a>
+        <a href="#" class="govuk-!-margin-left-3">Copy</a>
+        <a href="#" class="govuk-!-margin-left-3">Delete</a>
       </div>
     {% endif %}
 
@@ -73,9 +74,9 @@
       <p>This job listing was published on {{job.publishDate | date }}. It closed on {{job.closingDate | date}} at {{job.closingTime}}.</p>
 
       <div class="govuk-button-group">
-        <a href="#">Extend deadline</a>
-        <a href="#" class="govuk-!-margin-left-2">Preview</a>
-        <a href="#" class="govuk-!-margin-left-2">Copy</a>
+        <a href="#">Extend closing date</a>
+        <a href="#" class="govuk-!-margin-left-3">Preview</a>
+        <a href="#" class="govuk-!-margin-left-3">Copy</a>
       </div>
     {% endif %}
 
@@ -525,144 +526,8 @@
                 }
               ]
             }
-          },
-          {
-            key: {
-              text: "What skills and experience are you looking for?"
-            },
-            value: {
-              text: jobs.skilsAndExperience
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "What does your school offer?"
-            },
-            value: {
-              text: job.whatSchoolOffers
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Do you want to give information about your commitment to safeguarding?
-Yes"
-            },
-            value: {
-              text: job.hasSafeguardingCommitment
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Information about your commitment to safeguarding"
-            },
-            value: {
-              text: job.safeguardingCommitment
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          } if job.safeguardingCommitment,
-          {
-            key: {
-              text: "Do you want to add further details about the role?"
-            },
-            value: {
-              text: job.hasFurtherDetailsAboutTheRole
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Further details about the role"
-            },
-            value: {
-              text: job.furtherDetailsAboutTheRole
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          } if job.furtherDetailsAboutTheRole,
-          {
-            key: {
-              text: "Do you want to upload any additional documents?"
-            },
-            value: {
-              text: job.hasAdditionalDocuments
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Additional documents"
-            },
-            value: {
-              html: additionalDocuments
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          } if job.additionalDocuments
+          }
+
         ]
       }) }}
 
