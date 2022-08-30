@@ -1,6 +1,13 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Check details and publish job listing' %}
+{% set scheduling = data.createJob and data.createJob.publishDate != 'Today (6 June 2022)' %}
+{% if scheduling %}
+  {% set buttonText = 'Schedule job listing' %}
+  {% set heading = 'Check details and schedule job listing' %}
+{% else %}
+  {% set buttonText = 'Publish job listing' %}
+  {% set heading = 'Check details and publish job listing' %}
+{% endif %}
 
 {% set caption = 'Create job listing' %}
 {% set title = heading + ' - ' + caption %}
@@ -541,25 +548,25 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
       }) }}
 
       <h2 class="govuk-heading-m">
-        Preview and publish job listing
+        Preview and {{buttonText | lower}}
       </h2>
 
       <p><a href="#">Preview job listing (opens in new tab)</a>.</p>
 
-      {# <p>By publishing this job listing you agree to the <a href="#">terms and conditions</a>.</p> #}
+      <p>By publishing this job listing you agree to the <a href="#">terms and conditions</a>.</p>
 
-      {# <form action="/jobs/new/confirmation"> #}
+      <form action="/jobs/new/confirmation">
 
         {{ govukButton({
-          text: 'Continue to publish',
-          href: '/jobs/new/listing-dates'
+          text: buttonText
         }) }}
 
         {{ govukButton({
           text: 'Save and finish later',
           classes: 'govuk-!-margin-left-1 govuk-button--secondary'
         }) }}
-      {# </form> #}
+      </form>
+
 
     </div>
   </div>
