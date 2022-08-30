@@ -23,6 +23,8 @@
         {{heading}}
       {% endset %}
 
+      {{user | log}}
+
       <form action="/jobs/new/subjects">
         {{ govukCheckboxes({
           idPrefix: "createJob[key-stages]",
@@ -39,32 +41,32 @@
               value: "Early years",
               text: "Early years",
               checked: checked("['createJob']['key-stages']", "Early years")
-            } if user.organisation.schoolType == 'primary' or user.organisation.trustType == 'primary',
+            } if user.organisation.phase == 'Primary school' or user.organisation.trustType == 'primary',
             {
               value: "Key stage 1",
               text: "Key stage 1",
               checked: checked("['createJob']['key-stages']", "Key stage 1")
-            } if user.organisation.schoolType == 'primary' or user.organisation.trustType == 'primary',
+            } if user.organisation.phase == 'Primary school' or user.organisation.trustType == 'primary',
             {
               value: "Key stage 2",
               text: "Key stage 2",
               checked: checked("['createJob']['key-stages']", "Key stage 2")
-            } if user.organisation.schoolType == 'primary' or user.organisation.trustType == 'primary',
+            } if user.organisation.phase == 'Primary school' or user.organisation.trustType == 'primary',
             {
               value: "Key stage 3",
               text: "Key stage 3",
               checked: checked("['createJob']['key-stages']", "Key stage 3")
-            } if user.organisation.schoolType == 'secondary' or user.organisation.trustType == 'secondary',
+            } if user.organisation.phase == 'Secondary school' or user.organisation.trustType == 'secondary',
             {
               value: "Key stage 4",
               text: "Key stage 4",
               checked: checked("['createJob']['key-stages']", "Key stage 4")
-            } if user.organisation.schoolType == 'secondary' or user.organisation.trustType == 'secondary',
+            } if user.organisation.phase == 'Secondary school' or user.organisation.trustType == 'secondary',
             {
               value: "Key stage 5",
               text: "Key stage 5",
               checked: checked("['createJob']['key-stages']", "Key stage 5")
-            } if user.organisation.schoolType == 'secondary' or user.organisation.trustType == 'secondary'
+            } if user.organisation.phase == 'Secondary school' or user.organisation.trustType == 'secondary'
           ]
         }) }}
 
