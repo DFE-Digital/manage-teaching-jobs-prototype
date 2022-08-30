@@ -172,6 +172,14 @@ const generateJobs = () => {
   const jobs = []
 
   users.forEach(user => {
+    jobs.push(generateJob({
+      organisation: user.organisation,
+      role: 'Teacher'
+    }))
+    jobs.push(generateJob({
+      organisation: user.organisation,
+      role: 'Teacher'
+    }))
     for (let i = 0; i < 2; i++) {
       jobs.push(generateJob({
         organisation: user.organisation,
