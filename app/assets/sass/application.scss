@@ -22,6 +22,9 @@ $app-images-path: "/public/images/";
 @import "app/views/components/all.scss";
 @import "filter-layout";
 
+// utilities
+@import "utilities/hidden";
+
 .govuk-header {
   border-bottom: 10px solid #1d70b8;
 }

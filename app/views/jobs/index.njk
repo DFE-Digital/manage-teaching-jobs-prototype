@@ -17,119 +17,6 @@
     }]
   })}}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-
-      {{ govukTable({
-        head: [
-          {
-            text: "Title"
-          },
-          {
-            text: "Applications"
-          },
-          {
-            text: "Closing date"
-          },
-          {
-            text: "Status"
-          },
-          {
-            text: ""
-          }
-        ],
-        rows: [
-          [
-            {
-              html: '<a href="/jobs/show--published">Maths teacher</a>'
-            },
-            {
-              html: '<a href="#">2 applications</a>'
-            },
-            {
-              html: "1 August 2022 at 11:59pm"
-            },
-            {
-              html: govukTag({ text: 'Published', classes: 'govuk-tag--green'})
-            },
-            {
-              html: '<a href="/jobs/new/copied">Copy job listing</a>'
-            }
-          ],
-          [
-            {
-              html: '<a href="/jobs/show--scheduled">English teacher</a>'
-            },
-            {
-              html: '0 applications'
-            },
-            {
-              html: "8 August 2022 at 11:59pm"
-            },
-            {
-              html: govukTag({ text: 'Scheduled', classes: 'govuk-tag--yellow'})
-            },
-            {
-              html: '<a href="/jobs/new/copied">Copy job listing</a>'
-            }
-          ],
-          [
-            {
-              html: '<a href="/jobs/show--draft">History teacher</a>'
-            },
-            {
-              html: 'By email'
-            },
-            {
-              html: "1 September 2022 at 4pm"
-            },
-            {
-              html: govukTag({ text: 'Draft', classes: 'govuk-tag--grey'})
-            },
-            {
-              html: '<a href="/jobs/new/copied">Copy job listing</a>'
-            }
-          ],
-          [
-            {
-              html: '<a href="/jobs/show--draft-complete">Science teacher</a>'
-            },
-            {
-              html: 'By website'
-            },
-            {
-              html: "1 September 2022 at 4pm"
-            },
-            {
-              html: govukTag({ text: 'Draft', classes: 'govuk-tag--grey'})
-            },
-            {
-              html: '<a href="/jobs/new/copied">Copy job listing</a>'
-            }
-          ],
-          [
-            {
-              html: '<a href="/jobs/show--closed">Tutor</a>'
-            },
-            {
-              html: 'By email'
-            },
-            {
-              html: "1 September 2022 at 4pm"
-            },
-            {
-              html: govukTag({ text: 'Closed', classes: 'govuk-tag--red'})
-            },
-            {
-              html: '<a href="/jobs/new/copied">Copy job listing</a>'
-            }
-          ]
-        ]
-      }) if 1 == 2 }}
-
-
-    </div>
-  </div>
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
@@ -208,13 +95,6 @@
       },
       filter: {
         container: $('.app-filter-layout__filter')
-      }
-    })
-
-    new AppFrontend.CheckboxFilter({
-      container: $('#subjects'),
-      textBox: {
-        label: 'Search for subject'
       }
     })
   </script>
