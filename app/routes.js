@@ -13,5 +13,6 @@ require('./routes/account')(router)
 require('./routes/job-create')(router)
 require('./routes/job-edit')(router)
 require('./routes/jobs')(router)
+require('./routes/profiles')(router)
 
 module.exports = router
