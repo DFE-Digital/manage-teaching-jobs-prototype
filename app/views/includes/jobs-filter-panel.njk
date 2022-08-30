@@ -11,7 +11,7 @@
       }
     },
     items: [{
-      value: 'Publishe',
+      value: 'Published',
       text: 'Published'
     }, {
       value: 'Scheduled',
@@ -22,6 +22,25 @@
     }, {
       value: 'Closed',
       text: 'Closed'
+    }]
+  }) }}
+
+   {{ govukCheckboxes({
+    idPrefix: "filters[applications]",
+    name: "filters[applications]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Applications",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Has applications',
+      text: 'Has applications'
+    }, {
+      value: 'Does not have applications',
+      text: 'Does not have applications'
     }]
   }) }}
 
