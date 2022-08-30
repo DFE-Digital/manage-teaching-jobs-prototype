@@ -10,7 +10,7 @@ router.all('*', (req, res, next) => {
 })
 
 require('./routes/account')(router)
-require('./routes/jobs')(router)
 require('./routes/create-job-listing')(router)
+require('./routes/jobs')(router)
 
 module.exports = router

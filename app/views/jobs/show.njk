@@ -279,6 +279,66 @@
       }) }}
 
       <h2 class="govuk-heading-m">
+        Dates
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Publish date"
+            },
+            value: {
+              text: job.publishDate | date
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/listing-dates",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Closing date"
+            },
+            value: {
+              text: job.closingDate | date + ' at ' + job.closingTime
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Job start date"
+            },
+            value: {
+              html: job.startDate | date
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
         Application process
       </h2>
 
@@ -437,66 +497,6 @@
               ]
             }
           } if job.contactPhoneNumber
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m">
-        Dates
-      </h2>
-
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Publish date"
-            },
-            value: {
-              text: job.publishDate | date
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/listing-dates",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Closing date"
-            },
-            value: {
-              text: job.closingDate | date + ' at ' + job.closingTime
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Job start date"
-            },
-            value: {
-              html: job.startDate | date
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          }
         ]
       }) }}
 

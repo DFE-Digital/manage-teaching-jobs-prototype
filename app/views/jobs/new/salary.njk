@@ -3,7 +3,7 @@
 {% set version = 2 %}
 
 {% set heading = 'Salary and allowances' %}
-{% set caption = 'Create job listing - section 1 of 3' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -76,7 +76,7 @@
         {{heading}}
       </h1>
 
-      <form action="/jobs/new/method">
+      <form action="/jobs/new/listing-dates">
         {{ govukCheckboxes({
           idPrefix: "createJob[salary-details]",
           name: "createJob[salary-details]",
