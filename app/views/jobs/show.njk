@@ -526,8 +526,144 @@
                 }
               ]
             }
-          }
-
+          },
+          {
+            key: {
+              text: "What skills and experience are you looking for?"
+            },
+            value: {
+              text: jobs.skilsAndExperience
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What does your school offer?"
+            },
+            value: {
+              text: job.whatSchoolOffers
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you want to give information about your commitment to safeguarding?
+Yes"
+            },
+            value: {
+              text: job.hasSafeguardingCommitment
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Information about your commitment to safeguarding"
+            },
+            value: {
+              text: job.safeguardingCommitment
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.safeguardingCommitment,
+          {
+            key: {
+              text: "Do you want to add further details about the role?"
+            },
+            value: {
+              text: job.hasFurtherDetailsAboutTheRole
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Further details about the role"
+            },
+            value: {
+              text: job.furtherDetailsAboutTheRole
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.furtherDetailsAboutTheRole,
+          {
+            key: {
+              text: "Do you want to upload any additional documents?"
+            },
+            value: {
+              text: job.hasAdditionalDocuments
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Additional documents"
+            },
+            value: {
+              html: additionalDocuments
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.additionalDocuments
         ]
       }) }}
 
