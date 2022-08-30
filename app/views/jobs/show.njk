@@ -53,12 +53,14 @@
         {% if query.incomplete %}
           {{ govukButton({
             text: "Complete job listing",
-            href: '#'
+            href: '#',
+            classes: 'govuk-!-margin-bottom-0'
           }) }}
         {% else %}
           {{ govukButton({
             text: "Publish job listing",
-            href: '#'
+            href: '#',
+            classes: 'govuk-!-margin-bottom-0'
           }) }}
         {% endif %}
         <a href="#">Preview</a>
