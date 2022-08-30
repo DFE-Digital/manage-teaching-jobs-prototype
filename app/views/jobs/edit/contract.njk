@@ -1,0 +1,102 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Contract type' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      {% endset %}
+
+      {% set fixed %}
+        {{ govukInput({
+          id: "createJob[fixed--length]",
+          name: "createJob[fixed--length]",
+          label: {
+            text: "Length of contract",
+            classes: "govuk-label--s"
+          },
+          value: data['createJob']['fixed--length']
+        }) }}
+      {% endset %}
+
+      {% set maternity %}
+        {{ govukInput({
+          id: "createJob[maternity--length]",
+          name: "createJob[maternity--length]",
+          label: {
+            text: "Length of contract",
+            classes: "govuk-label--s"
+          },
+          value: data['createJob']['maternity--length']
+        }) }}
+      {% endset %}
+
+      <form action="/jobs/new/working-patterns">
+
+        {{ govukRadios({
+          idPrefix: "createJob[contract]",
+          name: "createJob[contract]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Permanent",
+              text: "Permanent",
+              checked: checked("['createJob']['contract']", "Permanent")
+            },
+            {
+              value: "Fixed term",
+              text: "Fixed term",
+              checked: checked("['createJob']['contract']", "Fixed term"),
+              conditional: {
+                html: fixed
+              }
+            },
+            {
+              value: "Maternity or parental leave cover",
+              text: "Maternity or parental leave cover",
+              checked: checked("['createJob']['contract']", "Maternity or parental leave cover"),
+              conditional: {
+                html: maternity
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
