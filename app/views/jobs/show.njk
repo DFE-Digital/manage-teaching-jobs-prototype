@@ -29,7 +29,7 @@
     {% endif %}
 
     {% if job.status == 'Scheduled' %}
-      <p>This job listing will be published on {{job.publishDate | date }}. It closes on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+      <p>This job listing will be published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
 
       <div class="govuk-button-group">
         <a href="#">Unschedule</a>
