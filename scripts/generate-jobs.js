@@ -14,7 +14,6 @@ const roles = require('../app/data/roles.js')
 // generators
 const generateTitle = require('./jobGenerators/title')
 const generateSubjects = require('./jobGenerators/subjects')
-const generateWorkingPatterns = require('./jobGenerators/working-patterns')
 const generateKeyStages = require('./jobGenerators/key-stages')
 
 

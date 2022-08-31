@@ -1,6 +1,224 @@
 [
   {
-    "id": "807590",
+    "id": "278078",
+    "status": "Scheduled",
+    "organisation": {
+      "type": "School",
+      "name": "Courtland Primary School",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "phase": "Primary school"
+    },
+    "locations": [
+      {
+        "name": "Courtland Primary School",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "Teacher",
+    "title": "English teacher",
+    "keyStages": [
+      "Early years",
+      "Key stage 1",
+      "Key stage 2"
+    ],
+    "subjects": [
+      "Humanities",
+      "Mandarin"
+    ],
+    "contractType": "Maternity or parental leave cover",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Part time",
+      "Full time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Pay scale",
+      "Full-time equivalent salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "payScaleDetails": "MP4 to MP6",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "contactEmailAddress": "alison@royalacademytrust.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0208 477 507",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "skillsAndExperience": "illum pariatur facere delectus amet iusto tenetur quasi unde quo modi veritatis tempora qui aliquam ipsum at hic fuga nesciunt consequuntur in nisi accusamus magnam harum nisi sint quibusdam est",
+    "whatSchoolOffers": "aliquid assumenda nihil eos illum harum perspiciatis minima quaerat porro cupiditate itaque voluptatibus minus iusto quisquam omnis ullam aut minima",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "impedit nisi sit unde eum quas inventore nam repudiandae incidunt in earum numquam vero quo ipsum et non nulla esse delectus in dicta numquam aut voluptatem quisquam corporis ut sunt",
+    "hasFurtherDetailsAboutTheRole": "No",
+    "furtherDetailsAboutTheRole": "veniam molestiae sit quam doloremque culpa cum et placeat a nihil quia aspernatur esse totam doloribus numquam vero aut cupiditate consectetur doloribus hic distinctio beatae blanditiis esse est rerum labore",
+    "hasAdditionalDocuments": "Yes",
+    "additionalDocuments": [
+      {
+        "file": "job-description.pdf",
+        "size": "6MB"
+      },
+      {
+        "file": "person-specification.pdf",
+        "size": "5MB"
+      }
+    ],
+    "publishDate": "2023-02-18T13:34:45.197Z",
+    "closingDate": "2023-05-10T14:42:47.714Z",
+    "closingTime": "9am",
+    "startDate": "2023-09-08T05:52:21.759Z"
+  },
+  {
+    "id": "518931",
+    "status": "Draft",
+    "organisation": {
+      "type": "School",
+      "name": "Courtland Primary School",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "phase": "Primary school"
+    },
+    "locations": [
+      {
+        "name": "Courtland Primary School",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "Teacher",
+    "title": "Teacher of computing",
+    "keyStages": [
+      "Early years",
+      "Key stage 1",
+      "Key stage 2"
+    ],
+    "subjects": [
+      "Engineering",
+      "ICT"
+    ],
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Part time",
+      "Full time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Actual salary",
+      "Pay scale",
+      "Full-time equivalent salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "actualSalaryDetails": "£31,000",
+    "payScaleDetails": "MP4 to MP6",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "Through a website",
+    "linkToWebsite": "https://www.school.uk",
+    "offersSchoolVisits": "No",
+    "contactEmailAddress": "alison@royalacademytrust.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0201 879 213",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "officia officiis id voluptate vel cupiditate a consequatur est possimus in vel debitis magni ex doloremque ea at possimus officia minima iure tenetur magni reiciendis sit officia voluptatum vero ut",
+    "whatSchoolOffers": "esse omnis recusandae molestias repellendus qui in nisi eum provident facere qui ipsam ab quis et doloremque ea quam a",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "enim ut ducimus laboriosam optio fugit quidem corporis consequuntur quia sit et vel maxime tempore magni et voluptatem facere ea provident iure quas omnis sed beatae voluptatem tenetur deleniti enim",
+    "hasFurtherDetailsAboutTheRole": "No",
+    "furtherDetailsAboutTheRole": "veritatis et voluptatibus minus quo eaque ducimus quibusdam sit minus aliquam magni ut quia qui laudantium voluptatem natus quia ipsam nobis delectus quas aut animi tenetur est qui veritatis consequuntur",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-01-17T11:23:18.280Z",
+    "closingDate": "2023-03-19T13:12:37.189Z",
+    "closingTime": "12pm (midday)",
+    "startDate": "2023-07-29T12:28:31.854Z"
+  },
+  {
+    "id": "964594",
+    "status": "Published",
+    "organisation": {
+      "type": "School",
+      "name": "Courtland Primary School",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "phase": "Primary school"
+    },
+    "locations": [
+      {
+        "name": "Courtland Primary School",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "Learning support, cover supervisor or tutor",
+    "title": "Learning support assistant",
+    "keyStages": [
+      "Early years",
+      "Key stage 1",
+      "Key stage 2"
+    ],
+    "subjects": [
+      "Economics"
+    ],
+    "contractType": "Permanent",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "salaryDetails": [
+      "Pay scale",
+      "Full-time equivalent salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "payScaleDetails": "MP4 to MP6",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "By email",
+    "applicationForm": {
+      "file": "application-form.pdf",
+      "size": "2MB"
+    },
+    "emailAddressForApplications": "susy@busheymeads.sch.uk",
+    "offersSchoolVisits": "Yes",
+    "contactEmailAddress": "laura@barnet.la.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0201 879 067",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "sunt velit ut corrupti voluptatum et quia sunt molestiae et sunt neque sequi dolorum facilis rerum perspiciatis distinctio non sunt totam aspernatur architecto sit explicabo maxime exercitationem ut placeat cum",
+    "whatSchoolOffers": "qui quo deleniti suscipit inventore unde non nisi repellendus voluptas hic sint deleniti accusamus ullam minima praesentium unde exercitationem perferendis",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "explicabo saepe quia neque cupiditate repellendus suscipit magni aut blanditiis tempore excepturi odit eaque pariatur aliquam impedit suscipit eaque quia rerum impedit impedit qui cumque voluptas fugit quae minus adipisci",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "ut laudantium rem iusto nostrum consectetur quia excepturi ut iusto a praesentium repellat architecto mollitia voluptatibus est id reiciendis quod natus qui ipsum omnis enim laudantium eos aut similique molestiae",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-03-25T22:22:44.218Z",
+    "closingDate": "2024-02-11T05:07:18.639Z",
+    "closingTime": "12pm (midday)",
+    "startDate": "2024-10-18T05:23:29.023Z"
+  },
+  {
+    "id": "582532",
     "status": "Published",
     "organisation": {
       "type": "School",
@@ -23,14 +241,14 @@
       }
     ],
     "role": "Teacher",
-    "title": "Class teacher",
+    "title": "Teacher of computing",
     "keyStages": [
       "Early years",
       "Key stage 1",
       "Key stage 2"
     ],
     "subjects": [
-      "Mandarin"
+      "Dance"
     ],
     "contractType": "Permanent",
     "workingPatterns": [
@@ -47,234 +265,37 @@
     "fullTimeEquivalentSalaryDetails": "£42,000",
     "actualSalaryDetails": "£31,000",
     "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "No",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
     "isUsingApplicationForm": "Yes",
-    "offersSchoolVisits": "No",
-    "contactEmailAddress": "alison@royalacademytrust.uk",
+    "offersSchoolVisits": "Yes",
+    "contactEmailAddress": "peter@courtland.sch.uk",
     "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "accusantium aut sint voluptas asperiores voluptate ut labore qui in ea ut tempora ut dolores ab pariatur magni dolorem ut dolorum eos rerum nisi dolores autem voluptatem harum nam delectus",
-    "whatSchoolOffers": "quas placeat dolorum impedit at magnam odio facilis eum quos consequatur quis nobis sed cumque alias voluptatum aspernatur doloribus delectus",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "qui voluptatem assumenda magnam corporis quos asperiores quia cumque delectus quam ut laboriosam necessitatibus commodi id temporibus omnis aut non nostrum et eum vero eaque quod praesentium deserunt voluptates fugiat",
+    "whatSchoolOffers": "et autem voluptatum corporis dolor sit unde voluptatibus velit eveniet ea nam culpa vero facilis nisi aliquid dignissimos minima ab",
     "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "officiis tenetur reprehenderit quo non et ea nemo asperiores quas nemo qui laudantium recusandae nostrum velit atque exercitationem eos earum omnis velit voluptas illo quo ut quam ad delectus voluptate",
+    "safeguardingCommitment": "rerum aliquam consequatur velit et dolorum et sed est eos quasi voluptas voluptatem soluta exercitationem ipsa tenetur consequatur praesentium beatae voluptatem ab eos aut voluptatem aut fugit ad doloribus quo",
     "hasFurtherDetailsAboutTheRole": "Yes",
-    "furtherDetailsAboutTheRole": "dolorem amet numquam eligendi sint accusantium vero ea eum vel aut corrupti qui nihil et voluptatem eveniet ea nostrum sit libero iste et similique totam voluptas id blanditiis ullam est",
+    "furtherDetailsAboutTheRole": "maxime nemo rerum laboriosam repellat quo pariatur et necessitatibus autem quis ipsa voluptatem cupiditate consequatur voluptas quia tenetur sapiente repudiandae provident nemo aperiam iste mollitia repudiandae tempora distinctio assumenda ex",
     "hasAdditionalDocuments": "Yes",
     "additionalDocuments": [
       {
         "file": "job-description.pdf",
         "size": "6MB"
-      }
-    ],
-    "publishDate": "2023-07-29T21:54:50.004Z",
-    "closingDate": "2024-02-27T22:19:02.347Z",
-    "closingTime": "11:59pm",
-    "startDate": "2024-10-18T23:37:07.802Z"
-  },
-  {
-    "id": "293734",
-    "status": "Published",
-    "organisation": {
-      "type": "School",
-      "name": "Courtland Primary School",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
       },
-      "phase": "Primary school"
-    },
-    "locations": [
-      {
-        "name": "Courtland Primary School",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "Teacher",
-    "title": "Maths teacher",
-    "keyStages": [
-      "Early years",
-      "Key stage 1",
-      "Key stage 2"
-    ],
-    "subjects": [
-      "Media studies"
-    ],
-    "contractType": "Permanent",
-    "workingPatterns": [
-      "Part time"
-    ],
-    "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
-      "Full-time equivalent salary",
-      "Pay scale"
-    ],
-    "fullTimeEquivalentSalaryDetails": "£42,000",
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "Yes",
-    "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "laura@barnet.la.uk",
-    "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0200 051 535",
-    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "sapiente dicta facere quia eius maiores eius ut incidunt quidem quaerat consequatur reprehenderit distinctio esse ullam dicta nesciunt doloribus eos saepe doloribus quia laudantium consectetur omnis velit distinctio rem odio",
-    "whatSchoolOffers": "saepe officia amet molestias suscipit optio omnis temporibus delectus inventore explicabo deleniti sit dolores culpa et molestiae omnis possimus distinctio",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "temporibus id ea sunt tempora animi sapiente repellat illo eos eos quaerat culpa quis doloribus a ipsam rerum commodi neque accusantium accusantium quam ut esse et quibusdam veritatis dolorem qui",
-    "hasFurtherDetailsAboutTheRole": "Yes",
-    "furtherDetailsAboutTheRole": "molestias et cum dolores praesentium dolores tempora voluptate mollitia animi porro magni non sed asperiores consequuntur id sit voluptas sapiente inventore et sit ducimus voluptatem nihil optio enim quam est",
-    "hasAdditionalDocuments": "No",
-    "publishDate": "2022-10-05T00:41:45.157Z",
-    "closingDate": "2023-05-24T10:31:37.145Z",
-    "closingTime": "11:59pm",
-    "startDate": "2024-03-09T04:04:26.638Z"
-  },
-  {
-    "id": "882897",
-    "status": "Published",
-    "organisation": {
-      "type": "School",
-      "name": "Courtland Primary School",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "phase": "Primary school"
-    },
-    "locations": [
-      {
-        "name": "Courtland Primary School",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "Teacher",
-    "title": "Maths teacher",
-    "keyStages": [
-      "Early years",
-      "Key stage 1",
-      "Key stage 2"
-    ],
-    "subjects": [
-      "English",
-      "Media studies"
-    ],
-    "contractType": "Fixed term",
-    "contractLength": "6 months",
-    "workingPatterns": [
-      "Part time"
-    ],
-    "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
-      "Full-time equivalent salary",
-      "Actual salary"
-    ],
-    "fullTimeEquivalentSalaryDetails": "£42,000",
-    "actualSalaryDetails": "£31,000",
-    "hasAdditionalAllowances": "Yes",
-    "additionalAllowances": "TLR is available.",
-    "isUsingApplicationForm": "Yes",
-    "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "peter@courtland.sch.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "error quia laboriosam nemo rerum tenetur enim pariatur dolor culpa quasi molestiae dolorem ipsa voluptatem voluptas explicabo asperiores odio quisquam ad quia quo dolore at magni amet eius qui natus",
-    "whatSchoolOffers": "et animi exercitationem non delectus sint ex at numquam doloremque distinctio molestiae maxime libero ducimus commodi adipisci ullam minima maiores",
-    "hasSafeguardingCommitment": "No",
-    "hasFurtherDetailsAboutTheRole": "No",
-    "hasAdditionalDocuments": "No",
-    "publishDate": "2023-06-21T23:15:52.387Z",
-    "closingDate": "2023-08-29T23:09:49.188Z",
-    "closingTime": "9am",
-    "startDate": "2024-08-24T22:27:17.237Z"
-  },
-  {
-    "id": "474560",
-    "status": "Published",
-    "organisation": {
-      "type": "School",
-      "name": "Courtland Primary School",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "phase": "Primary school"
-    },
-    "locations": [
-      {
-        "name": "Courtland Primary School",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "Teacher",
-    "title": "Science teacher",
-    "keyStages": [
-      "Early years",
-      "Key stage 1",
-      "Key stage 2"
-    ],
-    "subjects": [
-      "Sociology"
-    ],
-    "contractType": "Fixed term",
-    "contractLength": "6 months",
-    "workingPatterns": [
-      "Part time",
-      "Full time"
-    ],
-    "fullTimeDetails": "5 days a week",
-    "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
-      "Actual salary",
-      "Pay scale"
-    ],
-    "actualSalaryDetails": "£31,000",
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "Yes",
-    "additionalAllowances": "TLR is available.",
-    "isUsingApplicationForm": "No",
-    "applicationMethod": "By email",
-    "applicationForm": {
-      "file": "application-form.pdf",
-      "size": "2MB"
-    },
-    "emailAddressForApplications": "laura@barnet.la.uk",
-    "offersSchoolVisits": "No",
-    "contactEmailAddress": "peter@courtland.sch.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "unde voluptatum tempora occaecati hic ipsam recusandae voluptatem delectus voluptate expedita consectetur incidunt non omnis dolor non rerum dolor qui nulla eaque voluptatem iusto ut impedit autem nostrum odit voluptatibus",
-    "whatSchoolOffers": "et commodi aut omnis et aut et autem sequi rerum aut eum nobis facere commodi dolore id vel sapiente explicabo",
-    "hasSafeguardingCommitment": "No",
-    "hasFurtherDetailsAboutTheRole": "No",
-    "hasAdditionalDocuments": "Yes",
-    "additionalDocuments": [
       {
         "file": "person-specification.pdf",
         "size": "5MB"
       }
     ],
-    "publishDate": "2023-04-01T06:02:04.239Z",
-    "closingDate": "2024-03-19T00:41:22.851Z",
-    "closingTime": "11:59pm",
-    "startDate": "2024-07-06T08:14:34.942Z"
+    "publishDate": "2023-03-17T22:06:14.263Z",
+    "closingDate": "2023-06-26T11:55:13.014Z",
+    "closingTime": "5pm",
+    "startDate": "2024-04-14T23:41:38.831Z"
   },
   {
-    "id": "906718",
+    "id": "598029",
     "status": "Scheduled",
     "organisation": {
       "type": "School",
@@ -304,46 +325,45 @@
       "Key stage 2"
     ],
     "subjects": [
-      "Health and social care"
+      "Accounting"
     ],
-    "contractType": "Fixed term",
+    "contractType": "Maternity or parental leave cover",
     "contractLength": "6 months",
     "workingPatterns": [
+      "Part time",
       "Full time"
     ],
     "fullTimeDetails": "5 days a week",
+    "partTimeDetails": "20 hours a week",
     "salaryDetails": [
+      "Pay scale",
       "Full-time equivalent salary"
     ],
     "fullTimeEquivalentSalaryDetails": "£42,000",
+    "payScaleDetails": "MP4 to MP6",
     "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "Yes",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "Through a website",
+    "linkToWebsite": "https://www.school.uk",
     "offersSchoolVisits": "No",
-    "contactEmailAddress": "laura@barnet.la.uk",
-    "hasContactPhoneNumber": "No",
+    "contactEmailAddress": "susy@busheymeads.sch.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0205 339 642",
     "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "necessitatibus itaque sunt velit consequatur magni sunt autem rem esse ipsa rerum ipsa vero consequatur quo nihil inventore quis eum est labore mollitia dolorem dolor hic in dignissimos vel et",
-    "whatSchoolOffers": "vel aliquam pariatur voluptas explicabo molestias aut temporibus recusandae corporis temporibus voluptas explicabo nihil pariatur delectus non dignissimos voluptas provident",
-    "hasSafeguardingCommitment": "No",
+    "skillsAndExperience": "nobis sapiente nulla qui eum ex voluptatem autem autem et quis cum error culpa dolorum perferendis adipisci sit voluptas quas sunt earum maxime iusto quos earum culpa aut totam quasi",
+    "whatSchoolOffers": "cupiditate libero et vel nemo et perferendis repudiandae a at aliquid autem in mollitia dolorem quam iure qui fugit aut",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "fuga iste provident iure amet incidunt illo voluptatem incidunt est ducimus harum reiciendis consequatur est velit fuga sit quaerat natus est illum saepe a voluptas possimus quod voluptas molestiae neque",
     "hasFurtherDetailsAboutTheRole": "Yes",
-    "hasAdditionalDocuments": "Yes",
-    "additionalDocuments": [
-      {
-        "file": "person-specification.pdf",
-        "size": "5MB"
-      },
-      {
-        "file": "job-description.pdf",
-        "size": "6MB"
-      }
-    ],
-    "publishDate": "2022-11-19T09:26:43.136Z",
-    "closingDate": "2023-03-16T03:01:53.146Z",
-    "closingTime": "9am",
-    "startDate": "2023-06-15T13:05:13.030Z"
+    "furtherDetailsAboutTheRole": "labore est corporis laudantium id vero quia iure voluptates consequatur id ut voluptate aut eligendi optio temporibus velit ipsam iste et debitis minima sit earum libero repudiandae nihil doloribus voluptate",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-06-08T15:52:17.790Z",
+    "closingDate": "2023-06-29T22:32:20.443Z",
+    "closingTime": "5pm",
+    "startDate": "2024-01-16T13:41:38.908Z"
   },
   {
-    "id": "948440",
+    "id": "422406",
     "status": "Draft",
     "organisation": {
       "type": "School",
@@ -365,56 +385,185 @@
         }
       }
     ],
-    "role": "Teacher",
-    "title": "Class teacher",
+    "role": "Teaching assistant",
+    "title": "Level 2 teaching assistant",
     "keyStages": [
       "Early years",
       "Key stage 1",
       "Key stage 2"
     ],
     "subjects": [
-      "Mathematics"
+      "Engineering"
     ],
-    "contractType": "Permanent",
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
     "workingPatterns": [
-      "Full time"
+      "Part time"
     ],
-    "fullTimeDetails": "5 days a week",
+    "partTimeDetails": "20 hours a week",
     "salaryDetails": [
-      "Pay scale"
+      "Actual salary"
     ],
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "Yes",
+    "actualSalaryDetails": "£31,000",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "Through a website",
+    "linkToWebsite": "https://www.school.uk",
     "offersSchoolVisits": "Yes",
     "contactEmailAddress": "laura@barnet.la.uk",
     "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0202 007 588",
-    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "aut enim minima culpa saepe reiciendis odit incidunt dignissimos libero deleniti vel cupiditate eos et doloribus vel in quis sint sit enim culpa modi id vel eos consectetur eligendi omnis",
-    "whatSchoolOffers": "minima suscipit perspiciatis ab enim expedita qui quibusdam perspiciatis sint in doloribus perspiciatis eveniet occaecati officiis officia dicta consequatur occaecati",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "earum iure autem qui modi impedit praesentium sit possimus omnis reprehenderit voluptatum et doloremque rerum saepe eligendi corrupti quia animi quo et et aut sunt esse ea sapiente qui et",
+    "contactPhoneNumber": "0208 897 613",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "placeat explicabo voluptas et maiores qui eos autem voluptatem laudantium error minus et eaque incidunt ducimus saepe eos et quae animi officia quo magni et quos ad velit voluptates veniam",
+    "whatSchoolOffers": "est quia dolorum enim eveniet in facere qui rem qui enim pariatur quis unde magni qui et vitae voluptate assumenda",
+    "hasSafeguardingCommitment": "No",
     "hasFurtherDetailsAboutTheRole": "Yes",
-    "furtherDetailsAboutTheRole": "consectetur qui consequatur ut laudantium ipsam voluptatem sed sunt ut accusantium nihil dicta ullam magnam est nemo molestiae rem sed tenetur nihil qui aut explicabo itaque accusamus maxime sint odit",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2022-12-28T20:54:21.096Z",
+    "closingDate": "2023-09-24T22:08:12.615Z",
+    "closingTime": "11:59pm",
+    "startDate": "2024-03-09T11:06:08.093Z"
+  },
+  {
+    "id": "760935",
+    "status": "Closed",
+    "organisation": {
+      "type": "School",
+      "name": "Courtland Primary School",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "phase": "Primary school"
+    },
+    "locations": [
+      {
+        "name": "Courtland Primary School",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "HLTA (higher level teaching assistant)",
+    "title": "HLTA",
+    "keyStages": [
+      "Early years",
+      "Key stage 1",
+      "Key stage 2"
+    ],
+    "subjects": [
+      "Languages",
+      "ICT"
+    ],
+    "contractType": "Permanent",
+    "workingPatterns": [
+      "Part time"
+    ],
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Pay scale",
+      "Full-time equivalent salary",
+      "Actual salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "actualSalaryDetails": "£31,000",
+    "payScaleDetails": "MP4 to MP6",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "contactEmailAddress": "peter@courtland.sch.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0202 103 970",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "et ipsum quaerat et asperiores sit sunt quam rerum quia consequuntur fugiat iste saepe cumque eveniet neque ut magni molestiae aut dolorem commodi itaque recusandae odio perspiciatis voluptatem quia libero",
+    "whatSchoolOffers": "rerum impedit libero sunt magni nobis recusandae dolorem odio tempore possimus commodi expedita ad laboriosam veritatis ullam molestiae sed ut",
+    "hasSafeguardingCommitment": "No",
+    "hasFurtherDetailsAboutTheRole": "No",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2022-10-07T01:47:54.794Z",
+    "closingDate": "2023-08-29T13:18:30.875Z",
+    "closingTime": "11:59pm",
+    "startDate": "2024-05-25T18:23:03.044Z"
+  },
+  {
+    "id": "131833",
+    "status": "Closed",
+    "organisation": {
+      "type": "School",
+      "name": "Courtland Primary School",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "phase": "Primary school"
+    },
+    "locations": [
+      {
+        "name": "Courtland Primary School",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "SENDCo (special educational needs and disabilities coordinator)",
+    "title": "SENDCo",
+    "keyStages": [
+      "Early years",
+      "Key stage 1",
+      "Key stage 2"
+    ],
+    "subjects": [
+      "French",
+      "Relationships and sex education"
+    ],
+    "contractType": "Permanent",
+    "workingPatterns": [
+      "Full time",
+      "Part time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Actual salary",
+      "Pay scale",
+      "Full-time equivalent salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "actualSalaryDetails": "£31,000",
+    "payScaleDetails": "MP4 to MP6",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "No",
+    "contactEmailAddress": "susy@busheymeads.sch.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0207 420 867",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "skillsAndExperience": "ad consequatur molestias fugiat eaque consequatur accusamus dolorem ea cumque placeat corrupti distinctio culpa nostrum cumque tenetur tempore maxime commodi voluptas animi error nesciunt consectetur alias quia assumenda voluptas totam",
+    "whatSchoolOffers": "rerum recusandae quas enim aut et sunt omnis ipsa rerum occaecati minima voluptatem qui voluptatum placeat voluptas reiciendis quo commodi",
+    "hasSafeguardingCommitment": "No",
+    "hasFurtherDetailsAboutTheRole": "Yes",
     "hasAdditionalDocuments": "Yes",
     "additionalDocuments": [
-      {
-        "file": "person-specification.pdf",
-        "size": "5MB"
-      },
       {
         "file": "job-description.pdf",
         "size": "6MB"
       }
     ],
-    "publishDate": "2022-09-12T11:00:16.603Z",
-    "closingDate": "2023-08-31T12:09:32.703Z",
-    "closingTime": "5pm",
-    "startDate": "2024-08-22T08:35:52.899Z"
+    "publishDate": "2023-03-18T07:22:59.527Z",
+    "closingDate": "2023-09-07T05:20:58.844Z",
+    "closingTime": "12pm (midday)",
+    "startDate": "2023-10-08T15:48:10.544Z"
   },
   {
-    "id": "732757",
+    "id": "529990",
     "status": "Closed",
     "organisation": {
       "type": "School",
@@ -437,71 +586,72 @@
       }
     ],
     "role": "Head of year, department, curriculum or phase",
-    "title": "Head of modern foreign languages",
+    "title": "KS2 Phase leader",
     "keyStages": [
       "Early years",
       "Key stage 1",
       "Key stage 2"
     ],
     "subjects": [
-      "Economics",
-      "Religious education"
+      "Dance",
+      "Biology"
     ],
-    "contractType": "Permanent",
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
     "workingPatterns": [
-      "Part time",
-      "Full time"
+      "Part time"
     ],
-    "fullTimeDetails": "5 days a week",
     "partTimeDetails": "20 hours a week",
     "salaryDetails": [
-      "Full-time equivalent salary",
+      "Pay scale",
       "Actual salary",
-      "Pay scale"
+      "Full-time equivalent salary"
     ],
     "fullTimeEquivalentSalaryDetails": "£42,000",
     "actualSalaryDetails": "£31,000",
     "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "No",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
     "isUsingApplicationForm": "No",
-    "applicationMethod": "Through a website",
-    "linkToWebsite": "https://www.school.uk",
-    "offersSchoolVisits": "No",
-    "contactEmailAddress": "susy@busheymeads.sch.uk",
-    "hasContactPhoneNumber": "No",
+    "applicationMethod": "By email",
+    "applicationForm": {
+      "file": "application-form.pdf",
+      "size": "2MB"
+    },
+    "emailAddressForApplications": "susy@busheymeads.sch.uk",
+    "offersSchoolVisits": "Yes",
+    "contactEmailAddress": "peter@courtland.sch.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0204 850 011",
     "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "libero esse asperiores qui ut ipsum est quod suscipit sed saepe quia impedit est laborum et et quia qui voluptates dolorem consequatur necessitatibus facilis quia consequatur adipisci iste officiis et",
-    "whatSchoolOffers": "fuga nesciunt tempora nemo eligendi asperiores ut distinctio consequatur velit aut nisi repellat laboriosam aut rem quisquam ut aspernatur quo",
-    "hasSafeguardingCommitment": "No",
+    "skillsAndExperience": "rem sit hic nam quae aliquid qui et quidem in fugit odit exercitationem illo occaecati neque numquam veniam magni occaecati vero occaecati est eum blanditiis laborum reiciendis vitae voluptas fugit",
+    "whatSchoolOffers": "sit earum soluta minus quis enim illum rerum aut in pariatur labore cupiditate molestias ratione ea aut ex minus temporibus",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "et suscipit ipsum in maxime veritatis quia officia rerum et voluptas voluptate eius sit magnam aspernatur et et quis libero sed dolorem quisquam animi asperiores aut mollitia qui non aspernatur",
     "hasFurtherDetailsAboutTheRole": "No",
-    "hasAdditionalDocuments": "Yes",
-    "additionalDocuments": [
-      {
-        "file": "person-specification.pdf",
-        "size": "5MB"
-      }
-    ],
-    "publishDate": "2023-03-14T10:53:01.975Z",
-    "closingDate": "2023-11-20T11:38:18.607Z",
-    "closingTime": "12pm (midday)",
-    "startDate": "2024-05-22T02:25:37.807Z"
+    "furtherDetailsAboutTheRole": "dolore deleniti modi numquam inventore voluptate ut molestiae doloribus quo corrupti eos alias vitae iure sapiente qui qui tempora amet nulla quae incidunt voluptatem quia ratione rerum perspiciatis animi consectetur",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2022-10-22T13:09:35.535Z",
+    "closingDate": "2023-05-27T11:51:26.555Z",
+    "closingTime": "5pm",
+    "startDate": "2024-01-27T15:28:05.083Z"
   },
   {
-    "id": "158416",
-    "status": "Closed",
+    "id": "829067",
+    "status": "Scheduled",
     "organisation": {
       "type": "School",
-      "name": "Courtland Primary School",
+      "name": "Bushey Meads Secondary School",
       "address": {
         "address1": "50 Lawrence Street",
         "town": "Mill Hill",
         "postcode": "NW7 4YK"
       },
-      "phase": "Primary school"
+      "phase": "Secondary school"
     },
     "locations": [
       {
-        "name": "Courtland Primary School",
+        "name": "Bushey Meads Secondary School",
         "address": {
           "address1": "50 Lawrence Street",
           "town": "Mill Hill",
@@ -509,40 +659,37 @@
         }
       }
     ],
-    "role": "Learning support, cover supervisor or tutor",
-    "title": "Learning support assistant",
+    "role": "Teacher",
+    "title": "English teacher",
     "keyStages": [
-      "Early years",
-      "Key stage 1",
-      "Key stage 2"
+      "Key stage 3",
+      "Key stage 4"
     ],
     "subjects": [
-      "Biology"
+      "Physics"
     ],
-    "contractType": "Permanent",
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
     "workingPatterns": [
-      "Part time",
       "Full time"
     ],
     "fullTimeDetails": "5 days a week",
-    "partTimeDetails": "20 hours a week",
     "salaryDetails": [
-      "Actual salary"
+      "Full-time equivalent salary"
     ],
-    "actualSalaryDetails": "£31,000",
+    "fullTimeEquivalentSalaryDetails": "£42,000",
     "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "No",
-    "applicationMethod": "Through a website",
-    "linkToWebsite": "https://www.school.uk",
-    "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "susy@busheymeads.sch.uk",
-    "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0203 952 658",
-    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "et minus ex est aliquid autem dolor et doloribus qui doloremque in eos laboriosam porro autem vel consectetur aliquid facilis praesentium repellendus consectetur quas expedita illum soluta ad quod sequi",
-    "whatSchoolOffers": "iure vitae beatae nulla commodi perferendis vero quam maiores reprehenderit praesentium omnis necessitatibus nisi eligendi et est perferendis reiciendis sapiente",
-    "hasSafeguardingCommitment": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "No",
+    "contactEmailAddress": "alison@royalacademytrust.uk",
+    "hasContactPhoneNumber": "No",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "voluptatem quibusdam accusamus quaerat fugiat exercitationem assumenda harum et quis deleniti vero voluptas error facere asperiores odio voluptas neque ipsa sunt magni voluptatem et est eos dolor incidunt dolore animi",
+    "whatSchoolOffers": "excepturi in magnam cupiditate ut ab autem sit quisquam nostrum omnis quia ullam magni quia nihil at ea ea a",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "placeat eaque id eum minima temporibus eveniet dolores dolor sit delectus perspiciatis ea omnis laudantium voluptate est sed quae provident harum illo qui ut et et odit voluptatibus id perspiciatis",
     "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "officia voluptas quia aut ullam hic sed est dicta in sunt voluptatum ratione ut vero nobis repellendus fuga ea veritatis quod rerum in sed a voluptas nostrum ut qui laudantium",
     "hasAdditionalDocuments": "Yes",
     "additionalDocuments": [
       {
@@ -550,27 +697,168 @@
         "size": "6MB"
       }
     ],
-    "publishDate": "2023-01-22T23:02:08.452Z",
-    "closingDate": "2023-02-05T10:38:25.138Z",
+    "publishDate": "2023-06-18T12:25:31.400Z",
+    "closingDate": "2023-10-12T21:20:21.363Z",
     "closingTime": "9am",
-    "startDate": "2023-05-31T00:58:33.398Z"
+    "startDate": "2023-11-06T00:42:47.886Z"
   },
   {
-    "id": "249280",
-    "status": "Closed",
+    "id": "495944",
+    "status": "Draft",
     "organisation": {
       "type": "School",
-      "name": "Courtland Primary School",
+      "name": "Bushey Meads Secondary School",
       "address": {
         "address1": "50 Lawrence Street",
         "town": "Mill Hill",
         "postcode": "NW7 4YK"
       },
-      "phase": "Primary school"
+      "phase": "Secondary school"
     },
     "locations": [
       {
-        "name": "Courtland Primary School",
+        "name": "Bushey Meads Secondary School",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "Teacher",
+    "title": "Teacher of religious education",
+    "keyStages": [
+      "Key stage 3",
+      "Key stage 4"
+    ],
+    "subjects": [
+      "ICT",
+      "Business studies"
+    ],
+    "contractType": "Maternity or parental leave cover",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Full time",
+      "Part time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Full-time equivalent salary",
+      "Actual salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "actualSalaryDetails": "£31,000",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "Through a website",
+    "linkToWebsite": "https://www.school.uk",
+    "offersSchoolVisits": "No",
+    "contactEmailAddress": "laura@barnet.la.uk",
+    "hasContactPhoneNumber": "No",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "skillsAndExperience": "et qui accusantium qui excepturi voluptatum ipsam dignissimos accusantium consequatur labore natus eaque earum voluptatibus cupiditate doloremque inventore sit unde ex sit praesentium illo aspernatur est dolorem sint cum dolores",
+    "whatSchoolOffers": "dolore cupiditate rerum laudantium fugit eligendi sed veritatis laboriosam itaque saepe aut occaecati minus nihil voluptatem qui fuga nesciunt quis",
+    "hasSafeguardingCommitment": "No",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-04-14T18:32:41.830Z",
+    "closingDate": "2023-07-05T10:43:56.139Z",
+    "closingTime": "12pm (midday)",
+    "startDate": "2023-08-14T06:14:49.347Z"
+  },
+  {
+    "id": "729202",
+    "status": "Published",
+    "organisation": {
+      "type": "School",
+      "name": "Bushey Meads Secondary School",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "phase": "Secondary school"
+    },
+    "locations": [
+      {
+        "name": "Bushey Meads Secondary School",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "Headteacher, deputy or assistant headteacher",
+    "title": "Assistant headteacher",
+    "keyStages": [
+      "Key stage 3",
+      "Key stage 4"
+    ],
+    "subjects": [
+      "English"
+    ],
+    "contractType": "Maternity or parental leave cover",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Part time"
+    ],
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Full-time equivalent salary",
+      "Actual salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "actualSalaryDetails": "£31,000",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "By email",
+    "applicationForm": {
+      "file": "application-form.pdf",
+      "size": "2MB"
+    },
+    "emailAddressForApplications": "alison@royalacademytrust.uk",
+    "offersSchoolVisits": "Yes",
+    "contactEmailAddress": "susy@busheymeads.sch.uk",
+    "hasContactPhoneNumber": "No",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "aut voluptate ullam ex nemo sint sed dicta iusto similique consequatur ipsa nesciunt eum qui corporis ut ratione totam vero sunt voluptas quidem consequuntur accusamus placeat fugit saepe unde voluptatem",
+    "whatSchoolOffers": "odio qui aut ducimus molestiae amet sunt facere eligendi eveniet quia et eius suscipit vel id consequatur exercitationem dignissimos est",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "quam qui non tempora esse non eum ratione eveniet officia et sapiente dolores odit perspiciatis aperiam optio ut rerum quisquam atque quibusdam et aut repellat cumque dolorum sit et aliquam",
+    "hasFurtherDetailsAboutTheRole": "No",
+    "furtherDetailsAboutTheRole": "sed dicta aliquid nihil nihil ea sed vero molestias magnam dicta quia voluptatem et repellat est numquam ut saepe et architecto laudantium et officia at omnis iusto molestias dolorem fugit",
+    "hasAdditionalDocuments": "Yes",
+    "additionalDocuments": [
+      {
+        "file": "job-description.pdf",
+        "size": "6MB"
+      }
+    ],
+    "publishDate": "2023-07-03T00:57:27.394Z",
+    "closingDate": "2024-01-10T20:41:20.071Z",
+    "closingTime": "12pm (midday)",
+    "startDate": "2024-07-08T14:45:46.383Z"
+  },
+  {
+    "id": "150357",
+    "status": "Published",
+    "organisation": {
+      "type": "School",
+      "name": "Bushey Meads Secondary School",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "phase": "Secondary school"
+    },
+    "locations": [
+      {
+        "name": "Bushey Meads Secondary School",
         "address": {
           "address1": "50 Lawrence Street",
           "town": "Mill Hill",
@@ -581,13 +869,11 @@
     "role": "Learning support, cover supervisor or tutor",
     "title": "Learning support assistant",
     "keyStages": [
-      "Early years",
-      "Key stage 1",
-      "Key stage 2"
+      "Key stage 3",
+      "Key stage 4"
     ],
     "subjects": [
-      "Psychology",
-      "Food Technology"
+      "Spanish"
     ],
     "contractType": "Permanent",
     "workingPatterns": [
@@ -598,99 +884,38 @@
     "partTimeDetails": "20 hours a week",
     "salaryDetails": [
       "Pay scale",
-      "Full-time equivalent salary"
-    ],
-    "fullTimeEquivalentSalaryDetails": "£42,000",
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "Yes",
-    "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "alison@royalacademytrust.uk",
-    "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0202 866 605",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "officiis in natus reiciendis hic voluptas ex doloremque magnam a illo voluptatem animi dolorem culpa dolores ad distinctio quisquam iste impedit alias sint aut sed et est necessitatibus praesentium qui",
-    "whatSchoolOffers": "molestiae itaque animi expedita molestiae eos quibusdam corrupti aliquid quibusdam pariatur consequatur quia enim natus adipisci eius delectus a ipsa",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "saepe deserunt dolor perferendis labore assumenda possimus ea vero praesentium eius praesentium laboriosam deleniti aliquid provident non reiciendis velit quis corporis quia animi qui neque quaerat aliquam consequuntur id suscipit",
-    "hasFurtherDetailsAboutTheRole": "Yes",
-    "furtherDetailsAboutTheRole": "rem optio accusantium laborum ut ut quo eum ratione exercitationem nostrum aut consequuntur asperiores aut nobis consequatur incidunt exercitationem consequatur provident culpa adipisci delectus voluptas porro non commodi culpa commodi",
-    "hasAdditionalDocuments": "No",
-    "publishDate": "2023-07-29T14:09:05.005Z",
-    "closingDate": "2024-06-18T20:22:03.410Z",
-    "closingTime": "5pm",
-    "startDate": "2024-08-14T20:34:11.083Z"
-  },
-  {
-    "id": "776257",
-    "status": "Closed",
-    "organisation": {
-      "type": "School",
-      "name": "Bushey Meads Secondary School",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "phase": "Secondary school"
-    },
-    "locations": [
-      {
-        "name": "Bushey Meads Secondary School",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "Teacher",
-    "title": "Class teacher",
-    "keyStages": [
-      "Key stage 3",
-      "Key stage 4"
-    ],
-    "subjects": [
-      "Business studies",
-      "Spanish"
-    ],
-    "contractType": "Permanent",
-    "workingPatterns": [
-      "Full time",
-      "Part time"
-    ],
-    "fullTimeDetails": "5 days a week",
-    "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
-      "Actual salary",
       "Full-time equivalent salary",
-      "Pay scale"
+      "Actual salary"
     ],
     "fullTimeEquivalentSalaryDetails": "£42,000",
     "actualSalaryDetails": "£31,000",
     "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "No",
-    "applicationMethod": "Through a website",
-    "linkToWebsite": "https://www.school.uk",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "Yes",
     "offersSchoolVisits": "No",
     "contactEmailAddress": "peter@courtland.sch.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "pariatur commodi maxime aut occaecati asperiores totam repellat aut similique ratione aliquam maxime optio sed animi molestias dolor reiciendis eos animi accusamus deserunt fugiat omnis aspernatur facilis aut sapiente praesentium",
-    "whatSchoolOffers": "autem excepturi odit nam tenetur laboriosam expedita molestiae fugit qui quos quibusdam ipsa quia nihil ut ad tempora perferendis a",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "error dolores pariatur autem voluptate maiores sint vel repudiandae ut nulla omnis nemo ipsum reprehenderit nam perferendis ea repudiandae maxime error occaecati incidunt officia consequatur possimus odit itaque vel soluta",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0209 761 222",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "skillsAndExperience": "aspernatur et voluptatem qui quisquam libero atque nihil vero voluptas voluptas quia est eum quisquam doloremque et ut omnis eum nemo voluptatem vel facere reiciendis blanditiis eos non et hic",
+    "whatSchoolOffers": "et ut aperiam mollitia ut laudantium nesciunt qui animi explicabo perspiciatis ut soluta sit voluptate iste vero expedita magni excepturi",
+    "hasSafeguardingCommitment": "No",
     "hasFurtherDetailsAboutTheRole": "Yes",
-    "furtherDetailsAboutTheRole": "laborum doloribus sunt cum qui laborum et veritatis molestiae sunt eum hic sunt tenetur dolorem et tenetur optio tempora illum consequuntur voluptatum hic doloremque dolore culpa deleniti voluptate tenetur qui",
-    "hasAdditionalDocuments": "No",
-    "publishDate": "2023-08-26T00:26:06.247Z",
-    "closingDate": "2024-01-06T13:39:49.332Z",
-    "closingTime": "11:59pm",
-    "startDate": "2024-12-31T01:18:13.441Z"
+    "hasAdditionalDocuments": "Yes",
+    "additionalDocuments": [
+      {
+        "file": "job-description.pdf",
+        "size": "6MB"
+      }
+    ],
+    "publishDate": "2023-03-24T07:12:54.564Z",
+    "closingDate": "2024-01-17T18:15:15.226Z",
+    "closingTime": "5pm",
+    "startDate": "2024-04-09T12:28:26.199Z"
   },
   {
-    "id": "223964",
+    "id": "653034",
     "status": "Scheduled",
     "organisation": {
       "type": "School",
@@ -712,84 +937,15 @@
         }
       }
     ],
-    "role": "Teacher",
-    "title": "Maths teacher",
+    "role": "HLTA (higher level teaching assistant)",
+    "title": "HLTA",
     "keyStages": [
       "Key stage 3",
       "Key stage 4"
     ],
     "subjects": [
-      "Spanish",
-      "Psychology"
-    ],
-    "contractType": "Maternity or parental leave cover",
-    "contractLength": "6 months",
-    "workingPatterns": [
-      "Part time"
-    ],
-    "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
-      "Actual salary"
-    ],
-    "actualSalaryDetails": "£31,000",
-    "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "No",
-    "applicationMethod": "Through a website",
-    "linkToWebsite": "https://www.school.uk",
-    "offersSchoolVisits": "No",
-    "contactEmailAddress": "laura@barnet.la.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "et ut quo est eos exercitationem eaque voluptates tempora quis molestiae autem inventore aperiam quasi nisi sequi consequatur soluta sed necessitatibus nostrum laboriosam sed amet distinctio ad voluptas pariatur dignissimos",
-    "whatSchoolOffers": "eaque perferendis aut quam mollitia nihil sint quasi vero vitae eos incidunt aut optio dolor magni nam dolorem est consequatur",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "officia dolores repellendus necessitatibus omnis cumque accusamus voluptatem et nihil hic earum sunt aut est distinctio culpa tempora modi eaque voluptate aut quo debitis quam sed vel illum ea a",
-    "hasFurtherDetailsAboutTheRole": "Yes",
-    "furtherDetailsAboutTheRole": "iure harum tenetur incidunt fugiat ipsa optio et consequuntur porro cum ipsa veritatis tempore quos facere ipsam recusandae officiis illo et corrupti quis eligendi distinctio sint rerum facilis enim laborum",
-    "hasAdditionalDocuments": "Yes",
-    "additionalDocuments": [
-      {
-        "file": "person-specification.pdf",
-        "size": "5MB"
-      }
-    ],
-    "publishDate": "2023-02-17T00:02:34.580Z",
-    "closingDate": "2023-11-01T13:18:46.120Z",
-    "closingTime": "12pm (midday)",
-    "startDate": "2024-03-06T04:14:12.091Z"
-  },
-  {
-    "id": "647704",
-    "status": "Published",
-    "organisation": {
-      "type": "School",
-      "name": "Bushey Meads Secondary School",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "phase": "Secondary school"
-    },
-    "locations": [
-      {
-        "name": "Bushey Meads Secondary School",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "SENDCo (special educational needs and disabilities coordinator)",
-    "title": "SENDCo",
-    "keyStages": [
-      "Key stage 3",
-      "Key stage 4"
-    ],
-    "subjects": [
-      "Mathematics",
-      "German"
+      "Religious education",
+      "Sociology"
     ],
     "contractType": "Fixed term",
     "contractLength": "6 months",
@@ -800,104 +956,31 @@
     "fullTimeDetails": "5 days a week",
     "partTimeDetails": "20 hours a week",
     "salaryDetails": [
-      "Actual salary"
-    ],
-    "actualSalaryDetails": "£31,000",
-    "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "No",
-    "applicationMethod": "Through a website",
-    "linkToWebsite": "https://www.school.uk",
-    "offersSchoolVisits": "No",
-    "contactEmailAddress": "susy@busheymeads.sch.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "et totam praesentium rerum et non consectetur numquam veniam eos est recusandae a aut possimus voluptatum dolorem recusandae mollitia laudantium dolores soluta qui necessitatibus deleniti quo voluptas ipsa voluptatibus eum",
-    "whatSchoolOffers": "sapiente unde repudiandae sunt quisquam vel sunt eaque eveniet maiores omnis nobis aut quod harum ut dolorum possimus optio id",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "autem minus nihil non at officiis neque dignissimos enim officia ut odit recusandae ut quia inventore aut minima pariatur veniam odio corrupti temporibus ut porro tenetur dolores aut non nobis",
-    "hasFurtherDetailsAboutTheRole": "Yes",
-    "furtherDetailsAboutTheRole": "a saepe qui at occaecati reprehenderit aut aspernatur cumque cupiditate excepturi asperiores sequi error voluptate itaque et facere distinctio sequi repellendus quis fugit voluptatem cumque aliquam id qui enim quidem",
-    "hasAdditionalDocuments": "Yes",
-    "additionalDocuments": [
-      {
-        "file": "person-specification.pdf",
-        "size": "5MB"
-      }
-    ],
-    "publishDate": "2023-03-16T09:06:53.519Z",
-    "closingDate": "2024-01-29T09:19:25.813Z",
-    "closingTime": "11:59pm",
-    "startDate": "2024-07-04T12:49:32.031Z"
-  },
-  {
-    "id": "402334",
-    "status": "Published",
-    "organisation": {
-      "type": "School",
-      "name": "Bushey Meads Secondary School",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "phase": "Secondary school"
-    },
-    "locations": [
-      {
-        "name": "Bushey Meads Secondary School",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "SENDCo (special educational needs and disabilities coordinator)",
-    "title": "SENDCo",
-    "keyStages": [
-      "Key stage 3",
-      "Key stage 4"
-    ],
-    "subjects": [
-      "Drama",
-      "Politics"
-    ],
-    "contractType": "Maternity or parental leave cover",
-    "contractLength": "6 months",
-    "workingPatterns": [
-      "Part time"
-    ],
-    "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
-      "Full-time equivalent salary",
-      "Pay scale"
+      "Full-time equivalent salary"
     ],
     "fullTimeEquivalentSalaryDetails": "£42,000",
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "No",
-    "applicationMethod": "Through a website",
-    "linkToWebsite": "https://www.school.uk",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "Yes",
     "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "susy@busheymeads.sch.uk",
-    "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0200 530 906",
+    "contactEmailAddress": "peter@courtland.sch.uk",
+    "hasContactPhoneNumber": "No",
     "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "vitae quos molestias eaque nihil adipisci libero est repellat et adipisci est labore ut qui perferendis optio consequatur consectetur velit aut sed earum a in quis dolor aliquid id omnis",
-    "whatSchoolOffers": "enim qui aut qui deleniti voluptas optio repudiandae officia ad veritatis consequatur praesentium velit est est officia rerum qui alias",
+    "skillsAndExperience": "placeat necessitatibus ea et iste est ut molestiae quia et eos voluptatem adipisci voluptatum facere cumque nobis qui vel nesciunt necessitatibus a repellat earum et eligendi qui facere quis maiores",
+    "whatSchoolOffers": "delectus repellendus maxime impedit qui est culpa accusantium quae voluptas voluptatibus dolorum sunt necessitatibus iusto sequi officiis reprehenderit doloremque ab",
     "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "distinctio quidem libero et dolorem consequuntur voluptatem error aperiam quia consequuntur occaecati vero perferendis vero quas quod praesentium et velit quasi et aliquam non dolor rem voluptatem illo qui id",
-    "hasFurtherDetailsAboutTheRole": "Yes",
-    "furtherDetailsAboutTheRole": "quo omnis accusamus quia quos provident neque dolor error ratione mollitia et nostrum rerum quae in voluptas necessitatibus nihil reiciendis est aperiam ducimus sint saepe explicabo hic ratione reiciendis libero",
+    "safeguardingCommitment": "facere quaerat ratione autem labore voluptas rerum et amet eaque consequatur magnam sit quia autem mollitia vitae quo magnam dolorum consequatur saepe dolores eos totam quidem debitis pariatur rem inventore",
+    "hasFurtherDetailsAboutTheRole": "No",
+    "furtherDetailsAboutTheRole": "dolorem unde at rerum in enim qui laboriosam quam animi deserunt rerum reprehenderit ut corrupti et possimus accusantium est molestiae natus ut deleniti tempora autem necessitatibus numquam fuga nesciunt itaque",
     "hasAdditionalDocuments": "No",
-    "publishDate": "2023-01-19T11:56:44.471Z",
-    "closingDate": "2023-08-17T13:58:03.009Z",
+    "publishDate": "2023-08-30T23:50:12.082Z",
+    "closingDate": "2024-07-30T07:37:58.776Z",
     "closingTime": "11:59pm",
-    "startDate": "2024-03-23T22:06:43.458Z"
+    "startDate": "2025-05-21T13:36:36.134Z"
   },
   {
-    "id": "337280",
-    "status": "Scheduled",
+    "id": "967123",
+    "status": "Draft",
     "organisation": {
       "type": "School",
       "name": "Bushey Meads Secondary School",
@@ -926,10 +1009,9 @@
     ],
     "subjects": [
       "Engineering",
-      "Media studies"
+      "Psychology"
     ],
-    "contractType": "Maternity or parental leave cover",
-    "contractLength": "6 months",
+    "contractType": "Permanent",
     "workingPatterns": [
       "Full time",
       "Part time"
@@ -937,103 +1019,31 @@
     "fullTimeDetails": "5 days a week",
     "partTimeDetails": "20 hours a week",
     "salaryDetails": [
-      "Full-time equivalent salary",
-      "Pay scale"
-    ],
-    "fullTimeEquivalentSalaryDetails": "£42,000",
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "Yes",
-    "additionalAllowances": "TLR is available.",
-    "isUsingApplicationForm": "No",
-    "applicationMethod": "By email",
-    "applicationForm": {
-      "file": "application-form.pdf",
-      "size": "2MB"
-    },
-    "emailAddressForApplications": "peter@courtland.sch.uk",
-    "offersSchoolVisits": "No",
-    "contactEmailAddress": "peter@courtland.sch.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "quos commodi perspiciatis qui voluptatem officia dolorum laboriosam accusantium expedita corporis velit aperiam pariatur sapiente voluptas quasi est voluptatem rerum ipsa at sint fugit soluta possimus ut accusantium assumenda repudiandae",
-    "whatSchoolOffers": "omnis aut inventore officiis quam aut tempore tenetur id dolorum repudiandae et sapiente reprehenderit eum totam consequatur ea vel saepe",
-    "hasSafeguardingCommitment": "No",
-    "hasFurtherDetailsAboutTheRole": "Yes",
-    "hasAdditionalDocuments": "Yes",
-    "additionalDocuments": [
-      {
-        "file": "person-specification.pdf",
-        "size": "5MB"
-      }
-    ],
-    "publishDate": "2023-03-17T00:03:33.469Z",
-    "closingDate": "2023-05-06T14:50:19.489Z",
-    "closingTime": "9am",
-    "startDate": "2023-07-10T09:03:27.496Z"
-  },
-  {
-    "id": "532587",
-    "status": "Draft",
-    "organisation": {
-      "type": "School",
-      "name": "Bushey Meads Secondary School",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "phase": "Secondary school"
-    },
-    "locations": [
-      {
-        "name": "Bushey Meads Secondary School",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "Teaching assistant",
-    "title": "Level 2 teaching assistant",
-    "keyStages": [
-      "Key stage 3",
-      "Key stage 4"
-    ],
-    "subjects": [
-      "Social sciences"
-    ],
-    "contractType": "Maternity or parental leave cover",
-    "contractLength": "6 months",
-    "workingPatterns": [
-      "Part time"
-    ],
-    "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
+      "Pay scale",
+      "Actual salary",
       "Full-time equivalent salary"
     ],
     "fullTimeEquivalentSalaryDetails": "£42,000",
+    "actualSalaryDetails": "£31,000",
+    "payScaleDetails": "MP4 to MP6",
     "hasAdditionalAllowances": "No",
     "isUsingApplicationForm": "Yes",
-    "offersSchoolVisits": "No",
-    "contactEmailAddress": "laura@barnet.la.uk",
-    "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0204 319 687",
+    "offersSchoolVisits": "Yes",
+    "contactEmailAddress": "peter@courtland.sch.uk",
+    "hasContactPhoneNumber": "No",
     "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "molestiae quisquam illo esse qui ratione adipisci quod quaerat asperiores sapiente vero expedita laudantium tempore deleniti eum consequuntur sed explicabo omnis qui est labore deserunt sit pariatur quis saepe ut",
-    "whatSchoolOffers": "non fuga veniam nesciunt beatae assumenda quod quia est tempore perferendis mollitia qui expedita ut repellendus sit perferendis est repellat",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "velit ipsam maxime voluptatem est necessitatibus esse aliquam debitis nihil voluptatibus tempora illum minima facilis natus dolorum adipisci occaecati quasi odio vitae quam ex tenetur saepe ut impedit repellendus eligendi",
+    "skillsAndExperience": "omnis nam distinctio rem numquam deleniti doloribus quia magni itaque incidunt soluta sequi rerum soluta explicabo culpa neque occaecati laborum ducimus laboriosam assumenda expedita dolorum qui praesentium cupiditate et cum",
+    "whatSchoolOffers": "excepturi dolorem consequatur eaque corrupti maiores nam sunt vero eum soluta consectetur sed nesciunt doloremque ea itaque voluptatem eaque tempora",
+    "hasSafeguardingCommitment": "No",
     "hasFurtherDetailsAboutTheRole": "No",
-    "furtherDetailsAboutTheRole": "aut error quam aperiam quod dolor assumenda quis et eligendi necessitatibus aspernatur molestiae rem vel non provident sed nostrum possimus et sint suscipit eum perferendis excepturi ipsa quia maxime occaecati",
     "hasAdditionalDocuments": "No",
-    "publishDate": "2023-05-09T12:51:23.641Z",
-    "closingDate": "2023-11-26T19:16:19.652Z",
-    "closingTime": "11:59pm",
-    "startDate": "2024-04-23T07:20:18.543Z"
+    "publishDate": "2023-05-24T05:11:47.465Z",
+    "closingDate": "2023-11-20T01:20:26.969Z",
+    "closingTime": "9am",
+    "startDate": "2024-09-23T17:49:35.539Z"
   },
   {
-    "id": "548955",
+    "id": "682851",
     "status": "Closed",
     "organisation": {
       "type": "School",
@@ -1055,51 +1065,57 @@
         }
       }
     ],
-    "role": "HLTA (higher level teaching assistant)",
-    "title": "HLTA",
+    "role": "Teacher",
+    "title": "Teacher of religious education",
     "keyStages": [
       "Key stage 3",
       "Key stage 4"
     ],
     "subjects": [
-      "Relationships and sex education"
+      "Food Technology",
+      "Business studies"
     ],
-    "contractType": "Fixed term",
+    "contractType": "Maternity or parental leave cover",
     "contractLength": "6 months",
     "workingPatterns": [
-      "Part time"
+      "Part time",
+      "Full time"
     ],
+    "fullTimeDetails": "5 days a week",
     "partTimeDetails": "20 hours a week",
     "salaryDetails": [
-      "Actual salary",
       "Full-time equivalent salary",
-      "Pay scale"
+      "Actual salary"
     ],
     "fullTimeEquivalentSalaryDetails": "£42,000",
     "actualSalaryDetails": "£31,000",
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "Yes",
-    "additionalAllowances": "TLR is available.",
+    "hasAdditionalAllowances": "No",
     "isUsingApplicationForm": "Yes",
     "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "laura@barnet.la.uk",
+    "contactEmailAddress": "peter@courtland.sch.uk",
     "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0205 342 752",
-    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "est unde sunt consequatur et voluptatem dolor occaecati laborum rerum dolor et explicabo ea occaecati assumenda iusto distinctio distinctio nobis assumenda et aspernatur ipsum voluptas quidem id delectus distinctio quo",
-    "whatSchoolOffers": "molestiae esse nostrum voluptas voluptatum ipsa mollitia sed aliquid voluptatem quia quod ea odio aperiam ut aspernatur sint ratione nihil",
+    "contactPhoneNumber": "0204 009 868",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "animi quibusdam non reiciendis eligendi voluptatem necessitatibus voluptas veritatis magnam quia ratione sit totam tenetur non dolorem necessitatibus beatae corrupti autem ipsa eos repudiandae repudiandae consectetur non ea nostrum voluptates",
+    "whatSchoolOffers": "omnis et adipisci maiores vero repellendus dolores eum excepturi architecto maxime minus doloribus maiores consequatur rem qui illo quod qui",
     "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "eos et odio sunt qui corrupti a nemo voluptatem omnis eos recusandae sint voluptatem harum et maxime ipsa et quibusdam aperiam culpa qui eveniet autem dignissimos sapiente doloribus harum iste",
+    "safeguardingCommitment": "inventore et vel temporibus qui occaecati vitae delectus nam aut est quas et quod alias deserunt accusantium culpa suscipit possimus necessitatibus rerum eos fuga fugit consequatur ex repudiandae incidunt laborum",
     "hasFurtherDetailsAboutTheRole": "No",
-    "furtherDetailsAboutTheRole": "ea ut ipsam non minus voluptatem pariatur aut est beatae est asperiores et repellendus corporis qui consequuntur ad ut consequatur dolorum id unde maxime rem repellendus vitae dolor molestiae praesentium",
-    "hasAdditionalDocuments": "No",
-    "publishDate": "2023-06-23T23:37:18.303Z",
-    "closingDate": "2023-08-04T07:00:24.224Z",
-    "closingTime": "11:59pm",
-    "startDate": "2024-03-26T04:44:25.442Z"
+    "furtherDetailsAboutTheRole": "voluptas voluptatem rem qui ratione harum culpa sed sapiente in exercitationem sunt enim accusantium ex sit in debitis dolor magni repellat explicabo praesentium blanditiis ullam suscipit officia omnis aut necessitatibus",
+    "hasAdditionalDocuments": "Yes",
+    "additionalDocuments": [
+      {
+        "file": "person-specification.pdf",
+        "size": "5MB"
+      }
+    ],
+    "publishDate": "2023-03-09T01:59:05.477Z",
+    "closingDate": "2024-01-26T23:05:56.878Z",
+    "closingTime": "9am",
+    "startDate": "2024-02-21T22:09:06.783Z"
   },
   {
-    "id": "394583",
+    "id": "506437",
     "status": "Closed",
     "organisation": {
       "type": "School",
@@ -1128,48 +1144,46 @@
       "Key stage 4"
     ],
     "subjects": [
-      "Religious education"
+      "Spanish"
     ],
     "contractType": "Maternity or parental leave cover",
     "contractLength": "6 months",
     "workingPatterns": [
+      "Full time",
       "Part time"
     ],
+    "fullTimeDetails": "5 days a week",
     "partTimeDetails": "20 hours a week",
     "salaryDetails": [
-      "Pay scale"
+      "Pay scale",
+      "Full-time equivalent salary",
+      "Actual salary"
     ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "actualSalaryDetails": "£31,000",
     "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "Yes",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "Through a website",
+    "linkToWebsite": "https://www.school.uk",
     "offersSchoolVisits": "No",
-    "contactEmailAddress": "alison@royalacademytrust.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "molestiae accusantium saepe sit sed voluptatem doloremque modi aut asperiores illum dolor ut reprehenderit quasi exercitationem nemo qui ad molestiae qui mollitia molestias autem voluptatem velit doloremque dolorem quibusdam molestiae",
-    "whatSchoolOffers": "eveniet velit et qui cum iste quidem corporis est quisquam nam inventore rerum repellendus mollitia corporis voluptas quas dicta officia",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "minus et ut omnis consequatur necessitatibus quam quas ea qui labore accusamus ducimus non est quia est voluptatem cupiditate veniam unde quia tempora sint deleniti doloremque quis est atque blanditiis",
-    "hasFurtherDetailsAboutTheRole": "No",
-    "furtherDetailsAboutTheRole": "incidunt sit qui doloribus sit soluta animi sit aut veniam nemo corporis rerum aut ipsa quae corrupti et tempore necessitatibus fugit ea illum suscipit aut labore voluptatem ratione corporis ipsam",
-    "hasAdditionalDocuments": "Yes",
-    "additionalDocuments": [
-      {
-        "file": "person-specification.pdf",
-        "size": "5MB"
-      },
-      {
-        "file": "job-description.pdf",
-        "size": "6MB"
-      }
-    ],
-    "publishDate": "2023-03-10T11:47:54.325Z",
-    "closingDate": "2023-12-28T12:57:41.305Z",
+    "contactEmailAddress": "susy@busheymeads.sch.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0206 754 921",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "sed impedit sed porro ad voluptatum quam perspiciatis numquam eligendi dolor quo laboriosam sed est ut et ut qui veniam molestiae quas perferendis et qui ex explicabo quo quia beatae",
+    "whatSchoolOffers": "voluptatem dolores dolore qui enim sequi adipisci ea quod tempore corporis incidunt vel consequatur nulla officiis optio minus autem nam",
+    "hasSafeguardingCommitment": "No",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-03-13T22:37:14.597Z",
+    "closingDate": "2023-08-21T00:05:20.272Z",
     "closingTime": "5pm",
-    "startDate": "2024-10-04T02:49:12.907Z"
+    "startDate": "2024-04-05T20:45:24.572Z"
   },
   {
-    "id": "861412",
+    "id": "582652",
     "status": "Closed",
     "organisation": {
       "type": "School",
@@ -1192,24 +1206,273 @@
       }
     ],
     "role": "Teacher",
-    "title": "Science teacher",
+    "title": "Teacher of religious education",
     "keyStages": [
       "Key stage 3",
       "Key stage 4"
     ],
     "subjects": [
-      "Philosophy",
-      "Media studies"
+      "Humanities"
+    ],
+    "contractType": "Permanent",
+    "workingPatterns": [
+      "Part time"
+    ],
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Full-time equivalent salary",
+      "Pay scale"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "payScaleDetails": "MP4 to MP6",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "By email",
+    "applicationForm": {
+      "file": "application-form.pdf",
+      "size": "2MB"
+    },
+    "emailAddressForApplications": "peter@courtland.sch.uk",
+    "offersSchoolVisits": "No",
+    "contactEmailAddress": "susy@busheymeads.sch.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0205 463 114",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "skillsAndExperience": "ullam culpa necessitatibus beatae quisquam suscipit rerum maxime dicta tempore rerum explicabo et amet autem repellat soluta assumenda explicabo asperiores incidunt ipsam perspiciatis nobis corporis aspernatur molestiae ipsum a occaecati",
+    "whatSchoolOffers": "qui aliquid voluptas temporibus eum odit facilis omnis magnam facere rerum occaecati provident voluptatem consequatur deserunt vel voluptatem cupiditate voluptas",
+    "hasSafeguardingCommitment": "No",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "hasAdditionalDocuments": "Yes",
+    "additionalDocuments": [
+      {
+        "file": "job-description.pdf",
+        "size": "6MB"
+      }
+    ],
+    "publishDate": "2022-10-29T20:07:44.348Z",
+    "closingDate": "2023-07-18T10:08:39.367Z",
+    "closingTime": "12pm (midday)",
+    "startDate": "2024-01-26T20:25:13.149Z"
+  },
+  {
+    "id": "862770",
+    "status": "Draft",
+    "organisation": {
+      "type": "MAT",
+      "name": "Royal Academy Trust",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "schools": [
+        {
+          "name": "Ritchie and Sons School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Nursery school"
+        },
+        {
+          "name": "Strosin, Stark and Champlin School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Primary school"
+        },
+        {
+          "name": "Dooley - Hammes School",
+          "address": {
+            "address1": "2 Owl Way",
+            "town": "London",
+            "postcode": "W6 1PT"
+          },
+          "phase": "Middle school"
+        },
+        {
+          "name": "Hessel, Quitzon and Block School",
+          "address": {
+            "address1": "3 Owl Way",
+            "town": "London",
+            "postcode": "W7 2PT"
+          },
+          "phase": "Secondary school"
+        },
+        {
+          "name": "Leffler, Rau and King School",
+          "address": {
+            "address1": "4 Owl Way",
+            "town": "London",
+            "postcode": "W8 3PT"
+          },
+          "phase": "Sixth form or college"
+        },
+        {
+          "name": "Gleichner, Hammes and Rau School",
+          "address": {
+            "address1": "5 Owl Way",
+            "town": "London",
+            "postcode": "W9 4PT"
+          },
+          "phase": "Through school"
+        }
+      ]
+    },
+    "locations": [
+      {
+        "name": "Royal Academy Trust",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "Teacher",
+    "title": "Teacher of computing",
+    "keyStages": [
+      "Early years",
+      "Key stage 1",
+      "Key stage 2",
+      "Key stage 3",
+      "Key stage 4",
+      "Key stage 5"
+    ],
+    "subjects": [
+      "Computing",
+      "Mandarin"
     ],
     "contractType": "Maternity or parental leave cover",
     "contractLength": "6 months",
     "workingPatterns": [
-      "Full time"
+      "Full time",
+      "Part time"
     ],
     "fullTimeDetails": "5 days a week",
+    "partTimeDetails": "20 hours a week",
     "salaryDetails": [
-      "Actual salary",
+      "Full-time equivalent salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "No",
+    "contactEmailAddress": "laura@barnet.la.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0208 906 423",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "skillsAndExperience": "facere reprehenderit deserunt sed facere sed eos aut cum magnam repellendus est aliquid amet repellendus est voluptatem sit qui numquam id minima quos ad totam eos quas quia aut veniam",
+    "whatSchoolOffers": "possimus voluptates ea fuga commodi aperiam non et sit aliquid qui doloribus impedit ipsa at quo error perspiciatis porro fugit",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "corporis ut molestiae distinctio doloremque ipsam qui error aperiam nesciunt voluptates mollitia earum atque expedita et rem neque consequatur at vero id id suscipit sint maxime modi voluptatum dolores placeat",
+    "hasFurtherDetailsAboutTheRole": "No",
+    "furtherDetailsAboutTheRole": "a dolor exercitationem quaerat non et optio non et officia omnis autem eos maiores adipisci distinctio mollitia alias delectus qui laudantium voluptatibus unde laboriosam eius autem rem optio et ut",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-03-19T07:31:54.013Z",
+    "closingDate": "2023-04-01T01:46:35.683Z",
+    "closingTime": "5pm",
+    "startDate": "2023-12-31T11:44:13.037Z"
+  },
+  {
+    "id": "483041",
+    "status": "Published",
+    "organisation": {
+      "type": "MAT",
+      "name": "Royal Academy Trust",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "schools": [
+        {
+          "name": "Ritchie and Sons School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Nursery school"
+        },
+        {
+          "name": "Strosin, Stark and Champlin School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Primary school"
+        },
+        {
+          "name": "Dooley - Hammes School",
+          "address": {
+            "address1": "2 Owl Way",
+            "town": "London",
+            "postcode": "W6 1PT"
+          },
+          "phase": "Middle school"
+        },
+        {
+          "name": "Hessel, Quitzon and Block School",
+          "address": {
+            "address1": "3 Owl Way",
+            "town": "London",
+            "postcode": "W7 2PT"
+          },
+          "phase": "Secondary school"
+        },
+        {
+          "name": "Leffler, Rau and King School",
+          "address": {
+            "address1": "4 Owl Way",
+            "town": "London",
+            "postcode": "W8 3PT"
+          },
+          "phase": "Sixth form or college"
+        },
+        {
+          "name": "Gleichner, Hammes and Rau School",
+          "address": {
+            "address1": "5 Owl Way",
+            "town": "London",
+            "postcode": "W9 4PT"
+          },
+          "phase": "Through school"
+        }
+      ]
+    },
+    "locations": [
+      {
+        "name": "Royal Academy Trust",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "Teacher",
+    "title": "Teacher of religious education",
+    "keyStages": [
+      "Key stage 5"
+    ],
+    "subjects": [
+      "Statistics",
+      "Humanities"
+    ],
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Part time"
+    ],
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
       "Full-time equivalent salary",
+      "Actual salary",
       "Pay scale"
     ],
     "fullTimeEquivalentSalaryDetails": "£42,000",
@@ -1218,282 +1481,21 @@
     "hasAdditionalAllowances": "No",
     "isUsingApplicationForm": "Yes",
     "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "alison@royalacademytrust.uk",
-    "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0200 329 511",
-    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "consequatur deserunt adipisci suscipit soluta mollitia laudantium in libero praesentium itaque minus ut aut omnis assumenda facere et sapiente odio ullam ab dolores doloremque reiciendis beatae dolorem non praesentium molestiae",
-    "whatSchoolOffers": "ratione eveniet voluptates perferendis reiciendis quae eaque laborum nulla molestias et consequatur distinctio et tenetur autem rerum neque hic id",
+    "contactEmailAddress": "peter@courtland.sch.uk",
+    "hasContactPhoneNumber": "No",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "voluptatem veniam quia non qui optio minima voluptatibus nesciunt cumque ut sit quia doloremque et nam alias ullam autem labore quas et quibusdam tempora accusantium odio enim vel et in",
+    "whatSchoolOffers": "est quia neque exercitationem porro eos dolorem tempore sed optio error quia ea est laudantium exercitationem qui dicta distinctio perspiciatis",
     "hasSafeguardingCommitment": "No",
     "hasFurtherDetailsAboutTheRole": "Yes",
     "hasAdditionalDocuments": "No",
-    "publishDate": "2023-06-28T12:13:30.601Z",
-    "closingDate": "2023-10-18T01:20:54.218Z",
+    "publishDate": "2022-11-01T00:00:44.130Z",
+    "closingDate": "2023-01-01T14:49:42.156Z",
     "closingTime": "12pm (midday)",
-    "startDate": "2024-05-11T09:14:04.731Z"
+    "startDate": "2023-09-17T06:42:32.119Z"
   },
   {
-    "id": "228733",
-    "status": "Scheduled",
-    "organisation": {
-      "type": "MAT",
-      "name": "Royal Academy Trust",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "schools": [
-        {
-          "name": "Cremin, D'Amore and Lowe School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Nursery school"
-        },
-        {
-          "name": "Armstrong, Schuster and Tromp School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Primary school"
-        },
-        {
-          "name": "McClure - Tillman School",
-          "address": {
-            "address1": "2 Owl Way",
-            "town": "London",
-            "postcode": "W6 1PT"
-          },
-          "phase": "Middle school"
-        },
-        {
-          "name": "Armstrong Inc School",
-          "address": {
-            "address1": "3 Owl Way",
-            "town": "London",
-            "postcode": "W7 2PT"
-          },
-          "phase": "Secondary school"
-        },
-        {
-          "name": "Keeling, Kreiger and Orn School",
-          "address": {
-            "address1": "4 Owl Way",
-            "town": "London",
-            "postcode": "W8 3PT"
-          },
-          "phase": "Sixth form or college"
-        },
-        {
-          "name": "Stiedemann, Hoppe and Stiedemann School",
-          "address": {
-            "address1": "5 Owl Way",
-            "town": "London",
-            "postcode": "W9 4PT"
-          },
-          "phase": "Through school"
-        }
-      ]
-    },
-    "locations": [
-      {
-        "name": "Royal Academy Trust",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "Teacher",
-    "title": "English teacher",
-    "keyStages": [
-      "Key stage 5"
-    ],
-    "subjects": [
-      "Geography",
-      "Computing"
-    ],
-    "contractType": "Maternity or parental leave cover",
-    "contractLength": "6 months",
-    "workingPatterns": [
-      "Part time"
-    ],
-    "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
-      "Actual salary",
-      "Pay scale"
-    ],
-    "actualSalaryDetails": "£31,000",
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "Yes",
-    "additionalAllowances": "TLR is available.",
-    "isUsingApplicationForm": "Yes",
-    "offersSchoolVisits": "No",
-    "contactEmailAddress": "laura@barnet.la.uk",
-    "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0201 369 465",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "neque delectus delectus reprehenderit omnis est assumenda culpa distinctio qui totam ratione dolores dolore laudantium fugiat harum consequatur ipsam dolores voluptatem ipsum voluptas quaerat possimus vero unde autem est harum",
-    "whatSchoolOffers": "et rerum atque expedita sit corrupti ad sunt unde vel praesentium distinctio mollitia cumque nobis sint natus corrupti suscipit aspernatur",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "natus nostrum doloremque voluptatum cum aperiam neque adipisci cumque accusamus quia qui autem aut omnis corrupti et tenetur neque aliquam molestiae nulla ea voluptas et distinctio nihil aperiam enim vel",
-    "hasFurtherDetailsAboutTheRole": "No",
-    "furtherDetailsAboutTheRole": "et tempora doloribus voluptatem quaerat possimus soluta ea enim distinctio vitae nesciunt minima repellendus consequatur earum placeat exercitationem atque molestias autem quod a quae dolorum rerum delectus molestiae similique sed",
-    "hasAdditionalDocuments": "Yes",
-    "additionalDocuments": [
-      {
-        "file": "person-specification.pdf",
-        "size": "5MB"
-      },
-      {
-        "file": "job-description.pdf",
-        "size": "6MB"
-      }
-    ],
-    "publishDate": "2023-08-09T08:49:57.232Z",
-    "closingDate": "2023-11-12T07:07:36.942Z",
-    "closingTime": "11:59pm",
-    "startDate": "2024-10-23T03:19:00.735Z"
-  },
-  {
-    "id": "579210",
-    "status": "Scheduled",
-    "organisation": {
-      "type": "MAT",
-      "name": "Royal Academy Trust",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "schools": [
-        {
-          "name": "Cremin, D'Amore and Lowe School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Nursery school"
-        },
-        {
-          "name": "Armstrong, Schuster and Tromp School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Primary school"
-        },
-        {
-          "name": "McClure - Tillman School",
-          "address": {
-            "address1": "2 Owl Way",
-            "town": "London",
-            "postcode": "W6 1PT"
-          },
-          "phase": "Middle school"
-        },
-        {
-          "name": "Armstrong Inc School",
-          "address": {
-            "address1": "3 Owl Way",
-            "town": "London",
-            "postcode": "W7 2PT"
-          },
-          "phase": "Secondary school"
-        },
-        {
-          "name": "Keeling, Kreiger and Orn School",
-          "address": {
-            "address1": "4 Owl Way",
-            "town": "London",
-            "postcode": "W8 3PT"
-          },
-          "phase": "Sixth form or college"
-        },
-        {
-          "name": "Stiedemann, Hoppe and Stiedemann School",
-          "address": {
-            "address1": "5 Owl Way",
-            "town": "London",
-            "postcode": "W9 4PT"
-          },
-          "phase": "Through school"
-        }
-      ]
-    },
-    "locations": [
-      {
-        "name": "Royal Academy Trust",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "Teacher",
-    "title": "Teacher of religious education",
-    "keyStages": [
-      "Early years",
-      "Key stage 1",
-      "Key stage 2",
-      "Key stage 3",
-      "Key stage 4",
-      "Key stage 5"
-    ],
-    "subjects": [
-      "Science",
-      "Politics"
-    ],
-    "contractType": "Maternity or parental leave cover",
-    "contractLength": "6 months",
-    "workingPatterns": [
-      "Full time",
-      "Part time"
-    ],
-    "fullTimeDetails": "5 days a week",
-    "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
-      "Actual salary",
-      "Pay scale",
-      "Full-time equivalent salary"
-    ],
-    "fullTimeEquivalentSalaryDetails": "£42,000",
-    "actualSalaryDetails": "£31,000",
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "Yes",
-    "additionalAllowances": "TLR is available.",
-    "isUsingApplicationForm": "Yes",
-    "offersSchoolVisits": "No",
-    "contactEmailAddress": "laura@barnet.la.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "adipisci ratione esse amet pariatur qui quo voluptatum adipisci amet laborum est enim perferendis labore molestiae illo expedita et magnam et eaque facilis nobis dolor nam vel rerum ut itaque",
-    "whatSchoolOffers": "ut praesentium corporis omnis est dolor qui recusandae iusto culpa saepe nisi et voluptatibus in ipsam laudantium doloribus hic cumque",
-    "hasSafeguardingCommitment": "No",
-    "hasFurtherDetailsAboutTheRole": "Yes",
-    "hasAdditionalDocuments": "Yes",
-    "additionalDocuments": [
-      {
-        "file": "job-description.pdf",
-        "size": "6MB"
-      }
-    ],
-    "publishDate": "2023-03-27T14:17:48.012Z",
-    "closingDate": "2024-03-02T17:21:34.473Z",
-    "closingTime": "5pm",
-    "startDate": "2024-09-06T16:55:09.157Z"
-  },
-  {
-    "id": "765472",
+    "id": "570155",
     "status": "Published",
     "organisation": {
       "type": "MAT",
@@ -1505,7 +1507,7 @@
       },
       "schools": [
         {
-          "name": "Cremin, D'Amore and Lowe School",
+          "name": "Ritchie and Sons School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -1514,7 +1516,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Armstrong, Schuster and Tromp School",
+          "name": "Strosin, Stark and Champlin School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -1523,7 +1525,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "McClure - Tillman School",
+          "name": "Dooley - Hammes School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -1532,7 +1534,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Armstrong Inc School",
+          "name": "Hessel, Quitzon and Block School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -1541,7 +1543,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Keeling, Kreiger and Orn School",
+          "name": "Leffler, Rau and King School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -1550,263 +1552,7 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Stiedemann, Hoppe and Stiedemann School",
-          "address": {
-            "address1": "5 Owl Way",
-            "town": "London",
-            "postcode": "W9 4PT"
-          },
-          "phase": "Through school"
-        }
-      ]
-    },
-    "locations": [
-      {
-        "name": "Royal Academy Trust",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "Teacher",
-    "title": "Teacher of religious education",
-    "keyStages": [
-      "Early years",
-      "Key stage 1",
-      "Key stage 2",
-      "Key stage 3",
-      "Key stage 4",
-      "Key stage 5"
-    ],
-    "subjects": [
-      "French"
-    ],
-    "contractType": "Fixed term",
-    "contractLength": "6 months",
-    "workingPatterns": [
-      "Full time"
-    ],
-    "fullTimeDetails": "5 days a week",
-    "salaryDetails": [
-      "Pay scale",
-      "Full-time equivalent salary"
-    ],
-    "fullTimeEquivalentSalaryDetails": "£42,000",
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "Yes",
-    "additionalAllowances": "TLR is available.",
-    "isUsingApplicationForm": "No",
-    "applicationMethod": "By email",
-    "applicationForm": {
-      "file": "application-form.pdf",
-      "size": "2MB"
-    },
-    "emailAddressForApplications": "susy@busheymeads.sch.uk",
-    "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "susy@busheymeads.sch.uk",
-    "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0201 874 461",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "eos neque quas repellat laudantium rerum fugit ut minus et et earum quis iure nobis placeat sed exercitationem quidem aspernatur explicabo in culpa veniam pariatur ut incidunt assumenda repudiandae deserunt",
-    "whatSchoolOffers": "aut reprehenderit labore voluptatibus nam molestiae itaque sint corrupti voluptate aut ratione illum amet est dolor fuga et similique eius",
-    "hasSafeguardingCommitment": "No",
-    "hasFurtherDetailsAboutTheRole": "No",
-    "hasAdditionalDocuments": "Yes",
-    "additionalDocuments": [
-      {
-        "file": "person-specification.pdf",
-        "size": "5MB"
-      },
-      {
-        "file": "job-description.pdf",
-        "size": "6MB"
-      }
-    ],
-    "publishDate": "2023-01-23T04:22:42.872Z",
-    "closingDate": "2023-03-02T19:05:53.584Z",
-    "closingTime": "11:59pm",
-    "startDate": "2024-01-11T07:00:35.161Z"
-  },
-  {
-    "id": "282673",
-    "status": "Published",
-    "organisation": {
-      "type": "MAT",
-      "name": "Royal Academy Trust",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "schools": [
-        {
-          "name": "Cremin, D'Amore and Lowe School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Nursery school"
-        },
-        {
-          "name": "Armstrong, Schuster and Tromp School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Primary school"
-        },
-        {
-          "name": "McClure - Tillman School",
-          "address": {
-            "address1": "2 Owl Way",
-            "town": "London",
-            "postcode": "W6 1PT"
-          },
-          "phase": "Middle school"
-        },
-        {
-          "name": "Armstrong Inc School",
-          "address": {
-            "address1": "3 Owl Way",
-            "town": "London",
-            "postcode": "W7 2PT"
-          },
-          "phase": "Secondary school"
-        },
-        {
-          "name": "Keeling, Kreiger and Orn School",
-          "address": {
-            "address1": "4 Owl Way",
-            "town": "London",
-            "postcode": "W8 3PT"
-          },
-          "phase": "Sixth form or college"
-        },
-        {
-          "name": "Stiedemann, Hoppe and Stiedemann School",
-          "address": {
-            "address1": "5 Owl Way",
-            "town": "London",
-            "postcode": "W9 4PT"
-          },
-          "phase": "Through school"
-        }
-      ]
-    },
-    "locations": [
-      {
-        "name": "Royal Academy Trust",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "HLTA (higher level teaching assistant)",
-    "title": "HLTA",
-    "keyStages": [
-      "Early years",
-      "Key stage 1",
-      "Key stage 2",
-      "Key stage 3",
-      "Key stage 4",
-      "Key stage 5"
-    ],
-    "subjects": [
-      "Psychology"
-    ],
-    "contractType": "Permanent",
-    "workingPatterns": [
-      "Full time",
-      "Part time"
-    ],
-    "fullTimeDetails": "5 days a week",
-    "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
-      "Pay scale"
-    ],
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "Yes",
-    "additionalAllowances": "TLR is available.",
-    "isUsingApplicationForm": "Yes",
-    "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "susy@busheymeads.sch.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "nisi sed architecto tempora error repellat voluptatem enim est ut a possimus repellat quod aut ea est quia veritatis iusto possimus quae ad ad aliquam voluptas eum ut quia reiciendis",
-    "whatSchoolOffers": "ea voluptas asperiores temporibus eum ut hic maiores et doloremque quae a beatae quis aut sed pariatur excepturi quo nemo",
-    "hasSafeguardingCommitment": "No",
-    "hasFurtherDetailsAboutTheRole": "Yes",
-    "hasAdditionalDocuments": "No",
-    "publishDate": "2022-11-07T00:05:42.772Z",
-    "closingDate": "2023-07-21T10:04:16.540Z",
-    "closingTime": "11:59pm",
-    "startDate": "2024-04-19T08:30:48.344Z"
-  },
-  {
-    "id": "403251",
-    "status": "Scheduled",
-    "organisation": {
-      "type": "MAT",
-      "name": "Royal Academy Trust",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "schools": [
-        {
-          "name": "Cremin, D'Amore and Lowe School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Nursery school"
-        },
-        {
-          "name": "Armstrong, Schuster and Tromp School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Primary school"
-        },
-        {
-          "name": "McClure - Tillman School",
-          "address": {
-            "address1": "2 Owl Way",
-            "town": "London",
-            "postcode": "W6 1PT"
-          },
-          "phase": "Middle school"
-        },
-        {
-          "name": "Armstrong Inc School",
-          "address": {
-            "address1": "3 Owl Way",
-            "town": "London",
-            "postcode": "W7 2PT"
-          },
-          "phase": "Secondary school"
-        },
-        {
-          "name": "Keeling, Kreiger and Orn School",
-          "address": {
-            "address1": "4 Owl Way",
-            "town": "London",
-            "postcode": "W8 3PT"
-          },
-          "phase": "Sixth form or college"
-        },
-        {
-          "name": "Stiedemann, Hoppe and Stiedemann School",
+          "name": "Gleichner, Hammes and Rau School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
@@ -1828,33 +1574,39 @@
     ],
     "role": "Teacher",
     "title": "Class teacher",
+    "keyStages": [
+      "Key stage 3",
+      "Key stage 4"
+    ],
     "subjects": [
       "Accounting",
-      "Chemistry"
+      "Psychology"
     ],
-    "contractType": "Fixed term",
+    "contractType": "Maternity or parental leave cover",
     "contractLength": "6 months",
     "workingPatterns": [
-      "Part time",
-      "Full time"
+      "Full time",
+      "Part time"
     ],
     "fullTimeDetails": "5 days a week",
     "partTimeDetails": "20 hours a week",
     "salaryDetails": [
+      "Full-time equivalent salary",
       "Pay scale"
     ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
     "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "Yes",
-    "additionalAllowances": "TLR is available.",
+    "hasAdditionalAllowances": "No",
     "isUsingApplicationForm": "No",
     "applicationMethod": "Through a website",
     "linkToWebsite": "https://www.school.uk",
-    "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "laura@barnet.la.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "quidem labore sint magni sunt rerum quis tempora earum possimus et eum perferendis quisquam cumque laborum et harum deserunt dolorem laboriosam in assumenda quidem autem temporibus aut molestiae autem facere",
-    "whatSchoolOffers": "eum quam et numquam culpa sint laborum necessitatibus nostrum repudiandae explicabo voluptatem cum consequatur necessitatibus ut sit voluptate alias sed",
+    "offersSchoolVisits": "No",
+    "contactEmailAddress": "peter@courtland.sch.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0201 087 094",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "distinctio repudiandae odit aperiam iure deserunt sint cum dolorem et consequatur ratione at ipsa porro eius esse dolore necessitatibus laborum laborum voluptas atque excepturi aut sit ad magni explicabo libero",
+    "whatSchoolOffers": "voluptas modi officiis dolorum doloribus rem et quae perferendis voluptatum ex non et corporis tenetur ea adipisci nulla reprehenderit aut",
     "hasSafeguardingCommitment": "No",
     "hasFurtherDetailsAboutTheRole": "Yes",
     "hasAdditionalDocuments": "Yes",
@@ -1862,260 +1614,20 @@
       {
         "file": "job-description.pdf",
         "size": "6MB"
-      }
-    ],
-    "publishDate": "2023-04-12T01:00:42.318Z",
-    "closingDate": "2023-11-29T03:37:43.952Z",
-    "closingTime": "5pm",
-    "startDate": "2023-12-22T14:29:43.021Z"
-  },
-  {
-    "id": "846364",
-    "status": "Draft",
-    "organisation": {
-      "type": "MAT",
-      "name": "Royal Academy Trust",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
       },
-      "schools": [
-        {
-          "name": "Cremin, D'Amore and Lowe School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Nursery school"
-        },
-        {
-          "name": "Armstrong, Schuster and Tromp School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Primary school"
-        },
-        {
-          "name": "McClure - Tillman School",
-          "address": {
-            "address1": "2 Owl Way",
-            "town": "London",
-            "postcode": "W6 1PT"
-          },
-          "phase": "Middle school"
-        },
-        {
-          "name": "Armstrong Inc School",
-          "address": {
-            "address1": "3 Owl Way",
-            "town": "London",
-            "postcode": "W7 2PT"
-          },
-          "phase": "Secondary school"
-        },
-        {
-          "name": "Keeling, Kreiger and Orn School",
-          "address": {
-            "address1": "4 Owl Way",
-            "town": "London",
-            "postcode": "W8 3PT"
-          },
-          "phase": "Sixth form or college"
-        },
-        {
-          "name": "Stiedemann, Hoppe and Stiedemann School",
-          "address": {
-            "address1": "5 Owl Way",
-            "town": "London",
-            "postcode": "W9 4PT"
-          },
-          "phase": "Through school"
-        }
-      ]
-    },
-    "locations": [
-      {
-        "name": "Royal Academy Trust",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "HLTA (higher level teaching assistant)",
-    "title": "HLTA",
-    "keyStages": [
-      "Key stage 5"
-    ],
-    "subjects": [
-      "Physics"
-    ],
-    "contractType": "Maternity or parental leave cover",
-    "contractLength": "6 months",
-    "workingPatterns": [
-      "Part time",
-      "Full time"
-    ],
-    "fullTimeDetails": "5 days a week",
-    "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
-      "Actual salary"
-    ],
-    "actualSalaryDetails": "£31,000",
-    "hasAdditionalAllowances": "Yes",
-    "additionalAllowances": "TLR is available.",
-    "isUsingApplicationForm": "Yes",
-    "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "peter@courtland.sch.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "maxime voluptas neque sit sit quidem eius ut impedit numquam labore quibusdam suscipit aut delectus soluta et recusandae tempora earum aut incidunt sed aperiam reprehenderit et repellat accusamus vel sapiente",
-    "whatSchoolOffers": "quas perspiciatis nam labore eos ut minima quidem eveniet nam animi ut in dolorem impedit ut suscipit voluptatem vel minus",
-    "hasSafeguardingCommitment": "No",
-    "hasFurtherDetailsAboutTheRole": "No",
-    "hasAdditionalDocuments": "No",
-    "publishDate": "2023-02-17T13:20:14.228Z",
-    "closingDate": "2023-05-15T05:33:11.551Z",
-    "closingTime": "12pm (midday)",
-    "startDate": "2023-11-11T16:12:11.888Z"
-  },
-  {
-    "id": "199301",
-    "status": "Closed",
-    "organisation": {
-      "type": "MAT",
-      "name": "Royal Academy Trust",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "schools": [
-        {
-          "name": "Cremin, D'Amore and Lowe School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Nursery school"
-        },
-        {
-          "name": "Armstrong, Schuster and Tromp School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Primary school"
-        },
-        {
-          "name": "McClure - Tillman School",
-          "address": {
-            "address1": "2 Owl Way",
-            "town": "London",
-            "postcode": "W6 1PT"
-          },
-          "phase": "Middle school"
-        },
-        {
-          "name": "Armstrong Inc School",
-          "address": {
-            "address1": "3 Owl Way",
-            "town": "London",
-            "postcode": "W7 2PT"
-          },
-          "phase": "Secondary school"
-        },
-        {
-          "name": "Keeling, Kreiger and Orn School",
-          "address": {
-            "address1": "4 Owl Way",
-            "town": "London",
-            "postcode": "W8 3PT"
-          },
-          "phase": "Sixth form or college"
-        },
-        {
-          "name": "Stiedemann, Hoppe and Stiedemann School",
-          "address": {
-            "address1": "5 Owl Way",
-            "town": "London",
-            "postcode": "W9 4PT"
-          },
-          "phase": "Through school"
-        }
-      ]
-    },
-    "locations": [
-      {
-        "name": "Royal Academy Trust",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "Head of year, department, curriculum or phase",
-    "title": "Head of modern foreign languages",
-    "keyStages": [
-      "Key stage 5"
-    ],
-    "subjects": [
-      "Sociology",
-      "Social sciences"
-    ],
-    "contractType": "Maternity or parental leave cover",
-    "contractLength": "6 months",
-    "workingPatterns": [
-      "Part time",
-      "Full time"
-    ],
-    "fullTimeDetails": "5 days a week",
-    "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
-      "Actual salary"
-    ],
-    "actualSalaryDetails": "£31,000",
-    "hasAdditionalAllowances": "Yes",
-    "additionalAllowances": "TLR is available.",
-    "isUsingApplicationForm": "No",
-    "applicationMethod": "Through a website",
-    "linkToWebsite": "https://www.school.uk",
-    "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "laura@barnet.la.uk",
-    "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0204 174 357",
-    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "maiores recusandae delectus quia molestiae sunt iusto beatae expedita ut aut qui magni incidunt praesentium necessitatibus eveniet aliquam iusto rerum aliquam asperiores eum beatae ut quia optio neque qui harum",
-    "whatSchoolOffers": "est repudiandae omnis nemo occaecati rerum quia animi repellat et est perspiciatis cumque velit soluta voluptate ratione eos dolores magni",
-    "hasSafeguardingCommitment": "No",
-    "hasFurtherDetailsAboutTheRole": "Yes",
-    "hasAdditionalDocuments": "Yes",
-    "additionalDocuments": [
       {
         "file": "person-specification.pdf",
         "size": "5MB"
-      },
-      {
-        "file": "job-description.pdf",
-        "size": "6MB"
       }
     ],
-    "publishDate": "2023-01-04T20:38:08.568Z",
-    "closingDate": "2023-09-13T09:20:40.756Z",
-    "closingTime": "11:59pm",
-    "startDate": "2024-09-06T18:57:11.946Z"
+    "publishDate": "2022-09-01T21:06:50.684Z",
+    "closingDate": "2023-08-27T19:25:16.351Z",
+    "closingTime": "12pm (midday)",
+    "startDate": "2023-12-03T23:56:10.490Z"
   },
   {
-    "id": "280254",
-    "status": "Closed",
+    "id": "319081",
+    "status": "Published",
     "organisation": {
       "type": "MAT",
       "name": "Royal Academy Trust",
@@ -2126,7 +1638,7 @@
       },
       "schools": [
         {
-          "name": "Cremin, D'Amore and Lowe School",
+          "name": "Ritchie and Sons School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -2135,7 +1647,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Armstrong, Schuster and Tromp School",
+          "name": "Strosin, Stark and Champlin School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -2144,7 +1656,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "McClure - Tillman School",
+          "name": "Dooley - Hammes School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -2153,7 +1665,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Armstrong Inc School",
+          "name": "Hessel, Quitzon and Block School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -2162,7 +1674,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Keeling, Kreiger and Orn School",
+          "name": "Leffler, Rau and King School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -2171,7 +1683,7 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Stiedemann, Hoppe and Stiedemann School",
+          "name": "Gleichner, Hammes and Rau School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
@@ -2196,49 +1708,44 @@
     "keyStages": [
       "Early years",
       "Key stage 1",
-      "Key stage 2",
-      "Key stage 3",
-      "Key stage 4",
-      "Key stage 5"
+      "Key stage 2"
     ],
     "subjects": [
-      "Business studies",
-      "Religious education"
+      "Relationships and sex education"
     ],
-    "contractType": "Maternity or parental leave cover",
+    "contractType": "Fixed term",
     "contractLength": "6 months",
     "workingPatterns": [
+      "Full time",
       "Part time"
     ],
+    "fullTimeDetails": "5 days a week",
     "partTimeDetails": "20 hours a week",
     "salaryDetails": [
-      "Actual salary"
+      "Pay scale"
     ],
-    "actualSalaryDetails": "£31,000",
+    "payScaleDetails": "MP4 to MP6",
     "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "No",
-    "applicationMethod": "Through a website",
-    "linkToWebsite": "https://www.school.uk",
-    "offersSchoolVisits": "No",
-    "contactEmailAddress": "susy@busheymeads.sch.uk",
-    "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0205 487 858",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "Yes",
+    "contactEmailAddress": "laura@barnet.la.uk",
+    "hasContactPhoneNumber": "No",
     "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "alias in illum ut voluptate asperiores natus perferendis esse aut quam architecto et eos enim aspernatur eos corrupti dolorem unde aut autem aut est inventore commodi ut sed neque sed",
-    "whatSchoolOffers": "rerum tenetur ut quo nihil numquam excepturi ea maiores quia optio facilis qui quibusdam architecto consequuntur similique dolore cumque asperiores",
+    "skillsAndExperience": "aperiam aspernatur temporibus earum sit quas quisquam temporibus voluptatem odit ullam impedit nobis consectetur a ratione sit aspernatur officiis quia molestiae optio ut aperiam et saepe temporibus mollitia inventore non",
+    "whatSchoolOffers": "ipsam mollitia maiores repellat ullam explicabo quae architecto natus veritatis consequatur earum exercitationem tempora harum iure id velit vel quia",
     "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "at pariatur quaerat ex consequuntur ipsam consequatur ea iusto atque aut laborum omnis ut quasi debitis et veritatis aut quia qui repellendus distinctio ut odio reiciendis et quos et ab",
+    "safeguardingCommitment": "officiis tempore similique aspernatur qui numquam et eos et eveniet dolores ipsum quod voluptatibus et voluptatem officia quia et porro explicabo temporibus et aliquid amet corporis eum exercitationem qui quae",
     "hasFurtherDetailsAboutTheRole": "No",
-    "furtherDetailsAboutTheRole": "aliquam ex perspiciatis aspernatur debitis qui repellat nisi libero dolores quas dolor distinctio inventore natus quisquam distinctio accusantium molestiae quos animi itaque eveniet consequatur voluptatem nesciunt itaque voluptatem eum perferendis",
+    "furtherDetailsAboutTheRole": "facere sint necessitatibus atque necessitatibus deserunt sit voluptate fugiat est dolorem nobis nobis in sapiente aliquid quis sit sapiente culpa aliquam soluta officiis occaecati ducimus nihil quasi laudantium autem id",
     "hasAdditionalDocuments": "No",
-    "publishDate": "2023-03-31T18:25:16.785Z",
-    "closingDate": "2023-06-26T08:32:29.802Z",
-    "closingTime": "5pm",
-    "startDate": "2024-03-07T03:53:03.512Z"
+    "publishDate": "2023-05-07T04:41:23.885Z",
+    "closingDate": "2024-02-21T01:41:06.857Z",
+    "closingTime": "11:59pm",
+    "startDate": "2024-08-24T13:00:01.097Z"
   },
   {
-    "id": "752447",
-    "status": "Closed",
+    "id": "447677",
+    "status": "Scheduled",
     "organisation": {
       "type": "MAT",
       "name": "Royal Academy Trust",
@@ -2249,7 +1756,7 @@
       },
       "schools": [
         {
-          "name": "Cremin, D'Amore and Lowe School",
+          "name": "Ritchie and Sons School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -2258,7 +1765,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Armstrong, Schuster and Tromp School",
+          "name": "Strosin, Stark and Champlin School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -2267,7 +1774,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "McClure - Tillman School",
+          "name": "Dooley - Hammes School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -2276,7 +1783,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Armstrong Inc School",
+          "name": "Hessel, Quitzon and Block School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -2285,7 +1792,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Keeling, Kreiger and Orn School",
+          "name": "Leffler, Rau and King School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -2294,7 +1801,7 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Stiedemann, Hoppe and Stiedemann School",
+          "name": "Gleichner, Hammes and Rau School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
@@ -2314,135 +1821,16 @@
         }
       }
     ],
-    "role": "Teaching assistant",
-    "title": "Level 2 teaching assistant",
-    "keyStages": [
-      "Key stage 3",
-      "Key stage 4"
-    ],
-    "subjects": [
-      "Media studies",
-      "Dance"
-    ],
-    "contractType": "Maternity or parental leave cover",
-    "contractLength": "6 months",
-    "workingPatterns": [
-      "Full time"
-    ],
-    "fullTimeDetails": "5 days a week",
-    "salaryDetails": [
-      "Full-time equivalent salary",
-      "Actual salary",
-      "Pay scale"
-    ],
-    "fullTimeEquivalentSalaryDetails": "£42,000",
-    "actualSalaryDetails": "£31,000",
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "Yes",
-    "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "alison@royalacademytrust.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "quos sint voluptatibus corporis rem velit consectetur consectetur ut qui temporibus est in totam et numquam aut et quo sed itaque necessitatibus ipsa eos beatae et harum dolor ut quisquam",
-    "whatSchoolOffers": "voluptates et distinctio sint sed distinctio voluptatem qui qui occaecati saepe reprehenderit voluptas aut commodi exercitationem sequi velit et eos",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "esse itaque sit dolore quia qui earum qui voluptate et qui et nihil molestiae qui qui itaque harum velit voluptatem amet quaerat nobis ea odit sit dolor ea et aliquam",
-    "hasFurtherDetailsAboutTheRole": "No",
-    "furtherDetailsAboutTheRole": "et quisquam et explicabo dolores quae iusto dignissimos minus minima dicta qui exercitationem voluptatibus quod veniam et et eum accusantium illo voluptatum placeat iusto quaerat dignissimos tempora aut in asperiores",
-    "hasAdditionalDocuments": "No",
-    "publishDate": "2023-08-30T11:54:46.871Z",
-    "closingDate": "2024-04-24T00:49:24.039Z",
-    "closingTime": "5pm",
-    "startDate": "2024-11-22T01:31:14.421Z"
-  },
-  {
-    "id": "200348",
-    "status": "Scheduled",
-    "organisation": {
-      "type": "LA",
-      "name": "Barnet Local Authority",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "schools": [
-        {
-          "name": "McDermott and Sons School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Nursery school"
-        },
-        {
-          "name": "Waelchi, Reynolds and Brakus School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Primary school"
-        },
-        {
-          "name": "Koss - Gleason School",
-          "address": {
-            "address1": "2 Owl Way",
-            "town": "London",
-            "postcode": "W6 1PT"
-          },
-          "phase": "Middle school"
-        },
-        {
-          "name": "Olson, Mueller and Rempel School",
-          "address": {
-            "address1": "3 Owl Way",
-            "town": "London",
-            "postcode": "W7 2PT"
-          },
-          "phase": "Secondary school"
-        },
-        {
-          "name": "Ondricka, Mills and Mitchell School",
-          "address": {
-            "address1": "4 Owl Way",
-            "town": "London",
-            "postcode": "W8 3PT"
-          },
-          "phase": "Sixth form or college"
-        },
-        {
-          "name": "Goodwin - Wolff School",
-          "address": {
-            "address1": "5 Owl Way",
-            "town": "London",
-            "postcode": "W9 4PT"
-          },
-          "phase": "Through school"
-        }
-      ]
-    },
-    "locations": [
-      {
-        "name": "Barnet Local Authority",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
     "role": "Teacher",
-    "title": "English teacher",
+    "title": "Science teacher",
     "keyStages": [
-      "Key stage 3",
-      "Key stage 4"
+      "Early years",
+      "Key stage 1",
+      "Key stage 2"
     ],
     "subjects": [
-      "Law",
-      "Languages"
+      "Drama",
+      "Media studies"
     ],
     "contractType": "Fixed term",
     "contractLength": "6 months",
@@ -2454,8 +1842,8 @@
     "partTimeDetails": "20 hours a week",
     "salaryDetails": [
       "Pay scale",
-      "Full-time equivalent salary",
-      "Actual salary"
+      "Actual salary",
+      "Full-time equivalent salary"
     ],
     "fullTimeEquivalentSalaryDetails": "£42,000",
     "actualSalaryDetails": "£31,000",
@@ -2463,38 +1851,32 @@
     "hasAdditionalAllowances": "Yes",
     "additionalAllowances": "TLR is available.",
     "isUsingApplicationForm": "Yes",
-    "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "laura@barnet.la.uk",
+    "offersSchoolVisits": "No",
+    "contactEmailAddress": "peter@courtland.sch.uk",
     "hasContactPhoneNumber": "No",
     "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "esse dicta voluptatem maiores a sunt ullam in dolores dicta est praesentium earum provident aliquam quam magnam rerum corporis reprehenderit sunt iste pariatur nostrum rem vel reprehenderit adipisci omnis ut",
-    "whatSchoolOffers": "ipsam dolore rerum omnis assumenda ut sunt quia sit ad occaecati hic voluptatem ex velit asperiores excepturi ut optio sed",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "eligendi delectus fuga voluptatibus provident et incidunt eius aut sapiente dolores sunt voluptate fugiat consectetur tenetur fuga officiis veritatis vel eius est ut hic qui et quidem voluptatem minima repellat",
-    "hasFurtherDetailsAboutTheRole": "No",
-    "furtherDetailsAboutTheRole": "ut nostrum est omnis quia nesciunt sint commodi occaecati suscipit ut vitae omnis alias et minima quibusdam debitis dicta eaque modi provident qui alias animi qui ut quaerat qui quam",
+    "skillsAndExperience": "aliquam qui tempora harum corporis aut quis consequuntur et quis quam eaque iusto omnis sequi sequi libero qui illo commodi voluptatem illo harum molestiae debitis nemo asperiores assumenda consectetur excepturi",
+    "whatSchoolOffers": "sint ea aut est ea minima possimus nemo excepturi quas reiciendis debitis repellendus corrupti ipsum sapiente placeat id aut placeat",
+    "hasSafeguardingCommitment": "No",
+    "hasFurtherDetailsAboutTheRole": "Yes",
     "hasAdditionalDocuments": "Yes",
     "additionalDocuments": [
       {
         "file": "job-description.pdf",
         "size": "6MB"
-      },
-      {
-        "file": "person-specification.pdf",
-        "size": "5MB"
       }
     ],
-    "publishDate": "2022-11-25T23:17:03.514Z",
-    "closingDate": "2022-11-26T13:42:59.355Z",
-    "closingTime": "5pm",
-    "startDate": "2023-09-15T14:34:05.231Z"
+    "publishDate": "2023-08-11T22:48:10.285Z",
+    "closingDate": "2024-01-29T17:19:50.935Z",
+    "closingTime": "9am",
+    "startDate": "2024-04-05T02:34:38.703Z"
   },
   {
-    "id": "752197",
-    "status": "Closed",
+    "id": "167345",
+    "status": "Draft",
     "organisation": {
-      "type": "LA",
-      "name": "Barnet Local Authority",
+      "type": "MAT",
+      "name": "Royal Academy Trust",
       "address": {
         "address1": "50 Lawrence Street",
         "town": "Mill Hill",
@@ -2502,7 +1884,7 @@
       },
       "schools": [
         {
-          "name": "McDermott and Sons School",
+          "name": "Ritchie and Sons School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -2511,7 +1893,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Waelchi, Reynolds and Brakus School",
+          "name": "Strosin, Stark and Champlin School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -2520,7 +1902,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "Koss - Gleason School",
+          "name": "Dooley - Hammes School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -2529,7 +1911,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Olson, Mueller and Rempel School",
+          "name": "Hessel, Quitzon and Block School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -2538,7 +1920,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Ondricka, Mills and Mitchell School",
+          "name": "Leffler, Rau and King School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -2547,7 +1929,7 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Goodwin - Wolff School",
+          "name": "Gleichner, Hammes and Rau School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
@@ -2559,7 +1941,7 @@
     },
     "locations": [
       {
-        "name": "Barnet Local Authority",
+        "name": "Royal Academy Trust",
         "address": {
           "address1": "50 Lawrence Street",
           "town": "Mill Hill",
@@ -2567,14 +1949,143 @@
         }
       }
     ],
-    "role": "Teacher",
-    "title": "English teacher",
+    "role": "HLTA (higher level teaching assistant)",
+    "title": "HLTA",
     "keyStages": [
-      "Key stage 3",
-      "Key stage 4"
+      "Early years",
+      "Key stage 1",
+      "Key stage 2"
     ],
     "subjects": [
-      "Statistics",
+      "Economics",
+      "Drama"
+    ],
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "salaryDetails": [
+      "Pay scale"
+    ],
+    "payScaleDetails": "MP4 to MP6",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "By email",
+    "applicationForm": {
+      "file": "application-form.pdf",
+      "size": "2MB"
+    },
+    "emailAddressForApplications": "laura@barnet.la.uk",
+    "offersSchoolVisits": "No",
+    "contactEmailAddress": "laura@barnet.la.uk",
+    "hasContactPhoneNumber": "No",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "skillsAndExperience": "esse sit quo non labore neque magnam recusandae quo voluptatibus consequatur libero non est perspiciatis vero ullam quia cumque inventore et voluptatum non quam est dicta facere reprehenderit cum velit",
+    "whatSchoolOffers": "consectetur nesciunt earum quis in excepturi voluptatibus non libero accusamus consequatur provident et placeat incidunt voluptate odio pariatur aut reiciendis",
+    "hasSafeguardingCommitment": "No",
+    "hasFurtherDetailsAboutTheRole": "No",
+    "hasAdditionalDocuments": "Yes",
+    "additionalDocuments": [
+      {
+        "file": "job-description.pdf",
+        "size": "6MB"
+      }
+    ],
+    "publishDate": "2023-03-26T00:00:52.679Z",
+    "closingDate": "2024-02-05T22:48:06.676Z",
+    "closingTime": "9am",
+    "startDate": "2024-02-09T11:19:14.340Z"
+  },
+  {
+    "id": "193568",
+    "status": "Closed",
+    "organisation": {
+      "type": "MAT",
+      "name": "Royal Academy Trust",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "schools": [
+        {
+          "name": "Ritchie and Sons School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Nursery school"
+        },
+        {
+          "name": "Strosin, Stark and Champlin School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Primary school"
+        },
+        {
+          "name": "Dooley - Hammes School",
+          "address": {
+            "address1": "2 Owl Way",
+            "town": "London",
+            "postcode": "W6 1PT"
+          },
+          "phase": "Middle school"
+        },
+        {
+          "name": "Hessel, Quitzon and Block School",
+          "address": {
+            "address1": "3 Owl Way",
+            "town": "London",
+            "postcode": "W7 2PT"
+          },
+          "phase": "Secondary school"
+        },
+        {
+          "name": "Leffler, Rau and King School",
+          "address": {
+            "address1": "4 Owl Way",
+            "town": "London",
+            "postcode": "W8 3PT"
+          },
+          "phase": "Sixth form or college"
+        },
+        {
+          "name": "Gleichner, Hammes and Rau School",
+          "address": {
+            "address1": "5 Owl Way",
+            "town": "London",
+            "postcode": "W9 4PT"
+          },
+          "phase": "Through school"
+        }
+      ]
+    },
+    "locations": [
+      {
+        "name": "Royal Academy Trust",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "HLTA (higher level teaching assistant)",
+    "title": "HLTA",
+    "keyStages": [
+      "Early years",
+      "Key stage 1",
+      "Key stage 2"
+    ],
+    "subjects": [
+      "Accounting",
       "Sociology"
     ],
     "contractType": "Maternity or parental leave cover",
@@ -2584,12 +2095,10 @@
     ],
     "fullTimeDetails": "5 days a week",
     "salaryDetails": [
-      "Pay scale",
       "Full-time equivalent salary",
-      "Actual salary"
+      "Pay scale"
     ],
     "fullTimeEquivalentSalaryDetails": "£42,000",
-    "actualSalaryDetails": "£31,000",
     "payScaleDetails": "MP4 to MP6",
     "hasAdditionalAllowances": "No",
     "isUsingApplicationForm": "Yes",
@@ -2597,22 +2106,24 @@
     "contactEmailAddress": "susy@busheymeads.sch.uk",
     "hasContactPhoneNumber": "No",
     "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "incidunt ipsam quis totam cupiditate qui pariatur ea voluptate sequi odit rem et adipisci consequuntur officia accusantium quidem aut officia tenetur laboriosam dolor cumque sit itaque modi magnam deleniti id",
-    "whatSchoolOffers": "sequi voluptatem voluptatibus facilis perspiciatis nostrum iure ullam dignissimos quae tempore et et saepe aut fugiat odio dolores earum quo",
-    "hasSafeguardingCommitment": "No",
+    "skillsAndExperience": "tempora qui voluptas voluptatem eos dolore ut est molestiae eum possimus quae eum consequatur quam a cupiditate error officia voluptas ullam necessitatibus animi laborum est ea autem qui doloremque alias",
+    "whatSchoolOffers": "odio quia odio ratione aliquid sapiente accusamus ratione illo molestiae eligendi quia omnis rerum doloribus commodi occaecati nam odit exercitationem",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "dignissimos nulla officiis dolor in vitae molestiae nihil est et non totam quidem deserunt ullam doloribus quia dolorum est voluptas porro alias nulla placeat voluptatibus minima hic dolorum possimus ipsum",
     "hasFurtherDetailsAboutTheRole": "No",
+    "furtherDetailsAboutTheRole": "ut dignissimos molestiae deleniti magnam est id magni ut mollitia harum ducimus eveniet tempora voluptas velit quo quia eos debitis quam aliquam veniam voluptatibus id et eos repellat perspiciatis velit",
     "hasAdditionalDocuments": "No",
-    "publishDate": "2022-11-06T00:25:18.403Z",
-    "closingDate": "2023-10-13T17:43:56.387Z",
-    "closingTime": "9am",
-    "startDate": "2023-10-24T01:25:20.473Z"
+    "publishDate": "2023-05-11T21:28:21.687Z",
+    "closingDate": "2023-12-06T02:48:02.773Z",
+    "closingTime": "5pm",
+    "startDate": "2024-10-04T15:38:53.827Z"
   },
   {
-    "id": "896860",
-    "status": "Published",
+    "id": "329811",
+    "status": "Closed",
     "organisation": {
-      "type": "LA",
-      "name": "Barnet Local Authority",
+      "type": "MAT",
+      "name": "Royal Academy Trust",
       "address": {
         "address1": "50 Lawrence Street",
         "town": "Mill Hill",
@@ -2620,7 +2131,7 @@
       },
       "schools": [
         {
-          "name": "McDermott and Sons School",
+          "name": "Ritchie and Sons School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -2629,7 +2140,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Waelchi, Reynolds and Brakus School",
+          "name": "Strosin, Stark and Champlin School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -2638,7 +2149,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "Koss - Gleason School",
+          "name": "Dooley - Hammes School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -2647,7 +2158,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Olson, Mueller and Rempel School",
+          "name": "Hessel, Quitzon and Block School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -2656,7 +2167,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Ondricka, Mills and Mitchell School",
+          "name": "Leffler, Rau and King School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -2665,7 +2176,7 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Goodwin - Wolff School",
+          "name": "Gleichner, Hammes and Rau School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
@@ -2677,7 +2188,7 @@
     },
     "locations": [
       {
-        "name": "Barnet Local Authority",
+        "name": "Royal Academy Trust",
         "address": {
           "address1": "50 Lawrence Street",
           "town": "Mill Hill",
@@ -2685,53 +2196,58 @@
         }
       }
     ],
-    "role": "Teaching assistant",
-    "title": "Level 2 teaching assistant",
+    "role": "Head of year, department, curriculum or phase",
+    "title": "KS2 Phase leader",
     "keyStages": [
       "Key stage 5"
     ],
     "subjects": [
-      "Politics",
-      "Physics"
+      "Physical education",
+      "Mandarin"
     ],
-    "contractType": "Permanent",
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
     "workingPatterns": [
       "Part time"
     ],
     "partTimeDetails": "20 hours a week",
     "salaryDetails": [
-      "Pay scale"
+      "Full-time equivalent salary"
     ],
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "Yes",
-    "offersSchoolVisits": "Yes",
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "Through a website",
+    "linkToWebsite": "https://www.school.uk",
+    "offersSchoolVisits": "No",
     "contactEmailAddress": "susy@busheymeads.sch.uk",
-    "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0201 268 478",
+    "hasContactPhoneNumber": "No",
     "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "maiores aut sit saepe nisi commodi aut architecto reiciendis et voluptatem nulla ipsa molestiae ad expedita ea maxime ut saepe reprehenderit corporis ut voluptas aut quae a molestiae sequi dolores",
-    "whatSchoolOffers": "quae inventore incidunt dolorum nam provident occaecati dolore qui possimus sint animi perspiciatis itaque corporis esse molestiae ullam neque necessitatibus",
-    "hasSafeguardingCommitment": "No",
+    "skillsAndExperience": "explicabo quidem voluptatem exercitationem ipsam cumque similique animi hic occaecati magni aut ea eaque molestias amet mollitia optio dignissimos est facere at suscipit rerum illum aut voluptatibus quo earum aspernatur",
+    "whatSchoolOffers": "ut tempora modi adipisci molestiae sed quidem consequatur aut eum consequatur harum ex voluptatem qui possimus ipsam velit laboriosam atque",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "ratione sunt molestias quis ea commodi veniam qui nemo dolorem mollitia dolores fuga voluptatibus autem quo quia vel possimus adipisci dolor et in ipsum possimus nobis ut sit cum et",
     "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "qui autem maxime sunt sed est qui voluptatibus esse tenetur sunt neque qui illum nisi in velit numquam vitae odio qui atque modi eum ab ut voluptatibus corporis et necessitatibus",
     "hasAdditionalDocuments": "Yes",
     "additionalDocuments": [
       {
-        "file": "person-specification.pdf",
-        "size": "5MB"
+        "file": "job-description.pdf",
+        "size": "6MB"
       }
     ],
-    "publishDate": "2023-08-05T05:25:10.151Z",
-    "closingDate": "2024-03-05T04:44:41.334Z",
-    "closingTime": "5pm",
-    "startDate": "2024-06-12T23:42:19.994Z"
+    "publishDate": "2023-01-11T00:36:58.588Z",
+    "closingDate": "2023-07-23T08:40:17.907Z",
+    "closingTime": "9am",
+    "startDate": "2024-04-09T08:10:44.325Z"
   },
   {
-    "id": "684773",
-    "status": "Published",
+    "id": "760607",
+    "status": "Closed",
     "organisation": {
-      "type": "LA",
-      "name": "Barnet Local Authority",
+      "type": "MAT",
+      "name": "Royal Academy Trust",
       "address": {
         "address1": "50 Lawrence Street",
         "town": "Mill Hill",
@@ -2739,7 +2255,7 @@
       },
       "schools": [
         {
-          "name": "McDermott and Sons School",
+          "name": "Ritchie and Sons School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -2748,7 +2264,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Waelchi, Reynolds and Brakus School",
+          "name": "Strosin, Stark and Champlin School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -2757,7 +2273,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "Koss - Gleason School",
+          "name": "Dooley - Hammes School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -2766,7 +2282,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Olson, Mueller and Rempel School",
+          "name": "Hessel, Quitzon and Block School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -2775,7 +2291,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Ondricka, Mills and Mitchell School",
+          "name": "Leffler, Rau and King School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -2784,7 +2300,7 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Goodwin - Wolff School",
+          "name": "Gleichner, Hammes and Rau School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
@@ -2796,7 +2312,7 @@
     },
     "locations": [
       {
-        "name": "Barnet Local Authority",
+        "name": "Royal Academy Trust",
         "address": {
           "address1": "50 Lawrence Street",
           "town": "Mill Hill",
@@ -2804,142 +2320,26 @@
         }
       }
     ],
-    "role": "Teaching assistant",
-    "title": "Teaching assistant",
+    "role": "HLTA (higher level teaching assistant)",
+    "title": "HLTA",
     "keyStages": [
+      "Early years",
       "Key stage 1",
       "Key stage 2",
       "Key stage 3",
-      "Key stage 4"
+      "Key stage 4",
+      "Key stage 5"
     ],
     "subjects": [
-      "Business studies"
+      "Classics"
     ],
-    "contractType": "Maternity or parental leave cover",
+    "contractType": "Fixed term",
     "contractLength": "6 months",
     "workingPatterns": [
       "Full time"
     ],
     "fullTimeDetails": "5 days a week",
     "salaryDetails": [
-      "Actual salary",
-      "Full-time equivalent salary"
-    ],
-    "fullTimeEquivalentSalaryDetails": "£42,000",
-    "actualSalaryDetails": "£31,000",
-    "hasAdditionalAllowances": "Yes",
-    "additionalAllowances": "TLR is available.",
-    "isUsingApplicationForm": "Yes",
-    "offersSchoolVisits": "No",
-    "contactEmailAddress": "laura@barnet.la.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "voluptatum accusamus aut quis eos atque nihil omnis excepturi porro molestiae velit rerum hic delectus adipisci est esse ut quis culpa rerum aperiam quisquam alias molestiae quam consectetur dolores molestias",
-    "whatSchoolOffers": "est et alias consequatur vitae earum ullam deleniti provident est suscipit quaerat asperiores rem debitis consequuntur aliquam repellat velit molestiae",
-    "hasSafeguardingCommitment": "No",
-    "hasFurtherDetailsAboutTheRole": "No",
-    "hasAdditionalDocuments": "No",
-    "publishDate": "2023-06-05T09:03:15.037Z",
-    "closingDate": "2024-04-09T16:01:27.027Z",
-    "closingTime": "11:59pm",
-    "startDate": "2024-07-17T14:40:45.250Z"
-  },
-  {
-    "id": "722075",
-    "status": "Scheduled",
-    "organisation": {
-      "type": "LA",
-      "name": "Barnet Local Authority",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "schools": [
-        {
-          "name": "McDermott and Sons School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Nursery school"
-        },
-        {
-          "name": "Waelchi, Reynolds and Brakus School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Primary school"
-        },
-        {
-          "name": "Koss - Gleason School",
-          "address": {
-            "address1": "2 Owl Way",
-            "town": "London",
-            "postcode": "W6 1PT"
-          },
-          "phase": "Middle school"
-        },
-        {
-          "name": "Olson, Mueller and Rempel School",
-          "address": {
-            "address1": "3 Owl Way",
-            "town": "London",
-            "postcode": "W7 2PT"
-          },
-          "phase": "Secondary school"
-        },
-        {
-          "name": "Ondricka, Mills and Mitchell School",
-          "address": {
-            "address1": "4 Owl Way",
-            "town": "London",
-            "postcode": "W8 3PT"
-          },
-          "phase": "Sixth form or college"
-        },
-        {
-          "name": "Goodwin - Wolff School",
-          "address": {
-            "address1": "5 Owl Way",
-            "town": "London",
-            "postcode": "W9 4PT"
-          },
-          "phase": "Through school"
-        }
-      ]
-    },
-    "locations": [
-      {
-        "name": "Barnet Local Authority",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "Teacher",
-    "title": "Science teacher",
-    "keyStages": [
-      "Early years",
-      "Key stage 1",
-      "Key stage 2"
-    ],
-    "subjects": [
-      "Art and design",
-      "Politics"
-    ],
-    "contractType": "Maternity or parental leave cover",
-    "contractLength": "6 months",
-    "workingPatterns": [
-      "Part time"
-    ],
-    "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
       "Full-time equivalent salary",
       "Actual salary",
       "Pay scale"
@@ -2947,26 +2347,26 @@
     "fullTimeEquivalentSalaryDetails": "£42,000",
     "actualSalaryDetails": "£31,000",
     "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "No",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
     "isUsingApplicationForm": "Yes",
-    "offersSchoolVisits": "Yes",
+    "offersSchoolVisits": "No",
     "contactEmailAddress": "peter@courtland.sch.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "dignissimos delectus fuga quo ab voluptatem aliquam qui doloremque eaque fugiat distinctio fuga expedita velit omnis ullam molestiae laboriosam consequuntur eveniet atque suscipit aut minus reiciendis exercitationem molestiae et accusamus",
-    "whatSchoolOffers": "porro totam ut labore doloremque perspiciatis incidunt non ea qui atque eligendi eius ut blanditiis et sit aliquid ex qui",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "doloremque ut voluptate ea est eveniet temporibus magnam fuga nam et aut molestias labore dolores aut dignissimos beatae voluptatibus assumenda voluptatem harum aut eos ipsam qui reiciendis voluptate in labore",
-    "hasFurtherDetailsAboutTheRole": "Yes",
-    "furtherDetailsAboutTheRole": "consequatur adipisci aliquid dolores ut iure totam aliquam consequatur rerum omnis ut sunt qui et voluptatibus quis natus minima incidunt sed non consequatur officia est modi vitae non sunt excepturi",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0205 369 018",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "skillsAndExperience": "dolorem aperiam esse aspernatur est inventore quia quia sit necessitatibus iste non minima aut soluta iste tempora enim atque deserunt omnis autem facilis dolorem sed et non voluptate amet maxime",
+    "whatSchoolOffers": "nam dolore laboriosam cum ut repudiandae autem tenetur similique facere nulla voluptas possimus facilis consequatur deleniti natus natus voluptatem nemo",
+    "hasSafeguardingCommitment": "No",
+    "hasFurtherDetailsAboutTheRole": "No",
     "hasAdditionalDocuments": "No",
-    "publishDate": "2023-01-02T00:11:55.661Z",
-    "closingDate": "2023-05-24T06:54:22.056Z",
-    "closingTime": "11:59pm",
-    "startDate": "2024-01-23T14:13:54.586Z"
+    "publishDate": "2023-08-19T15:21:09.574Z",
+    "closingDate": "2024-01-07T04:31:07.034Z",
+    "closingTime": "12pm (midday)",
+    "startDate": "2024-12-04T14:54:08.213Z"
   },
   {
-    "id": "713783",
+    "id": "780916",
     "status": "Draft",
     "organisation": {
       "type": "LA",
@@ -2978,7 +2378,7 @@
       },
       "schools": [
         {
-          "name": "McDermott and Sons School",
+          "name": "Emard Inc School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -2987,7 +2387,7 @@
           "phase": "Nursery school"
         },
         {
-          "name": "Waelchi, Reynolds and Brakus School",
+          "name": "Waelchi, Hayes and Runte School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
@@ -2996,7 +2396,7 @@
           "phase": "Primary school"
         },
         {
-          "name": "Koss - Gleason School",
+          "name": "Zieme and Sons School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
@@ -3005,7 +2405,7 @@
           "phase": "Middle school"
         },
         {
-          "name": "Olson, Mueller and Rempel School",
+          "name": "Jones, Moore and Hane School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
@@ -3014,7 +2414,7 @@
           "phase": "Secondary school"
         },
         {
-          "name": "Ondricka, Mills and Mitchell School",
+          "name": "Halvorson LLC School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
@@ -3023,7 +2423,757 @@
           "phase": "Sixth form or college"
         },
         {
-          "name": "Goodwin - Wolff School",
+          "name": "Auer - Huel School",
+          "address": {
+            "address1": "5 Owl Way",
+            "town": "London",
+            "postcode": "W9 4PT"
+          },
+          "phase": "Through school"
+        }
+      ]
+    },
+    "locations": [
+      {
+        "name": "Barnet Local Authority",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "Teacher",
+    "title": "Teacher of computing",
+    "keyStages": [
+      "Early years",
+      "Key stage 1",
+      "Key stage 2"
+    ],
+    "subjects": [
+      "Spanish"
+    ],
+    "contractType": "Maternity or parental leave cover",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Full time",
+      "Part time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Pay scale",
+      "Actual salary"
+    ],
+    "actualSalaryDetails": "£31,000",
+    "payScaleDetails": "MP4 to MP6",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "Through a website",
+    "linkToWebsite": "https://www.school.uk",
+    "offersSchoolVisits": "Yes",
+    "contactEmailAddress": "susy@busheymeads.sch.uk",
+    "hasContactPhoneNumber": "No",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "modi vel perspiciatis quas et dolorem necessitatibus sunt reprehenderit accusamus qui nesciunt enim iusto vero esse ut accusamus consequuntur placeat atque neque enim commodi aliquid rerum qui voluptate iste eius",
+    "whatSchoolOffers": "dolores quod animi nihil animi tempora beatae sit accusantium reprehenderit nulla maxime aspernatur sequi dolorem nobis unde aut rerum autem",
+    "hasSafeguardingCommitment": "No",
+    "hasFurtherDetailsAboutTheRole": "No",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2022-09-24T19:12:08.072Z",
+    "closingDate": "2023-05-01T12:08:45.054Z",
+    "closingTime": "9am",
+    "startDate": "2023-11-16T16:03:18.081Z"
+  },
+  {
+    "id": "513074",
+    "status": "Scheduled",
+    "organisation": {
+      "type": "LA",
+      "name": "Barnet Local Authority",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "schools": [
+        {
+          "name": "Emard Inc School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Nursery school"
+        },
+        {
+          "name": "Waelchi, Hayes and Runte School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Primary school"
+        },
+        {
+          "name": "Zieme and Sons School",
+          "address": {
+            "address1": "2 Owl Way",
+            "town": "London",
+            "postcode": "W6 1PT"
+          },
+          "phase": "Middle school"
+        },
+        {
+          "name": "Jones, Moore and Hane School",
+          "address": {
+            "address1": "3 Owl Way",
+            "town": "London",
+            "postcode": "W7 2PT"
+          },
+          "phase": "Secondary school"
+        },
+        {
+          "name": "Halvorson LLC School",
+          "address": {
+            "address1": "4 Owl Way",
+            "town": "London",
+            "postcode": "W8 3PT"
+          },
+          "phase": "Sixth form or college"
+        },
+        {
+          "name": "Auer - Huel School",
+          "address": {
+            "address1": "5 Owl Way",
+            "town": "London",
+            "postcode": "W9 4PT"
+          },
+          "phase": "Through school"
+        }
+      ]
+    },
+    "locations": [
+      {
+        "name": "Barnet Local Authority",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "Teacher",
+    "title": "Maths teacher",
+    "keyStages": [
+      "Key stage 5"
+    ],
+    "subjects": [
+      "History"
+    ],
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Part time"
+    ],
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Full-time equivalent salary",
+      "Actual salary",
+      "Pay scale"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "actualSalaryDetails": "£31,000",
+    "payScaleDetails": "MP4 to MP6",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "No",
+    "contactEmailAddress": "peter@courtland.sch.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0206 729 223",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "skillsAndExperience": "eum voluptate earum totam quaerat temporibus porro nemo alias quo dolores ea voluptatem rem voluptatibus cum quia quam placeat minus qui ut molestiae recusandae sit velit aut harum nulla et",
+    "whatSchoolOffers": "illum vel praesentium pariatur quaerat voluptatem sint nihil ipsa veniam sed ullam aut similique suscipit ea et quia distinctio neque",
+    "hasSafeguardingCommitment": "No",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-03-06T21:23:11.141Z",
+    "closingDate": "2023-06-05T18:23:55.159Z",
+    "closingTime": "9am",
+    "startDate": "2023-08-08T20:07:08.313Z"
+  },
+  {
+    "id": "494031",
+    "status": "Published",
+    "organisation": {
+      "type": "LA",
+      "name": "Barnet Local Authority",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "schools": [
+        {
+          "name": "Emard Inc School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Nursery school"
+        },
+        {
+          "name": "Waelchi, Hayes and Runte School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Primary school"
+        },
+        {
+          "name": "Zieme and Sons School",
+          "address": {
+            "address1": "2 Owl Way",
+            "town": "London",
+            "postcode": "W6 1PT"
+          },
+          "phase": "Middle school"
+        },
+        {
+          "name": "Jones, Moore and Hane School",
+          "address": {
+            "address1": "3 Owl Way",
+            "town": "London",
+            "postcode": "W7 2PT"
+          },
+          "phase": "Secondary school"
+        },
+        {
+          "name": "Halvorson LLC School",
+          "address": {
+            "address1": "4 Owl Way",
+            "town": "London",
+            "postcode": "W8 3PT"
+          },
+          "phase": "Sixth form or college"
+        },
+        {
+          "name": "Auer - Huel School",
+          "address": {
+            "address1": "5 Owl Way",
+            "town": "London",
+            "postcode": "W9 4PT"
+          },
+          "phase": "Through school"
+        }
+      ]
+    },
+    "locations": [
+      {
+        "name": "Barnet Local Authority",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "HLTA (higher level teaching assistant)",
+    "title": "HLTA",
+    "keyStages": [
+      "Key stage 1",
+      "Key stage 2",
+      "Key stage 3",
+      "Key stage 4"
+    ],
+    "subjects": [
+      "Statistics",
+      "History"
+    ],
+    "contractType": "Maternity or parental leave cover",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "salaryDetails": [
+      "Pay scale",
+      "Full-time equivalent salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "payScaleDetails": "MP4 to MP6",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "Through a website",
+    "linkToWebsite": "https://www.school.uk",
+    "offersSchoolVisits": "No",
+    "contactEmailAddress": "susy@busheymeads.sch.uk",
+    "hasContactPhoneNumber": "No",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "skillsAndExperience": "nihil labore sed impedit provident delectus occaecati unde quam et explicabo praesentium blanditiis corporis ratione doloremque alias voluptatem recusandae qui provident est sint laudantium non sapiente sit perspiciatis quidem dolorum",
+    "whatSchoolOffers": "quos corrupti maxime qui magni exercitationem sunt quibusdam ex autem nesciunt laboriosam quo quos nihil voluptas eos excepturi facilis neque",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "ut asperiores expedita quisquam corporis animi distinctio ut nisi rerum nulla inventore quaerat enim iure labore veritatis ut et illo ipsum nisi et aut quia est ipsam quod aspernatur ea",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "ut nobis est voluptas adipisci ipsam sequi sit dicta dolorum voluptatibus velit nulla omnis inventore excepturi omnis quo et recusandae neque adipisci dolore dolorem soluta quia repellat id voluptatem fugiat",
+    "hasAdditionalDocuments": "Yes",
+    "additionalDocuments": [
+      {
+        "file": "job-description.pdf",
+        "size": "6MB"
+      },
+      {
+        "file": "person-specification.pdf",
+        "size": "5MB"
+      }
+    ],
+    "publishDate": "2023-03-04T15:10:02.923Z",
+    "closingDate": "2024-02-05T06:20:35.296Z",
+    "closingTime": "9am",
+    "startDate": "2024-06-15T17:42:35.392Z"
+  },
+  {
+    "id": "748262",
+    "status": "Published",
+    "organisation": {
+      "type": "LA",
+      "name": "Barnet Local Authority",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "schools": [
+        {
+          "name": "Emard Inc School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Nursery school"
+        },
+        {
+          "name": "Waelchi, Hayes and Runte School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Primary school"
+        },
+        {
+          "name": "Zieme and Sons School",
+          "address": {
+            "address1": "2 Owl Way",
+            "town": "London",
+            "postcode": "W6 1PT"
+          },
+          "phase": "Middle school"
+        },
+        {
+          "name": "Jones, Moore and Hane School",
+          "address": {
+            "address1": "3 Owl Way",
+            "town": "London",
+            "postcode": "W7 2PT"
+          },
+          "phase": "Secondary school"
+        },
+        {
+          "name": "Halvorson LLC School",
+          "address": {
+            "address1": "4 Owl Way",
+            "town": "London",
+            "postcode": "W8 3PT"
+          },
+          "phase": "Sixth form or college"
+        },
+        {
+          "name": "Auer - Huel School",
+          "address": {
+            "address1": "5 Owl Way",
+            "town": "London",
+            "postcode": "W9 4PT"
+          },
+          "phase": "Through school"
+        }
+      ]
+    },
+    "locations": [
+      {
+        "name": "Barnet Local Authority",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "Teacher",
+    "title": "Teacher of computing",
+    "keyStages": [
+      "Key stage 5"
+    ],
+    "subjects": [
+      "Physics"
+    ],
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Part time"
+    ],
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Actual salary",
+      "Pay scale"
+    ],
+    "actualSalaryDetails": "£31,000",
+    "payScaleDetails": "MP4 to MP6",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "By email",
+    "applicationForm": {
+      "file": "application-form.pdf",
+      "size": "2MB"
+    },
+    "emailAddressForApplications": "laura@barnet.la.uk",
+    "offersSchoolVisits": "Yes",
+    "contactEmailAddress": "peter@courtland.sch.uk",
+    "hasContactPhoneNumber": "No",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "earum tenetur quidem rerum tenetur dolores fugiat non officiis suscipit voluptate aperiam culpa facere ut distinctio non eaque id consequatur omnis reiciendis sequi unde sapiente in perspiciatis ipsam esse aliquam",
+    "whatSchoolOffers": "labore veniam nulla sed quis nesciunt facilis officia quaerat sit nam ipsam est enim inventore veritatis mollitia placeat culpa nemo",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "est est minima quis debitis ipsam natus vitae qui maxime sit ea aut beatae et in eum occaecati dolorem neque minima in officiis omnis unde nisi beatae dolorem impedit dolores",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "animi eum eius excepturi officia ab in aut sit voluptas facere dolorum consequatur sed perferendis sunt magni fugiat sint itaque recusandae magnam odio consectetur aut ut fugit nemo enim in",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2022-10-20T23:54:26.663Z",
+    "closingDate": "2023-09-13T07:49:14.984Z",
+    "closingTime": "12pm (midday)",
+    "startDate": "2023-09-26T13:05:05.579Z"
+  },
+  {
+    "id": "728198",
+    "status": "Scheduled",
+    "organisation": {
+      "type": "LA",
+      "name": "Barnet Local Authority",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "schools": [
+        {
+          "name": "Emard Inc School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Nursery school"
+        },
+        {
+          "name": "Waelchi, Hayes and Runte School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Primary school"
+        },
+        {
+          "name": "Zieme and Sons School",
+          "address": {
+            "address1": "2 Owl Way",
+            "town": "London",
+            "postcode": "W6 1PT"
+          },
+          "phase": "Middle school"
+        },
+        {
+          "name": "Jones, Moore and Hane School",
+          "address": {
+            "address1": "3 Owl Way",
+            "town": "London",
+            "postcode": "W7 2PT"
+          },
+          "phase": "Secondary school"
+        },
+        {
+          "name": "Halvorson LLC School",
+          "address": {
+            "address1": "4 Owl Way",
+            "town": "London",
+            "postcode": "W8 3PT"
+          },
+          "phase": "Sixth form or college"
+        },
+        {
+          "name": "Auer - Huel School",
+          "address": {
+            "address1": "5 Owl Way",
+            "town": "London",
+            "postcode": "W9 4PT"
+          },
+          "phase": "Through school"
+        }
+      ]
+    },
+    "locations": [
+      {
+        "name": "Barnet Local Authority",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "Teacher",
+    "title": "Teacher of computing",
+    "keyStages": [
+      "Early years",
+      "Key stage 1",
+      "Key stage 2"
+    ],
+    "subjects": [
+      "Art and design"
+    ],
+    "contractType": "Permanent",
+    "workingPatterns": [
+      "Part time",
+      "Full time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Pay scale",
+      "Actual salary",
+      "Full-time equivalent salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "actualSalaryDetails": "£31,000",
+    "payScaleDetails": "MP4 to MP6",
+    "hasAdditionalAllowances": "Yes",
+    "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "Through a website",
+    "linkToWebsite": "https://www.school.uk",
+    "offersSchoolVisits": "Yes",
+    "contactEmailAddress": "peter@courtland.sch.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0207 270 019",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "corrupti dignissimos dolore voluptatem sit repellat hic esse consequatur ad deserunt dolorum non soluta voluptatibus deserunt quaerat aut consequatur eos qui praesentium nulla est aut aliquam ut dignissimos sit dolor",
+    "whatSchoolOffers": "ipsa dolorem ipsum similique temporibus vel quia non quo fuga sequi dolorem est illum nobis amet autem in maiores consequatur",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "dolores est error est adipisci repellat culpa et accusantium dolorem id perspiciatis ullam asperiores eligendi veniam aliquam expedita voluptatem non minima qui totam omnis nisi sint numquam assumenda praesentium labore",
+    "hasFurtherDetailsAboutTheRole": "No",
+    "furtherDetailsAboutTheRole": "similique et nostrum sit qui cum dolor quae tempore non rerum nihil tenetur maxime quidem quos nihil sed eaque magni voluptatem saepe hic recusandae praesentium omnis qui facere corrupti qui",
+    "hasAdditionalDocuments": "Yes",
+    "additionalDocuments": [
+      {
+        "file": "job-description.pdf",
+        "size": "6MB"
+      }
+    ],
+    "publishDate": "2022-09-10T23:27:54.766Z",
+    "closingDate": "2023-02-11T21:05:30.647Z",
+    "closingTime": "5pm",
+    "startDate": "2023-05-03T12:58:52.401Z"
+  },
+  {
+    "id": "982646",
+    "status": "Draft",
+    "organisation": {
+      "type": "LA",
+      "name": "Barnet Local Authority",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "schools": [
+        {
+          "name": "Emard Inc School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Nursery school"
+        },
+        {
+          "name": "Waelchi, Hayes and Runte School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Primary school"
+        },
+        {
+          "name": "Zieme and Sons School",
+          "address": {
+            "address1": "2 Owl Way",
+            "town": "London",
+            "postcode": "W6 1PT"
+          },
+          "phase": "Middle school"
+        },
+        {
+          "name": "Jones, Moore and Hane School",
+          "address": {
+            "address1": "3 Owl Way",
+            "town": "London",
+            "postcode": "W7 2PT"
+          },
+          "phase": "Secondary school"
+        },
+        {
+          "name": "Halvorson LLC School",
+          "address": {
+            "address1": "4 Owl Way",
+            "town": "London",
+            "postcode": "W8 3PT"
+          },
+          "phase": "Sixth form or college"
+        },
+        {
+          "name": "Auer - Huel School",
+          "address": {
+            "address1": "5 Owl Way",
+            "town": "London",
+            "postcode": "W9 4PT"
+          },
+          "phase": "Through school"
+        }
+      ]
+    },
+    "locations": [
+      {
+        "name": "Barnet Local Authority",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "Head of year, department, curriculum or phase",
+    "title": "KS2 Phase leader",
+    "keyStages": [
+      "Early years",
+      "Key stage 1",
+      "Key stage 2"
+    ],
+    "subjects": [
+      "Health and social care"
+    ],
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "salaryDetails": [
+      "Actual salary",
+      "Pay scale",
+      "Full-time equivalent salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "actualSalaryDetails": "£31,000",
+    "payScaleDetails": "MP4 to MP6",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "By email",
+    "applicationForm": {
+      "file": "application-form.pdf",
+      "size": "2MB"
+    },
+    "emailAddressForApplications": "peter@courtland.sch.uk",
+    "offersSchoolVisits": "No",
+    "contactEmailAddress": "laura@barnet.la.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0207 789 738",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "skillsAndExperience": "rem quisquam repellat sunt ipsam commodi ducimus nesciunt eos et velit unde vitae sed delectus ut quos eum ut distinctio tenetur expedita vitae voluptas aspernatur qui nobis quo alias voluptas",
+    "whatSchoolOffers": "nesciunt consequatur voluptas nihil reprehenderit eos molestias enim veritatis architecto itaque aspernatur sed suscipit hic rerum accusamus non ut facere",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "dolorem assumenda amet optio vero ex exercitationem eligendi fugiat et ea sed tenetur voluptatem voluptatem voluptates non quia ut delectus nihil sit maxime et est omnis tempora autem doloremque magnam",
+    "hasFurtherDetailsAboutTheRole": "Yes",
+    "furtherDetailsAboutTheRole": "deleniti et nesciunt reiciendis voluptate perferendis quibusdam doloribus consequuntur amet magnam voluptas qui maiores mollitia ea quia excepturi architecto impedit nostrum amet eius incidunt dolorem culpa dolore velit omnis labore",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-05-27T12:15:06.268Z",
+    "closingDate": "2023-07-14T13:41:53.721Z",
+    "closingTime": "9am",
+    "startDate": "2023-08-08T06:53:54.805Z"
+  },
+  {
+    "id": "986015",
+    "status": "Closed",
+    "organisation": {
+      "type": "LA",
+      "name": "Barnet Local Authority",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "schools": [
+        {
+          "name": "Emard Inc School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Nursery school"
+        },
+        {
+          "name": "Waelchi, Hayes and Runte School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Primary school"
+        },
+        {
+          "name": "Zieme and Sons School",
+          "address": {
+            "address1": "2 Owl Way",
+            "town": "London",
+            "postcode": "W6 1PT"
+          },
+          "phase": "Middle school"
+        },
+        {
+          "name": "Jones, Moore and Hane School",
+          "address": {
+            "address1": "3 Owl Way",
+            "town": "London",
+            "postcode": "W7 2PT"
+          },
+          "phase": "Secondary school"
+        },
+        {
+          "name": "Halvorson LLC School",
+          "address": {
+            "address1": "4 Owl Way",
+            "town": "London",
+            "postcode": "W8 3PT"
+          },
+          "phase": "Sixth form or college"
+        },
+        {
+          "name": "Auer - Huel School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
@@ -3046,386 +3196,17 @@
     "role": "Headteacher, deputy or assistant headteacher",
     "title": "Head teacher",
     "keyStages": [
-      "Early years",
-      "Key stage 1",
-      "Key stage 2"
-    ],
-    "subjects": [
-      "Economics",
-      "Politics"
-    ],
-    "contractType": "Permanent",
-    "workingPatterns": [
-      "Part time",
-      "Full time"
-    ],
-    "fullTimeDetails": "5 days a week",
-    "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
-      "Actual salary",
-      "Pay scale",
-      "Full-time equivalent salary"
-    ],
-    "fullTimeEquivalentSalaryDetails": "£42,000",
-    "actualSalaryDetails": "£31,000",
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "Yes",
-    "additionalAllowances": "TLR is available.",
-    "isUsingApplicationForm": "No",
-    "applicationMethod": "By email",
-    "applicationForm": {
-      "file": "application-form.pdf",
-      "size": "2MB"
-    },
-    "emailAddressForApplications": "susy@busheymeads.sch.uk",
-    "offersSchoolVisits": "No",
-    "contactEmailAddress": "laura@barnet.la.uk",
-    "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0208 724 915",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "impedit et sunt voluptatum totam non aut autem molestiae consequuntur est labore iste quae maiores distinctio quo ut neque non doloremque ipsa recusandae tenetur qui alias vel atque omnis vero",
-    "whatSchoolOffers": "cum cupiditate voluptatibus expedita exercitationem sequi reprehenderit recusandae quae sed veritatis et voluptate non omnis veniam necessitatibus tempora aliquam voluptatem",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "quo non aut voluptate perspiciatis sequi delectus sapiente architecto fuga eum dicta eum mollitia unde distinctio modi officia ut error quidem molestiae modi corporis optio doloremque et beatae non consectetur",
-    "hasFurtherDetailsAboutTheRole": "No",
-    "furtherDetailsAboutTheRole": "deleniti quidem sint assumenda in aperiam amet nobis et debitis itaque aut in tempora non quis ex sit ipsa officiis provident id consequatur sit aut ea delectus labore laboriosam et",
-    "hasAdditionalDocuments": "No",
-    "publishDate": "2023-08-16T23:04:09.405Z",
-    "closingDate": "2024-08-09T17:01:29.638Z",
-    "closingTime": "12pm (midday)",
-    "startDate": "2024-10-30T09:25:07.475Z"
-  },
-  {
-    "id": "757392",
-    "status": "Closed",
-    "organisation": {
-      "type": "LA",
-      "name": "Barnet Local Authority",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "schools": [
-        {
-          "name": "McDermott and Sons School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Nursery school"
-        },
-        {
-          "name": "Waelchi, Reynolds and Brakus School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Primary school"
-        },
-        {
-          "name": "Koss - Gleason School",
-          "address": {
-            "address1": "2 Owl Way",
-            "town": "London",
-            "postcode": "W6 1PT"
-          },
-          "phase": "Middle school"
-        },
-        {
-          "name": "Olson, Mueller and Rempel School",
-          "address": {
-            "address1": "3 Owl Way",
-            "town": "London",
-            "postcode": "W7 2PT"
-          },
-          "phase": "Secondary school"
-        },
-        {
-          "name": "Ondricka, Mills and Mitchell School",
-          "address": {
-            "address1": "4 Owl Way",
-            "town": "London",
-            "postcode": "W8 3PT"
-          },
-          "phase": "Sixth form or college"
-        },
-        {
-          "name": "Goodwin - Wolff School",
-          "address": {
-            "address1": "5 Owl Way",
-            "town": "London",
-            "postcode": "W9 4PT"
-          },
-          "phase": "Through school"
-        }
-      ]
-    },
-    "locations": [
-      {
-        "name": "Barnet Local Authority",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "Teacher",
-    "title": "English teacher",
-    "keyStages": [
       "Key stage 3",
       "Key stage 4"
     ],
     "subjects": [
-      "Biology",
-      "Humanities"
+      "Dance"
     ],
-    "contractType": "Maternity or parental leave cover",
-    "contractLength": "6 months",
+    "contractType": "Permanent",
     "workingPatterns": [
-      "Part time",
-      "Full time"
+      "Part time"
     ],
-    "fullTimeDetails": "5 days a week",
     "partTimeDetails": "20 hours a week",
-    "salaryDetails": [
-      "Pay scale",
-      "Actual salary"
-    ],
-    "actualSalaryDetails": "£31,000",
-    "payScaleDetails": "MP4 to MP6",
-    "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "No",
-    "applicationMethod": "By email",
-    "applicationForm": {
-      "file": "application-form.pdf",
-      "size": "2MB"
-    },
-    "emailAddressForApplications": "peter@courtland.sch.uk",
-    "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "peter@courtland.sch.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "autem et autem cum libero sit reprehenderit quibusdam voluptatum consectetur esse quis enim libero sit blanditiis autem autem quae natus corrupti sit vero vel aliquam et quis aut harum repudiandae",
-    "whatSchoolOffers": "impedit et doloremque repellat cumque dolorum inventore eius voluptatum sint qui minus amet rem non et nesciunt eos animi magni",
-    "hasSafeguardingCommitment": "No",
-    "hasFurtherDetailsAboutTheRole": "No",
-    "hasAdditionalDocuments": "No",
-    "publishDate": "2022-10-02T01:35:28.260Z",
-    "closingDate": "2023-05-23T18:43:45.215Z",
-    "closingTime": "12pm (midday)",
-    "startDate": "2024-04-03T15:21:49.345Z"
-  },
-  {
-    "id": "276255",
-    "status": "Closed",
-    "organisation": {
-      "type": "LA",
-      "name": "Barnet Local Authority",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "schools": [
-        {
-          "name": "McDermott and Sons School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Nursery school"
-        },
-        {
-          "name": "Waelchi, Reynolds and Brakus School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Primary school"
-        },
-        {
-          "name": "Koss - Gleason School",
-          "address": {
-            "address1": "2 Owl Way",
-            "town": "London",
-            "postcode": "W6 1PT"
-          },
-          "phase": "Middle school"
-        },
-        {
-          "name": "Olson, Mueller and Rempel School",
-          "address": {
-            "address1": "3 Owl Way",
-            "town": "London",
-            "postcode": "W7 2PT"
-          },
-          "phase": "Secondary school"
-        },
-        {
-          "name": "Ondricka, Mills and Mitchell School",
-          "address": {
-            "address1": "4 Owl Way",
-            "town": "London",
-            "postcode": "W8 3PT"
-          },
-          "phase": "Sixth form or college"
-        },
-        {
-          "name": "Goodwin - Wolff School",
-          "address": {
-            "address1": "5 Owl Way",
-            "town": "London",
-            "postcode": "W9 4PT"
-          },
-          "phase": "Through school"
-        }
-      ]
-    },
-    "locations": [
-      {
-        "name": "Barnet Local Authority",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "Teacher",
-    "title": "Maths teacher",
-    "subjects": [
-      "Politics",
-      "Citizenship"
-    ],
-    "contractType": "Fixed term",
-    "contractLength": "6 months",
-    "workingPatterns": [
-      "Full time"
-    ],
-    "fullTimeDetails": "5 days a week",
-    "salaryDetails": [
-      "Actual salary",
-      "Full-time equivalent salary"
-    ],
-    "fullTimeEquivalentSalaryDetails": "£42,000",
-    "actualSalaryDetails": "£31,000",
-    "hasAdditionalAllowances": "No",
-    "isUsingApplicationForm": "No",
-    "applicationMethod": "Through a website",
-    "linkToWebsite": "https://www.school.uk",
-    "offersSchoolVisits": "Yes",
-    "contactEmailAddress": "laura@barnet.la.uk",
-    "hasContactPhoneNumber": "Yes",
-    "contactPhoneNumber": "0204 231 271",
-    "isRoleSuitableForEarlyCareeerTeachers": "No",
-    "skillsAndExperience": "ratione est ipsam laudantium nemo consequuntur enim velit corporis rem aut at impedit in harum rerum omnis eos qui ab consequatur voluptates tempora minima aut voluptatem omnis voluptas maiores numquam",
-    "whatSchoolOffers": "cum harum et qui aut velit aut tenetur est quis tenetur sit temporibus accusamus optio sint quae sed provident commodi",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "vero repellat ut deleniti alias et non iste officia voluptate omnis aut consequatur et aut veniam ut autem mollitia esse quia ea autem eaque autem ipsam voluptas incidunt quidem sit",
-    "hasFurtherDetailsAboutTheRole": "Yes",
-    "furtherDetailsAboutTheRole": "voluptate enim vitae tempora facilis et sunt aut esse doloremque dolores voluptates numquam quia quia commodi odio odio itaque fugit consequatur dicta corporis vel facilis quod ratione voluptatibus excepturi sint",
-    "hasAdditionalDocuments": "No",
-    "publishDate": "2023-01-26T07:42:24.257Z",
-    "closingDate": "2023-11-11T18:21:17.526Z",
-    "closingTime": "9am",
-    "startDate": "2023-11-25T00:35:49.158Z"
-  },
-  {
-    "id": "787529",
-    "status": "Closed",
-    "organisation": {
-      "type": "LA",
-      "name": "Barnet Local Authority",
-      "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
-      },
-      "schools": [
-        {
-          "name": "McDermott and Sons School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Nursery school"
-        },
-        {
-          "name": "Waelchi, Reynolds and Brakus School",
-          "address": {
-            "address1": "10 Seed Street",
-            "town": "London",
-            "postcode": "N19 4PT"
-          },
-          "phase": "Primary school"
-        },
-        {
-          "name": "Koss - Gleason School",
-          "address": {
-            "address1": "2 Owl Way",
-            "town": "London",
-            "postcode": "W6 1PT"
-          },
-          "phase": "Middle school"
-        },
-        {
-          "name": "Olson, Mueller and Rempel School",
-          "address": {
-            "address1": "3 Owl Way",
-            "town": "London",
-            "postcode": "W7 2PT"
-          },
-          "phase": "Secondary school"
-        },
-        {
-          "name": "Ondricka, Mills and Mitchell School",
-          "address": {
-            "address1": "4 Owl Way",
-            "town": "London",
-            "postcode": "W8 3PT"
-          },
-          "phase": "Sixth form or college"
-        },
-        {
-          "name": "Goodwin - Wolff School",
-          "address": {
-            "address1": "5 Owl Way",
-            "town": "London",
-            "postcode": "W9 4PT"
-          },
-          "phase": "Through school"
-        }
-      ]
-    },
-    "locations": [
-      {
-        "name": "Barnet Local Authority",
-        "address": {
-          "address1": "50 Lawrence Street",
-          "town": "Mill Hill",
-          "postcode": "NW7 4YK"
-        }
-      }
-    ],
-    "role": "SENDCo (special educational needs and disabilities coordinator)",
-    "title": "SENDCo",
-    "subjects": [
-      "Dance",
-      "Food Technology"
-    ],
-    "contractType": "Fixed term",
-    "contractLength": "6 months",
-    "workingPatterns": [
-      "Full time"
-    ],
-    "fullTimeDetails": "5 days a week",
     "salaryDetails": [
       "Pay scale",
       "Full-time equivalent salary",
@@ -3436,23 +3217,261 @@
     "payScaleDetails": "MP4 to MP6",
     "hasAdditionalAllowances": "Yes",
     "additionalAllowances": "TLR is available.",
+    "isUsingApplicationForm": "Yes",
+    "offersSchoolVisits": "No",
+    "contactEmailAddress": "peter@courtland.sch.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0205 482 481",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "skillsAndExperience": "itaque repellat cupiditate omnis tempore non beatae est eos quia velit tempora harum quo velit dignissimos iusto et reprehenderit sint soluta neque mollitia ut iure natus dolores est aliquam nulla",
+    "whatSchoolOffers": "dolor voluptas dicta odit asperiores suscipit dolorem architecto sunt velit id ut similique autem dicta et in voluptatem at optio",
+    "hasSafeguardingCommitment": "No",
+    "hasFurtherDetailsAboutTheRole": "No",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2023-01-09T11:59:03.274Z",
+    "closingDate": "2023-03-21T13:13:50.230Z",
+    "closingTime": "9am",
+    "startDate": "2023-08-30T21:47:58.938Z"
+  },
+  {
+    "id": "690026",
+    "status": "Closed",
+    "organisation": {
+      "type": "LA",
+      "name": "Barnet Local Authority",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "schools": [
+        {
+          "name": "Emard Inc School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Nursery school"
+        },
+        {
+          "name": "Waelchi, Hayes and Runte School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Primary school"
+        },
+        {
+          "name": "Zieme and Sons School",
+          "address": {
+            "address1": "2 Owl Way",
+            "town": "London",
+            "postcode": "W6 1PT"
+          },
+          "phase": "Middle school"
+        },
+        {
+          "name": "Jones, Moore and Hane School",
+          "address": {
+            "address1": "3 Owl Way",
+            "town": "London",
+            "postcode": "W7 2PT"
+          },
+          "phase": "Secondary school"
+        },
+        {
+          "name": "Halvorson LLC School",
+          "address": {
+            "address1": "4 Owl Way",
+            "town": "London",
+            "postcode": "W8 3PT"
+          },
+          "phase": "Sixth form or college"
+        },
+        {
+          "name": "Auer - Huel School",
+          "address": {
+            "address1": "5 Owl Way",
+            "town": "London",
+            "postcode": "W9 4PT"
+          },
+          "phase": "Through school"
+        }
+      ]
+    },
+    "locations": [
+      {
+        "name": "Barnet Local Authority",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "Headteacher, deputy or assistant headteacher",
+    "title": "Deputy headteacher",
+    "keyStages": [
+      "Early years",
+      "Key stage 1",
+      "Key stage 2"
+    ],
+    "subjects": [
+      "Chemistry"
+    ],
+    "contractType": "Fixed term",
+    "contractLength": "6 months",
+    "workingPatterns": [
+      "Part time"
+    ],
+    "partTimeDetails": "20 hours a week",
+    "salaryDetails": [
+      "Pay scale",
+      "Full-time equivalent salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "payScaleDetails": "MP4 to MP6",
+    "hasAdditionalAllowances": "No",
     "isUsingApplicationForm": "No",
     "applicationMethod": "Through a website",
     "linkToWebsite": "https://www.school.uk",
     "offersSchoolVisits": "No",
-    "contactEmailAddress": "peter@courtland.sch.uk",
-    "hasContactPhoneNumber": "No",
-    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
-    "skillsAndExperience": "aut repudiandae ipsa vel eos provident est omnis accusamus rerum asperiores quos et ipsa similique harum voluptas et sit in eos atque libero quia nobis quos vero nemo corrupti rerum",
-    "whatSchoolOffers": "non aliquid et vel repellendus vitae omnis doloribus est sequi eum odit ab et facilis et inventore dolorum doloremque aut",
-    "hasSafeguardingCommitment": "Yes",
-    "safeguardingCommitment": "nihil et eum non occaecati pariatur et necessitatibus omnis sed vel suscipit enim porro culpa cum fuga quo vel praesentium modi natus iste adipisci aut eos veritatis sequi voluptatem delectus",
-    "hasFurtherDetailsAboutTheRole": "Yes",
-    "furtherDetailsAboutTheRole": "fugit magni laudantium cumque qui autem laboriosam sint voluptatem vitae harum debitis rerum dolorem architecto hic doloremque nostrum dignissimos non cum libero perferendis ut eius quia ad cupiditate quam qui",
+    "contactEmailAddress": "laura@barnet.la.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0209 119 740",
+    "isRoleSuitableForEarlyCareeerTeachers": "No",
+    "skillsAndExperience": "tempore labore nobis similique quidem velit at sequi voluptas rerum quisquam minus ipsa laborum ut excepturi nemo architecto harum vero voluptatum sed aut impedit illo cumque est quis veniam ab",
+    "whatSchoolOffers": "culpa cum et repudiandae dicta aliquam quisquam eius exercitationem fuga officiis est ipsam quod id dicta occaecati fuga vitae optio",
+    "hasSafeguardingCommitment": "No",
+    "hasFurtherDetailsAboutTheRole": "No",
     "hasAdditionalDocuments": "No",
-    "publishDate": "2023-01-07T09:44:06.450Z",
-    "closingDate": "2023-07-26T08:09:25.727Z",
+    "publishDate": "2023-05-12T05:15:13.915Z",
+    "closingDate": "2024-02-22T12:04:43.699Z",
     "closingTime": "12pm (midday)",
-    "startDate": "2023-09-19T11:46:59.981Z"
+    "startDate": "2024-03-05T07:58:04.299Z"
+  },
+  {
+    "id": "968772",
+    "status": "Closed",
+    "organisation": {
+      "type": "LA",
+      "name": "Barnet Local Authority",
+      "address": {
+        "address1": "50 Lawrence Street",
+        "town": "Mill Hill",
+        "postcode": "NW7 4YK"
+      },
+      "schools": [
+        {
+          "name": "Emard Inc School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Nursery school"
+        },
+        {
+          "name": "Waelchi, Hayes and Runte School",
+          "address": {
+            "address1": "10 Seed Street",
+            "town": "London",
+            "postcode": "N19 4PT"
+          },
+          "phase": "Primary school"
+        },
+        {
+          "name": "Zieme and Sons School",
+          "address": {
+            "address1": "2 Owl Way",
+            "town": "London",
+            "postcode": "W6 1PT"
+          },
+          "phase": "Middle school"
+        },
+        {
+          "name": "Jones, Moore and Hane School",
+          "address": {
+            "address1": "3 Owl Way",
+            "town": "London",
+            "postcode": "W7 2PT"
+          },
+          "phase": "Secondary school"
+        },
+        {
+          "name": "Halvorson LLC School",
+          "address": {
+            "address1": "4 Owl Way",
+            "town": "London",
+            "postcode": "W8 3PT"
+          },
+          "phase": "Sixth form or college"
+        },
+        {
+          "name": "Auer - Huel School",
+          "address": {
+            "address1": "5 Owl Way",
+            "town": "London",
+            "postcode": "W9 4PT"
+          },
+          "phase": "Through school"
+        }
+      ]
+    },
+    "locations": [
+      {
+        "name": "Barnet Local Authority",
+        "address": {
+          "address1": "50 Lawrence Street",
+          "town": "Mill Hill",
+          "postcode": "NW7 4YK"
+        }
+      }
+    ],
+    "role": "HLTA (higher level teaching assistant)",
+    "title": "HLTA",
+    "keyStages": [
+      "Early years",
+      "Key stage 1",
+      "Key stage 2",
+      "Key stage 3",
+      "Key stage 4",
+      "Key stage 5"
+    ],
+    "subjects": [
+      "Physics",
+      "Humanities"
+    ],
+    "contractType": "Permanent",
+    "workingPatterns": [
+      "Full time"
+    ],
+    "fullTimeDetails": "5 days a week",
+    "salaryDetails": [
+      "Full-time equivalent salary"
+    ],
+    "fullTimeEquivalentSalaryDetails": "£42,000",
+    "hasAdditionalAllowances": "No",
+    "isUsingApplicationForm": "No",
+    "applicationMethod": "Through a website",
+    "linkToWebsite": "https://www.school.uk",
+    "offersSchoolVisits": "Yes",
+    "contactEmailAddress": "alison@royalacademytrust.uk",
+    "hasContactPhoneNumber": "Yes",
+    "contactPhoneNumber": "0206 101 428",
+    "isRoleSuitableForEarlyCareeerTeachers": "Yes",
+    "skillsAndExperience": "ut ullam et in aut sit possimus officia dignissimos adipisci non dolor vero dolorem sed voluptatem dolor nihil officiis incidunt pariatur quia dolor error sed quos non temporibus repellendus sed",
+    "whatSchoolOffers": "ullam vero quos quidem sunt dignissimos similique velit repellat expedita sed dolorem nesciunt consequatur non aut omnis rerum ipsa architecto",
+    "hasSafeguardingCommitment": "Yes",
+    "safeguardingCommitment": "libero dicta maxime soluta similique harum qui excepturi sit et et perspiciatis voluptas provident modi qui et delectus molestiae quasi consectetur quibusdam et consequatur illo officiis temporibus quod quam voluptatem",
+    "hasFurtherDetailsAboutTheRole": "No",
+    "furtherDetailsAboutTheRole": "perferendis voluptatem ipsa modi alias eveniet possimus quos optio et rem aut similique hic et tempore consequatur laborum maiores iste recusandae et numquam saepe fuga aut explicabo aspernatur cumque rem",
+    "hasAdditionalDocuments": "No",
+    "publishDate": "2022-11-01T20:41:59.894Z",
+    "closingDate": "2023-05-13T18:12:54.282Z",
+    "closingTime": "9am",
+    "startDate": "2023-07-14T03:02:31.962Z"
   }
 ]
