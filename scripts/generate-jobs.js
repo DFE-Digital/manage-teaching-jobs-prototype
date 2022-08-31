@@ -13,7 +13,7 @@ const roles = require('../app/data/roles.js')
 
 // generators
 const generateTitle = require('./jobGenerators/title')
-const generateSubjects = require('./jobGenerators/subjects')
+const generateSubjects = require('./generators/subjects')
 const generateKeyStages = require('./jobGenerators/key-stages')
 
 

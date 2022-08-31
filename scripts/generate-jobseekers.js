@@ -8,6 +8,7 @@ const roles = require('../app/data/roles.js')
 const phases = require('../app/data/phases.js')
 
 const generateKeyStages = require('./jobseekerGenerators/key-stages')
+const generateSubjects = require('./generators/subjects')
 
 const generateJobseeker = (params = {}) => {
   let jobseeker = {}
@@ -34,11 +35,14 @@ const generateJobseeker = (params = {}) => {
   // Phase
   jobseeker.profile.phases = _.get(params, 'profile.phases') || faker.helpers.arrayElements(phases, faker.datatype.number({min: 1, max: 2}))
 
-
   // Key stages
   jobseeker.profile.keyStages = _.get(params, 'profile.keyStages') || generateKeyStages({
     phase: jobseeker.profile.phases[0]
   })
+
+  if(jobseeker.profile.phases[0] == 'Secondary school') {
+    jobseeker.profile.subjects = _.get(params, 'profile.subjects') || generateSubjects()
+  }
 
   // Working patterns
   jobseeker.profile.workingPatterns = _.get(params, 'profile.workingPatterns') || faker.helpers.arrayElements(['Full time', 'Part time'], faker.datatype.number({min: 1, max: 2}))

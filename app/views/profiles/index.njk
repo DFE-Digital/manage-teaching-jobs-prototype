@@ -30,7 +30,70 @@
               <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
                 <a href="/jobseekers/{{jobseeker.id}}">{{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}}</a>
               </h2>
+              {% if jobseeker.profile.qts == 'Yes' %}
+                {{ govukTag({
+                  text: "Qualified teacher",
+                  classes: 'govuk-tag--blue'
+                }) }}
+              {% endif %}
+              {% if jobseeker.profile.ect == 'Yes' %}
+                {{ govukTag({
+                  text: "Early career teacher",
+                  classes: 'govuk-tag--purple'
+                }) }}
+              {% endif %}
             </div>
+            <div class="app-job-listings__job-row">
+
+              {# {% if jobseeker.profile.ect == 'Yes' %}
+                <p class="govuk-!-margin-bottom-0">Early career teacher</p>
+              {% endif %} #}
+            </div>
+            {{ govukSummaryList({
+              classes: 'govuk-summary-list--no-border app-summary-list--compact',
+              rows: [
+                {
+                  key: {
+                    text: "Role"
+                  },
+                  value: {
+                    text: jobseeker.profile.roles | join(', ')
+                  }
+                },
+                {
+                  key: {
+                    text: "Education phase"
+                  },
+                  value: {
+                    text: jobseeker.profile.phases | join(', ')
+                  }
+                },
+                {
+                  key: {
+                    text: "Key stage"
+                  },
+                  value: {
+                    text: jobseeker.profile.keyStages | join(', ')
+                  }
+                },
+                {
+                  key: {
+                    text: "Working pattern"
+                  },
+                  value: {
+                    text: jobseeker.profile.workingPatterns | join(', ')
+                  }
+                },
+                {
+                  key: {
+                    text: "Subject"
+                  },
+                  value: {
+                    text: jobseeker.profile.subjects | join(', ')
+                  }
+                } if jobseeker.profile.subjects
+              ]
+            }) }}
           </div>
         {% endfor %}
       </div>

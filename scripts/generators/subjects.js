@@ -1,7 +1,7 @@
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 
-module.exports = (params) => {
+module.exports = () => {
   const subjects = [
     'Accounting',
     'Art and design',
