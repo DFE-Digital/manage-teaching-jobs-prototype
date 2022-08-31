@@ -11,7 +11,7 @@
   </h1>
 
   {# <p>They will appear as jobseekers add profiles yada.</p> #}
-  <p>This only shows jobseekers who can commute to your school.</p>
+  {# <p>This only shows jobseekers who can commute to your school.</p> #}
 
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
@@ -30,28 +30,41 @@
               <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
                 <a href="/jobseekers/{{jobseeker.id}}">{{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}}</a>
               </h2>
-              {% if jobseeker.profile.qts == 'Yes' %}
-                {{ govukTag({
-                  text: "Qualified teacher",
-                  classes: 'govuk-tag--blue'
-                }) }}
-              {% endif %}
-              {% if jobseeker.profile.ect == 'Yes' %}
-                {{ govukTag({
-                  text: "Early career teacher",
-                  classes: 'govuk-tag--purple'
-                }) }}
-              {% endif %}
             </div>
-            <div class="app-job-listings__job-row">
 
-              {# {% if jobseeker.profile.ect == 'Yes' %}
-                <p class="govuk-!-margin-bottom-0">Early career teacher</p>
-              {% endif %} #}
-            </div>
+            {# {% set teachingStatus %}
+              {% if jobseeker.profile.qts == 'Yes' %}
+                {% if jobseeker.profile.ect == 'Yes' %}
+                  Early career teacher (qualified {{jobseeker.profile.qtsAwardedYear}})
+                {% else %}
+                  Qualified (since {{jobseeker.profile.qtsAwardedYear}})
+                {% endif %}
+              {% elseif jobseeker.profile.qts == 'I’m on track to receive QTS' %}
+                On track to receive QTS
+              {% endif %}
+            {% endset %} #}
+
+            {% set teachingStatus %}
+              {% if jobseeker.profile.qts == 'Yes' %}
+                Qualified {{jobseeker.profile.qtsAwardedYear}}
+              {% elseif jobseeker.profile.qts == 'I’m on track to receive QTS' %}
+                On track to receive QTS
+              {% else %}
+                Does not have QTS
+              {% endif %}
+            {% endset %}
+
             {{ govukSummaryList({
               classes: 'govuk-summary-list--no-border app-summary-list--compact',
               rows: [
+                {
+                  key: {
+                    text: "Qualified teaching status (QTS)"
+                  },
+                  value: {
+                    text: teachingStatus
+                  }
+                },
                 {
                   key: {
                     text: "Role"

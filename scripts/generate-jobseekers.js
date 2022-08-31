@@ -53,10 +53,17 @@ const generateJobseeker = (params = {}) => {
     radius: '5 miles'
   }]
 
-  jobseeker.profile.qts = _.get(params, 'profile.qts') || faker.helpers.arrayElement(['Yes', 'No'])
+  jobseeker.profile.qts = _.get(params, 'profile.qts') || faker.helpers.arrayElement(['Yes', 'No', 'I’m on track to receive QTS'])
 
-  if(jobseeker.profile.qts == 'No') {
-    jobseeker.profile.ect = _.get(params, 'profile.ect') || faker.helpers.arrayElement(['Yes', 'No'])
+  if(jobseeker.profile.qts == 'Yes') {
+    jobseeker.profile.qtsAwardedYear = _.get(params, 'profile.qtsAwardedYear') || faker.helpers.arrayElement(['2022', '2021', '2008', '2003'])
+
+    if(jobseeker.profile.qtsAwardedYear == '2022') {
+      jobseeker.profile.ect = 'Yes'
+    } else {
+      jobseeker.profile.ect = _.get(params, 'profile.ect') || 'No'
+    }
+
   }
 
   // Qualifications

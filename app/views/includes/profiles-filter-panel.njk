@@ -42,30 +42,20 @@
       }
     },
     items: [{
-      value: 'Has QTS',
-      text: 'Has QTS'
-    }, {
       value: 'Does not have QTS',
       text: 'Does not have QTS'
-    }]
-  }) }}
-
-  {{ govukCheckboxes({
-    idPrefix: "filters[qts]",
-    name: "filters[qts]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Early career teachers (ECT)",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'Is an ECT',
-      text: 'Is an ECT'
     }, {
-      value: 'Is not an ECT',
-      text: 'Is not an ECT'
+      value: 'On track to receive QTS',
+      text: 'On track to receive QTS'
+    }, {
+      value: 'Qualified in the last 2 years',
+      text: 'Qualified in the last 2 years'
+    }, {
+      value: 'Qualified between 3 and 8 years ago',
+      text: 'Qualified between 3 and 8 years ago'
+    }, {
+      value: 'Qualified 9 or more years ago',
+      text: 'Qualified 9 or more years ago'
     }]
   }) }}
 
