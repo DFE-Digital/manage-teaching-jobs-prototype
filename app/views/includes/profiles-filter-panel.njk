@@ -51,6 +51,25 @@
   }) }}
 
   {{ govukCheckboxes({
+    idPrefix: "filters[qts]",
+    name: "filters[qts]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Early career teachers (ECT)",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Is an ECT',
+      text: 'Is an ECT'
+    }, {
+      value: 'Is not an ECT',
+      text: 'Is not an ECT'
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
     idPrefix: "filters[workingPatterns]",
     name: "filters[workingPatterns]",
     classes: "govuk-checkboxes--small",

@@ -32,7 +32,7 @@ const generateJob = (params = {}) => {
 
   job.title = params.title || generateTitle({organisation: job.organisation, role: job.role})
 
-  job.keyStages = params.keyStages || generateKeyStages({organisation: job.organisation})
+  job.keyStages = params.keyStages || generateKeyStages({phase: job.organisation.phase || job.organisation.schools[0].phase})
 
   job.subjects = params.subjects || generateSubjects()
 

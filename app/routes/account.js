@@ -1,6 +1,7 @@
 const users = require('../data/users.json')
 const organisations = require('../data/organisations.json')
 const jobs = require('../data/jobs.json')
+const jobseekers = require('../data/jobseekers.json')
 
 module.exports = router => {
 
@@ -40,6 +41,7 @@ module.exports = router => {
 
     // add jobs to the user
     user.jobs = jobs.filter(job => job.organisation.name == user.organisation.name)
+    user.jobseekers = jobseekers
 
     res.locals.user = req.session.user = user
 

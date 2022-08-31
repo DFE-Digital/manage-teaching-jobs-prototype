@@ -1,15 +1,7 @@
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 
-module.exports = ({organisation}) => {
-  let phase;
-
-  if(organisation.type == 'School') {
-    phase = organisation.phase
-  } else {
-    phase = faker.helpers.arrayElement(organisation.schools).phase
-  }
-
+module.exports = ({phase}) => {
   switch(phase) {
     case 'Nursery':
       return ['Early years']

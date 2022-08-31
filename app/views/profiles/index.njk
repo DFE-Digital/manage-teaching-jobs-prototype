@@ -1,7 +1,7 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'Jobseeker profiles (4)' %}
+{% set title = 'Jobseeker profiles (' + user.jobseekers.length + ')' %}
 
 {% set primaryNavId = 'profiles' %}
 
@@ -24,34 +24,15 @@
       </div>
 
       <div class="app-job-listings">
-        <div class="app-job-listings__job">
-          <div class="app-job-listings__job-row">
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
-              <a href="/profiles/123">Molly Capstick</a>
-            </h2>
+        {% for jobseeker in user.jobseekers %}
+          <div class="app-job-listings__job">
+            <div class="app-job-listings__job-row">
+              <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+                <a href="/jobseekers/{{jobseeker.id}}">{{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}}</a>
+              </h2>
+            </div>
           </div>
-        </div>
-        <div class="app-job-listings__job">
-          <div class="app-job-listings__job-row">
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
-              <a href="/profiles/123">Sophie Miles</a>
-            </h2>
-          </div>
-        </div>
-        <div class="app-job-listings__job">
-          <div class="app-job-listings__job-row">
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
-              <a href="/profiles/123">Rachael Harvey</a>
-            </h2>
-          </div>
-        </div>
-        <div class="app-job-listings__job">
-          <div class="app-job-listings__job-row">
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
-              <a href="/profiles/123">Leonie Shanks</a>
-            </h2>
-          </div>
-        </div>
+        {% endfor %}
       </div>
 
       {{ govukPagination({

@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
+const phases = require('../app/data/phases.js')
 
 const generateSchool = (params = {}) => {
   let school = {}
@@ -52,14 +53,7 @@ const generateOrg = (params = {}) => {
   }
 
   if(org.type == 'School') {
-    org.phase = params.phase || faker.helpers.arrayElement([
-      'Nursery',
-      'Primary school',
-      'Middle school',
-      'Secondary school',
-      'Sixth form or college',
-      'Through school'
-    ])
+    org.phase = params.phase || faker.helpers.arrayElement(phases)
   }
 
   return org
