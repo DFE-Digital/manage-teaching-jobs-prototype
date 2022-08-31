@@ -6,11 +6,20 @@ module.exports = router => {
 
   router.get('/account/sign-in', (req, res) => {
     var options = users.map(user => {
+
+      let hint = user.organisation.type
+
+      if(user.organisation.type == 'School') {
+        hint = user.organisation.phase
+      } else {
+        hint = user.organisation.type
+      }
+
       return {
         text: user.username,
         value: user.username,
         hint: {
-          text: user.organisation.schoolType || user.organisation.trustType
+          text: hint
         }
       }
     })

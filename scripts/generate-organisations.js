@@ -89,26 +89,25 @@ const generateOrgs = () => {
   const orgs = []
 
   orgs.push(generateOrg({
-    type: 'School',
     name: 'Courtland Primary School',
-    schoolType: 'primary'
-  }))
-
-  orgs.push(generateOrg({
     type: 'School',
+    phase: 'Primary school'
+  }))
+
+  orgs.push(generateOrg({
     name: 'Bushey Meads Secondary School',
-    schoolType: 'secondary'
+    type: 'School',
+    phase: 'Secondary school'
   }))
 
   orgs.push(generateOrg({
-    type: 'MAT',
     name: 'Royal Academy Trust',
-    trustType: 'primary'
+    type: 'MAT'
   }))
 
   orgs.push(generateOrg({
-    type: 'LA',
-    name: 'Barnet Local Authority'
+    name: 'Barnet Local Authority',
+    type: 'LA'
   }))
 
   return orgs
