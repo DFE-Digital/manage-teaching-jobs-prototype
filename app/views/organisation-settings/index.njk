@@ -10,7 +10,11 @@
         {{title}}
       </h1>
 
-      <p><a href="#">View school page</a></p>
+      {% if user.organisation.type == 'School' %}
+        <p><a href="#">View school page (opens in new tab)</a></p>
+      {% else %}
+        <p><a href="#">View organisation page (opens in new tab)</a></p>
+      {% endif %}
 
       {% set address %}
         {% for part, value in user.organisation.address %}
@@ -30,7 +34,7 @@
           },
           {
             key: {
-              text: "URN (Unique reference number)"
+              text: "Unique reference number (URN)"
             },
             value: {
               text: "1234567"

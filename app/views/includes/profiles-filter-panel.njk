@@ -10,25 +10,7 @@
         classes: "govuk-fieldset__legend--s"
       }
     },
-    items: [{
-      value: 'Teacher',
-      text: 'Teacher'
-    }, {
-      value: 'Headteacher, deputy or assistant headteacher',
-      text: 'Headteacher, deputy or assistant headteacher'
-    }, {
-      value: 'Head of year, department, curriculum or phase',
-      text: 'Head of year, department, curriculum or phase'
-    }, {
-      value: 'Teaching assistant',
-      text: 'Teaching assistant'
-    }, {
-      value: 'Learning support, cover supervisor or tutor',
-      text: 'Learning support, cover supervisor or tutor'
-    }, {
-      value: 'SENDCo (special educational needs and disabilities coordinator)',
-      text: 'SENDCo (special educational needs and disabilities coordinator)'
-    }]
+    items: roles
   }) }}
 
   {{ govukCheckboxes({
@@ -84,29 +66,11 @@
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Phase of education",
+        text: "Education phase",
         classes: "govuk-fieldset__legend--s"
       }
     },
-    items: [{
-      value: 'Nursery school',
-      text: 'Nursery school'
-    }, {
-      value: 'Primary school',
-      text: 'Primary school'
-    }, {
-      value: 'Middle school',
-      text: 'Middle school'
-    }, {
-      value: 'Secondary school',
-      text: 'Secondary school'
-    }, {
-      value: 'Sixth form or college',
-      text: 'Sixth form or college'
-    }, {
-      value: 'Through school',
-      text: 'Through school'
-    }]
+    items: phases
   }) }}
 
   {{ govukCheckboxes({

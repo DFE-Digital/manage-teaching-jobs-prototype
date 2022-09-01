@@ -1,5 +1,5 @@
 const phases = [
-  'Nursery',
+  'Nursery school',
   'Primary school',
   'Middle school',
   'Secondary school',

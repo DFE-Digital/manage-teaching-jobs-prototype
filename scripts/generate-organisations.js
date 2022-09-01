@@ -45,8 +45,12 @@ const generateOrg = (params = {}) => {
   let org = {}
 
   org.type = params.type || faker.helpers.arrayElement([ 'School', 'MAT', 'LA' ])
-  org.name = params.name || faker.company.companyName({format: 5})
-  org.address = params.address || { address1: '50 Lawrence Street', town: 'Mill Hill', postcode: 'NW7 4YK' }
+  org.name = params.name || faker.company.name({format: 5})
+  org.address = params.address || {
+    address1: '50 Lawrence Street',
+    town: 'Mill Hill',
+    postcode: 'NW7 4YK'
+  }
 
   if(org.type == 'MAT' || org.type == "LA") {
     org.schools = params.schools || generateSchools()
