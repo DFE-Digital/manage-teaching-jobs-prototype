@@ -3,6 +3,14 @@
 
 {% set title = 'Organisation settings' %}
 
+{% set primaryNavId = 'organisationSettings' %}
+
+{% set address %}
+  {% for part, value in user.organisation.address %}
+    {{value}}{% if not loop.last %}, {% endif %}
+  {% endfor %}
+{% endset %}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -10,96 +18,137 @@
         {{title}}
       </h1>
 
-      {% if user.organisation.type == 'School' %}
-        <p><a href="#">View school page (opens in new tab)</a></p>
-      {% else %}
+      {% if user.organisation.schools %}
         <p><a href="#">View organisation page (opens in new tab)</a></p>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: user.organisation.name
+              }
+            },
+            {
+              key: {
+                text: "Type"
+              },
+              value: {
+                text: 'Multi-academy trust'
+              }
+            },
+            {
+              key: {
+                text: "Address"
+              },
+              value: {
+                text: address
+              }
+            },
+            {
+              key: {
+                text: "Website"
+              },
+              value: {
+                html: '<a href="https://www.busheymeads.sch.uk">https://www.busheymeads.sch.uk (opens in new tab)</a>'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "Item URL",
+                    text: "Change",
+                    visuallyHiddenText: "Item label"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "About school"
+              },
+              value: {
+                html: 'Our school is the best.'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/organisation/edit/description",
+                    text: "Change",
+                    visuallyHiddenText: "About school"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "How employees are supported"
+              },
+              value: {
+                html: 'We support our employees by doing x and y.'
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/organisation/edit/description",
+                    text: "Change",
+                    visuallyHiddenText: "About school"
+                  }
+                ]
+              }
+            },
+            {
+                key: {
+                  text: "Logo"
+                },
+                value: {
+                  html: '[Todo]'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/organisation/edit/logo",
+                      text: "Change",
+                      visuallyHiddenText: "About school"
+                    }
+                  ]
+                }
+              },
+              {
+                key: {
+                  text: "Photo"
+                },
+                value: {
+                  html: '[Todo]'
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "/organisation/edit/photo",
+                      text: "Change",
+                      visuallyHiddenText: "About school"
+                    }
+                  ]
+                }
+              }
+          ]
+        }) }}
+
+        {% for school in user.organisation.schools %}
+          <h3 class="govuk-heading-m {% if 1 == 1 %}govuk-!-margin-top-7{% endif %}">
+            {{school.name}}
+          </h3>
+          {{appSchoolSummaryList({ school: school })}}
+        {% endfor %}
+      {% else %}
+        <p><a href="#">View school page (opens in new tab)</a></p>
+        {{appSchoolSummaryList({ school: user.organisation })}}
       {% endif %}
 
-      {% set address %}
-        {% for part, value in user.organisation.address %}
-          {{value}}{% if not loop.last %}, {% endif %}
-        {% endfor %}
-      {% endset %}
 
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Name"
-            },
-            value: {
-              text: user.organisation.name
-            }
-          },
-          {
-            key: {
-              text: "Unique reference number (URN)"
-            },
-            value: {
-              text: "1234567"
-            }
-          },
-          {
-            key: {
-              text: "Address"
-            },
-            value: {
-              text: address
-            }
-          },
-          {
-            key: {
-              text: "Age group"
-            },
-            value: {
-              text: "Item value"
-            }
-          },
-          {
-            key: {
-              text: "Type"
-            },
-            value: {
-              text: "Item value"
-            }
-          },
-          {
-            key: {
-              text: "Website"
-            },
-            value: {
-              html: '<a href="https://www.busheymeads.sch.uk">https://www.busheymeads.sch.uk (opens in new tab)</a>'
-            },
-            actions: {
-              items: [
-                {
-                  href: "Item URL",
-                  text: "Change",
-                  visuallyHiddenText: "Item label"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Description"
-            },
-            value: {
-              html: 'Our school is the best.'
-            },
-            actions: {
-              items: [
-                {
-                  href: "Item URL",
-                  text: "Change",
-                  visuallyHiddenText: "Item label"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
+
+
 
 
 

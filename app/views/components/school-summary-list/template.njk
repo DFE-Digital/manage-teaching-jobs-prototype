@@ -1,0 +1,174 @@
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{% set address %}
+  {% for part, value in params.school.address %}
+    {{value}}{% if not loop.last %}, {% endif %}
+  {% endfor %}
+{% endset %}
+
+{% set website %}
+  <a href="https://www.busheymeads.sch.uk">https://www.busheymeads.sch.uk (opens in new tab)</a>
+{% endset %}
+
+{% set logo %}
+  <img src="{{params.school.logo}}" alt="Logo" width="150">
+{% endset %}
+
+{% set photo %}
+  <img src="{{params.school.photo}}" alt="Photo" width="100%">
+{% endset %}
+
+{{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Name"
+        },
+        value: {
+          text: params.school.name
+        }
+      },
+      {
+        key: {
+          text: "Address"
+        },
+        value: {
+          text: address
+        }
+      },
+      {
+        key: {
+          text: "Type"
+        },
+        value: {
+          text: params.school.type
+        }
+      },
+      {
+        key: {
+          text: "Education phase"
+        },
+        value: {
+          text: params.school.phase or 'Not entered'
+        },
+        actions: {
+          items: [
+            {
+              href: "/organisation/edit/phase",
+              text: "Change",
+              visuallyHiddenText: "Phase"
+            }
+          ]
+        } if params.school.phaseEditable
+      },
+      {
+        key: {
+          text: "Age group"
+        },
+        value: {
+          text: params.school.ageGroup
+        }
+      },
+      {
+        key: {
+          text: "Size"
+        },
+        value: {
+          text: params.school.size + ' pupils enrolled'
+        }
+      },
+      {
+        key: {
+          text: "Ofsted report"
+        },
+        value: {
+          html: '<a href="#">View Ofsted report (opens in new tab)</a>'
+        }
+      },
+      {
+        key: {
+          text: "Website"
+        },
+        value: {
+          html: website
+        },
+        actions: {
+          items: [
+            {
+              href: "/organisation/edit/website",
+              text: "Change",
+              visuallyHiddenText: "Website"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "About school"
+        },
+        value: {
+          html: 'Our school is the best.'
+        },
+        actions: {
+          items: [
+            {
+              href: "/organisation/edit/description",
+              text: "Change",
+              visuallyHiddenText: "About school"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "How employees are supported"
+        },
+        value: {
+          html: 'We support our employees by doing x and y.'
+        },
+        actions: {
+          items: [
+            {
+              href: "/organisation/edit/description",
+              text: "Change",
+              visuallyHiddenText: "About school"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Logo"
+        },
+        value: {
+          html: logo
+        },
+        actions: {
+          items: [
+            {
+              href: "/organisation/edit/logo",
+              text: "Change",
+              visuallyHiddenText: "About school"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Photo"
+        },
+        value: {
+          html: photo
+        },
+        actions: {
+          items: [
+            {
+              href: "/organisation/edit/photo",
+              text: "Change",
+              visuallyHiddenText: "About school"
+            }
+          ]
+        }
+      }
+    ]
+  }) }}

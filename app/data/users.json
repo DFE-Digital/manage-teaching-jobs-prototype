@@ -3,28 +3,37 @@
     "username": "peter@courtland.sch.uk",
     "password": "tv",
     "organisation": {
-      "type": "School",
       "name": "Courtland Primary School",
       "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
+        "address1": "10 Seed Street",
+        "town": "London",
+        "postcode": "N19 4PT"
       },
-      "phase": "Primary school"
+      "type": "School",
+      "phase": null,
+      "phaseEditable": true,
+      "ageGroup": "11 to 16",
+      "size": "500",
+      "logo": "https://loremflickr.com/100/100/technics",
+      "photo": "https://loremflickr.com/640/480/people"
     }
   },
   {
     "username": "susy@busheymeads.sch.uk",
     "password": "tv",
     "organisation": {
-      "type": "School",
       "name": "Bushey Meads Secondary School",
       "address": {
-        "address1": "50 Lawrence Street",
-        "town": "Mill Hill",
-        "postcode": "NW7 4YK"
+        "address1": "10 Seed Street",
+        "town": "London",
+        "postcode": "N19 4PT"
       },
-      "phase": "Secondary school"
+      "type": "School",
+      "phase": "Secondary school",
+      "ageGroup": "11 to 16",
+      "size": "500",
+      "logo": "https://loremflickr.com/100/100/technics",
+      "photo": "https://loremflickr.com/640/480/people"
     }
   },
   {
@@ -40,58 +49,88 @@
       },
       "schools": [
         {
-          "name": "Jacobson, Medhurst and Franecki School",
+          "name": "Stroman LLC School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
             "postcode": "N19 4PT"
           },
-          "phase": "Nursery school"
+          "type": "Academy",
+          "phase": "Nursery school",
+          "ageGroup": "11 to 16",
+          "size": "1000",
+          "logo": "https://loremflickr.com/100/100/technics",
+          "photo": "https://loremflickr.com/640/480/people"
         },
         {
-          "name": "Keeling, Ernser and Fisher School",
+          "name": "Greenfelder, Shanahan and Lang School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
             "postcode": "N19 4PT"
           },
-          "phase": "Primary school"
+          "type": "Academy",
+          "phase": "Primary school",
+          "ageGroup": "11 to 16",
+          "size": "500",
+          "logo": "https://loremflickr.com/100/100/technics",
+          "photo": "https://loremflickr.com/640/480/people"
         },
         {
-          "name": "Haley LLC School",
+          "name": "Price - Friesen School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
             "postcode": "W6 1PT"
           },
-          "phase": "Middle school"
+          "type": "Academy",
+          "phase": "Middle school",
+          "ageGroup": "11 to 16",
+          "size": "1000",
+          "logo": "https://loremflickr.com/100/100/technics",
+          "photo": "https://loremflickr.com/640/480/people"
         },
         {
-          "name": "Crona - Dickinson School",
+          "name": "Kemmer LLC School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
             "postcode": "W7 2PT"
           },
-          "phase": "Secondary school"
+          "type": "Academy",
+          "phase": "Secondary school",
+          "ageGroup": "11 to 16",
+          "size": "500",
+          "logo": "https://loremflickr.com/100/100/technics",
+          "photo": "https://loremflickr.com/640/480/people"
         },
         {
-          "name": "Brakus, Sipes and Keebler School",
+          "name": "Metz, Cummerata and Schmitt School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
             "postcode": "W8 3PT"
           },
-          "phase": "Sixth form or college"
+          "type": "Academy",
+          "phase": "Sixth form or college",
+          "ageGroup": "11 to 16",
+          "size": "500",
+          "logo": "https://loremflickr.com/100/100/technics",
+          "photo": "https://loremflickr.com/640/480/people"
         },
         {
-          "name": "Grady Group School",
+          "name": "Stanton Group School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
             "postcode": "W9 4PT"
           },
-          "phase": "Through school"
+          "type": "Academy",
+          "phase": "Through school",
+          "ageGroup": "11 to 16",
+          "size": "1000",
+          "logo": "https://loremflickr.com/100/100/technics",
+          "photo": "https://loremflickr.com/640/480/people"
         }
       ]
     }
@@ -109,58 +148,88 @@
       },
       "schools": [
         {
-          "name": "Keebler - Goldner School",
+          "name": "Kessler - Stoltenberg School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
             "postcode": "N19 4PT"
           },
-          "phase": "Nursery school"
+          "type": "Academy",
+          "phase": "Nursery school",
+          "ageGroup": "11 to 16",
+          "size": "1000",
+          "logo": "https://loremflickr.com/100/100/technics",
+          "photo": "https://loremflickr.com/640/480/people"
         },
         {
-          "name": "Beatty - Harber School",
+          "name": "Schamberger and Sons School",
           "address": {
             "address1": "10 Seed Street",
             "town": "London",
             "postcode": "N19 4PT"
           },
-          "phase": "Primary school"
+          "type": "Academy",
+          "phase": "Primary school",
+          "ageGroup": "11 to 16",
+          "size": "500",
+          "logo": "https://loremflickr.com/100/100/technics",
+          "photo": "https://loremflickr.com/640/480/people"
         },
         {
-          "name": "Gibson - Kris School",
+          "name": "Tromp, Parker and Borer School",
           "address": {
             "address1": "2 Owl Way",
             "town": "London",
             "postcode": "W6 1PT"
           },
-          "phase": "Middle school"
+          "type": "Academy",
+          "phase": "Middle school",
+          "ageGroup": "11 to 16",
+          "size": "100",
+          "logo": "https://loremflickr.com/100/100/technics",
+          "photo": "https://loremflickr.com/640/480/people"
         },
         {
-          "name": "Towne, Murray and Douglas School",
+          "name": "Oberbrunner LLC School",
           "address": {
             "address1": "3 Owl Way",
             "town": "London",
             "postcode": "W7 2PT"
           },
-          "phase": "Secondary school"
+          "type": "Academy",
+          "phase": "Secondary school",
+          "ageGroup": "11 to 16",
+          "size": "500",
+          "logo": "https://loremflickr.com/100/100/technics",
+          "photo": "https://loremflickr.com/640/480/people"
         },
         {
-          "name": "Farrell Inc School",
+          "name": "Roob Inc School",
           "address": {
             "address1": "4 Owl Way",
             "town": "London",
             "postcode": "W8 3PT"
           },
-          "phase": "Sixth form or college"
+          "type": "Academy",
+          "phase": "Sixth form or college",
+          "ageGroup": "11 to 16",
+          "size": "1000",
+          "logo": "https://loremflickr.com/100/100/technics",
+          "photo": "https://loremflickr.com/640/480/people"
         },
         {
-          "name": "Collins LLC School",
+          "name": "Labadie, Hilpert and Hand School",
           "address": {
             "address1": "5 Owl Way",
             "town": "London",
             "postcode": "W9 4PT"
           },
-          "phase": "Through school"
+          "type": "Academy",
+          "phase": "Through school",
+          "ageGroup": "11 to 16",
+          "size": "1000",
+          "logo": "https://loremflickr.com/100/100/technics",
+          "photo": "https://loremflickr.com/640/480/people"
         }
       ]
     }

@@ -2,13 +2,29 @@ const fs = require('fs')
 const path = require('path')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
+const _ = require('lodash');
 const phases = require('../app/data/phases.js')
 
 const generateSchool = (params = {}) => {
   let school = {}
   school.name = params.name || faker.company.name() + ' School'
   school.address = params.address || { address1: '10 Seed Street', town: 'London', postcode: 'N19 4PT' }
-  school.phase = params.phase || 'Primary school'
+  school.type = params.type || faker.helpers.arrayElement(['Academy'])
+
+  if(params.phase) {
+    school.phase = params.phase
+  } else if(params.phase == null) {
+    school.phase = null
+    school.phaseEditable = true
+  } else {
+    school.phase = faker.helpers.arrayElement(phases)
+  }
+
+  // school.phase = (typeof params.phase != 'undefined') ? params.phase :
+  school.ageGroup = params.ageGroup || faker.helpers.arrayElement(['11 to 16'])
+  school.size = params.ageGroup || faker.helpers.arrayElement(['1000', '500', '100'])
+  school.logo = params.logo || faker.image.technics(100, 100)
+  school.photo = params.photo || faker.image.people()
   return school
 }
 
@@ -45,19 +61,18 @@ const generateOrg = (params = {}) => {
   let org = {}
 
   org.type = params.type || faker.helpers.arrayElement([ 'School', 'MAT', 'LA' ])
-  org.name = params.name || faker.company.name({format: 5})
-  org.address = params.address || {
-    address1: '50 Lawrence Street',
-    town: 'Mill Hill',
-    postcode: 'NW7 4YK'
-  }
 
   if(org.type == 'MAT' || org.type == "LA") {
+    org.name = params.name || faker.company.name({format: 5})
+    org.address = params.address || {
+      address1: '50 Lawrence Street',
+      town: 'Mill Hill',
+      postcode: 'NW7 4YK'
+    }
     org.schools = params.schools || generateSchools()
-  }
+  } else {
+    org = generateSchool(params)
 
-  if(org.type == 'School') {
-    org.phase = params.phase || faker.helpers.arrayElement(phases)
   }
 
   return org
@@ -88,8 +103,7 @@ const generateOrgs = () => {
 
   orgs.push(generateOrg({
     name: 'Courtland Primary School',
-    type: 'School',
-    phase: 'Primary school'
+    type: 'School'
   }))
 
   orgs.push(generateOrg({

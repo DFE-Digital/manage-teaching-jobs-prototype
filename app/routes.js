@@ -9,6 +9,7 @@ router.all('*', (req, res, next) => {
   next()
 })
 
+require('./routes/organisation-settings')(router)
 require('./routes/account')(router)
 require('./routes/job-create')(router)
 require('./routes/job-edit')(router)

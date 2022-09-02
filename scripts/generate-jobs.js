@@ -32,7 +32,15 @@ const generateJob = (params = {}) => {
 
   job.title = params.title || generateTitle({organisation: job.organisation, role: job.role})
 
-  job.keyStages = params.keyStages || generateKeyStages({phase: job.organisation.phase || job.organisation.schools[0].phase})
+  let phase = 'Primary school'
+
+  if(job.organisation.schools == 'School') {
+    phase = job.organisation.schools[0].phase
+  } else {
+    phase = job.organisation.phase
+  }
+
+  job.keyStages = params.keyStages || generateKeyStages({phase})
 
   job.subjects = params.subjects || generateSubjects()
 
