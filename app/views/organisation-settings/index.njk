@@ -1,7 +1,7 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'Organisation settings' %}
+{% set title = 'Your organisation' %}
 
 {% set primaryNavId = 'organisationSettings' %}
 
@@ -151,6 +151,7 @@
           <h3 class="govuk-heading-m {% if 1 == 1 %}govuk-!-margin-top-7{% endif %}">
             {{school.name}}
           </h3>
+          <p><a href="#">View school page (opens in new tab)</a></p>
           {{appSchoolSummaryList({ school: school })}}
         {% endfor %}
       {% else %}

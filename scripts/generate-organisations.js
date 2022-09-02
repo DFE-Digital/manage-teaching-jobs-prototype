@@ -11,24 +11,41 @@ const generateSchool = (params = {}) => {
   school.address = params.address || { address1: '10 Seed Street', town: 'London', postcode: 'N19 4PT' }
   school.type = params.type || faker.helpers.arrayElement(['Academy'])
 
-  if(params.phase) {
-    school.phase = params.phase
-  } else if(params.phase == null) {
+  if(params.phase == null) {
     school.phase = null
     school.phaseEditable = true
   } else {
-    school.phase = faker.helpers.arrayElement(phases)
+    school.phase = params.phase || faker.helpers.arrayElement(phases)
   }
 
-  // school.phase = (typeof params.phase != 'undefined') ? params.phase :
   school.ageGroup = params.ageGroup || faker.helpers.arrayElement(['11 to 16'])
   school.size = params.ageGroup || faker.helpers.arrayElement(['1000', '500', '100'])
   school.websiteUrl = params.websiteUrl || faker.internet.url()
-  school.about = params.about || faker.lorem.paragraphs(2, '\n\n')
-  school.supportForEmployees = params.supportForEmployees || faker.lorem.sentences(1)
 
-  school.logo = params.logo || faker.image.technics(100, 100)
-  school.photo = params.photo || faker.image.people()
+  if(params.about == null) {
+    school.about = null
+  } else {
+    school.about = params.about || faker.lorem.paragraphs(2, '\n\n')
+  }
+
+  if(params.supportForEmployees == null) {
+    school.supportForEmployees = null
+  } else {
+    school.supportForEmployees = params.supportForEmployees || faker.lorem.sentences(1)
+  }
+
+  if(params.logo == null) {
+    school.logo = null
+  } else {
+    school.logo = params.logo || faker.image.technics(100, 100)
+  }
+
+  if(params.photo == null) {
+    school.photo = null
+  } else {
+    school.photo = params.photo || faker.image.people()
+  }
+
   return school
 }
 
@@ -112,7 +129,8 @@ const generateOrgs = () => {
 
   orgs.push(generateOrg({
     name: 'Courtland Primary School',
-    type: 'School'
+    type: 'School',
+    about: null
   }))
 
   orgs.push(generateOrg({

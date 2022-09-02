@@ -11,11 +11,19 @@
 {% endset %}
 
 {% set logo %}
-  <img src="{{params.school.logo}}" alt="Logo" width="150">
+  {% if params.school.logo %}
+    <img src="{{params.school.logo}}" alt="Logo" width="150">
+  {% else %}
+    Not entered
+  {% endif %}
 {% endset %}
 
 {% set photo %}
-  <img src="{{params.school.photo}}" alt="Photo" width="100%">
+  {% if params.school.photo %}
+    <img src="{{params.school.photo}}" alt="Photo" width="100%">
+  {% else %}
+    Not entered
+  {% endif %}
 {% endset %}
 
 {{ govukSummaryList({
@@ -107,7 +115,7 @@
           text: "About school"
         },
         value: {
-          html: params.school.about | escape | nl2br
+          html: params.school.about or 'Not entered' | escape | nl2br
         },
         actions: {
           items: [
@@ -124,7 +132,7 @@
           text: "How employees are supported"
         },
         value: {
-          html: params.school.supportForEmployees | nl2br
+          html: params.school.supportForEmployees or 'Not entered' | nl2br
         },
         actions: {
           items: [
