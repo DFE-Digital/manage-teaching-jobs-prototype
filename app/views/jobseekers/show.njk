@@ -1,0 +1,254 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobseekers' %}
+
+{% set title = [jobseeker.profile.firstName, jobseeker.profile.lastName] | join(' ') %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  {% set teachingStatus %}
+    {% if jobseeker.profile.qts == 'Yes' %}
+      QTS awarded in {{jobseeker.profile.qtsAwardedYear}}.
+    {% elseif jobseeker.profile.qts == 'I’m on track to receive QTS' %}
+      On track to receive QTS.
+    {% else %}
+      Does not have QTS.
+    {% endif %}
+  {% endset %}
+
+  {% set locations %}
+        {% for key, location in jobseeker.profile.locations %}
+          {{location.location}} ({{location.radius}})
+          {%- if not loop.last -%}
+          ,
+          {%- endif -%}
+        {% endfor %}
+      {% endset %}
+
+  <div class="govuk-grid-row ">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+        {{title}} {{govukTag({
+          text: 'Looking for a role',
+          classes: 'govuk-tag--green'
+        }) if jobseeker.profile.status == 'Active' and 1 == 2}}
+      </h1>
+      <p>{{teachingStatus}}</p>
+
+      {% if jobseeker.profile.roles %}
+        <div class="app-profile__section app-profile__section--first">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Job preferences
+          </h2>
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Qualified teaching status (QTS)"
+                },
+                value: {
+                  text: teachingStatus
+                }
+              } if teachingStatus | trim | length and 1 == 2,
+              {
+                key: {
+                  text: "Role"
+                },
+                value: {
+                  text: jobseeker.profile.roles | join(', ')
+                }
+              } if jobseeker.profile.roles,
+              {
+                key: {
+                  text: "Education phase"
+                },
+                value: {
+                  text: jobseeker.profile.phases | join(', ')
+                }
+              } if jobseeker.profile.phases,
+              {
+                key: {
+                  text: "Key stage"
+                },
+                value: {
+                  text: jobseeker.profile.keyStages | join(', ')
+                }
+              } if jobseeker.profile.keyStages,
+              {
+                key: {
+                  text: "Subject"
+                },
+                value: {
+                  text: jobseeker.profile.subjects
+                }
+              } if jobseeker.profile.subjects,
+              {
+                key: {
+                  text: "Working pattern"
+                },
+                value: {
+                  text: jobseeker.profile.workingPatterns
+                }
+              } if jobseeker.profile.workingPatterns,
+              {
+                key: {
+                  text: "Location"
+                },
+                value: {
+                  text: locations
+                }
+              }
+            ]
+          }) }}
+        </div>
+      {% endif %}
+
+      {% if jobseeker.profile.about %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            About
+          </h2>
+
+          <p>{{jobseeker.profile.about | nl2br | safe }}</p>
+        </div>
+      {% endif %}
+
+      <div class="app-profile__section">
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Contact details
+        </h2>
+
+        {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Email address"
+                },
+                value: {
+                  html: '<a href="mailto:'+ jobseeker.emailAddress + '">'+ jobseeker.emailAddress + '</a>'
+                }
+              },
+              {
+                key: {
+                  text: "Phone number"
+                },
+                value: {
+                  html: '<a href="tel:'+ jobseeker.profile.phoneNumber + '">'+ jobseeker.profile.phoneNumber + '</a>'
+                }
+              } if jobseeker.profile.phoneNumber
+            ]
+          }) }}
+      </div>
+
+
+
+      {# {% if jobseeker.profile.qts %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Qualified teaching status (QTS)
+          </h2>
+
+
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "QTS"
+                },
+                value: {
+                  text: teachingStatus
+                }
+              } if teachingStatus | trim | length
+            ]
+          }) }}
+        </div>
+      {% endif %} #}
+
+
+
+
+
+      {% if jobseeker.profile.workHistory | length %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Work history
+          </h2>
+          <div class="app-list">
+            {% for id, role in jobseeker.profile.workHistory %}
+              <div class="app-list__item {% if loop.first %}app-list__item--first{% endif %} {% if loop.last %}app-list__item--last{% endif %}">
+                <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-0">
+                  {{role.employer}}
+                </h3>
+                <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{role.role}}</p>
+                <p class="govuk-caption-m govuk-!-margin-bottom-0">
+                  {{role.startDate | monthYear}}
+                  to
+                  {% if role.endDate %}
+                    {{role.endDate | monthYear}}
+                  {% else %}
+                    present
+                  {% endif %}
+                </p>
+                {# <p class="govuk-!-margin-top-2 govuk-!-margin-bottom-0">{{role.description | nl2br }}</p> #}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if jobseeker.profile.qualifications | length %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Qualifications
+          </h2>
+          {% for key, type in qualificationsGroup %}
+            <div class="app-qualification-group {% if loop.first %}app-qualification-group--first{% endif %} {% if loop.last %}app-qualification-group--last{% endif %}">
+              <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">
+                {{key}}s
+              </h3>
+
+              {% for key, qualifications in type %}
+
+                <div class="app-qualifications-group__org-year">
+
+                  <p class="govuk-!-margin-bottom-1">
+                    {% for qualification in qualifications %}
+                      {{qualification.subject}}
+                      {%- if qualification.grade %}
+                        ({{qualification.grade}})
+                      {%- else %}
+                        {% if qualification.type == 'Degree' %}
+                          (not finished yet)
+                        {% endif %}
+                      {%- endif %}
+                      {%- if not loop.last %},{% endif%}
+                    {% endfor %}
+                  </p>
+
+                  <p class="govuk-caption-m govuk-!-margin-bottom-0">
+                    {{qualifications[0].organisation}}
+                    {%- if qualifications[0].year -%}
+                      , {{qualifications[0].year}}
+                    {%- endif %}
+                  </p>
+                </div>
+
+              {% endfor%}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock %}

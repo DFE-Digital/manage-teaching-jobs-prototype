@@ -2,6 +2,10 @@ const { DateTime } = require("luxon")
 
 const filters = {}
 
+filters.monthYear = (date) => {
+  return DateTime.fromISO(date).toFormat('MMMM yyyy')
+}
+
 filters.date = date => {
   return DateTime.fromISO(date).toFormat('d MMMM yyyy')
 }

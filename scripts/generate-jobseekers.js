@@ -13,7 +13,9 @@ const generateSubjects = require('./generators/subjects')
 const generateJobseeker = (params = {}) => {
   let jobseeker = {}
 
-  jobseeker.emailAddress = params.emailAddress
+  jobseeker.id = params.id || ('' + faker.datatype.number({min: 123456, max: 999999}))
+
+  jobseeker.emailAddress = params.emailAddress || faker.internet.email()
 
   jobseeker.profile = params.profile || {}
 
