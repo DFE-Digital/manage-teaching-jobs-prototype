@@ -5,7 +5,7 @@ module.exports = ({phase}) => {
   let keyStages;
 
   switch(phase) {
-    case 'Nursery':
+    case 'Nursery school':
       keyStages = ['Early years']
       break
     case 'Primary school':

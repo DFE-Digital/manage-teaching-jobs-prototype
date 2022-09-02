@@ -25,46 +25,28 @@
 
       <div class="app-job-listings">
         {% for jobseeker in user.jobseekers %}
+
+          {% set teachingStatus %}
+            {% if jobseeker.profile.qts == 'Yes' %}
+              Awarded QTS {{jobseeker.profile.qtsAwardedYear}}
+            {% elseif jobseeker.profile.qts == 'I’m on track to receive QTS' %}
+              On track to receive QTS
+            {% else %}
+              Does not have QTS
+            {% endif %}
+          {% endset %}
+
           <div class="app-job-listings__job">
             <div class="app-job-listings__job-row">
-              <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+              <h2 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-margin-right-2">
                 <a href="/jobseekers/{{jobseeker.id}}">{{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}}</a>
               </h2>
             </div>
-
-            {# {% set teachingStatus %}
-              {% if jobseeker.profile.qts == 'Yes' %}
-                {% if jobseeker.profile.ect == 'Yes' %}
-                  Early career teacher (qualified {{jobseeker.profile.qtsAwardedYear}})
-                {% else %}
-                  Qualified (since {{jobseeker.profile.qtsAwardedYear}})
-                {% endif %}
-              {% elseif jobseeker.profile.qts == 'I’m on track to receive QTS' %}
-                On track to receive QTS
-              {% endif %}
-            {% endset %} #}
-
-            {% set teachingStatus %}
-              {% if jobseeker.profile.qts == 'Yes' %}
-                Qualified {{jobseeker.profile.qtsAwardedYear}}
-              {% elseif jobseeker.profile.qts == 'I’m on track to receive QTS' %}
-                On track to receive QTS
-              {% else %}
-                Does not have QTS
-              {% endif %}
-            {% endset %}
+            <p class="govuk-!-font-size-16 govuk-!-margin-bottom-0 govuk-!-margin-top-1">{{teachingStatus}}</p>
 
             {{ govukSummaryList({
               classes: 'govuk-summary-list--no-border app-summary-list--compact',
               rows: [
-                {
-                  key: {
-                    text: "Qualified teaching status (QTS)"
-                  },
-                  value: {
-                    text: teachingStatus
-                  }
-                },
                 {
                   key: {
                     text: "Role"
