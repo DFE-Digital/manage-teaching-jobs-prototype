@@ -1,5 +1,6 @@
 
 const authentication = require('../middleware/authenticaton')
+const _ = require('lodash')
 
 module.exports = router => {
 
@@ -21,6 +22,28 @@ module.exports = router => {
 
   router.get('/jobseekers/:id', authentication.checkIsAuthenticated, (req, res) => {
     let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
-    res.render('jobseekers/show', { jobseeker })
+
+    let qualifications = jobseeker.profile.qualifications
+
+    let qualificationsGroup = _.sortBy(qualifications, function(item) {
+      return item.year
+    }).reverse()
+
+    // console.log(qualificationsGroup)
+
+    qualificationsGroup = _.groupBy(qualificationsGroup, function(item){
+      return item.type
+    })
+
+    _.forIn(qualificationsGroup, function(value, key, object) {
+      // value = the array
+
+      object[key] = _.groupBy(value, function(item) {
+        return item.year + item.organisation
+      })
+    })
+
+
+    res.render('jobseekers/show', { jobseeker, qualificationsGroup })
   })
 }

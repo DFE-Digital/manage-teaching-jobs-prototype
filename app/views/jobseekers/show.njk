@@ -24,13 +24,13 @@
   {% endset %}
 
   {% set locations %}
-        {% for key, location in jobseeker.profile.locations %}
-          {{location.location}} ({{location.radius}})
-          {%- if not loop.last -%}
-          ,
-          {%- endif -%}
-        {% endfor %}
-      {% endset %}
+    {% for item in jobseeker.profile.locations %}
+      {{item.location}} ({{item.radius}})
+      {%- if not loop.last -%}
+      ,
+      {%- endif -%}
+    {% endfor %}
+  {% endset %}
 
   <div class="govuk-grid-row ">
     <div class="govuk-grid-column-two-thirds">
@@ -178,35 +178,34 @@
 
 
 
-      {% if jobseeker.profile.workHistory | length %}
+      {% if jobseeker.profile.workHistory %}
         <div class="app-profile__section">
           <h2 class="govuk-heading-m govuk-!-font-size-27">
             Work history
           </h2>
           <div class="app-list">
-            {% for id, role in jobseeker.profile.workHistory %}
+            {% for item in jobseeker.profile.workHistory %}
               <div class="app-list__item {% if loop.first %}app-list__item--first{% endif %} {% if loop.last %}app-list__item--last{% endif %}">
                 <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-0">
-                  {{role.employer}}
+                  {{item.employer}}
                 </h3>
-                <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{role.role}}</p>
+                <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{item.role}}</p>
                 <p class="govuk-caption-m govuk-!-margin-bottom-0">
-                  {{role.startDate | monthYear}}
+                  {{item.startDate | monthYear}}
                   to
-                  {% if role.endDate %}
-                    {{role.endDate | monthYear}}
+                  {% if item.endDate %}
+                    {{item.endDate | monthYear}}
                   {% else %}
                     present
                   {% endif %}
                 </p>
-                {# <p class="govuk-!-margin-top-2 govuk-!-margin-bottom-0">{{role.description | nl2br }}</p> #}
               </div>
             {% endfor %}
           </div>
         </div>
       {% endif %}
 
-      {% if jobseeker.profile.qualifications | length %}
+      {% if jobseeker.profile.qualifications %}
         <div class="app-profile__section">
           <h2 class="govuk-heading-m govuk-!-font-size-27">
             Qualifications

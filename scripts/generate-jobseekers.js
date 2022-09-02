@@ -15,7 +15,6 @@ const generateJobseeker = (params = {}) => {
 
   jobseeker.id = params.id || ('' + faker.datatype.number({min: 123456, max: 999999}))
 
-  jobseeker.emailAddress = params.emailAddress || faker.internet.email()
 
   jobseeker.profile = params.profile || {}
 
@@ -24,6 +23,9 @@ const generateJobseeker = (params = {}) => {
   // Personal details
   jobseeker.profile.firstName = _.get(params, 'profile.firstName') || faker.name.firstName()
   jobseeker.profile.lastName = _.get(params, 'profile.lastName') || faker.name.lastName()
+
+  jobseeker.emailAddress = params.emailAddress || `${jobseeker.profile.firstName.toLowerCase()}.${jobseeker.profile.lastName.toLowerCase()}@gmail.com`
+
   jobseeker.profile.providePhoneNumber = _.get(params, 'profile.providePhoneNumber') || faker.helpers.arrayElement(['Yes', 'No'])
 
   if(jobseeker.profile.providePhoneNumber == 'Yes') {
