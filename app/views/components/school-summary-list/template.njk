@@ -6,8 +6,8 @@
   {% endfor %}
 {% endset %}
 
-{% set website %}
-  <a href="https://www.busheymeads.sch.uk">https://www.busheymeads.sch.uk (opens in new tab)</a>
+{% set websiteUrl %}
+  <a href="{{params.school.websiteUrl}}">{{params.school.websiteUrl}} (opens in new tab)</a>
 {% endset %}
 
 {% set logo %}
@@ -90,7 +90,7 @@
           text: "Website"
         },
         value: {
-          html: website
+          html: websiteUrl
         },
         actions: {
           items: [
@@ -107,7 +107,7 @@
           text: "About school"
         },
         value: {
-          html: 'Our school is the best.'
+          html: params.school.about | escape | nl2br
         },
         actions: {
           items: [
@@ -124,14 +124,14 @@
           text: "How employees are supported"
         },
         value: {
-          html: 'We support our employees by doing x and y.'
+          html: params.school.supportForEmployees | nl2br
         },
         actions: {
           items: [
             {
               href: "/organisation/edit/description",
               text: "Change",
-              visuallyHiddenText: "About school"
+              visuallyHiddenText: "About how employees are supported"
             }
           ]
         }

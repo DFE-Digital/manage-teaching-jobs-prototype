@@ -5,12 +5,6 @@
 
 {% set primaryNavId = 'organisationSettings' %}
 
-{% set address %}
-  {% for part, value in user.organisation.address %}
-    {{value}}{% if not loop.last %}, {% endif %}
-  {% endfor %}
-{% endset %}
-
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -20,6 +14,24 @@
 
       {% if user.organisation.schools %}
         <p><a href="#">View organisation page (opens in new tab)</a></p>
+
+        {% set address %}
+          {% for part, value in user.organisation.address %}
+            {{value}}{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        {% endset %}
+
+        {% set websiteUrl %}
+          <a href="{{user.organisation.websiteUrl}}">{{user.organisation.websiteUrl}} (opens in new tab)</a>
+        {% endset %}
+
+        {% set logo %}
+          <img src="{{user.organisation.logo}}" alt="Logo" width="150">
+        {% endset %}
+
+        {% set photo %}
+          <img src="{{user.organisation.photo}}" alt="Photo" width="100%">
+        {% endset %}
 
         {{ govukSummaryList({
           rows: [
@@ -52,7 +64,7 @@
                 text: "Website"
               },
               value: {
-                html: '<a href="https://www.busheymeads.sch.uk">https://www.busheymeads.sch.uk (opens in new tab)</a>'
+                html: websiteUrl
               },
               actions: {
                 items: [
@@ -69,7 +81,7 @@
                 text: "About school"
               },
               value: {
-                html: 'Our school is the best.'
+                html: user.organisation.about
               },
               actions: {
                 items: [
@@ -86,7 +98,7 @@
                 text: "How employees are supported"
               },
               value: {
-                html: 'We support our employees by doing x and y.'
+                html: user.organisation.supportForEmployees
               },
               actions: {
                 items: [
@@ -103,7 +115,7 @@
                   text: "Logo"
                 },
                 value: {
-                  html: '[Todo]'
+                  html: logo
                 },
                 actions: {
                   items: [
@@ -120,7 +132,7 @@
                   text: "Photo"
                 },
                 value: {
-                  html: '[Todo]'
+                  html: photo
                 },
                 actions: {
                   items: [

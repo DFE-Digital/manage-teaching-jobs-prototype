@@ -23,6 +23,10 @@ const generateSchool = (params = {}) => {
   // school.phase = (typeof params.phase != 'undefined') ? params.phase :
   school.ageGroup = params.ageGroup || faker.helpers.arrayElement(['11 to 16'])
   school.size = params.ageGroup || faker.helpers.arrayElement(['1000', '500', '100'])
+  school.websiteUrl = params.websiteUrl || faker.internet.url()
+  school.about = params.about || faker.lorem.paragraphs(2, '\n\n')
+  school.supportForEmployees = params.supportForEmployees || faker.lorem.sentences(1)
+
   school.logo = params.logo || faker.image.technics(100, 100)
   school.photo = params.photo || faker.image.people()
   return school
@@ -69,6 +73,11 @@ const generateOrg = (params = {}) => {
       town: 'Mill Hill',
       postcode: 'NW7 4YK'
     }
+    org.websiteUrl = params.websiteUrl || faker.internet.url()
+    org.about = params.about || faker.lorem.paragraphs(2, '\n\n')
+    org.supportForEmployees = params.supportForEmployees || faker.lorem.sentences(1)
+    org.logo = params.logo || faker.image.technics(100, 100)
+    org.photo = params.photo || faker.image.people()
     org.schools = params.schools || generateSchools()
   } else {
     org = generateSchool(params)
