@@ -107,7 +107,7 @@
                   text: "Key stage"
                 },
                 value: {
-                  text: jobseeker.profile.keyStages | join(', ')
+                  text: jobseeker.profile.keyStages | join(', ') | capitalize
                 }
               } if jobseeker.profile.keyStages,
               {
