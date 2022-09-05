@@ -23,13 +23,17 @@ module.exports = router => {
   router.get('/jobseekers/:id', authentication.checkIsAuthenticated, (req, res) => {
     let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
 
+    let workHistory = jobseeker.profile.workHistory.sort((a, b) => {
+      let dateA = new Date(a.startDate);
+      let dateB = new Date(b.startDate);
+      return dateB - dateA;
+    })
+
     let qualifications = jobseeker.profile.qualifications
 
     let qualificationsGroup = _.sortBy(qualifications, function(item) {
       return item.year
     }).reverse()
-
-    // console.log(qualificationsGroup)
 
     qualificationsGroup = _.groupBy(qualificationsGroup, function(item){
       return item.type
@@ -44,6 +48,10 @@ module.exports = router => {
     })
 
 
-    res.render('jobseekers/show', { jobseeker, qualificationsGroup })
+    res.render('jobseekers/show', {
+      jobseeker,
+      workHistory,
+      qualificationsGroup
+    })
   })
 }

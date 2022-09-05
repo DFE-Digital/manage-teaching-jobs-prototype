@@ -43,8 +43,35 @@
       </h1>
       <p>{{teachingStatus}}</p>
 
+      <div class="app-profile__section app-profile__section--first">
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Contact details
+        </h2>
+
+        {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Email address"
+                },
+                value: {
+                  html: '<a href="mailto:'+ jobseeker.emailAddress + '">'+ jobseeker.emailAddress + '</a>'
+                }
+              },
+              {
+                key: {
+                  text: "Phone number"
+                },
+                value: {
+                  html: '<a href="tel:'+ jobseeker.profile.phoneNumber + '">'+ jobseeker.profile.phoneNumber + '</a>'
+                }
+              } if jobseeker.profile.phoneNumber
+            ]
+          }) }}
+      </div>
+
       {% if jobseeker.profile.roles %}
-        <div class="app-profile__section app-profile__section--first">
+        <div class="app-profile__section">
           <h2 class="govuk-heading-m govuk-!-font-size-27">
             Job preferences
           </h2>
@@ -122,32 +149,7 @@
         </div>
       {% endif %}
 
-      <div class="app-profile__section">
-        <h2 class="govuk-heading-m govuk-!-font-size-27">
-          Contact details
-        </h2>
 
-        {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "Email address"
-                },
-                value: {
-                  html: '<a href="mailto:'+ jobseeker.emailAddress + '">'+ jobseeker.emailAddress + '</a>'
-                }
-              },
-              {
-                key: {
-                  text: "Phone number"
-                },
-                value: {
-                  html: '<a href="tel:'+ jobseeker.profile.phoneNumber + '">'+ jobseeker.profile.phoneNumber + '</a>'
-                }
-              } if jobseeker.profile.phoneNumber
-            ]
-          }) }}
-      </div>
 
 
 
@@ -178,13 +180,13 @@
 
 
 
-      {% if jobseeker.profile.workHistory %}
+      {% if workHistory.length %}
         <div class="app-profile__section">
           <h2 class="govuk-heading-m govuk-!-font-size-27">
             Work history
           </h2>
           <div class="app-list">
-            {% for item in jobseeker.profile.workHistory %}
+            {% for item in workHistory %}
               <div class="app-list__item {% if loop.first %}app-list__item--first{% endif %} {% if loop.last %}app-list__item--last{% endif %}">
                 <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-0">
                   {{item.employer}}

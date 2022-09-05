@@ -91,7 +91,14 @@ const generateJobseeker = (params = {}) => {
     {
       employer: 'Colindale Primary School',
       role: 'Teacher',
-      startDate: DateTime.fromObject({ year: 2018, month: 1 }).toISO(),
+      startDate: DateTime.fromObject({ year: 2016, month: 1 }).toISO(),
+      endDate: DateTime.fromObject({ year: 2018, month: 12 }).toISO(),
+      currentRole: 'No'
+    },
+    {
+      employer: 'Bolton Primary School',
+      role: 'Teacher',
+      startDate: DateTime.fromObject({ year: 2019, month: 1 }).toISO(),
       endDate: DateTime.fromObject({ year: 2019, month: 12 }).toISO(),
       currentRole: 'No'
     },
@@ -104,7 +111,7 @@ const generateJobseeker = (params = {}) => {
   ]
 
   // About
-  jobseeker.profile.about = _.get(params, 'profile.about') || faker.lorem.paragraphs(2)
+  jobseeker.profile.about = _.get(params, 'profile.about') || faker.lorem.paragraphs(2, '\n\n')
 
   return jobseeker
 }
