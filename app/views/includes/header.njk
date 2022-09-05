@@ -10,9 +10,9 @@
 {% else %}
   {% set navigationItems = [
     {
-      href: "/organisation-settings",
+      href: "/organisation",
       text: "Your organisation",
-      active: primaryNavId == 'organisationSettings'
+      active: primaryNavId == 'organisation'
     },
     {
       href: "#",
@@ -25,7 +25,7 @@
       active: primaryNavId == 'notifications'
     } if 1 == 2,
     {
-      href: "#",
+      href: "/account",
       text: "Your account",
       active: primaryNavId == 'account'
     }, {
