@@ -1,7 +1,11 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'There’s information missing about your school' %}
+{% if user.organisation.schools %}
+  {% set title = 'There’s information missing about your organisation' %}
+{% else %}
+  {% set title = 'There’s information missing about your school' %}
+{% endif%}
 
 {% set primaryNavId = 'organisation' %}
 
@@ -13,7 +17,11 @@
         {{title}}
       </h1>
 
-      <p>The information that you add will help jobseekers find a job at your school.</p>
+      {% if user.organisation.schools %}
+        <p>The information that you add will help jobseekers find a job at your organisation.</p>
+      {% else %}
+        <p>The information that you add will help jobseekers find a job at your school.</p>
+      {% endif%}
 
       {{ govukButton({
         text: "Add missing information",

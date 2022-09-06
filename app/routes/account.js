@@ -12,7 +12,11 @@ module.exports = router => {
       let hint = user.organisation.type
 
       if(user.organisation.type == 'School') {
-        hint = user.organisation.phase
+        if(user.organisation.phase) {
+          hint = user.organisation.phase
+        } else {
+          hint = 'School'
+        }
       } else {
         hint = user.organisation.type
       }

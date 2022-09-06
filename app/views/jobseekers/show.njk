@@ -32,16 +32,29 @@
     {% endfor %}
   {% endset %}
 
+  {{appPageHeader({
+    classes: 'govuk-!-margin-bottom-4',
+    heading: {
+      text: title,
+      classes: 'govuk-heading-xl'
+    },
+    items: [{
+      text: 'Invite to apply for a job',
+      href: '/jobs/new'
+    }]
+  })}}
+
   <div class="govuk-grid-row ">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
-        {{title}} {{govukTag({
-          text: 'Looking for a role',
-          classes: 'govuk-tag--green'
-        }) if jobseeker.profile.status == 'Active' and 1 == 2}}
-      </h1>
+      {# <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+        {{title}}
+      </h1> #}
       <p>{{teachingStatus}}</p>
+
+      {# {{ govukButton({
+        text: "Invite to apply for a job"
+      }) }} #}
 
       <div class="app-profile__section app-profile__section--first">
         <h2 class="govuk-heading-m govuk-!-font-size-27">

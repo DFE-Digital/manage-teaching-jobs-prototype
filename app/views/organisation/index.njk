@@ -7,7 +7,7 @@
 
 {% block content %}
 
-  {% set notificationBannerHtml %}
+  {# {% set notificationBannerHtml %}
     <h2 class="govuk-heading-m">
       Information about your school is missing
     </h2>
@@ -31,17 +31,17 @@
         </li>
       </ul>
     </div>
+  {% endset %} #}
 
-  {% endset %}
-
-  {# {{ govukNotificationBanner({
-    html: notificationBannerHtml
-  }) }} #}
-
-  {{ govukNotificationBanner({
-    text: "Information about your school is missing"
-  }) }}
-
+  {% if user.organisation.schools %}
+    {{ govukNotificationBanner({
+      text: "Information about your organisation is missing"
+    }) }}
+  {% else %}
+    {{ govukNotificationBanner({
+      text: "Information about your school is missing"
+    }) }}
+  {% endif %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -63,12 +63,34 @@
           <a href="{{user.organisation.websiteUrl}}">{{user.organisation.websiteUrl}} (opens in new tab)</a>
         {% endset %}
 
+        {% set about %}
+          {% if user.organisation.about %}
+            {{user.organisation.logo | nl2br}}
+          {% else %}
+            <div class="app-field-highlight">
+              <p class="app-field-highlight__instruction">Enter information about your organisation</p>
+              Not entered
+            </div>
+          {% endif %}
+        {% endset %}
+
+        {% set howEmployeesAreSupported %}
+          {% if user.organisation.supportForEmployees %}
+            {{user.organisation.supportForEmployees | escape | nl2br}}
+          {% else %}
+            <div class="app-field-highlight">
+              <p class="app-field-highlight__instruction">Enter information about what your organisation offers its employees</p>
+              Not entered
+            </div>
+          {% endif %}
+        {% endset %}
+
         {% set logo %}
           {% if user.organisation.logo %}
             <img src="{{user.organisation.logo}}" alt="Logo" width="150">
           {% else %}
             <div class="app-field-highlight">
-              <p class="app-field-highlight__instruction">Blah</p>
+              <p class="app-field-highlight__instruction">Add organisation logo</p>
               Not entered
             </div>
           {% endif %}
@@ -79,7 +101,7 @@
             <img src="{{user.organisation.photo}}" alt="Photo" width="100%">
           {% else %}
             <div class="app-field-highlight">
-              <p class="app-field-highlight__instruction">Blah</p>
+              <p class="app-field-highlight__instruction">Add organisation photo</p>
               Not entered
             </div>
           {% endif %}
@@ -131,27 +153,27 @@
             },
             {
               key: {
-                text: "About school"
+                text: "About the organisation"
               },
               value: {
-                html: user.organisation.about or 'Not entered'
+                html: about
               },
               actions: {
                 items: [
                   {
                     href: "/organisation/edit/description",
                     text: "Change",
-                    visuallyHiddenText: "About school"
+                    visuallyHiddenText: "About the organisation"
                   }
                 ]
               }
             },
             {
               key: {
-                text: "How employees are supported"
+                text: "What the organisation offers its employees"
               },
               value: {
-                html: user.organisation.supportForEmployees or 'Not entered'
+                html: howEmployeesAreSupported
               },
               actions: {
                 items: [
@@ -165,7 +187,7 @@
             },
             {
                 key: {
-                  text: "Logo"
+                  text: "Organisation logo"
                 },
                 value: {
                   html: logo
@@ -182,7 +204,7 @@
               },
               {
                 key: {
-                  text: "Photo"
+                  text: "Organisation photo"
                 },
                 value: {
                   html: photo
@@ -215,10 +237,14 @@
                   text: "Incomplete",
                   classes: 'govuk-!-margin-left-1 govuk-tag--grey'
                 }) }} #}
-                {{ govukInsetText({
+                {# {{ govukInsetText({
                   text: "This school is missing some information.",
                   classes: 'govuk-!-margin-top-2 govuk-!-margin-bottom-0'
-                }) }}
+                }) }} #}
+                <div class="app-field-highlight govuk-!-margin-top-2">
+                  <p class="app-field-highlight__instruction">This school is missing information</p>
+                  {# <p class="govuk-!-margin-bottom-0">Missing some information</p> #}
+                </div>
               {% endif %}
             </div>
 
