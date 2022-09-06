@@ -2,6 +2,7 @@ const users = require('../data/users.json')
 const organisations = require('../data/organisations.json')
 const jobs = require('../data/jobs.json')
 const jobseekers = require('../data/jobseekers.json')
+const organisationHelper = require('../helpers/organisation')
 
 module.exports = router => {
 
@@ -45,7 +46,11 @@ module.exports = router => {
 
     res.locals.user = req.session.user = user
 
-    if(req.body.returnUrl) {
+    let missingOrganisationInformation = organisationHelper.getMissingInformation(user.organisation)
+
+    if(missingOrganisationInformation.length) {
+      res.redirect('/organisation-incomplete')
+    } else if(req.body.returnUrl) {
       res.redirect(req.body.returnUrl)
     } else {
       res.redirect('/jobs')

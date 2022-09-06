@@ -1,0 +1,28 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'There’s information missing about your school' %}
+
+{% set primaryNavId = 'organisation' %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <p>The information that you add will help jobseekers find a job at your school.</p>
+
+      {{ govukButton({
+        text: "Add missing information",
+        href: "/organisation"
+      }) }}
+
+      <p><a href="/jobs">Skip to job listings</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

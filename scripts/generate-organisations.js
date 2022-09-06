@@ -91,10 +91,31 @@ const generateOrg = (params = {}) => {
       postcode: 'NW7 4YK'
     }
     org.websiteUrl = params.websiteUrl || faker.internet.url()
-    org.about = params.about || faker.lorem.paragraphs(2, '\n\n')
-    org.supportForEmployees = params.supportForEmployees || faker.lorem.sentences(1)
-    org.logo = params.logo || faker.image.technics(100, 100)
-    org.photo = params.photo || faker.image.people()
+
+    if(params.about == null) {
+      org.about = null
+    } else {
+      org.about = params.about || faker.lorem.paragraphs(2, '\n\n')
+    }
+
+    if(params.supportForEmployees == null) {
+      org.supportForEmployees = null
+    } else {
+      org.supportForEmployees = params.supportForEmployees || faker.lorem.sentences(1)
+    }
+
+    if(params.logo == null) {
+      org.logo = null
+    } else {
+      org.logo = params.logo || faker.image.technics(100, 100)
+    }
+
+    if(params.photo == null) {
+      org.photo = null
+    } else {
+      org.photo = params.photo || faker.image.people()
+    }
+
     org.schools = params.schools || generateSchools()
   } else {
     org = generateSchool(params)
@@ -141,7 +162,9 @@ const generateOrgs = () => {
 
   orgs.push(generateOrg({
     name: 'Royal Academy Trust',
-    type: 'MAT'
+    type: 'MAT',
+    phase: null,
+    about: null
   }))
 
   orgs.push(generateOrg({

@@ -10,11 +10,47 @@
   <a href="{{params.school.websiteUrl}}">{{params.school.websiteUrl}} (opens in new tab)</a>
 {% endset %}
 
+{% set phase %}
+  {% if params.school.phase %}
+    {{params.school.phase}}
+  {% else %}
+    <div class="app-field-highlight">
+      <p class="app-field-highlight__instruction">Enter the education phase</p>
+      Not entered
+    </div>
+  {% endif %}
+{% endset %}
+
+{% set about %}
+  {% if params.school.about %}
+    {{params.school.about | escape | nl2br}}
+  {% else %}
+    <div class="app-field-highlight">
+      <p class="app-field-highlight__instruction">Enter information about the school</p>
+      Not entered
+    </div>
+  {% endif %}
+{% endset %}
+
+{% set howEmployeesAreSupported %}
+  {% if params.school.supportForEmployees %}
+    {{params.school.supportForEmployees | escape | nl2br}}
+  {% else %}
+    <div class="app-field-highlight">
+      <p class="app-field-highlight__instruction">Enter information about what the school offers its employees</p>
+      Not entered
+    </div>
+  {% endif %}
+{% endset %}
+
 {% set logo %}
   {% if params.school.logo %}
     <img src="{{params.school.logo}}" alt="Logo" width="150">
   {% else %}
-    Not entered
+    <div class="app-field-highlight">
+      <p class="app-field-highlight__instruction">Add a school logo</p>
+      Not entered
+    </div>
   {% endif %}
 {% endset %}
 
@@ -22,7 +58,10 @@
   {% if params.school.photo %}
     <img src="{{params.school.photo}}" alt="Photo" width="100%">
   {% else %}
-    Not entered
+    <div class="app-field-highlight">
+      <p class="app-field-highlight__instruction">Add a school photo</p>
+      Not entered
+    </div>
   {% endif %}
 {% endset %}
 
@@ -57,7 +96,7 @@
           text: "Education phase"
         },
         value: {
-          text: params.school.phase or 'Not entered'
+          html: phase
         },
         actions: {
           items: [
@@ -115,7 +154,7 @@
           text: "About school"
         },
         value: {
-          html: params.school.about or 'Not entered' | escape | nl2br
+          html: about
         },
         actions: {
           items: [
@@ -129,10 +168,10 @@
       },
       {
         key: {
-          text: "How employees are supported"
+          text: "What the school offers its employees"
         },
         value: {
-          html: params.school.supportForEmployees or 'Not entered' | nl2br
+          html: howEmployeesAreSupported
         },
         actions: {
           items: [
@@ -146,7 +185,7 @@
       },
       {
         key: {
-          text: "Logo"
+          text: "School logo"
         },
         value: {
           html: logo
@@ -163,7 +202,7 @@
       },
       {
         key: {
-          text: "Photo"
+          text: "School photo"
         },
         value: {
           html: photo

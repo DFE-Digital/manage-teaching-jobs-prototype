@@ -12,3 +12,23 @@ exports.getLocations = (org) => {
 
   return locations
 }
+
+exports.getMissingInformation = (org) => {
+  let attrs = [
+    'phase',
+    'about',
+    'supportForEmployees',
+    'logo',
+    'photo'
+  ]
+
+  let missing = []
+
+  attrs.forEach(item => {
+    if(!org[item]) {
+      missing.push(item)
+    }
+  })
+
+  return missing
+}

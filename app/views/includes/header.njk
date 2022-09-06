@@ -8,10 +8,11 @@
   }]
 %}
 {% else %}
+
   {% set navigationItems = [
     {
       href: "/organisation",
-      text: "Your organisation",
+      html: 'Organisation profile',
       active: primaryNavId == 'organisation'
     },
     {

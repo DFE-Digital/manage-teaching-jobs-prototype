@@ -31,13 +31,13 @@ $app-images-path: "/public/images/";
 
 .govuk-header__logo {
   @include govuk-media-query($from: tablet) {
-    width: 57%;
+    width: 55%;
   }
 }
 
 .govuk-header__content {
   @include govuk-media-query($from: tablet) {
-    width: 43%;
+    width: 45%;
   }
 }
 
@@ -194,4 +194,9 @@ h1 .govuk-tag {
 
 .app-qualifications-group__org-year {
   margin-bottom: govuk-spacing(3);
+}
+
+.app-school {
+  padding: govuk-spacing(3) 0;
+  border-bottom: 1px solid govuk-colour('mid-grey');
 }
