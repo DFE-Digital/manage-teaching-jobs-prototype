@@ -9,10 +9,18 @@
 %}
 {% else %}
 
+  {% if user.organisation.schools %}
+    {% set organisationLabel = 'Organisation profile' %}
+  {% else %}
+    {% set organisationLabel = 'School profile' %}
+  {% endif %}
+
+
+
   {% set navigationItems = [
     {
       href: "/organisation",
-      html: 'Organisation profile',
+      html: organisationLabel,
       active: primaryNavId == 'organisation'
     },
     {

@@ -1,37 +1,15 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'Organisation profile' %}
+{% if user.organisation.schools %}
+  {% set title = 'Organisation profile' %}
+{% else %}
+  {% set title = 'School profile' %}
+{% endif %}
 
 {% set primaryNavId = 'organisation' %}
 
 {% block content %}
-
-  {# {% set notificationBannerHtml %}
-    <h2 class="govuk-heading-m">
-      Information about your school is missing
-    </h2>
-
-    <div class="app-notification-banner-summary__body">
-      <ul class="govuk-list app-notification-banner-summary__list">
-        <li>
-          <a href="#publish-date">Education phase is missing</a>
-        </li>
-        <li>
-          <a href="#publish-date">Information about the school is missing</a>
-        </li>
-        <li>
-          <a href="#publish-date">Information about how employees are supported is missing</a>
-        </li>
-        <li>
-          <a href="#publish-date">Logo is missing</a>
-        </li>
-        <li>
-          <a href="#publish-date">Photo is missing</a>
-        </li>
-      </ul>
-    </div>
-  {% endset %} #}
 
   {% if user.organisation.schools %}
     {{ govukNotificationBanner({
