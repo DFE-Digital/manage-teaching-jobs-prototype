@@ -1,0 +1,69 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Check logo and add to school profile' %}
+{% if user.organisation.schools %}
+  {% set caption = 'Organisation profile' %}
+  {% set label = 'Organisation logo' %}
+{% else %}
+  {% set caption = 'School profile' %}
+  {% set label = 'School logo' %}
+{% endif %}
+
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+      {% set logo %}
+        <img src="{{data.logo}}" alt="Logo" width="150">
+      {% endset %}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: label
+            },
+            value: {
+              html: logo
+            },
+            actions: {
+              items: [
+                {
+                  href: "/organisation/edit-logo",
+                  text: "Change",
+                  visuallyHiddenText: "Logo"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form method="post">
+        {{ govukButton({
+          text: "Add to school profile"
+        }) }}
+      </form>
+      <p><a href="/organisation">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}
