@@ -179,21 +179,23 @@ h1 .govuk-tag {
   }
 }
 
-.app-qualification-group {
+.app-qualifications {
+  &__item {
 
-  h2, h3 {
-    padding-top: govuk-spacing(6);
-  }
-
-  &--first {
     h2, h3 {
-      padding-top: 0;
+      padding-top: govuk-spacing(6);
+    }
+
+    &--first {
+      h2, h3 {
+        padding-top: 0;
+      }
     }
   }
-}
 
-.app-qualifications-group__org-year {
-  margin-bottom: govuk-spacing(3);
+  &__item-section {
+    margin-bottom: govuk-spacing(3);
+  }
 }
 
 .app-school {
