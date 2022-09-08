@@ -13,11 +13,11 @@
 
   {% if user.organisation.schools %}
     {{ govukNotificationBanner({
-      text: "Information about your organisation is missing"
+      text: "Complete your organisation profile"
     }) }}
   {% else %}
     {{ govukNotificationBanner({
-      text: "Information about your school is missing"
+      text: "Complete your school profile"
     }) }}
   {% endif %}
 
