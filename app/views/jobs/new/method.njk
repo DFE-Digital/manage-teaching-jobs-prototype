@@ -47,7 +47,7 @@
                 text: "First name"
               },
               value: {
-                text: "Roy"
+                text: "Jane"
               }
             },
             {
@@ -63,7 +63,7 @@
                 text: "Address"
               },
               value: {
-                html: '50 Lawrence Street<br>London<br>N1 4SP'
+                html: '1 House Street<br>Townington<br>AB1 2CD'
               }
             },
             {
@@ -71,7 +71,7 @@
                 text: "Email address"
               },
               value: {
-                text: "roy.smith@example.com"
+                text: "jane.smith@gmail.com"
               }
             },
             {
@@ -79,7 +79,7 @@
                 text: "Phone number"
               },
               value: {
-                text: "07903 451 321"
+                text: "07123 456 789"
               }
             },
             {
@@ -87,7 +87,7 @@
                 text: "Teacher reference number (TRN)"
               },
               value: {
-                text: "1234567"
+                text: "123456"
               }
             },
             {
@@ -112,7 +112,7 @@
                 text: "Do you have qualified teacher status (QTS)?"
               },
               value: {
-                text: "I’m on track to receive my QTS"
+                text: "Yes, 2021"
               }
             },
             {
@@ -130,86 +130,151 @@
           Qualifications
         </h2>
 
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Stuff"
-              },
-              value: {
-                text: "Stuff"
-              }
-            },
-            {
-              key: {
-                text: "Stuff"
-              },
-              value: {
-                text: "Stuff"
-              }
-            }
-          ]
-        }) }}
-
         <h2 class="govuk-heading-m">
           Work history
         </h2>
-
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Stuff"
-              },
-              value: {
-                text: "Stuff"
-              }
-            },
-            {
-              key: {
-                text: "Stuff"
-              },
-              value: {
-                text: "Stuff"
-              }
-            }
-          ]
-        }) }}
 
         <h2 class="govuk-heading-m">
           Personal statement
         </h2>
 
-        <p>Nunc non diam ac felis placerat vestibulum id a purus. Nam venenatis efficitur feugiat. Nunc tincidunt nulla lobortis, blandit purus quis, lacinia nisl. Donec malesuada augue eu nisl gravida, et eleifend ipsum tristique.</p>
-        <p>Quisque mollis, enim non volutpat tristique, est nibh lacinia nisi, quis varius ex enim tempor orci. Sed in dignissim ex.</p>
+        <p>As an English teacher, I am extremely passionate about instilling a love of reading and the written word into young people. I have been interested in a position at your school for a number of years and was thrilled to see this opportunity. I received my QTS in 2019, and have since worked as an English teacher in a secondary school in Sheffield.</p>
+
+        <p>In the classroom, I always strive to modify my approach to suit a range of abilities and motivation. By planning lessons around my students’ interests, I have been able to inspire even the most unmotivated readers into a love of books. For example, teaching descriptive writing by looking at their favourite sports and persuasive writing via marketing materials for their favourite shops. Furthermore, I have worked with dozens of students for whom English is their second language and nothing motivates me more than seeing that lightbulb moment happen when they can see their own progress. Last year, 95% of my GCSE students passed with grade 5 or above, and I have a proven track record for ensuring all of my KS3 students improve by at least two grades over years 7 to 9.</p>
+
+        <p>Moreover, I believe that good teaching doesn’t just happen in the classroom. I am a strong advocate for student wellbeing and pastoral support and have greatly enjoyed leading a morning form class for the last three years. Also, in my current school I have contributed to the English department by running a weekly book club, and organising several school trips to literary locations such as Haworth and Stratford Upon Avon, as well as visits to see plays on the curriculum.</p>
+
+        <p>I really resonate with your school’s ethos around inclusion and leaving no student behind, and I hope to be an asset to your English department, while continuing to grow as a teacher.</p>
 
         <h2 class="govuk-heading-m">
           References
         </h2>
 
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+          John Thompson
+        </h3>
+
         {{ govukSummaryList({
           rows: [
             {
               key: {
-                text: "Stuff"
+                text: "Job title"
               },
               value: {
-                text: "Stuff"
+                html: 'Head of English, Sheffield Secondary School'
               }
             },
             {
               key: {
-                text: "Stuff"
+                text: "Relationship to applicant"
               },
               value: {
-                text: "Stuff"
+                html: "Line manager"
+              }
+            },
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                html: "john.thompson@english.sheffield.ac.uk"
+              }
+            }
+          ]
+        }) }}
+
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
+          Laura Davison
+        </h3>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Job title"
+              },
+              value: {
+                html: 'Head of English, Townington Secondary School'
+              }
+            },
+            {
+              key: {
+                text: "Relationship to applicant"
+              },
+              value: {
+                html: "Line manager"
+              }
+            },
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                html: "l.davison@english.townington.ac.uk"
               }
             }
           ]
         }) }}
 
         <h2 class="govuk-heading-m">
-          Disability support and other needs
+          Equal opportunities and recruitment monitoring
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Do you consider yourself to have a disability as defined by the Equality Act 2010?"
+              },
+              value: {
+                html: "No"
+              }
+            },
+            {
+              key: {
+                text: "How old are you?"
+              },
+              value: {
+                html: "25 to 29"
+              }
+            },
+            {
+              key: {
+                text: "How would you describe your gender?"
+              },
+              value: {
+                html: "Woman"
+              }
+            },
+            {
+              key: {
+                text: "How would you describe your sexual orientation?"
+              },
+              value: {
+                html: "Bisexual"
+              }
+            },
+            {
+              key: {
+                text: "What is your ethnic group?"
+              },
+              value: {
+                html: "Mixed or multiple ethnic group"
+              }
+            },
+            {
+              key: {
+                text: "What is your religion or belief?"
+              },
+              value: {
+                html: "No religion, atheist or agnostic"
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Ask for support if you have a disability or other needs
         </h2>
 
         {{ govukSummaryList({
@@ -219,7 +284,7 @@
                 text: "Do you want to ask for support so that you can attend an interview?"
               },
               value: {
-                html: "Yes<br>Sit iusto voluptatum. Natus autem minima."
+                html: "No, I do not need support"
               }
             }
           ]
@@ -233,7 +298,7 @@
           rows: [
             {
               key: {
-                text: "Do you have any family or close relationship with people within Bexleyheath Academy?"
+                text: "Do you have any family or close relationship with people within St Thomas More Catholic School?"
               },
               value: {
                 html: "No"
