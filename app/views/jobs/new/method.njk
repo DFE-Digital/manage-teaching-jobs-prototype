@@ -130,6 +130,52 @@
           Qualifications
         </h2>
 
+        <div class="app-qualification-group app-qualification-group--first">
+          <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">
+            Degrees
+          </h3>
+          <p class="govuk-!-margin-bottom-1">
+            BA English Literature (2:1)
+          </p>
+          <p class="govuk-caption-m govuk-!-margin-bottom-0">Townington University, 2016</p>
+        </div>
+
+        <div class="app-qualification-group">
+          <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">
+            A levels
+          </h3>
+          <p class="govuk-!-margin-bottom-1">
+            English Literature (A),
+            History (B),
+            French (A)
+          </p>
+          <p class="govuk-caption-m govuk-!-margin-bottom-0">Townington Secondary School, 2012</p>
+        </div>
+
+        <div class="app-qualification-group ">
+          <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1"> GCSEs </h3>
+          <p class="govuk-!-margin-bottom-1">
+            Maths (A),
+            English Literature (A),
+            English Language (B),
+            History (C),
+            French (A),
+            Music (B),
+            Geography (A)
+          </p>
+          <p class="govuk-caption-m govuk-!-margin-bottom-0">Townington Secondary School, 2010</p>
+        </div>
+
+        <div class="app-qualification-group govuk-!-margin-bottom-8">
+          <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">
+            Other qualifications and courses
+          </h3>
+          <p class="govuk-!-margin-bottom-1">
+            PGCE English with QTS
+          </p>
+          <p class="govuk-caption-m govuk-!-margin-bottom-0">Townington University, 2019</p>
+        </div>
+
         <h2 class="govuk-heading-m">
           Work history
         </h2>
@@ -318,7 +364,8 @@
 
       {{ govukDetails({
         summaryText: "See what an application form looks like",
-        html: example
+        html: example,
+        open: true
       }) }}
 
       <form action="/jobs/new/method" method="post">
