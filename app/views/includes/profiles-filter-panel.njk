@@ -1,19 +1,6 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[role]",
-    name: "filters[role]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Role",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: roles
-  }) }}
-
-  {{ govukCheckboxes({
     idPrefix: "filters[qts]",
     name: "filters[qts]",
     classes: "govuk-checkboxes--small",
@@ -39,12 +26,25 @@
   }) }}
 
   {{ govukCheckboxes({
+    idPrefix: "filters[role]",
+    name: "filters[role]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Preferred role",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: roles
+  }) }}
+
+  {{ govukCheckboxes({
     idPrefix: "filters[workingPatterns]",
     name: "filters[workingPatterns]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Working pattern",
+        text: "Preferred working pattern",
         classes: "govuk-fieldset__legend--s"
       }
     },
@@ -63,7 +63,7 @@
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Education phase",
+        text: "Preferred education phase",
         classes: "govuk-fieldset__legend--s"
       }
     },
@@ -76,7 +76,7 @@
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Key stage",
+        text: "Preferred key stage",
         classes: "govuk-fieldset__legend--s"
       }
     },
@@ -101,12 +101,14 @@
     }]
   }) }}
 
+  {% if user.organisation.phase == 'Secondary' or user.organisation.phase == 'Sixth form or college' or user.organisation.phase == 'Through school' %}
+
   {{ appCheckboxFilter({
     idPrefix: "subjects",
     name: "filters[subjects]",
     classes: "govuk-checkboxes--small",
     legend: {
-      text: "Subject",
+      text: "Preferred subject",
       classes: "govuk-fieldset__legend--s"
     },
     items: [
@@ -331,6 +333,8 @@
       }
     ]
   }) }}
+
+  {% endif %}
 
 {% endset %}
 

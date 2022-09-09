@@ -10,9 +10,6 @@
     {{title}}
   </h1>
 
-  {# <p>They will appear as jobseekers add profiles yada.</p> #}
-  {# <p>This only shows jobseekers who can commute to your school.</p> #}
-
   <div class="app-filter-layout">
     <div class="app-filter-layout__filter">
       {% include "includes/profiles-filter-panel.njk" %}
@@ -23,7 +20,7 @@
         <div class="app-action-bar__filter"></div>
       </div>
 
-      <div class="app-job-listings">
+      <div class="app-list">
         {% for jobseeker in user.jobseekers %}
 
           {% set teachingStatus %}
@@ -36,55 +33,87 @@
             {% endif %}
           {% endset %}
 
-          <div class="app-job-listings__job">
-            <div class="app-job-listings__job-row">
+          <div class="app-list__item">
               <h2 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-margin-right-2">
                 <a href="/jobseekers/{{jobseeker.id}}">{{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}}</a>
+            {# <span class="govuk-!-margin-left-1 govuk-!-font-size-16 govuk-!-font-weight-regular">{{teachingStatus}}</span> #}
               </h2>
-            </div>
-            <p class="govuk-!-font-size-16 govuk-!-margin-bottom-0 govuk-!-margin-top-1">{{teachingStatus}}</p>
+
+            {# <p class="govuk-!-font-size-16 govuk-!-margin-bottom-0 govuk-!-margin-top-3">
+
+              {% for workingPattern in jobseeker.profile.workingPatterns %}
+              Prefers a
+                {{workingPattern | lower}}
+
+                {% if jobseeker.profile.workingPatterns.length > 1 %}
+                  {% if loop.first %}
+                    or
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+
+              role as a
+
+              {% for role in jobseeker.profile.roles %}
+                {{role | lower}}
+
+                {% if jobseeker.profile.roles.length > 1 %}
+                  {% if loop.last %}
+                    or
+                  {% else %}
+                    ,
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+
+              {% if %}
+
+              .
+            </p> #}
+
+            <p class="govuk-!-font-size-16 govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{teachingStatus}}</p>
 
             {{ govukSummaryList({
               classes: 'govuk-summary-list--no-border app-summary-list--compact',
               rows: [
                 {
                   key: {
-                    text: "Role"
+                    text: "Preferred role"
                   },
                   value: {
-                    text: jobseeker.profile.roles | join(', ')
+                    html: jobseeker.profile.roles | join(', ')
                   }
                 },
                 {
                   key: {
-                    text: "Education phase"
+                    text: "Preferred education phase"
                   },
                   value: {
-                    text: jobseeker.profile.phases | join(', ')
+                    text: jobseeker.profile.phases | join(', ') | capitalize
                   }
                 },
                 {
                   key: {
-                    text: "Key stage"
+                    text: "Preferred key stage"
                   },
                   value: {
-                    text: jobseeker.profile.keyStages | join(', ')
+                    text: jobseeker.profile.keyStages | join(', ') | capitalize
                   }
                 },
                 {
                   key: {
-                    text: "Working pattern"
+                    text: "Preferred working pattern"
                   },
                   value: {
-                    text: jobseeker.profile.workingPatterns | join(', ')
+                    text: jobseeker.profile.workingPatterns | join(', ') | capitalize
                   }
                 },
                 {
                   key: {
-                    text: "Subject"
+                    text: "Preferred subject"
                   },
                   value: {
-                    text: jobseeker.profile.subjects | join(', ')
+                    text: jobseeker.profile.subjects | join(', ') | capitalize
                   }
                 } if jobseeker.profile.subjects
               ]
