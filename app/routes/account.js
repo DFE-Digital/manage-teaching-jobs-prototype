@@ -46,7 +46,15 @@ module.exports = router => {
 
     // add jobs to the user
     user.jobs = jobs.filter(job => job.organisation.name == user.organisation.name)
-    user.jobseekers = jobseekers
+
+    if(user.organisation.schools) {
+      user.jobseekers = jobseekers
+    } else {
+      console.log(user.organisation.phase)
+      user.jobseekers = jobseekers.filter(jobseeker => {
+        return jobseeker.profile.phases.includes(user.organisation.phase)
+      })
+    }
 
     res.locals.user = req.session.user = user
 

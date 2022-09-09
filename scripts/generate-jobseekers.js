@@ -119,15 +119,41 @@ const generateJobseeker = (params = {}) => {
 const generateJobseekers = () => {
   const jobseekers = []
 
-  jobseekers.push(generateJobseeker())
-  jobseekers.push(generateJobseeker())
-  jobseekers.push(generateJobseeker())
-  jobseekers.push(generateJobseeker())
-  jobseekers.push(generateJobseeker())
-  jobseekers.push(generateJobseeker())
-  jobseekers.push(generateJobseeker())
-  jobseekers.push(generateJobseeker())
-  jobseekers.push(generateJobseeker())
+  for(let i = 0; i < 6; i++) {
+    jobseekers.push(generateJobseeker({
+      profile: {
+        roles: ['Teacher'],
+        phases: ['Primary school'],
+        qts: 'I’m on track to receive QTS'
+      }
+    }))
+  }
+
+  for(let i = 0; i < 6; i++) {
+    jobseekers.push(generateJobseeker({
+      profile: {
+        phases: ['Primary school']
+      }
+    }))
+  }
+
+  for(let i = 0; i < 6; i++) {
+    jobseekers.push(generateJobseeker({
+      profile: {
+        roles: ['Teacher'],
+        phases: ['Secondary school'],
+        qts: 'I’m on track to receive QTS'
+      }
+    }))
+  }
+
+  for(let i = 0; i < 6; i++) {
+    jobseekers.push(generateJobseeker({
+      profile: {
+        phases: ['Secondary school']
+      }
+    }))
+  }
 
   return jobseekers
 }

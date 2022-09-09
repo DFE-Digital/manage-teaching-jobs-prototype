@@ -11,12 +11,12 @@ const generateSchool = (params = {}) => {
   school.address = params.address || { address1: '10 Seed Street', town: 'London', postcode: 'N19 4PT' }
   school.type = params.type || faker.helpers.arrayElement(['Academy'])
 
-  if(params.phase == null) {
-    school.phase = null
-    school.phaseEditable = true
-  } else {
-    school.phase = params.phase || faker.helpers.arrayElement(phases)
-  }
+  // if(params.phase == null) {
+  //   school.phase = null
+  //   school.phaseEditable = true
+  // } else {
+  // }
+  school.phase = params.phase || faker.helpers.arrayElement(phases)
 
   school.ageGroup = params.ageGroup || faker.helpers.arrayElement(['11 to 16'])
   school.size = params.ageGroup || faker.helpers.arrayElement(['1000', '500', '100'])
@@ -151,6 +151,7 @@ const generateOrgs = () => {
   orgs.push(generateOrg({
     name: 'Courtland Primary School',
     type: 'School',
+    phase: 'Primary school',
     about: null
   }))
 
