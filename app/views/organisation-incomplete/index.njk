@@ -17,14 +17,21 @@
         Complete your school profile
       </h1>
 
-      {# {% if user.organisation.schools %}
-        <p>The information that you add will help jobseekers find a job at your organisation.</p>
-      {% else %}
-      {% endif%} #}
-      <p>Job seekers can now find your school in the list of schools etc - complete it to make it awesome.</p>
+      <p>You can now upload a school logo and photo to your school profile.</p>
+
+      <p>The details you add to your school profile will be:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          included in job listings
+        </li>
+        <li>
+          shown on your <a href="#">school page</a>
+        </li>
+      </ul>
 
       {{ govukButton({
-        text: "Complete profile",
+        text: "Complete school profile",
         href: "/organisation"
       }) }}
 
