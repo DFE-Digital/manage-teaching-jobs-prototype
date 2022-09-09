@@ -91,7 +91,7 @@
                   value: {
                     text: jobseeker.profile.phases | join(', ') | capitalize
                   }
-                },
+                } if user.organisation.schools,
                 {
                   key: {
                     text: "Preferred key stage"

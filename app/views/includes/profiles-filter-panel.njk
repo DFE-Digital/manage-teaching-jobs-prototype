@@ -57,18 +57,20 @@
     }]
   }) }}
 
-  {{ govukCheckboxes({
-    idPrefix: "filters[phase]",
-    name: "filters[phase]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Preferred education phase",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: phases
-  }) }}
+  {% if user.organisation.schools %}
+    {{ govukCheckboxes({
+      idPrefix: "filters[phase]",
+      name: "filters[phase]",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+        legend: {
+          text: "Preferred education phase",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      items: phases
+    }) }}
+  {% endif %}
 
   {{ govukCheckboxes({
     idPrefix: "filters[keyStages]",
