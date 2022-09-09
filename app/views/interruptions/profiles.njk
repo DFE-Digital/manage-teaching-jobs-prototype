@@ -1,0 +1,44 @@
+{% extends "layout.njk" %}
+
+{% set title = 'You can now view jobseeker profiles and invite them to apply' %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <p>A jobseeker’s profile includes their:
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          qualified teaching status
+        </li>
+        <li>
+          job preferences
+        </li>
+        <li>
+          experience
+        </li>
+        <li>
+          qualifications
+        </li>
+      </ul>
+
+      <p>You can invite jobseekers to apply for any job listings you create.</p>
+
+      <p>You’ll also be notified about any jobseeker profile that matches your job listings.</p>
+
+      {{ govukButton({
+        text: "View jobseeker profiles",
+        href: "/jobseekers"
+      }) }}
+
+      <p><a href="/jobs">Skip to job listings</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

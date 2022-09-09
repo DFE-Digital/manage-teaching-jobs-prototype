@@ -61,7 +61,8 @@ module.exports = router => {
     let missingOrganisationInformation = organisationHelper.getMissingInformation(user.organisation)
 
     if(missingOrganisationInformation.length) {
-      res.redirect('/organisation-incomplete')
+      // res.redirect('/interruptions/complete-profile')
+      res.redirect('/interruptions/profiles')
     } else if(req.body.returnUrl) {
       res.redirect(req.body.returnUrl)
     } else {
