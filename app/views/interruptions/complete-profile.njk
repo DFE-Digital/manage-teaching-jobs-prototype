@@ -12,26 +12,23 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">
-        Complete your school profile
+        {# Complete your school profile #}
+        Add a logo and photo to your school profile
       </h1>
 
       <p>You can now upload a school logo and photo to your school profile.</p>
 
-      <p>The details you add to your school profile will be:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          included in job listings
-        </li>
-        <li>
-          shown on your <a href="#">school page</a>
-        </li>
-      </ul>
+      <p>The details you add to your school profile will be included in your job listings.</p>
 
       {{ govukButton({
-        text: "Complete school profile",
+        text: "Add logo and photo",
         href: "/organisation"
       }) }}
+
+      {# {{ govukButton({
+        text: "Complete school profile",
+        href: "/organisation"
+      }) }} #}
 
       <p><a href="/jobs">Skip to job listings</a></p>
 
