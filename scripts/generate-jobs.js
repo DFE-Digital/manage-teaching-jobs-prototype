@@ -190,7 +190,8 @@ const generateJobs = () => {
     for (let i = 0; i < 2; i++) {
       jobs.push(generateJob({
         organisation: user.organisation,
-        status: 'Published'
+        status: 'Published',
+        role: faker.helpers.arrayElement(['Teacher', 'Teaching assistant'])
       }))
     }
     for (let i = 0; i < 1; i++) {
