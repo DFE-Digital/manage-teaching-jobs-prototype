@@ -29,7 +29,7 @@
       </h1>
 
       {% if user.organisation.schools %}
-        <p><a href="#">View organisation page (opens in new tab)</a></p>
+        <p><a href="#">Preview organisation profile (opens in new tab)</a></p>
 
         {% set address %}
           {% for part, value in user.organisation.address %}
@@ -231,7 +231,7 @@
             {# {{appSchoolSummaryList({ school: school })}} #}
           {% endfor %}
       {% else %}
-        <p><a href="#">View school page (opens in new tab)</a></p>
+        <p><a href="#">Preview school profile (opens in new tab)</a></p>
         {{appSchoolSummaryList({ school: user.organisation })}}
       {% endif %}
 
