@@ -119,6 +119,16 @@ const generateJobseeker = (params = {}) => {
 const generateJobseekers = () => {
   const jobseekers = []
 
+  jobseekers.push(generateJobseeker({
+    profile: {
+      firstName: 'Adam',
+      lastName: 'Silver',
+      roles: ['Teacher'],
+      phases: ['Primary school'],
+      qts: 'I’m on track to receive QTS'
+    }
+  }))
+
   for(let i = 0; i < 6; i++) {
     jobseekers.push(generateJobseeker({
       profile: {

@@ -19,7 +19,7 @@ const generateUsers = () => {
   const users = []
 
   users.push(generateUser({
-    username: 'peter@courtland.sch.uk',
+    username: 'rachael@courtland.sch.uk',
     organisation: organisations.find(org => org.name == 'Courtland Primary School')
   }))
 
