@@ -50,7 +50,6 @@ module.exports = router => {
     if(user.organisation.schools) {
       user.jobseekers = jobseekers
     } else {
-      console.log(user.organisation.phase)
       user.jobseekers = jobseekers.filter(jobseeker => {
         return jobseeker.profile.phases.includes(user.organisation.phase)
       })

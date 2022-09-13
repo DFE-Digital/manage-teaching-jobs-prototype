@@ -1,0 +1,59 @@
+
+{% extends "layout.njk" %}
+
+{% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
+
+{% set caption =  name + ' - Invite to apply for a job'  %}
+
+{% set title = 'Jobs' %}
+
+{% set primaryNavId = 'jobseekers' %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {# <h1 class="govuk-heading-l"> #}
+          {{title}}
+        {# </h1> #}
+      {% endset %}
+
+      <form method="post">
+
+        {{ govukCheckboxes({
+          idPrefix: "invite",
+          name: "invite",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: jobCheckboxes
+        }) }}
+
+        {% set text %}
+          {{name}} will be sent an email to tell them they’ve been invited to apply for the jobs you selected.
+        {% endset %}
+
+        {{ govukWarningText({
+          text: text
+        }) }}
+
+        {{ govukButton({
+          text: "Invite to apply for a job"
+        }) }}
+      </div>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

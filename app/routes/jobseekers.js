@@ -54,4 +54,30 @@ module.exports = router => {
       qualificationsGroup
     })
   })
+
+  router.get('/jobseekers/:id/invites/new', authentication.checkIsAuthenticated, (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+    let jobCheckboxes = req.session.user.jobs
+      .filter(job => job.status == 'Published')
+      .map(item => {
+        return {
+          text: item.title,
+          value: item.title,
+          hint: {
+            text: item.role
+          }
+        }
+      })
+
+    res.render('jobseekers/invites/new/index', {
+      jobseeker,
+      jobCheckboxes
+    })
+  })
+
+  router.post('/jobseekers/:id/invites/new', authentication.checkIsAuthenticated, (req, res) => {
+    req.flash('success', 'Invited to apply for a job')
+    res.redirect(`/jobseekers/${req.params.id}`)
+  })
 }
