@@ -66,156 +66,156 @@
 {% endset %}
 
 {{ govukSummaryList({
-    rows: [
-      {
-        key: {
-          text: "Name"
-        },
-        value: {
-          text: params.school.name
-        }
+  rows: [
+    {
+      key: {
+        text: "Name"
       },
-      {
-        key: {
-          text: "Address"
-        },
-        value: {
-          text: address
-        }
-      },
-      {
-        key: {
-          text: "Type"
-        },
-        value: {
-          text: params.school.type
-        }
-      },
-      {
-        key: {
-          text: "Education phase"
-        },
-        value: {
-          html: phase
-        },
-        actions: {
-          items: [
-            {
-              href: "/organisation/edit/phase",
-              text: "Change",
-              visuallyHiddenText: "Phase"
-            }
-          ]
-        } if params.school.phaseEditable
-      },
-      {
-        key: {
-          text: "Age group"
-        },
-        value: {
-          text: params.school.ageGroup
-        }
-      },
-      {
-        key: {
-          text: "Size"
-        },
-        value: {
-          text: params.school.size + ' pupils enrolled'
-        }
-      },
-      {
-        key: {
-          text: "Ofsted report"
-        },
-        value: {
-          html: '<a href="#">View Ofsted report (opens in new tab)</a>'
-        }
-      },
-      {
-        key: {
-          text: "Website"
-        },
-        value: {
-          html: websiteUrl
-        },
-        actions: {
-          items: [
-            {
-              href: "/organisation/edit/website",
-              text: "Change",
-              visuallyHiddenText: "Website"
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: "School description"
-        },
-        value: {
-          html: about
-        },
-        actions: {
-          items: [
-            {
-              href: "/organisation/edit/description",
-              text: "Change",
-              visuallyHiddenText: "About school"
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: "What the school offers its staff"
-        },
-        value: {
-          html: howEmployeesAreSupported
-        },
-        actions: {
-          items: [
-            {
-              href: "/organisation/edit/description",
-              text: "Change",
-              visuallyHiddenText: "About how employees are supported"
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: "School logo"
-        },
-        value: {
-          html: logo
-        },
-        actions: {
-          items: [
-            {
-              href: "/organisation/edit-logo",
-              text: "Change",
-              visuallyHiddenText: "About school"
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: "School photo"
-        },
-        value: {
-          html: photo
-        },
-        actions: {
-          items: [
-            {
-              href: "/organisation/edit/photo",
-              text: "Change",
-              visuallyHiddenText: "About school"
-            }
-          ]
-        }
+      value: {
+        text: params.school.name
       }
-    ]
-  }) }}
+    },
+    {
+      key: {
+        text: "Address"
+      },
+      value: {
+        text: address
+      }
+    },
+    {
+      key: {
+        text: "Type"
+      },
+      value: {
+        text: params.school.type
+      }
+    },
+    {
+      key: {
+        text: "Education phase"
+      },
+      value: {
+        html: phase
+      },
+      actions: {
+        items: [
+          {
+            href: "/organisation/edit/phase",
+            text: "Change",
+            visuallyHiddenText: "Phase"
+          }
+        ]
+      } if params.school.phaseEditable
+    },
+    {
+      key: {
+        text: "Age group"
+      },
+      value: {
+        text: params.school.ageGroup
+      }
+    },
+    {
+      key: {
+        text: "Size"
+      },
+      value: {
+        text: params.school.size + ' pupils enrolled'
+      }
+    },
+    {
+      key: {
+        text: "Ofsted report"
+      },
+      value: {
+        html: '<a href="#">View Ofsted report (opens in new tab)</a>'
+      }
+    },
+    {
+      key: {
+        text: "Website"
+      },
+      value: {
+        html: websiteUrl
+      },
+      actions: {
+        items: [
+          {
+            href: "/organisation/edit/website",
+            text: "Change",
+            visuallyHiddenText: "Website"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "School description"
+      },
+      value: {
+        html: about
+      },
+      actions: {
+        items: [
+          {
+            href: "/organisation/edit/description",
+            text: "Change",
+            visuallyHiddenText: "About school"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "What the school offers its staff"
+      },
+      value: {
+        html: howEmployeesAreSupported
+      },
+      actions: {
+        items: [
+          {
+            href: "/organisation/edit/description",
+            text: "Change",
+            visuallyHiddenText: "About how employees are supported"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "School logo"
+      },
+      value: {
+        html: logo
+      },
+      actions: {
+        items: [
+          {
+            href: "/organisation/edit-logo",
+            text: "Change",
+            visuallyHiddenText: "About school"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "School photo"
+      },
+      value: {
+        html: photo
+      },
+      actions: {
+        items: [
+          {
+            href: "/organisation/edit/photo",
+            text: "Change",
+            visuallyHiddenText: "About school"
+          }
+        ]
+      }
+    }
+  ]
+}) }}

@@ -4,9 +4,11 @@ const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 const _ = require('lodash');
 const phases = require('../app/data/phases.js')
+const { v4: uuidv4 } = require('uuid')
 
 const generateSchool = (params = {}) => {
   let school = {}
+  school.id = uuidv4()
   school.name = params.name || faker.company.name() + ' School'
   school.address = params.address || { address1: '10 Seed Street', town: 'London', postcode: 'N19 4PT' }
   school.type = params.type || faker.helpers.arrayElement(['Academy'])
@@ -53,6 +55,7 @@ const generateSchools = (params = {}) => {
   const schools = []
 
   schools.push(generateSchool({
+
     phase: 'Nursery school'
   }))
   schools.push(generateSchool({

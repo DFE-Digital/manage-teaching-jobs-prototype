@@ -1,0 +1,40 @@
+{% extends "layout.njk" %}
+
+{% set title = school.name %}
+
+{% set primaryNavId = 'organisation' %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        href: '/organisation',
+        text: 'Organisation profile'
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    text: "Complete your school profile"
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <p><a href="#">Preview school profile</a></p>
+      {{appSchoolSummaryList({ school: school })}}
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -17,4 +17,11 @@ module.exports = router => {
     res.redirect('/organisation')
   })
 
+  router.get('/schools/:id', authentication.checkIsAuthenticated, (req, res) => {
+    let school = req.session.user.organisation.schools.find(school => school.id == req.params.id)
+    res.render('organisation/schools/show', {
+      school
+    })
+  })
+
 }

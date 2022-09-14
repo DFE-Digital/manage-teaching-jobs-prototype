@@ -29,7 +29,7 @@
       </h1>
 
       {% if user.organisation.schools %}
-        <p><a href="#">Preview organisation profile</a></p>
+        <p><a href="#">Preview organisation profile (opens in new tab)</a></p>
 
         {% set address %}
           {% for part, value in user.organisation.address %}
@@ -200,28 +200,38 @@
           ]
         }) }}
 
-          <h2 class="govuk-heading-m govuk-!-margin-top-8">
+          <h2 class="govuk-heading-m">
             Schools
           </h2>
 
           {% for school in user.organisation.schools %}
-            <div class="app-school govuk-!-margin-bottom-0 {% if loop.first %}govuk-!-padding-top-0{% endif %}">
+            <div class="app-school govuk-!-margin-bottom-0">
+
+
               {% if loop.index < 3 %}
-                 <div class="app-field-highlight {% if loop.first %}govuk-!-margin-top-2{% endif %}">
+                {# {{ govukTag({
+                  text: "Incomplete",
+                  classes: 'govuk-!-margin-left-1 govuk-tag--grey'
+                }) }} #}
+                {# {{ govukInsetText({
+                  text: "This school is missing some information.",
+                  classes: 'govuk-!-margin-top-2 govuk-!-margin-bottom-0'
+                }) }} #}
+                <div class="app-field-highlight govuk-!-margin-top-2">
                   <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
-                    <a href="/schools/{{school.id}}">{{school.name}}</a>
+                    <a href="/">{{school.name}}</a>
                   </h3>
-                  <p class="app-field-highlight__instruction">Complete your school profile</p>
+                  <p class="app-field-highlight__instruction">This school is missing information</p>
                 </div>
               {% else %}
                 <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
-                  <a href="/schools/{{school.id}}">{{school.name}}</a>
+                  <a href="/">{{school.name}}</a>
                 </h3>
               {% endif %}
             </div>
           {% endfor %}
       {% else %}
-        <p><a href="#">Preview school profile</a></p>
+        <p><a href="#">Preview school profile (opens in new tab)</a></p>
         {{appSchoolSummaryList({ school: user.organisation })}}
       {% endif %}
 

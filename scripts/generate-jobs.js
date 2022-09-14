@@ -1,6 +1,5 @@
 const fs = require('fs')
 const path = require('path')
-// const { DateTime } = require('luxon')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 
