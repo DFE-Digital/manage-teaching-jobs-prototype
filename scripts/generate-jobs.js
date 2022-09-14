@@ -181,10 +181,12 @@ const generateJobs = () => {
   users.forEach(user => {
     jobs.push(generateJob({
       organisation: user.organisation,
+      status: 'Published',
       role: 'Teacher'
     }))
     jobs.push(generateJob({
       organisation: user.organisation,
+      status: 'Published',
       role: 'Headteacher, deputy or assistant headteacher'
     }))
     jobs.push(generateJob({
