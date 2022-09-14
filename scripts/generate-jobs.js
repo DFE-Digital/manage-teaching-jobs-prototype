@@ -185,15 +185,13 @@ const generateJobs = () => {
     }))
     jobs.push(generateJob({
       organisation: user.organisation,
-      role: 'Teacher'
+      role: 'Headteacher, deputy or assistant headteacher'
     }))
-    for (let i = 0; i < 2; i++) {
-      jobs.push(generateJob({
-        organisation: user.organisation,
-        status: 'Published',
-        role: faker.helpers.arrayElement(['Teacher', 'Teaching assistant'])
-      }))
-    }
+    jobs.push(generateJob({
+      organisation: user.organisation,
+      status: 'Published',
+      role: 'Teaching assistant'
+    }))
     for (let i = 0; i < 1; i++) {
       jobs.push(generateJob({
         organisation: user.organisation,
