@@ -14,13 +14,24 @@ exports.getLocations = (org) => {
 }
 
 exports.getMissingInformation = (org) => {
-  let attrs = [
-    'phase',
-    'about',
-    'supportForEmployees',
-    'logo',
-    'photo'
-  ]
+  let attrs
+
+  if(org.schools) {
+    attrs = [
+      'about',
+      'supportForEmployees',
+      'logo',
+      'photo'
+    ]
+  } else {
+    attrs = [
+      'phase',
+      'about',
+      'supportForEmployees',
+      'logo',
+      'photo'
+    ]
+  }
 
   let missing = []
 
@@ -31,4 +42,27 @@ exports.getMissingInformation = (org) => {
   })
 
   return missing
+}
+
+
+exports.hasMissingInformation = (org) => {
+  let hasMissingInformation = false
+
+  if(org.schools) {
+    hasMissingInformation = this.getMissingInformation(org).length
+
+    // if the org does not have missing information
+    // then check the schools within
+    if(!hasMissingInformation) {
+      hasMissingInformation = org.schools.find(school => {
+        if(this.getMissingInformation(school).length) {
+          return true
+        }
+      })
+    }
+  } else {
+    hasMissingInformation = this.getMissingInformation(org).length
+  }
+
+  return hasMissingInformation
 }

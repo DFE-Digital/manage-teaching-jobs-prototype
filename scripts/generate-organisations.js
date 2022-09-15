@@ -49,7 +49,8 @@ const generateSchools = (params = {}) => {
   const schools = []
 
   schools.push(generateSchool({
-    phase: 'Nursery school'
+    phase: 'Nursery school',
+    about: null
   }))
   schools.push(generateSchool({
     phase: 'Primary school',
@@ -57,7 +58,8 @@ const generateSchools = (params = {}) => {
   }))
   schools.push(generateSchool({
     address: { address1: '2 Owl Way', town: 'London', postcode: 'W6 1PT' },
-    phase: 'Middle school'
+    phase: 'Middle school',
+    about: null
   }))
   schools.push(generateSchool({
     address: { address1: '3 Owl Way', town: 'London', postcode: 'W7 2PT' },
@@ -156,6 +158,7 @@ const generateOrgs = () => {
     name: 'Royal Academy Trust',
     type: 'MAT',
     about: null,
+    supportForEmployees: null,
     logo: null,
     photo: null
   }))

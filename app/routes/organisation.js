@@ -1,10 +1,25 @@
 
 const authentication = require('../middleware/authenticaton')
+const organisationHelper = require('../helpers/organisation')
 
 module.exports = router => {
 
   router.get('/organisation', authentication.checkIsAuthenticated, (req, res) => {
-    res.render('organisation/index')
+    let user = req.session.user
+    let showCompleteProfileBanner = organisationHelper.hasMissingInformation(user.organisation)
+    let schools
+    if(user.organisation.schools) {
+      schools = user.organisation.schools.map(school => {
+        school.missingInformation = organisationHelper.getMissingInformation(school)
+        school.hasMissingInformation = school.missingInformation.length
+        return school
+      })
+    }
+
+    res.render('organisation/index', {
+      showCompleteProfileBanner,
+      schools
+    })
   })
 
   router.post('/organisation/edit-logo', authentication.checkIsAuthenticated, (req, res) => {
