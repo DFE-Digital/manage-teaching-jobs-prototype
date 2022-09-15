@@ -14,6 +14,9 @@ module.exports = router => {
         school.hasMissingInformation = school.missingInformation.length
         return school
       })
+      .sort((a, b) => {
+        return a.hasMissingInformation ? -1 : 1;
+      })
     }
 
     res.render('organisation/index', {
@@ -33,9 +36,13 @@ module.exports = router => {
   })
 
   router.get('/schools/:id', authentication.checkIsAuthenticated, (req, res) => {
-    let school = req.session.user.organisation.schools.find(school => school.id == req.params.id)
+    let organisation = req.session.user.organisation
+    let school = organisation.schools.find(school => school.id == req.params.id)
+    let showCompleteProfileBanner = organisationHelper.hasMissingInformation(organisation).length
+
     res.render('organisation/schools/show', {
-      school
+      school,
+      showCompleteProfileBanner
     })
   })
 
