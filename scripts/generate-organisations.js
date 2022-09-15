@@ -12,37 +12,31 @@ const generateSchool = (params = {}) => {
   school.name = params.name || faker.company.name() + ' School'
   school.address = params.address || { address1: '10 Seed Street', town: 'London', postcode: 'N19 4PT' }
   school.type = params.type || faker.helpers.arrayElement(['Academy'])
-
-  // if(params.phase == null) {
-  //   school.phase = null
-  //   school.phaseEditable = true
-  // } else {
-  // }
   school.phase = params.phase || faker.helpers.arrayElement(phases)
 
   school.ageGroup = params.ageGroup || faker.helpers.arrayElement(['11 to 16'])
   school.size = params.ageGroup || faker.helpers.arrayElement(['1000', '500', '100'])
   school.websiteUrl = params.websiteUrl || faker.internet.url()
 
-  if(params.about == null) {
+  if(params.about === null) {
     school.about = null
   } else {
     school.about = params.about || faker.lorem.paragraphs(2, '\n\n')
   }
 
-  if(params.supportForEmployees == null) {
+  if(params.supportForEmployees === null) {
     school.supportForEmployees = null
   } else {
     school.supportForEmployees = params.supportForEmployees || faker.lorem.sentences(1)
   }
 
-  if(params.logo == null) {
+  if(params.logo === null) {
     school.logo = null
   } else {
     school.logo = params.logo || faker.image.technics(100, 100)
   }
 
-  if(params.photo == null) {
+  if(params.photo === null) {
     school.photo = null
   } else {
     school.photo = params.photo || faker.image.people()
@@ -55,11 +49,11 @@ const generateSchools = (params = {}) => {
   const schools = []
 
   schools.push(generateSchool({
-
     phase: 'Nursery school'
   }))
   schools.push(generateSchool({
-    phase: 'Primary school'
+    phase: 'Primary school',
+    address: { address1: '1 Owl Way', town: 'London', postcode: 'W3 1NN' },
   }))
   schools.push(generateSchool({
     address: { address1: '2 Owl Way', town: 'London', postcode: 'W6 1PT' },
@@ -95,25 +89,25 @@ const generateOrg = (params = {}) => {
     }
     org.websiteUrl = params.websiteUrl || faker.internet.url()
 
-    if(params.about == null) {
+    if(params.about === null) {
       org.about = null
     } else {
       org.about = params.about || faker.lorem.paragraphs(2, '\n\n')
     }
 
-    if(params.supportForEmployees == null) {
+    if(params.supportForEmployees === null) {
       org.supportForEmployees = null
     } else {
       org.supportForEmployees = params.supportForEmployees || faker.lorem.sentences(1)
     }
 
-    if(params.logo == null) {
+    if(params.logo === null) {
       org.logo = null
     } else {
       org.logo = params.logo || faker.image.technics(100, 100)
     }
 
-    if(params.photo == null) {
+    if(params.photo === null) {
       org.photo = null
     } else {
       org.photo = params.photo || faker.image.people()
@@ -129,23 +123,14 @@ const generateOrg = (params = {}) => {
 }
 
 /*
- if a school then locations=1
-
- if a MAT then locations>1
-
- if a LA then locations=1 or locations>1
-
- if advert is at multiple locations within a MAT then it would show
-    https://teaching-vacancies.service.gov.uk/jobs/trust-primary-assistant-headteacher
-
- if advert is at one location within MAT then would show standard job advert
+ Advert at MAT
+ https://teaching-vacancies.service.gov.uk/jobs/trust-primary-assistant-headteacher
 
  All MATs have a head office. A head office is the location for the MAT, it's not an org/school.
 
- An LA does not ever have a head office.
+ An LA does not have a head office.
 
  LAs cannot choose to accept applications using the service's form.
-
 */
 
 const generateOrgs = () => {
@@ -155,7 +140,10 @@ const generateOrgs = () => {
     name: 'Courtland Primary School',
     type: 'School',
     phase: 'Primary school',
-    about: null
+    about: null,
+    supportForEmployees: null,
+    logo: null,
+    photo: null
   }))
 
   orgs.push(generateOrg({
@@ -167,8 +155,9 @@ const generateOrgs = () => {
   orgs.push(generateOrg({
     name: 'Royal Academy Trust',
     type: 'MAT',
-    phase: null,
-    about: null
+    about: null,
+    logo: null,
+    photo: null
   }))
 
   orgs.push(generateOrg({
