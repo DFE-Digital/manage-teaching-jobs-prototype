@@ -17,6 +17,7 @@ const generateSchool = (params = {}) => {
   school.ageGroup = params.ageGroup || faker.helpers.arrayElement(['11 to 16'])
   school.size = params.ageGroup || faker.helpers.arrayElement(['1000', '500', '100'])
   school.websiteUrl = params.websiteUrl || faker.internet.url()
+  school.emailAddress = params.emailAddress || 'email@' + school.name.toLowerCase().replace(/ /g, "") + '.org.uk'
 
   if(params.about === null) {
     school.about = null
@@ -39,7 +40,7 @@ const generateSchool = (params = {}) => {
   if(params.photo === null) {
     school.photo = null
   } else {
-    school.photo = params.photo || faker.image.people()
+    school.photo = params.photo || faker.image.abstract(640, 320)
   }
 
   return school
@@ -138,14 +139,21 @@ const generateOrg = (params = {}) => {
 const generateOrgs = () => {
   const orgs = []
 
+  // orgs.push(generateOrg({
+  //   name: 'Courtland Primary School',
+  //   type: 'School',
+  //   phase: 'Primary school',
+  //   about: null,
+  //   supportForEmployees: null,
+  //   logo: null,
+  //   photo: null
+  // }))
+
   orgs.push(generateOrg({
     name: 'Courtland Primary School',
     type: 'School',
     phase: 'Primary school',
-    about: null,
-    supportForEmployees: null,
-    logo: null,
-    photo: null
+    logo: '/public/images/logos/courtland.png'
   }))
 
   orgs.push(generateOrg({

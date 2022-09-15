@@ -25,6 +25,13 @@ module.exports = router => {
     })
   })
 
+  router.get('/organisation/preview', authentication.checkIsAuthenticated, (req, res) => {
+    let organisation = req.session.user.organisation
+    res.render('organisation/preview', {
+      organisation
+    })
+  })
+
   router.post('/organisation/edit-logo', authentication.checkIsAuthenticated, (req, res) => {
     req.session.data.logo = '/public/images/logos/courtland.png'
     res.redirect('/organisation/edit-logo/check')

@@ -1,249 +1,134 @@
-
 {% extends "layout.njk" %}
-
-{% if user.organisation.schools %}
-  {% set title = 'Organisation profile' %}
-{% else %}
-  {% set title = 'School profile' %}
-{% endif %}
-
+{% set title = organisation.name %}
 {% set primaryNavId = 'organisation' %}
 
+{% set address %}
+  {% for part, value in organisation.address %}
+    {{value}}{% if not loop.last %}, {% endif %}
+  {% endfor %}
+{% endset %}
+
+{% set websiteUrl %}
+  <a href="{{user.organisation.websiteUrl}}">{{user.organisation.websiteUrl}} (opens in new tab)</a>
+{% endset %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/organisation"
+  }) }}
+{% endblock %}
+
 {% block content %}
-
-  {% if user.organisation.schools %}
-    {{ govukNotificationBanner({
-      text: "Complete your organisation profile"
-    }) }}
-  {% else %}
-    {{ govukNotificationBanner({
-      text: "Complete your school profile"
-    }) }}
-  {% endif %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-l">
-        {{title}}
-      </h1>
+      <div class="app-school-title">
+        {% if organisation.logo %}
+          <img src="{{organisation.logo}}">
+        {% endif %}
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
+          {{title}}
+        </h1>
+        <p>{{address}}</p>
+      </div>
 
-      {% if user.organisation.schools %}
-        <p><a href="#">Preview organisation profile (opens in new tab)</a></p>
+      <p><a href="#">Get an alert for jobs at this school</a></p>
 
-        {% set address %}
-          {% for part, value in user.organisation.address %}
-            {{value}}{% if not loop.last %}, {% endif %}
-          {% endfor %}
-        {% endset %}
-
-        {% set websiteUrl %}
-          <a href="{{user.organisation.websiteUrl}}">{{user.organisation.websiteUrl}} (opens in new tab)</a>
-        {% endset %}
-
-        {% set about %}
-          {% if user.organisation.about %}
-            {{user.organisation.logo | nl2br}}
-          {% else %}
-            <div class="app-field-highlight">
-              <p class="app-field-highlight__instruction">Enter information about your organisation</p>
-              Not entered
-            </div>
-          {% endif %}
-        {% endset %}
-
-        {% set howEmployeesAreSupported %}
-          {% if user.organisation.supportForEmployees %}
-            {{user.organisation.supportForEmployees | escape | nl2br}}
-          {% else %}
-            <div class="app-field-highlight">
-              <p class="app-field-highlight__instruction">Enter information about what your organisation offers its employees</p>
-              Not entered
-            </div>
-          {% endif %}
-        {% endset %}
-
-        {% set logo %}
-          {% if user.organisation.logo %}
-            <img src="{{user.organisation.logo}}" alt="Logo" width="150">
-          {% else %}
-            <div class="app-field-highlight">
-              <p class="app-field-highlight__instruction">Add organisation logo</p>
-              Not entered
-            </div>
-          {% endif %}
-        {% endset %}
-
-        {% set photo %}
-          {% if user.organisation.photo %}
-            <img src="{{user.organisation.photo}}" alt="Photo" width="100%">
-          {% else %}
-            <div class="app-field-highlight">
-              <p class="app-field-highlight__instruction">Add organisation photo</p>
-              Not entered
-            </div>
-          {% endif %}
-        {% endset %}
-
-
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Name"
-              },
-              value: {
-                text: user.organisation.name
-              }
-            },
-            {
-              key: {
-                text: "Type"
-              },
-              value: {
-                text: 'Multi-academy trust'
-              }
-            },
-            {
-              key: {
-                text: "Address"
-              },
-              value: {
-                text: address
-              }
-            },
-            {
-              key: {
-                text: "Website"
-              },
-              value: {
-                html: websiteUrl
-              },
-              actions: {
-                items: [
-                  {
-                    href: "Item URL",
-                    text: "Change",
-                    visuallyHiddenText: "Item label"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "About the organisation"
-              },
-              value: {
-                html: about
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/organisation/edit/description",
-                    text: "Change",
-                    visuallyHiddenText: "About the organisation"
-                  }
-                ]
-              }
-            },
-            {
-              key: {
-                text: "What the organisation offers its employees"
-              },
-              value: {
-                html: howEmployeesAreSupported
-              },
-              actions: {
-                items: [
-                  {
-                    href: "/organisation/edit/description",
-                    text: "Change",
-                    visuallyHiddenText: "About school"
-                  }
-                ]
-              }
-            },
-            {
-                key: {
-                  text: "Organisation logo"
-                },
-                value: {
-                  html: logo
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/organisation/edit-logo",
-                      text: "Change",
-                      visuallyHiddenText: "About school"
-                    }
-                  ]
-                }
-              },
-              {
-                key: {
-                  text: "Organisation photo"
-                },
-                value: {
-                  html: photo
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "/organisation/edit/photo",
-                      text: "Change",
-                      visuallyHiddenText: "About school"
-                    }
-                  ]
-                }
-              }
-          ]
-        }) }}
-
-          <h2 class="govuk-heading-m">
-            Schools
-          </h2>
-
-          {% for school in user.organisation.schools %}
-            <div class="app-school govuk-!-margin-bottom-0">
-
-
-              {% if loop.index < 3 %}
-                {# {{ govukTag({
-                  text: "Incomplete",
-                  classes: 'govuk-!-margin-left-1 govuk-tag--grey'
-                }) }} #}
-                {# {{ govukInsetText({
-                  text: "This school is missing some information.",
-                  classes: 'govuk-!-margin-top-2 govuk-!-margin-bottom-0'
-                }) }} #}
-                <div class="app-field-highlight govuk-!-margin-top-2">
-                  <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
-                    <a href="/">{{school.name}}</a>
-                  </h3>
-                  <p class="app-field-highlight__instruction">This school is missing information</p>
-                </div>
-              {% else %}
-                <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
-                  <a href="/">{{school.name}}</a>
-                </h3>
-              {% endif %}
-            </div>
-          {% endfor %}
-      {% else %}
-        <p><a href="#">Preview school profile (opens in new tab)</a></p>
-        {{appSchoolSummaryList({ school: user.organisation })}}
+      {% if organisation.photo %}
+        <div class="app-school-photo">
+          <img src="{{organisation.photo}}">
+        </div>
       {% endif %}
 
+      <h2 class="govuk-heading-m">
+        Summary
+      </h2>
 
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Type"
+            },
+            value: {
+              text: organisation.type
+            }
+          },
+          {
+            key: {
+              text: "Education phase"
+            },
+            value: {
+              text: organisation.phase
+            }
+          } if organisation.phase,
+          {
+            key: {
+              text: "School size"
+            },
+            value: {
+              text: organisation.size + ' pupils'
+            }
+          } if organisation.size,
+          {
+            key: {
+              text: "Age range"
+            },
+            value: {
+              text: organisation.ageGroup
+            }
+          } if organisation.ageGroup,
+          {
+            key: {
+              text: "Website"
+            },
+            value: {
+              html: websiteUrl
+            }
+          },
+          {
+            key: {
+              text: "Ofsted report"
+            },
+            value: {
+              html: '<a href="#">View Ofsted report (opens in new tab)</a>'
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              html: '<a href="#">'+organisation.emailAddress+'</a>'
+            }
+          }
+        ]
+      }) }}
 
+      <h2 class="govuk-heading-m">
+        About {{school.name}}
+      </h2>
 
+      <p>{{organisation.about | nl2br | safe}}</p>
 
+      <h2 class="govuk-heading-m">
+        What we offer our staff
+      </h2>
 
+      <p>{{organisation.supportForEmployees | nl2br | safe}}</p>
 
+      <h2 class="govuk-heading-m">
+        Location
+      </h2>
 
+      <div class="app-map">
+        <img src="/public/images/maps/courtland.png">
+      </div>
 
+      <h2 class="govuk-heading-m">
+        Current jobs
+      </h2>
     </div>
   </div>
-
 {% endblock %}
