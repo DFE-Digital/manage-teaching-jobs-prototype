@@ -129,6 +129,13 @@
       <h2 class="govuk-heading-m">
         Current jobs
       </h2>
+
+      {{appJobList({
+        jobs: jobs,
+        heading: {
+          level: 3
+        }
+      })}}
     </div>
   </div>
 {% endblock %}
