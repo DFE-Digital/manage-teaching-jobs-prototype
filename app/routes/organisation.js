@@ -27,8 +27,10 @@ module.exports = router => {
 
   router.get('/organisation/preview', authentication.checkIsAuthenticated, (req, res) => {
     let organisation = req.session.user.organisation
+    let jobs = req.session.user.jobs.filter(job => job.status == 'Published')
     res.render('organisation/preview', {
-      organisation
+      organisation,
+      jobs
     })
   })
 
