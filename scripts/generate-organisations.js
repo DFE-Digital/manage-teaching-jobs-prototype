@@ -191,7 +191,14 @@ const generateOrgs = () => {
   orgs.push(generateOrg({
     name: 'Bushey Meads Secondary School',
     type: 'School',
-    phase: 'Secondary school'
+    phase: 'Secondary school',
+    website: null,
+    emailAddress: null,
+    about: null,
+    supportForEmployees: null,
+    safeguardingCommitment: null,
+    logo: null,
+    photo: null
   }))
 
   orgs.push(generateOrg({
