@@ -67,7 +67,7 @@ const generateJob = (params = {}) => {
     'Full-time equivalent salary',
     'Actual salary',
     'Pay scale'
-  ])
+  ], faker.datatype.number({min: 1, max: 2}))
 
   if(job.salaryDetails.includes('Full-time equivalent salary')) {
     job.fullTimeEquivalentSalaryDetails = params.fullTimeEquivalentSalaryDetails || '£42,000'

@@ -8,7 +8,7 @@
 
     <div class="app-job-list__item">
       <h{{ params.heading.level | default(2) }} class="{{params.heading.classes | default('govuk-heading-s')}}">
-        <a href="/jobs/{{id}}/preview">{{job.title}}</a>
+        <a href="/jobs/{{job.id}}/preview">{{job.title}}</a>
       </h{{ params.heading.level | default(2) }}>
 
       {% set salaryDetails %}
@@ -41,12 +41,28 @@
           },
           {
             key: {
-              text: "Salary"
+              text: "Full-time equivalent salary"
             },
             value: {
-              html: salaryDetails
+              html: job.fullTimeEquivalentSalaryDetails
             }
-          },
+          } if job.fullTimeEquivalentSalaryDetails,
+          {
+            key: {
+              text: "Actual salary"
+            },
+            value: {
+              html: job.actualSalaryDetails
+            }
+          } if job.actualSalaryDetails,
+          {
+            key: {
+              text: "Pay scale"
+            },
+            value: {
+              html: job.payScaleDetails
+            }
+          } if job.payScaleDetails,
           {
             key: {
               text: "Working pattern"
