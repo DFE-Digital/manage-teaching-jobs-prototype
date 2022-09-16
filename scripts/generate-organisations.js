@@ -9,15 +9,28 @@ const { v4: uuidv4 } = require('uuid')
 const generateSchool = (params = {}) => {
   let school = {}
   school.id = uuidv4()
+
+  // GIAS
   school.name = params.name || faker.company.name() + ' School'
   school.address = params.address || { address1: '10 Seed Street', town: 'London', postcode: 'N19 4PT' }
   school.type = params.type || faker.helpers.arrayElement(['Academy'])
   school.phase = params.phase || faker.helpers.arrayElement(phases)
-
   school.ageGroup = params.ageGroup || faker.helpers.arrayElement(['11 to 16'])
   school.size = params.ageGroup || faker.helpers.arrayElement(['1000', '500', '100'])
-  school.websiteUrl = params.websiteUrl || faker.internet.url()
-  school.emailAddress = params.emailAddress || 'email@' + school.name.toLowerCase().replace(/ /g, "") + '.org.uk'
+
+  // Not GIAS
+
+  if(params.website === null) {
+    school.website = null
+  } else {
+    school.website = params.website || faker.internet.url()
+  }
+
+  if(params.emailAddress === null) {
+    school.emailAddress = null
+  } else {
+    school.emailAddress = params.emailAddress || 'email@' + school.name.toLowerCase().replace(/ /g, "") + '.org.uk'
+  }
 
   if(params.about === null) {
     school.about = null
@@ -29,6 +42,12 @@ const generateSchool = (params = {}) => {
     school.supportForEmployees = null
   } else {
     school.supportForEmployees = params.supportForEmployees || faker.lorem.sentences(1)
+  }
+
+  if(params.safeguardingCommitment === null) {
+    school.safeguardingCommitment = null
+  } else {
+    school.safeguardingCommitment = params.safeguardingCommitment || faker.lorem.paragraphs(2, '\n\n')
   }
 
   if(params.logo === null) {
@@ -90,7 +109,17 @@ const generateOrg = (params = {}) => {
       town: 'Mill Hill',
       postcode: 'NW7 4YK'
     }
-    org.websiteUrl = params.websiteUrl || faker.internet.url()
+    if(params.website === null) {
+      org.website = null
+    } else {
+      org.website = params.website || faker.internet.url()
+    }
+
+    if(params.emailAddress === null) {
+      org.emailAddress = null
+    } else {
+      org.emailAddress = params.emailAddress || 'email@' + org.name.toLowerCase().replace(/ /g, "") + '.org.uk'
+    }
 
     if(params.about === null) {
       org.about = null
@@ -139,22 +168,25 @@ const generateOrg = (params = {}) => {
 const generateOrgs = () => {
   const orgs = []
 
-  // orgs.push(generateOrg({
-  //   name: 'Courtland Primary School',
-  //   type: 'School',
-  //   phase: 'Primary school',
-  //   about: null,
-  //   supportForEmployees: null,
-  //   logo: null,
-  //   photo: null
-  // }))
-
   orgs.push(generateOrg({
     name: 'Courtland Primary School',
     type: 'School',
     phase: 'Primary school',
-    logo: '/public/images/logos/courtland.png'
+    website: null,
+    emailAddress: null,
+    about: null,
+    supportForEmployees: null,
+    safeguardingCommitment: null,
+    logo: null,
+    photo: null
   }))
+
+  // orgs.push(generateOrg({
+  //   name: 'Courtland Primary School',
+  //   type: 'School',
+  //   phase: 'Primary school',
+  //   logo: '/public/images/logos/courtland.png'
+  // }))
 
   orgs.push(generateOrg({
     name: 'Bushey Meads Secondary School',

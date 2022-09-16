@@ -8,9 +8,11 @@
   {% endfor %}
 {% endset %}
 
-{% set websiteUrl %}
-  <a href="{{user.organisation.websiteUrl}}">{{user.organisation.websiteUrl}} (opens in new tab)</a>
-{% endset %}
+{% if organisation.website %}
+  {% set website %}
+    <a href="{{organisation.website}}">{{organisation.website}} (opens in new tab)</a>
+  {% endset %}
+{% endif %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -84,9 +86,9 @@
               text: "Website"
             },
             value: {
-              html: websiteUrl
+              html: website
             }
-          },
+          } if website,
           {
             key: {
               text: "Ofsted report"
@@ -102,21 +104,23 @@
             value: {
               html: '<a href="#">'+organisation.emailAddress+'</a>'
             }
-          }
+          } if organisation.emailAddress
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">
-        About {{school.name}}
-      </h2>
+      {% if organisation.about %}
+        <h2 class="govuk-heading-m">
+          About {{organisation.name}}
+        </h2>
+        <p>{{organisation.about | nl2br | safe}}</p>
+      {% endif %}
 
-      <p>{{organisation.about | nl2br | safe}}</p>
-
-      <h2 class="govuk-heading-m">
-        What we offer our staff
-      </h2>
-
-      <p>{{organisation.supportForEmployees | nl2br | safe}}</p>
+      {% if organisation.supportForEmployees %}
+        <h2 class="govuk-heading-m">
+          What we offer our staff
+        </h2>
+        <p>{{organisation.supportForEmployees | nl2br | safe}}</p>
+      {% endif %}
 
       <h2 class="govuk-heading-m">
         Location
@@ -126,16 +130,17 @@
         <img src="/public/images/maps/courtland.png">
       </div>
 
-      <h2 class="govuk-heading-m">
-        Current jobs
-      </h2>
-
-      {{appJobList({
-        jobs: jobs,
-        heading: {
-          level: 3
-        }
-      })}}
+      {% if jobs.length %}
+        <h2 class="govuk-heading-m">
+          Current jobs
+        </h2>
+        {{appJobList({
+          jobs: jobs,
+          heading: {
+            level: 3
+          }
+        })}}
+      {% endif %}
     </div>
   </div>
 {% endblock %}

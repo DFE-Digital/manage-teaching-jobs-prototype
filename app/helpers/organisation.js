@@ -20,6 +20,8 @@ exports.getMissingInformation = (org) => {
     attrs = [
       'about',
       'supportForEmployees',
+      'website',
+      'emailAddress',
       'logo',
       'photo'
     ]
@@ -28,6 +30,9 @@ exports.getMissingInformation = (org) => {
       'phase',
       'about',
       'supportForEmployees',
+      'website',
+      'emailAddress',
+      'safeguardingCommitment',
       'logo',
       'photo'
     ]
