@@ -34,14 +34,27 @@
         </h1>
         <p>{{address}}</p>
       </div>
+    </div>
+  </div>
 
-      <p><a href="#">Set up job alert</a></p>
 
-      {% if organisation.photo %}
-        <div class="app-school-photo">
-          <img src="{{organisation.photo}}">
-        </div>
+      {# <p><a href="#">Set up job alert</a></p> #}
+
+      {% if organisation.schools %}
+        {{appSubNavigation({
+          items: [{
+            href: '/organisation/preview',
+            text: 'Organisation',
+            active: true
+          }, {
+            href: '/organisation/preview/schools',
+            text: 'Schools'
+          }]
+        })}}
       {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
       <h2 class="govuk-heading-m">
         Summary
@@ -108,10 +121,17 @@
         ]
       }) }}
 
-      {% if organisation.about %}
+      {% if organisation.about or organisation.photo %}
         <h2 class="govuk-heading-m">
           About {{organisation.name}}
         </h2>
+
+        {% if organisation.photo %}
+          <div class="app-school-photo">
+            <img src="{{organisation.photo}}">
+          </div>
+        {% endif %}
+
         <p>{{organisation.about | nl2br | safe}}</p>
       {% endif %}
 
