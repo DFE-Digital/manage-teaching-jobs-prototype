@@ -53,7 +53,7 @@ const generateSchool = (params = {}) => {
   if(params.logo === null) {
     school.logo = null
   } else {
-    school.logo = params.logo || faker.image.technics(100, 100)
+    school.logo = params.logo || faker.image.abstract(100, 100)
   }
 
   if(params.photo === null) {
@@ -133,16 +133,22 @@ const generateOrg = (params = {}) => {
       org.supportForEmployees = params.supportForEmployees || faker.lorem.sentences(1)
     }
 
+    if(params.safeguardingCommitment === null) {
+      org.safeguardingCommitment = null
+    } else {
+      org.safeguardingCommitment = params.safeguardingCommitment || faker.lorem.paragraphs(2, '\n\n')
+    }
+
     if(params.logo === null) {
       org.logo = null
     } else {
-      org.logo = params.logo || faker.image.technics(100, 100)
+      org.logo = params.logo || faker.image.abstract(100, 100)
     }
 
     if(params.photo === null) {
       org.photo = null
     } else {
-      org.photo = params.photo || faker.image.people()
+      org.photo = params.photo || faker.image.abstract(640, 320)
     }
 
     org.schools = params.schools || generateSchools()
@@ -201,13 +207,22 @@ const generateOrgs = () => {
     photo: null
   }))
 
+  // orgs.push(generateOrg({
+  //   name: 'Royal Academy Trust',
+  //   type: 'MAT',
+  //   website: null,
+  //   emailAddress: null,
+  //   about: null,
+  //   supportForEmployees: null,
+  //   safeguardingCommitment: null,
+  //   logo: null,
+  //   photo: null
+  // }))
+
   orgs.push(generateOrg({
     name: 'Royal Academy Trust',
     type: 'MAT',
-    about: null,
-    supportForEmployees: null,
-    logo: null,
-    photo: null
+    logo: '/public/images/logos/royal.png'
   }))
 
   orgs.push(generateOrg({

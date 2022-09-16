@@ -46,7 +46,7 @@
 
         {% set about %}
           {% if user.organisation.about %}
-            {{user.organisation.logo | nl2br}}
+            {{user.organisation.about | escape | nl2br}}
           {% else %}
             <div class="app-field-highlight">
               <p class="app-field-highlight__instruction">Enter information about your organisation</p>
