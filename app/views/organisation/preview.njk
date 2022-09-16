@@ -122,6 +122,14 @@
         <p>{{organisation.supportForEmployees | nl2br | safe}}</p>
       {% endif %}
 
+      {% if organisation.safeguardingCommitment %}
+        <h2 class="govuk-heading-m">
+          Commitment to safeguarding
+        </h2>
+        <p>{{organisation.safeguardingCommitment | nl2br | safe}}</p>
+      {% endif %}
+
+
       <h2 class="govuk-heading-m">
         Location
       </h2>
