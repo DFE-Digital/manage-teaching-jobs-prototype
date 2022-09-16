@@ -168,25 +168,25 @@ const generateOrg = (params = {}) => {
 const generateOrgs = () => {
   const orgs = []
 
-  orgs.push(generateOrg({
-    name: 'Courtland Primary School',
-    type: 'School',
-    phase: 'Primary school',
-    website: null,
-    emailAddress: null,
-    about: null,
-    supportForEmployees: null,
-    safeguardingCommitment: null,
-    logo: null,
-    photo: null
-  }))
-
   // orgs.push(generateOrg({
   //   name: 'Courtland Primary School',
   //   type: 'School',
   //   phase: 'Primary school',
-  //   logo: '/public/images/logos/courtland.png'
+  //   website: null,
+  //   emailAddress: null,
+  //   about: null,
+  //   supportForEmployees: null,
+  //   safeguardingCommitment: null,
+  //   logo: null,
+  //   photo: null
   // }))
+
+  orgs.push(generateOrg({
+    name: 'Courtland Primary School',
+    type: 'School',
+    phase: 'Primary school',
+    logo: '/public/images/logos/courtland.png'
+  }))
 
   orgs.push(generateOrg({
     name: 'Bushey Meads Secondary School',
