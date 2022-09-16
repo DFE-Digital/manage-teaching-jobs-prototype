@@ -158,7 +158,7 @@
         <h2 class="govuk-heading-m">
           Current jobs
         </h2>
-        {% if not jobs.length %}
+        {% if jobs.length %}
           <p><a href="#">Set up job alert</a></p>
           {{appJobList({
             jobs: jobs,
