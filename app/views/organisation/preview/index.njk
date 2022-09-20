@@ -15,10 +15,17 @@
 {% endif %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
-    text: "Exit preview",
-    href: "/organisation"
-  }) }}
+  {% if organisation.id == user.organisation.id %}
+    {{ govukBackLink({
+      text: "Exit preview",
+      href: "/organisation"
+    }) }}
+  {% else %}
+    {{ govukBackLink({
+      text: "Exit preview",
+      href: "/organisation/schools/"+organisation.id
+    }) }}
+  {% endif %}
 {% endblock %}
 
 {{organisation | log}}
