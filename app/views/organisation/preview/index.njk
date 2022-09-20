@@ -70,6 +70,14 @@
         rows: [
           {
             key: {
+              text: "Multi-academy trust"
+            },
+            value: {
+              html: '<a href="/organisation/'+organisation.parentOrganisation.id+'/preview">'+organisation.parentOrganisation.name+'</a>'
+            }
+          } if organisation.parentOrganisation,
+          {
+            key: {
               text: "Education phase"
             },
             value: {

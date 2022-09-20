@@ -27,10 +27,14 @@ module.exports = router => {
   })
 
   router.get('/organisation/:id/preview', authentication.checkIsAuthenticated, (req, res) => {
-    let organisation = req.session.user.organisation
+    let userOrganisation = req.session.user.organisation
 
-    if(organisation.id != req.params.id) {
+    // If the user is trying to preview a school within a MAT
+    if(userOrganisation.id != req.params.id) {
       organisation = organisation.schools.find(school => school.id == req.params.id)
+      organisation.parentOrganisation = userOrganisation
+    } else {
+      organisation = userOrganisation
     }
 
     let jobs = req.session.user.jobs.filter(job => job.status == 'Published')

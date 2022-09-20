@@ -198,7 +198,7 @@ const generateOrgs = () => {
    * MAT with missing information
    *************************************************/
 
-  let matSchool6 = generateSchool({ phase: 'Primary school' })
+  let matSchool6 = generateSchool({ phase: 'Primary school'})
   let matSchool7 = generateSchool({ phase: 'Primary school', about: null})
 
   orgs.push(generateOrg({
