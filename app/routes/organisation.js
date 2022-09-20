@@ -42,12 +42,20 @@ module.exports = router => {
     })
   })
 
-  router.post('/organisation/edit-logo', authentication.checkIsAuthenticated, (req, res) => {
-    req.session.data.logo = '/public/images/logos/courtland.png'
-    res.redirect('/organisation/edit-logo/check')
+  router.get('/organisation/:id/logo/edit', authentication.checkIsAuthenticated, (req, res) => {
+    res.render('organisation/edit-logo/index')
   })
 
-  router.post('/organisation/edit-logo/check', authentication.checkIsAuthenticated, (req, res) => {
+  router.post('/organisation/:id/logo/edit', authentication.checkIsAuthenticated, (req, res) => {
+    req.session.data.logo = '/public/images/logos/courtland.png'
+    res.redirect(`/organisation/${req.params.id}/logo/edit/check`)
+  })
+
+  router.get('/organisation/:id/logo/edit/check', authentication.checkIsAuthenticated, (req, res) => {
+    res.render('organisation/edit-logo/check')
+  })
+
+  router.post('/organisation/:id/logo/edit/check', authentication.checkIsAuthenticated, (req, res) => {
     req.session.user.organisation.logo = req.session.data.logo
     res.redirect('/organisation')
   })
