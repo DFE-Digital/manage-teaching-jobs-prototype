@@ -143,18 +143,6 @@ const generateOrgs = () => {
    * Primary school
    *************************************************/
 
-  // orgs.push(generateOrg({
-  //   name: 'Courtland Primary School',
-  //   phase: 'Primary school',
-  //   website: null,
-  //   emailAddress: null,
-  //   about: null,
-  //   supportForEmployees: null,
-  //   safeguardingCommitment: null,
-  //   logo: null,
-  //   photo: null
-  // }))
-
   orgs.push(generateSchool({
     name: 'Courtland Primary School',
     phase: 'Primary school',
@@ -181,11 +169,11 @@ const generateOrgs = () => {
    * MAT with primary schools
    *************************************************/
 
-  let matSchool1 = generateSchool({ phase: 'Primary school', about: null })
-  let matSchool2 = generateSchool({ phase: 'Primary school'})
-  let matSchool3 = generateSchool({ phase: 'Primary school'})
-  let matSchool4 = generateSchool({ phase: 'Primary school', about: null })
-  let matSchool5 = generateSchool({ phase: 'Primary school'})
+  let matSchool1 = generateSchool({ phase: 'Primary school' })
+  let matSchool2 = generateSchool({ phase: 'Primary school' })
+  let matSchool3 = generateSchool({ phase: 'Primary school' })
+  let matSchool4 = generateSchool({ phase: 'Primary school' })
+  let matSchool5 = generateSchool({ phase: 'Primary school' })
 
   orgs.push(matSchool1)
   orgs.push(matSchool2)
@@ -206,24 +194,28 @@ const generateOrgs = () => {
     ]
   }))
 
-  // orgs.push(generateOrg({
-  //   name: 'Royal Academy Trust',
-  //   type: 'MAT',
-  //   website: null,
-  //   emailAddress: null,
-  //   about: null,
-  //   supportForEmployees: null,
-  //   safeguardingCommitment: null,
-  //   logo: null,
-  //   photo: null,
-  //   schools: [
-  //     matSchool1,
-  //     matSchool2,
-  //     matSchool3,
-  //     matSchool4,
-  //     matSchool5
-  //   ]
-  // }))
+  /*************************************************
+   * MAT with missing information
+   *************************************************/
+
+  let matSchool6 = generateSchool({ phase: 'Primary school' })
+  let matSchool7 = generateSchool({ phase: 'Primary school', about: null})
+
+  orgs.push(generateOrg({
+    name: 'Svelte Academy Trust',
+    type: 'MAT',
+    website: null,
+    emailAddress: null,
+    about: null,
+    supportForEmployees: null,
+    safeguardingCommitment: null,
+    logo: null,
+    photo: null,
+    schools: [
+      matSchool6,
+      matSchool7
+    ]
+  }))
 
   /*************************************************
    * LA
