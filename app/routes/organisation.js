@@ -28,11 +28,14 @@ module.exports = router => {
 
   router.get('/organisation/:id/preview', authentication.checkIsAuthenticated, (req, res) => {
     let userOrganisation = req.session.user.organisation
-
+    let organisation
     // If the user is trying to preview a school within a MAT
     if(userOrganisation.id != req.params.id) {
-      organisation = organisation.schools.find(school => school.id == req.params.id)
-      organisation.parentOrganisation = userOrganisation
+      organisation = userOrganisation.schools.find(school => school.id == req.params.id)
+      organisation.parentOrganisation = {
+        name: userOrganisation.name,
+        id: userOrganisation.id
+      }
     } else {
       organisation = userOrganisation
     }

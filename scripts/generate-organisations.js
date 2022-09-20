@@ -169,11 +169,11 @@ const generateOrgs = () => {
    * MAT with primary schools
    *************************************************/
 
-  let matSchool1 = generateSchool({ phase: 'Primary school' })
-  let matSchool2 = generateSchool({ phase: 'Primary school' })
-  let matSchool3 = generateSchool({ phase: 'Primary school' })
-  let matSchool4 = generateSchool({ phase: 'Primary school' })
-  let matSchool5 = generateSchool({ phase: 'Primary school' })
+  let matSchool1 = generateSchool({ phase: 'Primary school', name: 'Thor Primary School' })
+  let matSchool2 = generateSchool({ phase: 'Primary school', name: 'Ragnarok School' })
+  let matSchool3 = generateSchool({ phase: 'Primary school', name: 'Ultron School' })
+  let matSchool4 = generateSchool({ phase: 'Primary school', name: 'Endgame School' })
+  let matSchool5 = generateSchool({ phase: 'Primary school', name: 'Stark Primary School' })
 
   orgs.push(matSchool1)
   orgs.push(matSchool2)
@@ -198,8 +198,8 @@ const generateOrgs = () => {
    * MAT with missing information
    *************************************************/
 
-  let matSchool6 = generateSchool({ phase: 'Primary school'})
-  let matSchool7 = generateSchool({ phase: 'Primary school', about: null})
+  let matSchool6 = generateSchool({ phase: 'Primary school', name: 'Assemble Primary School'})
+  let matSchool7 = generateSchool({ phase: 'Primary school', name: 'Wanda Secondary School', about: null})
 
   orgs.push(generateOrg({
     name: 'Svelte Academy Trust',
