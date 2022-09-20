@@ -65,97 +65,60 @@ const generateSchool = (params = {}) => {
   return school
 }
 
-const generateSchools = (params = {}) => {
-  const schools = []
-
-  schools.push(generateSchool({
-    phase: 'Nursery school',
-    about: null
-  }))
-  schools.push(generateSchool({
-    phase: 'Primary school',
-    address: { address1: '1 Owl Way', town: 'London', postcode: 'W3 1NN' },
-  }))
-  schools.push(generateSchool({
-    address: { address1: '2 Owl Way', town: 'London', postcode: 'W6 1PT' },
-    phase: 'Middle school',
-    about: null
-  }))
-  schools.push(generateSchool({
-    address: { address1: '3 Owl Way', town: 'London', postcode: 'W7 2PT' },
-    phase: 'Secondary school'
-  }))
-  schools.push(generateSchool({
-    address: { address1: '4 Owl Way', town: 'London', postcode: 'W8 3PT' },
-    phase: 'Sixth form or college'
-  }))
-  schools.push(generateSchool({
-    address: { address1: '5 Owl Way', town: 'London', postcode: 'W9 4PT' },
-    phase: 'Through school'
-  }))
-
-  return schools
-}
-
 const generateOrg = (params = {}) => {
   let org = {}
 
-  org.type = params.type || faker.helpers.arrayElement([ 'School', 'MAT', 'LA' ])
+  org.name = params.name || faker.company.name({format: 5})
 
-  if(org.type == 'MAT' || org.type == "LA") {
-    org.name = params.name || faker.company.name({format: 5})
-    org.address = params.address || {
-      address1: '50 Lawrence Street',
-      town: 'Mill Hill',
-      postcode: 'NW7 4YK'
-    }
-    if(params.website === null) {
-      org.website = null
-    } else {
-      org.website = params.website || faker.internet.url()
-    }
-
-    if(params.emailAddress === null) {
-      org.emailAddress = null
-    } else {
-      org.emailAddress = params.emailAddress || 'email@' + org.name.toLowerCase().replace(/ /g, "") + '.org.uk'
-    }
-
-    if(params.about === null) {
-      org.about = null
-    } else {
-      org.about = params.about || faker.lorem.paragraphs(2, '\n\n')
-    }
-
-    if(params.supportForEmployees === null) {
-      org.supportForEmployees = null
-    } else {
-      org.supportForEmployees = params.supportForEmployees || faker.lorem.sentences(1)
-    }
-
-    if(params.safeguardingCommitment === null) {
-      org.safeguardingCommitment = null
-    } else {
-      org.safeguardingCommitment = params.safeguardingCommitment || faker.lorem.paragraphs(2, '\n\n')
-    }
-
-    if(params.logo === null) {
-      org.logo = null
-    } else {
-      org.logo = params.logo || faker.image.abstract(100, 100)
-    }
-
-    if(params.photo === null) {
-      org.photo = null
-    } else {
-      org.photo = params.photo || faker.image.abstract(640, 320)
-    }
-
-    org.schools = params.schools || generateSchools()
-  } else {
-    org = generateSchool(params)
-
+  org.address = params.address || {
+    address1: '50 Lawrence Street',
+    town: 'Mill Hill',
+    postcode: 'NW7 4YK'
   }
+
+  if(params.website === null) {
+    org.website = null
+  } else {
+    org.website = params.website || faker.internet.url()
+  }
+
+  if(params.emailAddress === null) {
+    org.emailAddress = null
+  } else {
+    org.emailAddress = params.emailAddress || 'email@' + org.name.toLowerCase().replace(/ /g, "") + '.org.uk'
+  }
+
+  if(params.about === null) {
+    org.about = null
+  } else {
+    org.about = params.about || faker.lorem.paragraphs(2, '\n\n')
+  }
+
+  if(params.supportForEmployees === null) {
+    org.supportForEmployees = null
+  } else {
+    org.supportForEmployees = params.supportForEmployees || faker.lorem.sentences(1)
+  }
+
+  if(params.safeguardingCommitment === null) {
+    org.safeguardingCommitment = null
+  } else {
+    org.safeguardingCommitment = params.safeguardingCommitment || faker.lorem.paragraphs(2, '\n\n')
+  }
+
+  if(params.logo === null) {
+    org.logo = null
+  } else {
+    org.logo = params.logo || faker.image.abstract(100, 100)
+  }
+
+  if(params.photo === null) {
+    org.photo = null
+  } else {
+    org.photo = params.photo || faker.image.abstract(640, 320)
+  }
+
+  org.schools = params.schools
 
   return org
 }
@@ -174,9 +137,12 @@ const generateOrg = (params = {}) => {
 const generateOrgs = () => {
   const orgs = []
 
+  /*************************************************
+   * Primary school
+   *************************************************/
+
   // orgs.push(generateOrg({
   //   name: 'Courtland Primary School',
-  //   type: 'School',
   //   phase: 'Primary school',
   //   website: null,
   //   emailAddress: null,
@@ -187,16 +153,18 @@ const generateOrgs = () => {
   //   photo: null
   // }))
 
-  orgs.push(generateOrg({
+  orgs.push(generateSchool({
     name: 'Courtland Primary School',
-    type: 'School',
     phase: 'Primary school',
     logo: '/public/images/logos/courtland.png'
   }))
 
-  orgs.push(generateOrg({
+  /*************************************************
+   * Secondary school
+   *************************************************/
+
+  orgs.push(generateSchool({
     name: 'Bushey Meads Secondary School',
-    type: 'School',
     phase: 'Secondary school',
     website: null,
     emailAddress: null,
@@ -205,6 +173,35 @@ const generateOrgs = () => {
     safeguardingCommitment: null,
     logo: null,
     photo: null
+  }))
+
+  /*************************************************
+   * MAT with primary schools
+   *************************************************/
+
+  let matSchool1 = generateSchool({ phase: 'Primary school', about: null })
+  let matSchool2 = generateSchool({ phase: 'Primary school'})
+  let matSchool3 = generateSchool({ phase: 'Primary school'})
+  let matSchool4 = generateSchool({ phase: 'Primary school', about: null })
+  let matSchool5 = generateSchool({ phase: 'Primary school'})
+
+  orgs.push(matSchool1)
+  orgs.push(matSchool2)
+  orgs.push(matSchool3)
+  orgs.push(matSchool4)
+  orgs.push(matSchool5)
+
+  orgs.push(generateOrg({
+    name: 'Royal Academy Trust',
+    type: 'MAT',
+    logo: '/public/images/logos/royal.png',
+    schools: [
+      matSchool1,
+      matSchool2,
+      matSchool3,
+      matSchool4,
+      matSchool5
+    ]
   }))
 
   // orgs.push(generateOrg({
@@ -216,14 +213,19 @@ const generateOrgs = () => {
   //   supportForEmployees: null,
   //   safeguardingCommitment: null,
   //   logo: null,
-  //   photo: null
+  //   photo: null,
+  //   schools: [
+  //     matSchool1,
+  //     matSchool2,
+  //     matSchool3,
+  //     matSchool4,
+  //     matSchool5
+  //   ]
   // }))
 
-  orgs.push(generateOrg({
-    name: 'Royal Academy Trust',
-    type: 'MAT',
-    logo: '/public/images/logos/royal.png'
-  }))
+  /*************************************************
+   * LA
+   *************************************************/
 
   orgs.push(generateOrg({
     name: 'Barnet Local Authority',

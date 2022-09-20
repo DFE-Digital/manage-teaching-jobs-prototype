@@ -1,7 +1,7 @@
 
 {% extends "layout.njk" %}
 
-{% set heading = 'User profile' %}
+{% set heading = 'Sign in' %}
 
 {% set title = heading %}
 
@@ -9,30 +9,44 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set h1 %}
+      <h1 class="govuk-heading-l">
         {{heading}}
-      {% endset %}
+      </h1>
 
-      <form method="post">
+      <div class="app-list">
+        {% for user in users %}
+          <form method="post">
+            {% if query.returnUrl %}
+              <input type="hidden" name="returnUrl" value="{{query.returnUrl}}">
+            {% endif %}
 
-        {% if query.returnUrl %}
-          <input type="hidden" name="returnUrl" value="{{query.returnUrl}}">
-        {% endif %}
+            <input type="hidden" name="emailAddress" value="{{user.username}}">
+            <div class="app-list__item govuk-!-padding-top-4 govuk-!-padding-bottom-6">
 
-        {{ govukRadios({
-          idPrefix: "emailAddress",
-          name: "emailAddress",
-          fieldset: {
-            legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          items: options
-        }) }}
+              <span class="govuk-caption-m">
+                {{user.organisation.name}}
+              </span>
+              <h2 class="govuk-heading-m">
+                {{user.username}}
+              </h2>
 
+              {# <ul class="govuk-list govuk-list--bullet">
+                {% if user.organisation.schools %}
+                  <li>
+                    Has multiple schools
+                  </li>
+                {% endif %}
+              </ul> #}
 
+              {{ govukButton({
+                text: 'Sign in',
+                classes: 'govuk-!-margin-bottom-0'
+              }) }}
+            </div>
+
+          </form>
+        {% endfor %}
+      </div>
 
 
 
@@ -60,9 +74,7 @@
 
 
 
-        {{ govukButton({
-          text: 'Sign in'
-        }) }}
+
       </form>
 
 

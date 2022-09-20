@@ -7,30 +7,8 @@ const organisationHelper = require('../helpers/organisation')
 module.exports = router => {
 
   router.get('/account/sign-in', (req, res) => {
-    var options = users.map(user => {
-
-      let hint = user.organisation.type
-
-      if(user.organisation.type == 'School') {
-        if(user.organisation.phase) {
-          hint = user.organisation.phase
-        } else {
-          hint = 'School'
-        }
-      } else {
-        hint = user.organisation.type
-      }
-
-      return {
-        text: user.username,
-        value: user.username,
-        hint: {
-          text: hint
-        }
-      }
-    })
     res.render('account/sign-in', {
-      options
+      users
     })
   })
 
