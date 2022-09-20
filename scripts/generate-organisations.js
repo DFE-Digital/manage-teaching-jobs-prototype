@@ -68,6 +68,8 @@ const generateSchool = (params = {}) => {
 const generateOrg = (params = {}) => {
   let org = {}
 
+  org.id = uuidv4()
+
   org.name = params.name || faker.company.name({format: 5})
 
   org.address = params.address || {

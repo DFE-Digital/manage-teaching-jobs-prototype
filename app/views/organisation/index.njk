@@ -40,6 +40,17 @@
           {% endfor %}
         {% endset %}
 
+        {% set emailAddress %}
+          {% if user.organisation.emailAddress %}
+            <a href="{{user.organisation.emailAddress}}">{{user.organisation.emailAddress}}</a>
+          {% else %}
+            <div class="app-field-highlight">
+              <p class="app-field-highlight__instruction">Enter an email address</p>
+              Not entered
+            </div>
+          {% endif %}
+        {% endset %}
+
         {% set website %}
           <a href="{{user.organisation.website}}">{{user.organisation.website}} (opens in new tab)</a>
         {% endset %}
@@ -128,15 +139,15 @@
             },
             {
               key: {
-                text: "Website"
+                text: "Email address"
               },
               value: {
-                html: website
+                html: emailAddress
               },
               actions: {
                 items: [
                   {
-                    href: "Item URL",
+                    href: "/organisation/"+user.organisation.id+"/email-address/edit",
                     text: "Change",
                     visuallyHiddenText: "Item label"
                   }
@@ -145,7 +156,24 @@
             },
             {
               key: {
-                text: "About the organisation"
+                text: "Website"
+              },
+              value: {
+                html: website
+              },
+              actions: {
+                items: [
+                  {
+                    href: "/organisation/"+user.organisation.id+"/website/edit",
+                    text: "Change",
+                    visuallyHiddenText: "Item label"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Organisation description"
               },
               value: {
                 html: about
@@ -153,16 +181,16 @@
               actions: {
                 items: [
                   {
-                    href: "/organisation/edit/description",
+                    href: "/organisation/"+user.organisation.id+"/description/edit",
                     text: "Change",
-                    visuallyHiddenText: "About the organisation"
+                    visuallyHiddenText: "Organisation description"
                   }
                 ]
               }
             },
             {
               key: {
-                text: "What the organisation offers its employees"
+                text: "What the organisation offers its staff"
               },
               value: {
                 html: howEmployeesAreSupported
@@ -170,7 +198,7 @@
               actions: {
                 items: [
                   {
-                    href: "/organisation/edit/description",
+                    href: "/organisation/"+user.organisation.id+"/offers-staff/edit",
                     text: "Change",
                     visuallyHiddenText: "About school"
                   }
@@ -179,7 +207,7 @@
             },
             {
               key: {
-                text: "Your commitment to safeguarding"
+                text: "Commitment to safeguarding"
               },
               value: {
                 html: safeguardingCommitment
@@ -187,7 +215,7 @@
               actions: {
                 items: [
                   {
-                    href: "/organisation/edit/safeguarding-commitment",
+                    href: "/organisation/"+user.organisation.id+"/safeguarding/edit",
                     text: "Change",
                     visuallyHiddenText: "Safeguarding commitment"
                   }
@@ -204,7 +232,7 @@
                 actions: {
                   items: [
                     {
-                      href: "/organisation/edit-logo",
+                      href: "/organisation/"+user.organisation.id+"/logo/edit",
                       text: "Change",
                       visuallyHiddenText: "About school"
                     }
@@ -221,7 +249,7 @@
                 actions: {
                   items: [
                     {
-                      href: "/organisation/edit/photo",
+                      href: "/organisation/"+user.organisation.id+"/photo/edit",
                       text: "Change",
                       visuallyHiddenText: "About school"
                     }
