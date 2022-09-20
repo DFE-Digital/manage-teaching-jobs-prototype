@@ -1,0 +1,80 @@
+
+{% extends "layout.njk" %}
+
+{% if schools %}
+  {% set title = 'Organisation profile' %}
+{% else %}
+  {% set title = 'School profile' %}
+{% endif %}
+
+{% set primaryNavId = 'organisation' %}
+
+{% block beforeContent %}
+  {% if showBreadCrumb %}
+    {{ govukBreadcrumbs({
+      items: [
+        {
+          href: '/organisation',
+          text: 'Organisation profile'
+        },
+        {
+          text: title
+        }
+      ]
+    }) }}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+  {% if showCompleteProfileBanner %}
+    {% if schools %}
+      {{ govukNotificationBanner({
+        text: "Complete your organisation profile"
+      }) }}
+    {% else %}
+      {{ govukNotificationBanner({
+        text: "Complete your school profile"
+      }) }}
+    {% endif %}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      {% if organisation.schools %}
+        <p><a href="/organisation/{{organisation.id}}/preview">Preview organisation profile</a></p>
+        {{appSchoolSummaryList({ school: organisation })}}
+        <h2 class="govuk-heading-m govuk-!-margin-top-8"> Schools </h2>
+
+        {% for school in schools %}
+          <div class="app-school govuk-!-margin-bottom-0 {% if loop.first %}govuk-!-padding-top-0{% endif %}">
+
+            {% if school.missingInformation.length %}
+                <div class="app-field-highlight {% if loop.first %}govuk-!-margin-top-2{% endif %}">
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
+                  <a href="/organisation/schools/{{school.id}}">{{school.name}}</a>
+                </h3>
+                <p class="app-field-highlight__instruction">Complete your school profile</p>
+              </div>
+            {% else %}
+              <h3 class="govuk-heading-s govuk-!-margin-bottom-0">
+                <a href="/organisation/schools/{{school.id}}">{{school.name}}</a>
+              </h3>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+        <p><a href="/organisation/{{organisation.id}}/preview">Preview school profile</a></p>
+        {{appSchoolSummaryList({ school: organisation })}}
+      {% endif %}
+
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -94,6 +94,20 @@
   {% endif %}
 {% endset %}
 
+
+{% if params.school.schools %}
+  {% set descriptionLabel = "Organisation description" %}
+  {% set howEmployeesAreSupportedLabel = "What the organisation offers its staff" %}
+  {% set logoLabel = "Organisation logo" %}
+  {% set photoLabel = "Organisation photo" %}
+{% else %}
+  {% set descriptionLabel = "School description" %}
+  {% set howEmployeesAreSupportedLabel = "What the school offers its staff" %}
+  {% set logoLabel = "School logo" %}
+  {% set photoLabel = "School photo" %}
+{% endif %}
+
+
 {{ govukSummaryList({
   rows: [
     {
@@ -119,7 +133,7 @@
       value: {
         text: params.school.type
       }
-    },
+    } if params.school.type,
     {
       key: {
         text: "Education phase"
@@ -135,8 +149,8 @@
             visuallyHiddenText: "Phase"
           }
         ]
-      } if params.school.phaseEditable
-    },
+      }
+    } if params.school.phase,
     {
       key: {
         text: "Age group"
@@ -144,7 +158,7 @@
       value: {
         text: params.school.ageGroup
       }
-    },
+    } if params.school.ageGroup,
     {
       key: {
         text: "Size"
@@ -152,7 +166,7 @@
       value: {
         text: params.school.size + ' pupils enrolled'
       }
-    },
+    } if params.school.size,
     {
       key: {
         text: "Ofsted report"
@@ -197,7 +211,7 @@
     },
     {
       key: {
-        text: "School description"
+        text: descriptionLabel
       },
       value: {
         html: about
@@ -214,7 +228,7 @@
     },
     {
       key: {
-        text: "What the school offers its staff"
+        text: howEmployeesAreSupportedLabel
       },
       value: {
         html: howEmployeesAreSupported
@@ -248,7 +262,7 @@
     },
     {
       key: {
-        text: "School logo"
+        text: logoLabel
       },
       value: {
         html: logo
@@ -265,7 +279,7 @@
     },
     {
       key: {
-        text: "School photo"
+        text: photoLabel
       },
       value: {
         html: photo

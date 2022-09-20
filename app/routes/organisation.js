@@ -19,25 +19,32 @@ module.exports = router => {
       })
     }
 
-    res.render('organisation/index', {
+    res.render('organisation/show', {
       showCompleteProfileBanner,
+      organisation: user.organisation,
       schools
     })
   })
 
-  router.get('/organisation/preview', authentication.checkIsAuthenticated, (req, res) => {
+  router.get('/organisation/:id/preview', authentication.checkIsAuthenticated, (req, res) => {
     let organisation = req.session.user.organisation
+
+    if(organisation.id != req.params.id) {
+      organisation = organisation.schools.find(school => school.id == req.params.id)
+    }
+
     let jobs = req.session.user.jobs.filter(job => job.status == 'Published')
-    res.render('organisation/preview', {
+
+    res.render('organisation/preview/index', {
       organisation,
       jobs
     })
   })
 
-  router.get('/organisation/preview/schools', authentication.checkIsAuthenticated, (req, res) => {
+  router.get('/organisation/:id/preview/schools', authentication.checkIsAuthenticated, (req, res) => {
     let organisation = req.session.user.organisation
 
-    res.render('organisation/schools', {
+    res.render('organisation/preview/schools', {
       organisation
     })
   })
@@ -60,13 +67,13 @@ module.exports = router => {
     res.redirect('/organisation')
   })
 
-  router.get('/schools/:id', authentication.checkIsAuthenticated, (req, res) => {
-    let organisation = req.session.user.organisation
-    let school = organisation.schools.find(school => school.id == req.params.id)
+  router.get('/organisation/schools/:id', authentication.checkIsAuthenticated, (req, res) => {
+    let organisation = req.session.user.organisation.schools.find(school => school.id == req.params.id)
     let showCompleteProfileBanner = organisationHelper.hasMissingInformation(organisation).length
 
-    res.render('organisation/schools/show', {
-      school,
+    res.render('organisation/show', {
+      organisation,
+      showBreadCrumb: true,
       showCompleteProfileBanner
     })
   })

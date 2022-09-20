@@ -21,6 +21,8 @@
   }) }}
 {% endblock %}
 
+{{organisation | log}}
+
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -40,11 +42,11 @@
   {% if organisation.schools %}
     {{appSubNavigation({
       items: [{
-        href: '/organisation/preview',
+        href: '/organisation/'+organisation.id+'/preview',
         text: 'Organisation',
         active: true
       }, {
-        href: '/organisation/preview/schools',
+        href: '/organisation/'+organisation.id+'/preview/schools',
         text: 'Schools'
       }]
     })}}
@@ -59,14 +61,6 @@
 
       {{ govukSummaryList({
         rows: [
-          {
-            key: {
-              text: "Type"
-            },
-            value: {
-              text: organisation.type
-            }
-          },
           {
             key: {
               text: "Education phase"

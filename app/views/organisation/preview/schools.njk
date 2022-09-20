@@ -33,10 +33,10 @@
   {% if organisation.schools %}
     {{appSubNavigation({
       items: [{
-        href: '/organisation/preview',
+        href: '/organisation/'+organisation.id+'/preview',
         text: 'Organisation'
       }, {
-        href: '/organisation/preview/schools',
+        href: '/organisation/'+organisation.id+'/preview/schools',
         text: 'Schools',
         active: true
       }]
@@ -51,7 +51,7 @@
       </h2>
 
       {% for school in organisation.schools %}
-        <p><a href="/organisation/schools/{{school.id}}/preview">{{school.name}}</a></p>
+        <p><a href="/organisation/{{school.id}}/preview">{{school.name}}</a></p>
       {% endfor %}
 
     </div>
