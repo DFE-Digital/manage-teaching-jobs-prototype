@@ -51,8 +51,8 @@
 {% endset %}
 
 {% set howEmployeesAreSupported %}
-  {% if params.school.supportForEmployees %}
-    {{params.school.supportForEmployees | escape | nl2br}}
+  {% if params.school.supportForStaff %}
+    {{params.school.supportForStaff | escape | nl2br}}
   {% else %}
     <div class="app-field-highlight">
       <p class="app-field-highlight__instruction">Enter information about what the school offers its staff</p>

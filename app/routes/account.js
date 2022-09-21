@@ -8,7 +8,10 @@ module.exports = router => {
 
   router.get('/account/sign-in', (req, res) => {
     res.render('account/sign-in', {
-      users
+      users: users.map(user => {
+        user.organisation.hasMissingInformation = organisationHelper.hasMissingInformation(user.organisation)
+        return user
+      })
     })
   })
 

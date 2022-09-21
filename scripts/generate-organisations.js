@@ -38,10 +38,10 @@ const generateSchool = (params = {}) => {
     school.about = params.about || faker.lorem.paragraphs(2, '\n\n')
   }
 
-  if(params.supportForEmployees === null) {
-    school.supportForEmployees = null
+  if(params.supportForStaff === null) {
+    school.supportForStaff = null
   } else {
-    school.supportForEmployees = params.supportForEmployees || faker.lorem.sentences(1)
+    school.supportForStaff = params.supportForStaff || faker.lorem.sentences(1)
   }
 
   if(params.safeguardingCommitment === null) {
@@ -96,10 +96,10 @@ const generateOrg = (params = {}) => {
     org.about = params.about || faker.lorem.paragraphs(2, '\n\n')
   }
 
-  if(params.supportForEmployees === null) {
-    org.supportForEmployees = null
+  if(params.supportForStaff === null) {
+    org.supportForStaff = null
   } else {
-    org.supportForEmployees = params.supportForEmployees || faker.lorem.sentences(1)
+    org.supportForStaff = params.supportForStaff || faker.lorem.sentences(1)
   }
 
   if(params.safeguardingCommitment === null) {
@@ -159,7 +159,7 @@ const generateOrgs = () => {
     website: null,
     emailAddress: null,
     about: null,
-    supportForEmployees: null,
+    supportForStaff: null,
     safeguardingCommitment: null,
     logo: null,
     photo: null
@@ -199,18 +199,11 @@ const generateOrgs = () => {
    *************************************************/
 
   let matSchool6 = generateSchool({ phase: 'Primary school', name: 'Assemble Primary School'})
-  let matSchool7 = generateSchool({ phase: 'Primary school', name: 'Wanda Secondary School', about: null})
+  let matSchool7 = generateSchool({ phase: 'Primary school', name: 'Wanda School', about: null})
 
   orgs.push(generateOrg({
     name: 'Svelte Academy Trust',
     type: 'MAT',
-    website: null,
-    emailAddress: null,
-    about: null,
-    supportForEmployees: null,
-    safeguardingCommitment: null,
-    logo: null,
-    photo: null,
     schools: [
       matSchool6,
       matSchool7
@@ -221,9 +214,14 @@ const generateOrgs = () => {
    * LA
    *************************************************/
 
+  let laSchool1 = generateSchool({ phase: 'Primary school', name: 'Friday School'})
+
   orgs.push(generateOrg({
     name: 'Barnet Local Authority',
-    type: 'LA'
+    type: 'LA',
+    schools: [
+      laSchool1
+    ]
   }))
 
   return orgs

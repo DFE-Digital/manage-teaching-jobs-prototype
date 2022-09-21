@@ -19,7 +19,7 @@ exports.getMissingInformation = (org) => {
   if(org.schools) {
     attrs = [
       'about',
-      'supportForEmployees',
+      'supportForStaff',
       'website',
       'emailAddress',
       'logo',
@@ -29,7 +29,7 @@ exports.getMissingInformation = (org) => {
     attrs = [
       'phase',
       'about',
-      'supportForEmployees',
+      'supportForStaff',
       'website',
       'emailAddress',
       'safeguardingCommitment',
