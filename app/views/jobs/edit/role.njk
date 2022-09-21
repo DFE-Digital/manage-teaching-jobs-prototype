@@ -67,9 +67,17 @@
           ]
         }) }}
 
-        {{ govukButton({
-          text: "Save and continue"
-        }) }}
+        <div class="govuk-button-group">
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          {{ govukButton({
+            text: "Save and finish later",
+            classes: 'govuk-button--secondary'
+          }) }}
+        </div>
 
       </form>
 

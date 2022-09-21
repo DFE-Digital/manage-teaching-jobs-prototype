@@ -18,7 +18,7 @@ module.exports = router => {
 
     job.role = req.body.editJob.role
 
-    req.flash('success', 'Job listing updated')
+    req.flash('success', 'Job listing saved')
 
     res.redirect(`/jobs/${req.params.id}`)
   })
