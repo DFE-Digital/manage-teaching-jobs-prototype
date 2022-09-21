@@ -1,6 +1,19 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
+    idPrefix: "filters[jobs]",
+    name: "filters[jobs]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Published jobs",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: jobCheckboxes
+  }) }}
+
+  {{ govukCheckboxes({
     idPrefix: "filters[qts]",
     name: "filters[qts]",
     classes: "govuk-checkboxes--small",

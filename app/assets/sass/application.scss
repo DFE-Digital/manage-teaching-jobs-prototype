@@ -202,3 +202,9 @@ h1 .govuk-tag {
   padding: govuk-spacing(3) 0;
   border-bottom: 1px solid govuk-colour('mid-grey');
 }
+
+.govuk-summary-list__key,
+.govuk-summary-list__value,
+.govuk-summary-list__actions {
+  vertical-align: top;
+}

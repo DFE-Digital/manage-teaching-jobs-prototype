@@ -6,6 +6,15 @@ module.exports = router => {
 
   router.get('/jobseekers', authentication.checkIsAuthenticated, (req, res) => {
 
+    let jobCheckboxes = req.session.user.jobs
+      .filter(job => job.status == 'Published')
+      .map(job => {
+        return {
+          text: job.title,
+          value: job.title
+        }
+      })
+
     let roles = require('../data/roles').map(item => {
       return { text: item, value: item }
     })
@@ -16,7 +25,8 @@ module.exports = router => {
 
     res.render('jobseekers/index', {
       roles,
-      phases
+      phases,
+      jobCheckboxes
     })
   })
 
