@@ -9,6 +9,13 @@
 
 {% set primaryNavId = 'jobseekers' %}
 
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobseekers/"+jobseeker.id
+  }) }}
+{% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -49,6 +56,8 @@
         {{ govukButton({
           text: "Invite to apply for a job"
         }) }}
+
+        <p><a href="/jobseekers/{{jobseeker.id}}">Cancel</a></p>
       </div>
 
 
