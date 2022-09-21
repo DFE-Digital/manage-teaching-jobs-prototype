@@ -1,5 +1,21 @@
 {% set filterOptionsHtml %}
 
+  {% if locationCheckboxes %}
+
+    {{ govukCheckboxes({
+      idPrefix: "filters[locations]",
+      name: "filters[locations]",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+        legend: {
+          text: "Locations",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      items: locationCheckboxes
+    }) }}
+  {% endif %}
+
   {{ govukCheckboxes({
     idPrefix: "filters[jobs]",
     name: "filters[jobs]",

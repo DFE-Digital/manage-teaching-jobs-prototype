@@ -5,6 +5,20 @@ const _ = require('lodash')
 module.exports = router => {
 
   router.get('/jobseekers', authentication.checkIsAuthenticated, (req, res) => {
+    let user = req.session.user
+
+    let locationCheckboxes
+    if(user.organisation.schools) {
+      locationCheckboxes = [{
+        text: 'Head office',
+        value: 'Head office'
+      }].concat(user.organisation.schools.map(item => {
+        return {
+          text: item.name,
+          value: item.name
+        }
+      }))
+    }
 
     let jobCheckboxes = req.session.user.jobs
       .filter(job => job.status == 'Published')
@@ -24,9 +38,10 @@ module.exports = router => {
     })
 
     res.render('jobseekers/index', {
+      locationCheckboxes,
+      jobCheckboxes,
       roles,
       phases,
-      jobCheckboxes
     })
   })
 
