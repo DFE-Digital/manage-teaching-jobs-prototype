@@ -1,0 +1,65 @@
+{% extends "layout.njk" %}
+{% set title = 'Invitations' %}
+{% set primaryNavId = 'jobseekers' %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: 'Jobseeker profiles',
+        href: '/jobseekers'
+      },
+      {
+        text: jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName,
+        href: '/jobseekers/'+jobseeker.id
+      },
+      {
+        text: 'Invitations'
+      }
+    ]
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <div class="app-list">
+          <div class="app-list__item">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+              19 September 2022 at 9:13am
+            </h2>
+            <p class="govuk-!-margin-bottom-2">Sophie Harvey</p>
+            <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+              <li>
+                <a href="#">Class teacher</a>
+              </li>
+              <li>
+                <a href="#">Teacher of English</a>
+              </li>
+            </ul>
+          </div>
+          <div class="app-list__item">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+              13 August 2022 at 10:13pm
+            </h2>
+            <p class="govuk-!-margin-bottom-2">Rachael Miles</p>
+            <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+              <li>
+                <a href="#">Class teacher</a>
+              </li>
+            </ul>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+{% endblock %}
