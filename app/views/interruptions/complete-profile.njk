@@ -2,70 +2,39 @@
 {% extends "layout.njk" %}
 
 {% if user.organisation.schools %}
-  {% set title = 'There’s information missing about your organisation' %}
+  {% set title = 'Add your logo and photo to your organisation profile' %}
 {% else %}
-  {% set title = 'There’s information missing about your school' %}
-{% endif%}
+  {% set title = 'Add your logo and photo to your school profile' %}
+{% endif %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
-        {# Complete your school profile #}
-
-        {% if user.organisation.schools %}
-          <h1 class="govuk-heading-l">Add your logo and photo to your organisation profile</h1>
-          <p>You can now upload your logo and photo to your organisation profile.</p>
-          <p>The details you add to your organisation profile will be included in your job listings.</p>
-        {% else %}
-          <h1 class="govuk-heading-l">Add your logo and photo to your school profile</h1>
-          <p>You can now upload your logo and photo to your school profile.</p>
-          <p>The details you add to your school profile will be included in your job listings.</p>
-        {% endif %}
+      {% if user.organisation.schools %}
+        <h1 class="govuk-heading-l">{{title}}</h1>
+        <p>You can now upload your logo and photo to your organisation profile.</p>
+        <p>The details you add to your organisation profile will be included in your job listings.</p>
+      {% else %}
+        <h1 class="govuk-heading-l">{{title}}</h1>
+        <p>You can now upload your logo and photo to your school profile.</p>
+        <p>The details you add to your school profile will be included in your job listings.</p>
+      {% endif %}
 
       {{ govukButton({
         text: "Add logo and photo",
         href: "/organisation"
       }) }}
 
-      {# {{ govukButton({
-        text: "Complete school profile",
-        href: "/organisation"
-      }) }} #}
-
       <p><a href="/jobs">Skip to job listings</a></p>
 
-
-      {# <br><hr><br><br>
-
-      <h1 class="govuk-heading-l">
-        You can now find job seekers that match your school and vacancies
-      </h1>
-
-      <p>This means you can invite suitable candidates to apply for any vacancies you have listed on the service.</p>
-
-      {{ govukButton({
-        text: "Find jobseeker profiles",
-        href: "/jobseekers"
-      }) }} #}
-
-      {# <p><a href="/jobs">Skip to job listings</a></p> #}
-
-
-
-
-      {# <br><hr><br><br>
-
-      <h1 class="govuk-heading-l">
-        You need to complete your school profile
-      </h1>
-
-      {% if user.organisation.schools %}
-        <p>The information that you add will help jobseekers find a job at your organisation.</p>
+      {# {% if user.organisation.schools %}
+        <h1 class="govuk-heading-l">Complete your organisation profile</h1>
+        <p>The details you add to your organisation profile will be included in your job listings.</p>
       {% else %}
-        <p>The information that you add will help jobseekers find a job at your school.</p>
-      {% endif%}
+        <h1 class="govuk-heading-l">Complete your school profile</h1>
+        <p>The details you add to your school profile will be included in your job listings.</p>
+      {% endif %}
 
       {{ govukButton({
         text: "Complete school profile",
@@ -73,11 +42,6 @@
       }) }}
 
       <p><a href="/jobs">Skip to job listings</a></p> #}
-
-
-
-
-
 
     </div>
   </div>
