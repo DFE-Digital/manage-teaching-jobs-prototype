@@ -14,10 +14,11 @@
         </h1>
 
         {% if user.organisation.schools %}
-          <p>These jobseekers are willing to travel to at least one location within your trust or relocate.</p>
+          <p>These jobseekers are willing to travel to at least one location within your organisation.</p>
         {% else %}
           <p>These jobseekers are willing to travel to your school or relocate.</p>
         {% endif %}
+
     </div>
   </div>
 
@@ -26,6 +27,10 @@
     <div class="app-filter-layout__filter">
       {% include "includes/profiles-filter-panel.njk" %}
     </div>
+
+    <p>Ordered by newest first.</p>
+
+    {# <p><b>Sort by:</b> Added most recently | <a href="#">Turned on least recently</a></p> #}
 
     <div class="app-filter-layout__content">
       <div class="app-action-bar">

@@ -21,44 +21,48 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set h1 %}
-        <span class="govuk-caption-l">
-          {{caption}}
-        </span>
-        {# <h1 class="govuk-heading-l"> #}
-          {{title}}
-        {# </h1> #}
-      {% endset %}
-
       <form method="post">
+        {% if publishedJobs.length != 1%}
+          <span class="govuk-caption-l">
+            {{caption}}
+          </span>
+          <h1 class="govuk-heading-l">
+            Send invitation to apply for the Maths teacher vacancy
+          </h1>
+          <p>{{name}} will be sent an email to tell them they’ve been invited to apply for Maths teacher.</p>
+        {% else %}
+          {% set h1 %}
+            <span class="govuk-caption-l">
+              {{caption}}
+            </span>
+            {{title}}
+          {% endset %}
+          {{ govukCheckboxes({
+            idPrefix: "invite",
+            name: "invite",
+            fieldset: {
+              legend: {
+                html: h1,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: jobCheckboxes
+          }) }}
+          {% set text %}
+            {{name}} will be sent an email to tell them they’ve been invited to apply for the jobs you selected.
+          {% endset %}
 
-        {{ govukCheckboxes({
-          idPrefix: "invite",
-          name: "invite",
-          fieldset: {
-            legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          items: jobCheckboxes
-        }) }}
-
-        {% set text %}
-          {{name}} will be sent an email to tell them they’ve been invited to apply for the jobs you selected.
-        {% endset %}
-
-        {{ govukWarningText({
-          text: text
-        }) }}
+          {{ govukWarningText({
+            text: text
+          }) }}
+        {% endif %}
 
         {{ govukButton({
           text: "Send invite to apply"
         }) }}
-
         <p><a href="/jobseekers/{{jobseeker.id}}">Cancel</a></p>
-      </div>
+      </form>
 
 
 

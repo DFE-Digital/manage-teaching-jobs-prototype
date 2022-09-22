@@ -24,24 +24,33 @@
     {% endif %}
 
     <h2 class="govuk-heading-m">
-      Next steps
+      Invite jobseekers to apply for this job
     </h2>
 
-    <p>There are <a href="/jobseekers">3 jobseeker profiles that match this listing</a>.</p>
+    <p>3 jobseeker profiles match this job listing.</p>
 
-    <p>You can also:</p>
+    <p><a href="/jobseekers">View jobseeker profiles</a></p>
 
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        <a href="#">view the job listing</a>
-      </li>
-      <li>
-        <a href="#">make changes to the job listing</a>
-      </li>
-      <li>
-        <a href="/jobs">manage jobs</a>
-      </li>
-    </ul>
+    {% if user.organisation.schools %}
+      <h2 class="govuk-heading-m">
+        Complete your organisation profile
+      </h2>
+      {# <p>There’s some missing information about your organisation.</p> #}
+      <p>The information that you add will be included jobseekers find a job at your organisation.</p>
+      <p><a href="/organisation">Complete organisation profile</a></p>
+    {% else %}
+      <h2 class="govuk-heading-m">
+        Complete your school profile
+      </h2>
+      <p>Any information you add to your profile will be included in this job listing.</p>
+      <p><a href="/organisation">Complete school profile</a></p>
+    {% endif%}
+
+    <h2 class="govuk-heading-m">
+      View or make changes to the job listing
+    </h2>
+
+    <p>You can <a href="#">view the job listing</a> or <a href="#">make changes to the job listing</a>.</p>
 
     <h2 class="govuk-heading-m">
       Give feedback

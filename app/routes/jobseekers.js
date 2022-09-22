@@ -83,20 +83,21 @@ module.exports = router => {
   router.get('/jobseekers/:id/invites/new', authentication.checkIsAuthenticated, (req, res) => {
     let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
 
-    let jobCheckboxes = req.session.user.jobs
-      .filter(job => job.status == 'Published')
-      .map(item => {
-        return {
-          text: item.title,
-          value: item.title,
-          hint: {
-            text: item.role
-          }
+    let publishedJobs = req.session.user.jobs.filter(job => job.status == 'Published')
+
+    let jobCheckboxes = publishedJobs.map(item => {
+      return {
+        text: item.title,
+        value: item.title,
+        hint: {
+          text: item.role
         }
-      })
+      }
+    })
 
     res.render('jobseekers/invites/new/index', {
       jobseeker,
+      publishedJobs,
       jobCheckboxes
     })
   })

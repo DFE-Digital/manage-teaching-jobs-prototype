@@ -32,30 +32,12 @@
     {% endfor %}
   {% endset %}
 
-
-
-  {# {{appPageHeader({
-    classes: 'govuk-!-margin-bottom-4',
-    heading: {
-      text: title,
-      classes: 'govuk-heading-xl'
-    },
-    items: [{
-      text: 'Invite to apply for a job',
-      href: '/jobseekers/' + jobseeker.id + '/invites/new'
-    }]
-  })}} #}
-
-
-
   <div class="govuk-grid-row ">
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
         {{title}}
       </h1>
-
-      <p>{{teachingStatus}}</p>
 
       <div class="govuk-button-group">
         {{ govukButton({
@@ -64,6 +46,8 @@
         }) }}
         <p><a href="#">Previous invitations</a></p>
       </div>
+
+      <p>{{teachingStatus}}</p>
 
       <div class="app-profile__section app-profile__section--first">
         <h2 class="govuk-heading-m govuk-!-font-size-27">
