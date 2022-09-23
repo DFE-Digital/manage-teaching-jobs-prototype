@@ -198,9 +198,6 @@ const generateOrgs = () => {
    * MAT with missing information
    *************************************************/
 
-  let matSchool6 = generateSchool({ phase: 'Primary school', name: 'Assemble Primary School'})
-  let matSchool7 = generateSchool({ phase: 'Primary school', name: 'Wanda School', about: null})
-
   orgs.push(generateOrg({
     name: 'Svelte Academy Trust',
     type: 'MAT',
@@ -212,22 +209,11 @@ const generateOrgs = () => {
     logo: null,
     photo: null,
     schools: [
-      matSchool6,
-      matSchool7
-    ]
-  }))
-
-  /*************************************************
-   * LA
-   *************************************************/
-
-  let laSchool1 = generateSchool({ phase: 'Primary school', name: 'Friday School'})
-
-  orgs.push(generateOrg({
-    name: 'Barnet Local Authority',
-    type: 'LA',
-    schools: [
-      laSchool1
+      matSchool1,
+      matSchool2,
+      matSchool3,
+      matSchool4,
+      matSchool5
     ]
   }))
 

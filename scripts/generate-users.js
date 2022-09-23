@@ -38,11 +38,6 @@ const generateUsers = () => {
     organisation: organisations.find(org => org.name == 'Svelte Academy Trust')
   }))
 
-  users.push(generateUser({
-    username: 'laura@barnet.la.uk',
-    organisation: organisations.find(org => org.name == 'Barnet Local Authority')
-  }))
-
   return users
 }
 
