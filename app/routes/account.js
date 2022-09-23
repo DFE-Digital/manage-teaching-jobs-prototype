@@ -4,8 +4,22 @@ const jobs = require('../data/jobs.json')
 const jobseekers = require('../data/jobseekers.json')
 const organisationHelper = require('../helpers/organisation')
 const userHelper = require('../helpers/user')
+const authentication = require('../middleware/authenticaton')
 
 module.exports = router => {
+
+  router.get('/account', authentication.checkIsAuthenticated, (req, res) => {
+    res.render('account/index')
+  })
+
+  router.get('/account/sign-in', (req, res) => {
+    res.render('account/sign-in', {
+      users: users.map(user => {
+        user.organisation.hasMissingInformation = organisationHelper.hasMissingInformation(user.organisation)
+        return user
+      })
+    })
+  })
 
   router.get('/account/sign-in', (req, res) => {
     res.render('account/sign-in', {
