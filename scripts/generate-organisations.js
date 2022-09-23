@@ -154,8 +154,8 @@ const generateOrgs = () => {
    *************************************************/
 
   orgs.push(generateSchool({
-    name: 'Bushey Meads Secondary School',
-    phase: 'Secondary school',
+    name: 'Bushey Meads Primary School',
+    phase: 'Primary school',
     website: null,
     emailAddress: null,
     about: null,
