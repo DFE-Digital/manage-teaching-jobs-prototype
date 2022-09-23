@@ -3,6 +3,7 @@ const organisations = require('../data/organisations.json')
 const jobs = require('../data/jobs.json')
 const jobseekers = require('../data/jobseekers.json')
 const organisationHelper = require('../helpers/organisation')
+const userHelper = require('../helpers/user')
 
 module.exports = router => {
 
@@ -20,20 +21,15 @@ module.exports = router => {
     let user
 
     if(req.body.emailAddress) {
-      user = users.find(user => user.username == req.body.emailAddress)
-    } else {
-      user = users[0]
+      user = userHelper.getUser(req.body.emailAddress)
     }
 
-    // add jobs to the user
-    user.jobs = jobs.filter(job => job.organisation.name == user.organisation.name)
-
-    if(user.organisation.schools) {
-      user.jobseekers = jobseekers
-    } else {
-      user.jobseekers = jobseekers.filter(jobseeker => {
-        return jobseeker.profile.phases.includes(user.organisation.phase)
-      })
+    // very defensive because we can assume that if an emailAddress has been submitted
+    // then it will be a valid email address for an existing user
+    // but just in case we'll grab the the first user's email address
+    // and use that to retrieve a fully built user object
+    if(!user) {
+      user = userHelper.getUser(users[0].emailAddress)
     }
 
     res.locals.user = req.session.user = user

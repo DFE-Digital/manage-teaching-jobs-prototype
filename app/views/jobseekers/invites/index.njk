@@ -1,5 +1,5 @@
 {% extends "layout.njk" %}
-{% set title = 'Invitations' %}
+{% set title = 'Previous invitations' %}
 {% set primaryNavId = 'jobseekers' %}
 
 {% block beforeContent %}
@@ -14,7 +14,7 @@
         href: '/jobseekers/'+jobseeker.id
       },
       {
-        text: 'Invitations'
+        text: title
       }
     ]
   }) }}
@@ -29,33 +29,81 @@
         {{title}}
       </h1>
 
-      <div class="app-list">
-          <div class="app-list__item">
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
-              19 September 2022 at 9:13am
-            </h2>
-            <p class="govuk-!-margin-bottom-2">Sophie Harvey</p>
-            <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
-              <li>
-                <a href="#">Class teacher</a>
-              </li>
-              <li>
-                <a href="#">Teacher of English</a>
-              </li>
-            </ul>
-          </div>
-          <div class="app-list__item">
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
-              13 August 2022 at 10:13pm
-            </h2>
-            <p class="govuk-!-margin-bottom-2">Rachael Miles</p>
-            <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
-              <li>
-                <a href="#">Class teacher</a>
-              </li>
-            </ul>
-          </div>
-      </div>
+      {{ govukTable({
+        head: [
+          {
+            text: "Jobs invited to apply for"
+          },
+          {
+            text: "Invited by"
+          },
+          {
+            text: "Date"
+          }
+        ],
+        rows: [
+          [
+            {
+              html: '<a href="#">Teacher of English</a><br><a href="#">Teacher of Blah</a>'
+            },
+            {
+              html: "Rachael Harvey"
+            },
+            {
+              html: "18 August 2022 at 9am"
+            }
+          ],
+          [
+            {
+              html: '<a href="#">Teacher of Science</a>'
+            },
+            {
+              html: "Molly Capstick"
+            },
+            {
+              html: "10 May 2022 at 10:13pm"
+            }
+          ]
+        ]
+      }) }}
+
+      {# <div class="app-list"> #}
+        {# <div class="app-list__item">
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+            19 September 2022 at 9:13am
+          </h2>
+          <p class="govuk-!-margin-bottom-2">Sophie Harvey</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-0">
+            <li>
+              <a href="#">Class teacher</a>
+            </li>
+            <li>
+              <a href="#">Teacher of English</a>
+            </li>
+          </ul>
+        </div> #}
+        {# <div class="app-list__item">
+          <p class="govuk-!-margin-bottom-1">Sophie Harvey invited {{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}} to apply to:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-2">
+            <li>
+              <a href="#">Class teacher</a>
+            </li>
+          </ul>
+          <p class="govuk-!-margin-bottom-0 govuk-!-font-size-16">13 August 2022 at 10:13pm.</p>
+        </div>
+        <div class="app-list__item">
+          <p class="govuk-!-margin-bottom-1">Rachael Miles invited {{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}} to apply to:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-2">
+            <li>
+              <a href="#">Class teacher</a>
+            </li>
+            <li>
+              <a href="#">Teacher of English</a>
+            </li>
+          </ul>
+          <p class="govuk-!-margin-bottom-0 govuk-!-font-size-16">10 June 2022 at 9am.</p>
+        </div>
+      </div> #}
 
     </div>
   </div>
