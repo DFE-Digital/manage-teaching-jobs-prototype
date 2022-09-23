@@ -70,7 +70,16 @@ module.exports = router => {
   })
 
   router.post('/organisation/:id/logo/edit/check', authentication.checkIsAuthenticated, (req, res) => {
-    req.session.user.organisation.logo = req.session.data.logo
+    let user = req.session.user
+
+    user.organisation.logo = req.session.data.logo
+
+    if(user.organisation.schools) {
+      req.flash('success', 'Organisation profile updated')
+    } else {
+      req.flash('success', 'School profile updated')
+    }
+
     res.redirect('/organisation')
   })
 

@@ -27,7 +27,13 @@
 
 {% block content %}
 
-  {% if showCompleteProfileBanner %}
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  {% if showCompleteProfileBanner and not flash.length %}
     {% if schools %}
       {{ govukNotificationBanner({
         text: "Complete your organisation profile"

@@ -204,6 +204,13 @@ const generateOrgs = () => {
   orgs.push(generateOrg({
     name: 'Svelte Academy Trust',
     type: 'MAT',
+    website: null,
+    emailAddress: null,
+    about: null,
+    supportForStaff: null,
+    safeguardingCommitment: null,
+    logo: null,
+    photo: null,
     schools: [
       matSchool6,
       matSchool7
