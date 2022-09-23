@@ -48,9 +48,7 @@ module.exports = router => {
 
     res.locals.user = req.session.user = user
 
-    let missingOrganisationInformation = organisationHelper.getMissingInformation(user.organisation)
-
-    if(missingOrganisationInformation.length) {
+    if(organisationHelper.hasMissingInformation(user.organisation)) {
       res.redirect('/interruptions/complete-profile')
     } else if(req.body.returnUrl) {
       res.redirect(req.body.returnUrl)
