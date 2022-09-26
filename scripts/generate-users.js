@@ -29,6 +29,16 @@ const generateUsers = () => {
   }))
 
   users.push(generateUser({
+    username: 'leonie@lssecondary.sch.uk',
+    organisation: organisations.find(org => org.name == 'LS Secondary School')
+  }))
+
+  users.push(generateUser({
+    username: 'molly@mlsecondary.sch.uk',
+    organisation: organisations.find(org => org.name == 'ML Secondary School')
+  }))
+
+  users.push(generateUser({
     username: 'alison@royalacademytrust.uk',
     organisation: organisations.find(org => org.name == 'Royal Academy Trust')
   }))

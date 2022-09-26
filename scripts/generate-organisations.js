@@ -150,12 +150,38 @@ const generateOrgs = () => {
   }))
 
   /*************************************************
-   * Secondary school
+   * Primary school
    *************************************************/
 
   orgs.push(generateSchool({
     name: 'Bushey Meads Primary School',
     phase: 'Primary school',
+    website: null,
+    emailAddress: null,
+    about: null,
+    supportForStaff: null,
+    safeguardingCommitment: null,
+    logo: null,
+    photo: null
+  }))
+
+  /*************************************************
+   * Secondary school
+   *************************************************/
+
+   orgs.push(generateSchool({
+    name: 'LS Secondary School',
+    phase: 'Secondary school',
+    logo: '/public/images/logos/courtland.png'
+  }))
+
+  /*************************************************
+   * Secondary school
+   *************************************************/
+
+  orgs.push(generateSchool({
+    name: 'ML Secondary School',
+    phase: 'Secondary school',
     website: null,
     emailAddress: null,
     about: null,
