@@ -9,17 +9,34 @@ const { v4: uuidv4 } = require('uuid')
 const generateSchool = (params = {}) => {
   let school = {}
   school.id = uuidv4()
-
-  // GIAS
   school.name = params.name || faker.company.name() + ' School'
   school.address = params.address || { address1: '10 Seed Street', town: 'London', postcode: 'N19 4PT' }
-  school.type = params.type || faker.helpers.arrayElement(['Academy'])
-  school.phase = params.phase || faker.helpers.arrayElement(phases)
-  school.ageGroup = params.ageGroup || faker.helpers.arrayElement(['11 to 16'])
-  school.size = params.ageGroup || faker.helpers.arrayElement(['1000', '500', '100'])
+
+  if(params.type === null) {
+    school.type = null
+  } else {
+    school.type = params.type || faker.helpers.arrayElement(['Academy'])
+  }
+
+  if(params.phase === null) {
+    school.phase = null
+  } else {
+    school.phase = params.phase || faker.helpers.arrayElement(phases)
+  }
+
+  if(params.ageGroup === null) {
+    school.ageGroup = null
+  } else {
+    school.ageGroup = params.ageGroup || faker.helpers.arrayElement(['11 to 16'])
+  }
+
+  if(params.size === null) {
+    school.size = null
+  } else {
+    school.size = params.size || faker.helpers.arrayElement(['1000', '500', '100'])
+  }
 
   // Not GIAS
-
   if(params.website === null) {
     school.website = null
   } else {
