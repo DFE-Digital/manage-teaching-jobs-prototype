@@ -72,15 +72,28 @@ module.exports = router => {
   router.post('/organisation/:id/logo/edit/check', authentication.checkIsAuthenticated, (req, res) => {
     let user = req.session.user
 
-    user.organisation.logo = req.session.data.logo
+    let organisation = user.organisation
 
-    if(user.organisation.schools) {
-      req.flash('success', 'Organisation profile updated')
-    } else {
-      req.flash('success', 'School profile updated')
+    let isEditingSchoolWithinOrganisation = organisation.id !== req.params.id
+
+    if(isEditingSchoolWithinOrganisation) {
+      organisation = organisation.schools.find(school => school.id == req.params.id)
     }
 
-    res.redirect('/organisation')
+    organisation.logo = req.session.data.logo
+
+    if(isEditingSchoolWithinOrganisation) {
+      req.flash('success', 'School profile updated')
+      res.redirect(`/organisation/schools/${req.params.id}`)
+    } else {
+      if(organisation.schools) {
+        req.flash('success', 'Organisation profile updated')
+      } else {
+        req.flash('success', 'School profile updated')
+      }
+      res.redirect('/organisation')
+    }
+
   })
 
   router.get('/organisation/schools/:id', authentication.checkIsAuthenticated, (req, res) => {
