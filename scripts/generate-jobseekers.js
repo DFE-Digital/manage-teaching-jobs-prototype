@@ -20,6 +20,12 @@ const generateJobseeker = (params = {}) => {
 
   jobseeker.profile.status = _.get(params, 'profile.status')
 
+  jobseeker.profile.qts = _.get(params, 'profile.qts') || faker.helpers.arrayElement(['Yes', 'No', 'I’m on track to receive QTS'])
+
+  if(jobseeker.profile.qts == 'Yes') {
+    jobseeker.profile.qtsAwardedYear = _.get(params, 'profile.qtsAwardedYear') || faker.helpers.arrayElement(['2022', '2021', '2008', '2003'])
+  }
+
   // Personal details
   jobseeker.profile.firstName = _.get(params, 'profile.firstName') || faker.name.firstName()
   jobseeker.profile.lastName = _.get(params, 'profile.lastName') || faker.name.lastName()
@@ -34,7 +40,19 @@ const generateJobseeker = (params = {}) => {
 
 
   // Roles
-  jobseeker.profile.roles = _.get(params, 'profile.roles') || faker.helpers.arrayElements(roles, faker.datatype.number({min: 1, max: 2}))
+  jobseeker.profile.roles = _.get(params, 'profile.roles')
+
+  if(!jobseeker.profile.roles) {
+    if(jobseeker.profile.qts == 'Yes') {
+      jobseeker.profile.roles = faker.helpers.arrayElements([roles[0], roles[1], roles[2]])
+    } else if(jobseeker.profile.qts == 'I’m on track to receive QTS') {
+      jobseeker.profile.roles = [roles[0]]
+    } else if(jobseeker.profile.qts == 'No') {
+      jobseeker.profile.roles = faker.helpers.arrayElements([roles[3], roles[4], roles[5]])
+    } else {
+      jobseeker.profile.roles = faker.helpers.arrayElements(roles, faker.datatype.number({min: 1, max: 2}))
+    }
+  }
 
   // Phase
   jobseeker.profile.phases = _.get(params, 'profile.phases') || faker.helpers.arrayElements(phases, faker.datatype.number({min: 1, max: 2}))
@@ -56,19 +74,6 @@ const generateJobseeker = (params = {}) => {
     location: 'London',
     radius: '5 miles'
   }]
-
-  jobseeker.profile.qts = _.get(params, 'profile.qts') || faker.helpers.arrayElement(['Yes', 'No', 'I’m on track to receive QTS'])
-
-  if(jobseeker.profile.qts == 'Yes') {
-    jobseeker.profile.qtsAwardedYear = _.get(params, 'profile.qtsAwardedYear') || faker.helpers.arrayElement(['2022', '2021', '2008', '2003'])
-
-    if(jobseeker.profile.qtsAwardedYear == '2022') {
-      jobseeker.profile.ect = 'Yes'
-    } else {
-      jobseeker.profile.ect = _.get(params, 'profile.ect') || 'No'
-    }
-
-  }
 
   // Qualifications
   jobseeker.profile.qualifications = _.get(params, 'profile.qualifications') || [
