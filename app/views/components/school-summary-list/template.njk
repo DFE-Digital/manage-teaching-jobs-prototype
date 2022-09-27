@@ -7,7 +7,7 @@
 {% endset %}
 
 {% set emailAddress %}
-  {% if params.school.emailAddress %}
+  {% if params.school.emailAddress != 'Not entered' %}
     <a href="{{params.school.emailAddress}}">{{params.school.emailAddress}}</a>
   {% else %}
     <div class="app-field-highlight">
@@ -18,7 +18,7 @@
 {% endset %}
 
 {% set website %}
-  {% if params.school.website %}
+  {% if params.school.website != 'Not entered' %}
     <a href="{{params.school.website}}">{{params.school.website}} (opens in new tab)</a>
   {% else %}
     <div class="app-field-highlight">
@@ -29,7 +29,7 @@
 {% endset %}
 
 {% set phase %}
-  {% if params.school.phase %}
+  {% if params.school.phase != 'Not entered' %}
     {{params.school.phase}}
   {% else %}
     <div class="app-field-highlight">
@@ -40,7 +40,7 @@
 {% endset %}
 
 {% set about %}
-  {% if params.school.about %}
+  {% if params.school.about != 'Not entered' %}
     {{params.school.about | escape | nl2br}}
   {% else %}
     <div class="app-field-highlight">
@@ -51,7 +51,7 @@
 {% endset %}
 
 {% set howEmployeesAreSupported %}
-  {% if params.school.supportForStaff %}
+  {% if params.school.supportForStaff != 'Not entered' %}
     {{params.school.supportForStaff | escape | nl2br}}
   {% else %}
     <div class="app-field-highlight">
@@ -62,7 +62,7 @@
 {% endset %}
 
 {% set safeguardingCommitment %}
-  {% if params.school.safeguardingCommitment %}
+  {% if params.school.safeguardingCommitment != 'Not entered' %}
     {{params.school.safeguardingCommitment | escape | nl2br}}
   {% else %}
     <div class="app-field-highlight">
@@ -73,7 +73,7 @@
 {% endset %}
 
 {% set logo %}
-  {% if params.school.logo %}
+  {% if params.school.logo != 'Not entered' %}
     <img src="{{params.school.logo}}" alt="Logo" width="150">
   {% else %}
     <div class="app-field-highlight">
@@ -84,7 +84,7 @@
 {% endset %}
 
 {% set photo %}
-  {% if params.school.photo %}
+  {% if params.school.photo != 'Not entered' %}
     <img src="{{params.school.photo}}" alt="Photo" width="100%">
   {% else %}
     <div class="app-field-highlight">

@@ -98,7 +98,7 @@ module.exports = router => {
 
   router.get('/organisation/schools/:id', authentication.checkIsAuthenticated, (req, res) => {
     let organisation = req.session.user.organisation.schools.find(school => school.id == req.params.id)
-    let showCompleteProfileBanner = organisationHelper.hasMissingInformation(organisation).length
+    let showCompleteProfileBanner = organisationHelper.hasMissingInformation(organisation)
 
     res.render('organisation/show', {
       organisation,

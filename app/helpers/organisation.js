@@ -41,7 +41,7 @@ exports.getMissingInformation = (org) => {
   let missing = []
 
   attrs.forEach(item => {
-    if(!org[item]) {
+    if(org[item] == 'Not entered') {
       missing.push(item)
     }
   })

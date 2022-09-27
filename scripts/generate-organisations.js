@@ -67,11 +67,7 @@ const generateSchool = (params = {}) => {
     school.safeguardingCommitment = params.safeguardingCommitment || faker.lorem.paragraphs(2, '\n\n')
   }
 
-  if(params.logo === null) {
-    school.logo = null
-  } else {
-    school.logo = params.logo || faker.image.abstract(100, 100)
-  }
+  school.logo = params.logo || faker.image.abstract(100, 100)
 
   if(params.photo === null) {
     school.photo = null
@@ -173,13 +169,13 @@ const generateOrgs = () => {
   orgs.push(generateSchool({
     name: 'Bushey Meads Primary School',
     phase: 'Primary school',
-    website: null,
-    emailAddress: null,
-    about: null,
-    supportForStaff: null,
-    safeguardingCommitment: null,
-    logo: null,
-    photo: null
+    website: 'Not entered',
+    emailAddress: 'Not entered',
+    about: 'Not entered',
+    supportForStaff: 'Not entered',
+    safeguardingCommitment: 'Not entered',
+    logo: 'Not entered',
+    photo: 'Not entered'
   }))
 
   /*************************************************
@@ -199,13 +195,13 @@ const generateOrgs = () => {
   orgs.push(generateSchool({
     name: 'ML Secondary School',
     phase: 'Secondary school',
-    website: null,
-    emailAddress: null,
-    about: null,
-    supportForStaff: null,
-    safeguardingCommitment: null,
-    logo: null,
-    photo: null
+    website: 'Not entered',
+    emailAddress: 'Not entered',
+    about: 'Not entered',
+    supportForStaff: 'Not entered',
+    safeguardingCommitment: 'Not entered',
+    logo: 'Not entered',
+    photo: 'Not entered'
   }))
 
   /*************************************************
@@ -244,13 +240,13 @@ const generateOrgs = () => {
   orgs.push(generateOrg({
     name: 'Svelte Academy Trust',
     type: 'MAT',
-    website: null,
-    emailAddress: null,
-    about: null,
-    supportForStaff: null,
-    safeguardingCommitment: null,
-    logo: null,
-    photo: null,
+    website: 'Not entered',
+    emailAddress: 'Not entered',
+    about: 'Not entered',
+    supportForStaff: 'Not entered',
+    safeguardingCommitment: 'Not entered',
+    logo: 'Not entered',
+    photo: 'Not entered',
     schools: [
       matSchool1,
       matSchool2,

@@ -8,7 +8,7 @@
   {% endfor %}
 {% endset %}
 
-{% if organisation.website %}
+{% if organisation.website != 'Not entered' %}
   {% set website %}
     <a href="{{organisation.website}}">{{organisation.website}} (opens in new tab)</a>
   {% endset %}
@@ -33,7 +33,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <div class="app-school-title">
-        {% if organisation.logo %}
+        {% if organisation.logo != 'Not entered' %}
           <img src="{{organisation.logo}}">
         {% endif %}
         <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
@@ -103,7 +103,7 @@
             value: {
               html: website
             }
-          } if website,
+          } if organisation.website != 'Not entered',
           {
             key: {
               text: "Ofsted report"
@@ -119,16 +119,16 @@
             value: {
               html: '<a href="#">'+organisation.emailAddress+'</a>'
             }
-          } if organisation.emailAddress
+          } if organisation.emailAddress != 'Not entered'
         ]
       }) }}
 
-      {% if organisation.about or organisation.photo %}
+      {% if organisation.about != 'Not entered' or organisation.photo != 'Not entered' %}
         <h2 class="govuk-heading-m">
           About {{organisation.name}}
         </h2>
 
-        {% if organisation.photo %}
+        {% if organisation.photo != 'Not entered' %}
           <div class="app-school-photo">
             <img src="{{organisation.photo}}">
           </div>
@@ -137,14 +137,14 @@
         <p>{{organisation.about | nl2br | safe}}</p>
       {% endif %}
 
-      {% if organisation.supportForStaff %}
+      {% if organisation.supportForStaff != 'Not entered' %}
         <h2 class="govuk-heading-m">
           What we offer our staff
         </h2>
         <p>{{organisation.supportForStaff | nl2br | safe}}</p>
       {% endif %}
 
-      {% if organisation.safeguardingCommitment %}
+      {% if organisation.safeguardingCommitment != 'Not entered' %}
         <h2 class="govuk-heading-m">
           Commitment to safeguarding
         </h2>
