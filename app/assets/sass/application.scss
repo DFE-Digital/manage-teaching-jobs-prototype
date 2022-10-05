@@ -31,13 +31,13 @@ $app-images-path: "/public/images/";
 
 .govuk-header__logo {
   @include govuk-media-query($from: tablet) {
-    width: 55%;
+    width: 51%;
   }
 }
 
 .govuk-header__content {
   @include govuk-media-query($from: tablet) {
-    width: 45%;
+    width: 49%;
   }
 }
 
