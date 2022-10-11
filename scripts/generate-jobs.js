@@ -126,15 +126,15 @@ const generateJob = (params = {}) => {
 
   job.isRoleSuitableForEarlyCareeerTeachers = params.isRoleSuitableForEarlyCareeerTeachers || faker.helpers.arrayElement(['Yes', 'No'])
 
-  job.skillsAndExperience = params.skillsAndExperience || faker.lorem.words(30)
+  job.skillsAndExperience = params.skillsAndExperience || (faker.lorem.words(30) + '.')
 
-  job.whatSchoolOffers = params.whatSchoolOffers || faker.lorem.words(20)
+  job.whatSchoolOffers = params.whatSchoolOffers || (faker.lorem.words(20) + '.')
 
   job.hasSafeguardingCommitment = params.hasSafeguardingCommitment || faker.helpers.arrayElement(['Yes', 'No'])
 
   if(job.hasSafeguardingCommitment == 'Yes') {
 
-    job.safeguardingCommitment = params.safeguardingCommitment || faker.lorem.words(30)
+    job.safeguardingCommitment = params.safeguardingCommitment || (faker.lorem.words(30) + '.')
 
   }
 
@@ -142,7 +142,7 @@ const generateJob = (params = {}) => {
 
   if(job.hasSafeguardingCommitment == 'Yes') {
 
-    job.furtherDetailsAboutTheRole = params.furtherDetailsAboutTheRole || faker.lorem.words(30)
+    job.furtherDetailsAboutTheRole = params.furtherDetailsAboutTheRole || (faker.lorem.words(30) + '.')
 
   }
 

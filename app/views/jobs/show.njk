@@ -22,7 +22,7 @@
       <p class="govuk-!-width-two-thirds">This job listing was published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
 
       <div class="govuk-button-group">
-        <a href="#">View (opens in new tab)</a>
+        <a href="/jobs/{{job.id}}/preview">View (opens in new tab)</a>
         <a href="#" class="govuk-!-margin-left-3">Copy</a>
         <a href="#" class="govuk-!-margin-left-3">Close early</a>
         <a href="#" class="govuk-!-margin-left-3">Extend closing date</a>
@@ -34,7 +34,7 @@
       <p class="govuk-!-width-two-thirds">This job listing will be published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
 
       <div class="govuk-button-group">
-        <a href="#" class="govuk-!-margin-left-">Preview (opens in new tab)</a>
+        <a href="/jobs/{{job.id}}/preview" class="govuk-!-margin-left-">Preview (opens in new tab)</a>
         <a href="#" class="govuk-!-margin-left-3">Copy</a>
         <a href="#" class="govuk-!-margin-left-3">Delete</a>
         <a href="#" class="govuk-!-margin-left-3">Convert to draft</a>
@@ -45,7 +45,7 @@
       <p class="govuk-!-width-two-thirds">This job listing was published on {{job.publishDate | date }}. It closed on {{job.closingDate | date}} at {{job.closingTime}}.</p>
 
       <div class="govuk-button-group">
-        <a href="#">View (opens in new tab)</a>
+        <a href="/jobs/{{job.id}}/preview">View (opens in new tab)</a>
         <a href="#" class="govuk-!-margin-left-3">Copy</a>
         <a href="#" class="govuk-!-margin-left-3">Extend closing date</a>
       </div>
@@ -73,7 +73,7 @@
             classes: 'govuk-!-margin-bottom-0'
           }) }}
         {% endif %}
-        <a href="#">Preview (opens in new tab)</a>
+        <a href="/jobs/{{job.id}}/preview">Preview (opens in new tab)</a>
         <a href="#" class="govuk-!-margin-left-3">Copy</a>
         <a href="#" class="govuk-!-margin-left-3">Delete</a>
       </div>
