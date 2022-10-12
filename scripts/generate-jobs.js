@@ -182,12 +182,16 @@ const generateJobs = () => {
     jobs.push(generateJob({
       organisation: user.organisation,
       status: 'Published',
-      role: 'Teacher'
+      role: 'Teacher',
+      isUsingApplicationForm: 'No',
+      applicationMethod: 'By email'
     }))
     jobs.push(generateJob({
       organisation: user.organisation,
       status: 'Published',
-      role: 'Headteacher, deputy or assistant headteacher'
+      role: 'Headteacher, deputy or assistant headteacher',
+      isUsingApplicationForm: 'No',
+      applicationMethod: 'Through a website'
     }))
     jobs.push(generateJob({
       organisation: user.organisation,

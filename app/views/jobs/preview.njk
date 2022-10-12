@@ -274,12 +274,7 @@
               text: "Application form (PDF), 7MB"
             }) }}
           {% else %}
-            <p>Apply through our website:</p>
-
-            {{ govukButton({
-              text: 'Apply for job',
-              href: job.linkToWebsite
-            }) }}
+            <p>Apply through our website at <a href="{{job.linkToWebsite}}">{{job.linkToWebsite}}</a>.</p>
           {% endif %}
 
         </div>
