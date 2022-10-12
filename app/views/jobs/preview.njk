@@ -1,15 +1,5 @@
 {% extends "layout.njk" %}
 
-{% set additionalDocuments %}
-  <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-    {% for document in job.additionalDocuments %}
-      <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
-        <a href="#">{{document.file}}, {{document.size}}</a>
-      </li>
-    {% endfor %}
-  </ul>
-{% endset %}
-
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Exit preview",
@@ -19,15 +9,27 @@
 
 {% block content %}
 
+  <span class="govuk-caption-xl">
+    {{job.organisation.name}}
+  </span>
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
     {{job.title}}
   </h1>
 
   {% set inset %}
     <p>This job listing ends in 16 days on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+
+    {% set href %}
+      {% if job.isUsingApplicationForm == 'No' %}
+        #apply
+      {% else %}
+        jobs/{{job.id}}/apply
+      {% endif %}
+    {% endset %}
+
     {{ govukButton({
       text: "Apply for job",
-      href: '#apply',
+      href: href,
       classes: "govuk-!-margin-bottom-0"
     }) }}
     {{ govukButton({
@@ -59,31 +61,22 @@
         </ul>
       {% endset %}
 
-      {% set salaryDetails %}
-        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-          {% for salaryDetail in job.salaryDetails %}
-            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
-                {{salaryDetail}}:<br>
-                {% if salaryDetail == 'Full-time equivalent salary' %}
-                  {{job.fullTimeEquivalentSalaryDetails}}
-                {% elseif salaryDetail == 'Actual salary' %}
-                  {{job.actualSalaryDetails}}
-                {% else %}
-                  {{job.payScaleDetails}}
-                {% endif %}
-            </li>
-          {% endfor %}
-        </ul>
-      {% endset %}
-
       {% set additionalDocuments %}
-        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+        <ul class="govuk-list govuk-list--bullet">
           {% for document in job.additionalDocuments %}
             <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
               <a href="#">{{document.file}}, {{document.size}}</a>
             </li>
           {% endfor %}
         </ul>
+      {% endset %}
+
+      {% set contract %}
+        {{job.contractType}}
+
+        {% if job.contractLength %}
+          - {{job.contractLength}}
+        {% endif %}
       {% endset %}
 
        {{ govukSummaryList({
@@ -98,6 +91,14 @@
           },
           {
             key: {
+              text: "Suitability for early career teachers (ECT)"
+            },
+            value: {
+              text: job.isRoleSuitableForEarlyCareeerTeachers
+            }
+          },
+          {
+            key: {
               text: "Key stage"
             },
             value: {
@@ -106,7 +107,7 @@
           } if job.keyStages,
           {
             key: {
-              text: "Subjects"
+              text: "Subject"
             },
             value: {
               text: job.subjects | join(', ')
@@ -114,15 +115,7 @@
           } if job.subjects,
           {
             key: {
-              text: "Contract type"
-            },
-            value: {
-              text: job.contractType + ' - ' + job.contractLength
-            }
-          },
-          {
-            key: {
-              text: "Working patterns"
+              text: "Working pattern"
             },
             value: {
               html: workingPatterns
@@ -130,20 +123,45 @@
           },
           {
             key: {
-              text: "Salary details"
+              text: "Contract"
             },
             value: {
-              html: salaryDetails
+              html: contract
             }
           },
           {
             key: {
-              text: "Suitability for early career teachers (ECT)"
+              text: "Job start date"
             },
             value: {
-              text: job.isRoleSuitableForEarlyCareeerTeachers
+              html: job.startDate | date
             }
-          }
+          },
+          {
+            key: {
+              text: "Full-time equivalent salary"
+            },
+            value: {
+              html: job.fullTimeEquivalentSalaryDetails
+            }
+          } if job.fullTimeEquivalentSalaryDetails,
+          {
+            key: {
+              text: "Actual salary"
+            },
+            value: {
+              html: job.actualSalaryDetails
+            }
+          } if job.actualSalaryDetails,
+          {
+
+            key: {
+              text: "Pay scale"
+            },
+            value: {
+              html: job.payScaleDetails
+            }
+          } if job.payScaleDetails
         ]
       }) }}
 
@@ -177,12 +195,62 @@
         <p>{{job.furtherDetailsAboutTheRole | capitalize | nl2br}}</p>
       {% endif %}
 
+
       {% if job.hasAdditionalDocuments == 'Yes' %}
         <h2 class="govuk-heading-m">
           Additional documents
         </h2>
 
         {{additionalDocuments | safe }}
+      {% endif %}
+
+      {% if job.locations.length == 1 %}
+        <h2 class="govuk-heading-m">
+          About the school
+        </h2>
+
+        <h2 class="govuk-heading-m">
+          Location
+        </h2>
+
+        {% set address %}
+          {% for part, value in job.organisation.address %}
+            {{value}}{% if not loop.last %}, {% endif %}
+          {% endfor %}
+        {% endset %}
+
+        <p>{{address}}</p>
+
+
+
+        <div class="app-map">
+          <img src="/public/images/maps/single.png">
+        </div>
+      {% else %}
+        <h2 class="govuk-heading-m">
+          About the schools
+        </h2>
+
+        <p>You can find out more information about:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          {% for location in job.locations %}
+            {% if location.name != job.organisation.name %}
+              <li>
+                <a href="">{{location.name}}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+
+        <h2 class="govuk-heading-m">
+          Locations
+        </h2>
+
+        <div class="app-map">
+          <img src="/public/images/maps/multiple.png">
+        </div>
+
       {% endif %}
 
       {% if job.hasSafeguardingCommitment == 'Yes' %}
@@ -192,6 +260,32 @@
 
         <p>{{job.safeguardingCommitment | capitalize | nl2br}}</p>
       {% endif %}
+
+      {% if job.isUsingApplicationForm == 'No' %}
+        <div id="apply">
+          <h2 class="govuk-heading-m">
+            Apply for the job
+          </h2>
+
+          {% if job.applicationMethod == 'By email' %}
+            <p>Download application form and send it to <a href="mailto:{{job.emailAddressForApplications}}">{{job.emailAddressForApplications}}</a>.</p>
+
+            {{ govukButton({
+              text: "Application form (PDF), 7MB"
+            }) }}
+          {% else %}
+            <p>Apply through our website:</p>
+
+            {{ govukButton({
+              text: 'Apply for job',
+              href: job.linkToWebsite
+            }) }}
+          {% endif %}
+
+        </div>
+      {% endif %}
+
+
 
     </div>
   </div>

@@ -27,6 +27,7 @@ const generateJob = (params = {}) => {
   // For now the default includes all possible locations but hiring stafff can select a subset.
   job.locations = params.locations || organisationHelper.getLocations(job.organisation)
 
+
   job.role = params.role || faker.helpers.arrayElement(roles)
 
   job.title = params.title || generateTitle({organisation: job.organisation, role: job.role})

@@ -1,5 +1,5 @@
 exports.getLocations = (org) => {
-  const locations = [{
+  let locations = [{
     name: org.name,
     address: org.address,
     schoolType: org.schoolType,
@@ -7,7 +7,7 @@ exports.getLocations = (org) => {
   }]
 
   if(org.schools) {
-    locations.concat(org.schools)
+    locations = locations.concat(org.schools)
   }
 
   return locations
