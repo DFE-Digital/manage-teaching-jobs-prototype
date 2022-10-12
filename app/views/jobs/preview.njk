@@ -217,9 +217,6 @@
           About the school
         </h2>
 
-        <h2 class="govuk-heading-m">
-          Location
-        </h2>
 
         {% set address %}
           {% for part, value in job.organisation.address %}
@@ -227,9 +224,98 @@
           {% endfor %}
         {% endset %}
 
+        {% set emailAddress %}
+          <a href="{{job.organisation.emailAddress}}">{{job.organisation.emailAddress}}</a>
+        {% endset %}
+
+        {% set website %}
+          <a href="{{job.organisation.website}}">{{job.organisation.website}} (opens in new tab)</a>
+        {% endset %}
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Name"
+              },
+              value: {
+                text: job.organisation.name
+              }
+            },
+            {
+              key: {
+                text: "Address"
+              },
+              value: {
+                text: address
+              }
+            },
+            {
+              key: {
+                text: "Type"
+              },
+              value: {
+                text: job.organisation.type
+              }
+            },
+            {
+              key: {
+                text: "Education phase"
+              },
+              value: {
+                html: job.organisation.phase
+              }
+            } if job.organisation.phase,
+            {
+              key: {
+                text: "Age group"
+              },
+              value: {
+                text: job.organisation.ageGroup
+              }
+            } if job.organisation.ageGroup,
+            {
+              key: {
+                text: "Size"
+              },
+              value: {
+                text: job.organisation.size + ' pupils enrolled'
+              }
+            } if job.organisation.size,
+            {
+              key: {
+                text: "Ofsted report"
+              },
+              value: {
+                html: '<a href="#">View Ofsted report (opens in new tab)</a>'
+              }
+            },
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                html: emailAddress
+              }
+            },
+            {
+              key: {
+                text: "Website"
+              },
+              value: {
+                html: website
+              }
+            }
+          ]
+        }) }}
+
+
+        <h2 class="govuk-heading-m">
+          Location
+        </h2>
+
+
         <p>{{address}}</p>
-
-
 
         <div class="app-map">
           <img src="/public/images/maps/single.png">

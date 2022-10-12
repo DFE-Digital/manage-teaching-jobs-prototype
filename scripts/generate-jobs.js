@@ -141,7 +141,7 @@ const generateJob = (params = {}) => {
 
   job.hasFurtherDetailsAboutTheRole = params.hasFurtherDetailsAboutTheRole || faker.helpers.arrayElement(['Yes', 'No'])
 
-  if(job.hasSafeguardingCommitment == 'Yes') {
+  if(job.hasFurtherDetailsAboutTheRole == 'Yes') {
 
     job.furtherDetailsAboutTheRole = params.furtherDetailsAboutTheRole || (faker.lorem.words(30) + '.')
 
