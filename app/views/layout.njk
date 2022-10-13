@@ -62,7 +62,7 @@
 {% if useAutoStoreData %}
   {% block footer %}
     {% set sharingUrl %}
-      {{protocol}}://{{hostname}}{{path}}?userEmailaddress=user.emailAddress
+      {{protocol}}://{{hostname}}{{path}}?userEmailaddress={{user.username}}
     {% endset %}
 
     {{ govukFooter({
