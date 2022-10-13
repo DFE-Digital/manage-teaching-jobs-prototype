@@ -3,6 +3,9 @@ const router = express.Router()
 
 router.all('*', (req, res, next) => {
   res.locals.referrer = req.query.referrer
+  res.locals.path = req.path
+  res.locals.protocol = req.protocol
+  res.locals.hostname = req.hostname
   res.locals.query = req.query
   res.locals.user = req.session.user
   res.locals.flash = req.flash('success') // pass through 'success' messages only

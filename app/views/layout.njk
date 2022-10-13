@@ -57,18 +57,23 @@
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
+
+
 {% if useAutoStoreData %}
   {% block footer %}
+    {% set sharingUrl %}
+      {{protocol}}://{{hostname}}{{path}}?userEmailaddress=user.emailAddress
+    {% endset %}
+
     {{ govukFooter({
       meta: {
         items: [
           {
-            href: "https://govuk-prototype-kit.herokuapp.com/",
-            text: "GOV.UK Prototype Kit " + releaseVersion
-          },
-          {
             href: "/prototype-admin/clear-data",
             text: "Clear data"
+          },
+          {
+            text: sharingUrl
           }
         ],
         visuallyHiddenTitle: "Footer links"
