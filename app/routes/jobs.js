@@ -15,4 +15,12 @@ module.exports = router => {
     })
   })
 
+  router.get('/jobs/:id/preview', authentication.checkIsAuthenticated, (req, res) => {
+    let job = req.session.user.jobs.find(job => job.id == req.params.id)
+
+    res.render('jobs/preview', {
+      job
+    })
+  })
+
 }

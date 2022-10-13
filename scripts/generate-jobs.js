@@ -27,6 +27,7 @@ const generateJob = (params = {}) => {
   // For now the default includes all possible locations but hiring stafff can select a subset.
   job.locations = params.locations || organisationHelper.getLocations(job.organisation)
 
+
   job.role = params.role || faker.helpers.arrayElement(roles)
 
   job.title = params.title || generateTitle({organisation: job.organisation, role: job.role})
@@ -126,23 +127,23 @@ const generateJob = (params = {}) => {
 
   job.isRoleSuitableForEarlyCareeerTeachers = params.isRoleSuitableForEarlyCareeerTeachers || faker.helpers.arrayElement(['Yes', 'No'])
 
-  job.skillsAndExperience = params.skillsAndExperience || faker.lorem.words(30)
+  job.skillsAndExperience = params.skillsAndExperience || (faker.lorem.words(30) + '.')
 
-  job.whatSchoolOffers = params.whatSchoolOffers || faker.lorem.words(20)
+  job.whatSchoolOffers = params.whatSchoolOffers || (faker.lorem.words(20) + '.')
 
   job.hasSafeguardingCommitment = params.hasSafeguardingCommitment || faker.helpers.arrayElement(['Yes', 'No'])
 
   if(job.hasSafeguardingCommitment == 'Yes') {
 
-    job.safeguardingCommitment = params.safeguardingCommitment || faker.lorem.words(30)
+    job.safeguardingCommitment = params.safeguardingCommitment || (faker.lorem.words(30) + '.')
 
   }
 
   job.hasFurtherDetailsAboutTheRole = params.hasFurtherDetailsAboutTheRole || faker.helpers.arrayElement(['Yes', 'No'])
 
-  if(job.hasSafeguardingCommitment == 'Yes') {
+  if(job.hasFurtherDetailsAboutTheRole == 'Yes') {
 
-    job.furtherDetailsAboutTheRole = params.furtherDetailsAboutTheRole || faker.lorem.words(30)
+    job.furtherDetailsAboutTheRole = params.furtherDetailsAboutTheRole || (faker.lorem.words(30) + '.')
 
   }
 
@@ -181,12 +182,16 @@ const generateJobs = () => {
     jobs.push(generateJob({
       organisation: user.organisation,
       status: 'Published',
-      role: 'Teacher'
+      role: 'Teacher',
+      isUsingApplicationForm: 'No',
+      applicationMethod: 'By email'
     }))
     jobs.push(generateJob({
       organisation: user.organisation,
       status: 'Published',
-      role: 'Headteacher, deputy or assistant headteacher'
+      role: 'Headteacher, deputy or assistant headteacher',
+      isUsingApplicationForm: 'No',
+      applicationMethod: 'Through a website'
     }))
     jobs.push(generateJob({
       organisation: user.organisation,
