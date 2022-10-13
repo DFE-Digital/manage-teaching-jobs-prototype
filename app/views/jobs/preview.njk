@@ -356,8 +356,7 @@
       {% endif %}
 
       {% if job.isUsingApplicationForm == 'No' %}
-        <div id="apply">
-          <h2 class="govuk-heading-m">
+          <h2 class="govuk-heading-m" id="apply">
             Apply for the job
           </h2>
 
@@ -368,15 +367,68 @@
               text: "Application form (PDF), 7MB"
             }) }}
           {% else %}
-            <p>Apply through our website at <a href="{{job.linkToWebsite}}">{{job.linkToWebsite}}</a>.</p>
+            {# <p>Apply through our website at <a href="{{job.linkToWebsite}}">{{job.linkToWebsite}}</a>.</p> #}
+            <p>Apply through the school’s website.</p>
+
+            {# {{ govukButton({
+              text: job.linkToWebsite
+            }) }} #}
+
+            {{ govukButton({
+              text: "Apply for job (opens in new tab)",
+              text: "Continue to school website",
+              text: "Go to school website",
+              text: "Apply through website"
+            }) }}
           {% endif %}
 
-        </div>
       {% endif %}
+
+      <hr>
+
+      <h2 class="govuk-heading-m">
+        Set up a job alert
+      </h2>
+
+      <p>Get a job alert whenever a {{job.role | lower}} role is listed near {{job.organisation.address.postcode}}.</p>
+
+      {# {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Role"
+            },
+            value: {
+              text: job.role
+            }
+          },
+          {
+            key: {
+              text: "Location"
+            },
+            value: {
+              text: "Near " + job.organisation.address.postcode
+            }
+          }
+        ]
+      }) }} #}
+
+      {# <p><a href="#">Set up a job alert</a></p> #}
+
+      {{ govukButton({
+        text: "Set up job alert",
+        classes: 'govuk-button--secondary'
+      }) }}
 
 
 
     </div>
+    <div class="govuk-grid-column-one-third">
+
+
+
+    </div>
+
   </div>
 
 {% endblock %}
