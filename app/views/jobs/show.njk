@@ -18,7 +18,7 @@
 
   {% set insetHtml %}
 
-    {% if job.status == 'Published' %}
+    {% if job.status == 'Active' %}
       <p class="govuk-!-width-two-thirds">This job listing was published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
 
       <div class="govuk-button-group">

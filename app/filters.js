@@ -65,7 +65,7 @@ module.exports = function (env) {
       case 'Scheduled':
         tagClass = 'govuk-tag--yellow'
         break;
-      case 'Published':
+      case 'Active':
         tagClass = 'govuk-tag--green'
         break;
       case 'Closed':

@@ -21,7 +21,7 @@ module.exports = router => {
     }
 
     let jobCheckboxes = req.session.user.jobs
-      .filter(job => job.status == 'Published')
+      .filter(job => job.status == 'Active')
       .map(job => {
         return {
           text: job.title,
@@ -91,7 +91,7 @@ module.exports = router => {
   router.get('/jobseekers/:id/invites/new', authentication.checkIsAuthenticated, (req, res) => {
     let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
 
-    let publishedJobs = req.session.user.jobs.filter(job => job.status == 'Published')
+    let publishedJobs = req.session.user.jobs.filter(job => job.status == 'Active')
 
     let jobCheckboxes = publishedJobs.map(item => {
       return {

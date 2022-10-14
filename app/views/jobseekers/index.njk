@@ -1,7 +1,7 @@
 
 {% extends "layout.njk" %}
 
-{% set title = 'Jobseeker profiles (' + user.jobseekers.length + ')' %}
+{% set title = 'Candidate profiles (' + user.jobseekers.length + ')' %}
 
 {% set primaryNavId = 'jobseekers' %}
 
@@ -14,9 +14,9 @@
         </h1>
 
         {% if user.organisation.schools %}
-          <p>These jobseekers are willing to travel to at least one location within your organisation.</p>
+          <p>These candidates are willing to travel to a location that’s near to at least one of your schools.</p>
         {% else %}
-          <p>These jobseekers are willing to travel to your school or relocate.</p>
+          <p>These candidates are willing to travel to a location that’s near to your school.</p>
         {% endif %}
 
     </div>

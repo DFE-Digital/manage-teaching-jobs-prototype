@@ -20,7 +20,7 @@ const generateJob = (params = {}) => {
   let job = {}
   job.id = params.id || ('' + faker.datatype.number({min: 123456, max: 999999}))
 
-  job.status = params.status || faker.helpers.arrayElement(['Draft', 'Scheduled', 'Published', 'Closed'])
+  job.status = params.status || faker.helpers.arrayElement(['Draft', 'Scheduled', 'Active', 'Closed'])
 
   job.organisation = params.organisation || faker.helpers.arrayElement(organisations)
 
@@ -181,21 +181,21 @@ const generateJobs = () => {
   users.forEach(user => {
     jobs.push(generateJob({
       organisation: user.organisation,
-      status: 'Published',
+      status: 'Active',
       role: 'Teacher',
       isUsingApplicationForm: 'No',
       applicationMethod: 'By email'
     }))
     jobs.push(generateJob({
       organisation: user.organisation,
-      status: 'Published',
+      status: 'Active',
       role: 'Headteacher, deputy or assistant headteacher',
       isUsingApplicationForm: 'No',
       applicationMethod: 'Through a website'
     }))
     jobs.push(generateJob({
       organisation: user.organisation,
-      status: 'Published',
+      status: 'Active',
       role: 'Teaching assistant'
     }))
     for (let i = 0; i < 1; i++) {

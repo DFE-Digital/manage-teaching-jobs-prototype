@@ -40,7 +40,7 @@ module.exports = router => {
       organisation = userOrganisation
     }
 
-    let jobs = req.session.user.jobs.filter(job => job.status == 'Published')
+    let jobs = req.session.user.jobs.filter(job => job.status == 'Active')
 
     res.render('organisation/preview/index', {
       organisation,

@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set title = 'You can now view jobseeker profiles and invite them to apply' %}
+{% set title = 'You can now view candidate profiles and invite them to apply' %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
         {{title}}
       </h1>
 
-      <p>A jobseeker’s profile includes their qualified teaching status (QTS), experience and qualifications.</p>
+      <p>A candidate’s profile includes their job preferences, experience and qualifications.</p>
 
       {# <p>A jobseeker’s profile includes their:</p> #}
 
@@ -29,16 +29,35 @@
         </li>
       </ul> #}
 
+      <p>The candidates you have access to have specified:</p>
+
       {% if user.organisation.schools %}
-        <p>All the jobseekers you have access to have specified that they’re able to travel to at least one of your schools.</p>
+        {# <p>All the candidates you have access to have specified that they’re able to travel to a location that’s near to at least one of your schools.</p> #}
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            that they’re able to travel to a location near to at least one of your schools
+          </li>
+          <li>
+            that they’re interested in an education phase that matches at least one of your schools
+          </li>
+        </ul>
       {% else %}
-        <p>All the jobseekers you have access to have specified that they’re able to travel to your school.</p>
+        {# <p>All the jobseekers you have access to have specified that they’re able to travel to a location that’s near to your school.</p> #}
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            that they’re able to travel to a location near to your school
+          </li>
+          <li>
+            that they’re interested in an education phase that matches your school
+          </li>
+        </ul>
       {% endif %}
 
-      <p>You’ll also be notified about any jobseeker profile that matches your job listings.</p>
+      <p>You’ll also be notified about any candidate profile that matches your job listings.</p>
 
       {{ govukButton({
-        text: "View jobseeker profiles",
+        text: "View candidate profiles",
         href: "/jobseekers"
       }) }}
 
