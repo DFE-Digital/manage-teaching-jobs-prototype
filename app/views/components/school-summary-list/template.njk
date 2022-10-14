@@ -116,6 +116,15 @@
       },
       value: {
         text: params.school.name
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: ""
+          }
+        ]
       }
     },
     {
@@ -124,6 +133,15 @@
       },
       value: {
         text: address
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: ""
+          }
+        ]
       }
     },
     {
@@ -132,6 +150,15 @@
       },
       value: {
         text: params.school.type
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: ""
+          }
+        ]
       }
     } if params.school.type,
     {
@@ -157,6 +184,15 @@
       },
       value: {
         text: params.school.ageGroup
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: ""
+          }
+        ]
       }
     } if params.school.ageGroup,
     {
@@ -165,16 +201,17 @@
       },
       value: {
         text: params.school.size + ' pupils enrolled'
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: ""
+          }
+        ]
       }
     } if params.school.size,
-    {
-      key: {
-        text: "Ofsted report"
-      },
-      value: {
-        html: '<a href="#">View Ofsted report (opens in new tab)</a>'
-      }
-    } if not params.school.schools,
     {
       key: {
         text: "Email address"
@@ -293,6 +330,14 @@
           }
         ]
       }
-    }
+    },
+    {
+      key: {
+        text: "Ofsted report"
+      },
+      value: {
+        html: '<a href="#">View Ofsted report (opens in new tab)</a>'
+      }
+    } if not params.school.schools
   ]
 }) }}
