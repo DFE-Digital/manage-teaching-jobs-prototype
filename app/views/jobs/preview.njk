@@ -178,13 +178,13 @@
         What skills and experience we’re looking for
       </h2>
 
-      <p>{{job.skillsAndExperience | capitalize | nl2br}}</p>
+      <p>{{job.skillsAndExperience | nl2br | safe}}</p>
 
       <h2 class="govuk-heading-m">
         What the school offers its staff
       </h2>
 
-      <p>{{job.whatSchoolOffers | capitalize | nl2br}}</p>
+      <p>{{job.whatSchoolOffers | nl2br | safe}}</p>
 
       {% if job.offersSchoolVisits == 'Yes' %}
         <h2 class="govuk-heading-m">
@@ -200,7 +200,7 @@
           Further information about the role
         </h2>
 
-        <p>{{job.furtherDetailsAboutTheRole | capitalize | nl2br}}</p>
+        <p>{{job.furtherDetailsAboutTheRole | nl2br | safe}}</p>
       {% endif %}
 
 
@@ -351,7 +351,7 @@
           Commitment to safeguarding
         </h2>
 
-        <p>{{job.safeguardingCommitment | capitalize | nl2br}}</p>
+        <p>{{job.safeguardingCommitment | nl2br | safe}}</p>
       {% endif %}
 
       {% if job.isUsingApplicationForm == 'No' %}
