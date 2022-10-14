@@ -143,7 +143,7 @@ const generateJob = (params = {}) => {
 
   if(job.hasFurtherDetailsAboutTheRole == 'Yes') {
 
-    job.furtherDetailsAboutTheRole = params.furtherDetailsAboutTheRole || (faker.lorem.words(30) + '.')
+    job.furtherDetailsAboutTheRole = params.furtherDetailsAboutTheRole || 'The candidate will be required to undergo a full enhanced DBS check and must be eligible to work in the UK.'
 
   }
 
