@@ -127,9 +127,9 @@ const generateJob = (params = {}) => {
 
   job.isRoleSuitableForEarlyCareeerTeachers = params.isRoleSuitableForEarlyCareeerTeachers || faker.helpers.arrayElement(['Yes', 'No'])
 
-  job.skillsAndExperience = params.skillsAndExperience || 'Passion for learning and teaching and be committed to raising standards. Up to date with current pedagogical thinking. Able to inspire others to ensure the delivery of high-quality learning experiences for our students. \n\nFantastic subject knowledge and understand how to teach highly challenging lessons so that students can reach the top grades in the subject. High expectations of themselves and others. Ambitious and committed to ongoing professional development.'
+  job.skillsAndExperience = params.skillsAndExperience || '- Passion for learning and teaching and be committed to raising standards \n- Up to date with current pedagogical thinking \n- Able to inspire others to ensure the delivery of high-quality learning experiences for our students \n- Fantastic subject knowledge and understand how to teach highly challenging lessons so that students can reach the top grades in the subject. \n- High expectations of themselves and others Ambitious and committed to ongoing professional development'
 
-  job.whatSchoolOffers = params.whatSchoolOffers || 'A bespoke curriculum offering students a strong core entitlement in English, Mathematics and Science. A full extra-curricular programme with opportunities for enrichment activities for all. \n\nAn excellent opportunity for continued personal development through our Talent Pathway. A wide range of staff benefits. Excellent resources and facilities. A wonderful community that is involved within school life.'
+  job.whatSchoolOffers = params.whatSchoolOffers || '- A bespoke curriculum offering students a strong core entitlement in English, Mathematics and Science \n- A full extra-curricular programme with opportunities for enrichment activities for all \n- An excellent opportunity for continued personal development through our Talent Pathway \n- A wide range of staff benefits \n- Excellent resources and facilities \n- A wonderful community that is involved within school life.'
 
   job.hasSafeguardingCommitment = params.hasSafeguardingCommitment || faker.helpers.arrayElement(['Yes', 'No'])
 

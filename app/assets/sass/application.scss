@@ -213,3 +213,11 @@ h1 .govuk-tag {
 .govuk-summary-list__actions {
   vertical-align: top;
 }
+
+.app-prose {
+  ul:not([class]) {
+    @extend %govuk-list;
+    @extend %govuk-list--bullet;
+    max-width: 40rem;
+  }
+}

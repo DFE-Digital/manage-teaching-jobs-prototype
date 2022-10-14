@@ -178,13 +178,21 @@
         What skills and experience we’re looking for
       </h2>
 
-      <p>{{job.skillsAndExperience | nl2br | safe}}</p>
+      <div class="app-prose govuk-!-margin-bottom-6">
+        {% markdown %}
+          {{job.skillsAndExperience}}
+        {% endmarkdown %}
+      </div>
 
       <h2 class="govuk-heading-m">
         What the school offers its staff
       </h2>
 
-      <p>{{job.whatSchoolOffers | nl2br | safe}}</p>
+      <div class="app-prose govuk-!-margin-bottom-6">
+        {% markdown %}
+          {{job.whatSchoolOffers}}
+        {% endmarkdown %}
+      </div>
 
       {% if job.offersSchoolVisits == 'Yes' %}
         <h2 class="govuk-heading-m">
@@ -200,7 +208,11 @@
           Further information about the role
         </h2>
 
-        <p>{{job.furtherDetailsAboutTheRole | nl2br | safe}}</p>
+        <div class="app-prose">
+          {% markdown %}
+            {{job.furtherDetailsAboutTheRole}}
+          {% endmarkdown %}
+        </div>
       {% endif %}
 
 
@@ -351,7 +363,11 @@
           Commitment to safeguarding
         </h2>
 
-        <p>{{job.safeguardingCommitment | nl2br | safe}}</p>
+        <div class="app-prose govuk-!-margin-bottom-6">
+          {% markdown %}
+            {{job.safeguardingCommitment}}
+          {% endmarkdown %}
+        </div>
       {% endif %}
 
       {% if job.isUsingApplicationForm == 'No' %}

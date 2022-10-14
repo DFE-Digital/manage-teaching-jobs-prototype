@@ -14,6 +14,8 @@ const sessionInMemory = require('express-session')
 
 // Added dependencies
 const flash = require('connect-flash')
+const markdown = require('nunjucks-markdown')
+const { marked } = require('marked')
 
 // Run before other code to make sure variables from .env are available
 dotenv.config()
@@ -138,6 +140,10 @@ if (env === 'development') {
 nunjucksConfig.express = app
 
 var nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
+
+markdown.register(nunjucksAppEnv, marked)
+
+
 
 // Add Nunjucks filters
 utils.addNunjucksFilters(nunjucksAppEnv)
