@@ -10,9 +10,11 @@
         {{title}}
       </h1>
 
-      <p>A jobseeker’s profile includes their:
+      <p>A jobseeker’s profile includes their qualified teaching status (QTS), experience and qualifications.</p>
 
-      <ul class="govuk-list govuk-list--bullet">
+      {# <p>A jobseeker’s profile includes their:</p> #}
+
+      {# <ul class="govuk-list govuk-list--bullet">
         <li>
           qualified teaching status
         </li>
@@ -25,9 +27,13 @@
         <li>
           qualifications
         </li>
-      </ul>
+      </ul> #}
 
-      <p>You can invite jobseekers to apply for any job listings you create.</p>
+      {% if user.organisation.schools %}
+        <p>All the jobseekers you have access to have specified that they’re able to travel to at least one of your schools.</p>
+      {% else %}
+        <p>All the jobseekers you have access to have specified that they’re able to travel to your school.</p>
+      {% endif %}
 
       <p>You’ll also be notified about any jobseeker profile that matches your job listings.</p>
 
