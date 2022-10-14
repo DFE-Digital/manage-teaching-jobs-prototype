@@ -1,6 +1,7 @@
 
 const authentication = require('../middleware/authenticaton')
 const _ = require('lodash')
+const { use } = require('browser-sync')
 
 module.exports = router => {
 
@@ -20,7 +21,7 @@ module.exports = router => {
       }))
     }
 
-    let jobCheckboxes = req.session.user.jobs
+    let jobCheckboxes = user.jobs
       .filter(job => job.status == 'Active')
       .map(job => {
         return {
@@ -37,11 +38,31 @@ module.exports = router => {
       return { text: item, value: item }
     })
 
+    let showSubjectsFilter = false
+
+    let phasesThatAreRelevantToSubjectFilter = [
+      'Secondary school',
+      'Middle school',
+      'Sixth form or college',
+      'Through school'
+    ]
+
+    if(user.organisation.phase && phasesThatAreRelevantToSubjectFilter.includes(user.organisation.phase)) {
+      showSubjectsFilter = true
+    }
+
+    if(user.organisation.schools) {
+      if(user.organisation.schools.filter(school => phasesThatAreRelevantToSubjectFilter.includes(school.phase)).length) {
+        showSubjectsFilter = true
+      }
+    }
+
     res.render('jobseekers/index', {
       locationCheckboxes,
       jobCheckboxes,
       roles,
       phases,
+      showSubjectsFilter
     })
   })
 

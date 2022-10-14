@@ -1,5 +1,7 @@
 {% set filterOptionsHtml %}
 
+
+
   {% if locationCheckboxes %}
 
     {{ govukCheckboxes({
@@ -132,7 +134,7 @@
     }]
   }) }}
 
-  {% if user.organisation.phase == 'Secondary' or user.organisation.phase == 'Sixth form or college' or user.organisation.phase == 'Through school' %}
+  {% if showSubjectsFilter %}
 
   {{ appCheckboxFilter({
     idPrefix: "subjects",

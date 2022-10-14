@@ -209,9 +209,9 @@ const generateOrgs = () => {
    *************************************************/
 
   let matSchool1 = generateSchool({ phase: 'Primary school', name: 'Thor Primary School' })
-  let matSchool2 = generateSchool({ phase: 'Primary school', name: 'Ragnarok School' })
-  let matSchool3 = generateSchool({ phase: 'Primary school', name: 'Ultron School' })
-  let matSchool4 = generateSchool({ phase: 'Primary school', name: 'Endgame School' })
+  let matSchool2 = generateSchool({ phase: 'Secondary school', name: 'Ragnarok School' })
+  let matSchool3 = generateSchool({ phase: 'Middle school', name: 'Ultron School' })
+  let matSchool4 = generateSchool({ phase: 'Sixth form or college', name: 'Endgame School' })
   let matSchool5 = generateSchool({ phase: 'Primary school', name: 'Stark Primary School' })
 
   orgs.push(matSchool1)

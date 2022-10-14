@@ -51,43 +51,9 @@
           {% endset %}
 
           <div class="app-list__item">
-              <h2 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-margin-right-2">
-                <a href="/jobseekers/{{jobseeker.id}}">{{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}}</a>
-            {# <span class="govuk-!-margin-left-1 govuk-!-font-size-16 govuk-!-font-weight-regular">{{teachingStatus}}</span> #}
-              </h2>
-
-            {# <p class="govuk-!-font-size-16 govuk-!-margin-bottom-0 govuk-!-margin-top-3">
-
-              {% for workingPattern in jobseeker.profile.workingPatterns %}
-              Prefers a
-                {{workingPattern | lower}}
-
-                {% if jobseeker.profile.workingPatterns.length > 1 %}
-                  {% if loop.first %}
-                    or
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
-
-              role as a
-
-              {% for role in jobseeker.profile.roles %}
-                {{role | lower}}
-
-                {% if jobseeker.profile.roles.length > 1 %}
-                  {% if loop.last %}
-                    or
-                  {% else %}
-                    ,
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
-
-              {% if %}
-
-              .
-            </p> #}
-
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-margin-right-2">
+              <a href="/jobseekers/{{jobseeker.id}}">{{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}}</a>
+            </h2>
             <p class="govuk-!-font-size-16 govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{teachingStatus}}</p>
 
             {{ govukSummaryList({
