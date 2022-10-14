@@ -2,9 +2,9 @@
 {% extends "layout.njk" %}
 
 {% if user.organisation.schools %}
-  {% set title = 'Add your logo and photo to your organisation profile' %}
+  {% set title = 'Add your school logos and photos' %}
 {% else %}
-  {% set title = 'Add your logo and photo to your school profile' %}
+  {% set title = 'Add your school logo and photo' %}
 {% endif %}
 
 {% block content %}
@@ -13,12 +13,10 @@
     <div class="govuk-grid-column-two-thirds">
       {% if user.organisation.schools %}
         <h1 class="govuk-heading-l">{{title}}</h1>
-        <p>You can now upload your logo and photo to your organisation profile.</p>
-        <p>The details you add to your organisation profile will be included in your job listings.</p>
+        <p>The details stored in your organisation profile are included in your job listings.</p>
       {% else %}
         <h1 class="govuk-heading-l">{{title}}</h1>
-        <p>You can now upload your logo and photo to your school profile.</p>
-        <p>The details you add to your school profile will be included in your job listings.</p>
+        <p>The details stored in your school profile are included in your job listings.</p>
       {% endif %}
 
       {{ govukButton({
