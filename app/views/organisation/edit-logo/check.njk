@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Check logo and update profile' %}
+{% set heading = 'Check and upload logo' %}
 {% if user.organisation.schools %}
   {% set caption = 'Organisation profile' %}
   {% set label = 'Organisation logo' %}
@@ -58,7 +58,7 @@
 
       <form method="post">
         {{ govukButton({
-          text: "Update profile"
+          text: "Upload logo"
         }) }}
       </form>
       <p><a href="/organisation">Cancel</a></p>

@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Upload a school logo' %}
+{% set heading = 'School logo' %}
 {% set caption = 'School profile' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -23,7 +23,7 @@
         {{heading}}
       </h1>
 
-      <p>School logos need to be:</p>
+      <p>The logo must be:</p>
 
       <ul class="govuk-list govuk-list--bullet">
         <li>
@@ -33,7 +33,7 @@
           a PNG or JPG
         </li>
         <li>
-          no larger than 5MB
+          smaller than 5MB
         </li>
       </ul>
 
@@ -43,7 +43,7 @@
           id: "createJob[application-form]",
           name: "createJob[application-form]",
           label: {
-            text: "Upload a school logo",
+            text: "Upload a file",
             classes: 'govuk-label--m'
           }
         }) }}
