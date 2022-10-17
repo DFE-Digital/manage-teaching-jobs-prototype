@@ -10,31 +10,44 @@
         titleText: title
       }) }}
 
-      <p>You can change your details in <a href="/account">your account</a>.</p>
+      {% if user.organisation.schools %}
+        <h2 class="govuk-heading-m"> Complete organisation profile </h2>
+        <p>The details stored in your organisation profile are included in your job listings.</p>
+        <p><a href="/organisation">Complete your organisation profile</a></p>
+      {% else %}
+        <h2 class="govuk-heading-m"> Complete school profile </h2>
+        <p>The details stored in your school profile are included in your job listings.</p>
+        <p><a href="/organisation">Complete your school profile</a></p>
+      {% endif %}
 
-      <h2 class="govuk-heading-m">
-        Next steps
-      </h2>
+      <h2 class="govuk-heading-m">Create job listing</h2>
+      <p>You can create a job listing.</p>
+      <p><a href="/jobs">Create job listing</a></p>
 
-      <p>You can now:</p>
+      <h2 class="govuk-heading-m">View candidate profiles and invite them to apply</h2>
+      <p>You can view candidate profiles. They include the candidate’s job preferences, experience and qualifications.</p>
+      <p>The candidates you have access to have specified:</p>
 
       <ul class="govuk-list govuk-list--bullet">
-        {% if user.organisation.schools %}
-          <li>
-            <a href="/organisation">complete your organisation profile</a>
-          </li>
-        {% else %}
-          <li>
-            <a href="/organisation">complete your school profile</a>
-          </li>
-        {% endif %}
         <li>
-          <a href="/jobs/new">manage job listings</a>
+          {% if user.organisation.schools %}
+            that they’re able to travel to a location near to at least one of your schools
+          {% else %}
+            that they’re able to travel to a location near to your school
+          {% endif %}
         </li>
         <li>
-          <a href="/jobseekers">view candidates profiles</a>
+          {% if user.organisation.schools %}
+            that they’re interested in an education phase that matches at least one of your schools
+          {% else %}
+            that they’re interested in an education phase that matches your school
+          {% endif %}
         </li>
       </ul>
+
+      {# <p>You’ll also be notified about any candidate profile that matches your job listings.</p> #}
+
+      <p><a href="/jobseekers">View candidate profiles</a></p>
 
     </div>
   </div>

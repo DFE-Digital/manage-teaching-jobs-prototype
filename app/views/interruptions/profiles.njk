@@ -12,28 +12,9 @@
 
       <p>A candidate’s profile includes their job preferences, experience and qualifications.</p>
 
-      {# <p>A jobseeker’s profile includes their:</p> #}
-
-      {# <ul class="govuk-list govuk-list--bullet">
-        <li>
-          qualified teaching status
-        </li>
-        <li>
-          job preferences
-        </li>
-        <li>
-          experience
-        </li>
-        <li>
-          qualifications
-        </li>
-      </ul> #}
-
       <p>The candidates you have access to have specified:</p>
 
       {% if user.organisation.schools %}
-        {# <p>All the candidates you have access to have specified that they’re able to travel to a location that’s near to at least one of your schools.</p> #}
-
         <ul class="govuk-list govuk-list--bullet">
           <li>
             that they’re able to travel to a location near to at least one of your schools
@@ -43,7 +24,6 @@
           </li>
         </ul>
       {% else %}
-        {# <p>All the jobseekers you have access to have specified that they’re able to travel to a location that’s near to your school.</p> #}
         <ul class="govuk-list govuk-list--bullet">
           <li>
             that they’re able to travel to a location near to your school
