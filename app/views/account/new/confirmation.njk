@@ -19,14 +19,20 @@
       <p>You can now:</p>
 
       <ul class="govuk-list govuk-list--bullet">
+        {% if user.organisation.schools %}
+          <li>
+            <a href="/organisation">complete your organisation profile</a>
+          </li>
+        {% else %}
+          <li>
+            <a href="/organisation">complete your school profile</a>
+          </li>
+        {% endif %}
         <li>
           <a href="/jobs/new">manage job listings</a>
         </li>
         <li>
-          <a href="/organisation">add information about your school</a>
-        </li>
-        <li>
-          <a href="/profiles">view jobseeker profiles</a>
+          <a href="/jobseekers">view candidates profiles</a>
         </li>
       </ul>
 

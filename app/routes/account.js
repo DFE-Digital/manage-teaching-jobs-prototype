@@ -43,7 +43,7 @@ module.exports = router => {
     // but just in case we'll grab the the first user's email address
     // and use that to retrieve a fully built user object
     if(!user) {
-      user = userHelper.getUser(users[0].emailAddress)
+      user = userHelper.getUser(users[0].username)
     }
 
     res.locals.user = req.session.user = user
@@ -64,11 +64,8 @@ module.exports = router => {
   })
 
   router.post('/account/new', (req, res) => {
-    res.locals.user = req.session.user = {
-      username: req.body.emailAddress,
-      password: req.body.password,
-      organisation: organisations.find(org => org.name == 'Bushey Meads Secondary School')
-    }
+    let user = userHelper.getUser(users[0].username)
+    res.locals.user = req.session.user = user
     res.redirect('/account/new/confirmation')
   })
 

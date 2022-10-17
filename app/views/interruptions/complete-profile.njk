@@ -3,8 +3,10 @@
 
 {% if user.organisation.schools %}
   {% set title = 'Add your school logos and photos' %}
+  {% set title = 'Complete your organisation profile' %}
 {% else %}
   {% set title = 'Add your school logo and photo' %}
+  {% set title = 'Complete your school profile' %}
 {% endif %}
 
 {% block content %}
@@ -20,26 +22,11 @@
       {% endif %}
 
       {{ govukButton({
-        text: "Add logo and photo",
+        text: title,
         href: "/organisation"
       }) }}
 
       <p><a href="/jobs">Skip to job listings</a></p>
-
-      {# {% if user.organisation.schools %}
-        <h1 class="govuk-heading-l">Complete your organisation profile</h1>
-        <p>The details you add to your organisation profile will be included in your job listings.</p>
-      {% else %}
-        <h1 class="govuk-heading-l">Complete your school profile</h1>
-        <p>The details you add to your school profile will be included in your job listings.</p>
-      {% endif %}
-
-      {{ govukButton({
-        text: "Complete school profile",
-        href: "/organisation"
-      }) }}
-
-      <p><a href="/jobs">Skip to job listings</a></p> #}
 
     </div>
   </div>

@@ -9,6 +9,8 @@ module.exports = router => {
     let user = req.session.user
 
     let locationCheckboxes
+
+
     if(user.organisation.schools) {
       locationCheckboxes = [{
         text: 'Head office',
@@ -22,13 +24,13 @@ module.exports = router => {
     }
 
     let jobCheckboxes = user.jobs
-      .filter(job => job.status == 'Active')
-      .map(job => {
-        return {
-          text: job.title,
-          value: job.title
-        }
-      })
+    .filter(job => job.status == 'Active')
+    .map(job => {
+      return {
+        text: job.title,
+        value: job.title
+      }
+    })
 
     let roles = require('../data/roles').map(item => {
       return { text: item, value: item }
