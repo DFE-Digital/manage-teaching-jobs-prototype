@@ -1,0 +1,17 @@
+{{ appSubNavigation({
+  classes: 'govuk-!-margin-top-6 govuk-!-margin-bottom-',
+  navigationLabel: 'Application menu',
+  items: [{
+    html: 'Profile',
+    href: '/jobseekers/'+jobseeker.id,
+    active: subNavId == 'candidateProfile'
+  }, {
+    html: 'Invitations to apply',
+    href: '/jobseekers/'+jobseeker.id+'/invites',
+    active: subNavId == 'candidateInvitations'
+  }, {
+    html: 'Applications',
+    href: '/jobseekers/'+jobseeker.id+'/applications',
+    active: subNavId == 'candidateApplications'
+  }]
+}) }}

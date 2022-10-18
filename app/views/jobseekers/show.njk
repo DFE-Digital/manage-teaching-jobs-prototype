@@ -3,6 +3,8 @@
 
 {% set primaryNavId = 'jobseekers' %}
 
+{% set subNavId = 'candidateProfile' %}
+
 {% set title = [jobseeker.profile.firstName, jobseeker.profile.lastName] | join(' ') %}
 
 {% block content %}
@@ -38,23 +40,7 @@
 
   <p><a href="/jobseekers/{{jobseeker.id}}/invites/new">Invite to apply for a job</a></p>
 
-      {{ appSubNavigation({
-        classes: 'govuk-!-margin-top-6 govuk-!-margin-bottom-',
-        navigationLabel: 'Application menu',
-        items: [{
-          html: 'Profile',
-          href: '#',
-          active: true
-        }, {
-          html: 'Invitations to apply',
-          href: '/jobseekers/'+jobseeker.id+'/invites',
-          active: false
-        }, {
-          html: 'Applications',
-          href: '/jobseekers/'+jobseeker.id+'/applications',
-          active: false
-        }]
-      }) }}
+  {% include "includes/candidate-profile-sub-navigation.njk" %}
 
   <div class="govuk-grid-row ">
     <div class="govuk-grid-column-two-thirds">

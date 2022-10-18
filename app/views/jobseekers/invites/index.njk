@@ -1,8 +1,11 @@
 {% extends "layout.njk" %}
-{% set title = 'Previous invitations' %}
-{% set primaryNavId = 'jobseekers' %}
 
-{% block beforeContent %}
+{% set title = [jobseeker.profile.firstName, jobseeker.profile.lastName] | join(' ') %}
+{% set heading = 'Invitations to apply' %}
+{% set primaryNavId = 'jobseekers' %}
+{% set subNavId = 'candidateInvitations' %}
+
+{# {% block beforeContent %}
   {{ govukBreadcrumbs({
     items: [
       {
@@ -18,16 +21,21 @@
       }
     ]
   }) }}
-{% endblock %}
+{% endblock %} #}
 
 
 {% block content %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+    {{title}}
+  </h1>
+
+  <p><a href="/jobseekers/{{jobseeker.id}}/invites/new">Invite to apply for a job</a></p>
+
+  {% include "includes/candidate-profile-sub-navigation.njk" %}
+
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">
-        {{title}}
-      </h1>
 
       {% if user.organisation.phase == 'Secondary school' %}
         {{ govukTable({
