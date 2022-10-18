@@ -3,9 +3,9 @@
 
 {% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
 
-{% set caption =  name + ' - Invite to apply for a job'  %}
+{% set caption =  name + ' - invite to apply for a job'  %}
 
-{% set title = 'Jobs' %}
+{% set title = 'Jobs to invite candidate to apply for' %}
 
 {% set primaryNavId = 'jobseekers' %}
 
@@ -38,8 +38,8 @@
             {{title}}
           {% endset %}
           {{ govukCheckboxes({
-            idPrefix: "invite",
-            name: "invite",
+            idPrefix: "invite[jobs]",
+            name: "invite[jobs]",
             fieldset: {
               legend: {
                 html: h1,
@@ -47,19 +47,20 @@
                 classes: "govuk-fieldset__legend--l"
               }
             },
+            values: data.invite.jobs,
             items: jobCheckboxes
           }) }}
-          {% set text %}
+          {# {% set text %}
             {{name}} will be sent an email to tell them they’ve been invited to apply for the jobs you selected.
           {% endset %}
 
           {{ govukWarningText({
             text: text
-          }) }}
+          }) }} #}
         {% endif %}
 
         {{ govukButton({
-          text: "Send invite to apply"
+          text: "Continue"
         }) }}
         <p><a href="/jobseekers/{{jobseeker.id}}">Cancel</a></p>
       </form>

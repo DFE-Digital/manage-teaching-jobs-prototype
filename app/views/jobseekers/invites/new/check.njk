@@ -1,0 +1,99 @@
+
+{% extends "layout.njk" %}
+
+{% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
+
+{% set caption =  name + ' - invite to apply for a job'  %}
+
+{% set title = 'Check details and invite candidate to apply' %}
+
+{% set primaryNavId = 'jobseekers' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobseekers/"+jobseeker.id
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Jobs to invite candidate to apply for"
+            },
+            value: {
+              html: data.invite.jobs | join('<br>')
+            },
+            actions: {
+              items: [
+                {
+                  href: '/jobseekers/'+jobseeker.id+'/invites/new',
+                  text: "Change",
+                  visuallyHiddenText: "Jobs to invite candidate to apply for"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Preview
+      </h2>
+
+      {% set preview%}
+        <p>Dear {{jobseeker.profile.firstName}}</p>
+
+
+
+        {% if data.invite.jobs.length > 1 %}
+          <p>Rachael at {{user.organisation.name}} has reviewed your profile and invited you to apply for {{data.invite.jobs | length}} roles.</p>
+          {# <ul class="govuk-list govuk-list--bullet"> #}
+            {% for role in data.invite.jobs %}
+              <p>{{role}} <br> <a href="#">https://teaching-vacancies.blah.com/123</a></p>
+            {% endfor %}
+          {# </ul> #}
+        {% else %}
+          <p>Rachael at {{user.organisation.name}} has reviewed your profile and invited you to apply for the role of {{data.invite.jobs}}.</p>
+
+          <p class="govuk-!-margin-bottom-1">View role and apply:</p>
+          <p><a href="#">https://teaching-vacancies.blah.com/123</a></p>
+        {% endif %}
+
+        <h3 class="govuk-heading-m">
+          Get support
+        </h3>
+
+        <p>Get support, report a problem or give feedback at <a href="">teaching.vacancies@education.gov.uk</a>.</p>
+      {% endset %}
+
+      {{ govukInsetText({
+        html: preview
+      }) }}
+
+      <form method="post">
+        {{ govukButton({
+          text: "Send invite to apply"
+        }) }}
+        <p><a href="/jobseekers/{{jobseeker.id}}">Cancel</a></p>
+      </form>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
