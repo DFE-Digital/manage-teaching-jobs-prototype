@@ -3,6 +3,14 @@ const authentication = require('../middleware/authenticaton')
 const _ = require('lodash')
 const { use } = require('browser-sync')
 
+function isQTSRelevant(jobseeker) {
+  let relevant = false
+  if(jobseeker.profile.roles && (jobseeker.profile.roles.includes('Teacher') || jobseeker.profile.roles.includes('Headteacher, deputy or assistant headteacher') || jobseeker.profile.roles.includes('Head of year, department, curriculum or phase'))) {
+    relevant = true
+  }
+  return relevant
+}
+
 module.exports = router => {
 
   router.get('/jobseekers', authentication.checkIsAuthenticated, (req, res) => {
@@ -59,7 +67,13 @@ module.exports = router => {
       }
     }
 
+    let jobseekers = user.jobseekers.map(jobseeker => {
+      jobseeker.showQTS = isQTSRelevant(jobseeker)
+      return jobseeker
+    })
+
     res.render('jobseekers/index', {
+      jobseekers,
       locationCheckboxes,
       jobCheckboxes,
       roles,
@@ -95,8 +109,10 @@ module.exports = router => {
       })
     })
 
+    let showQTS = isQTSRelevant(jobseeker)
 
     res.render('jobseekers/show', {
+      showQTS,
       jobseeker,
       workHistory,
       qualificationsGroup
