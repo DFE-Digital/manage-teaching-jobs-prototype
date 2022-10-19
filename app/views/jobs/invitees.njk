@@ -1,0 +1,114 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'job' %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+    {{job.title}}
+    {{ govukTag({
+      text: job.status,
+      classes: job.status | jobStatusTagClass
+    }) }}
+  </h1>
+
+  {% set insetHtml %}
+
+    {% if job.status == 'Active' %}
+      <p class="govuk-!-width-two-thirds">This job listing was published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+
+      <div class="govuk-button-group">
+        <a href="/jobs/{{job.id}}/preview">View (opens in new tab)</a>
+        <a href="#" class="govuk-!-margin-left-3">Copy</a>
+        <a href="#" class="govuk-!-margin-left-3">Close early</a>
+        <a href="#" class="govuk-!-margin-left-3">Extend closing date</a>
+      </div>
+
+    {% endif %}
+
+    {% if job.status == 'Scheduled' %}
+      <p class="govuk-!-width-two-thirds">This job listing will be published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+
+      <div class="govuk-button-group">
+        <a href="/jobs/{{job.id}}/preview" class="govuk-!-margin-left-">Preview</a>
+        <a href="#" class="govuk-!-margin-left-3">Copy</a>
+        <a href="#" class="govuk-!-margin-left-3">Delete</a>
+        <a href="#" class="govuk-!-margin-left-3">Convert to draft</a>
+      </div>
+    {% endif %}
+
+    {% if job.status == 'Closed' %}
+      <p class="govuk-!-width-two-thirds">This job listing was published on {{job.publishDate | date }}. It closed on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+
+      <div class="govuk-button-group">
+        <a href="/jobs/{{job.id}}/preview">View (opens in new tab)</a>
+        <a href="#" class="govuk-!-margin-left-3">Copy</a>
+        <a href="#" class="govuk-!-margin-left-3">Extend closing date</a>
+      </div>
+    {% endif %}
+
+    {% if job.status == 'Draft' %}
+
+      {% if query.incomplete %}
+        <p>This job listing needs to be completed before it can be published.</p>
+      {% else %}
+        <p>This job listing is complete and needs to be published.</p>
+      {% endif %}
+
+      <div class="govuk-button-group">
+        {% if query.incomplete %}
+          {{ govukButton({
+            text: "Complete job listing",
+            href: '#',
+            classes: 'govuk-!-margin-bottom-0'
+          }) }}
+        {% else %}
+          {{ govukButton({
+            text: "Publish job listing",
+            href: '#',
+            classes: 'govuk-!-margin-bottom-0'
+          }) }}
+        {% endif %}
+        <a href="/jobs/{{job.id}}/preview">Preview</a>
+        <a href="#" class="govuk-!-margin-left-3">Copy</a>
+        <a href="#" class="govuk-!-margin-left-3">Delete</a>
+      </div>
+    {% endif %}
+
+
+
+  {% endset %}
+
+  {{ govukInsetText({
+    html: insetHtml,
+    classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-2 govuk-!-padding-bottom-3'
+  }) }}
+
+
+  {% include "includes/job-sub-navigation.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="app-list govuk-!-margin-top-4">
+
+        {% for jobseeker in user.jobseekers %}
+          <div class="app-list__item">
+            <p class="govuk-!-margin-bottom-1"><a href="/jobseekers/{{jobseeker.id}}">{{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}}</a></p>
+            <p class="govuk-!-margin-bottom-0">{{jobseeker.emailAddress}}</p>
+          </div>
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

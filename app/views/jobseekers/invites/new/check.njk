@@ -57,8 +57,6 @@
       {% set preview%}
         <p>Dear {{jobseeker.profile.firstName}}</p>
 
-
-
         {% if data.invite.jobs.length > 1 %}
           <p>Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for {{data.invite.jobs | length}} roles.</p>
           {# <ul class="govuk-list govuk-list--bullet"> #}
