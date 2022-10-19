@@ -5,31 +5,10 @@
 {% set primaryNavId = 'jobseekers' %}
 {% set subNavId = 'candidateInvitations' %}
 
-{# {% block beforeContent %}
-  {{ govukBreadcrumbs({
-    items: [
-      {
-        text: 'Jobseeker profiles',
-        href: '/jobseekers'
-      },
-      {
-        text: jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName,
-        href: '/jobseekers/'+jobseeker.id
-      },
-      {
-        text: title
-      }
-    ]
-  }) }}
-{% endblock %} #}
-
-
 {% block content %}
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
     {{title}}
   </h1>
-
-  {# <p><a href="/jobseekers/{{jobseeker.id}}/invites/new">Invite to apply for a job</a></p> #}
 
   {{ govukButton({
     text: "Invite to apply for a job",
@@ -59,7 +38,7 @@
         rows: [
           [
             {
-              html: '<a href="#">Teacher of English</a><br><a href="#">Teacher of Science</a>'
+              html: '<a href="#">Teacher of English</a>'
             },
             {
               html: "Rachael Harvey"
@@ -98,7 +77,18 @@
         rows: [
           [
             {
-              html: '<a href="#">Class teacher</a><br><a href="#">Primary school teacher</a>'
+              html: '<a href="#">Class teacher</a>'
+            },
+            {
+              html: "Rachael Harvey"
+            },
+            {
+              html: "18 August 2022 at 9am"
+            }
+          ],
+          [
+            {
+              html: '<a href="#">Teacher of KS1 or KS2</a>'
             },
             {
               html: "Rachael Harvey"
