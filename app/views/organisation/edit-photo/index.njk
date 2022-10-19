@@ -1,0 +1,82 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'School photo' %}
+{% set caption = 'School profile' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+      {% if data['design'] == "2" %}
+
+        {% if organisation.photo != 'Not entered' %}
+          <h2 class="govuk-heading-m">
+            Your current school photo
+          </h2>
+
+          <div class="app-school-photo">
+            <img src="{{data.photo}}" alt="Photo" width="100">
+          </div>
+
+          <h2 class="govuk-heading-m">
+            Change your school photo
+          </h2>
+        {% endif %}
+
+      {% else %}
+
+      {% endif %}
+
+      <p>The photo must be:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          640 pixels by 320 pixels
+        </li>
+        <li>
+          a PNG or JPG
+        </li>
+        <li>
+          smaller than 5MB
+        </li>
+      </ul>
+
+      <p><a href="#">Contact support</a> if you need help adding your school photo.</p>
+
+      <form method="post">
+
+        {{ govukFileUpload({
+          id: "createJob[application-form]",
+          name: "createJob[application-form]",
+          label: {
+            text: "Upload a file",
+            classes: 'govuk-label--m'
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      <p><a href="/organisation">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

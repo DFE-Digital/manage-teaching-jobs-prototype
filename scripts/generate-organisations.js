@@ -159,7 +159,8 @@ const generateOrgs = () => {
   orgs.push(generateSchool({
     name: 'Courtland Primary School',
     phase: 'Primary school',
-    logo: '/public/images/logos/courtland.png'
+    logo: '/public/images/logos/courtland.png',
+    photo: '/public/images/photos/courtland_outside.jpg'
   }))
 
   /*************************************************
