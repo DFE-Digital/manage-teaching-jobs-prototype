@@ -225,6 +225,7 @@ const generateOrgs = () => {
     name: 'Royal Academy Trust',
     type: 'MAT',
     logo: '/public/images/logos/royal.png',
+    photo: '/public/images/photos/royal_outside.png',
     schools: [
       matSchool1,
       matSchool2,

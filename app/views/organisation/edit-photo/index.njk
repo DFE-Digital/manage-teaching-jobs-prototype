@@ -1,7 +1,13 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'School photo' %}
-{% set caption = 'School profile' %}
+{% if user.organisation.schools %}
+  {% set heading = 'Organisation photo' %}
+  {% set caption = 'Organisation profile' %}
+{% else %}
+  {% set heading = 'School photo' %}
+  {% set caption = 'School profile' %}
+{% endif %}
+
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -57,7 +63,7 @@
         </li>
       </ul>
 
-      <p><a href="#">Contact support</a> if you need help adding your school photo.</p>
+      <p><a href="#">Contact support</a> if you need help adding your {% if user.organisation.schools %}organisation{% else %}school{% endif %} photo.</p>
 
       <form method="post">
 
