@@ -1,14 +1,14 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
 {% set address %}
-  {% for part, value in params.school.address %}
+  {% for part, value in params.organisation.address %}
     {{value}}{% if not loop.last %}, {% endif %}
   {% endfor %}
 {% endset %}
 
 {% set emailAddress %}
-  {% if params.school.emailAddress != 'Not entered' %}
-    <a href="{{params.school.emailAddress}}">{{params.school.emailAddress}}</a>
+  {% if params.organisation.emailAddress != 'Not entered' %}
+    <a href="{{params.organisation.emailAddress}}">{{params.organisation.emailAddress}}</a>
   {% else %}
     <div class="app-field-highlight">
       <p class="app-field-highlight__instruction">Enter an email address</p>
@@ -18,8 +18,8 @@
 {% endset %}
 
 {% set website %}
-  {% if params.school.website != 'Not entered' %}
-    <a href="{{params.school.website}}">{{params.school.website}} (opens in new tab)</a>
+  {% if params.organisation.website != 'Not entered' %}
+    <a href="{{params.organisation.website}}">{{params.organisation.website}} (opens in new tab)</a>
   {% else %}
     <div class="app-field-highlight">
       <p class="app-field-highlight__instruction">Enter website</p>
@@ -29,8 +29,8 @@
 {% endset %}
 
 {% set phase %}
-  {% if params.school.phase != 'Not entered' %}
-    {{params.school.phase}}
+  {% if params.organisation.phase != 'Not entered' %}
+    {{params.organisation.phase}}
   {% else %}
     <div class="app-field-highlight">
       <p class="app-field-highlight__instruction">Enter the education phase</p>
@@ -40,8 +40,8 @@
 {% endset %}
 
 {% set about %}
-  {% if params.school.about != 'Not entered' %}
-    {{params.school.about | escape | nl2br}}
+  {% if params.organisation.about != 'Not entered' %}
+    {{params.organisation.about | escape | nl2br}}
   {% else %}
     <div class="app-field-highlight">
       <p class="app-field-highlight__instruction">Enter a school description</p>
@@ -51,8 +51,8 @@
 {% endset %}
 
 {% set howEmployeesAreSupported %}
-  {% if params.school.supportForStaff != 'Not entered' %}
-    {{params.school.supportForStaff | escape | nl2br}}
+  {% if params.organisation.supportForStaff != 'Not entered' %}
+    {{params.organisation.supportForStaff | escape | nl2br}}
   {% else %}
     <div class="app-field-highlight">
       <p class="app-field-highlight__instruction">Enter information about what the school offers its staff</p>
@@ -62,8 +62,8 @@
 {% endset %}
 
 {% set safeguardingCommitment %}
-  {% if params.school.safeguardingCommitment != 'Not entered' %}
-    {{params.school.safeguardingCommitment | escape | nl2br}}
+  {% if params.organisation.safeguardingCommitment != 'Not entered' %}
+    {{params.organisation.safeguardingCommitment | escape | nl2br}}
   {% else %}
     <div class="app-field-highlight">
       <p class="app-field-highlight__instruction">Enter information about your commitment to safeguarding</p>
@@ -73,8 +73,8 @@
 {% endset %}
 
 {% set logo %}
-  {% if params.school.logo != 'Not entered' %}
-    <img src="{{params.school.logo}}" alt="Logo" width="150">
+  {% if params.organisation.logo != 'Not entered' %}
+    <img src="{{params.organisation.logo}}" alt="Logo" width="150">
   {% else %}
     <div class="app-field-highlight">
       <p class="app-field-highlight__instruction">Add a school logo</p>
@@ -84,8 +84,8 @@
 {% endset %}
 
 {% set photo %}
-  {% if params.school.photo != 'Not entered' %}
-    <img src="{{params.school.photo}}" alt="Photo" width="100%">
+  {% if params.organisation.photo != 'Not entered' %}
+    <img src="{{params.organisation.photo}}" alt="Photo" width="100%">
   {% else %}
     <div class="app-field-highlight">
       <p class="app-field-highlight__instruction">Add a school photo</p>
@@ -95,7 +95,7 @@
 {% endset %}
 
 
-{% if params.school.schools %}
+{% if params.organisation.schools %}
   {% set descriptionLabel = "Organisation description" %}
   {% set howEmployeesAreSupportedLabel = "What the organisation offers its staff" %}
   {% set logoLabel = "Organisation logo" %}
@@ -115,7 +115,7 @@
         text: "Name"
       },
       value: {
-        text: params.school.name
+        text: params.organisation.name
       },
       actions: {
         items: [
@@ -149,7 +149,7 @@
         text: "Type"
       },
       value: {
-        text: params.school.type
+        text: params.organisation.type
       },
       actions: {
         items: [
@@ -160,7 +160,7 @@
           }
         ]
       }
-    } if params.school.type,
+    } if params.organisation.type,
     {
       key: {
         text: "Education phase"
@@ -177,13 +177,13 @@
           }
         ]
       }
-    } if params.school.phase,
+    } if params.organisation.phase,
     {
       key: {
         text: "Age group"
       },
       value: {
-        text: params.school.ageGroup
+        text: params.organisation.ageGroup
       },
       actions: {
         items: [
@@ -194,13 +194,13 @@
           }
         ]
       }
-    } if params.school.ageGroup,
+    } if params.organisation.ageGroup,
     {
       key: {
         text: "Size"
       },
       value: {
-        text: params.school.size + ' pupils enrolled'
+        text: params.organisation.size + ' pupils enrolled'
       },
       actions: {
         items: [
@@ -211,7 +211,7 @@
           }
         ]
       }
-    } if params.school.size,
+    } if params.organisation.size,
     {
       key: {
         text: "Email address"
@@ -307,7 +307,7 @@
       actions: {
         items: [
           {
-            href: "/organisation/"+params.school.id+"/logo/edit",
+            href: "/organisation/"+params.organisation.id+"/logo/edit",
             text: "Change",
             visuallyHiddenText: "About school"
           }
@@ -338,6 +338,6 @@
       value: {
         html: '<a href="#">View Ofsted report (opens in new tab)</a>'
       }
-    } if not params.school.schools
+    } if not params.organisation.schools
   ]
 }) }}

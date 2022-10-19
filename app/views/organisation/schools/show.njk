@@ -1,0 +1,49 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'School profile' %}
+
+{% set primaryNavId = 'organisation' %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        href: '/organisation',
+        text: 'Organisation profile'
+      },
+      {
+        text: title
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  {% if showCompleteProfileBanner and not flash.length %}
+    {{ govukNotificationBanner({
+      text: "Complete your school profile"
+    }) }}
+  {% endif %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <p><a href="/organisation/{{organisation.id}}/preview">Preview school profile</a></p>
+      {{appSchoolSummaryList({ organisation: organisation })}}
+
+    </div>
+  </div>
+
+{% endblock %}

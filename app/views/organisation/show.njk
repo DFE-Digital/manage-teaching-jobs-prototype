@@ -9,22 +9,6 @@
 
 {% set primaryNavId = 'organisation' %}
 
-{% block beforeContent %}
-  {% if showBreadCrumb %}
-    {{ govukBreadcrumbs({
-      items: [
-        {
-          href: '/organisation',
-          text: 'Organisation profile'
-        },
-        {
-          text: title
-        }
-      ]
-    }) }}
-  {% endif %}
-{% endblock %}
-
 {% block content %}
 
   {{ govukNotificationBanner({
@@ -54,8 +38,8 @@
 
       {% if organisation.schools %}
         <p><a href="/organisation/{{organisation.id}}/preview">Preview organisation profile</a></p>
-        {{appSchoolSummaryList({ school: organisation })}}
-        <h2 class="govuk-heading-m govuk-!-margin-top-8"> Schools </h2>
+        {{appSchoolSummaryList({ organisation: organisation })}}
+        <h2 class="govuk-heading-m govuk-!-margin-top-8">Schools</h2>
 
         {% for school in schools %}
           <div class="app-school govuk-!-margin-bottom-0 {% if loop.first %}govuk-!-padding-top-0{% endif %}">
@@ -76,9 +60,8 @@
         {% endfor %}
       {% else %}
         <p><a href="/organisation/{{organisation.id}}/preview">Preview school profile</a></p>
-        {{appSchoolSummaryList({ school: organisation })}}
+        {{appSchoolSummaryList({ organisation: organisation })}}
       {% endif %}
-
 
     </div>
   </div>

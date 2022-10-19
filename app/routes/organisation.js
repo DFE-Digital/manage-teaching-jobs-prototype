@@ -100,7 +100,7 @@ module.exports = router => {
     let organisation = req.session.user.organisation.schools.find(school => school.id == req.params.id)
     let showCompleteProfileBanner = organisationHelper.hasMissingInformation(organisation)
 
-    res.render('organisation/show', {
+    res.render('organisation/schools/show', {
       organisation,
       showBreadCrumb: true,
       showCompleteProfileBanner
