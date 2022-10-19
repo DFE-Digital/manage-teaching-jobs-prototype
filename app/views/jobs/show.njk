@@ -1,5 +1,8 @@
 {% extends "layout.njk" %}
 
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'job' %}
+
 {% block content %}
 
   {{ govukNotificationBanner({
@@ -89,31 +92,7 @@
   }) }}
 
 
-  {{ appSubNavigation({
-    classes: 'govuk-!-margin-top-6 govuk-!-margin-bottom-2',
-    navigationLabel: 'Application menu',
-    items: [{
-      html: 'Job listing',
-      href: '#',
-      active: true
-    }, {
-      html: 'Invitees',
-      href: '#',
-      active: false
-    }, {
-      html: 'Applications',
-      href: '#',
-      active: false
-    }, {
-      html: 'Statistics',
-      href: '#',
-      active: false
-    }, {
-      html: 'Activity',
-      href: '#',
-      active: false
-    }]
-  }) }}
+  {% include "includes/job-sub-navigation.njk" %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">

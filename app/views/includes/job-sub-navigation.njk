@@ -1,0 +1,25 @@
+{{ appSubNavigation({
+    classes: 'govuk-!-margin-top-6 govuk-!-margin-bottom-2',
+    navigationLabel: 'Application menu',
+    items: [{
+      html: 'Job listing',
+      href: '/jobs/'+job.id,
+      active: subNavId == 'job'
+    }, {
+      html: 'Invitees',
+      href: '/jobs/'+job.id+'/invitees',
+      active: subNavId == 'invitees'
+    }, {
+      html: 'Applications',
+      href: '/jobs/'+job.id+'/applications',
+      active: subNavId == 'applications'
+    }, {
+      html: 'Statistics',
+      href: '/jobs/'+job.id+'/statistics',
+      active: subNavId == 'statistics'
+    }, {
+      html: 'Activity',
+      href: '/jobs/'+job.id+'/activity',
+      active: subNavId == 'activity'
+    }]
+  }) }}
