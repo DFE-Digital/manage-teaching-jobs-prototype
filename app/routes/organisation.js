@@ -102,7 +102,6 @@ module.exports = router => {
 
     res.render('organisation/schools/show', {
       organisation,
-      showBreadCrumb: true,
       showCompleteProfileBanner
     })
   })
