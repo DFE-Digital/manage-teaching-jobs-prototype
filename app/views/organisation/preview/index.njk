@@ -137,13 +137,6 @@
         <p>{{organisation.about | nl2br | safe}}</p>
       {% endif %}
 
-      {% if organisation.supportForStaff != 'Not entered' %}
-        <h2 class="govuk-heading-m">
-          What we offer our staff
-        </h2>
-        <p>{{organisation.supportForStaff | nl2br | safe}}</p>
-      {% endif %}
-
       {% if organisation.safeguardingCommitment != 'Not entered' %}
         <h2 class="govuk-heading-m">
           Commitment to safeguarding

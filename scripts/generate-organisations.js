@@ -55,12 +55,6 @@ const generateSchool = (params = {}) => {
     school.about = params.about || faker.lorem.paragraphs(2, '\n\n')
   }
 
-  if(params.supportForStaff === null) {
-    school.supportForStaff = null
-  } else {
-    school.supportForStaff = params.supportForStaff || faker.lorem.sentences(1)
-  }
-
   if(params.safeguardingCommitment === null) {
     school.safeguardingCommitment = null
   } else {
@@ -107,12 +101,6 @@ const generateOrg = (params = {}) => {
     org.about = null
   } else {
     org.about = params.about || faker.lorem.paragraphs(2, '\n\n')
-  }
-
-  if(params.supportForStaff === null) {
-    org.supportForStaff = null
-  } else {
-    org.supportForStaff = params.supportForStaff || faker.lorem.sentences(1)
   }
 
   if(params.safeguardingCommitment === null) {
@@ -172,7 +160,6 @@ const generateOrgs = () => {
     website: 'Not entered',
     emailAddress: 'Not entered',
     about: 'Not entered',
-    supportForStaff: 'Not entered',
     safeguardingCommitment: 'Not entered',
     logo: 'Not entered',
     photo: 'Not entered'
@@ -198,7 +185,6 @@ const generateOrgs = () => {
     website: 'Not entered',
     emailAddress: 'Not entered',
     about: 'Not entered',
-    supportForStaff: 'Not entered',
     safeguardingCommitment: 'Not entered',
     logo: 'Not entered',
     photo: 'Not entered'
@@ -243,7 +229,6 @@ const generateOrgs = () => {
     website: 'Not entered',
     emailAddress: 'Not entered',
     about: 'Not entered',
-    supportForStaff: 'Not entered',
     safeguardingCommitment: 'Not entered',
     logo: 'Not entered',
     photo: 'Not entered',
