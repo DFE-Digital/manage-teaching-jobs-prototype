@@ -1,5 +1,7 @@
 .app-job-list {
 
+  margin-bottom: govuk-spacing(7);
+
   .app-job-list__item {
     border-bottom: 1px solid $govuk-border-colour;
     padding-top: govuk-spacing(3);

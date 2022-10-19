@@ -160,20 +160,31 @@
         <img src="/public/images/maps/courtland.png">
       </div>
 
-        <h2 class="govuk-heading-m">
-          Current jobs
-        </h2>
-        {% if jobs.length %}
-          <p><a href="#">Set up job alert</a></p>
-          {{appJobList({
-            jobs: jobs,
-            heading: {
-              level: 3
-            }
-          })}}
-        {% else %}
-          <p>There are no jobs - <a href="#">set up job alert</a>.</p>
-        {% endif %}
+      <h2 class="govuk-heading-m">
+        Current jobs
+      </h2>
+      {% if jobs.length %}
+        {# <p><a href="#">Set up job alert</a></p> #}
+        {{appJobList({
+          jobs: jobs,
+          heading: {
+            level: 3
+          }
+        })}}
+      {% else %}
+        <p>There are no jobs - <a href="#">set up job alert</a>.</p>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">
+        Set up a job alert
+      </h2>
+
+      <p>Get a job alert whenever a role is listed at {{organisation.name}}.</p>
+
+      {{ govukButton({
+        text: "Set up job alert",
+        classes: 'govuk-button--secondary'
+      }) }}
     </div>
   </div>
 {% endblock %}
