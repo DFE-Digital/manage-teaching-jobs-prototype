@@ -1,10 +1,10 @@
 {% extends "layout.njk" %}
 
 {% if user.organisation.schools %}
-  {% set heading = 'Organisation logo' %}
+  {% set heading = 'Organisation photo' %}
   {% set caption = 'Organisation profile' %}
 {% else %}
-  {% set heading = 'School logo' %}
+  {% set heading = 'School photo' %}
   {% set caption = 'School profile' %}
 {% endif %}
 
@@ -29,11 +29,11 @@
         {{heading}}
       </h1>
 
-      <p>The logo must be:</p>
+      <p>The photo must be:</p>
 
       <ul class="govuk-list govuk-list--bullet">
         <li>
-          300 pixels by 300 pixels
+          640 pixels by 320 pixels
         </li>
         <li>
           a PNG or JPG
@@ -43,7 +43,7 @@
         </li>
       </ul>
 
-      <p><a href="#">Contact support</a> if you need help adding your {% if user.organisation.schools %}organisation{% else %}school{% endif %} logo.</p>
+      <p><a href="#">Contact support</a> if you need help adding your {% if user.organisation.schools %}organisation{% else %}school{% endif %} photo.</p>
 
       <form method="post">
 

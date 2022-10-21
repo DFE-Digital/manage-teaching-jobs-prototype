@@ -147,7 +147,8 @@ const generateOrgs = () => {
   orgs.push(generateSchool({
     name: 'Courtland Primary School',
     phase: 'Primary school',
-    logo: '/public/images/logos/courtland.png'
+    logo: '/public/images/logos/courtland.png',
+    photo: '/public/images/photos/courtland_outside.jpg'
   }))
 
   /*************************************************
@@ -210,6 +211,7 @@ const generateOrgs = () => {
     name: 'Royal Academy Trust',
     type: 'MAT',
     logo: '/public/images/logos/royal.png',
+    photo: '/public/images/photos/royal_outside.png',
     schools: [
       matSchool1,
       matSchool2,
