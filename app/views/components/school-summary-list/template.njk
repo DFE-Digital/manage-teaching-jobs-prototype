@@ -90,7 +90,7 @@
   {% set photoLabel = "Organisation photo" %}
 {% else %}
   {% set descriptionLabel = "School description" %}
-  {% set logoLabel = "School logo" %}
+  {% set logoLabel = " School logo" %}
   {% set photoLabel = "School photo" %}
 {% endif %}
 
@@ -209,7 +209,7 @@
       actions: {
         items: [
           {
-            href: "/organisation/edit/email-address",
+            href: "/organisation/"+params.organisation.id+"/email/edit",
             text: "Change",
             visuallyHiddenText: "Email address"
           }

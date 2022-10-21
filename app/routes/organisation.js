@@ -57,6 +57,51 @@ module.exports = router => {
   })
 
   //////////////
+  // EMAIL STUFF
+  //////////////
+
+  router.get('/organisation/:id/email/edit', authentication.checkIsAuthenticated, (req, res) => {
+    let userOrganisation = req.session.user.organisation
+    let organisation
+    // If the user is trying to preview a school within a MAT
+    if(userOrganisation.id != req.params.id) {
+      organisation = userOrganisation.schools.find(school => school.id == req.params.id)
+      organisation.parentOrganisation = {
+        name: userOrganisation.name,
+        id: userOrganisation.id
+      }
+    } else {
+      organisation = userOrganisation
+    }
+
+    res.render('organisation/edit-email/index', {
+      organisation
+    })
+
+  })
+
+  router.post('/organisation/:id/email/edit', authentication.checkIsAuthenticated, (req, res) => {
+    let user = req.session.user
+
+    let organisation = user.organisation
+
+    let isEditingSchoolWithinOrganisation = organisation.id !== req.params.id
+
+    if(isEditingSchoolWithinOrganisation) {
+      req.flash('success', 'School profile updated')
+      res.redirect(`/organisation/schools/${req.params.id}`)
+    } else {
+      if(organisation.schools) {
+        req.flash('success', 'Organisation profile updated')
+      } else {
+        req.flash('success', 'School profile updated')
+      }
+      res.redirect('/organisation')
+    }
+
+  })
+
+  //////////////
   // LOGO STUFF
   //////////////
 
@@ -87,8 +132,8 @@ module.exports = router => {
 
     organisation.logo = req.session.data.logo
 
-    //check answer for yes/no
-    var answer = req.session.data['check-upload'];
+    //check logo answer for yes/no
+    var answer = req.session.data['check-logo-upload'];
 
     if (answer == "yes"){
       // photo is ok
@@ -147,17 +192,39 @@ module.exports = router => {
 
     organisation.photo = req.session.data.photo
 
-    if(isEditingSchoolWithinOrganisation) {
-      req.flash('success', 'School photo updated')
-      res.redirect(`/organisation/schools/${req.params.id}`)
-    } else {
-      if(organisation.schools) {
-        req.flash('success', 'Organisation profile updated')
+
+    //check photo answer for yes/no
+    var answer = req.session.data['check-photo-upload'];
+
+    if (answer == "yes"){
+      // photo is ok
+      if(isEditingSchoolWithinOrganisation) {
+        req.flash('success', 'School photo updated')
+        res.redirect(`/organisation/schools/${req.params.id}`)
       } else {
-        req.flash('success', 'School profile updated')
+        if(organisation.schools) {
+          req.flash('success', 'Organisation profile updated')
+        } else {
+          req.flash('success', 'School profile updated')
+        }
+        res.redirect('/organisation')
       }
-      res.redirect('/organisation')
+
+
+    } else {
+      // photo not ok
+      res.redirect(`/organisation/${req.params.id}/photo/edit/`)
     }
+
+
+
+
+
+
+
+
+
+
 
   })
 

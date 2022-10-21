@@ -30,37 +30,42 @@
         {{heading}}
       </h1>
 
-      {% set photo %}
+      <figure>
         <img src="{{data.photo}}" alt="Photo" width="100%">
-      {% endset %}
-
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: label
-            },
-            value: {
-              html: photo
-            },
-            actions: {
-              items: [
-                {
-                  href: "/organisation/edit-photo",
-                  text: "Change",
-                  visuallyHiddenText: "Photo"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
+        <figcaption>schoolphoto.png, 1MB</figcaption>
+      </figure>
 
       <form method="post">
-        {{ govukButton({
-          text: "Upload photo"
+
+        {{ govukRadios({
+          idPrefix: "check-photo-upload",
+          name: "check-photo-upload",
+          fieldset: {
+            legend: {
+              text: "Is this file correct?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m govuk-!-padding-top-5"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes, add this file"
+            },
+            {
+              value: "no",
+              text: "No, I want to choose a different file"
+            }
+          ]
         }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
       </form>
+
       <p><a href="/organisation">Cancel</a></p>
 
     </div>

@@ -30,13 +30,16 @@
         {{heading}}
       </h1>
 
-      <img src="{{data.logo}}" alt="Logo" width="150">
+      <figure>
+        <img src="{{data.logo}}" alt="Logo" width="150">
+        <figcaption>logo.png, 1MB</figcaption>
+      </figure>
 
       <form method="post">
 
         {{ govukRadios({
-          idPrefix: "check-upload",
-          name: "check-upload",
+          idPrefix: "check-logo-upload",
+          name: "check-logo-upload",
           fieldset: {
             legend: {
               text: "Is this file correct?",
