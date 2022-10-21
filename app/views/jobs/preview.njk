@@ -321,6 +321,12 @@
           ]
         }) }}
 
+        <div class="app-prose govuk-!-margin-bottom-6">
+          {% markdown %}
+            {{job.organisation.about}}
+          {% endmarkdown %}
+        </div>
+
 
         <h2 class="govuk-heading-m">
           Location and map
