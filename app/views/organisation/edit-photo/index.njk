@@ -29,26 +29,6 @@
         {{heading}}
       </h1>
 
-      {% if data['design'] == "2" %}
-
-        {% if organisation.photo != 'Not entered' %}
-          <h2 class="govuk-heading-m">
-            Your current school photo
-          </h2>
-
-          <div class="app-school-photo">
-            <img src="{{data.photo}}" alt="Photo" width="100">
-          </div>
-
-          <h2 class="govuk-heading-m">
-            Change your school photo
-          </h2>
-        {% endif %}
-
-      {% else %}
-
-      {% endif %}
-
       <p>The photo must be:</p>
 
       <ul class="govuk-list govuk-list--bullet">
