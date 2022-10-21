@@ -16,12 +16,44 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">
+        <span class="govuk-caption-l">
         {{caption}}
       </span>
       <h1 class="govuk-heading-l">
         {{heading}}
       </h1>
+
+      {% if user.organisation.schools %}
+        <p>The organisation description from your organisation profile will be included in this job listing.</p>
+
+        {% set example %}
+          <p>An organisation description has not been added.</p>
+          <p><a href="/organisation">Add this to your organisation profile</a>.</p>
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: "See your school description",
+          html: example
+        }) }}
+
+      {% else %}
+        <p>The school description from your school profile will be included in this job listing.</p>
+        {% set example %}
+
+          {% if user.organisation.about != 'Not entered' %}
+            <p class="govuk-!-margin-bottom-0">{{user.organisation.about | nl2br | safe}}</p>
+          {% else %}
+            <p>Not entered - <a href="/organisation">add school description</a>.</p>
+          {% endif %}
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: "See your school description",
+          html: example
+        }) }}
+      {% endif %}
+
+
 
       <form action="/jobs/new/upload">
 
@@ -69,7 +101,7 @@
           maxwords: 150
         }) }}
 
-        {% set safeguardingNoticeDetails %}
+        {# {% set safeguardingNoticeDetails %}
           {{ govukCharacterCount({
             id: "createJob[safeguarding-notice-details]",
             name: "createJob[safeguarding-notice-details]",
@@ -103,7 +135,7 @@
               text: "No"
             }
           ]
-        }) }}
+        }) }} #}
 
         {% set otherInformationDetails %}
           {{ govukCharacterCount({

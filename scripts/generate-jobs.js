@@ -183,20 +183,27 @@ const generateJobs = () => {
       organisation: user.organisation,
       status: 'Active',
       role: 'Teacher',
-      isUsingApplicationForm: 'No',
-      applicationMethod: 'By email'
+      isUsingApplicationForm: 'Yes',
+      hasSafeguardingCommitment: 'Yes',
+      hasFurtherDetailsAboutTheRole: 'Yes'
     }))
     jobs.push(generateJob({
       organisation: user.organisation,
       status: 'Active',
       role: 'Headteacher, deputy or assistant headteacher',
       isUsingApplicationForm: 'No',
-      applicationMethod: 'Through a website'
+      applicationMethod: 'Through a website',
+      hasSafeguardingCommitment: 'Yes',
+      hasFurtherDetailsAboutTheRole: 'Yes',
     }))
     jobs.push(generateJob({
       organisation: user.organisation,
       status: 'Active',
-      role: 'Teaching assistant'
+      role: 'Teaching assistant',
+      isUsingApplicationForm: 'No',
+      applicationMethod: 'By email',
+      hasSafeguardingCommitment: 'Yes',
+      hasFurtherDetailsAboutTheRole: 'Yes',
     }))
     for (let i = 0; i < 1; i++) {
       jobs.push(generateJob({
