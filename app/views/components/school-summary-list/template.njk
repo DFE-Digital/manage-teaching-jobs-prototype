@@ -50,17 +50,6 @@
   {% endif %}
 {% endset %}
 
-{% set howEmployeesAreSupported %}
-  {% if params.organisation.supportForStaff != 'Not entered' %}
-    {{params.organisation.supportForStaff | escape | nl2br}}
-  {% else %}
-    <div class="app-field-highlight">
-      <p class="app-field-highlight__instruction">Enter information about what the school offers its staff</p>
-      Not entered
-    </div>
-  {% endif %}
-{% endset %}
-
 {% set safeguardingCommitment %}
   {% if params.organisation.safeguardingCommitment != 'Not entered' %}
     {{params.organisation.safeguardingCommitment | escape | nl2br}}
@@ -97,12 +86,10 @@
 
 {% if params.organisation.schools %}
   {% set descriptionLabel = "Organisation description" %}
-  {% set howEmployeesAreSupportedLabel = "What the organisation offers its staff" %}
   {% set logoLabel = "Organisation logo" %}
   {% set photoLabel = "Organisation photo" %}
 {% else %}
   {% set descriptionLabel = "School description" %}
-  {% set howEmployeesAreSupportedLabel = "What the school offers its staff" %}
   {% set logoLabel = "School logo" %}
   {% set photoLabel = "School photo" %}
 {% endif %}
@@ -259,23 +246,6 @@
             href: "/organisation/edit/description",
             text: "Change",
             visuallyHiddenText: "About school"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: howEmployeesAreSupportedLabel
-      },
-      value: {
-        html: howEmployeesAreSupported
-      },
-      actions: {
-        items: [
-          {
-            href: "/organisation/edit/description",
-            text: "Change",
-            visuallyHiddenText: "About how employees are supported"
           }
         ]
       }

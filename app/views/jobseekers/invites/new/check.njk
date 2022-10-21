@@ -57,19 +57,17 @@
       {% set preview%}
         <p>Dear {{jobseeker.profile.firstName}}</p>
 
-
-
         {% if data.invite.jobs.length > 1 %}
-          <p>Rachael at {{user.organisation.name}} has reviewed your profile and invited you to apply for {{data.invite.jobs | length}} roles.</p>
+          <p>Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for {{data.invite.jobs | length}} roles.</p>
           {# <ul class="govuk-list govuk-list--bullet"> #}
             {% for role in data.invite.jobs %}
-              <p>{{role}} <br> <a href="#">https://teaching-vacancies.blah.com/123</a></p>
+              <p>{{role}} at {{user.organisation.name}}<br> <a href="#">https://teaching-vacancies.blah.com/123</a></p>
             {% endfor %}
           {# </ul> #}
         {% else %}
-          <p>Rachael at {{user.organisation.name}} has reviewed your profile and invited you to apply for the role of {{data.invite.jobs}}.</p>
+          <p>Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for a role.</p>
 
-          <p class="govuk-!-margin-bottom-1">View role and apply:</p>
+          <p class="govuk-!-margin-bottom-1">{{data.invite.jobs}} at {{user.organisation.name}}:</p>
           <p><a href="#">https://teaching-vacancies.blah.com/123</a></p>
         {% endif %}
 

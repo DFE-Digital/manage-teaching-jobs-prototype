@@ -161,7 +161,7 @@ module.exports = router => {
     })
   })
 
-  router.post('/jobseekers/:id/invites/check', authentication.checkIsAuthenticated, (req, res) => {
+  router.post('/jobseekers/:id/invites/new/check', authentication.checkIsAuthenticated, (req, res) => {
     req.flash('success', 'Invited to apply for a job')
     res.redirect(`/jobseekers/${req.params.id}`)
   })
