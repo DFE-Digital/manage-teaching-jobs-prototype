@@ -32,34 +32,37 @@
 
       <img src="{{data.logo}}" alt="Logo" width="150">
 
-      {{ govukRadios({
-        idPrefix: "check-upload",
-        name: "check-upload",
-        fieldset: {
-          legend: {
-            text: "Is this file correct?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--m govuk-!-padding-top-5"
-          }
-        },
-        items: [
-          {
-            value: "Yes",
-            text: "Yes, add this file"
-          },
-          {
-            value: "No",
-            text: "No, I want to choose a different file"
-          }
-        ]
-      }) }}
-
       <form method="post">
+
+        {{ govukRadios({
+          idPrefix: "check-upload",
+          name: "check-upload",
+          fieldset: {
+            legend: {
+              text: "Is this file correct?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m govuk-!-padding-top-5"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes, add this file"
+            },
+            {
+              value: "no",
+              text: "No, I want to choose a different file"
+            }
+          ]
+        }) }}
+
+
         {{ govukButton({
           text: "Continue"
         }) }}
+
       </form>
-      
+
       <p><a href="/organisation">Cancel</a></p>
 
     </div>

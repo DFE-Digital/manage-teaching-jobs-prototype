@@ -88,11 +88,10 @@ module.exports = router => {
     organisation.logo = req.session.data.logo
 
     //check answer for yes/no
-    var answer = req.session.data['check-upload']
+    var answer = req.session.data['check-upload'];
 
-    if (answer == "Yes"){
+    if (answer == "yes"){
       // photo is ok
-
       if(isEditingSchoolWithinOrganisation) {
         req.flash('success', 'School profile updated')
         res.redirect(`/organisation/schools/${req.params.id}`)
@@ -108,7 +107,7 @@ module.exports = router => {
 
     } else {
       // photo not ok
-      res.redirect('/index')
+      res.redirect(`/organisation/${req.params.id}/logo/edit/`)
     }
 
 
