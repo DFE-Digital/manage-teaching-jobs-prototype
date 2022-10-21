@@ -30,37 +30,36 @@
         {{heading}}
       </h1>
 
-      {% set logo %}
-        <img src="{{data.logo}}" alt="Logo" width="150">
-      {% endset %}
+      <img src="{{data.logo}}" alt="Logo" width="150">
 
-      {{ govukSummaryList({
-        rows: [
+      {{ govukRadios({
+        idPrefix: "check-upload",
+        name: "check-upload",
+        fieldset: {
+          legend: {
+            text: "Is this file correct?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m govuk-!-padding-top-5"
+          }
+        },
+        items: [
           {
-            key: {
-              text: label
-            },
-            value: {
-              html: logo
-            },
-            actions: {
-              items: [
-                {
-                  href: "/organisation/edit-logo",
-                  text: "Change",
-                  visuallyHiddenText: "Logo"
-                }
-              ]
-            }
+            value: "Yes",
+            text: "Yes, add this file"
+          },
+          {
+            value: "No",
+            text: "No, I want to choose a different file"
           }
         ]
       }) }}
 
       <form method="post">
         {{ govukButton({
-          text: "Upload logo"
+          text: "Continue"
         }) }}
       </form>
+      
       <p><a href="/organisation">Cancel</a></p>
 
     </div>

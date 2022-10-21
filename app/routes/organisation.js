@@ -87,17 +87,31 @@ module.exports = router => {
 
     organisation.logo = req.session.data.logo
 
-    if(isEditingSchoolWithinOrganisation) {
-      req.flash('success', 'School profile updated')
-      res.redirect(`/organisation/schools/${req.params.id}`)
-    } else {
-      if(organisation.schools) {
-        req.flash('success', 'Organisation profile updated')
-      } else {
+    //check answer for yes/no
+    var answer = req.session.data['check-upload']
+
+    if (answer == "Yes"){
+      // photo is ok
+
+      if(isEditingSchoolWithinOrganisation) {
         req.flash('success', 'School profile updated')
+        res.redirect(`/organisation/schools/${req.params.id}`)
+      } else {
+        if(organisation.schools) {
+          req.flash('success', 'Organisation profile updated')
+        } else {
+          req.flash('success', 'School profile updated')
+        }
+        res.redirect('/organisation')
       }
-      res.redirect('/organisation')
+
+
+    } else {
+      // photo not ok
+      res.redirect('/index')
     }
+
+
 
   })
 
@@ -159,5 +173,6 @@ module.exports = router => {
       showCompleteProfileBanner
     })
   })
+
 
 }
