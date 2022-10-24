@@ -1,10 +1,10 @@
 {% extends "layout.njk" %}
 
 {% if user.organisation.schools %}
-  {% set heading = 'Organisation email' %}
+  {% set heading = 'Check details and update email address' %}
   {% set caption = 'Organisation profile' %}
 {% else %}
-  {% set heading = 'School email' %}
+  {% set heading = 'Check details and update email address' %}
   {% set caption = 'School profile' %}
 {% endif %}
 
@@ -49,7 +49,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Save email address"
+          text: "Update email address"
         }) }}
 
       </form>

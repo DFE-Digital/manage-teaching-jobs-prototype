@@ -1,15 +1,15 @@
 {% extends "layout.njk" %}
 
 {% if user.organisation.schools %}
-  {% set heading = 'Check and upload organisation logo' %}
+  {% set heading = 'Check details and update organisation logo' %}
   {% set caption = 'Organisation profile' %}
   {% set label = 'Organisation logo' %}
-  {% set buttonText = 'Save organisation logo' %}
+  {% set buttonText = 'Update organisation logo' %}
 {% else %}
-  {% set heading = 'Check and upload school logo' %}
+  {% set heading = 'Check details and update school logo' %}
   {% set caption = 'School profile' %}
   {% set label = 'School logo' %}
-  {% set buttonText = 'Save school logo' %}
+  {% set buttonText = 'Update school logo' %}
 {% endif %}
 
 {% set title = heading + ' - ' + caption %}
