@@ -4,9 +4,11 @@
 {% if user.organisation.schools %}
   {% set caption = 'Organisation profile' %}
   {% set label = 'Organisation photo' %}
+  {% set buttonText = 'Upload photo and return to organisation profile' %}
 {% else %}
   {% set caption = 'School profile' %}
   {% set label = 'School photo' %}
+  {% set buttonText = 'Upload photo and return to school profile' %}
 {% endif %}
 
 {% set title = heading + ' - ' + caption %}
@@ -36,31 +38,9 @@
 
       <form method="post">
 
-        {{ govukRadios({
-          idPrefix: "check-photo-upload",
-          name: "check-photo-upload",
-          fieldset: {
-            legend: {
-              text: "Is this file correct?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--m govuk-!-padding-top-5"
-            }
-          },
-          items: [
-            {
-              value: "yes",
-              text: "Yes, add this file"
-            },
-            {
-              value: "no",
-              text: "No, I want to choose a different file"
-            }
-          ]
-        }) }}
-
-
         {{ govukButton({
-          text: "Continue"
+          classes:"",
+          text: buttonText
         }) }}
 
       </form>
