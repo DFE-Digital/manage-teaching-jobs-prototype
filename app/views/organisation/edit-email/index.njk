@@ -8,6 +8,12 @@
   {% set caption = 'School profile' %}
 {% endif %}
 
+{% if organisation.emailAddress == 'Not entered' %}
+  {% set emailAddress = '' %}
+{% else %}
+  {% set emailAddress = organisation.emailAddress %}
+{% endif %}
+
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -37,11 +43,11 @@
           },
           id: "email",
           name: "email",
-          value: organisation.emailAddress
+          value: emailAddress
         }) }}
 
         {{ govukButton({
-          text: "Save"
+          text: "Save email address"
         }) }}
 
       </form>

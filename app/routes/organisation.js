@@ -87,6 +87,8 @@ module.exports = router => {
 
     let isEditingSchoolWithinOrganisation = organisation.id !== req.params.id
 
+    organisation.emailAddress = req.session.data.emailAddress
+
     if(isEditingSchoolWithinOrganisation) {
       req.flash('success', 'School profile updated')
       res.redirect(`/organisation/schools/${req.params.id}`)
@@ -132,8 +134,6 @@ module.exports = router => {
 
     organisation.logo = req.session.data.logo
 
-    //check logo answer for yes/no
-    var answer = req.session.data['check-logo-upload'];
 
     if(isEditingSchoolWithinOrganisation) {
       req.flash('success', 'School profile updated')
@@ -182,10 +182,6 @@ module.exports = router => {
     }
 
     organisation.photo = req.session.data.photo
-
-
-    //check photo answer for yes/no
-    var answer = req.session.data['check-photo-upload'];
 
     if(isEditingSchoolWithinOrganisation) {
       req.flash('success', 'School photo updated')
