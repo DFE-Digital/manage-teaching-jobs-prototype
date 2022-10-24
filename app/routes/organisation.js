@@ -89,6 +89,53 @@ module.exports = router => {
 
     organisation.emailAddress = req.session.data.emailAddress
 
+    res.redirect(`/organisation/${req.params.id}/email/check`)
+
+
+  })
+
+  //edit email
+
+  router.get('/organisation/:id/email/check', authentication.checkIsAuthenticated, (req, res) => {
+    let organisation = req.session.user.organisation
+
+    res.render('organisation/edit-email/check', {
+      organisation
+    })
+  })
+
+  //example email
+
+  router.get('/organisation/:id/email/inbox', authentication.checkIsAuthenticated, (req, res) => {
+    let organisation = req.session.user.organisation
+
+    res.render('organisation/edit-email/inbox', {
+      organisation
+    })
+  })
+
+  //confirm email
+
+  router.get('/organisation/:id/email/confirmation', authentication.checkIsAuthenticated, (req, res) => {
+    let organisation = req.session.user.organisation
+
+    res.render('organisation/edit-email/confirm', {
+      organisation
+    })
+  })
+
+  router.post('/organisation/:id/email/confirmation', authentication.checkIsAuthenticated, (req, res) => {
+
+    let user = req.session.user
+
+    let organisation = user.organisation
+
+    let isEditingSchoolWithinOrganisation = organisation.id !== req.params.id
+
+    if(isEditingSchoolWithinOrganisation) {
+      organisation = organisation.schools.find(school => school.id == req.params.id)
+    }
+
     if(isEditingSchoolWithinOrganisation) {
       req.flash('success', 'School profile updated')
       res.redirect(`/organisation/schools/${req.params.id}`)
