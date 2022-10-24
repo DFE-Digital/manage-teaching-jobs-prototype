@@ -135,26 +135,17 @@ module.exports = router => {
     //check logo answer for yes/no
     var answer = req.session.data['check-logo-upload'];
 
-    if (answer == "yes"){
-      // photo is ok
-      if(isEditingSchoolWithinOrganisation) {
-        req.flash('success', 'School profile updated')
-        res.redirect(`/organisation/schools/${req.params.id}`)
-      } else {
-        if(organisation.schools) {
-          req.flash('success', 'Organisation profile updated')
-        } else {
-          req.flash('success', 'School profile updated')
-        }
-        res.redirect('/organisation')
-      }
-
-
+    if(isEditingSchoolWithinOrganisation) {
+      req.flash('success', 'School profile updated')
+      res.redirect(`/organisation/schools/${req.params.id}`)
     } else {
-      // photo not ok
-      res.redirect(`/organisation/${req.params.id}/logo/edit/`)
+      if(organisation.schools) {
+        req.flash('success', 'Organisation profile updated')
+      } else {
+        req.flash('success', 'School profile updated')
+      }
+      res.redirect('/organisation')
     }
-
 
 
   })
@@ -196,34 +187,17 @@ module.exports = router => {
     //check photo answer for yes/no
     var answer = req.session.data['check-photo-upload'];
 
-    if (answer == "yes"){
-      // photo is ok
-      if(isEditingSchoolWithinOrganisation) {
-        req.flash('success', 'School photo updated')
-        res.redirect(`/organisation/schools/${req.params.id}`)
-      } else {
-        if(organisation.schools) {
-          req.flash('success', 'Organisation profile updated')
-        } else {
-          req.flash('success', 'School profile updated')
-        }
-        res.redirect('/organisation')
-      }
-
-
+    if(isEditingSchoolWithinOrganisation) {
+      req.flash('success', 'School photo updated')
+      res.redirect(`/organisation/schools/${req.params.id}`)
     } else {
-      // photo not ok
-      res.redirect(`/organisation/${req.params.id}/photo/edit/`)
+      if(organisation.schools) {
+        req.flash('success', 'Organisation profile updated')
+      } else {
+        req.flash('success', 'School profile updated')
+      }
+      res.redirect('/organisation')
     }
-
-
-
-
-
-
-
-
-
 
 
   })

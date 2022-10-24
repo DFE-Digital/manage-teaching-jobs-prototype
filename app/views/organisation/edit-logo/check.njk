@@ -1,14 +1,15 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Check and upload logo' %}
 {% if user.organisation.schools %}
+  {% set heading = 'Check and upload organisation logo' %}
   {% set caption = 'Organisation profile' %}
   {% set label = 'Organisation logo' %}
-  {% set buttonText = 'Upload logo and return to organisation profile' %}
+  {% set buttonText = 'Save organisation logo' %}
 {% else %}
+  {% set heading = 'Check and upload school logo' %}
   {% set caption = 'School profile' %}
   {% set label = 'School logo' %}
-  {% set buttonText = 'Upload logo and return to school profile' %}
+  {% set buttonText = 'Save school logo' %}
 {% endif %}
 
 {% set title = heading + ' - ' + caption %}
@@ -34,12 +35,13 @@
 
       <img src="{{data.logo}}" alt="Logo" width="150">
 
-      <p class="govuk-body">Logo.jpg, 2MB</p>
+      <p class="govuk-body govuk-!-margin-bottom-1">logo.jpg, 2MB</p>
+
+      <p class="govuk-body govuk-!-margin-bottom-8"><a href="javascript:history.back();">Change</a></p>
 
       <form method="post">
 
         {{ govukButton({
-          classes:"",
           text: buttonText
         }) }}
 
