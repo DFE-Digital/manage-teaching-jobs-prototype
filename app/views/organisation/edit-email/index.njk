@@ -1,10 +1,10 @@
 {% extends "layout.njk" %}
 
 {% if user.organisation.schools %}
-  {% set heading = 'Check details and update email address' %}
+  {% set heading = 'Organisation email address' %}
   {% set caption = 'Organisation profile' %}
 {% else %}
-  {% set heading = 'Check details and update email address' %}
+  {% set heading = 'School email address' %}
   {% set caption = 'School profile' %}
 {% endif %}
 
@@ -34,8 +34,6 @@
       <h1 class="govuk-heading-l">
         {{heading}}
       </h1>
-
-      <p>We will send you a link to confirm your email address.</p>
 
       <form method="post">
 

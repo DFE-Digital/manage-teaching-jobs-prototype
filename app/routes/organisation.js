@@ -87,9 +87,21 @@ module.exports = router => {
 
     let isEditingSchoolWithinOrganisation = organisation.id !== req.params.id
 
-    organisation.emailAddress = req.session.data.emailAddress
+    if(isEditingSchoolWithinOrganisation) {
+      organisation = organisation.schools.find(school => school.id == req.params.id)
+    }
 
-    res.redirect(`/organisation/${req.params.id}/email/check`)
+    if(isEditingSchoolWithinOrganisation) {
+      req.flash('success', 'School profile updated')
+      res.redirect(`/organisation/schools/${req.params.id}`)
+    } else {
+      if(organisation.schools) {
+        req.flash('success', 'Organisation profile updated')
+      } else {
+        req.flash('success', 'School profile updated')
+      }
+      res.redirect('/organisation')
+    }
 
 
   })
@@ -100,6 +112,16 @@ module.exports = router => {
     let organisation = req.session.user.organisation
 
     res.render('organisation/edit-email/check', {
+      organisation
+    })
+  })
+
+  //resend email
+
+  router.get('/organisation/:id/email/resend', authentication.checkIsAuthenticated, (req, res) => {
+    let organisation = req.session.user.organisation
+
+    res.render('organisation/edit-email/resend', {
       organisation
     })
   })
