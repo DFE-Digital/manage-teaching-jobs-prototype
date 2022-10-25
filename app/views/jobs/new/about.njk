@@ -24,22 +24,24 @@
       </h1>
 
       {% if user.organisation.schools %}
-        <p>The organisation description from your organisation profile will be included in this job listing.</p>
+        <p>Your organisation description from your organisation profile will be included in the job listing.</p>
 
         {% set example %}
-          <p>An organisation description has not been added.</p>
-          <p><a href="/organisation">Add this to your organisation profile</a>.</p>
+          {% if user.organisation.about != 'Not entered' %}
+            <p class="govuk-!-margin-bottom-0">{{user.organisation.about | nl2br | safe}}</p>
+          {% else %}
+            <p>Not entered - <a href="/organisation">add organisation description</a>.</p>
+          {% endif %}
         {% endset %}
 
         {{ govukDetails({
-          summaryText: "See your school description",
+          summaryText: "View your organisation description",
           html: example
         }) }}
 
       {% else %}
-        <p>The school description from your school profile will be included in this job listing.</p>
+        <p>Your school description from your school profile will be included in the job listing.</p>
         {% set example %}
-
           {% if user.organisation.about != 'Not entered' %}
             <p class="govuk-!-margin-bottom-0">{{user.organisation.about | nl2br | safe}}</p>
           {% else %}
@@ -48,10 +50,45 @@
         {% endset %}
 
         {{ govukDetails({
-          summaryText: "See your school description",
+          summaryText: "View your school description",
           html: example
         }) }}
       {% endif %}
+
+      {% if user.organisation.schools %}
+        <p>Your commitment to safeguarding statement from your organisation profile will be included in the job listing.</p>
+
+        {% set example %}
+          {% if user.organisation.safeguardingCommitment != 'Not entered' %}
+            <p class="govuk-!-margin-bottom-0">{{user.organisation.safeguardingCommitment | nl2br | safe}}</p>
+          {% else %}
+            <p>Not entered - <a href="/organisation">add your commitment to safeguarding statement</a>.</p>
+          {% endif %}
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: "View your commitment to safeguarding statement",
+          html: example
+        }) }}
+
+      {% else %}
+        <p>Your commitment to safeguarding statement from your school profile will be included in the job listing.</p>
+        {% set example %}
+
+          {% if user.organisation.safeguardingCommitment != 'Not entered' %}
+            <p class="govuk-!-margin-bottom-0">{{user.organisation.safeguardingCommitment | nl2br | safe}}</p>
+          {% else %}
+            <p>Not entered - <a href="/organisation">add your commitment to safeguarding statement</a>.</p>
+          {% endif %}
+        {% endset %}
+
+        {{ govukDetails({
+          summaryText: "View your commitment to safeguarding statement",
+          html: example
+        }) }}
+      {% endif %}
+
+      <p>You’ll be able to preview your job listing and make changes before you publish it.<p>
 
 
 
