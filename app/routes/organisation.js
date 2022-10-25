@@ -151,14 +151,14 @@ module.exports = router => {
   router.post('/organisation/:id/email/confirmation', authentication.checkIsAuthenticated, (req, res) => {
 
     let user = req.session.user
-
     let organisation = user.organisation
-
     let isEditingSchoolWithinOrganisation = organisation.id !== req.params.id
 
     if(isEditingSchoolWithinOrganisation) {
       organisation = organisation.schools.find(school => school.id == req.params.id)
     }
+
+    organisation.emailAddress = req.session.data.emailAddress
 
     if(isEditingSchoolWithinOrganisation) {
       req.flash('success', 'School profile updated')
@@ -173,6 +173,87 @@ module.exports = router => {
     }
 
   })
+
+  //////////////
+  // WEBSITE STUFF
+  //////////////
+
+  //edit website
+
+  router.get('/organisation/:id/website/edit', authentication.checkIsAuthenticated, (req, res) => {
+    let organisation = req.session.user.organisation
+
+    res.render('organisation/edit-website/index', {
+      organisation
+    })
+  })
+
+  router.post('/organisation/:id/website/edit', authentication.checkIsAuthenticated, (req, res) => {
+
+    let user = req.session.user
+    let organisation = user.organisation
+    let isEditingSchoolWithinOrganisation = organisation.id !== req.params.id
+
+    if(isEditingSchoolWithinOrganisation) {
+      organisation = organisation.schools.find(school => school.id == req.params.id)
+    }
+
+    organisation.website = req.session.data.website
+
+    if(isEditingSchoolWithinOrganisation) {
+      req.flash('success', 'School profile updated')
+      res.redirect(`/organisation/schools/${req.params.id}`)
+    } else {
+      if(organisation.schools) {
+        req.flash('success', 'Organisation profile updated')
+      } else {
+        req.flash('success', 'School profile updated')
+      }
+      res.redirect('/organisation')
+    }
+
+  })
+
+  //////////////
+  // DESCRIPTION STUFF
+  //////////////
+
+  //edit website
+
+  router.get('/organisation/:id/about/edit', authentication.checkIsAuthenticated, (req, res) => {
+    let organisation = req.session.user.organisation
+
+    res.render('organisation/edit-about/index', {
+      organisation
+    })
+  })
+
+  router.post('/organisation/:id/about/edit', authentication.checkIsAuthenticated, (req, res) => {
+
+    let user = req.session.user
+    let organisation = user.organisation
+    let isEditingSchoolWithinOrganisation = organisation.id !== req.params.id
+
+    if(isEditingSchoolWithinOrganisation) {
+      organisation = organisation.schools.find(school => school.id == req.params.id)
+    }
+
+    organisation.about = req.session.data.about
+
+    if(isEditingSchoolWithinOrganisation) {
+      req.flash('success', 'School profile updated')
+      res.redirect(`/organisation/schools/${req.params.id}`)
+    } else {
+      if(organisation.schools) {
+        req.flash('success', 'Organisation profile updated')
+      } else {
+        req.flash('success', 'School profile updated')
+      }
+      res.redirect('/organisation')
+    }
+
+  })
+
 
   //////////////
   // LOGO STUFF
