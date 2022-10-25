@@ -91,6 +91,8 @@ module.exports = router => {
       organisation = organisation.schools.find(school => school.id == req.params.id)
     }
 
+    organisation.emailAddress = req.session.data.emailAddress
+
     if(isEditingSchoolWithinOrganisation) {
       req.flash('success', 'School profile updated')
       res.redirect(`/organisation/schools/${req.params.id}`)
