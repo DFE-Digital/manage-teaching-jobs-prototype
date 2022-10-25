@@ -39,11 +39,10 @@
 
       <form method="post">
 
-        {{ govukCharacterCount({
+        {{ govukTextarea({
           id: "about",
           name: "about",
           value: about,
-          maxlength: 1000,
           rows: 10,
           label: {
             text: labelForInput
