@@ -56,6 +56,11 @@ module.exports = router => {
     })
   })
 
+  //////////////
+  // LOGO STUFF
+  //////////////
+
+
   router.get('/organisation/:id/logo/edit', authentication.checkIsAuthenticated, (req, res) => {
     res.render('organisation/edit-logo/index')
   })
@@ -95,6 +100,55 @@ module.exports = router => {
     }
 
   })
+
+  //end logo
+
+  //////////////
+  // PHOTO STUFF
+  //////////////
+
+
+  router.get('/organisation/:id/photo/edit', authentication.checkIsAuthenticated, (req, res) => {
+    res.render('organisation/edit-photo/index')
+  })
+
+  router.post('/organisation/:id/photo/edit', authentication.checkIsAuthenticated, (req, res) => {
+    req.session.data.photo = '/public/images/photos/courtland_outside.jpg'
+    res.redirect(`/organisation/${req.params.id}/photo/edit/check`)
+  })
+
+  router.get('/organisation/:id/photo/edit/check', authentication.checkIsAuthenticated, (req, res) => {
+    res.render('organisation/edit-photo/check')
+  })
+
+  router.post('/organisation/:id/photo/edit/check', authentication.checkIsAuthenticated, (req, res) => {
+    let user = req.session.user
+
+    let organisation = user.organisation
+
+    let isEditingSchoolWithinOrganisation = organisation.id !== req.params.id
+
+    if(isEditingSchoolWithinOrganisation) {
+      organisation = organisation.schools.find(school => school.id == req.params.id)
+    }
+
+    organisation.photo = req.session.data.photo
+
+    if(isEditingSchoolWithinOrganisation) {
+      req.flash('success', 'School photo updated')
+      res.redirect(`/organisation/schools/${req.params.id}`)
+    } else {
+      if(organisation.schools) {
+        req.flash('success', 'Organisation profile updated')
+      } else {
+        req.flash('success', 'School profile updated')
+      }
+      res.redirect('/organisation')
+    }
+
+  })
+
+  //end photo
 
   router.get('/organisation/schools/:id', authentication.checkIsAuthenticated, (req, res) => {
     let organisation = req.session.user.organisation.schools.find(school => school.id == req.params.id)
