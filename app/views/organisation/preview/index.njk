@@ -60,6 +60,8 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      {% if organisation.phase or organisation.size or organisation.ageGroup or organisation.website != 'Not entered' or organisation.emailAddress != 'Not entered' %}
+
 
       <h2 class="govuk-heading-m">
         Summary
@@ -68,7 +70,6 @@
       {% if organisation.parentOrganisation %}
         <p>Part of <a href="/organisation/{{organisation.parentOrganisation.id}}/preview">{{organisation.parentOrganisation.name}}</a>.</p>
       {% endif %}
-
 
       {{ govukSummaryList({
         rows: [
@@ -123,6 +124,8 @@
         ]
       }) }}
 
+      {% endif %}
+
       {% if organisation.about != 'Not entered' or organisation.photo != 'Not entered' %}
         <h2 class="govuk-heading-m">
           About {{organisation.name}}
@@ -148,6 +151,8 @@
       <h2 class="govuk-heading-m">
         Location
       </h2>
+
+      <p>{{address}}</p>
 
       <div class="app-map">
         <img src="/public/images/maps/courtland.png">
