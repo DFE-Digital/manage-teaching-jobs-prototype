@@ -54,14 +54,19 @@
           },
           items: [
             {
-              value: "existing.email@example.com",
-              text: "existing.email@example.com",
-              checked: checked("['createJob']['school-visits-email-address']", "existing.email@example.com")
+              value: user.organisation.emailAddress,
+              text: user.organisation.emailAddress,
+              checked: checked("['createJob']['contact-email-address']", user.organisation.emailAddress)
+            } if user.organisation.emailAddress != 'Not entered',
+            {
+              value: user.username,
+              text: user.username,
+              checked: checked("['createJob']['contact-email-address']", user.username)
             },
             {
               value: "Another email address",
               text: "Another email address",
-              checked: checked("['createJob']['school-visits-email-address']", "Another email address"),
+              checked: checked("['createJob']['contact-email-address']", "Another email address"),
               conditional: {
                 html: emailAddress
               }
