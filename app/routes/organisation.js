@@ -94,13 +94,13 @@ module.exports = router => {
     organisation.emailAddress = req.session.data.emailAddress
 
     if(isEditingSchoolWithinOrganisation) {
-      req.flash('success', 'School email updated')
+      req.flash('success', 'School email address updated')
       res.redirect(`/organisation/schools/${req.params.id}`)
     } else {
       if(organisation.schools) {
-        req.flash('success', 'Organisation email updated')
+        req.flash('success', 'Organisation email address updated')
       } else {
-        req.flash('success', 'School email updated')
+        req.flash('success', 'School email address updated')
       }
       res.redirect('/organisation')
     }

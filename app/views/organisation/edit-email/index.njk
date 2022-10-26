@@ -1,10 +1,11 @@
 {% extends "layout.njk" %}
 
+
+{% set heading = 'Email address' %}
+
 {% if user.organisation.schools %}
-  {% set heading = 'Organisation email address' %}
   {% set caption = 'Organisation profile' %}
 {% else %}
-  {% set heading = 'School email address' %}
   {% set caption = 'School profile' %}
 {% endif %}
 
