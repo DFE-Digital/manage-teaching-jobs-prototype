@@ -33,19 +33,19 @@
       <span class="govuk-caption-l">
         {{caption}}
       </span>
-      <h1 class="govuk-heading-l">
-        {{heading}}
-      </h1>
 
       <form method="post">
 
-        {{ govukTextarea({
-          id: "about",
+        {{ govukCharacterCount({
           name: "about",
+          id: "about",
           value: about,
           rows: 10,
+          maxwords: 150,
           label: {
-            text: labelForInput
+            text: labelForInput,
+            classes: "govuk-label--l",
+            isPageHeading: true
           }
         }) }}
 

@@ -31,24 +31,24 @@
       <span class="govuk-caption-l">
         {{caption}}
       </span>
-      <h1 class="govuk-heading-l">
-        {{heading}}
-      </h1>
-
+    
       <form method="post">
 
         {{ govukInput({
           label: {
-            text: "Website"
+            text: heading,
+            classes: "govuk-label--l",
+            isPageHeading: true
           },
+          value: website,
           id: "website",
-          name: "website",
-          value: website
+          name: "website"
         }) }}
 
         {{ govukButton({
           text: "Update website"
         }) }}
+
 
       </form>
       <p><a href="/organisation">Cancel</a></p>

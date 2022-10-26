@@ -31,19 +31,18 @@
       <span class="govuk-caption-l">
         {{caption}}
       </span>
-      <h1 class="govuk-heading-l">
-        {{heading}}
-      </h1>
 
       <form method="post">
 
         {{ govukInput({
           label: {
-            text: "Email address"
+            text: heading,
+            classes: "govuk-label--l",
+            isPageHeading: true
           },
+          value: emailAddress,
           id: "email",
-          name: "email",
-          value: emailAddress
+          name: "email"
         }) }}
 
         {{ govukButton({
