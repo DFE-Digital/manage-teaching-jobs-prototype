@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set title = 'You can now view candidate profiles and invite them to apply' %}
+{% set title = 'You can now view candidate profiles and invite them to apply for jobs' %}
 
 {% block content %}
 
@@ -12,12 +12,12 @@
 
       <p>A candidate’s profile includes their job preferences, experience and qualifications.</p>
 
-      <p>The candidates you have access to have specified:</p>
+      <p>These candidates have specified:</p>
 
       {% if user.organisation.schools %}
         <ul class="govuk-list govuk-list--bullet">
           <li>
-            that they’re able to travel to a location near to at least one of your schools
+            that they’re able to travel to at least one of your schools
           </li>
           <li>
             that they’re interested in an education phase that matches at least one of your schools
@@ -26,7 +26,7 @@
       {% else %}
         <ul class="govuk-list govuk-list--bullet">
           <li>
-            that they’re able to travel to a location near to your school
+            that they’re able to travel to your school
           </li>
           <li>
             that they’re interested in an education phase that matches your school
@@ -34,7 +34,7 @@
         </ul>
       {% endif %}
 
-      <p>You’ll also be notified about any candidate profile that matches your job listings.</p>
+      <p>You’ll also be notified about any new candidate profiles that match your job listings.</p>
 
       {{ govukButton({
         text: "View candidate profiles",
