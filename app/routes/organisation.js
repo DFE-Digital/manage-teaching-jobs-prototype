@@ -93,11 +93,15 @@ module.exports = router => {
 
     organisation.emailAddress = req.session.data.emailAddress
 
-    req.flash('success', 'Email address updated')
-
     if(isEditingSchoolWithinOrganisation) {
+      req.flash('success', 'School email updated')
       res.redirect(`/organisation/schools/${req.params.id}`)
     } else {
+      if(organisation.schools) {
+        req.flash('success', 'Organisation email updated')
+      } else {
+        req.flash('success', 'School email updated')
+      }
       res.redirect('/organisation')
     }
 
@@ -156,11 +160,15 @@ module.exports = router => {
 
     organisation.emailAddress = req.session.data.emailAddress
 
-    req.flash('success', 'Email address updated')
-
     if(isEditingSchoolWithinOrganisation) {
+      req.flash('success', 'School email updated')
       res.redirect(`/organisation/schools/${req.params.id}`)
     } else {
+      if(organisation.schools) {
+        req.flash('success', 'Organisation email updated')
+      } else {
+        req.flash('success', 'School email updated')
+      }
       res.redirect('/organisation')
     }
 
@@ -192,11 +200,15 @@ module.exports = router => {
 
     organisation.website = req.session.data.website
 
-    req.flash('success', 'Website updated')
-
     if(isEditingSchoolWithinOrganisation) {
+      req.flash('success', 'School website updated')
       res.redirect(`/organisation/schools/${req.params.id}`)
     } else {
+      if(organisation.schools) {
+        req.flash('success', 'Organisation website updated')
+      } else {
+        req.flash('success', 'School website updated')
+      }
       res.redirect('/organisation')
     }
 
