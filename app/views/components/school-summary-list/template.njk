@@ -22,7 +22,7 @@
     <a href="{{params.organisation.website}}">{{params.organisation.website}} (opens in new tab)</a>
   {% else %}
     <div class="app-field-highlight">
-      <p class="app-field-highlight__instruction">Enter website</p>
+      <p class="app-field-highlight__instruction">Enter a website address</p>
       Not entered
     </div>
   {% endif %}
@@ -218,7 +218,7 @@
     },
     {
       key: {
-        text: "Website"
+        text: "Website address"
       },
       value: {
         html: website
@@ -228,7 +228,7 @@
           {
             href: "/organisation/"+params.organisation.id+"/website/edit",
             text: "Change",
-            visuallyHiddenText: "Website"
+            visuallyHiddenText: "Website address"
           }
         ]
       }

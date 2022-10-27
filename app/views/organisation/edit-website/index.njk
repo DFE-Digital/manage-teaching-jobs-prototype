@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Website' %}
+{% set heading = 'Website address' %}
 
 {% if user.organisation.schools %}
   {% set caption = 'Organisation profile' %}
@@ -46,7 +46,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Update website"
+          text: "Update website address"
         }) }}
 
 

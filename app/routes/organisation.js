@@ -201,13 +201,13 @@ module.exports = router => {
     organisation.website = req.session.data.website
 
     if(isEditingSchoolWithinOrganisation) {
-      req.flash('success', 'School website updated')
+      req.flash('success', 'School website address updated')
       res.redirect(`/organisation/schools/${req.params.id}`)
     } else {
       if(organisation.schools) {
-        req.flash('success', 'Organisation website updated')
+        req.flash('success', 'Organisation website address updated')
       } else {
-        req.flash('success', 'School website updated')
+        req.flash('success', 'School website address updated')
       }
       res.redirect('/organisation')
     }
