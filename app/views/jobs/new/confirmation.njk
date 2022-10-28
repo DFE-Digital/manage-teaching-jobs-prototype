@@ -24,25 +24,24 @@
     {% endif %}
 
     <h2 class="govuk-heading-m">
-      Invite jobseekers to apply for this job
+      Invite candidates to apply for this job
     </h2>
 
-    <p>3 jobseeker profiles match this job listing.</p>
+    <p>3 candidate profiles match this job listing.</p>
 
-    <p><a href="/jobseekers">View jobseeker profiles</a></p>
+    <p><a href="/jobseekers">View candidate profiles</a></p>
 
     {% if user.organisation.schools %}
       <h2 class="govuk-heading-m">
         Complete your organisation profile
       </h2>
-      {# <p>There’s some missing information about your organisation.</p> #}
-      <p>The information that you add will be included jobseekers find a job at your organisation.</p>
+      <p>The information that you add will be included in your job listings.</p>
       <p><a href="/organisation">Complete organisation profile</a></p>
     {% else %}
       <h2 class="govuk-heading-m">
         Complete your school profile
       </h2>
-      <p>Any information you add to your profile will be included in this job listing.</p>
+      <p>Any information you add to your profile will be included in your job listings.</p>
       <p><a href="/organisation">Complete school profile</a></p>
     {% endif%}
 
