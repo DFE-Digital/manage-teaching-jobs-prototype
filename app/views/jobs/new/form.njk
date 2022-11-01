@@ -40,6 +40,14 @@
 
       <form action="/jobs/new/school-visits">
 
+
+        {#
+        <h2 class="govuk-heading-m"> Upload application form </h2>
+        <div style="overflow: hidden; border-bottom: 1px solid #b1b4b6" class="govuk-!-margin-bottom-7">
+          <p style="float: left"><a href="">application-form-v1.pdf (2MB)</a></p>
+          <p style="float: right"><a href="">Delete</a></p>
+        </div> #}
+
         {{ govukFileUpload({
           id: "createJob[application-form]",
           name: "createJob[application-form]",

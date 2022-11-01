@@ -138,7 +138,7 @@
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
           {% for document in job.additionalDocuments %}
             <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
-              <a href="#">{{document.file}}, {{document.size}}</a>
+              <a href="#">{{document.file}} ({{document.size}})</a>
             </li>
           {% endfor %}
         </ul>
@@ -390,7 +390,7 @@
               text: "Application form"
             },
             value: {
-              html: '<a href="#">' + job.applicationForm.file + ', ' + job.applicationForm.size +'</a>'
+              html: '<a href="#">' + job.applicationForm.file + '(' + job.applicationForm.size +')</a>'
             },
             actions: {
               items: [
@@ -511,6 +511,22 @@
         About the role
       </h2>
 
+      {% set skillsAndExperience %}
+        <div class="app-prose govuk-!-margin-bottom-0">
+          {% markdown %}
+            {{job.skillsAndExperience}}
+          {% endmarkdown %}
+        </div>
+      {% endset %}
+
+      {% set whatSchoolOffers %}
+        <div class="app-prose govuk-!-margin-bottom-0">
+          {% markdown %}
+            {{job.whatSchoolOffers}}
+          {% endmarkdown %}
+        </div>
+      {% endset %}
+
       {{ govukSummaryList({
         rows: [
           {
@@ -535,7 +551,7 @@
               text: "What skills and experience are you looking for?"
             },
             value: {
-              text: jobs.skilsAndExperience
+              html: skillsAndExperience
             },
             actions: {
               items: [
@@ -552,7 +568,7 @@
               text: "What does your school offer?"
             },
             value: {
-              text: job.whatSchoolOffers
+              html: whatSchoolOffers
             },
             actions: {
               items: [
