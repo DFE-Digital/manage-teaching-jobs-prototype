@@ -76,9 +76,9 @@
               checked: checked("['createJob']['application-email-address']", user.organisation.emailAddress)
             } if user.organisation.emailAddress != 'Not entered',
             {
-              value: user.username,
-              text: user.username,
-              checked: checked("['createJob']['application-email-address']", user.username)
+              value: user.emailAddress,
+              text: user.emailAddress,
+              checked: checked("['createJob']['application-email-address']", user.emailAddress)
             },
             {
               value: "Another email address",

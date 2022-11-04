@@ -8,7 +8,7 @@ const organisations = require('../app/data/organisations.json')
 const generateUser = (params = {}) => {
   let user = {}
 
-  user.username = params.username
+  user.emailAddress = params.emailAddress
   user.password = params.password || 'tv'
   user.organisation = params.organisation || organisations[0]
 
@@ -19,37 +19,37 @@ const generateUsers = () => {
   const users = []
 
   users.push(generateUser({
-    username: 'rachael@courtland.sch.uk',
+    emailAddress: 'rachael@courtland.sch.uk',
     organisation: organisations.find(org => org.name == 'Courtland Primary School')
   }))
 
   users.push(generateUser({
-    username: 'susy@busheymeads.sch.uk',
+    emailAddress: 'susy@busheymeads.sch.uk',
     organisation: organisations.find(org => org.name == 'Bushey Meads Primary School')
   }))
 
   users.push(generateUser({
-    username: 'leonie@lssecondary.sch.uk',
+    emailAddress: 'leonie@lssecondary.sch.uk',
     organisation: organisations.find(org => org.name == 'LS Secondary School')
   }))
 
   users.push(generateUser({
-    username: 'molly@mlsecondary.sch.uk',
+    emailAddress: 'molly@mlsecondary.sch.uk',
     organisation: organisations.find(org => org.name == 'ML Secondary School')
   }))
 
   users.push(generateUser({
-    username: 'alison@royalacademytrust.uk',
+    emailAddress: 'alison@royalacademytrust.uk',
     organisation: organisations.find(org => org.name == 'Royal Academy Trust')
   }))
 
   users.push(generateUser({
-    username: 'ben@svelteacademytrust.uk',
+    emailAddress: 'ben@svelteacademytrust.uk',
     organisation: organisations.find(org => org.name == 'Svelte Academy Trust')
   }))
 
   users.push(generateUser({
-    username: 'alex@ultron.sch.uk',
+    emailAddress: 'alex@ultron.sch.uk',
     organisation: organisations.find(org => org.name == 'Ultron Academy Trust')
   }))
 

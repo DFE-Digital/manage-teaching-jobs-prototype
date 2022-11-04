@@ -1,7 +1,4 @@
 const users = require('../data/users.json')
-const organisations = require('../data/organisations.json')
-const jobs = require('../data/jobs.json')
-const jobseekers = require('../data/jobseekers.json')
 const organisationHelper = require('../helpers/organisation')
 const userHelper = require('../helpers/user')
 const authentication = require('../middleware/authenticaton')
@@ -47,7 +44,7 @@ module.exports = router => {
     // but just in case we'll grab the the first user's email address
     // and use that to retrieve a fully built user object
     if(!user) {
-      user = userHelper.getUser(users[0].username)
+      user = userHelper.getUser(users[0].emailAddress)
     }
 
     res.locals.user = req.session.user = user
@@ -68,7 +65,7 @@ module.exports = router => {
   })
 
   router.post('/account/new', (req, res) => {
-    let user = userHelper.getUser(users[0].username)
+    let user = userHelper.getUser(users[0].emailAddress)
     res.locals.user = req.session.user = user
     res.redirect('/account/new/confirmation')
   })

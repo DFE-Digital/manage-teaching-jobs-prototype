@@ -101,7 +101,7 @@ const generateJob = (params = {}) => {
         size: '2MB'
       }
 
-      job.emailAddressForApplications = params.emailAddressForApplications || faker.helpers.arrayElement(users).username
+      job.emailAddressForApplications = params.emailAddressForApplications || faker.helpers.arrayElement(users).emailAddress
 
     }
 
@@ -115,7 +115,7 @@ const generateJob = (params = {}) => {
 
   job.offersSchoolVisits = params.offersSchoolVisits || faker.helpers.arrayElement(['Yes', 'No'])
 
-  job.contactEmailAddress = params.contactEmailAddress || faker.helpers.arrayElement(users).username
+  job.contactEmailAddress = params.contactEmailAddress || faker.helpers.arrayElement(users).emailAddress
 
   job.hasContactPhoneNumber = params.hasContactPhoneNumber || faker.helpers.arrayElement(['Yes', 'No'])
 

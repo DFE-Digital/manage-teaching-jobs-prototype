@@ -5,7 +5,7 @@ const jobseekers = require('../data/jobseekers.json')
 exports.getUser = (emailAddress) => {
   let user = null
 
-  user = users.find(user => user.username == emailAddress)
+  user = users.find(user => user.emailAddress == emailAddress)
 
   if(user) {
     // add jobs to the user
