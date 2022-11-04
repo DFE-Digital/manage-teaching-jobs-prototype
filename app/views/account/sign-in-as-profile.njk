@@ -1,0 +1,59 @@
+
+{% extends "layout.njk" %}
+
+{% set heading = 'Sign in as a profile' %}
+
+{% set title = heading %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+      <div class="app-list">
+        {% for user in users %}
+          <form method="post" action="/account/sign-in">
+            {% if query.returnUrl %}
+              <input type="hidden" name="returnUrl" value="{{query.returnUrl}}">
+            {% endif %}
+
+            <input type="hidden" name="emailAddress" value="{{user.username}}">
+            <div class="app-list__item govuk-!-padding-top-4 govuk-!-padding-bottom-6">
+
+              <span class="govuk-caption-m">
+                {{user.organisation.name}}
+              </span>
+              <h2 class="govuk-heading-m govuk-!-margin-bottom-3">
+                {{user.username}}
+              </h2>
+              <div class="govuk-!-margin-bottom-3">
+              {% if user.organisation.hasMissingInformation %}
+                {{ govukTag({
+                  text: "Profile incomplete",
+                  classes: 'govuk-tag--red'
+                }) }}
+              {% else %}
+                {{ govukTag({
+                  text: "Profile complete",
+                  classes: 'govuk-tag--blue'
+                }) }}
+              {% endif %}
+              </div>
+
+              {{ govukButton({
+                text: 'Sign in',
+                classes: 'govuk-!-margin-bottom-0'
+              }) }}
+            </div>
+
+          </form>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

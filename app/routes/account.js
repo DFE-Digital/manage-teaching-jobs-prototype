@@ -13,7 +13,11 @@ module.exports = router => {
   })
 
   router.get('/account/sign-in', (req, res) => {
-    res.render('account/sign-in', {
+    res.render('account/sign-in')
+  })
+
+  router.get('/account/sign-in-as-profile', (req, res) => {
+    res.render('account/sign-in-as-profile', {
       users: users.map(user => {
         user.organisation.hasMissingInformation = organisationHelper.hasMissingInformation(user.organisation)
         return user
