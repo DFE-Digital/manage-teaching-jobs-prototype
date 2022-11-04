@@ -52,6 +52,13 @@
 
 {% block header %}
   {% include "includes/header.njk" %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "Beta"
+      },
+      classes: 'app-phase-banner govuk-width-container',
+      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    }) }}
   {% include "includes/primary-navigation.njk" %}
 {% endblock %}
 
