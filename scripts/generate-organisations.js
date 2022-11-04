@@ -243,6 +243,26 @@ const generateOrgs = () => {
     ]
   }))
 
+  /*************************************************
+   * MAT with missing information on 2 of their schools
+   *************************************************/
+
+   let matSchool6 = generateSchool({ phase: 'Primary school', name: 'Loki Primary School', about: 'Not entered' })
+   let matSchool7 = generateSchool({ phase: 'Secondary school', name: 'Ragnarok School', about: 'Not entered' })
+   let matSchool8 = generateSchool({ phase: 'Middle school', name: 'Ultron School' })
+   let matSchool9 = generateSchool({ phase: 'Sixth form or college', name: 'Endgame School' })
+
+  orgs.push(generateOrg({
+    name: 'Ultron Academy Trust',
+    type: 'MAT',
+    schools: [
+      matSchool6,
+      matSchool7,
+      matSchool8,
+      matSchool9
+    ]
+  }))
+
   return orgs
 }
 
