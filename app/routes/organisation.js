@@ -302,6 +302,17 @@ module.exports = router => {
 
   })
 
+  //Delete
+
+  router.get('/organisation/:id/logo/delete', authentication.checkIsAuthenticated, (req, res) => {
+    res.render('organisation/edit-logo/delete')
+  })
+
+  router.post('/organisation/:id/logo/delete', authentication.checkIsAuthenticated, (req, res) => {
+    req.flash('success', 'School logo deleted')
+    res.redirect(`/organisation/schools/${req.params.id}`)
+  })
+
   //end logo
 
   //////////////

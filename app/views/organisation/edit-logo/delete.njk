@@ -1,0 +1,49 @@
+{% extends "layout.njk" %}
+
+{% if user.organisation.schools %}
+  {% set heading = 'Organisation logo' %}
+  {% set caption = 'Organisation profile' %}
+{% else %}
+  {% set heading = 'School logo' %}
+  {% set caption = 'School profile' %}
+{% endif %}
+
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-xl">
+        Delete logo
+      </span>
+
+      <h1 class="govuk-heading-xl">
+        Confirm that you want to delete this logo
+      </h1>
+
+      <img src="{{user.organisation.logo}}" alt="Logo" width="150">
+
+      <p class="govuk-body govuk-!-margin-bottom-5">logo.jpg, 2MB</p>
+
+      <form method="post" novalidate>
+
+        {{ govukButton({
+          text: "Delete logo"
+        }) }}
+
+        <p><a href="/profile">Cancel</a></p>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

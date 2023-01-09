@@ -45,16 +45,31 @@
 
       <p><a href="#">Contact support</a> if you need help adding your {% if user.organisation.schools %}organisation{% else %}school{% endif %} logo.</p>
 
+      <h2 class="govuk-heading-m">
+        Your current logo
+      </h2>
+
+      <img src="{{user.organisation.logo}}" alt="Logo" width="150">
+
+      <p class="govuk-body govuk-!-margin-bottom-1">logo.jpg, 2MB</p>
+
+      <p class="govuk-body govuk-!-margin-bottom-8"><a href="delete">Delete this logo</a></p>
+
       <form method="post">
 
-        {{ govukFileUpload({
-          id: "createJob[application-form]",
-          name: "createJob[application-form]",
-          label: {
-            text: "Upload a file",
-            classes: 'govuk-label--m'
-          }
-        }) }}
+        <h2 class="govuk-heading-m">
+          Change your logo
+        </h2>
+
+          {{ govukFileUpload({
+            id: "createJob[application-form]",
+            name: "createJob[application-form]",
+            label: {
+              text: "Upload a file",
+              classes: 'govuk-label--s'
+            }
+          }) }}
+
 
         {{ govukButton({
           text: "Continue"
