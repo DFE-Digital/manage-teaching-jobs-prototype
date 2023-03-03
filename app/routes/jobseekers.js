@@ -82,6 +82,13 @@ module.exports = router => {
     })
   })
 
+  router.get('/jobseekers_noresults', authentication.checkIsAuthenticated, (req, res) => {
+
+    res.render('jobseekers/no_results', {
+      
+    })
+  })
+
   router.get('/jobseekers/:id', authentication.checkIsAuthenticated, (req, res) => {
     let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
 
