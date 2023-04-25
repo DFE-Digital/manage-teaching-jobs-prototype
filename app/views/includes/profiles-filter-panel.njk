@@ -32,6 +32,25 @@
   }) }}
 
   {{ govukCheckboxes({
+    idPrefix: "filters[rightToWork]",
+    name: "filters[rightToWork]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Right to work in the UK",
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [{
+      value: 'Does have the right to work in the UK',
+      text: 'Does have the right to work in the UK'
+    }, {
+      value: 'Does not have the right to work in the UK',
+      text: 'Does not have the right to work in the UK'
+    }]
+  }) }}
+
+  {{ govukCheckboxes({
     idPrefix: "filters[qts]",
     name: "filters[qts]",
     classes: "govuk-checkboxes--small",
