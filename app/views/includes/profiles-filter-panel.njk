@@ -19,19 +19,6 @@
   {% endif %}
 
   {{ govukCheckboxes({
-    idPrefix: "filters[jobs]",
-    name: "filters[jobs]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Active job",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: jobCheckboxes
-  }) }}
-
-  {{ govukCheckboxes({
     idPrefix: "filters[rightToWork]",
     name: "filters[rightToWork]",
     classes: "govuk-checkboxes--small",
