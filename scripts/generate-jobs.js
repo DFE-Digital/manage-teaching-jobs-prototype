@@ -190,7 +190,16 @@ const generateJobs = () => {
     jobs.push(generateJob({
       organisation: user.organisation,
       status: 'Active',
-      role: 'Headteacher, deputy or assistant headteacher',
+      role: 'Deputy or assistant headteacher',
+      isUsingApplicationForm: 'No',
+      applicationMethod: 'Through a website',
+      hasSafeguardingCommitment: 'Yes',
+      hasFurtherDetailsAboutTheRole: 'Yes',
+    }))
+    jobs.push(generateJob({
+      organisation: user.organisation,
+      status: 'Active',
+      role: 'Headteacher',
       isUsingApplicationForm: 'No',
       applicationMethod: 'Through a website',
       hasSafeguardingCommitment: 'Yes',
