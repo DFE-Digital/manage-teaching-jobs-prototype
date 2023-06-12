@@ -13,10 +13,27 @@ module.exports = ({organisation, role}) => {
     ])
   }
 
-  if(role == 'Deputy or assistant headteacher') {
+  if(role == 'Head of year or phase') {
     return faker.helpers.arrayElement([
-      'Deputy headteacher',
+      'KS2 Phase leader'
+    ])
+  }
+
+  if(role == 'Head of department or curriculum') {
+    return faker.helpers.arrayElement([
+      'Head of modern foreign languages'
+    ])
+  }
+
+  if(role == 'Assistant headteacher') {
+    return faker.helpers.arrayElement([
       'Assistant headteacher'
+    ])
+  }
+
+  if(role == 'Deputy headteacher') {
+    return faker.helpers.arrayElement([
+      'Deputy headteacher'
     ])
   }
 

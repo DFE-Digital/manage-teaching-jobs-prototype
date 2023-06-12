@@ -6,9 +6,11 @@ const { use } = require('browser-sync')
 function isQTSRelevant(jobseeker) {
   let relevant = false
   if(jobseeker.profile.roles && (jobseeker.profile.roles.includes('Teacher') || 
-  jobseeker.profile.roles.includes('Seputy or assistant headteacher') || 
-  jobseeker.profile.roles.includes('Headteacher') || 
-  jobseeker.profile.roles.includes('Head of year, department, curriculum or phase'))) 
+    jobseeker.profile.roles.includes('Head of year or phase')|| 
+    jobseeker.profile.roles.includes('Head of department or curriculum') || 
+    jobseeker.profile.roles.includes('Assistant headteacher') || 
+    jobseeker.profile.roles.includes('Deputy headteacher') || 
+    jobseeker.profile.roles.includes('Headteacher') )) 
   {
     relevant = true
   }
