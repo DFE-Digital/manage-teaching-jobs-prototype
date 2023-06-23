@@ -1,12 +1,10 @@
 {% set filterOptionsHtml %}
 
-
-
   {% if locationCheckboxes %}
 
     {{ govukCheckboxes({
-      idPrefix: "filters[locations]",
-      name: "filters[locations]",
+      idPrefix: "filters-locations",
+      name: "filters-locations",
       classes: "govuk-checkboxes--small",
       fieldset: {
         legend: {
@@ -18,86 +16,96 @@
     }) }}
   {% endif %}
 
-  {{ govukCheckboxes({
-    idPrefix: "filters[rightToWork]",
-    name: "filters[rightToWork]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Right to work in the UK",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'Does have the right to work in the UK',
-      text: 'Does have the right to work in the UK'
-    }, {
-      value: 'Does not have the right to work in the UK',
-      text: 'Does not have the right to work in the UK'
-    }]
-  }) }}
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Right to work in the UK</legend>
+      <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" {% if 'Does have the right to work in the UK' in filterRightToWork  %} checked {% endif %} id="filters-rightToWork" name="filters-rightToWork" type="checkbox" value="Does have the right to work in the UK"> <label class="govuk-label govuk-checkboxes__label" for="filters-rightToWork">Does have the right to work in the UK</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-rightToWork]-2" name="filters-rightToWork" type="checkbox" value="Does not have the right to work in the UK"> <label class="govuk-label govuk-checkboxes__label" for="filters-rightToWork]-2">Does not have the right to work in the UK</label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
 
-  {{ govukCheckboxes({
-    idPrefix: "filters[qts]",
-    name: "filters[qts]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Qualified teaching status (QTS)",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'Does not have QTS',
-      text: 'Does not have QTS'
-    }, {
-      value: 'On track to receive QTS',
-      text: 'On track to receive QTS'
-    }, {
-      value: 'Awarded QTS within the last 2 years',
-      text: 'Awarded QTS within the last 2 years'
-    }, {
-      value: 'Awarded QTS 3 or more years ago',
-      text: 'Awarded QTS 3 or more years ago'
-    }]
-  }) }}
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Qualified teaching status (QTS)</legend>
+      <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-qts" name="filters-qts" type="checkbox" value="Does not have QTS"> <label class="govuk-label govuk-checkboxes__label" for="filters-qts">Does not have QTS</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-qts]-2" name="filters-qts" type="checkbox" value="On track to receive QTS"> <label class="govuk-label govuk-checkboxes__label" for="filters-qts]-2">On track to receive QTS</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-qts]-3" name="filters-qts" type="checkbox" value="Awarded QTS within the last 2 years"> <label class="govuk-label govuk-checkboxes__label" for="filters-qts]-3">Awarded QTS within the last 2 years</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-qts]-4" name="filters-qts" type="checkbox" value="Awarded QTS 3 or more years ago"> <label class="govuk-label govuk-checkboxes__label" for="filters-qts]-4">Awarded QTS 3 or more years ago</label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
 
-  {{ govukCheckboxes({
-    idPrefix: "filters[role]",
-    name: "filters[role]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Preferred role",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: roles
-  }) }}
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Preferred role</legend>
+      <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-role" name="filters-role" type="checkbox" value="Teacher"> <label class="govuk-label govuk-checkboxes__label" for="filters-role">Teacher</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-role]-2" name="filters-role" type="checkbox" value="Head of year or phase"> <label class="govuk-label govuk-checkboxes__label" for="filters-role]-2">Head of year or phase</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-role]-3" name="filters-role" type="checkbox" value="Head of department or curriculum"> <label class="govuk-label govuk-checkboxes__label" for="filters-role]-3">Head of department or curriculum</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-role]-4" name="filters-role" type="checkbox" value="Assistant headteacher"> <label class="govuk-label govuk-checkboxes__label" for="filters-role]-4">Assistant headteacher</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-role]-5" name="filters-role" type="checkbox" value="Deputy headteacher"> <label class="govuk-label govuk-checkboxes__label" for="filters-role]-5">Deputy headteacher</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-role]-6" name="filters-role" type="checkbox" value="Headteacher"> <label class="govuk-label govuk-checkboxes__label" for="filters-role]-6">Headteacher</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-role]-7" name="filters-role" type="checkbox" value="Teaching assistant"> <label class="govuk-label govuk-checkboxes__label" for="filters-role]-7">Teaching assistant</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-role]-8" name="filters-role" type="checkbox" value="HLTA (higher level teaching assistant)"> <label class="govuk-label govuk-checkboxes__label" for="filters-role]-8">HLTA (higher level teaching assistant)</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-role]-9" name="filters-role" type="checkbox" value="Learning support, cover supervisor or tutor"> <label class="govuk-label govuk-checkboxes__label" for="filters-role]-9">Learning support, cover supervisor or tutor</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-role]-10" name="filters-role" type="checkbox" value="SENDCo (special educational needs and disabilities coordinator)"> <label class="govuk-label govuk-checkboxes__label" for="filters-role]-10">SENDCo (special educational needs and disabilities coordinator)</label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
 
-  {{ govukCheckboxes({
-    idPrefix: "filters[workingPatterns]",
-    name: "filters[workingPatterns]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Preferred working pattern",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'Full time',
-      text: 'Full time'
-    }, {
-      value: 'Part time',
-      text: 'Part time'
-    }]
-  }) }}
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Preferred working pattern</legend>
+      <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-workingPatterns" name="filters-workingPatterns" type="checkbox" value="Full time"> <label class="govuk-label govuk-checkboxes__label" for="filters-workingPatterns">Full time</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-workingPatterns]-2" name="filters-workingPatterns" type="checkbox" value="Part time"> <label class="govuk-label govuk-checkboxes__label" for="filters-workingPatterns]-2">Part time</label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
 
   {% if user.organisation.schools %}
     {{ govukCheckboxes({
-      idPrefix: "filters[phase]",
-      name: "filters[phase]",
+      idPrefix: "filters-phase",
+      name: "filters-phase",
       classes: "govuk-checkboxes--small",
       fieldset: {
         legend: {
@@ -109,42 +117,38 @@
     }) }}
   {% endif %}
 
-  {{ govukCheckboxes({
-    idPrefix: "filters[keyStages]",
-    name: "filters[keyStages]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Preferred key stage",
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [{
-      value: 'Early years',
-      text: 'Early years'
-    }, {
-      value: 'Key stage 1',
-      text: 'Key stage 1'
-    }, {
-      value: 'Key stage 2',
-      text: 'Key stage 2'
-    }, {
-      value: 'Key stage 3',
-      text: 'Key stage 3'
-    }, {
-      value: 'Key stage 4',
-      text: 'Key stage 4'
-    }, {
-      value: 'Key stage 5',
-      text: 'Key stage 5'
-    }]
-  }) }}
+
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Preferred key stage</legend>
+      <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-keyStages" name="filters-keyStages" type="checkbox" value="Early years"> <label class="govuk-label govuk-checkboxes__label" for="filters-keyStages">Early years</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-keyStages]-2" name="filters-keyStages" type="checkbox" value="Key stage 1"> <label class="govuk-label govuk-checkboxes__label" for="filters-keyStages]-2">Key stage 1</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-keyStages]-3" name="filters-keyStages" type="checkbox" value="Key stage 2"> <label class="govuk-label govuk-checkboxes__label" for="filters-keyStages]-3">Key stage 2</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-keyStages]-4" name="filters-keyStages" type="checkbox" value="Key stage 3"> <label class="govuk-label govuk-checkboxes__label" for="filters-keyStages]-4">Key stage 3</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-keyStages]-5" name="filters-keyStages" type="checkbox" value="Key stage 4"> <label class="govuk-label govuk-checkboxes__label" for="filters-keyStages]-5">Key stage 4</label>
+        </div>
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="filters-keyStages]-6" name="filters-keyStages" type="checkbox" value="Key stage 5"> <label class="govuk-label govuk-checkboxes__label" for="filters-keyStages]-6">Key stage 5</label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
 
   {% if showSubjectsFilter %}
 
   {{ appCheckboxFilter({
     idPrefix: "subjects",
-    name: "filters[subjects]",
+    name: "filters-subjects",
     classes: "govuk-checkboxes--small",
     legend: {
       text: "Preferred subject",
@@ -406,7 +410,7 @@
       </div>
     {% endif %}
     <div class="app-filter__options">
-      <form method="get" action="/applications" novalidate>
+      <form method="get" action="/search" novalidate>
         <button class="govuk-button" data-module="govuk-button">
           Apply filters
         </button>

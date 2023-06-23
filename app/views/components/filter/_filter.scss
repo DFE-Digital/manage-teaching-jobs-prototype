@@ -43,7 +43,7 @@
     box-sizing: border-box;
     border-radius: 0;
     border: 0 none;
-    cursor: pointer; // Adam would not approve
+    cursor: pointer; 
     display: block;
     margin: 0;
     padding: 0;
@@ -95,7 +95,7 @@
 .app-filter__close {
   // @include govuk-focusable;
   color: govuk-colour("black");
-  cursor: pointer; // I know Adam won’t like this
+  cursor: pointer; 
   background-color: transparent;
   border: none;
   border-radius: 0;

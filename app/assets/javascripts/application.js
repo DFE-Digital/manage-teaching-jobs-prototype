@@ -7,4 +7,22 @@ if (window.console && window.console.info) {
 
 $(document).ready(function () {
   window.GOVUKFrontend.initAll()
+
+
+  if (window.location.href.indexOf("jobseekers") > -1) {
+   
+    var el = document.getElementsByTagName("*");
+    var cnt = 0;
+    for (var i = 0; i < el.length; i++) {
+        if (el[i].className == 'app-list__item') cnt++;
+    }
+
+    $('#candidate-count').html(cnt);
+
+    if(cnt == 0){
+      $('#try-another-search').show();
+    }
+
+  }
+
 })

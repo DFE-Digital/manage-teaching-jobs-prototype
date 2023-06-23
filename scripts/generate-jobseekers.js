@@ -20,10 +20,11 @@ const generateJobseeker = (params = {}) => {
 
   jobseeker.profile.status = _.get(params, 'profile.status')
 
-  jobseeker.profile.qts = _.get(params, 'profile.qts') || faker.helpers.arrayElement(['Yes', 'No', 'I’m on track to receive QTS'])
+//  jobseeker.profile.qts = _.get(params, 'profile.qts') || faker.helpers.arrayElement(['Yes', 'No', 'I’m on track to receive QTS'])
+  jobseeker.profile.qts = _.get(params, 'profile.qts') || faker.helpers.arrayElement(['Yes'])
 
   if(jobseeker.profile.qts == 'Yes') {
-    jobseeker.profile.qtsAwardedYear = _.get(params, 'profile.qtsAwardedYear') || faker.helpers.arrayElement(['2022', '2021', '2008', '2003'])
+    jobseeker.profile.qtsAwardedYear = _.get(params, 'profile.qtsAwardedYear') || faker.helpers.arrayElement(['2018', '2015', '2008', '2003'])
   }
 
   // Personal details
@@ -37,6 +38,9 @@ const generateJobseeker = (params = {}) => {
   if(jobseeker.profile.providePhoneNumber == 'Yes') {
     jobseeker.profile.phoneNumber = _.get(params, 'profile.phoneNumber') || faker.phone.number('020# ### ###')
   }
+
+  //right to work
+  jobseeker.profile.rightToWork = _.get(params, 'profile.rightToWork') || faker.helpers.arrayElement(['Does have the right to work in the UK'])
 
 
   // Roles
@@ -126,8 +130,6 @@ const generateJobseekers = () => {
 
   jobseekers.push(generateJobseeker({
     profile: {
-      firstName: 'Adam',
-      lastName: 'Silver',
       roles: ['Teacher'],
       phases: ['Primary school'],
       qts: 'I’m on track to receive QTS'
