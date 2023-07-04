@@ -25,4 +25,29 @@ $(document).ready(function () {
 
   }
 
+  $("#clearfilters").click(function(){
+
+    var inputs = document.querySelectorAll('.govuk-checkboxes__input');
+
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].checked = false;
+    }
+
+    var theButton = document.getElementById("applyfilters");
+    theButton.click(); 
+
+  });
+
+
+  function uncheckElements(){
+    var uncheck=document.getElementsByTagName('input');
+    
+    for(var i=0;i<uncheck.length;i++){
+        if(uncheck[i].type=='checkbox')
+        {
+        uncheck[i].checked=false;
+        }
+    }
+  }
+
 })

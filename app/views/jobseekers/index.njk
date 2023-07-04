@@ -26,11 +26,11 @@
 
   {% set countOfMatch = 0 %}
   
-  {% if data['filters-rightToWork'] %}  {% set filterRightToWork %} {{data['filters-rightToWork'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterRightToWork %}{% endset %} {% endif %}
-  {% if data['filters-qts'] %}  {% set filterQTS %} {{data['filters-qts'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterQTS %}{% endset %} {% endif %}
-  {% if data['filters-role'] %}  {% set filterRole %} {{ data['filters-role'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %}  {% set filterRole %}{% endset %} {% endif %}
-  {% if data['filters-workingPatterns'] %}  {% set filterPatterns %} {{data['filters-workingPatterns'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterPatterns %}{% endset %} {% endif %}
-  {% if data['filters-keyStages'] %}  {% set filterStages %} {{data['filters-keyStages'] }} {% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterStages %}{% endset %} {% endif %}
+  {% if data['filters-rightToWork'] %}  {% set filterRightToWork %}{{data['filters-rightToWork'] }}{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterRightToWork %}{% endset %} {% endif %}
+  {% if data['filters-qts'] %}  {% set filterQTS %}{{data['filters-qts'] }}{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterQTS %}{% endset %} {% endif %}
+  {% if data['filters-role'] %}  {% set filterRole %}{{ data['filters-role'] }}{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %}  {% set filterRole %}{% endset %} {% endif %}
+  {% if data['filters-workingPatterns'] %}  {% set filterPatterns %}{{data['filters-workingPatterns'] }}{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterPatterns %}{% endset %} {% endif %}
+  {% if data['filters-keyStages'] %}  {% set filterStages %}{{data['filters-keyStages'] }}{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterStages %}{% endset %} {% endif %}
   {% if data['filters-subjects'] %}  {% set filterSubjects %}{{data['filters-subjects'] }}{% endset %} {% set countOfMatch = countOfMatch + 1  %} {% else %} {% set filterSubjects %}{% endset %} {% endif %}
 
   <!-- each time there is a match, we plus 1 -->
@@ -185,8 +185,6 @@
             </div>
           </fieldset>
         </div>
-
-        {% if showSubjectsFilter %}
 
         <div class="app-checkbox-filter govuk-checkboxes--small app-checkbox-filter--enhanced" id="subjects">
           <div class="govuk-form-group">
@@ -375,8 +373,6 @@
           </div>
         </div>
 
-        {% endif %}
-
       {% endset %}
 
       <div class="app-filter">
@@ -395,8 +391,8 @@
             <div class="app-filter__selected">
               <div class="app-filter__selected-heading">
                   <div class="app-filter__heading-title" style="width:100%; ">
-                  <p class="govuk-body govuk-!-margin-bottom-1" style="float:left; ">Selected filters</p>
-                  <p class="govuk-body" style="float:right; "><a class="govuk-link govuk-link--no-visited-state" href="/jobseekers">Clear filters</a></p>
+                    <p class="govuk-body govuk-!-margin-bottom-1" style="float:left; ">Selected filters</p>
+                    <p class="govuk-body" style="float:right; "><a id="clearfilters" class="govuk-link govuk-link--no-visited-state" href="#">Clear filters</a></p>
                   </div>
               </div>
 
@@ -452,9 +448,6 @@
                   {% endif %}
                   {% if 'Deputy headteacher' in filterRole %} 
                       <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Deputy headteacher</a></li>
-                  {% endif %}
-                  {% if 'Assistant headteacher' in filterRole %} 
-                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Assistant headteacher</a></li>
                   {% endif %}
                   {% if 'Headteacher' in filterRole %} 
                       <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Headteacher</a></li>
@@ -644,8 +637,8 @@
           {% endif %}
 
           <div class="app-filter__options">
-            <form method="get" action="/jobseekers" novalidate>
-              <button class="govuk-button" data-module="govuk-button">
+            <form id="filtersform" method="get" action="/jobseekers" novalidate>
+              <button id="applyfilters" class="govuk-button" data-module="govuk-button">
                 Apply filters
               </button>
               {{filterOptionsHtml | safe}}
@@ -674,8 +667,6 @@
       <div class="app-list">
         {% for jobseeker in jobseekers %}
 
-        {% if loop.index0 < 10 %} 
-
           <!-- text for profile QTS -->
           {% set teachingStatus %}
             {% if jobseeker.profile.qts == 'Yes' %}
@@ -686,24 +677,23 @@
               Does not have QTS
             {% endif %}
           {% endset %}
+          
 
           <!-- QTS check 1-->
           {% set jobseekerCheckQTS %}{% if jobseeker.profile.qts == 'Yes' %}Yes{% elseif jobseeker.profile.qts == 'I’m on track to receive QTS' %}Yes{% else %}No{% endif %}{% endset %}
 
           <!-- QTS check 2, change text to Yes to confirm match -->
-
           {% set filterForQts %}{% if filters-qts == "Does not have QTS" %}No{% else %}Yes{% endif %}{% endset %}
 
           <!-- set a 0 that we can loop through and + 1 to -->
           {% set countOfJobMatch = 0 %}
           
           {% if jobseeker.profile.rightToWork in filterRightToWork %} {% set countOfJobMatch = countOfJobMatch + 1 %}  {% endif %}
-          {% if jobseekerCheckQTS in filterForQts %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
-          {% if jobseeker.profile.roles in filterRole %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
-          {% if jobseeker.profile.workingPatterns in filterPatterns %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
-          {% if filterStages in jobseeker.profile.keyStages %}  {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
-          {% if filterSubjects in jobseeker.profile.subjects %}  {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
-          
+          {% if data['filters-qts'] %} {% if jobseekerCheckQTS in filterForQts %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}{% endif %}
+          {% if filterRole in jobseeker.profile.roles %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+          {% if filterPatterns in jobseeker.profile.workingPatterns %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+          {% if jobseeker.profile.keyStages in filterStages %}  {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+          {% if jobseeker.profile.subjects in filterSubjects %}  {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
           <!-- each time there is a match, we plus 1 -->
 
           <!-- we then only show the jobs that have a number match, meaning they match the filters! -->
@@ -768,15 +758,13 @@
         
         {% endif %}
 
-        {% endif %}
-
 
         {% endfor %}
       </div>
 
       <div id="try-another-search" class="divider-bottom" style="display:none;">
         <div class="govuk-heading-m">Try another search</div>
-        <p class="govuk-body">You may get more results if you remove some filters if you have used them</p>
+        <p class="govuk-body">You may get more results if you remove some filters if you have used them.</p>
       </div>
 
       {{ govukPagination({

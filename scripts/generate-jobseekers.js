@@ -136,6 +136,12 @@ const generateJobseekers = () => {
     }
   }))
 
+  jobseekers.push(generateJobseeker({
+    profile: {
+      roles: ['Headteacher'],
+    }
+  }))
+
   for(let i = 0; i < 6; i++) {
     jobseekers.push(generateJobseeker({
       profile: {

@@ -19,6 +19,19 @@ function isQTSRelevant(jobseeker) {
 
 module.exports = router => {
 
+  router.get('/jobseeker-clear', function (req, res) {
+      
+      delete req.session.data.filters-rightToWork
+      delete req.session.data.filters-qts
+      delete req.session.data.filters-role
+      delete req.session.data.filters-workingPatterns
+      delete req.session.data.filters-keyStages
+      delete req.session.data.filters-subjects
+
+      res.redirect('/jobseekers')
+  })
+
+
   router.get('/jobseekers', authentication.checkIsAuthenticated, (req, res) => {
     let user = req.session.user
 

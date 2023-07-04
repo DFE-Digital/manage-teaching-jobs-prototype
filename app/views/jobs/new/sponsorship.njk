@@ -1,0 +1,90 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Are you a licensed school who is interested in offering sponsorship to an international teacher for this role?' %}
+{% set caption = 'Create job listing - section 3 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      {% endset %}
+
+      {% set sponsorshipAdvice %}
+        <div id="hint" class="govuk-hint">
+            There is guidance on how to <a target="_blank" href="https://www.gov.uk/guidance/recruit-teachers-from-overseas">recruit teachers from overseas (link opens in a new tab)</a> on GOV.UK.
+        </div>
+      {% endset %}
+
+      {% set yesHtml %}
+       <p>This will enable jobseekers who are looking for sponsorship to find your job more easily.</p>
+      {% endset -%}
+
+      {% set noHtml %}
+       <p>This will tell job seekers on your job listing that you cannot offer sponsorship for this role.</p>
+      {% endset -%}
+
+      <form action="/jobs/new/contact-details" method="post">
+
+        {{ govukRadios({
+          idPrefix: "createJob[sponsorship]",
+          name: "createJob[sponsorship]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+              html: sponsorshipAdvice
+            },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("['createJob']['sponsorship']", "Yes"),
+              conditional: {
+                html: yesHtml
+              }
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("['createJob']['sponsorship']", "No"),
+              conditional: {
+                html: noHtml
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

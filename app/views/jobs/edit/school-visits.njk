@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Do you want to offer school visits?' %}
+{% set heading = 'Do you want to offer school visits??' %}
 {% set caption = 'Create job listing - section 3 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -22,7 +22,7 @@
         {{heading}}
       {% endset %}
 
-      <form action="/jobs/new/contact-details" method="post">
+      <form action="/jobs/new/sponsorship" method="post">
 
         {{ govukRadios({
           idPrefix: "createJob[school-visits]",

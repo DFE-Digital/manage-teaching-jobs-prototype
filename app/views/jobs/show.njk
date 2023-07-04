@@ -19,17 +19,31 @@
     }) }}
   </h1>
 
+
+  {% set linkForCandidates %}filters-role={{job.role}}{% if job.subjects %}&filters-subjects={{job.subjects}}{% endif %}{% endset %}
+
+
   {% set insetHtml %}
+    <p><a href="/jobseekers?{{linkForCandidates}}" class="">View 3 candidate profiles</a> that match this job listing.</p>
+  {% endset %}
+
+
 
     {% if job.status == 'Active' %}
       <p class="govuk-!-width-two-thirds">This job listing was published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
 
-      <div class="govuk-button-group">
+      <div class="govuk-button-group"><p>
         <a href="/jobs/{{job.id}}/preview">View (opens in new tab)</a>
         <a href="#" class="govuk-!-margin-left-3">Copy</a>
         <a href="#" class="govuk-!-margin-left-3">Close early</a>
-        <a href="#" class="govuk-!-margin-left-3">Extend closing date</a>
+        <a href="#" class="govuk-!-margin-left-3">Extend closing date</a></p>
       </div>
+
+      {{ govukInsetText({
+        html: insetHtml,
+        classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-2 govuk-!-padding-bottom-3'
+      }) }}
+
 
     {% endif %}
 
@@ -84,12 +98,6 @@
 
 
 
-  {% endset %}
-
-  {{ govukInsetText({
-    html: insetHtml,
-    classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-2 govuk-!-padding-bottom-3'
-  }) }}
 
 
   {% include "includes/job-sub-navigation.njk" %}
