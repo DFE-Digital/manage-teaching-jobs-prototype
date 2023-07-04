@@ -11,7 +11,3 @@ public
 node_modules/
 .tmuxp.*
 .idea
-app/data/jobs.json
-app/data/jobseekers.json
-app/data/organisations.json
-app/data/users.json
