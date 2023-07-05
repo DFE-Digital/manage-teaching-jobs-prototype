@@ -192,7 +192,18 @@ module.exports = router => {
     res.redirect(`/jobseekers/${req.params.id}`)
   })
 
+  //customise message
+  router.get('/jobseekers/:id/invites/new/customise', authentication.checkIsAuthenticated, (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
 
+    res.render('jobseekers/invites/new/customise', {
+      jobseeker
+    })
+  })
+
+  router.post('/jobseekers/:id/invites/new/customise', authentication.checkIsAuthenticated, (req, res) => {
+    res.redirect(`/jobseekers/${req.params.id}/invites/new/check`)
+  })
 
   
   router.get('/search', authentication.checkIsAuthenticated, (req, res) => {

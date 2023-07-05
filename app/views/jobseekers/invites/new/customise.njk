@@ -1,0 +1,73 @@
+
+{% extends "layout.njk" %}
+
+{% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
+
+{% set caption =  name + ' - invite to apply for a job'  %}
+
+{% set title = 'Customise your message' %}
+
+{% set primaryNavId = 'jobseekers' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobseekers/"+jobseeker.id
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <span class="govuk-caption-l">
+            {{caption}}
+          </span>
+          <h1 class="govuk-fieldset__heading">
+            Customise email
+          </h1>
+        </legend>
+
+        <div class="govuk-inset-text">
+          You will not be able to edit the link to the role in the email.
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="customise-message-1">
+            Introduction
+          </label>
+          <input class="govuk-input" id="customise-message-1" name="customise-message-1" type="text" value="Dear {{jobseeker.profile.firstName}},">
+        </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="customise-message-2">
+            Email content
+          </label>
+          <textarea class="govuk-textarea" id="customise-message-2" name="customise-message-2" rows="5" >Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for a role.</textarea>
+        </div>
+      </fieldset>
+
+      
+       
+        <div class="govuk-button-group">
+
+          <button class="govuk-button" data-module="govuk-button">
+            Save and preview
+          </button>
+
+        </div>
+
+
+        <p><a href="/jobseekers/{{jobseeker.id}}">Cancel</a></p>
+      </form>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
