@@ -1,0 +1,136 @@
+
+{% extends "layout.njk" %}
+
+{% set title = heading %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">Cookies on Teaching Vacancies </h1>
+
+
+		<p class="govuk-body">Cookies are files saved on your phone, tablet or computer when you visit a website or use a digital service.</p>
+		<p class="govuk-body">We use cookies to collect and store information about how you use the Teaching Vacancies service.</p>
+        
+        <h2 class="govuk-heading-l">Cookie settings</h2>
+		<p class="govuk-body">We use strictly necessary cookies to make the service work and additional cookies to measure how you use the service and help us with our marketing and communications. You can choose if you’re happy for us to use additional cookies.</p>
+
+        <h2 class="govuk-heading-l">Additional settings</h2>
+        <h3 class="govuk-heading-m">Cookies that measure website use</h3>
+		<p class="govuk-body">We use Google Analytics to measure how you use the service. These cookies collect information about:</p>
+        
+		<ul class="govuk-list govuk-list--bullet">
+			<li>the pages you visit</li>
+            <li>how long you spend on each page </li>
+            <li>how you got to the service </li>
+            <li>what you select while using the service </li>
+            <li>any errors you see while using the service </li>
+		</ul>
+
+		<p class="govuk-body">We anonymise any personally identifiable information, like your IP address or your postcode before we share it with Google. </p>
+
+        <table class="govuk-table">
+			<thead class="govuk-table__head">
+				<tr>
+					<th class="govuk-table__header">Name</th>
+					<th class="govuk-table__header">Purpose</th>
+					<th class="govuk-table__header">Expires</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">_ga</td>
+					<td class="govuk-table__cell">Used to distinguish anonymous users</td>
+					<td class="govuk-table__cell">2 years</td>
+				</tr>
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">_gid</td>
+					<td class="govuk-table__cell">Used to distinguish anonymous users</td>
+					<td class="govuk-table__cell">24 hours</td>
+				</tr>
+                <tr class="govuk-table__row">
+					<td class="govuk-table__cell">_gat</td>
+					<td class="govuk-table__cell">Used to manage the rate at which page view requests are made</td>
+					<td class="govuk-table__cell">1 minute</td>
+				</tr>
+			</tbody>
+		</table>
+
+        <h3 class="govuk-heading-m">Cookies that help with our communications and marketing</h3>
+
+		<p class="govuk-body">These cookies do things like remember your preferences to personalise your experience of using the service.</p>
+
+        <table class="govuk-table">
+			<thead class="govuk-table__head">
+				<tr>
+					<th class="govuk-table__header">Name</th>
+					<th class="govuk-table__header">Purpose</th>
+					<th class="govuk-table__header">Expires</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">_gcl_aw, _gcl_dc,_gcl_au and _gac </td>
+					<td class="govuk-table__cell">Used to distinguish anonymous users</td>
+					<td class="govuk-table__cell">90 days </td>
+				</tr>
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">IDE, ANID, DSID, FLC, AID, TAID and exchange_uid </td>
+					<td class="govuk-table__cell">Used to distinguish which adverts for Teaching Vacancies users have seen and selected </td>
+					<td class="govuk-table__cell">13 months</td>
+				</tr>
+        	</tbody>
+		</table>
+
+		<form accept-charset="UTF-8" action="/cookies-preferences" class="new_cookies_preferences_form" id="new_cookies_preferences_form" method="post" name="new_cookies_preferences_form">
+			<input autocomplete="off" name="authenticity_token" type="hidden" value="6yqPGw0zvFPB7x0bNFhaucmp0qsXWMXtYecn1yr-V50IUlcqXdP7n_87AQQTg4_gfPZ_RQ5DkACGFaG7sVnuVg">
+			<div class="govuk-form-group">
+				<fieldset class="govuk-fieldset">
+					<legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
+					<h3 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Do you want to accept analytics cookies?</legend></h3><input autocomplete="off" id="cookies_preferences_form_cookies_consent" name="cookies_preferences_form[cookies_consent]" type="hidden" value="">
+					<div class="govuk-radios" data-module="govuk-radios">
+						<div class="govuk-radios__item">
+							<input checked="checked" class="govuk-radios__input" id="cookies-preferences-form-cookies-consent-yes-field" name="cookies_preferences_form[cookies_consent]" type="radio" value="yes"><label class="govuk-label govuk-radios__label" for="cookies-preferences-form-cookies-consent-yes-field">Yes, use additional cookies</label>
+						</div>
+						<div class="govuk-radios__item">
+							<input class="govuk-radios__input" id="cookies-preferences-form-cookies-consent-no-field" name="cookies_preferences_form[cookies_consent]" type="radio" value="no"><label class="govuk-label govuk-radios__label" for="cookies-preferences-form-cookies-consent-no-field">No, do not use additional cookies </label>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</form>
+
+		<h2 class="govuk-heading-l">Strictly necessary cookies</h2>
+		<p class="govuk-body">These essential cookies do things like store information about your time on the service and remember your cookie settings. </p>
+		<table class="govuk-table">
+			<thead class="govuk-table__head">
+				<tr>
+					<th class="govuk-table__header">Name</th>
+					<th class="govuk-table__header">Purpose</th>
+					<th class="govuk-table__header">Expires</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">_teachingvacancies_session</td>
+					<td class="govuk-table__cell">Stores encrypted information about your time on the website</td>
+					<td class="govuk-table__cell">When you close your browser</td>
+				</tr>
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">consented-to-cookies</td>
+					<td class="govuk-table__cell">Saves your cookie consent settings</td>
+					<td class="govuk-table__cell">6 months</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<p class="govuk-body">Essential cookies always need to be on. </p>
+        <button class="govuk-button" data-module="govuk-button" data-prevent-double-click="true" formnovalidate="formnovalidate" type="submit">Save changes</button>
+
+	</div>
+
+
+  </div>
+
+{% endblock %}
