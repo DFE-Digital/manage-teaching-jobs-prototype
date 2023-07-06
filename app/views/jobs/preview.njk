@@ -26,6 +26,11 @@
 
   {% set inset %}
     <p>This job listing ends in 16 days on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+    {% if 'Science' in job.title %}
+      <p>The school is able to sponsor an international teacher's visa for this job.</p>
+    {% else %}
+      <p>The school cannot sponsor an international teacher's visa for this job.</p>
+    {% endif %}
 
     {% set href %}
       {% if job.isUsingApplicationForm == 'No' %}
