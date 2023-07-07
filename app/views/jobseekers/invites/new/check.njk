@@ -51,36 +51,35 @@
       }) }}
 
       <h2 class="govuk-heading-m">
-        Preview
+        Preview of email
       </h2>
 
       {% set preview%}
 
         {% if data['customise-message-1'] %}
 
-          <p>{{data['customise-message-1']}}</p>
-          <p>{{data['customise-message-2']}}</p>
+          <p id="customText">{{data['customise-message-1']}}</p>
 
           <p class="govuk-!-margin-bottom-1">{{data.invite.jobs}} at {{user.organisation.name}}:</p>
           <p><a href="#">https://teaching-vacancies.school.com/123</a></p>
 
         {% else %} 
 
-        <p>Dear {{jobseeker.profile.firstName}}</p>
+          <p>Dear {{jobseeker.profile.firstName}}</p>
 
-          {% if data.invite.jobs.length > 1 %}
-            <p>Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for {{data.invite.jobs | length}} roles.</p>
-            {# <ul class="govuk-list govuk-list--bullet"> #}
-              {% for role in data.invite.jobs %}
-                <p>{{role}} at {{user.organisation.name}}<br> <a href="#">https://teaching-vacancies.school.com/123</a></p>
-              {% endfor %}
-            {# </ul> #}
-          {% else %}
-            <p>Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for a role.</p>
+            {% if data.invite.jobs.length > 1 %}
+              <p>Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for {{data.invite.jobs | length}} roles.</p>
+              {# <ul class="govuk-list govuk-list--bullet"> #}
+                {% for role in data.invite.jobs %}
+                  <p>{{role}} at {{user.organisation.name}}<br> <a href="#">https://teaching-vacancies.school.com/123</a></p>
+                {% endfor %}
+              {# </ul> #}
+            {% else %}
+              <p>Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for a role.</p>
 
-            <p class="govuk-!-margin-bottom-1">{{data.invite.jobs}} at {{user.organisation.name}}:</p>
-            <p><a href="#">https://teaching-vacancies.school.com/123</a></p>
-          {% endif %}
+              <p class="govuk-!-margin-bottom-1">{{data.invite.jobs}} at {{user.organisation.name}}:</p>
+              <p><a href="#">https://teaching-vacancies.school.com/123</a></p>
+            {% endif %}
 
         {% endif %}
 
@@ -99,7 +98,7 @@
           </button>
 
           <a href="customise" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-            Customise message
+            Customise email
           </a>
 
         </div>
