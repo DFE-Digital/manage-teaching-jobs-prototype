@@ -13,12 +13,6 @@
           {{title}}
         </h1>
 
-        {% if user.organisation.schools %}
-          <p>These candidates are willing to travel to a location that’s near to at least one of your schools.</p>
-        {% else %}
-          <p>These candidates are willing to travel to a location that’s near to your school.</p>
-        {% endif %}
-
     </div>
   </div>
 
@@ -27,6 +21,7 @@
     <div class="app-filter-layout__filter">
       {% include "includes/profiles-filter-panel.njk" %}
     </div>
+    
 
     <p>Ordered by most recently updated.</p>
 
