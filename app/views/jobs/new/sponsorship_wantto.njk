@@ -1,0 +1,62 @@
+{% extends "layout.njk" %}
+
+{% set heading = "Do you want to offer skilled worker visa sponsorship to non-UK citizens for this role?" %}
+{% set caption = 'Create job listing - section 3 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/jobs/new/contact-details" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset aria-describedby="createJob[sponsorship]-hint" class="govuk-fieldset">
+            <h1 class="govuk-fieldset__heading">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <span class="govuk-caption-l">Create job listing - section 3 of 4</span> 
+                    Do you want to offer skilled worker visa sponsorship to non-UK citizens for this role?
+                </legend>
+            </h1>
+            
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input aria-controls="conditional-createJob[sponsorship]" aria-expanded="false" class="govuk-radios__input" id="createJob[sponsorship]" name="createJob[sponsorship]" type="radio" value="Yes"> <label class="govuk-label govuk-radios__label" for="createJob[sponsorship]">Yes</label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-createJob[sponsorship]">
+                <p>This will help jobseekers who are looking for sponsorship to find your job more easily.</p>
+              </div>
+              <div class="govuk-radios__item">
+                <input aria-controls="conditional-createJob[sponsorship]-2" aria-expanded="false" class="govuk-radios__input" id="createJob[sponsorship]-2" name="createJob[sponsorship]" type="radio" value="No"> <label class="govuk-label govuk-radios__label" for="createJob[sponsorship]-2">No</label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-createJob[sponsorship]-2">
+                <p>This will tell job seekers on your job listing that you cannot offer sponsorship for this role.</p>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

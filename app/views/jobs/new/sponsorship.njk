@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = "Are you able to sponsor an international teacher's visa for this role?" %}
+{% set heading = "Can your school offer skilled worker visa sponsorship to non-UK citizens?" %}
 {% set caption = 'Create job listing - section 3 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -15,61 +15,33 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set h1 %}
-        <span class="govuk-caption-l">
-          {{caption}}
-        </span>
-        {{heading}}
-      {% endset %}
+      <form action="" method="post">
 
-      {% set sponsorshipAdvice %}
-        <div id="hint" class="govuk-hint">
-            There is guidance on how to <a target="_blank" href="https://www.gov.uk/guidance/recruit-teachers-from-overseas">recruit teachers from overseas (link opens in a new tab)</a> on GOV.UK.
+        <div class="govuk-form-group">
+          <fieldset aria-describedby="createJob[sponsorship]-hint" class="govuk-fieldset">
+            <h1 class="govuk-fieldset__heading">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <span class="govuk-caption-l">Create job listing - section 3 of 4</span> 
+                Can your school offer skilled worker visa sponsorship to non-UK citizens?
+              </legend>
+            </h1>
+            
+            <p class="govuk-body">
+              You can check if your school or organisation is already <a target="_blank" href="https://www.gov.uk/government/publications/register-of-licensed-sponsors-workers">registered to sponsor non-UK citizens<span class="govuk-visually-hidden"> (opens in new tab)</span></a>. There is also guidance on how to <a target="_blank" href="https://www.gov.uk/guidance/recruit-teachers-from-overseas">recruit teachers from overseas<span class="govuk-visually-hidden"> (opens in new tab)</span></a>.
+            </p>
+            
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input aria-expanded="false" class="govuk-radios__input" id="createJob-sponsorship" name="createJob-sponsorship" type="radio" value="Yes"> <label class="govuk-label govuk-radios__label" for="createJob-sponsorship">Yes, we can offer a skilled worker sponsorship</label>
+              </div>
+              
+              <div class="govuk-radios__item">
+                <input aria-expanded="false" class="govuk-radios__input" id="createJob[sponsorship]-2" name="createJob-sponsorship" type="radio" value="No"> <label class="govuk-label govuk-radios__label" for="createJob[sponsorship]-2">No, we cannot offer a skilled worker sponsorship</label>
+              </div>
+            
+            </div>
+          </fieldset>
         </div>
-      {% endset %}
-
-      {% set yesHtml %}
-       <p>This will enable jobseekers who are looking for sponsorship to find your job more easily.</p>
-      {% endset -%}
-
-      {% set noHtml %}
-       <p>This will tell job seekers on your job listing that you cannot offer sponsorship for this role.</p>
-      {% endset -%}
-
-      <form action="/jobs/new/contact-details" method="post">
-
-        {{ govukRadios({
-          idPrefix: "createJob[sponsorship]",
-          name: "createJob[sponsorship]",
-          fieldset: {
-            legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          hint: {
-              html: sponsorshipAdvice
-            },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes",
-              checked: checked("['createJob']['sponsorship']", "Yes"),
-              conditional: {
-                html: yesHtml
-              }
-            },
-            {
-              value: "No",
-              text: "No",
-              checked: checked("['createJob']['sponsorship']", "No"),
-              conditional: {
-                html: noHtml
-              }
-            }
-          ]
-        }) }}
 
         {{ govukButton({
           text: "Save and continue"

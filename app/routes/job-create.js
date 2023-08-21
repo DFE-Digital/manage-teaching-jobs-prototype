@@ -101,6 +101,17 @@ module.exports = router => {
     }
   })
 
+  router.post('/jobs/new/sponsorship', (req, res) => {
+
+    var sponsorAnswer = req.session.data['createJob-sponsorship']
+
+    if( sponsorAnswer == 'Yes') {
+      res.redirect('/jobs/new/sponsorship_wantto')
+    } else {
+      res.redirect('/jobs/new/contact-details')
+    }
+  })
+
   router.post('/jobs/new/working-patterns', (req, res) => {
     const validator = new Validator(req, res);
 
