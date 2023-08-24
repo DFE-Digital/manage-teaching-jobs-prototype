@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = "Can your school offer skilled worker visa sponsorship to non-UK citizens?" %}
+{% set heading = "Do you want to offer skilled worker visa sponsorship to non-UK citizens for this role?" %}
 {% set caption = 'Create job listing - section 3 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -15,29 +15,39 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="" method="post">
+      <form action="/jobs/new/contact-details" method="post">
 
         <div class="govuk-form-group">
-          <fieldset aria-describedby="createJob[sponsorship]-hint" class="govuk-fieldset">
+          <fieldset aria-describedby="createJob-sponsorship-hint" class="govuk-fieldset">
+            
             <h1 class="govuk-fieldset__heading">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 <span class="govuk-caption-l">Create job listing - section 3 of 4</span> 
-                Can your school offer skilled worker visa sponsorship to non-UK citizens?
+                {{heading}}
               </legend>
             </h1>
             
-            <p class="govuk-body">
-              You can check if your school or organisation is already <a target="_blank" href="https://www.gov.uk/government/publications/register-of-licensed-sponsors-workers">registered to sponsor non-UK citizens<span class="govuk-visually-hidden"> (opens in new tab)</span></a>. There is also guidance on how to <a target="_blank" href="https://www.gov.uk/guidance/recruit-teachers-from-overseas">recruit teachers from overseas<span class="govuk-visually-hidden"> (opens in new tab)</span></a>.
-            </p>
-            
+            <div id="sign-in-hint" class="govuk-hint">
+                If you’re not already a sponsor, you can <a href="https://www.gov.uk/guidance/recruit-teachers-from-overseas#apply-to-become-a-licensed-worker-sponsor">apply to become a licensed worker sponsor</a>.
+            </div>
+
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input aria-expanded="false" class="govuk-radios__input" id="createJob-sponsorship" name="createJob-sponsorship" type="radio" value="Yes"> <label class="govuk-label govuk-radios__label" for="createJob-sponsorship">Yes, we can offer a skilled worker sponsorship</label>
+                <input aria-controls="conditional-createJob-sponsorship" aria-expanded="false" class="govuk-radios__input" id="createJob-sponsorship" name="createJob-sponsorship" type="radio" value="Yes"> <label class="govuk-label govuk-radios__label" for="createJob-sponsorship">Yes</label>
               </div>
-              
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-createJob-sponsorship">
+                <p>This will help jobseekers who are looking for sponsorship to find your job more easily.</p>
+              </div>
               <div class="govuk-radios__item">
-                <input aria-expanded="false" class="govuk-radios__input" id="createJob[sponsorship]-2" name="createJob-sponsorship" type="radio" value="No"> <label class="govuk-label govuk-radios__label" for="createJob[sponsorship]-2">No, we cannot offer a skilled worker sponsorship</label>
+                <input aria-controls="conditional-createJob-sponsorship-2" aria-expanded="false" class="govuk-radios__input" id="createJob-sponsorship-2" name="createJob-sponsorship" type="radio" value="No"> <label class="govuk-label govuk-radios__label" for="createJob-sponsorship-2">No</label>
               </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-createJob-sponsorship-2">
+                <p>This will tell job seekers on your job listing that you cannot offer sponsorship for this role.</p>
+              </div>
+            </div>
+
+            </div>
+           
             
             </div>
           </fieldset>
