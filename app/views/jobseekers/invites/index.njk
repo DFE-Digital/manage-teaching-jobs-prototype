@@ -10,11 +10,21 @@
     {{title}}
   </h1>
 
+  <div class="govuk-button-group">
+   
+   {{ govukButton({
+      text: "Contact about a job",
+      href: '/jobseekers/' + jobseeker.id + '/invites/new',
+      classes: 'govuk-!-margin-bottom-2'
+   }) }}
+
   {{ govukButton({
-    text: "Invite to apply for a job",
+    text: "Contact candidate",
     href: '/jobseekers/' + jobseeker.id + '/invites/new',
-    classes: 'govuk-!-margin-bottom-2'
+    classes: "govuk-button--secondary"
   }) }}
+
+</div>
 
   {% include "includes/candidate-profile-sub-navigation.njk" %}
 
