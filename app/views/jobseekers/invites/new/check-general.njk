@@ -3,19 +3,9 @@
 
 {% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
 
-{% set theJobs = data.invite.jobs | join('<br>') %}
+{% set caption =  name + ' - invite to apply for a job'  %}
 
-{% if theJobs == 'general' or theJobs == '' %}
-    
-    {% set caption =  name + ' - email candidate'  %}
-    {% set title = 'Check details and email candidate' %}
-
-{% else %}
-
-    {% set caption =  name + ' - email candidate about a job'  %}
-    {% set title = 'Check details and email candidate about a job' %}
-
-{% endif %}
+{% set title = 'Check details and invite candidate to apply' %}
 
 {% set primaryNavId = 'jobseekers' %}
 
@@ -38,19 +28,14 @@
         {{title}}
       </h1>
 
-      {% if theJobs == 'general' or theJobs == '' %}
-       
-       
-      {% else %}
-        
-        {{ govukSummaryList({
+      {{ govukSummaryList({
         rows: [
           {
             key: {
               text: "Jobs to invite candidate to apply for"
             },
             value: {
-              html: data.invite.jobs | join('<br>')
+              html: data['invite-jobs'] | safe
             },
             actions: {
               items: [
@@ -64,10 +49,6 @@
           }
         ]
       }) }}
-      
-      {% endif %}
-
-      
 
       <h2 class="govuk-heading-m">
         Preview of email
@@ -78,16 +59,9 @@
         {% if data['customise-message-1'] %}
 
           <p id="customText">{{data['customise-message-1']}}</p>
-          
-          {% if theJobs == 'general' or theJobs == '' %}
-            <p>Sent from {{user.organisation.name}}<br> <a href="#">https://teaching-vacancies.service.gov.uk/schools/courtland</a></p>
-          {% else %}
 
-            {% for role in data.invite.jobs %}
-              <p>{{role}} at {{user.organisation.name}}<br> <a href="#">https://teaching-vacancies.school.com/123</a></p>
-            {% endfor %}
-
-          {% endif %}
+          <p class="govuk-!-margin-bottom-1">{{data.invite.jobs}} at {{user.organisation.name}}:</p>
+          <p><a href="#">https://teaching-vacancies.school.com/123</a></p>
 
         {% else %} 
 
@@ -96,18 +70,12 @@
             {% if data.invite.jobs.length > 1 %}
               <p>Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for {{data.invite.jobs | length}} roles.</p>
               {# <ul class="govuk-list govuk-list--bullet"> #}
-              {% if theJobs == 'general' or theJobs == '' %}
-
-              {% else %}
-
                 {% for role in data.invite.jobs %}
                   <p>{{role}} at {{user.organisation.name}}<br> <a href="#">https://teaching-vacancies.school.com/123</a></p>
                 {% endfor %}
-              
-              {% endif %}
               {# </ul> #}
             {% else %}
-              <p>Rachael at {{user.organisation.name}} has reviewed your profile.</p>
+              <p>Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for a role.</p>
 
               <p class="govuk-!-margin-bottom-1">{{data.invite.jobs}} at {{user.organisation.name}}:</p>
               <p><a href="#">https://teaching-vacancies.school.com/123</a></p>
@@ -121,34 +89,17 @@
         html: preview
       }) }}
 
-      
-      {% if theJobs == 'general' or theJobs == '' %}
-          <p>{{name}} will be sent an email from Teaching Vacancies with your message.</p>     
-      {% else %}
-          <p>{{name}} will be sent an email from Teaching Vacancies to tell them they’ve been invited to apply for the jobs you selected.</p>     
-      {% endif %}
-
       <form method="post">
        
         <div class="govuk-button-group">
 
           <button class="govuk-button" data-module="govuk-button">
-            {% if theJobs == 'general' or theJobs == '' %}
-              Send email
-            {% else %}
-              Send invite to apply
-            {% endif %}
+            Send invite to apply
           </button>
 
-          {% if theJobs == 'general' or theJobs == '' %}
-            <a href="customise-general" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-              Customise email
-            </a>
-          {% else %}
-            <a href="customise" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-              Customise email
-            </a>
-          {% endif %}
+          <a href="customise" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Customise email
+          </a>
 
         </div>
 

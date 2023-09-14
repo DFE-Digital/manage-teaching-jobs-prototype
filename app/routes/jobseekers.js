@@ -168,6 +168,17 @@ module.exports = router => {
       }
     })
 
+    // Adding an extra value outside of the map
+    jobCheckboxes.push({
+      divider: "or"
+    });
+
+    jobCheckboxes.push({
+      text: 'Send a custom message',
+      value: 'general',
+      behaviour: "exclusive"
+    });
+
     res.render('jobseekers/invites/new/index', {
       jobseeker,
       publishedJobs,
@@ -176,7 +187,15 @@ module.exports = router => {
   })
 
   router.post('/jobseekers/:id/invites/new', authentication.checkIsAuthenticated, (req, res) => {
-    res.redirect(`/jobseekers/${req.params.id}/invites/new/check`)
+
+    //check if general option is selectred
+
+    if(req.body['invite'] && req.body['invite'].jobs == 'general') {
+      res.redirect(`/jobseekers/${req.params.id}/invites/new/customise-general`)
+    } else {
+      res.redirect(`/jobseekers/${req.params.id}/invites/new/check`)
+    }
+
   })
 
   router.get('/jobseekers/:id/invites/new/check', authentication.checkIsAuthenticated, (req, res) => {
@@ -188,7 +207,8 @@ module.exports = router => {
   })
 
   router.post('/jobseekers/:id/invites/new/check', authentication.checkIsAuthenticated, (req, res) => {
-    req.flash('success', 'Invited to apply for a job')
+
+    req.flash('success', 'Email sent to candidate')
     res.redirect(`/jobseekers/${req.params.id}`)
   })
 
@@ -202,6 +222,22 @@ module.exports = router => {
   })
 
   router.post('/jobseekers/:id/invites/new/customise', authentication.checkIsAuthenticated, (req, res) => {
+    res.redirect(`/jobseekers/${req.params.id}/invites/new/check`)
+  })
+
+  //customise message general
+  router.get('/jobseekers/:id/invites/new/customise-general', authentication.checkIsAuthenticated, (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+    res.render('jobseekers/invites/new/customise-general', {
+      jobseeker
+    })
+  })
+
+  router.post('/jobseekers/:id/invites/new/customise-general', authentication.checkIsAuthenticated, (req, res) => {
+
+    req.session.data['invite-jobs'] == 'general'
+
     res.redirect(`/jobseekers/${req.params.id}/invites/new/check`)
   })
 
