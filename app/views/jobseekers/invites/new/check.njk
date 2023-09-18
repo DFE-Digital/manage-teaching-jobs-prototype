@@ -3,17 +3,22 @@
 
 {% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
 
-{% set theJobs = data.invite.jobs | join('<br>') %}
+
+{% if data.invite.jobs.length %}
+  {% set theJobs = data.invite.jobs | join('<br>') %}
+{% else %}
+  {% set theJobs = '' %}
+{% endif %}
 
 {% if theJobs == 'general' or theJobs == '' %}
     
-    {% set caption =  name + ' - email candidate'  %}
+    {% set caption =  name + ' - send custom email'  %}
     {% set title = 'Check details and email candidate' %}
 
 {% else %}
 
-    {% set caption =  name + ' - email candidate about a job'  %}
-    {% set title = 'Check details and email candidate about a job' %}
+    {% set caption =  name + ' - send email about a job'  %}
+    {% set title = 'Check details and email candidate' %}
 
 {% endif %}
 
@@ -47,7 +52,7 @@
         rows: [
           {
             key: {
-              text: "Jobs to invite candidate to apply for"
+              text: "What jobs do you want to invite the candidate to apply for?"
             },
             value: {
               html: data.invite.jobs | join('<br>')
@@ -109,6 +114,8 @@
             {% else %}
               <p>Rachael at {{user.organisation.name}} has reviewed your profile.</p>
 
+              <p>You can contact {{user.organisation.name}} by emailing: {{user.emailAddress}}</p>
+
               <p class="govuk-!-margin-bottom-1">{{data.invite.jobs}} at {{user.organisation.name}}:</p>
               <p><a href="#">https://teaching-vacancies.school.com/123</a></p>
             {% endif %}
@@ -121,12 +128,55 @@
         html: preview
       }) }}
 
-      
+      {% if theJobs == 'general' or theJobs == '' %}
+        <a href="customise-general" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+          Customise email
+        </a>
+      {% else %}
+        <a href="customise" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+          Customise email
+        </a>
+      {% endif %}
+
+      {% set includedHintHtml %}
+        
+        This will add your account email: {{user.emailAddress}} to the email being sent so you receive a carbon copy or ‘cc’.
+        
+      {% endset %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        name: "changedName",
+        fieldset: {
+          legend: {
+            text: "Do you want to receive a carbon copy of the email being sent?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          html: includedHintHtml
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      <!--
       {% if theJobs == 'general' or theJobs == '' %}
           <p>{{name}} will be sent an email from Teaching Vacancies with your message.</p>     
       {% else %}
           <p>{{name}} will be sent an email from Teaching Vacancies to tell them they’ve been invited to apply for the jobs you selected.</p>     
       {% endif %}
+
+      -->
 
       <form method="post">
        
@@ -136,19 +186,9 @@
             {% if theJobs == 'general' or theJobs == '' %}
               Send email
             {% else %}
-              Send invite to apply
+              Send email
             {% endif %}
           </button>
-
-          {% if theJobs == 'general' or theJobs == '' %}
-            <a href="customise-general" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-              Customise email
-            </a>
-          {% else %}
-            <a href="customise" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-              Customise email
-            </a>
-          {% endif %}
 
         </div>
 

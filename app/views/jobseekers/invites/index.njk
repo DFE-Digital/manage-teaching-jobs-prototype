@@ -12,19 +12,19 @@
 
   <div class="govuk-button-group">
    
-   {{ govukButton({
-      text: "Email about a job",
-      href: '/jobseekers/' + jobseeker.id + '/invites/new',
-      classes: 'govuk-!-margin-bottom-2'
-   }) }}
+    {{ govukButton({
+        text: "Send email about a job",
+        href: '/jobseekers/' + jobseeker.id + '/invites/new',
+        classes: 'govuk-!-margin-bottom-2'
+    }) }}
 
-  {{ govukButton({
-    text: "Email",
-    href: '/jobseekers/' + jobseeker.id + '/invites/new/customise-general',
-    classes: "govuk-button--secondary"
-  }) }}
+    {{ govukButton({
+      text: "Send custom email",
+      href: '/jobseekers/' + jobseeker.id + '/invites/new/customise-general',
+      classes: "govuk-button--secondary"
+    }) }}
 
-</div>
+  </div>
 
   {% include "includes/candidate-profile-sub-navigation.njk" %}
 
@@ -36,10 +36,10 @@
         {{ govukTable({
         head: [
           {
-            text: "Jobs invited to apply for"
+            text: "Emails sent to candidate"
           },
           {
-            text: "Invited by"
+            text: "Sent by"
           },
           {
             text: "Date"
@@ -48,7 +48,7 @@
         rows: [
           [
             {
-              html: '<a href="#">Teacher of English</a>'
+              html: 'General enquiry sent'
             },
             {
               html: "Rachael Harvey"
@@ -75,10 +75,10 @@
         {{ govukTable({
         head: [
           {
-            text: "Jobs invited to apply for"
+            text: "Emails sent to candidate"
           },
           {
-            text: "Invited by"
+            text: "Sent by"
           },
           {
             text: "Date"
@@ -87,7 +87,7 @@
         rows: [
           [
             {
-              html: '<a href="#">Class teacher</a>'
+              html: 'General enquiry sent'
             },
             {
               html: "Rachael Harvey"

@@ -3,7 +3,7 @@
 
 {% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
 
-{% set caption =  name + ' - invite to apply for a job'  %}
+{% set caption =  name + ' - Send email about a job'  %}
 
 {% set title = 'Customise your message' %}
 
@@ -34,11 +34,14 @@
           </h1>
 <textarea class="govuk-textarea" id="customise-message-1" name="customise-message-1" rows="8" >
 Dear {{jobseeker.profile.firstName}}, Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for {% if data.invite.jobs.length > 1 %}{{data.invite.jobs | length}} roles{% else %}a role{% endif %}.
+
+You can contact {{user.organisation.name}} by emailing: {{user.emailAddress}}
+
 </textarea>
         </div>
 
         <div class="govuk-inset-text">
-          A link to selected jobs will be added to the end of the email.
+          A link to your {% if data.invite.jobs.length > 1 %}{{data.invite.jobs | length}} jobs: {{data.invite.jobs | join('<br>')}} {% else %}job: {{data.invite.jobs | join('<br>')}} {% endif %} will be added automatically to the end of the email.
         </div>
        
         <div class="govuk-button-group">
