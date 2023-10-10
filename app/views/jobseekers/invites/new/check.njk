@@ -17,7 +17,7 @@
 
 {% else %}
 
-    {% set caption =  name + ' - send email about a job'  %}
+    {% set caption =  name + ' - send email'  %}
     {% set title = 'Check details and email candidate' %}
 
 {% endif %}
@@ -31,6 +31,16 @@
   }) }}
 {% endblock %}
 
+<script>
+    // JavaScript code to find and convert URLs to links
+    var htmlContent = document.querySelector('.email-message-body p').innerHTML;
+    var urlRegex = /(https?:\/\/[^\s]+)/g;
+    var htmlWithLinks = htmlContent.replace(urlRegex, function(url) {
+        return '<a href="' + url + '">' + url + '</a>';
+    });
+    document.querySelector('.email-message-body p').innerHTML = htmlWithLinks;
+</script>
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -43,90 +53,48 @@
         {{title}}
       </h1>
 
-      {% if theJobs == 'general' or theJobs == '' %}
-       
-       
-      {% else %}
-        
-        {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "What jobs do you want to invite the candidate to apply for?"
-            },
-            value: {
-              html: data.invite.jobs | join('<br>')
-            },
-            actions: {
-              items: [
-                {
-                  href: '/jobseekers/'+jobseeker.id+'/invites/new',
-                  text: "Change",
-                  visuallyHiddenText: "Jobs to invite candidate to apply for"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
-      
-      {% endif %}
-
-      
+      {% set preview%}{{data['customise-message-1']}}{% endset %}
 
       <h2 class="govuk-heading-m">
         Preview of email
       </h2>
 
-      {% set preview%}
+      <div class="email-message">
 
-        {% if data['customise-message-1'] %}
-
-          <p id="customText">{{data['customise-message-1']}}</p>
-          
-          {% if theJobs == 'general' or theJobs == '' %}
-            <p>Sent from {{user.organisation.name}}<br> <a href="#">https://teaching-vacancies.service.gov.uk/schools/courtland</a></p>
-          {% else %}
-
-            {% for role in data.invite.jobs %}
-              <p>{{role}} at {{user.organisation.name}}<br> <a href="#">https://teaching-vacancies.school.com/123</a></p>
-            {% endfor %}
-
-          {% endif %}
-
-        {% else %} 
-
-          <p>Dear {{jobseeker.profile.firstName}}</p>
-
-            {% if data.invite.jobs.length > 1 %}
-              <p>Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for {{data.invite.jobs | length}} roles.</p>
-              {# <ul class="govuk-list govuk-list--bullet"> #}
+        <table class="email-message-meta">
+          <tbody>    
+                <tr>
+                  <th scope="row">From</th>
+                  <td>
+                    Teaching Vacancies
+                  </td>
+                </tr>
+              <tr>
+                <th scope="row">To</th>
+                <td>
+                  <span class="placeholder-no-brackets">{{jobseeker.emailAddress}}</span>
+                </td>
+              </tr>
+            <tr class="email-message-meta">
+              <th scope="row">Subject</th>
               {% if theJobs == 'general' or theJobs == '' %}
-
+                <td>
+                  You have received an email from {{user.organisation.name}}
+                </td>
               {% else %}
-
-                {% for role in data.invite.jobs %}
-                  <p>{{role}} at {{user.organisation.name}}<br> <a href="#">https://teaching-vacancies.school.com/123</a></p>
-                {% endfor %}
-              
+                <td>
+                  You have been invited to apply for {% if data.invite.jobs.length > 1 %}{{data.invite.jobs | length}} roles{% else %}a role{% endif %} at {{user.organisation.name}}
+                </td>
               {% endif %}
-              {# </ul> #}
-            {% else %}
-              <p>Rachael at {{user.organisation.name}} has reviewed your profile.</p>
+            </tr>
+          </tbody>
+        </table>
 
-              <p>You can contact {{user.organisation.name}} by emailing: {{user.emailAddress}}</p>
+        <div class="email-message-body" style="white-space: pre-wrap;"><p style="Margin: 0 0 0 0; font-size: 19px; line-height: 25px; color: #0B0C0C;">
+{{preview}}</p>
+        </div>
 
-              <p class="govuk-!-margin-bottom-1">{{data.invite.jobs}} at {{user.organisation.name}}:</p>
-              <p><a href="#">https://teaching-vacancies.school.com/123</a></p>
-            {% endif %}
-
-        {% endif %}
-
-      {% endset %}
-
-      {{ govukInsetText({
-        html: preview
-      }) }}
+      </div>
 
       {% if theJobs == 'general' or theJobs == '' %}
         <a href="customise-general" class="govuk-button govuk-button--secondary" data-module="govuk-button">
@@ -144,6 +112,7 @@
         
       {% endset %}
 
+      
       {{ govukRadios({
         classes: "govuk-radios--inline",
         name: "changedName",
@@ -169,15 +138,15 @@
         ]
       }) }}
 
+      
       <!--
-      {% if theJobs == 'general' or theJobs == '' %}
-          <p>{{name}} will be sent an email from Teaching Vacancies with your message.</p>     
-      {% else %}
-          <p>{{name}} will be sent an email from Teaching Vacancies to tell them they’ve been invited to apply for the jobs you selected.</p>     
-      {% endif %}
-
+      <h2 class="govuk-heading-m">
+        Send email
+      </h2>
+     
+      <p>{{name}} will be sent an email from Teaching Vacancies with your message.</p>  
       -->
-
+      
       <form method="post">
        
         <div class="govuk-button-group">

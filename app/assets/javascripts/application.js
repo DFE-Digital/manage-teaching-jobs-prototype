@@ -50,4 +50,18 @@ $(document).ready(function () {
     }
   }
 
+
+  // Check if an element with class 'email-message' exists
+  var emailMessageDiv = document.querySelector('.email-message');
+    
+  // If the element exists, run the JavaScript code
+  if (emailMessageDiv) {
+      var htmlContent = emailMessageDiv.innerHTML;
+      var urlRegex = /(https?:\/\/[^\s]+)/g;
+      var htmlWithLinks = htmlContent.replace(urlRegex, function(url) {
+          return '<a href="' + url + '">' + url + '</a>';
+      });
+      emailMessageDiv.innerHTML = htmlWithLinks;
+  } 
+
 })

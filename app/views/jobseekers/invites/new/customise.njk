@@ -23,27 +23,30 @@
 
       <form method="post">
 
-        <div class="govuk-form-group">
-          <span class="govuk-caption-l">
+        <h1 class="govuk-label-wrapper">
+           <span class="govuk-caption-l">
             {{caption}}
           </span>
-          <h1 class="govuk-label-wrapper">
             <label class="govuk-label govuk-label--l" for="customise-message-1">
               Customise email
             </label>
           </h1>
-<textarea class="govuk-textarea" id="customise-message-1" name="customise-message-1" rows="8" >
+{% set ifJobsSelected %}
+{% for role in data.invite.jobs %}{{role}} at {{user.organisation.name}}: 
+https://teaching-vacancies.school.com/123
+
+{% endfor %}{% endset %}
+
+
+        <div class="govuk-form-group">
+    
+
+<textarea class="govuk-textarea" id="customise-message-1" name="customise-message-1" rows="15" >
 Dear {{jobseeker.profile.firstName}}, Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for {% if data.invite.jobs.length > 1 %}{{data.invite.jobs | length}} roles{% else %}a role{% endif %}.
-
-You can contact {{user.organisation.name}} by emailing: {{user.emailAddress}}
-
+{{ifJobsSelected}}You can contact {{user.organisation.name}} by emailing: {{user.emailAddress}}
 </textarea>
         </div>
 
-        <div class="govuk-inset-text">
-          A link to your {% if data.invite.jobs.length > 1 %}{{data.invite.jobs | length}} jobs: {{data.invite.jobs | join('<br>')}} {% else %}job: {{data.invite.jobs | join('<br>')}} {% endif %} will be added automatically to the end of the email.
-        </div>
-       
         <div class="govuk-button-group">
 
           <button class="govuk-button" data-module="govuk-button">

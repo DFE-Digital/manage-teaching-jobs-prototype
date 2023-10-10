@@ -13,15 +13,9 @@
   <div class="govuk-button-group">
    
     {{ govukButton({
-        text: "Send email about a job",
+        text: "Send email",
         href: '/jobseekers/' + jobseeker.id + '/invites/new',
         classes: 'govuk-!-margin-bottom-2'
-    }) }}
-
-    {{ govukButton({
-      text: "Send custom email",
-      href: '/jobseekers/' + jobseeker.id + '/invites/new/customise-general',
-      classes: "govuk-button--secondary"
     }) }}
 
   </div>

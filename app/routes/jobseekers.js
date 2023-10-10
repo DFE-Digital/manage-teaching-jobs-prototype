@@ -174,7 +174,7 @@ module.exports = router => {
     });
 
     jobCheckboxes.push({
-      text: 'Send a custom message',
+      text: 'None, send a custom message',
       value: 'general',
       behaviour: "exclusive"
     });
@@ -193,7 +193,7 @@ module.exports = router => {
     if(req.body['invite'] && req.body['invite'].jobs == 'general') {
       res.redirect(`/jobseekers/${req.params.id}/invites/new/customise-general`)
     } else {
-      res.redirect(`/jobseekers/${req.params.id}/invites/new/check`)
+      res.redirect(`/jobseekers/${req.params.id}/invites/new/customise`)
     }
 
   })
