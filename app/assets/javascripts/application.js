@@ -64,4 +64,21 @@ $(document).ready(function () {
       emailMessageDiv.innerHTML = htmlWithLinks;
   } 
 
+
+  //turn on copy email button if JS
+
+  $('#copy-email').addClass('active');
+  const btn = document.querySelector("#copy-email");
+
+  btn.addEventListener('click', e => {
+    navigator.clipboard.writeText( $('#copy-email').html() ).then(function() {
+      $('#copy-email').html('email address copied');
+      window.setTimeout(() => {
+        $('#copy-email').html('copy email');
+      }, 3000);
+    });
+  }, false);
+
+
 })
+

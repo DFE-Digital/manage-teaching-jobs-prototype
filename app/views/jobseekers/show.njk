@@ -44,13 +44,9 @@
   {% if data ['route'] == '1' %}
     <div class="govuk-button-group">
     
-    {{ govukButton({
-        text: jobseeker.emailAddress,
-        href: 'mailto:' + jobseeker.emailAddress + '?subject=Your%20application%20for%20a%20job%20at%20Frankly%20Education&body=Hi%20' + jobseeker.profile.firstName,
-        classes: 'govuk-!-margin-bottom-2'
-    }) }}
-
-    <p><a href="" class="govuk-link govuk-link--no-visited-state">copy email</a></p>
+    <a target="_blank" href="mailto:{{jobseeker.emailAddress}}?subject=Your%20profile%20on%20teaching%20vacancies&amp;body=Hi%20{{jobseeker.profile.firstName}}%2C%20we've%20just%20seen%20your%20profile%20on%20Teaching%20Vacancies%20and%20would%20like%20to%20say%20hello" role="button" draggable="false" class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button">
+     <span class="govuk-visually-hidden">Mail to link to </span> Email candidate <span class="govuk-visually-hidden"> at {{jobseeker.emailAddress}} <pan>
+    </a>
 
   </div>
 
@@ -58,18 +54,17 @@
 
     <div class="govuk-button-group">
     
-      {{ govukButton({
-          text: "Email candidate",
-          href: '/jobseekers/' + jobseeker.id + '/invites/new',
-          classes: 'govuk-!-margin-bottom-2'
-      }) }}
+       <a target="_blank" href="mailto:{{jobseeker.emailAddress}}?subject=Your%20profile%20on%20teaching%20vacancies&amp;body=Hi%20{{jobseeker.profile.firstName}}%2C%20we've%20just%20seen%20your%20profile%20on%20Teaching%20Vacancies%20and%20would%20like%20to%20say%20hello" role="button" draggable="false" class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button">
+     <span class="govuk-visually-hidden">Mail to link to </span> Email candidate <span class="govuk-visually-hidden"> at {{jobseeker.emailAddress}} <pan>
+      </a>
 
     </div>
     
   {% endif %}
 
-
+  <!--
   {% include "includes/candidate-profile-sub-navigation.njk" %}
+  -->
 
   <div class="govuk-grid-row ">
     <div class="govuk-grid-column-two-thirds">
@@ -84,7 +79,7 @@
         <p class="govuk-!-margin-bottom-5">{{teachingStatus}}</p>
       {% endif %}
 
-      <div class="app-profile__section app-profile__section--firstxxx">
+      <div class="app-profile__section app-profile__section--first">
         <h2 class="govuk-heading-m govuk-!-font-size-27">
           Contact details
         </h2>
@@ -96,7 +91,7 @@
                   text: "Email address"
                 },
                 value: {
-                  html: jobseeker.emailAddress 
+                  html: '<span class="govuk-!-margin-right-1">' + jobseeker.emailAddress + '</span> <button id="copy-email" href="#" class="govuk-link govuk-link--no-visited-state">copy email</button>'
                 }
               },
               {

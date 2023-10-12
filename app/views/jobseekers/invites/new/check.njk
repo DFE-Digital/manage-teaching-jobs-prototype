@@ -138,6 +138,56 @@
         ]
       }) }}
 
+      {% set textHtml %}
+        {{ govukInput({
+          id: "contact-by-text",
+          name: "contactByText",
+          type: "tel",
+          autocomplete: "tel",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Mobile phone number"
+          }
+        }) }}
+      {% endset -%}
+
+      {{ govukRadios({
+        name: "contact",
+        fieldset: {
+          legend: {
+            text: "How would you prefer to be contacted?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "Select one option."
+        },
+        items: [
+          {
+            value: "email",
+            text: "Email",
+            conditional: {
+              html: emailHtml
+            }
+          },
+          {
+            value: "phone",
+            text: "Phone",
+            conditional: {
+              html: phoneHtml
+            }
+          },
+          {
+            value: "text",
+            text: "Text message",
+            conditional: {
+              html: textHtml
+            }
+          }
+        ]
+      }) }}
+
       
       <!--
       <h2 class="govuk-heading-m">
