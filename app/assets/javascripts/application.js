@@ -71,12 +71,13 @@ $(document).ready(function () {
   const btn = document.querySelector("#copy-email");
 
   btn.addEventListener('click', e => {
-    navigator.clipboard.writeText( $('#copy-email').html() ).then(function() {
-      $('#copy-email').html('email address copied');
-      window.setTimeout(() => {
-        $('#copy-email').html('copy email');
-      }, 3000);
-    });
+    navigator.clipboard.writeText( $('#email-address').html() );
+    $('#copy-email').html('email address copied');
+
+    window.setTimeout(() => {
+      $('#copy-email').html('copy email');
+    }, 2500);
+    
   }, false);
 
 

@@ -361,6 +361,11 @@ h1 .govuk-tag {
   font: inherit;
   cursor: pointer;
   outline: inherit;
+  display: none;
+
+  &.active{
+    display: inline-block;
+  }
 
   &:focus {
     outline: 3px solid transparent;
@@ -369,4 +374,9 @@ h1 .govuk-tag {
     box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
     text-decoration: none;
   }
+}
+
+#calculator-banner{
+  background-color: #f3f2f1;
+  border-top:1px solid #b1b4b6
 }

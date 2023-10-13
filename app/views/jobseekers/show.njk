@@ -44,7 +44,7 @@
   {% if data ['route'] == '1' %}
     <div class="govuk-button-group">
     
-    <a target="_blank" href="mailto:{{jobseeker.emailAddress}}?subject=Your%20profile%20on%20teaching%20vacancies&amp;body=Hi%20{{jobseeker.profile.firstName}}%2C%20we've%20just%20seen%20your%20profile%20on%20Teaching%20Vacancies%20and%20would%20like%20to%20say%20hello" role="button" draggable="false" class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button">
+    <a target="_blank" href="mailto:{{jobseeker.emailAddress}}" role="button" draggable="false" class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button">
      <span class="govuk-visually-hidden">Mail to link to </span> Email candidate <span class="govuk-visually-hidden"> at {{jobseeker.emailAddress}} <pan>
     </a>
 
@@ -54,7 +54,7 @@
 
     <div class="govuk-button-group">
     
-       <a target="_blank" href="mailto:{{jobseeker.emailAddress}}?subject=Your%20profile%20on%20teaching%20vacancies&amp;body=Hi%20{{jobseeker.profile.firstName}}%2C%20we've%20just%20seen%20your%20profile%20on%20Teaching%20Vacancies%20and%20would%20like%20to%20say%20hello" role="button" draggable="false" class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button">
+       <a target="_blank" href="mailto:{{jobseeker.emailAddress}}" role="button" draggable="false" class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button">
      <span class="govuk-visually-hidden">Mail to link to </span> Email candidate <span class="govuk-visually-hidden"> at {{jobseeker.emailAddress}} <pan>
       </a>
 
@@ -91,7 +91,7 @@
                   text: "Email address"
                 },
                 value: {
-                  html: '<span class="govuk-!-margin-right-1">' + jobseeker.emailAddress + '</span> <button id="copy-email" href="#" class="govuk-link govuk-link--no-visited-state">copy email</button>'
+                  html: '<span id="email-address" class="govuk-!-margin-right-1">' + jobseeker.emailAddress + '</span> <button id="copy-email" href="#" class="govuk-link govuk-link--no-visited-state">copy email<span class="govuk-visually-hidden">address ' + jobseeker.emailAddress + '</span> </button>'
                 }
               },
               {
