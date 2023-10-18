@@ -54,8 +54,12 @@
 
     <div class="govuk-button-group">
     
-       <a target="_blank" href="mailto:{{jobseeker.emailAddress}}" role="button" draggable="false" class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button">
-     <span class="govuk-visually-hidden">Mail to link to </span> Email candidate <span class="govuk-visually-hidden"> at {{jobseeker.emailAddress}} <pan>
+      <a target="_blank" href="mailto:{{jobseeker.emailAddress}}" role="button" draggable="false" class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button">
+        {{jobseeker.emailAddress}} 
+      </a>
+
+       <a id="copy-email" href="#" role="button" draggable="false" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-2" data-module="govuk-button">
+          Copy email <span class="govuk-visually-hidden">address {{jobseeker.emailAddress}}</span>
       </a>
 
     </div>
@@ -91,7 +95,7 @@
                   text: "Email address"
                 },
                 value: {
-                  html: '<span id="email-address" class="govuk-!-margin-right-1">' + jobseeker.emailAddress + '</span> <button id="copy-email" href="#" class="govuk-link govuk-link--no-visited-state">copy email<span class="govuk-visually-hidden">address ' + jobseeker.emailAddress + '</span> </button>'
+                  html: '<span id="email-address" class="govuk-!-margin-right-1">' + jobseeker.emailAddress + '</span>'
                 }
               },
               {

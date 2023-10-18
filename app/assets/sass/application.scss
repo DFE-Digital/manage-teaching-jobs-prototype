@@ -353,28 +353,6 @@ h1 .govuk-tag {
 }
 
 
-#copy-email{
-  background: white;
-  color: #1d70b8;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  display: none;
-
-  &.active{
-    display: inline-block;
-  }
-
-  &:focus {
-    outline: 3px solid transparent;
-    color: #0b0c0c;
-    background-color: #ffdd00;
-    box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
-    text-decoration: none;
-  }
-}
 
 #calculator-banner{
   background-color: #f3f2f1;
