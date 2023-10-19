@@ -40,18 +40,6 @@
 
   {# <p><a href="/jobseekers/{{jobseeker.id}}/invites/new">Invite to apply for a job</a></p> #}
 
-  
-  {% if data ['route'] == '1' %}
-    <div class="govuk-button-group">
-    
-    <a target="_blank" href="mailto:{{jobseeker.emailAddress}}" role="button" draggable="false" class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button">
-     <span class="govuk-visually-hidden">Mail to link to </span> Email candidate <span class="govuk-visually-hidden"> at {{jobseeker.emailAddress}} <pan>
-    </a>
-
-  </div>
-
-  {% else %}
-
     <div class="govuk-button-group">
     
       <a target="_blank" href="mailto:{{jobseeker.emailAddress}}" role="button" draggable="false" class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button">
@@ -63,9 +51,7 @@
       </a>
 
     </div>
-    
-  {% endif %}
-
+  
   <!--
   {% include "includes/candidate-profile-sub-navigation.njk" %}
   -->
@@ -73,11 +59,6 @@
   <div class="govuk-grid-row ">
     <div class="govuk-grid-column-two-thirds">
 
-
-      {# <div class="govuk-button-group">
-
-        <p><a href="/jobseekers/{{jobseeker.id}}/invites">Previous invitations</a></p>
-      </div> #}
 
       {% if showQTS %}
         <p class="govuk-!-margin-bottom-5">{{teachingStatus}}</p>

@@ -76,7 +76,7 @@ $(document).ready(function () {
 
     window.setTimeout(() => {
       $('#copy-email').html('copy email');
-    }, 2500);
+    }, 3000);
     
   }, false);
 
