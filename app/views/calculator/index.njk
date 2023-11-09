@@ -1,0 +1,58 @@
+{% extends "layout_calculator.njk" %}
+{% set heading = 'Schools savings calculator' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+       
+        <form method="post">
+
+        {{ govukInput({
+        id: "cost",
+        name: "cost",
+        label: {
+            text: "How much do you pay a month to advertise jobs?",
+            classes: "govuk-label--m",
+            isPageHeading: true
+        },
+        prefix: {
+            text: "£"
+        },
+        classes: "govuk-input--width-10",
+        spellcheck: false
+        }) }}
+
+
+        {{ govukInput({
+        label: {
+            text: "How many jobs do you advertise a month?",
+            classes: "govuk-label--m",
+            isPageHeading: true
+        },
+        classes: "govuk-input--width-10",
+        id: "jobs",
+        name: "jobs"
+        }) }}
+
+
+        {{ govukButton({
+            text: 'Calculate savings',
+            isStartButton: false,
+            href: 'result'
+        }) }}
+
+        </form>
+
+        <div class="govuk-inset-text">
+            This calculator is indicative only, based on our own insights after alongside with schools.
+        </div>
+
+    </div>
+  </div>
+
+{% endblock %}
