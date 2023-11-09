@@ -3,7 +3,8 @@
     "id": "658653",
     "profile": {
       "roles": [
-        "Teacher"
+        "Teacher",
+        "Head of year or phase"
       ],
       "phases": [
         "Primary school"
@@ -293,7 +294,7 @@
         "Primary school"
       ],
       "qts": "Yes",
-      "qtsAwardedYear": "2015",
+      "qtsAwardedYear": "2022",
       "firstName": "Talon",
       "lastName": "Kirlin",
       "providePhoneNumber": "Yes",
@@ -416,7 +417,7 @@
           "employer": "Courtland Primary School",
           "role": "Teacher",
           "startDate": "2020-01-01T00:00:00.000+00:00",
-          "currentRole": "Yes"
+          "currentRole": "No"
         }
       ],
       "about": "Doloremque unde itaque ullam non in reprehenderit ab. Ullam exercitationem nihil rerum pariatur perferendis praesentium sequi. Est nobis fugiat enim fuga magni dicta in. Cumque aut facilis sed veniam recusandae. Aliquid ut natus repellat commodi eum. Illo cumque aliquam eum odio eos reiciendis quidem deleniti.\n\nDolorem non est quo sint laudantium quia rem. Vero mollitia velit consequatur dignissimos laudantium libero veniam iure qui. Enim saepe a eos labore."
@@ -1251,7 +1252,7 @@
         },
         {
           "employer": "Courtland Primary School",
-          "role": "Teacher",
+          "role": "Head of year",
           "startDate": "2020-01-01T00:00:00.000+00:00",
           "currentRole": "Yes"
         }

@@ -34,9 +34,12 @@
     {% endfor %}
   {% endset %}
 
-  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
     {{title}}
   </h1>
+  {% set currentJob %}{% for item in jobseeker.profile.workHistory %}{% if item.currentRole == 'Yes' %}{{item.role}} at {{item.employer}}{% else %}{% endif %}{% endfor %}{% endset %}
+
+  {% if currentJob %}<span class="govuk-caption-l govuk-!-margin-top-0 govuk-!-margin-bottom-4">Currently {{currentJob}}</span>{% endif %}
 
   {# <p><a href="/jobseekers/{{jobseeker.id}}/invites/new">Invite to apply for a job</a></p> #}
 
@@ -118,7 +121,7 @@
               } if teachingStatus | trim | length and 1 == 2,
               {
                 key: {
-                  text: "Role"
+                  text: "Roles"
                 },
                 value: {
                   text: jobseeker.profile.roles | join(', ')

@@ -12,7 +12,6 @@
         <h1 class="govuk-heading-l">
            Candidate profiles (<span id="candidate-count">12</span>)
         </h1>
-
     </div>
   </div>
 
@@ -699,23 +698,26 @@
 
           <div class="app-list__item">
             <h2 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-margin-right-2">
-              <a href="/jobseekers/{{jobseeker.id}}">{{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}}</a>
+              <a class="govuk-link--no-visited-state" href="/jobseekers/{{jobseeker.id}}">{{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}}</a>
             </h2>
             {% if jobseeker.showQTS %}
               <p class="govuk-!-font-size-16 govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{teachingStatus}}</p>
             {% endif %}
+
+            
+            {% set currentJob %}{% for item in jobseeker.profile.workHistory %}{% if item.currentRole == 'Yes' %}{{item.role}} at {{item.employer}}{% else %}{% endif %}{% endfor %}{% endset %}
 
             {{ govukSummaryList({
               classes: 'govuk-summary-list--no-border app-summary-list--compact',
               rows: [
                 {
                   key: {
-                    text: "Preferred role"
+                    text: "Current role"
                   },
                   value: {
-                    html: jobseeker.profile.roles | join(', ')
+                    html: currentJob
                   }
-                },
+                } if currentJob,
                 {
                   key: {
                     text: "Preferred education phase"
@@ -734,7 +736,7 @@
                 },
                 {
                   key: {
-                    text: "Preferred working pattern"
+                    text: "Preferred working patterns"
                   },
                   value: {
                     text: jobseeker.profile.workingPatterns | join(', ') | capitalize
