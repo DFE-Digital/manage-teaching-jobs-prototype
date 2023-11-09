@@ -121,14 +121,6 @@
               } if teachingStatus | trim | length and 1 == 2,
               {
                 key: {
-                  text: "Roles"
-                },
-                value: {
-                  text: jobseeker.profile.roles | join(', ')
-                }
-              } if jobseeker.profile.roles,
-              {
-                key: {
                   text: "Education phase"
                 },
                 value: {
