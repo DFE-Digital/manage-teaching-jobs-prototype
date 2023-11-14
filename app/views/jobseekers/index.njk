@@ -87,7 +87,7 @@
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Preferred role</legend>
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Preferred roles</legend>
             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" {% if 'Teacher' in filterRole %}checked {% endif %}  id="filters-role" name="filters-role" type="checkbox" value="Teacher"> <label class="govuk-label govuk-checkboxes__label" for="filters-role">Teacher</label>
@@ -644,12 +644,19 @@
     </div>
 
 
-    {% if user.organisation.schools %}
-      <p class="govuk-body-l">These candidates are willing to travel to a location that’s near to at least one of your schools.</p>
-    {% else %}
-      <p class="govuk-body-l">These candidates are willing to travel to a location that’s near to your school.</p>
+    {% if filterRole.length %}
+      {% set interestedRoles %}
+        {% if 'Teacher' in filterRole %}teacher{% endif %}{% if 'Head of year or phase' in filterRole %}, head of year or phase{% endif %}
+        {% if 'Head of department or curriculum' in filterRole %}and head of department or curriculum{% endif %}
+      {% endset %}
     {% endif %}
 
+
+    {% if user.organisation.schools %}
+      <p class="govuk-body-l">{% if filterRole.length %} These candidates are interested in {{interestedRoles}} roles and {% else %}These candidates{% endif %} are willing to travel to a location that’s near to at least one of your schools.</p>
+    {% else %}
+      <p class="govuk-body-l">{% if filterRole.length %} These candidates are interested in {{interestedRoles}} roles and {% else %}These candidates{% endif %} are willing to travel to a location that’s near to your school.</p>
+    {% endif %}
 
     <p>Ordered by most recently updated.</p>
 
@@ -707,6 +714,7 @@
             {% set currentJob %}{% for item in jobseeker.profile.workHistory %}{% if item.currentRole == 'Yes' %}{{item.role}} at {{item.employer}}{% else %}{% endif %}{% endfor %}{% endset %}
             {% set latestJob %}{% for item in jobseeker.profile.workHistory %}{% if loop.last %}{{item.role}} at {{item.employer}}{% else %}{% endif %}{% endfor %}{% endset %}
 
+      
             {{ govukSummaryList({
               classes: 'govuk-summary-list--no-border app-summary-list--compact',
               rows: [
@@ -718,6 +726,14 @@
                     html: currentJob
                   }
                 } if currentJob,
+                {
+                  key: {
+                    text: "Preferred roles"
+                  },
+                  value: {
+                    html: jobseeker.profile.roles | join(', ')
+                  }
+                },
                 {
                   key: {
                     text: "Latest role"

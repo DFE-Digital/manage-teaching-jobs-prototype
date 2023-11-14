@@ -41,7 +41,7 @@
   {% set latestJob %}{% for item in jobseeker.profile.workHistory %}{% if loop.last %}{{item.role}} at {{item.employer}}{% else %}{% endif %}{% endfor %}{% endset %}
 
   {% if currentJob %}
-    <span class="govuk-caption-l govuk-!-margin-top-0 govuk-!-margin-bottom-4">Currently {{currentJob}}</span>
+    <span class="govuk-caption-l govuk-!-margin-top-0 govuk-!-margin-bottom-4">{{currentJob}}</span>
   {% else %}
     <span class="govuk-caption-l govuk-!-margin-top-0 govuk-!-margin-bottom-4">Previously {{latestJob}}</span>
   {% endif %}
@@ -124,6 +124,14 @@
                   text: teachingStatus
                 }
               } if teachingStatus | trim | length and 1 == 2,
+              {             
+                key: {
+                  text: "Preferred roles"
+                },
+                value: {
+                  text: jobseeker.profile.roles | join(', ')
+                }
+              } if jobseeker.profile.roles,
               {
                 key: {
                   text: "Education phase"
