@@ -711,8 +711,8 @@
               <p class="govuk-!-font-size-16 govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{teachingStatus}}</p>
             {% endif %}
 
-            {% set currentJob %}{% for item in jobseeker.profile.workHistory %}{% if item.currentRole == 'Yes' %}{{item.role}} at {{item.employer}}{% else %}{% endif %}{% endfor %}{% endset %}
-            {% set latestJob %}{% for item in jobseeker.profile.workHistory %}{% if loop.last %}{{item.role}} at {{item.employer}}{% else %}{% endif %}{% endfor %}{% endset %}
+            {% set currentJob %}{% for item in jobseeker.profile.workHistory %}{% if item.currentRole == 'Yes' %}{{item.role}}{% else %}{% endif %}{% endfor %}{% endset %}
+            {% set latestJob %}{% for item in jobseeker.profile.workHistory %}{% if loop.last %}{{item.role}}{% else %}{% endif %}{% endfor %}{% endset %}
 
       
             {{ govukSummaryList({
@@ -728,20 +728,20 @@
                 } if currentJob,
                 {
                   key: {
-                    text: "Preferred roles"
-                  },
-                  value: {
-                    html: jobseeker.profile.roles | join(', ')
-                  }
-                },
-                {
-                  key: {
                     text: "Latest role"
                   },
                   value: {
                     html: latestJob
                   }
                 } if currentJob == '',
+                {
+                  key: {
+                    text: "Preferred roles"
+                  },
+                  value: {
+                    html: jobseeker.profile.roles | join(', ')
+                  }
+                },
                 {
                   key: {
                     text: "Preferred education phase"

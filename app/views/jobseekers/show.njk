@@ -37,8 +37,8 @@
   <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
     {{title}}
   </h1>
-  {% set currentJob %}{% for item in jobseeker.profile.workHistory %}{% if item.currentRole == 'Yes' %}{{item.role}} at {{item.employer}}{% else %}{% endif %}{% endfor %}{% endset %}
-  {% set latestJob %}{% for item in jobseeker.profile.workHistory %}{% if loop.last %}{{item.role}} at {{item.employer}}{% else %}{% endif %}{% endfor %}{% endset %}
+  {% set currentJob %}{% for item in jobseeker.profile.workHistory %}{% if item.currentRole == 'Yes' %}{{item.role}}{% else %}{% endif %}{% endfor %}{% endset %}
+  {% set latestJob %}{% for item in jobseeker.profile.workHistory %}{% if loop.last %}{{item.role}}{% else %}{% endif %}{% endfor %}{% endset %}
 
   {% if currentJob %}
     <span class="govuk-caption-l govuk-!-margin-top-0 govuk-!-margin-bottom-4">{{currentJob}}</span>
