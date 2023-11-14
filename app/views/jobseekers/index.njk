@@ -653,9 +653,9 @@
 
 
     {% if user.organisation.schools %}
-      <p class="govuk-body-l">{% if filterRole.length %} These candidates are interested in {{interestedRoles}} roles and {% else %}These candidates{% endif %} are willing to travel to a location that’s near to at least one of your schools.</p>
+      <p class="govuk-body-l">{% if filterRole.length %} These candidates are willing to travel to a location that’s near to at least one of your schools.</p>
     {% else %}
-      <p class="govuk-body-l">{% if filterRole.length %} These candidates are interested in {{interestedRoles}} roles and {% else %}These candidates{% endif %} are willing to travel to a location that’s near to your school.</p>
+      <p class="govuk-body-l">{% if filterRole.length %} These candidates are willing to travel to a location that’s near to your school.</p>
     {% endif %}
 
     <p>Ordered by most recently updated.</p>
