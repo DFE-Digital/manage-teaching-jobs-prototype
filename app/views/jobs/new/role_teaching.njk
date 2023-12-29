@@ -1,0 +1,109 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Job role' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      {% endset %}
+
+      <form action="/jobs/new/title">
+        {{ govukRadios({
+          idPrefix: "createJob[role]",
+          name: "createJob[role]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: 'Teacher',
+              text: 'Teacher',
+              checked: checked("['createJob']['role']", "Teacher")
+            },
+            {
+              value: 'Head of year or phase',
+              text: 'Head of year or phase',
+              checked: checked("['createJob']['role']", "Head of year or phase")
+            },
+            {
+              value: 'Head of department or curriculum',
+              text: 'Head of department or curriculum',
+              checked: checked("['createJob']['role']", "Head of department or curriculum")
+            },
+            {
+              value: 'Assistant headteacher',
+              text: 'Assistant headteacher',
+              checked: checked("['createJob']['role']", "Assistant headteacher")
+            },
+            {
+              value: 'Deputy headteacher',
+              text: 'Deputy headteacher',
+              checked: checked("['createJob']['role']", "Deputy headteacher")
+            },
+            {
+              value: 'Headteacher',
+              text: 'Headteacher',
+              checked: checked("['createJob']['role']", "Headteacher")
+            },
+            {
+              value: 'Teaching assistant',
+              text: 'Teaching assistant',
+              checked: checked("['createJob']['role']", "Teaching assistant")
+            },
+            {
+              value: 'HLTA (higher level teaching assistant)',
+              text: 'HLTA (higher level teaching assistant)',
+              checked: checked("['createJob']['role']", "HLTA (higher level teaching assistant)")
+            },
+            {
+              value: 'Learning support, cover supervisor or tutor',
+              text: 'Learning support, cover supervisor or tutor',
+              checked: checked("['createJob']['role']", "Learning support, cover supervisor or tutor")
+            },
+            {
+              value: 'SENDCo (special educational needs and disabilities coordinator)',
+              text: 'SENDCo (special educational needs and disabilities coordinator)',
+              checked: checked("['createJob']['role']", "SENDCo (special educational needs and disabilities coordinator)")
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+
+      </form>
+
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

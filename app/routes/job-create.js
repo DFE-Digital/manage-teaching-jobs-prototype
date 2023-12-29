@@ -13,6 +13,14 @@ module.exports = router => {
     }
   })
 
+  router.post('/jobs/new/role', (req, res) => {
+    if(req.body['roletype']  == 'teaching') {
+      res.redirect('/jobs/new/role_teaching')
+    } else {
+      res.redirect('/jobs/new/title')
+    }
+  })
+
   router.get('/jobs/new/locations', (req, res) => {
     let org = req.session.user.organisation
 

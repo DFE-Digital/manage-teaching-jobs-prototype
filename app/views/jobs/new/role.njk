@@ -23,70 +23,39 @@
         {{heading}}
       {% endset %}
 
-      <form action="/jobs/new/title">
-        {{ govukRadios({
-          idPrefix: "createJob[role]",
-          name: "createJob[role]",
-          fieldset: {
-            legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          items: [
-            {
-              value: 'Teacher',
-              text: 'Teacher',
-              checked: checked("['createJob']['role']", "Teacher")
-            },
-            {
-              value: 'Head of year or phase',
-              text: 'Head of year or phase',
-              checked: checked("['createJob']['role']", "Head of year or phase")
-            },
-            {
-              value: 'Head of department or curriculum',
-              text: 'Head of department or curriculum',
-              checked: checked("['createJob']['role']", "Head of department or curriculum")
-            },
-            {
-              value: 'Assistant headteacher',
-              text: 'Assistant headteacher',
-              checked: checked("['createJob']['role']", "Assistant headteacher")
-            },
-            {
-              value: 'Deputy headteacher',
-              text: 'Deputy headteacher',
-              checked: checked("['createJob']['role']", "Deputy headteacher")
-            },
-            {
-              value: 'Headteacher',
-              text: 'Headteacher',
-              checked: checked("['createJob']['role']", "Headteacher")
-            },
-            {
-              value: 'Teaching assistant',
-              text: 'Teaching assistant',
-              checked: checked("['createJob']['role']", "Teaching assistant")
-            },
-            {
-              value: 'HLTA (higher level teaching assistant)',
-              text: 'HLTA (higher level teaching assistant)',
-              checked: checked("['createJob']['role']", "HLTA (higher level teaching assistant)")
-            },
-            {
-              value: 'Learning support, cover supervisor or tutor',
-              text: 'Learning support, cover supervisor or tutor',
-              checked: checked("['createJob']['role']", "Learning support, cover supervisor or tutor")
-            },
-            {
-              value: 'SENDCo (special educational needs and disabilities coordinator)',
-              text: 'SENDCo (special educational needs and disabilities coordinator)',
-              checked: checked("['createJob']['role']", "SENDCo (special educational needs and disabilities coordinator)")
-            }
-          ]
-        }) }}
+      <form method="post" novalidate>
+        
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="roletype-hint">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h2 class="govuk-fieldset__heading">
+                      What type of job are you advertising?
+                  </h2>
+              </legend>
+              
+              <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="roletype" name="roletype" type="radio" value="teaching">
+                      <label class="govuk-label govuk-radios__label" for="roletype">
+                         Teaching, teaching support and headteacher jobs
+                      </label>
+                      <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                          This includes teacher, teaching assistant, learning support or cover supervisor, SEND and headteacher jobs.
+                      </div>
+                  </div>
+                  
+                  <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="roletype-2" name="roletype" type="radio" value="non-teaching">
+                      <label class="govuk-label govuk-radios__label" for="roletype-2">
+                          Non-teaching support jobs
+                      </label>
+                      <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                          This includes all other schools jobs, for example, administration, HR, data and finance jobs.
+                      </div>
+                  </div>
+              </div>
+          </fieldset>
+        </div>
 
         {{ govukButton({
           text: "Save and continue"
@@ -107,3 +76,4 @@
   </div>
 
 {% endblock %}
+

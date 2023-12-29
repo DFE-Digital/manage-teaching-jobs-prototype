@@ -65,20 +65,28 @@ $(document).ready(function () {
   } 
 
 
-  //turn on copy email button if JS
 
-  $('#copy-email').addClass('active');
-  const btn = document.querySelector("#copy-email");
+  if ($(".schoolSelecter")[0]){
 
-  btn.addEventListener('click', e => {
-    navigator.clipboard.writeText( $('#email-address').html() );
-    $('#copy-email').html('email address copied');
+    var selectEl = document.querySelector('.schoolSelecter')
+    accessibleAutocomplete.enhanceSelectElement({
+      autoselect: true,
+      confirmOnBlur: true,
+      defaultValue: "",
+      minLength: 3,
+      selectElement: selectEl
+    })
 
-    window.setTimeout(() => {
-      $('#copy-email').html('copy email');
-    }, 3000);
-    
-  }, false);
+    var queryStringParameters = window.location.search
+    var previouslySubmitted = queryStringParameters.length > 0
+    if (previouslySubmitted) {
+      var submittedEl = document.querySelector('.submitted')
+      submittedEl.classList.remove('submitted--hidden')
+      var params = new URLSearchParams(document.location.search.split('?')[1])
+      document.querySelector('.submitted__hide-school').innerHTML = params.get('hide-school')
+    }
+
+  }
 
 
 })
