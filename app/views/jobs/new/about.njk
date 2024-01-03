@@ -4,12 +4,16 @@
 {% set caption = 'Create job listing - section 4 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
+{% set roleType %}{{data ['roletype'] }}{% endset %}
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
     href: "javascript:history.back();"
   }) }}
 {% endblock %}
+
+
 
 {% block content %}
 
@@ -55,6 +59,8 @@
 
       <form action="/jobs/new/upload">
 
+      {% if roleType == 'teaching' %}
+
         {{ govukRadios({
           idPrefix: "createJob[suitability]",
           name: "createJob[suitability]",
@@ -78,6 +84,8 @@
             }
           ]
         }) }}
+
+        {% endif %}
 
         {{ govukCharacterCount({
           id: "createJob[skills]",

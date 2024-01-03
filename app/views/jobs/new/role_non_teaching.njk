@@ -1,0 +1,91 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'What type of job is this?' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      {% endset %}
+
+      <form action="/jobs/new/contract">
+
+        {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+            {{ govukCheckboxes({
+            idPrefix: "createJob[role]",
+            name: "createJob[role]",
+            fieldset: {
+                legend: {
+                html: h1,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+                }
+            },
+            hint: {
+                text: "Select all that apply."
+            },
+            items: [
+                {
+                value: "Administration, HR, data and finance",
+                text: "Administration, HR, data and finance"
+                },
+                {
+                value: "Catering, cleaning and site management",
+                text: "Catering, cleaning and site management"
+                },
+                {
+                value: "IT support",
+                text: "IT support"
+                },
+                {
+                value: "Pastoral, health and welfare",
+                text: "Pastoral, health and welfare"
+                },
+                {
+                value: "Other leadership roles",
+                text: "Other leadership roles"
+                },
+                {
+                value: "Other support roles",
+                text: "Other support roles"
+                }
+            ]
+            }) }}
+
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+
+      </form>
+
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

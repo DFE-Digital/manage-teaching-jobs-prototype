@@ -26,9 +26,7 @@
         {{heading}}
       {% endset %}
 
-      {{roleType}}
-
-      <form action="/jobs/new/key-stage">
+      <form method="post" novalidate>
 
         {% if roleType == 'teaching' %}
 
@@ -64,12 +62,11 @@
             
           <div class="autocomplete-wrapper govuk-!-margin-top-3 govuk-!-margin-bottom-5" data-chosen="{% if user.profile.hiddenPlaces | length %}{{hiddenPlace}}{% endif %}">
             <div id="school-hint" class="govuk-hint">
-              Enter a job title to see suggested job titles
+              Enter a job title to see suggested job titles. For example, 'chef'.
             </div>
             <select class="schoolSelecter" name="profile[hiddenPlace]" id="profile[hiddenPlace]" aria-describedby="school-hint">
               <option value="Administration/Secretarial">Administration/Secretarial</option>
               <option value="Adviser">Adviser</option>
-              <option value="Assistant Headteacher">Assistant Headteacher</option>
               <option value="Behaviour Support">Behaviour Support</option>
               <option value="Bursar/Finance">Bursar/Finance</option>
               <option value="Business Systems Developer">Business Systems Developer</option>
@@ -93,7 +90,6 @@
               <option value="Family Support Worker">Family Support Worker</option>
               <option value="Finance">Finance</option>
               <option value="Gap Year Assistant/Apprenticeship">Gap Year Assistant/Apprenticeship</option>
-              <option value="Graduate Teacher">Graduate Teacher</option>
               <option value="Chef">Chef</option>
               <option value="Higher Level Teaching Assistant">Higher Level Teaching Assistant</option>
               <option value="House Parent">House Parent</option>
@@ -137,7 +133,6 @@
               <option value="Site Manager">Site Manager</option>
               <option value="Speech and Language Therapist">Speech and Language Therapist</option>
               <option value="Student Welfare">Student Welfare</option>
-              <option value="Teacher">Teacher</option>
               <option value="Teaching Assistant">Teaching Assistant</option>
               <option value="Team Leader">Team Leader</option>
               <option value="Technician">Technician</option>
