@@ -89,5 +89,39 @@ $(document).ready(function () {
   }
 
 
+  const buttons = document.querySelectorAll('.app-c-option-select__button');
+
+  // Add a click event listener to each button
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      // Get the parent div of the clicked button
+      const parentDiv = button.closest('.app-c-option-select');
+
+      // Check if a certain class exists on the parent div
+      if (parentDiv && parentDiv.classList.contains('js-closed')) {
+        // If it exists, change the class of the parent div
+        parentDiv.classList.remove('js-closed');
+        parentDiv.classList.add('js-opened');
+      }else if (parentDiv && parentDiv.classList.contains('js-opened')) {
+        // If it exists, change the class of the parent div
+        parentDiv.classList.remove('js-opened');
+        parentDiv.classList.add('js-closed');
+      }
+
+      // Toggle the "aria-expanded" attribute on the button
+      const currentAriaExpanded = button.getAttribute('aria-expanded');
+      const newAriaExpanded = currentAriaExpanded === 'true' ? 'false' : 'true';
+      button.setAttribute('aria-expanded', newAriaExpanded);
+
+    });
+  });
+
+
+  
+
+
 })
+
+
+
 

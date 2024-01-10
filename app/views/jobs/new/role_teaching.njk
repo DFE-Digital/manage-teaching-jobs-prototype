@@ -24,69 +24,88 @@
       {% endset %}
 
       <form action="/jobs/new/title">
-        {{ govukRadios({
-          idPrefix: "createJob[role]",
-          name: "createJob[role]",
-          fieldset: {
-            legend: {
-              html: h1,
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
-            }
-          },
-          items: [
-            {
-              value: 'Teacher',
-              text: 'Teacher',
-              checked: checked("['createJob']['role']", "Teacher")
-            },
-            {
-              value: 'Head of year or phase',
-              text: 'Head of year or phase',
-              checked: checked("['createJob']['role']", "Head of year or phase")
-            },
-            {
-              value: 'Head of department or curriculum',
-              text: 'Head of department or curriculum',
-              checked: checked("['createJob']['role']", "Head of department or curriculum")
-            },
-            {
-              value: 'Assistant headteacher',
-              text: 'Assistant headteacher',
-              checked: checked("['createJob']['role']", "Assistant headteacher")
-            },
-            {
-              value: 'Deputy headteacher',
-              text: 'Deputy headteacher',
-              checked: checked("['createJob']['role']", "Deputy headteacher")
-            },
-            {
-              value: 'Headteacher',
-              text: 'Headteacher',
-              checked: checked("['createJob']['role']", "Headteacher")
-            },
-            {
-              value: 'Teaching assistant',
-              text: 'Teaching assistant',
-              checked: checked("['createJob']['role']", "Teaching assistant")
-            },
-            {
-              value: 'HLTA (higher level teaching assistant)',
-              text: 'HLTA (higher level teaching assistant)',
-              checked: checked("['createJob']['role']", "HLTA (higher level teaching assistant)")
-            },
-            {
-              value: 'Learning support, cover supervisor or tutor',
-              text: 'Learning support, cover supervisor or tutor',
-              checked: checked("['createJob']['role']", "Learning support, cover supervisor or tutor")
-            },
-            {
-              value: 'SENDCo (special educational needs and disabilities coordinator)',
-              text: 'SENDCo (special educational needs and disabilities coordinator)',
-              checked: checked("['createJob']['role']", "SENDCo (special educational needs and disabilities coordinator)")
-            }
-          ]
-        }) }}
+
+        <h1 class="govuk-fieldset__heading">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+             <span class="govuk-caption-l">
+              {{caption}}
+            </span>
+            Job role
+          </legend>
+        </h1>
+      
+        <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
+            
+            <p class="govuk-!-margin-top-6"><b>Teaching &amp; leadership</b></p>
+      
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="createJob[role]" name="createJob[role]" type="radio" value="Teacher">
+                <label class="govuk-label govuk-radios__label" for="createJob[role]">
+                  Teacher
+                </label>   
+            </div>
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="createJob[role]" name="createJob[role]" type="radio" value="Head of year or phase">
+                <label class="govuk-label govuk-radios__label" for="createJob[role]">
+                  Head of year or phase
+                </label>   
+            </div>
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="createJob[role]" name="createJob[role]" type="radio" value="Head of department or curriculum">
+                <label class="govuk-label govuk-radios__label" for="createJob[role]">
+                  Head of department or curriculum
+                </label>   
+            </div>
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="createJob[role]" name="createJob[role]" type="radio" value="Assistant headteacher">
+                <label class="govuk-label govuk-radios__label" for="createJob[role]">
+                  Assistant headteacher
+                </label>   
+            </div>
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="createJob[role]" name="createJob[role]" type="radio" value="Deputy headteacher">
+                <label class="govuk-label govuk-radios__label" for="createJob[role]">
+                  Deputy headteacher
+                </label>   
+            </div>
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="createJob[role]" name="createJob[role]" type="radio" value="Headteacher">
+                <label class="govuk-label govuk-radios__label" for="createJob[role]">
+                  Headteacher
+                </label>   
+            </div>
+
+            <p class="govuk-!-margin-top-4"><b>Teaching support</b></p>
+
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="createJob[role]" name="createJob[role]" type="radio" value="Teaching assistant">
+                <label class="govuk-label govuk-radios__label" for="createJob[role]">
+                  Teaching assistant
+                </label>   
+            </div>
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="createJob[role]" name="createJob[role]" type="radio" value="HLTA (higher level teaching assistant)">
+                <label class="govuk-label govuk-radios__label" for="createJob[role]">
+                  HLTA (higher level teaching assistant)
+                </label>   
+            </div>
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="createJob[role]" name="createJob[role]" type="radio" value="Learning support or cover supervisor">
+                <label class="govuk-label govuk-radios__label" for="createJob[role]">
+                  Learning support or cover supervisor
+                </label>   
+            </div>
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="createJob[role]" name="createJob[role]" type="radio" value="SENDCo (special educational needs and disabilities coordinator)">
+                <label class="govuk-label govuk-radios__label" for="createJob[role]">
+                  SENDCo (special educational needs and disabilities coordinator)
+                </label>   
+            </div>
+
+        </div>
+
+
+
 
         {{ govukButton({
           text: "Save and continue"

@@ -17,7 +17,7 @@ module.exports = router => {
     if(req.body['roletype']  == 'teaching') {
       res.redirect('/jobs/new/role_teaching')
     } else {
-      res.redirect('/jobs/new/title')
+      res.redirect('/jobs/new/role_non_teaching')
     }
   })
 
@@ -28,7 +28,7 @@ module.exports = router => {
     if(roleType  == 'teaching') {
       res.redirect('/jobs/new/key-stage')
     } else {
-      res.redirect('/jobs/new/role_non_teaching')
+      res.redirect('/jobs/new/contract')
     }
   })
 
