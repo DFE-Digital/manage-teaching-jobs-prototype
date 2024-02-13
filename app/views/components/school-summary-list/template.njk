@@ -28,6 +28,17 @@
   {% endif %}
 {% endset %}
 
+{% set faith %}
+  {% if params.organisation.faith != 'Not entered' %}
+    {{params.organisation.faith}}
+  {% else %}
+    <div class="app-field-highlight">
+      <p class="app-field-highlight__instruction">Enter religious preferences</p>
+      Not entered
+    </div>
+  {% endif %}
+{% endset %}
+
 {% set phase %}
   {% if params.organisation.phase != 'Not entered' %}
     {{params.organisation.phase}}
@@ -233,6 +244,23 @@
         ]
       }
     },
+    {
+      key: {
+        text: "Religious preferences"
+      },
+      value: {
+        html: faith
+      },
+      actions: {
+        items: [
+          {
+            href: "/organisation/faith/edit",
+            text: "Change",
+            visuallyHiddenText: "religious preferences"
+          }
+        ]
+      }
+    } if params.organisation.faith,
     {
       key: {
         text: descriptionLabel

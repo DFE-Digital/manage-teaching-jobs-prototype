@@ -5,6 +5,7 @@
     "organisation": {
       "id": "cae41428-c896-4119-8f5c-da62f4b8e551",
       "name": "Courtland Primary School",
+      "faith": "Not entered",
       "address": {
         "address1": "10 Seed Street",
         "town": "London",
@@ -28,6 +29,7 @@
     "organisation": {
       "id": "33b3670f-77e7-433f-827b-859381f1e2ce",
       "name": "Bushey Meads Primary School",
+      "faith": "Not entered",
       "address": {
         "address1": "10 Seed Street",
         "town": "London",
@@ -51,6 +53,7 @@
     "organisation": {
       "id": "6858854a-d413-478d-8504-8a35bbf0d4a8",
       "name": "LS Secondary School",
+      "faith": "Not entered",
       "address": {
         "address1": "10 Seed Street",
         "town": "London",
@@ -74,6 +77,7 @@
     "organisation": {
       "id": "4f6f70d0-d44c-459c-95a2-c3e7a87132c7",
       "name": "ML Secondary School",
+      "faith": "Not entered",
       "address": {
         "address1": "10 Seed Street",
         "town": "London",
@@ -97,6 +101,7 @@
     "organisation": {
       "id": "b5b811f5-ae0b-49ac-b167-dba605edd174",
       "name": "Royal Academy Trust",
+      "faith": "Not entered",
       "address": {
         "address1": "50 Lawrence Street",
         "town": "Mill Hill",
@@ -213,6 +218,7 @@
     "organisation": {
       "id": "a45685a7-a539-4ed1-bf62-d6db23490808",
       "name": "Svelte Academy Trust",
+      "faith": "Not entered",
       "address": {
         "address1": "50 Lawrence Street",
         "town": "Mill Hill",
@@ -329,6 +335,7 @@
     "organisation": {
       "id": "d5618d81-2417-44f7-8dde-a5cd6480f47b",
       "name": "Ultron Academy Trust",
+      "faith": "Not entered",
       "address": {
         "address1": "50 Lawrence Street",
         "town": "Mill Hill",

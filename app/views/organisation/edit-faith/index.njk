@@ -1,0 +1,91 @@
+{% extends "layout.njk" %}
+
+{% if user.organisation.schools %}
+  {% set heading = 'OrganiReligious preferences' %}
+  {% set caption = 'Organisation profile' %}
+{% else %}
+  {% set heading = 'Religious preferences' %}
+  {% set caption = 'School profile' %}
+{% endif %}
+
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+     
+
+      <form method="post">
+
+
+        <div class="govuk-form-group">
+          
+          <fieldset class="govuk-fieldset" aria-describedby="faith-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                What religious questions do you want to ask applicants?
+              </h2>
+            </legend>
+            <div id="faith-hint" class="govuk-hint">
+              Selected all options that apply.
+            </div>
+           
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="faith" name="faith" type="checkbox" value="ask for religion" aria-describedby="faith-item-hint">
+                <label class="govuk-label govuk-checkboxes__label" for="faith">
+                  Ask for their religion
+                </label>
+                <div id="faith-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                  This will automatically add a question in the application form
+                </div>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="faith-2" name="faith" type="checkbox" value="ask for religious referee">
+                <label class="govuk-label govuk-checkboxes__label" for="faith-2">
+                  Ask to provide a religious referee
+                </label>
+                <div id="faith-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                  This will automatically add a question in the application form
+                </div>
+              </div>
+              <div class="govuk-checkboxes__divider">or</div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="faith-3" name="faith" type="checkbox" value="Do not ask for religion" data-behaviour="exclusive">
+                <label class="govuk-label govuk-checkboxes__label" for="faith-3">
+                  No, do not ask about religion
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+
+
+      
+        {{ govukButton({
+          text: "Update religious preferences"
+        }) }}
+      </form>
+      <p><a href="/organisation">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

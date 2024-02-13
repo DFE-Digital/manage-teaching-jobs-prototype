@@ -215,6 +215,36 @@ module.exports = router => {
   })
 
   //////////////
+  // WEBSITE STUFF
+  //////////////
+
+  //edit website
+
+  router.get('/organisation/faith/edit', authentication.checkIsAuthenticated, (req, res) => {
+    let organisation = req.session.user.organisation
+
+    res.render('organisation/edit-faith/index', {
+      organisation
+    })
+  })
+
+  router.post('/organisation/faith/edit', authentication.checkIsAuthenticated, (req, res) => {
+
+    let user = req.session.user
+    let organisation = user.organisation
+
+    organisation.faith = req.session.data.faith
+
+   
+    req.flash('success', 'Religious preferences updated')
+     
+    res.redirect('/organisation')
+
+
+  })
+
+
+  //////////////
   // DESCRIPTION STUFF
   //////////////
 
