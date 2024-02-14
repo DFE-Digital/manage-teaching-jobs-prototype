@@ -1,0 +1,78 @@
+{% extends "layout.njk" %}
+
+{% if user.organisation.schools %}
+  {% set heading = 'OrganiReligious preferences' %}
+  {% set caption = 'Organisation profile' %}
+{% else %}
+  {% set heading = 'Religious preferences' %}
+  {% set caption = 'School profile' %}
+{% endif %}
+
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-l">
+              {{caption}}
+            </span>
+              <h1 class="govuk-fieldset__heading">
+               Do you want to ask applicants for their religion?
+              </h1>
+            </legend>
+            
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="religionQuestions" name="religionQuestions" type="radio" value="Yes, ask for their religionn">
+                <label class="govuk-label govuk-radios__label" for="religionQuestions">
+                  Yes, ask for their religion
+                </label>
+                <div id="religionQuestions-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                  This will automatically add a question in your application forms
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="religionQuestions-2" name="religionQuestions" type="radio" value=" Yes, ask for their religion and a religious referee">
+                <label class="govuk-label govuk-radios__label" for="religionQuestions-2">
+                   Yes, ask for their religion and a religious referee
+                </label>
+                <div id="religionQuestions-item-hint" class="govuk-hint govuk-checkboxes__hint">
+                  This will automatically add questions in your application forms
+                </div>
+              </div>
+              <div class="govuk-radios__divider">or</div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="religionQuestions-6" name="religionQuestions" type="radio" value="No, do not ask about religion">
+                <label class="govuk-label govuk-radios__label" for="religionQuestions-6">
+                  No, do not ask about religion
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+      <p><a href="/organisation">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

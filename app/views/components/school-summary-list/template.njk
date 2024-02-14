@@ -28,14 +28,14 @@
   {% endif %}
 {% endset %}
 
-{% set faith %}
-  {% if params.organisation.faith != 'Not entered' %}
-    {{params.organisation.faith}}
-  {% else %}
+{% set religion %}
+  {% if params.organisation.religion == '' %}
     <div class="app-field-highlight">
-      <p class="app-field-highlight__instruction">Enter religious preferences</p>
+      <p class="app-field-highlight__instruction">Enter religion</p>
       Not entered
     </div>
+  {% else %}
+    <span style="text-transform: capitalize;">{{params.organisation.religion}}</span>
   {% endif %}
 {% endset %}
 
@@ -246,10 +246,27 @@
     },
     {
       key: {
-        text: "Religious preferences"
+        text: "Religion"
       },
       value: {
-        html: faith
+        html: religion
+      },
+      actions: {
+        items: [
+          {
+            href: "/organisation/faith/edit",
+            text: "Change",
+            visuallyHiddenText: "faith"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Do you want to ask applicants for their religion?"
+      },
+      value: {
+        html: params.organisation.religionQuestions
       },
       actions: {
         items: [
@@ -260,7 +277,7 @@
           }
         ]
       }
-    },
+    }  if params.organisation.religionQuestions,
     {
       key: {
         text: descriptionLabel

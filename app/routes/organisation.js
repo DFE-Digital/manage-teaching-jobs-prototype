@@ -218,12 +218,12 @@ module.exports = router => {
   // WEBSITE STUFF
   //////////////
 
-  //edit website
+  //edit faith
 
   router.get('/organisation/faith/edit', authentication.checkIsAuthenticated, (req, res) => {
     let organisation = req.session.user.organisation
 
-    res.render('organisation/edit-faith/index', {
+    res.render('organisation/edit-faith/religion', {
       organisation
     })
   })
@@ -233,14 +233,34 @@ module.exports = router => {
     let user = req.session.user
     let organisation = user.organisation
 
-    organisation.faith = req.session.data.faith
+    organisation.religion = req.session.data.religion
 
-   
-    req.flash('success', 'Religious preferences updated')
-     
+    if(organisation.religion == 'none') {
+      req.flash('success', 'School profile updated')
+      res.redirect('/organisation')
+    } else {
+      res.redirect('/organisation/faith/questions')
+    }
+  })
+
+  router.get('/organisation/faith/questions', authentication.checkIsAuthenticated, (req, res) => {
+    let organisation = req.session.user.organisation
+
+    res.render('organisation/edit-faith/questions', {
+      organisation
+    })
+  })
+
+  router.post('/organisation/faith/questions', authentication.checkIsAuthenticated, (req, res) => {
+
+    let user = req.session.user
+    let organisation = user.organisation
+
+    organisation.religionQuestions = req.session.data.religionQuestions
+
+    req.flash('success', 'School profile updated')
     res.redirect('/organisation')
-
-
+   
   })
 
 
