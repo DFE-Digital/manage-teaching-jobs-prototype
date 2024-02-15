@@ -1,0 +1,64 @@
+{% extends "layout.njk" %}
+
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/jobs/new/about">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-l">
+              Create job listing - section 3 of 4
+            </span>
+              <h1 class="govuk-fieldset__heading">
+               Do you want to ask applicants for their religion?
+              </h1>
+            </legend>
+            
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="religionQuestions" name="religionQuestions" type="radio" value="Yes, ask for their religionn">
+                <label class="govuk-label govuk-radios__label" for="religionQuestions">
+                  Yes, ask for their religion
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="religionQuestions-2" name="religionQuestions" type="radio" value=" Yes, ask for their religion and a religious referee">
+                <label class="govuk-label govuk-radios__label" for="religionQuestions-2">
+                   Yes, ask for their religion and a religious referee
+                </label>
+              </div>
+              <div class="govuk-radios__divider">or</div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="religionQuestions-6" name="religionQuestions" type="radio" value="No, do not ask about religion">
+                <label class="govuk-label govuk-radios__label" for="religionQuestions-6">
+                  No, do not ask about religion
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+      <p><a href="/organisation">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

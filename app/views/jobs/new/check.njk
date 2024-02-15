@@ -396,7 +396,24 @@
                 }
               ]
             }
-          }
+          },
+          {
+            key: {
+              text: "Do you want to ask applicants for their religion?"
+            },
+            value: {
+              html: data ['religionQuestions']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/religion",
+                  text: "Change",
+                  visuallyHiddenText: "religious preferences"
+                }
+              ]
+            }
+          } if data ['religionQuestions']
         ]
       }) }}
 
