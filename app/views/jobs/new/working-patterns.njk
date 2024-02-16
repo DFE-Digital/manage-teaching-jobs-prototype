@@ -36,9 +36,13 @@
           id: "createJob[fullTimeDetails]",
           maxwords: 50,
           label: {
-            text: "Details",
+            text: "How many hours per week is required from this role and what are the working hours?",
             classes: 'govuk-label--s'
           },
+          hint: {
+              text: 'For example, usually at least 36.5 hours a week',
+              text: 'For example, usually at least 27.5 hours a week'
+            },
           value: data['createJob']['fullTimeDetails'],
           errorMessage: inlineErrors['createJob'].partTimeDetails
         }) }}
@@ -50,7 +54,7 @@
           id: "createJob[partTimeDetails]",
           maxwords: 50,
           label: {
-            text: "Details",
+            text: "How many hours per week is required from this role and what are the working hours?",
             classes: 'govuk-label--s'
           },
           value: data['createJob']['partTimeDetails'],
@@ -76,10 +80,6 @@
               value: "Full time",
               text: "Full time",
               checked: checked("['createJob']['workingPatterns']", "Full time"),
-              hint: {
-                text: 'Usually at least 36.5 hours a week',
-                text: 'Usually at least 27.5 hours a week'
-              },
               conditional: {
                 html: fullTimeDetails
               }
