@@ -79,20 +79,26 @@
             {
               value: "Full time",
               text: "Full time",
-              checked: checked("['createJob']['workingPatterns']", "Full time"),
-              conditional: {
-                html: fullTimeDetails
-              }
+              checked: checked("['createJob']['workingPatterns']", "Full time")
             },
             {
               value: "Part time",
               text: "Part time",
-              checked: checked("['createJob']['workingPatterns']", "Part time"),
-              conditional: {
-                html: partTimeDetails
-              }
+              checked: checked("['createJob']['workingPatterns']", "Part time")
             }
           ]
+        }) }}
+
+        {{ govukCharacterCount({
+          name: "createJob[partTimeDetails]",
+          id: "createJob[partTimeDetails]",
+          maxwords: 50,
+          label: {
+            text: "Details of working hours",
+            classes: 'govuk-label--s'
+          },
+          value: data['createJob']['partTimeDetails'],
+          errorMessage: inlineErrors['createJob'].partTimeDetails
         }) }}
 
         {{ govukButton({
