@@ -74,6 +74,9 @@
               classes: "govuk-fieldset__legend--l"
             }
           },
+          hint: {
+            text: "Select all that apply."
+          },
           errorMessage: inlineErrors['createJob'].workingPatterns,
           items: [
             {
@@ -85,6 +88,21 @@
               value: "Part time",
               text: "Part time",
               checked: checked("['createJob']['workingPatterns']", "Part time")
+            },
+            {
+              value: "Flexible",
+              text: "Flexible",
+              checked: checked("['createJob']['workingPatterns']", "Flexible")
+            },
+            {
+              value: "Job share",
+              text: "Job share",
+              checked: checked("['createJob']['workingPatterns']", "Job share")
+            },
+            {
+              value: "Term time",
+              text: "Term time",
+              checked: checked("['createJob']['workingPatterns']", "Term time")
             }
           ]
         }) }}
