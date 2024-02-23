@@ -1,0 +1,74 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Customise your application' %}
+{% set caption = 'Create job listing - section 4 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+
+      <form action="/jobs/new/check" method="post">
+
+        
+        
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h2 class="govuk-fieldset__heading">
+                    Asking about religion
+                </h2>
+                </legend>
+                <div id="waste-hint" class="govuk-hint">
+                Select all that apply.
+                </div>
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+                        <label class="govuk-label govuk-checkboxes__label" for="waste">
+                            Ask applicants for  their religion
+                        </label>
+                    </div>
+                    <div class="govuk-checkboxes__item">
+                        <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+                        <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+                             Ask applicants for a religous referee
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

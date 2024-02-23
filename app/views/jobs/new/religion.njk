@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set title = heading + ' - ' + caption %}
+{% set title = 'Do you want to ask applicants for their religion?' + ' - ' + caption %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -14,7 +14,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="/jobs/new/about">
+      <form action="/jobs/new/sponsorship">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
@@ -27,7 +27,8 @@
                Do you want to ask applicants for their religion?
               </h1>
             </legend>
-            
+
+           
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="religionQuestions" name="religionQuestions" type="radio" value="Yes, ask for their religionn">
@@ -40,13 +41,19 @@
                 <label class="govuk-label govuk-radios__label" for="religionQuestions-2">
                    Yes, ask for their religion and a religious referee
                 </label>
+                <div id="disability-hint" class="govuk-hint">
+                  Applicants will be given an option to add a religious referee,
+                </div>
               </div>
               <div class="govuk-radios__divider">or</div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="religionQuestions-6" name="religionQuestions" type="radio" value="No, do not ask about religion">
+                <input class="govuk-radios__input" id="religionQuestions-6" name="religionQuestions" type="radio" data-aria-controls="conditional-contact-3" value="No, do not ask about religion">
                 <label class="govuk-label govuk-radios__label" for="religionQuestions-6">
                   No, do not ask about religion
                 </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
+                <p>If you never want to aks applicants about their religion, you <a href="#">can set your school or organisations religion to 'no religion' in your profile</a>.</p>
               </div>
             </div>
           </fieldset>

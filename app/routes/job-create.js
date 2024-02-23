@@ -108,6 +108,7 @@ module.exports = router => {
     if(req.body['createJob'] && req.body['createJob'].upload == 'Yes') {
       res.redirect('/jobs/new/file')
     } else {
+      //res.redirect('/jobs/new/check')
       res.redirect('/jobs/new/check')
     }
   })

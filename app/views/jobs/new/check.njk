@@ -35,32 +35,38 @@
       </h2>
 
       {% set workingPatterns %}
-        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-          <li>
-            <p>Full-time</p>
-          </li>
-          <li class="govuk-!-margin-bottom-0">
-            <p class="govuk-!-margin-bottom-0">Part-time:<br>
-            3 days a week</p>
-          </li>
-        </ul>
+        <p>{{ data['createJob']['role'] | join(', ')}}{% if data['createJob']['partTimeDetails'] %}: {{ data['createJob']['partTimeDetails'] }} {% endif %}
       {% endset %}
 
       {% set salaryDetails %}
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+          {% if data['createJob']['full-time-salary'] %} 
           <li>
             <p>Full-time equivalent salary:<br>
-            £25,000 to £35,000</p>
+            {{data['createJob']['full-time-salary']}}</p>
           </li>
+          {% endif %}
+          {% if data['createJob']['actual-salary'] %} 
           <li>
             <p>Actual salary:<br>
-            £17,000 to £26,000</p>
+            {{data['createJob']['actual-salary']}}</p>
           </li>
+          {% endif %}
+          {% if data['createJob']['pay-scale'] %} 
           <li class="govuk-!-margin-bottom-0">
             <p class="govuk-!-margin-bottom-0">Pay scale:<br>
-            MP1 to MP6</p>
+            {{data['createJob']['pay-scale']}}</p>
           </li>
+          {% endif %}
         </ul>
+      {% endset %}
+
+      {% set closingDate %}
+        <p> {{ data['createJob']['closing-date']['day'] }} {{ data['createJob']['closing-date']['month'] }} {{ data['createJob']['closing-date']['year'] }} at  {{ data['createJob']['closing-time'] }}
+      {% endset %}
+
+      {% set startDate %}
+        <p> {{ data['createJob']['closing-date']['day'] }} {{ data['createJob']['closing-date']['month'] }} {{ data['createJob']['closing-date']['year'] }} at  {{ data['createJob']['closing-time'] }}
       {% endset %}
 
       {{ govukSummaryList({
@@ -87,7 +93,7 @@
               text: "Role"
             },
             value: {
-              text: "Teacher"
+              text: data['createJob']['role'] | join(', ')
             },
             actions: {
               items: [
@@ -104,7 +110,7 @@
               text: "Job title"
             },
             value: {
-              text: "Teacher of KS1"
+              text: data['createJob']['title']
             },
             actions: {
               items: [
@@ -155,7 +161,7 @@
               text: "Contract type"
             },
             value: {
-              text: "Permanent"
+              text: data['createJob']['contract']
             },
             actions: {
               items: [
@@ -206,7 +212,7 @@
               text: "Do you want to include additional allowances?"
             },
             value: {
-              html: 'Yes'
+              text: data['additional-allowances']
             },
             actions: {
               items: [
@@ -223,7 +229,7 @@
               text: "Additional allowances"
             },
             value: {
-              html: 'TLR is available'
+              text: data['createJob']['allowances']
             },
             actions: {
               items: [
@@ -231,6 +237,66 @@
                   href: "/jobs/new/salary",
                   text: "Change",
                   visuallyHiddenText: "additional allowances"
+                }
+              ]
+            }
+          } if data['createJob']['allowances']
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Publish and closing dates
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Publish date"
+            },
+            value: {
+              text:  data['createJob']['publishDate']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/listing-dates",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Closing date and time"
+            },
+            value: {
+              text: '31 April 2024 at 9am'
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/listing-dates",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Job start date"
+            },
+            value: {
+              text:  '1 June 2024'
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/listing-dates",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
                 }
               ]
             }
@@ -249,7 +315,7 @@
               text: "Do you want to use the application form?"
             },
             value: {
-              text: "No"
+              text: data['createJob']['method'] 
             },
             actions: {
               items: [
@@ -266,7 +332,7 @@
               text: "How do you want to receive applications?"
             },
             value: {
-              text: "By email"
+              text: data['createJob']['process']
             },
             actions: {
               items: [
@@ -277,7 +343,7 @@
                 }
               ]
             }
-          },
+          } if data['createJob']['method'] == 'No',
           {
             key: {
               text: "Application form"
@@ -294,7 +360,24 @@
                 }
               ]
             }
-          },
+          } if data['createJob']['process'] == 'By email',
+          {
+            key: {
+              text: "Through a website"
+            },
+            value: {
+              text: data['createJob']['website']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/form",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if data['createJob']['process'] == 'Through a website',
           {
             key: {
               text: "Email address to receive applications"
@@ -317,29 +400,12 @@
               text: "Do you want to offer school visits?"
             },
             value: {
-              text: "Yes"
+              text: data['createJob']['school-visits']
             },
             actions: {
               items: [
                 {
                   href: "/jobs/new/school-visits",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Are you a licensed school who is interested in offering sponsorship to an international teacher for this role?"
-            },
-            value: {
-              text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/sponsorship",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -368,7 +434,7 @@
               text: "Do you want to give a contact phone number?"
             },
             value: {
-              text: "Yes"
+              text: data['createJob']['provide-phone-number']
             },
             actions: {
               items: [
@@ -396,7 +462,7 @@
                 }
               ]
             }
-          },
+          } if data['createJob']['phone-number'],
           {
             key: {
               text: "Do you want to ask applicants for their religion?"
@@ -413,7 +479,24 @@
                 }
               ]
             }
-          } if data ['religionQuestions']
+          } if data ['religionQuestions'],
+          {
+            key: {
+              text: "Can you offer skilled worker visa sponsorship to non-UK citizens for this role?"
+            },
+            value: {
+              text: data ['createJob-sponsorship']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/sponsorship",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          }
         ]
       }) }}
 
