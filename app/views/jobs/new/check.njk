@@ -597,7 +597,7 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
               text: "Do you want to add further details about the role?"
             },
             value: {
-              text: "Yes"
+              text: data['createJob']['other-information']
             },
             actions: {
               items: [
@@ -625,13 +625,13 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
                 }
               ]
             }
-          },
+          } if data['createJob']['other-information'] == 'Yes',
           {
             key: {
               text: "Do you want to upload any additional documents?"
             },
             value: {
-              text: "Yes"
+              text: data['createJob']['upload']
             },
             actions: {
               items: [
@@ -659,7 +659,7 @@ a full Disclosure and Barring Service check (previously CRB check) before appoin
                 }
               ]
             }
-          }
+          } if data['createJob']['upload'] == 'Yes'
         ]
       }) }}
 
