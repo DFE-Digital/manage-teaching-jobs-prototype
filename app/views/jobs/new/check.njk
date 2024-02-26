@@ -414,6 +414,40 @@
           },
           {
             key: {
+              text: "Can you offer skilled worker visa sponsorship to non-UK citizens for this role?"
+            },
+            value: {
+              text: data ['createJob-sponsorship']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/sponsorship",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you want to ask applicants for their religion?"
+            },
+            value: {
+              html: data ['religionQuestions']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/religion",
+                  text: "Change",
+                  visuallyHiddenText: "religious preferences"
+                }
+              ]
+            }
+          } if data ['religionQuestions'],
+          {
+            key: {
               text: "Email address"
             },
             value: {
@@ -462,41 +496,7 @@
                 }
               ]
             }
-          } if data['createJob']['phone-number'],
-          {
-            key: {
-              text: "Do you want to ask applicants for their religion?"
-            },
-            value: {
-              html: data ['religionQuestions']
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/religion",
-                  text: "Change",
-                  visuallyHiddenText: "religious preferences"
-                }
-              ]
-            }
-          } if data ['religionQuestions'],
-          {
-            key: {
-              text: "Can you offer skilled worker visa sponsorship to non-UK citizens for this role?"
-            },
-            value: {
-              text: data ['createJob-sponsorship']
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/sponsorship",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          }
+          } if data['createJob']['phone-number']
         ]
       }) }}
 

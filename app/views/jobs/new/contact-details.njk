@@ -22,11 +22,6 @@
         {{heading}}
       </h1>
 
-      {% if data['createJob']['school-visits'] == 'Yes' %}
-        <p>Give contact details to arrange a school visit and ask question about the job.</p>
-      {% else %}
-        <p>Give contact details to ask question about the job.</p>
-      {% endif %}
       {% set emailAddress %}
         {{ govukInput({
           id: "createJob[contact-details--another]",
