@@ -41,15 +41,8 @@
         }) }}
       {% endset %}
 
-      {% if user.organisation.religion == 'No religion' %}
-
+    
         <form action="/jobs/new/about">
-
-      {% else %}
-
-        <form action="/jobs/new/religion">
-
-      {% endif %}
 
         {{ govukRadios({
           idPrefix: "createJob[school-visits-email-address]",

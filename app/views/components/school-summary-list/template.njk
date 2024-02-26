@@ -29,7 +29,7 @@
 {% endset %}
 
 {% set religion %}
-  {% if params.organisation.religion == '' %}
+  {% if params.organisation.religion == 'Not entered' %}
     <div class="app-field-highlight">
       <p class="app-field-highlight__instruction">Enter religion</p>
       Not entered
@@ -104,7 +104,6 @@
   {% set logoLabel = " School logo" %}
   {% set photoLabel = "School photo" %}
 {% endif %}
-
 
 {{ govukSummaryList({
   rows: [
