@@ -1,0 +1,61 @@
+{% extends "layout.njk" %}
+
+{% set caption = 'Teaching AI' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+      {% endset %}
+
+
+      <h1 class="govuk-heading-l">What subject?</h1>
+
+      <form action="topic">
+
+        <div class="govuk-form-group">
+        <label class="govuk-label" for="sort">
+            Subject
+        </label>
+            <select class="govuk-select" id="group" name="group">
+                <option value="7">Maths</option>
+                <option value="8">English</option>
+                <option value="9">History</option>
+            </select>
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
+
+
+
+year group, 
+subject
+topic,
+any additional needs
+
+lesson objective

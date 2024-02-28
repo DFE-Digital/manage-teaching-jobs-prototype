@@ -1,0 +1,464 @@
+{% extends "layout.njk" %}
+
+{% set caption = 'Teaching AI' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="app-page-header">
+
+  <div class="app-page-header__title">
+    <h1 class="govuk-heading-l">Saved lesson plans for you</h1>
+  </div>
+
+  
+    <div class="app-page-header__actions">
+      
+
+<div class="app-button-menu">
+  <div class="app-button-menu__wrapper">
+      
+      
+  
+
+
+  
+    
+  
+
+<a href="/jobs/new" role="button" draggable="false" class="govuk-button app-button-menu__item  app-page-header__action" data-module="govuk-button">
+  Generate a new lesson plan
+</a>
+
+      
+    </div>
+</div>
+
+    </div>
+  
+
+</div>
+
+
+  <div class="app-filter-layout">
+    <div class="app-filter-layout__filter" tabindex="-1">
+      
+
+<div class="app-filter">
+  <div class="app-filter__header">
+    <div class="app-filter__header-title">
+      <h2 class="govuk-heading-m">Filter</h2>
+    </div>
+    <div class="app-filter__header-action">
+
+    </div>
+  </div>
+  <div class="app-filter__content">
+    
+    <div class="app-filter__options">
+      <form method="get" action="/applications" novalidate="">
+        <button class="govuk-button" data-module="govuk-button">
+          Apply filters
+        </button>
+        
+
+  
+
+
+<div class="govuk-form-group">
+
+  <fieldset class="govuk-fieldset">
+  
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+  
+    Status
+  
+  </legend>
+  
+
+  <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+    
+      
+          
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[role]" name="filters[role]" type="checkbox" value="Active">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[role]">
+        Active
+      </label>
+            
+          </div>
+          
+        
+      
+    
+      
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[role]-2" name="filters[role]" type="checkbox" value="Scheduled">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[role]-2">
+        Scheduled
+      </label>
+            
+          </div>
+          
+        
+      
+    
+      
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[role]-3" name="filters[role]" type="checkbox" value="Draft">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[role]-3">
+        Draft
+      </label>
+            
+          </div>
+          
+        
+      
+    
+      
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[role]-4" name="filters[role]" type="checkbox" value="Closed">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[role]-4">
+        Closed
+      </label>
+            
+          </div>
+          
+        
+      
+    
+  </div>
+  
+
+</fieldset>
+
+
+</div>
+
+
+   
+
+
+<div class="govuk-form-group">
+
+  <fieldset class="govuk-fieldset">
+  
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+  
+    Applications
+  
+  </legend>
+  
+
+  <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+    
+      
+          
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[applications]" name="filters[applications]" type="checkbox" value="Has applications">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[applications]">
+        Has applications
+      </label>
+            
+          </div>
+          
+        
+      
+    
+      
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[applications]-2" name="filters[applications]" type="checkbox" value="Does not have applications">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[applications]-2">
+        Does not have applications
+      </label>
+            
+          </div>
+          
+        
+      
+    
+  </div>
+  
+
+</fieldset>
+
+
+</div>
+
+
+  
+
+
+<div class="govuk-form-group">
+
+  <fieldset class="govuk-fieldset">
+  
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+  
+    Role
+  
+  </legend>
+  
+
+  <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+    
+      
+          
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[role]" name="filters[role]" type="checkbox" value="Teacher">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[role]">
+        Teacher
+      </label>
+            
+          </div>
+          
+        
+      
+    
+      
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[role]-2" name="filters[role]" type="checkbox" value="Head of year or phase">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[role]-2">
+        Head of year or phase
+      </label>
+            
+          </div>
+          
+        
+      
+    
+      
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[role]-3" name="filters[role]" type="checkbox" value="Head of department or curriculum">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[role]-3">
+        Head of department or curriculum
+      </label>
+            
+          </div>
+          
+        
+      
+    
+      
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[role]-4" name="filters[role]" type="checkbox" value="Assistant headteacher">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[role]-4">
+        Assistant headteacher
+      </label>
+            
+          </div>
+          
+        
+      
+    
+      
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[role]-5" name="filters[role]" type="checkbox" value="Deputy headteacher">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[role]-5">
+        Deputy headteacher
+      </label>
+            
+          </div>
+          
+        
+      
+    
+      
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[role]-6" name="filters[role]" type="checkbox" value="Headteacher">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[role]-6">
+        Headteacher
+      </label>
+            
+          </div>
+          
+        
+      
+    
+      
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[role]-7" name="filters[role]" type="checkbox" value="Teaching assistant">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[role]-7">
+        Teaching assistant
+      </label>
+            
+          </div>
+          
+        
+      
+    
+      
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[role]-8" name="filters[role]" type="checkbox" value="Learning support, cover supervisor or tutor">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[role]-8">
+        Learning support, cover supervisor or tutor
+      </label>
+            
+          </div>
+          
+        
+      
+    
+      
+        
+          
+          
+          
+          
+          
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="filters[role]-9" name="filters[role]" type="checkbox" value="SENDCo (special educational needs and disabilities coordinator)">
+            <label class="govuk-label govuk-checkboxes__label" for="filters[role]-9">
+        SENDCo (special educational needs and disabilities coordinator)
+      </label>
+            
+          </div>
+          
+        
+      
+    
+  </div>
+  
+
+</fieldset>
+
+
+</div>
+
+
+
+      </form>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+    <div class="app-filter-layout__content">
+      
+
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"><button class="govuk-button govuk-button--secondary govuk-!-margin-bottom-3" type="button" aria-haspopup="true" aria-expanded="true">Hide filter</button></div>
+      </div>
+
+      <div class="app-job-listings">
+        
+        <div class="app-job-listings__job">
+
+          <div class="app-job-listings__job-row">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+              <a href="objective">Year 8 Romans</a>
+            </h2>
+            <strong class="govuk-tag govuk-tag--green">
+            Active
+            </strong>
+
+          </div>
+
+        </div>
+
+        <div>
+
+        </div>
+      
+       
+      
+    </div>
+  </div>
+
+
+
+{% endblock %}
+
+

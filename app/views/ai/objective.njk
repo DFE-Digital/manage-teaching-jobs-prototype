@@ -1,0 +1,109 @@
+{% extends "layout.njk" %}
+
+{% set caption = 'Teaching AI' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+      {% endset %}
+
+      <form action="dashboard">
+
+       <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--l" for="event-name">
+                Lesson plan for year 8s on Romans
+                </label>
+            </h1>
+            
+            
+                <section>
+                <h2 class="govuk-heading-m" style="margin-top:50px;">Lesson 1: Introduction to Ancient Rome</h2>
+                <p class="govuk-body"><strong>Objective:</strong> Students will understand the key aspects of Roman civilization.</p>
+
+                <p class="govuk-body"><strong>1. Engagement (15 mins):</strong></p>
+                <p class="govuk-body">Start with a brief discussion on what students know about ancient Rome. Use visual aids like maps, images, or short video clips to capture their interest. Ask open-ended questions to prompt students' prior knowledge and encourage participation.</p>
+
+                <p class="govuk-body"><strong>2. Introduction to Roman Republic (20 mins):</strong></p>
+                <p class="govuk-body">Provide an overview of the Roman Republic, including its formation, government structure, and the concept of checks and balances. Use simple diagrams or charts to illustrate the Roman political system.</p>
+
+                <p class="govuk-body"><strong>3. Activity - Create a Roman Timeline (25 mins):</strong></p>
+                <p class="govuk-body">Students work individually or in pairs to create a timeline of key events in Roman history. Encourage the inclusion of significant dates, events, and achievements.</p>
+            </section>
+
+            <section>
+                <h2 class="govuk-heading-m">Lesson 2: Daily Life in Ancient Rome</h2>
+                <p class="govuk-body"><strong>Objective:</strong> Students will understand the social structure and daily life in ancient Rome.</p>
+
+                <p class="govuk-body"><strong>1. Recap (15 mins):</strong></p>
+                <p class="govuk-body">Briefly review the previous lesson and address any questions or concerns students may have.</p>
+
+                <p class="govuk-body"><strong>2. Introduction to Roman Society (20 mins):</strong></p>
+                <p class="govuk-body">Discuss the social structure of ancient Rome, highlighting the roles of citizens, slaves, and different classes. Explore aspects of daily life, including housing, food, clothing, and entertainment.</p>
+
+                <p class="govuk-body"><strong>3. Activity - Roman Villa Design (25 mins):</strong></p>
+                <p class="govuk-body">Students engage in a creative activity where they design a Roman villa, considering the layout, rooms, and amenities. Emphasize the social status reflected in their designs.</p>
+            </section>
+
+            <section>
+                <h2 class="govuk-heading-m">Lesson 3: Roman Culture and Legacy</h2>
+                <p class="govuk-body"><strong>Objective:</strong> Students will explore Roman culture, achievements, and their lasting impact.</p>
+
+                <p class="govuk-body"><strong>1. Recap (15 mins):</strong></p>
+                <p class="govuk-body">Review key points from the previous lessons and clarify any misconceptions.</p>
+
+                <p class="govuk-body"><strong>2. Introduction to Roman Culture (20 mins):</strong></p>
+                <p class="govuk-body">Explore aspects of Roman art, literature, architecture, and engineering. Showcase examples of Roman achievements and their lasting impact on Western culture.</p>
+
+                <p class="govuk-body"><strong>3. Activity - Roman Innovations Poster (25 mins):</strong></p>
+                <p class="govuk-body">In groups, students create posters highlighting Roman innovations and their contributions to society. Encourage creativity and effective communication in their presentations.</p>
+            </section>
+
+            <section>
+                <h2 class="govuk-heading-m">Assessment:</h2>
+                <p class="govuk-body"><strong>Homework Assignment:</strong> Students write a short essay reflecting on the enduring legacy of ancient Rome and its influence on the modern world.</p>
+            </section>
+
+            <section>
+                <h2 class="govuk-heading-m">Conclusion:</h2>
+                <p class="govuk-body">Conclude the unit by discussing the lasting impact of the Romans on today's society. Encourage students to connect their learning to present-day culture, politics, and architecture.</p>
+            </section>
+
+        </div>
+
+        {{ govukButton({
+          text: "Save plan"
+        }) }}
+
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
+
+
+
+year group, 
+subject
+topic,
+any additional needs
+
+lesson objective
