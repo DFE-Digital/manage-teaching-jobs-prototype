@@ -78,4 +78,4 @@ const generateUsersFile = (filePath) => {
   )
 }
 
-generateUsersFile(path.join(__dirname, '../app/data/users.json'))
+//generateUsersFile(path.join(__dirname, '../app/data/users.json'))
