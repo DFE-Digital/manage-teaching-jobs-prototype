@@ -77,10 +77,10 @@
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Publish date</legend>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input checked class="govuk-radios__input" id="createJob[publishDate]" name="createJob[publishDate]" type="radio" value="Today (6 June 2022)"> <label class="govuk-label govuk-radios__label" for="createJob[publishDate]">Today (<span id="todayDate"></span>)</label>
+                <input checked class="govuk-radios__input" id="createJob[publishDate]" name="createJob[publishDate]" type="radio" value="Today (6 June 2022)"> <label class="govuk-label govuk-radios__label" for="createJob[publishDate]"><span id="todayDate"></span></label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="createJob[publishDate]-2" name="createJob[publishDate]" type="radio" value="Tomorrow (7 June 2022)"> <label class="govuk-label govuk-radios__label" for="createJob[publishDate]-2">Tomorrow (<span id="tomorrowDate"></span>)</label>
+                <input class="govuk-radios__input" id="createJob[publishDate]-2" name="createJob[publishDate]" type="radio" value="Tomorrow (7 June 2022)"> <label class="govuk-label govuk-radios__label" for="createJob[publishDate]-2"><span id="tomorrowDate"></span></label>
               </div>
               <div class="govuk-radios__item">
                 <input aria-controls="conditional-createJob[publishDate]-3" aria-expanded="false" class="govuk-radios__input" id="createJob[publishDate]-3" name="createJob[publishDate]" type="radio" value="Another date"> <label class="govuk-label govuk-radios__label" for="createJob[publishDate]-3">Another date</label>
@@ -220,8 +220,8 @@
   var formattedDate = today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
 
   // Put the formatted date into the 'todayDate' div
-  document.getElementById('todayDate').textContent = formattedDate;
-  document.getElementById('createJob[publishDate]').value = formattedDate;
+  document.getElementById('todayDate').textContent = 'Today (' + formattedDate + ')';
+  document.getElementById('createJob[publishDate]').value = 'Today (' + formattedDate + ')';
 
   // Calculate tomorrow's date
   var tomorrow = new Date(today);
@@ -231,8 +231,8 @@
   var formattedTomorrow = tomorrow.getDate() + ' ' + monthNames[tomorrow.getMonth()] + ' ' + tomorrow.getFullYear();
 
   // Set the formatted date as the value of the input field with ID 'createJob[publishDate]-2'
-  document.getElementById('createJob[publishDate]-2').value = formattedTomorrow;
-  document.getElementById('tomorrowDate').textContent = formattedTomorrow;
+  document.getElementById('createJob[publishDate]-2').value = 'Tomorrow (' + formattedTomorrow + ')';
+  document.getElementById('tomorrowDate').textContent = 'Tomorrow (' + formattedTomorrow + ')';
 
   </script>
 

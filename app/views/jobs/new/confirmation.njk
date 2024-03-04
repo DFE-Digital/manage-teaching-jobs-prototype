@@ -1,12 +1,10 @@
 
 {% extends "layout.njk" %}
 
-{% set publishingToday = (data.createJob.publishDate == 'Today (6 June 2022)') %}
-
-{% if not publishingToday %}
-  {% set heading = 'Job listing scheduled' %}
-{% else %}
+{% if 'Today' in data['createJob']['publishDate'] %}
   {% set heading = 'Job listing published' %}
+{% else %}
+  {% set heading = 'Job listing scheduled' %}
 {% endif %}
 
 {% set caption = 'Create job listing' %}
@@ -19,8 +17,10 @@
       titleText: heading
     }) }}
 
-    {% if not publishingToday %}
-      <p>Your job listing will be published on 7 June 2022 at 9am.</p>
+    {% if 'Today' in data['createJob']['publishDate'] %}
+
+    {% else %}
+      <p>Your job listing will be published on {{data['createJob']['publishDate']}} at 9am.</p>
     {% endif %}
 
     <h2 class="govuk-heading-m">
