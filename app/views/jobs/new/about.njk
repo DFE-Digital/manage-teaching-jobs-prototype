@@ -21,7 +21,7 @@
     <div class="govuk-grid-column-two-thirds">
 
         <span class="govuk-caption-l">
-        {{caption}}
+        {{caption}} 
       </span>
       <h1 class="govuk-heading-l">
         {{heading}}
@@ -59,7 +59,15 @@
 
       <form action="/jobs/new/upload">
 
-      {% if roleType == 'teaching' %}
+      {% if 'Administration, HR data and finance' in data['createJob']['role'] 
+         and 'Catering, cleaning and site management' in data['createJob']['role'] 
+         and 'IT support' in data['createJob']['role'] 
+         and 'Pastoral, health and welfare' in data['createJob']['role'] 
+         and 'Other leadership roles' in data['createJob']['role'] 
+         and 'Other support roles' in data['createJob']['role'] 
+      %}
+
+      {% else %}
 
         {{ govukRadios({
           idPrefix: "createJob[suitability]",

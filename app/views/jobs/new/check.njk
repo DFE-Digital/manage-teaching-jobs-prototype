@@ -98,7 +98,7 @@
             actions: {
               items: [
                 {
-                  href: "/jobs/new/role",
+                  href: "/jobs/new/role_all",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -166,7 +166,7 @@
             actions: {
               items: [
                 {
-                  href: "jobs/new/contract",
+                  href: "contract",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -183,7 +183,7 @@
             actions: {
               items: [
                 {
-                  href: "jobs/new/working-patterns",
+                  href: "working-patterns",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -200,7 +200,7 @@
             actions: {
               items: [
                 {
-                  href: "/jobs/new/salary",
+                  href: "salary",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
@@ -528,7 +528,7 @@
               text: "What skills and experience are you looking for?"
             },
             value: {
-              text: "You need to have at least 5 years experience teaching in a public school. You’ll be responsible for a class of 30 students."
+              text: data['createJob']['skills']
             },
             actions: {
               items: [
@@ -545,42 +545,7 @@
               text: "What does your school offer?"
             },
             value: {
-              text: "You’ll get regularl training etc."
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/about",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Do you want to give information about your commitment to safeguarding?"
-            },
-            value: {
-              text: "Yes"
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/about",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Information about your commitment to safeguarding"
-            },
-            value: {
-              text: "St Laurence School is committed to safeguarding and promoting the welfare of children and young people and expects all staff and volunteers to share this commitment. All applicants will be subject to
-a full Disclosure and Barring Service check (previously CRB check) before appointment is confirmed."
+              text: data['createJob']['benefits']
             },
             actions: {
               items: [
