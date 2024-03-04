@@ -233,13 +233,13 @@
 
       <div class="govuk-form-group  govuk-!-margin-top-6">
           <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Right to work in the UK</legend>
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Visa sponsorship</legend>
             <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" {% if 'Does have the right to work in the UK' in filterRightToWork  %} checked {% endif %} id="filters-rightToWork" name="filters-rightToWork" type="checkbox" value="Does have the right to work in the UK"> <label class="govuk-label govuk-checkboxes__label" for="filters-rightToWork">Does have the right to work in the UK</label>
+                <input class="govuk-checkboxes__input" {% if 'Does have the right to work in the UK' in filterRightToWork  %} checked {% endif %} id="filters-rightToWork" name="filters-rightToWork" type="checkbox" value="Does have the right to work in the UK"> <label class="govuk-label govuk-checkboxes__label" for="filters-rightToWork">Does not need visa sponsorship</label>
               </div>
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" {% if 'Does not have the right to work in the UK' in filterRightToWork  %} checked {% endif %} id="filters-rightToWork-2" name="filters-rightToWork" type="checkbox" value="Does not have the right to work in the UK"> <label class="govuk-label govuk-checkboxes__label" for="filters-rightToWork]-2">Does not have the right to work in the UK</label>
+                <input class="govuk-checkboxes__input" {% if 'Does not have the right to work in the UK' in filterRightToWork  %} checked {% endif %} id="filters-rightToWork-2" name="filters-rightToWork" type="checkbox" value="Does not have the right to work in the UK"> <label class="govuk-label govuk-checkboxes__label" for="filters-rightToWork]-2">Needs visa sponsorship</label>
               </div>
             </div>
           </fieldset>
@@ -534,13 +534,13 @@
 
               {% if filterRightToWork.length %}
                     
-                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Right to work in the UK</h3>
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Visa sponsorship</h3>
                   <ul class="app-filter-tags">
                   {% if 'Does have the right to work in the UK' in filterRightToWork %} 
-                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Does have the right to work in the UK</a></li>
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Does not need visa sponsorship</a></li>
                   {% endif %}
                   {% if 'Does not have the right to work in the UK' in filterRightToWork %} 
-                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Does not have the right to work in the UK</a></li>
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Needs visa sponsorship</a></li>
                   {% endif %}
                   </ul>
 
