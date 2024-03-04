@@ -72,36 +72,52 @@
       {% endset %}
 
       <form action="/jobs/new/start-date">
-        {{ govukRadios({
-          idPrefix: "createJob[publishDate]",
-          name: "createJob[publishDate]",
-          fieldset: {
-            legend: {
-              text: "Publish date",
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: [
-            {
-              value: "Today (6 June 2022)",
-              text: "Today (6 June 2022)",
-              checked: checked("['createJob']['publishDate']", "Today (6 June 2022)")
-            },
-            {
-              value: "Tomorrow (7 June 2022)",
-              text: "Tomorrow (7 June 2022)",
-              checked: checked("['createJob']['publishDate']", "Tomorrow (7 June 2022)")
-            },
-            {
-              value: "Another date",
-              text: "Another date",
-              checked: checked("['createJob']['publishDate']", "Another date"),
-              conditional: {
-                html: specificDate
-              }
-            }
-          ]
-        }) }}
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Publish date</legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input checked class="govuk-radios__input" id="createJob[publishDate]" name="createJob[publishDate]" type="radio" value="Today (6 June 2022)"> <label class="govuk-label govuk-radios__label" for="createJob[publishDate]">Today (<span id="todayDate"></span>)</label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="createJob[publishDate]-2" name="createJob[publishDate]" type="radio" value="Tomorrow (7 June 2022)"> <label class="govuk-label govuk-radios__label" for="createJob[publishDate]-2">Tomorrow (<span id="tomorrowDate"></span>)</label>
+              </div>
+              <div class="govuk-radios__item">
+                <input aria-controls="conditional-createJob[publishDate]-3" aria-expanded="false" class="govuk-radios__input" id="createJob[publishDate]-3" name="createJob[publishDate]" type="radio" value="Another date"> <label class="govuk-label govuk-radios__label" for="createJob[publishDate]-3">Another date</label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-createJob[publishDate]-3">
+                <div class="govuk-form-group">
+                  <fieldset aria-describedby="createJob[publishDate--anotherDate]-hint" class="govuk-fieldset" role="group">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Another date</legend>
+                    <div class="govuk-hint" id="createJob[publishDate--anotherDate]-hint">
+                      For example, 31 3 2023
+                    </div>
+                    <div class="govuk-date-input" id="createJob[publishDate--anotherDate]">
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="createJob[publishDate--anotherDate]-createJob[publishDate--anotherDate][day]">Day</label> 
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="createJob[publishDate--anotherDate]-createJob[publishDate--anotherDate][day]" name="createJob[publishDate--anotherDate][day]" type="text">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="createJob[publishDate--anotherDate]-createJob[publishDate--anotherDate][month]">Month</label> 
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="createJob[publishDate--anotherDate]-createJob[publishDate--anotherDate][month]" name="createJob[publishDate--anotherDate][month]" type="text">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="createJob[publishDate--anotherDate]-createJob[publishDate--anotherDate][year]">Year</label> 
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="createJob[publishDate--anotherDate]-createJob[publishDate--anotherDate][year]" name="createJob[publishDate--anotherDate][year]" type="text">
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
 
 
         {{ govukDateInput({
@@ -185,5 +201,39 @@
 
     </div>
   </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  
+  <script>
+
+  var today = new Date();
+
+  // Define month names
+  var monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
+  // Format the date
+  var formattedDate = today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  // Put the formatted date into the 'todayDate' div
+  document.getElementById('todayDate').textContent = formattedDate;
+  document.getElementById('createJob[publishDate]').value = formattedDate;
+
+  // Calculate tomorrow's date
+  var tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+
+  // Format tomorrow's date
+  var formattedTomorrow = tomorrow.getDate() + ' ' + monthNames[tomorrow.getMonth()] + ' ' + tomorrow.getFullYear();
+
+  // Set the formatted date as the value of the input field with ID 'createJob[publishDate]-2'
+  document.getElementById('createJob[publishDate]-2').value = formattedTomorrow;
+  document.getElementById('tomorrowDate').textContent = formattedTomorrow;
+
+  </script>
 
 {% endblock %}
