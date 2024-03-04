@@ -13,25 +13,6 @@ module.exports = router => {
     }
   })
 
-  router.post('/jobs/new/role', (req, res) => {
-    if(req.body['roletype']  == 'teaching') {
-      res.redirect('/jobs/new/role_teaching')
-    } else {
-      res.redirect('/jobs/new/role_non_teaching')
-    }
-  })
-
-  router.post('/jobs/new/title', (req, res) => {
-
-    var roleType = req.session.data['roletype']
-
-    if(roleType  == 'teaching') {
-      res.redirect('/jobs/new/key-stage')
-    } else {
-      res.redirect('/jobs/new/contract')
-    }
-  })
-
   router.get('/jobs/new/locations', (req, res) => {
     let org = req.session.user.organisation
 

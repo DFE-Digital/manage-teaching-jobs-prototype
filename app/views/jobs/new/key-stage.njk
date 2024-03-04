@@ -25,7 +25,12 @@
 
       {{user | log}}
 
-      <form action="/jobs/new/subjects">
+      {% if user.organisation.phase == 'Secondary school' or user.organisation.trustType == 'secondary' %}
+       <form method="post" action="/jobs/new/subjects" novalidate>
+      {% else %}
+       <form method="post" action="/jobs/new/contract" novalidate>
+      {% endif %}
+
         {{ govukCheckboxes({
           idPrefix: "createJob[key-stages]",
           name: "createJob[key-stages]",

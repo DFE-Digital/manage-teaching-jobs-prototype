@@ -26,31 +26,21 @@
         {{heading}}
       {% endset %}
 
-      <form method="post" novalidate>
+      {% if 'Administration, HR data and finance' in data['createJob']['role'] 
+         or 'Catering, cleaning or site management' in data['createJob']['role'] 
+         or 'IT support' in data['createJob']['role'] 
+         or 'Pastoral, health or welfare' in data['createJob']['role'] 
+         or 'Other leadership roles' in data['createJob']['role'] 
+         or 'Other support roles' in data['createJob']['role'] 
+      %}
+        
+        <form method="post" action="/jobs/new/contract" novalidate>
 
-        {% if roleType == 'teaching' %}
+      {% else %}
 
-          {{ govukCharacterCount({
-            id: "createJob[title]",
-            name: "createJob[title]",
-            label: {
-              html: h1,
-              isPageHeading: true,
-              classes: 'govuk-label--l'
-            },
-            hint: {
-              text: 'For example ‘Teacher of KS1’'
-            },
-            rows: 1,
-            maxlength: 75,
-            value: data['createJob'].title
-          }) }}
+        <form method="post" action="/jobs/new/key-stage" novalidate>
 
-          {{ govukInsetText({
-          text: "The job listing will say it’s a " + (user.organisation.schoolType or user.organisation.trustType) + " role."
-        }) }}
-
-        {% else %}
+      {% endif %}
 
           <div class="govuk-form-group">
             <h1 class="govuk-heading-l">              
@@ -63,8 +53,6 @@
           </div>
           
 
-
-        {% endif %}
 
         {{ govukButton({
           text: "Save and continue"
@@ -83,22 +71,5 @@
 {% endblock %}
 
 {% block pageScripts %}
-  <script src="/public/javascripts/components/autocomplete/accessible-autocomplete.min.js"></script>
-
-  <script>
-    $(document).ready(function () {
-      var theSchool = $('.autocomplete-wrapper').data("chosen");
-      $('.autocomplete__input').val(theSchool);
-
-      setTimeout(
-      function()
-      {
-        $('.autocomplete__menu').blur();
-        $('.autocomplete__menu').removeClass('autocomplete__menu--visible');
-        $('.autocomplete__menu').addClass('autocomplete__menu--hidden');
-
-      }, 100);
-
-    })
-  </script>
+  
 {% endblock %}
