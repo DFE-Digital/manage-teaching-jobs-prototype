@@ -26,12 +26,12 @@
         {{heading}}
       {% endset %}
 
-      {% if 'Administration, HR data and finance' or data['createJob']['role'] 
-         and 'Catering, cleaning and site management' or data['createJob']['role'] 
-         and 'IT support' or data['createJob']['role'] 
-         and 'Pastoral, health and welfare' or data['createJob']['role'] 
-         and 'Other leadership roles' or data['createJob']['role'] 
-         and 'Other support roles' or data['createJob']['role'] 
+      {% if 'Administration, HR data and finance' in data['createJob']['role'] 
+         or 'Catering, cleaning and site management' in data['createJob']['role'] 
+         or 'IT support' in data['createJob']['role'] 
+         or 'Pastoral, health and welfare' in data['createJob']['role'] 
+         or 'Other leadership roles' in data['createJob']['role'] 
+         or 'Other support roles' in data['createJob']['role'] 
       %}
         
         <form method="post" action="/jobs/new/contract" novalidate>
