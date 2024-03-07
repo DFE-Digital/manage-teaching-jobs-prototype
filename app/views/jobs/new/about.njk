@@ -27,7 +27,6 @@
         {{heading}}
       </h1>
 
-      {% if user.organisation.about != 'Not entered' %}
         {% if user.organisation.schools %}
           <p>Your organisation description from your school profile will be included in the job listing.</p>
         {% else %}
@@ -40,9 +39,7 @@
           summaryText: "View your school description",
           html: example
         }) }}
-      {% endif %}
 
-      {% if user.organisation.safeguardingCommitment != 'Not entered' %}
         {% if user.organisation.schools %}
           <p>Your commitment to safeguarding statement from your organisation profile will be included in the job listing.</p>
         {% else %}
@@ -55,16 +52,15 @@
           summaryText: "View your commitment to safeguarding statement",
           html: example
         }) }}
-      {% endif %}
 
       <form action="/jobs/new/upload">
 
       {% if 'Administration, HR data and finance' in data['createJob']['role'] 
-         and 'Catering, cleaning and site management' in data['createJob']['role'] 
-         and 'IT support' in data['createJob']['role'] 
-         and 'Pastoral, health and welfare' in data['createJob']['role'] 
-         and 'Other leadership roles' in data['createJob']['role'] 
-         and 'Other support roles' in data['createJob']['role'] 
+         or 'Catering, cleaning or site management' in data['createJob']['role'] 
+         or 'IT support' in data['createJob']['role'] 
+         or 'Pastoral, health or welfare' in data['createJob']['role'] 
+         or 'Other leadership roles' in data['createJob']['role'] 
+         or 'Other support roles' in data['createJob']['role'] 
       %}
 
       {% else %}

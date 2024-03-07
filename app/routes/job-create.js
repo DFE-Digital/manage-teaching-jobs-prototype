@@ -69,6 +69,20 @@ module.exports = router => {
     })
   })
 
+  router.post('/jobs/new/key-stage', (req, res) => {
+    
+    var keyStages = req.session.data['createJob']['key-stages'];
+
+      // Check whether the variable includes the string "england" or "scotland"
+      if (keyStages.includes("Key stage 3") || keyStages.includes("Key stage 4") || keyStages.includes("Key stage 5")) {
+          // Send user to the next page
+          res.redirect('subjects');
+      } else {
+          // Send user to the ineligible page
+          res.redirect('contract');
+      }
+  });
+
   router.post('/jobs/new/method', (req, res) => {
     if(req.body['createJob'] && req.body['createJob'].method == 'Yes') {
       res.redirect('/jobs/new/school-visits')

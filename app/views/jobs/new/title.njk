@@ -26,12 +26,12 @@
         {{heading}}
       {% endset %}
 
-      {% if 'Administration, HR data and finance' in data['createJob']['role'] 
-         and 'Catering, cleaning and site management' in data['createJob']['role'] 
-         and 'IT support' in data['createJob']['role'] 
-         and 'Pastoral, health and welfare' in data['createJob']['role'] 
-         and 'Other leadership roles' in data['createJob']['role'] 
-         and 'Other support roles' in data['createJob']['role'] 
+      {% if 'Administration, HR data and finance' or data['createJob']['role'] 
+         and 'Catering, cleaning and site management' or data['createJob']['role'] 
+         and 'IT support' or data['createJob']['role'] 
+         and 'Pastoral, health and welfare' or data['createJob']['role'] 
+         and 'Other leadership roles' or data['createJob']['role'] 
+         and 'Other support roles' or data['createJob']['role'] 
       %}
         
         <form method="post" action="/jobs/new/contract" novalidate>
@@ -49,7 +49,94 @@
               </span>
               Job title
             </h1>
-            <input class="govuk-input" id="createJob[title]" name="createJob[title]" type="text">
+          </div>
+
+          <input class="govuk-input" id="createJob[title]" name="createJob[title]" type="text" hidden>
+
+
+          <div class="autocomplete-wrapper govuk-!-margin-top-3 govuk-!-margin-bottom-5" data-chosen="">
+            <div id="school-hint" class="govuk-hint">
+              Enter a job title to see suggested job titles
+            </div>
+            <select class="schoolSelecter" name="job-title" id="job-title" aria-describedby="school-hint">
+              <option value=""></option>
+              <option value="Administration/Secretarial">Administration/Secretarial</option>
+              <option value="Adviser">Adviser</option>
+              <option value="Assistant Headteacher">Assistant Headteacher</option>
+              <option value="Behaviour Support">Behaviour Support</option>
+              <option value="Bursar/Finance">Bursar/Finance</option>
+              <option value="Business Systems Developer">Business Systems Developer</option>
+              <option value="Careers Adviser">Careers Adviser</option>
+              <option value="Catering Staff">Catering Staff</option>
+              <option value="Cleaner">Cleaner</option>
+              <option value="Logistics">Logistics</option>
+              <option value="College Governor">College Governor</option>
+              <option value="Community Worker">Community Worker</option>
+              <option value="Consultant">Consultant</option>
+              <option value="Counsellor">Counsellor</option>
+              <option value="Cover Supervisors">Cover Supervisors</option>
+              <option value="Driver">Driver</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Educational Psychologist">Educational Psychologist</option>
+              <option value="Employer Engagement Assistant">Employer Engagement Assistant</option>
+              <option value="Exam Invigilator">Exam Invigilator</option>
+              <option value="Exam Officer">Exam Officer</option>
+              <option value="Examiner">Examiner</option>
+              <option value="Facilities Management">Facilities Management</option>
+              <option value="Family Support Worker">Family Support Worker</option>
+              <option value="Finance">Finance</option>
+              <option value="Gap Year Assistant/Apprenticeship">Gap Year Assistant/Apprenticeship</option>
+              <option value="Graduate Teacher">Graduate Teacher</option>
+              <option value="Chef">Chef</option>
+              <option value="Higher Level Teaching Assistant">Higher Level Teaching Assistant</option>
+              <option value="House Parent">House Parent</option>
+              <option value="HR Administrator">HR Administrator</option>
+              <option value="Creative Arts">Creative Arts</option>
+              <option value="HR Manager">HR Manager</option>
+              <option value="Information Assistant">Information Assistant</option>
+              <option value="Information Systems Developer">Information Systems Developer</option>
+              <option value="Information Systems Manager">Information Systems Manager</option>
+              <option value="Bus and Coach">Bus and Coach</option>
+              <option value="IT Support Analyst">IT Support Analyst</option>
+              <option value="IT Support Engineer">IT Support Engineer</option>
+              <option value="IT Support Officer">IT Support Officer</option>
+              <option value="IT Support Team Leader">IT Support Team Leader</option>
+              <option value="Learning Pathways Coach">Learning Pathways Coach</option>
+              <option value="Learning Support">Learning Support</option>
+              <option value="Learning Technologist">Learning Technologist</option>
+              <option value="Librarian">Librarian</option>
+              <option value="Lifeguard">Lifeguard</option>
+              <option value="Management">Management</option>
+              <option value="Marketing Administrator">Marketing Administrator</option>
+              <option value="Marketing Manager">Marketing Manager</option>
+              <option value="Matron">Matron</option>
+              <option value="Games Design">Games Design</option>
+              <option value="MIS">MIS</option>
+              <option value="Princes Trust">Princes Trust</option>
+              <option value="Nursery Manager">Nursery Manager</option>
+              <option value="Nursery Nurse">Nursery Nurse</option>
+              <option value="Outreach Worker">Outreach Worker</option>
+              <option value="PA">PA</option>
+              <option value="Pastoral">Pastoral</option>
+              <option value="Custody and Detention">Custody and Detention</option>
+              <option value="Practitioner">Practitioner</option>
+              <option value="Psychologist">Psychologist</option>
+              <option value="Human Resources">Human Resources</option>
+              <option value="School Club Personnel">School Club Personnel</option>
+              <option value="School Governor">School Governor</option>
+              <option value="School Meals Supervisory Assistant">School Meals Supervisory Assistant</option>
+              <option value="Employability">Employability</option>
+              <option value="SENCO">SENCO</option>
+              <option value="Site Manager">Site Manager</option>
+              <option value="Speech and Language Therapist">Speech and Language Therapist</option>
+              <option value="Student Welfare">Student Welfare</option>
+              <option value="Teacher">Teacher</option>
+              <option value="Teaching Assistant">Teaching Assistant</option>
+              <option value="Team Leader">Team Leader</option>
+              <option value="Technician">Technician</option>
+              <option value="Therapist">Therapist</option>
+              <option value="Trainers and Assessors">Trainers and Assessors</option>
+            </select>
           </div>
           
 
@@ -70,6 +157,39 @@
 
 {% endblock %}
 
+
 {% block pageScripts %}
-  
+  <script src="/public/javascripts/components/autocomplete/accessible-autocomplete.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+      // Get references to the source and target input fields
+      const sourceInput = document.getElementById('job-title');
+      const targetInput = document.getElementById('createJob[title]');
+
+      // Add an input event listener to the source input field
+      sourceInput.addEventListener('input', function() {
+          targetInput.value = sourceInput.value;
+      });
+
+      // Add a blur event listener to the source input field
+      sourceInput.addEventListener('blur', function() {
+         targetInput.value = sourceInput.value;
+      });
+
+      setTimeout(
+      function()
+      {
+        $('.autocomplete__menu').blur();
+        $('.autocomplete__menu').removeClass('autocomplete__menu--visible');
+        $('.autocomplete__menu').addClass('autocomplete__menu--hidden');
+
+      }, 100);
+
+
+       
+
+    })
+  </script>
 {% endblock %}
