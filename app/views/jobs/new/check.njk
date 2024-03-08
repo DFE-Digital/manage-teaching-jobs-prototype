@@ -35,7 +35,7 @@
       </h2>
 
       {% set workingPatterns %}
-        <p>{{ data['createJob']['role'] | join(', ')}}{% if data['createJob']['partTimeDetails'] %}: {{ data['createJob']['partTimeDetails'] }} {% endif %}
+        <p>{% if data['createJob']['partTimeDetails'] %}{{ data['createJob']['partTimeDetails'] }} {% endif %}
       {% endset %}
 
       {% set salaryDetails %}
@@ -511,7 +511,7 @@
               text: "Is this role suitable for an early career teacher (ECT)?"
             },
             value: {
-              text: "No"
+              text: data['createJob']['suitability']
             },
             actions: {
               items: [
@@ -522,7 +522,7 @@
                 }
               ]
             }
-          },
+          } if data['createJob']['suitability'],
           {
             key: {
               text: "What skills and experience are you looking for?"

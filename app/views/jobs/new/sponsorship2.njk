@@ -15,17 +15,8 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
     
-    {% if data['createJob']['method'] == 'Yes' %}
-
-        {% if user.organisation.religion == 'No religion' %}
-            <form action="/jobs/new/contact-details" method="post" novalidate>
-        {% else %}
-             <form action="/jobs/new/religion" method="post" novalidate>
-        {% endif %}
-
-    {% else %}
+   
       <form action="/jobs/new/contact-details" method="post" novalidate>
-    {% endif %}
 
         <div class="govuk-form-group">
           <fieldset aria-describedby="createJob-sponsorship-hint" class="govuk-fieldset">

@@ -31,6 +31,29 @@
       </div>
 
       <div class="app-job-listings">
+
+        {% if  data['createJob']['role'] !== "" and data['createJob']['title'] !== ""  %}
+
+        <div class="app-job-listings__job">
+          <div class="app-job-listings__job-row">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+              <a href="/jobs/example">{{data['createJob']['title']}}</a>
+            </h2>
+              {{govukTag({
+                text: "ACTIVE",
+                classes: "govuk-tag--green"
+              })}}
+          </div>
+          <div class="app-job-listings__job-row">
+            <p class="app-job-listings__role govuk-!-margin-bottom-0">{{data['createJob']['role']}}</p>
+            <p class="app-job-listings__copy govuk-!-margin-bottom-0">
+              <a href="/jobs/new/copied">Copy</a>
+            </p>
+          </div>
+        </div>
+
+        {% endif %}
+
         {% for job in user.jobs %}
         <div class="app-job-listings__job">
           <div class="app-job-listings__job-row">

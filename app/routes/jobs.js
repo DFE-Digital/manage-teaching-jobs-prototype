@@ -7,6 +7,13 @@ module.exports = router => {
     res.render('jobs/index')
   })
 
+  router.get('/jobs/example', authentication.checkIsAuthenticated, (req, res) => {
+
+    res.render('jobs/example', {
+      
+    })
+  })
+
   router.get('/jobs/:id', authentication.checkIsAuthenticated, (req, res) => {
     let job = req.session.user.jobs.find(job => job.id == req.params.id)
 

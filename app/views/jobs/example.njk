@@ -12,95 +12,68 @@
   }) if flash and flash.length }}
 
   <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    {{job.title}}
-    {{ govukTag({
-      text: job.status,
-      classes: job.status | jobStatusTagClass
-    }) }}
+    {{data['createJob']['title']}}
+    {{govukTag({
+        text: "ACTIVE",
+        classes: "govuk-tag--green"
+    })}}
   </h1>
 
-
+ 
   {% set linkForCandidates %}filters-role={{job.role}}{% if job.subjects %}&filters-subjects={{job.subjects}}{% endif %}{% endset %}
-
 
   {% set insetHtml %}
     <p><a href="/jobseekers?{{linkForCandidates}}" class="">View candidate profiles</a> that match this job listing.</p>
   {% endset %}
 
-
-
-    {% if job.status == 'Active' %}
-      <p class="govuk-!-width-two-thirds">This job listing was published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
-
-      <div class="govuk-button-group"><p>
-        <a href="/jobs/{{job.id}}/preview">View (opens in new tab)</a>
-        <a href="#" class="govuk-!-margin-left-3">Copy</a>
-        <a href="#" class="govuk-!-margin-left-3">Close early</a>
-        <a href="#" class="govuk-!-margin-left-3">Extend closing date</a></p>
-      </div>
-
-      {{ govukInsetText({
-        html: insetHtml,
-        classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-2 govuk-!-padding-bottom-3'
-      }) }}
-
-
+    {% if 'Today' in data['createJob']['publishDate'] %}
+      <p class="govuk-!-width-two-thirds">This job listing was published {{ data['createJob']['publishDate']}}. It will close on 31st April 2024 at 9am.</p>
+    {% elseif 'Tomorrow' in data['createJob']['publishDate'] %}
+      <p class="govuk-!-width-two-thirds">This job listing will be published {{ data['createJob']['publishDate']}}. It will close on 31st April 2024 at 9am.</p>
+    {% else %}
+      <p class="govuk-!-width-two-thirds">This job listing will be published on {{ data['createJob']['publishDate']}}. It will close on 31st April 2024 at 9am.</p>
     {% endif %}
 
-    {% if job.status == 'Scheduled' %}
-      <p class="govuk-!-width-two-thirds">This job listing will be published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+    <div class="govuk-button-group"><p>
+      <a href="#">View (opens in new tab)</a>
+      <a href="#" class="govuk-!-margin-left-3">Copy</a>
+      <a href="#" class="govuk-!-margin-left-3">Close early</a>
+      <a href="#" class="govuk-!-margin-left-3">Extend closing date</a></p>
+    </div>
 
-      <div class="govuk-button-group">
-        <a href="/jobs/{{job.id}}/preview" class="govuk-!-margin-left-">Preview</a>
-        <a href="#" class="govuk-!-margin-left-3">Copy</a>
-        <a href="#" class="govuk-!-margin-left-3">Delete</a>
-        <a href="#" class="govuk-!-margin-left-3">Convert to draft</a>
-      </div>
-    {% endif %}
-
-    {% if job.status == 'Closed' %}
-      <p class="govuk-!-width-two-thirds">This job listing was published on {{job.publishDate | date }}. It closed on {{job.closingDate | date}} at {{job.closingTime}}.</p>
-
-      <div class="govuk-button-group">
-        <a href="/jobs/{{job.id}}/preview">View (opens in new tab)</a>
-        <a href="#" class="govuk-!-margin-left-3">Copy</a>
-        <a href="#" class="govuk-!-margin-left-3">Extend closing date</a>
-      </div>
-    {% endif %}
-
-    {% if job.status == 'Draft' %}
-
-      {% if query.incomplete %}
-        <p>This job listing needs to be completed before it can be published.</p>
-      {% else %}
-        <p>This job listing is complete and needs to be published.</p>
-      {% endif %}
-
-      <div class="govuk-button-group">
-        {% if query.incomplete %}
-          {{ govukButton({
-            text: "Complete job listing",
-            href: '#',
-            classes: 'govuk-!-margin-bottom-0'
-          }) }}
-        {% else %}
-          {{ govukButton({
-            text: "Publish job listing",
-            href: '#',
-            classes: 'govuk-!-margin-bottom-0'
-          }) }}
-        {% endif %}
-        <a href="/jobs/{{job.id}}/preview">Preview</a>
-        <a href="#" class="govuk-!-margin-left-3">Copy</a>
-        <a href="#" class="govuk-!-margin-left-3">Delete</a>
-      </div>
-    {% endif %}
+    {{ govukInsetText({
+      html: insetHtml,
+      classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-2 govuk-!-padding-bottom-3'
+    }) }}
 
 
+    <nav class="app-sub-navigation govuk-!-margin-top-6 govuk-!-margin-bottom-2" aria-label="Application menu">
 
+    <ul class="app-sub-navigation__list">
 
+      <li class="app-sub-navigation__item">
+        <a class="app-sub-navigation__link" aria-current="page" href="#" >Job listing</a>
+      </li>
 
-  {% include "includes/job-sub-navigation.njk" %}
+      <li class="app-sub-navigation__item">
+        <a class="app-sub-navigation__link" href="#" >Invitees</a>
+      </li>
+    
+      <li class="app-sub-navigation__item">
+        <a class="app-sub-navigation__link" href="#" >Applications</a>
+      </li>
+    
+      <li class="app-sub-navigation__item">
+        <a class="app-sub-navigation__link" href="#" >Statistics</a>
+      </li>
+    
+      <li class="app-sub-navigation__item">
+        <a class="app-sub-navigation__link" href="#" >Activity</a>
+      </li>
+        
+    </ul>
+
+  </nav>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -109,36 +82,27 @@
         Job details
       </h2>
 
-      {% set workingPatterns %}
-        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-
-          {% for workingPattern in job.workingPatterns %}
-            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
-              {{workingPattern}} -
-              {% if workingPattern == 'Full time' %}
-                {{job.fullTimeDetails}}
-              {% else %}
-                {{job.partTimeDetails}}
-              {% endif %}
-            </li>
-          {% endfor %}
-        </ul>
-      {% endset %}
 
       {% set salaryDetails %}
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-          {% for salaryDetail in job.salaryDetails %}
-            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
-                {{salaryDetail}}:<br>
-                {% if salaryDetail == 'Full-time equivalent salary' %}
-                  {{job.fullTimeEquivalentSalaryDetails}}
-                {% elseif salaryDetail == 'Actual salary' %}
-                  {{job.actualSalaryDetails}}
-                {% else %}
-                  {{job.payScaleDetails}}
-                {% endif %}
-            </li>
-          {% endfor %}
+          {% if data['createJob']['full-time-salary'] %} 
+          <li>
+            <p>Full-time equivalent salary:<br>
+            {{data['createJob']['full-time-salary']}}</p>
+          </li>
+          {% endif %}
+          {% if data['createJob']['actual-salary'] %} 
+          <li>
+            <p>Actual salary:<br>
+            {{data['createJob']['actual-salary']}}</p>
+          </li>
+          {% endif %}
+          {% if data['createJob']['pay-scale'] %} 
+          <li class="govuk-!-margin-bottom-0">
+            <p class="govuk-!-margin-bottom-0">Pay scale:<br>
+            {{data['createJob']['pay-scale']}}</p>
+          </li>
+          {% endif %}
         </ul>
       {% endset %}
 
@@ -176,7 +140,7 @@
               text: "Role"
             },
             value: {
-              text: job.role
+              text: data['createJob']['role']
             },
             actions: {
               items: [
@@ -193,7 +157,7 @@
               text: "Job title"
             },
             value: {
-              text: job.title
+              text: data['createJob']['title']
             },
             actions: {
               items: [
@@ -210,7 +174,7 @@
               text: "Key stage"
             },
             value: {
-              text: job.keyStages | join(', ')
+              text: data['createJob']['key-stages'] | join(', ')
             },
             actions: {
               items: [
@@ -227,7 +191,7 @@
               text: "Subjects"
             },
             value: {
-              text: job.subjects | join(', ')
+              text: data['createJob']['subjects'] | join(', ') or 'None'
             },
             actions: {
               items: [
@@ -244,7 +208,7 @@
               text: "Contract type"
             },
             value: {
-              text: job.contractType + ' - ' + job.contractLength
+              text: data['createJob']['contract']
             },
             actions: {
               items: [
@@ -261,7 +225,7 @@
               text: "Working patterns"
             },
             value: {
-              html: workingPatterns
+              html: data['createJob']['partTimeDetails']
             },
             actions: {
               items: [
@@ -304,7 +268,7 @@
               text: "Publish date"
             },
             value: {
-              text: job.publishDate | date
+              text: data['createJob']['publishDate']
             },
             actions: {
               items: [
@@ -321,7 +285,7 @@
               text: "Closing date"
             },
             value: {
-              text: job.closingDate | date + ' at ' + job.closingTime
+              text: '31 April 2024 at 9am'
             },
             actions: {
               items: [
@@ -338,7 +302,7 @@
               text: "Job start date"
             },
             value: {
-              html: job.startDate | date
+              html: '1 June 2024'
             },
             actions: {
               items: [
@@ -364,7 +328,7 @@
               text: "Do you want to use the application form?"
             },
             value: {
-              text: job.isUsingApplicationForm
+              text: data['createJob']['method'] 
             },
             actions: {
               items: [
@@ -381,7 +345,7 @@
               text: "How would you like applications to be submitted?"
             },
             value: {
-              text: job.applicationMethod
+              text: data['createJob']['process'] 
             },
             actions: {
               items: [
@@ -398,7 +362,7 @@
               text: "Application form"
             },
             value: {
-              html: '<a href="#">' + job.applicationForm.file + '(' + job.applicationForm.size +')</a>'
+              html: '<a href="#">Application form(2mb)</a>'
             },
             actions: {
               items: [
@@ -415,7 +379,7 @@
               text: "Email address to receive applications"
             },
             value: {
-              html: job.emailAddressForApplications
+              html: 'molly@example.com'
             },
             actions: {
               items: [
@@ -432,7 +396,7 @@
               text: "Link to website"
             },
             value: {
-              html: job.linkToWebsite
+              html: 'schoolsite.com'
             },
             actions: {
               items: [
@@ -449,7 +413,7 @@
               text: "Do you want to offer school visits?"
             },
             value: {
-              text: job.offersSchoolVisits
+              text: data['createJob']['school-visits']
             },
             actions: {
               items: [
@@ -466,7 +430,7 @@
               text: "Email address"
             },
             value: {
-              html: job.contactEmailAddress
+              html: 'molly@example.com'
             },
             actions: {
               items: [
@@ -483,7 +447,7 @@
               text: "Do you want to give a contact phone number?"
             },
             value: {
-              text: job.hasContactPhoneNumber
+              text: data['createJob']['provide-phone-number']
             },
             actions: {
               items: [
@@ -559,7 +523,7 @@
               text: "What skills and experience are you looking for?"
             },
             value: {
-              html: skillsAndExperience
+              html: data['createJob']['skills']
             },
             actions: {
               items: [
@@ -576,24 +540,7 @@
               text: "What does your school offer?"
             },
             value: {
-              html: whatSchoolOffers
-            },
-            actions: {
-              items: [
-                {
-                  href: "/jobs/new/about",
-                  text: "Change",
-                  visuallyHiddenText: "TODO"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Do you want to give information about your commitment to safeguarding?"
-            },
-            value: {
-              text: job.hasSafeguardingCommitment
+              html: data['createJob']['benefits']
             },
             actions: {
               items: [
@@ -627,7 +574,7 @@
               text: "Do you want to add further details about the role?"
             },
             value: {
-              text: job.hasFurtherDetailsAboutTheRole
+              text: data['createJob']['other-information']
             },
             actions: {
               items: [
@@ -661,7 +608,7 @@
               text: "Do you want to upload any additional documents?"
             },
             value: {
-              text: job.hasAdditionalDocuments
+              text: data['createJob']['upload']
             },
             actions: {
               items: [
@@ -678,7 +625,7 @@
               text: "Additional documents"
             },
             value: {
-              html: additionalDocuments
+              html: '<a href="#">person-spec.pdf (2MB)</a>'
             },
             actions: {
               items: [
@@ -689,7 +636,7 @@
                 }
               ]
             }
-          } if job.additionalDocuments
+          } if data['createJob']['upload'] == 'Yes'
         ]
       }) }}
 
