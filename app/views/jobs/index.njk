@@ -32,7 +32,7 @@
 
       <div class="app-job-listings">
 
-        {% if  data['createJob']['role'] !== "" and data['createJob']['title'] !== ""  %}
+        {% if  data['createJob']['role'] and data['createJob']['title'] %}
 
         <div class="app-job-listings__job">
           <div class="app-job-listings__job-row">
