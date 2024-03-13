@@ -69,18 +69,27 @@ module.exports = router => {
     })
   })
 
+  router.get('/jobs/new/key-stage', (req, res) => {
+    
+    res.render('jobs/new/key-stage', {
+      
+    })
+  })
+
+
   router.post('/jobs/new/key-stage', (req, res) => {
     
-    var keyStages = req.session.data['createJob']['key-stages'];
+      var keyStages = req.session.data['createJob']['key-stages'];
 
       // Check whether the variable includes the string "england" or "scotland"
-      if (keyStages.includes("Key stage 3") || keyStages.includes("Key stage 4") || keyStages.includes("Key stage 5")) {
-          // Send user to the next page
+      if (keyStages && (keyStages.includes("Key stage 3") || keyStages.includes("Key stage 4") || keyStages.includes("Key stage 5"))) {
+        // Send user to the next page
           res.redirect('subjects');
       } else {
           // Send user to the ineligible page
           res.redirect('contract');
       }
+
   });
 
   router.post('/jobs/new/method', (req, res) => {

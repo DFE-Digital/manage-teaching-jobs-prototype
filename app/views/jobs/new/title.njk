@@ -34,11 +34,11 @@
          or 'Other support roles' in data['createJob']['role'] 
       %}
         
-        <form method="post" action="/jobs/new/contract" novalidate>
+        <form action="/jobs/new/contract" novalidate>
 
       {% else %}
 
-        <form method="post" action="/jobs/new/key-stage" novalidate>
+        <form action="/jobs/new/key-stage" novalidate>
 
       {% endif %}
 
@@ -187,8 +187,6 @@
 
       }, 100);
 
-
-       
 
     })
   </script>
