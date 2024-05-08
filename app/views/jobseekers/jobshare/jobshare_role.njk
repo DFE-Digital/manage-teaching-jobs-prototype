@@ -1,0 +1,162 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Job role' %}
+{% set caption = 'Job share matching - question 1 of 3' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      {% endset %}
+
+      <form action="/jobshare/days">
+
+        <h1 class="govuk-fieldset__heading">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+             <span class="govuk-caption-l">
+              {{caption}}
+            </span>
+            What role are you looking to find candidates to jobshare for?
+          </legend>
+        </h1>
+
+        <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
+            
+            <p class="govuk-!-margin-top-6"><b>Teaching &amp; leadership</b></p>
+      
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="Teacher">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  Teacher
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="Head of year or phase">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  Head of year or phase
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="Head of department or curriculum">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  Head of department or curriculum
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="Assistant headteacher">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  Assistant headteacher
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="Deputy headteacher">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  Deputy headteacher
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="Headteacher">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  Headteacher
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="SENDCo (special educational needs and disabilities coordinator)">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  SENDCo (special educational needs and disabilities coordinator)
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="Other leadership roles">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  Other leadership roles
+                </label>   
+            </div>
+
+            <p class="govuk-!-margin-top-4"><b>Support</b></p>
+
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="Teaching assistant">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  Teaching assistant
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="HLTA (higher level teaching assistant)">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  HLTA (higher level teaching assistant)
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="Learning support or cover supervisor">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  Learning support or cover supervisor
+                </label>   
+            </div>
+        
+
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="Administration, HR data and finance">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  Administration, HR data and finance
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="Catering, cleaning and site management">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  Catering, cleaning and site management
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="IT support">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  IT support
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="Pastoral, health and welfare">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  Pastoral, health and welfare
+                </label>   
+            </div>
+            
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-radios__input" id="jobshare-role" name="jobshare-role" type="checkbox" value="Other support roles">
+                <label class="govuk-label govuk-radios__label" for="jobshare-role">
+                  Other support roles
+                </label>   
+            </div>
+
+        </div>
+
+
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

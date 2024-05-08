@@ -228,6 +228,15 @@ module.exports = router => {
     })
   })
 
+
+  router.get('/organisation/flexible/edit', authentication.checkIsAuthenticated, (req, res) => {
+    let organisation = req.session.user.organisation
+
+    res.render('organisation/edit-flexible/index', {
+      organisation
+    })
+  })
+
   router.post('/organisation/faith/edit', authentication.checkIsAuthenticated, (req, res) => {
 
     let user = req.session.user

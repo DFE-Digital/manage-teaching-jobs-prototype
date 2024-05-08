@@ -101,6 +101,20 @@ module.exports = router => {
     })
   })
 
+  router.get('/jobshare', authentication.checkIsAuthenticated, (req, res) => {
+    
+    res.render('jobseekers/jobshare/jobshare_role', {
+    
+    })
+  })
+
+  router.get('/jobshare/days', authentication.checkIsAuthenticated, (req, res) => {
+    
+    res.render('jobseekers/jobshare/jobshare_days', {
+    
+    })
+  })
+
   router.get('/jobseekers_noresults', authentication.checkIsAuthenticated, (req, res) => {
 
     res.render('jobseekers/no_results', {
