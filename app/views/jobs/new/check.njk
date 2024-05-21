@@ -430,11 +430,15 @@
             }
           },
           {
-            key: {
-              text: "Do you want to ask applicants for their religion?"
+            key:{
+              text: "What religious information do you want to ask applicants for?"
             },
             value: {
-              html: data ['religionQuestions']
+              html: 'Religious denomination or faith,
+                      Address of place of worship,
+                      Religious referee,
+                      Baptism certificate,
+                      Address and date of baptism'
             },
             actions: {
               items: [
@@ -445,7 +449,7 @@
                 }
               ]
             }
-          } if data ['religionQuestions'],
+          },
           {
             key: {
               text: "Email address"

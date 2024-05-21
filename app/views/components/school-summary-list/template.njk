@@ -113,15 +113,6 @@
       },
       value: {
         text: params.organisation.name
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: ""
-          }
-        ]
       }
     },
     {
@@ -130,15 +121,6 @@
       },
       value: {
         text: address
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: ""
-          }
-        ]
       }
     },
     {
@@ -147,15 +129,6 @@
       },
       value: {
         text: params.organisation.type
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: ""
-          }
-        ]
       }
     } if params.organisation.type,
     {
@@ -164,15 +137,6 @@
       },
       value: {
         html: phase
-      },
-      actions: {
-        items: [
-          {
-            href: "/organisation/edit/phase",
-            text: "Change",
-            visuallyHiddenText: "Phase"
-          }
-        ]
       }
     } if params.organisation.phase,
     {
@@ -181,15 +145,6 @@
       },
       value: {
         text: params.organisation.ageGroup
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: ""
-          }
-        ]
       }
     } if params.organisation.ageGroup,
     {
@@ -198,17 +153,16 @@
       },
       value: {
         text: params.organisation.size + ' pupils enrolled'
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: ""
-          }
-        ]
       }
     } if params.organisation.size,
+    {
+      key: {
+        text: "Religious character"
+      },
+      value: {
+        html: religion
+      }
+    },
     {
       key: {
         text: "Email address"
@@ -256,23 +210,6 @@
             href: "/organisation/flexible/edit",
             text: "Change",
             visuallyHiddenText: "flexible"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Religion"
-      },
-      value: {
-        html: religion
-      },
-      actions: {
-        items: [
-          {
-            href: "/organisation/faith/edit",
-            text: "Change",
-            visuallyHiddenText: "faith"
           }
         ]
       }

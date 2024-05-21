@@ -223,7 +223,7 @@ module.exports = router => {
   router.get('/organisation/faith/edit', authentication.checkIsAuthenticated, (req, res) => {
     let organisation = req.session.user.organisation
 
-    res.render('organisation/edit-faith/religion', {
+    res.render('organisation/edit-faith/religion2', {
       organisation
     })
   })

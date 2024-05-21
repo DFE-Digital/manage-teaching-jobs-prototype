@@ -1,10 +1,10 @@
 {% extends "layout.njk" %}
 
 {% if user.organisation.schools %}
-  {% set heading = 'What is your organisations religion?' %}
+  {% set heading = 'What is your organisations religious character?' %}
   {% set caption = 'Organisation profile' %}
 {% else %}
-  {% set heading = 'What is your schools religion?' %}
+  {% set heading = 'What is your schools religious character?' %}
   {% set caption = 'School profile' %}
 {% endif %}
 
@@ -31,8 +31,6 @@
                 Are you open to flexible working?
               </h1>
             </legend>
-
-
 
             <div class="govuk-inset-text">
                 Jobseekers are twice as likely to consider a role that offers flexible working.
