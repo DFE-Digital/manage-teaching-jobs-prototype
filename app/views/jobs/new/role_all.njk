@@ -23,7 +23,7 @@
         {{heading}}
       {% endset %}
 
-      <form action="/jobs/new/title">
+        <form method="post" novalidate>
 
         <h1 class="govuk-fieldset__heading">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -43,50 +43,50 @@
             <p class="govuk-!-margin-top-6"><b>Teaching &amp; leadership</b></p>
       
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="Teacher">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Teacher">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   Teacher
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="Head of year or phase">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Head of year or phase">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   Head of year or phase
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="Head of department or curriculum">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Head of department or curriculum">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   Head of department or curriculum
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="Assistant headteacher">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Assistant headteacher">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   Assistant headteacher
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="Deputy headteacher">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Deputy headteacher">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   Deputy headteacher
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="Headteacher">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Headteacher">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   Headteacher
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="SENDCo (special educational needs and disabilities coordinator)">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="SENDCo (special educational needs and disabilities coordinator)">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   SENDCo (special educational needs and disabilities coordinator)
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="Other leadership roles">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Other leadership roles">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   Other leadership roles
                 </label>   
             </div>
@@ -94,50 +94,50 @@
             <p class="govuk-!-margin-top-4"><b>Support</b></p>
 
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="Teaching assistant">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Teaching assistant">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   Teaching assistant
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="HLTA (higher level teaching assistant)">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="HLTA (higher level teaching assistant)">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   HLTA (higher level teaching assistant)
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="Learning support or cover supervisor">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Learning support or cover supervisor">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   Learning support or cover supervisor
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="Administration, HR data and finance">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Administration, HR data and finance">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   Administration, HR data and finance
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="Catering, cleaning and site management">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Catering, cleaning and site management">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   Catering, cleaning and site management
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="IT support">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="IT support">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   IT support
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="Pastoral, health and welfare">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Pastoral, health and welfare">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   Pastoral, health and welfare
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="createJob[role]" name="createJob[role]" type="checkbox" value="Other support roles">
-                <label class="govuk-label govuk-checkboxes__label" for="createJob[role]">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Other support roles">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
                   Other support roles
                 </label>   
             </div>

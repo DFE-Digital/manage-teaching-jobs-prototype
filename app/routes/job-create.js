@@ -9,7 +9,7 @@ module.exports = router => {
     if(org.schools && org.schools.length > 1) {
       res.redirect('/jobs/new/locations')
     } else {
-      res.redirect('/jobs/new/role_all')
+      res.redirect('/jobs/new/title')
     }
   })
 
@@ -75,6 +75,27 @@ module.exports = router => {
       
     })
   })
+
+  router.post('/jobs/new/role_all', (req, res) => {
+    
+      var whatRole = req.session.data['jobRole'];
+
+      // Check whether the variable includes the string "england" or "scotland"
+      if (whatRole && (whatRole.includes("Administration, HR data and finance") 
+        || whatRole.includes("Catering, cleaning and site management") 
+        || whatRole.includes("IT support")
+        || whatRole.includes("Other support roles")
+        || whatRole.includes("Pastoral, health and welfare")
+        || whatRole.includes("Other leadership roles")
+    )) {
+        // Send user to the next page
+          res.redirect('contract');
+      } else {
+          // Send user to the ineligible page
+          res.redirect('key-stage');
+      }
+
+  });
 
 
   router.post('/jobs/new/key-stage', (req, res) => {

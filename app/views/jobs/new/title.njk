@@ -26,21 +26,7 @@
         {{heading}}
       {% endset %}
 
-      {% if 'Administration, HR data and finance' in data['createJob']['role'] 
-         or 'Catering, cleaning and site management' in data['createJob']['role'] 
-         or 'IT support' in data['createJob']['role'] 
-         or 'Pastoral, health and welfare' in data['createJob']['role'] 
-         or 'Other leadership roles' in data['createJob']['role'] 
-         or 'Other support roles' in data['createJob']['role'] 
-      %}
-        
-        <form action="/jobs/new/contract" novalidate>
-
-      {% else %}
-
-        <form action="/jobs/new/key-stage" novalidate>
-
-      {% endif %}
+      <form action="/jobs/new/role_all" novalidate>
 
           <div class="govuk-form-group">
             <h1 class="govuk-heading-l">              
