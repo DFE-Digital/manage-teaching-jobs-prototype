@@ -1,0 +1,64 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Upload additional documents' %}
+{% set caption = 'Create job listing - section 4 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Upload files</h1>
+        <form action="/components/multi-file-upload/examples/default" enctype="multipart/form-data" method="post">
+            <div class="moj-multi-file-upload moj-multi-file-upload--enhanced">
+                <div class="moj-multi-file__uploaded-files">
+                    <h2 class="govuk-heading-m">Files added</h2>
+                    <div class="govuk-summary-list moj-multi-file-upload__list">
+      
+                        <div class="govuk-summary-list__row moj-multi-file-upload__row">  
+                            <div class="govuk-summary-list__value moj-multi-file-upload__message">
+                                <span class="moj-multi-file-upload__filename">Job description.pdf</span>
+                                <span class="moj-multi-file-upload__progress">0%</span>  
+                            </div>  
+                            <div class="govuk-summary-list__actions moj-multi-file-upload__actions">
+
+                            </div>
+                        </div>
+
+                        <div class="govuk-summary-list__row moj-multi-file-upload__row">  
+                            <div class="govuk-summary-list__value moj-multi-file-upload__message">
+                                <span class="moj-multi-file-upload__filename">Job description fully uploaded.pdf</span>
+                            </div>  
+                            <div class="govuk-summary-list__actions moj-multi-file-upload__actions">
+                                <a href="#">Delete</a>
+                            </div>
+                        </div>
+                            
+                    </div>
+                <div class="moj-multi-file-upload__upload">
+                    <div class="govuk-form-group">
+                        <label class="govuk-label govuk-label--m" for="documents">Upload a file</label>
+                        <div class="moj-multi-file-upload__dropzone">
+                            <input class="govuk-file-upload moj-multi-file-upload__input" id="documents" multiple name="documents" type="file">
+                            <p class="govuk-body">Drag and drop files here or</p><label class="govuk-button govuk-button--secondary" for="documents">Choose files</label>
+                            <div aria-live="polite" class="govuk-visually-hidden" role="status"></div>
+                        </div>
+                    </div><button class="govuk-button govuk-button--secondary moj-multi-file-upload__button" data-module="govuk-button" type="submit">Upload file</button>
+                </div>
+            </div><button class="govuk-button" data-module="govuk-button" type="submit">Continue</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
