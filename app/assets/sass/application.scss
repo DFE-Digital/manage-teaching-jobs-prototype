@@ -660,3 +660,40 @@ ul.gem-c-checkboxes__list {
   clip-path: none !important;
   white-space: inherit !important
 }
+
+
+.testimonial{
+
+  width: 100%;
+  display: inline-block;
+  padding-top: 10px;
+
+  &__image{
+    overflow: hidden;
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+    img{
+      width:100%;
+      height: auto;
+    }
+  }
+
+  &__text{
+    width: 80%;
+    float: left;
+
+    p.quote{
+      margin-bottom:8px;
+    }
+    p.person{
+      margin-bottom: 0px;
+    }
+  }
+
+
+}

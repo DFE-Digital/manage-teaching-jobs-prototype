@@ -21,399 +21,76 @@
         {{heading}}
       </h1>
 
-      <p>This application form:</p>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          provides a quick and simple experience for applicants
-        </li>
-        <li>
-          makes it easy for you to view, shortlist or reject applications in one place
-        </li>
-        <li>
-          is always up to date with the keeping children safe in education guidelines
-        </li>
-      </ul>
+      <div class="govuk-inset-text app-inset-text" style="border-color:#00703c; background:#ebf3ef">
+        <p>Take advantage of our KCSIE compliant digital form. Review, shortlist or reject applications all in one place.</p>
 
-      {% set example %}
-        <h2 class="govuk-heading-m">
-          Personal details
-        </h2>
-
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "First name"
-              },
-              value: {
-                text: "Jane"
-              }
-            },
-            {
-              key: {
-                text: "Last name"
-              },
-              value: {
-                text: "Smith"
-              }
-            },
-            {
-              key: {
-                text: "Address"
-              },
-              value: {
-                html: '1 House Street<br>Townington<br>AB1 2CD'
-              }
-            },
-            {
-              key: {
-                text: "Email address"
-              },
-              value: {
-                text: "jane.smith@gmail.com"
-              }
-            },
-            {
-              key: {
-                text: "Phone number"
-              },
-              value: {
-                text: "07123 456 789"
-              }
-            },
-            {
-              key: {
-                text: "Teacher reference number (TRN)"
-              },
-              value: {
-                text: "123456"
-              }
-            },
-            {
-              key: {
-                text: "National Insurance number"
-              },
-              value: {
-                text: "QQ 12 34 56 A"
-              }
-            }
-          ]
-        }) }}
-
-        <h2 class="govuk-heading-m">
-          Professional status
-        </h2>
-
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Do you have qualified teacher status (QTS)?"
-              },
-              value: {
-                text: "Yes, 2021"
-              }
-            },
-            {
-              key: {
-                text: "Have you completed your statutory induction year?"
-              },
-              value: {
-                text: "Yes"
-              }
-            }
-          ]
-        }) }}
-
-        <h2 class="govuk-heading-m">
-          Qualifications
-        </h2>
-
-        <div class="app-qualifications">
-          <div class="app-qualifications__item app-qualifications__item--first">
-            <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">
-              Degrees
-            </h3>
-            <div class="app-qualification__item-section">
-              <p class="govuk-!-margin-bottom-1">
-                BA English Literature (2:1)
-              </p>
-              <p class="govuk-caption-m govuk-!-margin-bottom-0">Townington University, 2016</p>
-            </div>
+        <div class="testimonial">
+          <div class="testimonial__image">
+            <img src="/public/images/teacher.png"/>
           </div>
-
-          <div class="app-qualifications__item">
-            <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">
-              A levels
-            </h3>
-            <div class="app-qualification__item-section">
-              <p class="govuk-!-margin-bottom-1">
-                English Literature (A),
-                History (B),
-                French (A)
-              </p>
-              <p class="govuk-caption-m govuk-!-margin-bottom-0">Townington Secondary School, 2012</p>
-            </div>
-          </div>
-
-          <div class="app-qualifications__item ">
-            <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1"> GCSEs </h3>
-            <div class="app-qualification__item-section">
-              <p class="govuk-!-margin-bottom-1">
-                Maths (A),
-                English Literature (A),
-                English Language (B),
-                History (C),
-                French (A),
-                Music (B),
-                Geography (A)
-              </p>
-              <p class="govuk-caption-m govuk-!-margin-bottom-0">Townington Secondary School, 2010</p>
-            </div>
-          </div>
-
-          <div class="app-qualifications__item govuk-!-margin-bottom-6">
-            <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1"> Other qualifications and courses </h3>
-            <div class="app-qualification__item-section">
-              <p class="govuk-!-margin-bottom-1"> PGCE English with QTS </p>
-              <p class="govuk-caption-m govuk-!-margin-bottom-0">Townington University, 2019</p>
-            </div>
+          <div class="testimonial__text">
+            <p class="quote">
+              "The teaching vacancies form is my first choice when it comes to processing applications and getting the best choice of experienced teachers."
+            </p>
+            <p class="person">
+              <b>Jane Doe, Headteacher at Courtland trust</b>
+            </p>
           </div>
         </div>
 
-        <h2 class="govuk-heading-m">
-          Work history
-        </h2>
-        <div class="app-list govuk-!-margin-bottom-6">
-          <div class="app-list__item app-list__item--first">
-            <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-0">English teacher</h3>
-            <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0"> Sheffield Secondary School</p>
-            <p class="govuk-caption-m govuk-!-margin-bottom-0"> 2019 to present </p>
-          </div>
+      </div>
 
-          <div class="app-list__item app-list__item--last">
-            <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-0">KS3 Teaching Assistant</h3>
-            <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">Townington Secondary School</p>
-            <p class="govuk-caption-m govuk-!-margin-bottom-0"> 2016 to 2018 </p>
-          </div>
-        </div>
-
-        <h2 class="govuk-heading-m">
-          Personal statement
-        </h2>
-
-        <p>As an English teacher, I am extremely passionate about instilling a love of reading and the written word into young people. I have been interested in a position at your school for a number of years and was thrilled to see this opportunity. I received my QTS in 2019, and have since worked as an English teacher in a secondary school in Sheffield.</p>
-
-        <p>In the classroom, I always strive to modify my approach to suit a range of abilities and motivation. By planning lessons around my students’ interests, I have been able to inspire even the most unmotivated readers into a love of books. For example, teaching descriptive writing by looking at their favourite sports and persuasive writing via marketing materials for their favourite shops. Furthermore, I have worked with dozens of students for whom English is their second language and nothing motivates me more than seeing that lightbulb moment happen when they can see their own progress. Last year, 95% of my GCSE students passed with grade 5 or above, and I have a proven track record for ensuring all of my KS3 students improve by at least two grades over years 7 to 9.</p>
-
-        <p>Moreover, I believe that good teaching doesn’t just happen in the classroom. I am a strong advocate for student wellbeing and pastoral support and have greatly enjoyed leading a morning form class for the last three years. Also, in my current school I have contributed to the English department by running a weekly book club, and organising several school trips to literary locations such as Haworth and Stratford Upon Avon, as well as visits to see plays on the curriculum.</p>
-
-        <p>I really resonate with your school’s ethos around inclusion and leaving no student behind, and I hope to be an asset to your English department, while continuing to grow as a teacher.</p>
-
-        <h2 class="govuk-heading-m">
-          References
-        </h2>
-
-        <h3 class="govuk-heading-s govuk-!-margin-bottom-2">
-          John Thompson
-        </h3>
-
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Job title"
-              },
-              value: {
-                html: 'Head of English, Sheffield Secondary School'
-              }
-            },
-            {
-              key: {
-                text: "Relationship to applicant"
-              },
-              value: {
-                html: "Line manager"
-              }
-            },
-            {
-              key: {
-                text: "Email address"
-              },
-              value: {
-                html: "john.thompson@english.sheffield.ac.uk"
-              }
-            }
-          ]
-        }) }}
-
-        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">
-          Laura Davison
-        </h3>
-
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Job title"
-              },
-              value: {
-                html: 'Head of English, Townington Secondary School'
-              }
-            },
-            {
-              key: {
-                text: "Relationship to applicant"
-              },
-              value: {
-                html: "Line manager"
-              }
-            },
-            {
-              key: {
-                text: "Email address"
-              },
-              value: {
-                html: "l.davison@english.townington.ac.uk"
-              }
-            }
-          ]
-        }) }}
-
-        <h2 class="govuk-heading-m">
-          Equal opportunities and recruitment monitoring
-        </h2>
-
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Do you consider yourself to have a disability as defined by the Equality Act 2010?"
-              },
-              value: {
-                html: "No"
-              }
-            },
-            {
-              key: {
-                text: "How old are you?"
-              },
-              value: {
-                html: "25 to 29"
-              }
-            },
-            {
-              key: {
-                text: "How would you describe your gender?"
-              },
-              value: {
-                html: "Woman"
-              }
-            },
-            {
-              key: {
-                text: "How would you describe your sexual orientation?"
-              },
-              value: {
-                html: "Bisexual"
-              }
-            },
-            {
-              key: {
-                text: "What is your ethnic group?"
-              },
-              value: {
-                html: "Mixed or multiple ethnic group"
-              }
-            },
-            {
-              key: {
-                text: "What is your religion or belief?"
-              },
-              value: {
-                html: "No religion, atheist or agnostic"
-              }
-            }
-          ]
-        }) }}
-
-        <h2 class="govuk-heading-m">
-          Ask for support if you have a disability or other needs
-        </h2>
-
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Do you want to ask for support so that you can attend an interview?"
-              },
-              value: {
-                html: "No, I do not need support"
-              }
-            }
-          ]
-        }) }}
-
-        <h2 class="govuk-heading-m">
-          Declarations
-        </h2>
-
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Do you have any family or close relationship with people within St Thomas More Catholic School?"
-              },
-              value: {
-                html: "No"
-              }
-            },
-            {
-              key: {
-                text: "Do you have the right to work in the UK?"
-              },
-              value: {
-                html: "Yes"
-              }
-            }
-          ]
-        }) }}
-      {% endset %}
-
-      {{ govukDetails({
-        summaryText: "See what an application form looks like",
-        html: example
-      }) }}
+      
 
       <form action="/jobs/new/method" method="post">
 
-        {{ govukRadios({
-          idPrefix: "createJob[method]",
-          name: "createJob[method]",
-          fieldset: {
-            legend: {
-              html: "Do you want to use the application form?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes",
-              checked: checked("['createJob']['method']", "Yes")
-            },
-            {
-              value: "No",
-              text: "No",
-              checked: checked("['createJob']['method']", "No"),
-              hint: {
-                text: 'You’ll need to provide additional details about how to apply'
-              }
-            }
-          ]
-        }) }}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h1 class="govuk-fieldset__heading">
+                Select application form type
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="signIn" name="signIn" type="radio" value="government-gateway" aria-describedby="signIn-item-hint">
+                <label class="govuk-label govuk-radios__label" for="signIn">
+                  Teaching Vacancies form with faith questions
+                  <strong class="govuk-tag govuk-tag--green">
+                    KCSIE compliant
+                  </strong>
+                </label>
+                <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                  An online, KCSIE compliant form, sent to your chosen email. Applicants will be asked for their religion, place of worship and to provide a religious referee or baptism information if they are religious.
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="signIn-2" name="signIn" type="radio" value="govuk-one-login" aria-describedby="signIn-2-item-hint">
+                <label class="govuk-label govuk-radios__label" for="signIn-2">
+                  Teaching Vacancies form no faith questions
+                  <strong class="govuk-tag govuk-tag--green">
+                    KCSIE compliant
+                  </strong>
+                </label>
+                <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
+                  An online, KCSIE compliant form, sent to your chosen email.
+                </div>
+              </div>
+              <div class="govuk-radios__divider">or</div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="signIn-2" name="signIn" type="radio" value="govuk-one-login" aria-describedby="signIn-2-item-hint">
+                <label class="govuk-label govuk-radios__label" for="signIn-2">
+                  Use other application form method
+                </label>
+                <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
+                 You'll need to provide additional details about how to apply
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
 
         {{ govukButton({
           text: "Save and continue"
