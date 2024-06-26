@@ -30,6 +30,14 @@ module.exports = router => {
     })
   })
 
+  router.get('/jobs/:id/download', authentication.checkIsAuthenticated, (req, res) => {
+    let job = req.session.user.jobs.find(job => job.id == req.params.id)
+
+    res.render('jobs/download', {
+      job
+    })
+  })
+
   router.get('/jobs/:id/applications_example', authentication.checkIsAuthenticated, (req, res) => {
     let job = req.session.user.jobs.find(job => job.id == req.params.id)
 
