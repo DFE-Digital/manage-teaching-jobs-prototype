@@ -103,9 +103,14 @@
   {% include "includes/job-sub-navigation.njk" %}
 
     <div class="govuk-button-group govuk-!-margin-top-5">
-        <form method="post" action="download">
+        <form method="post" action="#">
             <button type="submit" class="govuk-button" data-module="govuk-button">
-               Download applications
+               Download all applications
+            </button>
+        </form>
+        <form method="post" action="download">
+            <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                Select applications to download
             </button>
         </form>
         <form method="post" action="download">

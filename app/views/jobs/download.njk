@@ -3,6 +3,10 @@
 {% set primaryNavId = 'jobs' %}
 {% set subNavId = 'applications' %}
 
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
 {% block content %}
 
   {{ govukNotificationBanner({
