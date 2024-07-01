@@ -11,208 +11,426 @@
     icon: false
   }) if flash and flash.length }}
 
-  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    {{job.title}}
-    {{ govukTag({
-      text: job.status,
-      classes: job.status | jobStatusTagClass
-    }) }}
-  </h1>
-
-
-  {% set linkForCandidates %}filters-role={{job.role}}{% if job.subjects %}&filters-subjects={{job.subjects}}{% endif %}{% endset %}
-
-
-  {% set insetHtml %}
-    <p><a href="/jobseekers?{{linkForCandidates}}" class="">View candidate profiles</a> that match this job listing.</p>
-  {% endset %}
-
-
-
-    {% if job.status == 'Active' %}
-      <p class="govuk-!-width-two-thirds">This job listing was published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
-
-      <div class="govuk-button-group"><p>
-        <a href="/jobs/{{job.id}}/preview">View (opens in new tab)</a>
-        <a href="#" class="govuk-!-margin-left-3">Copy</a>
-        <a href="#" class="govuk-!-margin-left-3">Close early</a>
-        <a href="#" class="govuk-!-margin-left-3">Extend closing date</a></p>
-      </div>
-
-      {{ govukInsetText({
-        html: insetHtml,
-        classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-2 govuk-!-padding-bottom-3'
-      }) }}
-
-
-    {% endif %}
-
-    {% if job.status == 'Scheduled' %}
-      <p class="govuk-!-width-two-thirds">This job listing will be published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
-
-      <div class="govuk-button-group">
-        <a href="/jobs/{{job.id}}/preview" class="govuk-!-margin-left-">Preview</a>
-        <a href="#" class="govuk-!-margin-left-3">Copy</a>
-        <a href="#" class="govuk-!-margin-left-3">Delete</a>
-        <a href="#" class="govuk-!-margin-left-3">Convert to draft</a>
-      </div>
-    {% endif %}
-
-    {% if job.status == 'Closed' %}
-      <p class="govuk-!-width-two-thirds">This job listing was published on {{job.publishDate | date }}. It closed on {{job.closingDate | date}} at {{job.closingTime}}.</p>
-
-      <div class="govuk-button-group">
-        <a href="/jobs/{{job.id}}/preview">View (opens in new tab)</a>
-        <a href="#" class="govuk-!-margin-left-3">Copy</a>
-        <a href="#" class="govuk-!-margin-left-3">Extend closing date</a>
-      </div>
-    {% endif %}
-
-    {% if job.status == 'Draft' %}
-
-      {% if query.incomplete %}
-        <p>This job listing needs to be completed before it can be published.</p>
-      {% else %}
-        <p>This job listing is complete and needs to be published.</p>
-      {% endif %}
-
-      <div class="govuk-button-group">
-        {% if query.incomplete %}
-          {{ govukButton({
-            text: "Complete job listing",
-            href: '#',
-            classes: 'govuk-!-margin-bottom-0'
-          }) }}
-        {% else %}
-          {{ govukButton({
-            text: "Publish job listing",
-            href: '#',
-            classes: 'govuk-!-margin-bottom-0'
-          }) }}
-        {% endif %}
-        <a href="/jobs/{{job.id}}/preview">Preview</a>
-        <a href="#" class="govuk-!-margin-left-3">Copy</a>
-        <a href="#" class="govuk-!-margin-left-3">Delete</a>
-      </div>
-    {% endif %}
-
-
-
-
-
-  {% include "includes/job-sub-navigation.njk" %}
-
-    <div class="govuk-button-group govuk-!-margin-top-5">
-        <form method="post" action="#">
-            <button type="submit" class="govuk-button" data-module="govuk-button">
-               Download all applications
-            </button>
-        </form>
-        <form method="post" action="download">
-            <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                Select applications to download
-            </button>
-        </form>
-        <form method="post" action="download">
-            <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                Share applications
-            </button>
-        </form>
-    </div>
-
-    <div class="govuk-grid-row govuk-!-margin-bottom-0 govuk-!-margin-top-2">
+  <div class="govuk-grid-row">
+        
         <div class="govuk-grid-column-full">
-            <div class="sort-component">
-                <nav class="govuk-body">
-                    <span class="govuk-!-font-weight-bold">Sort by:</span>
-                    <ul class="sort-component__list">
-                        <li class="sort-component__list-item">Date received (most recent)</li>
-                        <li class="sort-component__list-item"><a class="govuk-link govuk-link--no-visited-state" href="/organisation/jobs/7c11bd66-8355-4e71-979f-d34cc4a5fb22/job_applications?sort_by=last_name"><span class="govuk-visually-hidden">Sort by </span>Applicant last name (a to z)</a></li>
-                    </ul>
-                </nav>
+
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+          {{job.title}}
+          {{ govukTag({
+            text: job.status,
+            classes: job.status | jobStatusTagClass
+          }) }}
+        </h1>
+
+
+        {% set linkForCandidates %}filters-role={{job.role}}{% if job.subjects %}&filters-subjects={{job.subjects}}{% endif %}{% endset %}
+
+
+        {% set insetHtml %}
+          <p><a href="/jobseekers?{{linkForCandidates}}" class="">View candidate profiles</a> that match this job listing.</p>
+        {% endset %}
+
+
+
+          {% if job.status == 'Active' %}
+            <p class="govuk-!-width-two-thirds">This job listing was published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+
+            <div class="govuk-button-group"><p>
+              <a href="/jobs/{{job.id}}/preview">View (opens in new tab)</a>
+              <a href="#" class="govuk-!-margin-left-3">Edit</a>
+              <a href="#" class="govuk-!-margin-left-3">Copy</a>
+              <a href="#" class="govuk-!-margin-left-3">Close early</a>
+              <a href="#" class="govuk-!-margin-left-3">Extend closing date</a></p>
             </div>
+            <!--
+            {{ govukInsetText({
+              html: insetHtml,
+              classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-2 govuk-!-padding-bottom-3'
+            }) }}
+            -->
+
+          {% endif %}
+
+          {% if job.status == 'Scheduled' %}
+            <p class="govuk-!-width-two-thirds">This job listing will be published on {{job.publishDate | date }}. It will close on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+
+            <div class="govuk-button-group">
+              <a href="/jobs/{{job.id}}/preview" class="govuk-!-margin-left-">Preview</a>
+              <a href="#" class="govuk-!-margin-left-3">Copy</a>
+              <a href="#" class="govuk-!-margin-left-3">Delete</a>
+              <a href="#" class="govuk-!-margin-left-3">Convert to draft</a>
+            </div>
+          {% endif %}
+
+          {% if job.status == 'Closed' %}
+            <p class="govuk-!-width-two-thirds">This job listing was published on {{job.publishDate | date }}. It closed on {{job.closingDate | date}} at {{job.closingTime}}.</p>
+
+            <div class="govuk-button-group">
+              <a href="/jobs/{{job.id}}/preview">View (opens in new tab)</a>
+              <a href="#" class="govuk-!-margin-left-3">Copy</a>
+              <a href="#" class="govuk-!-margin-left-3">Extend closing date</a>
+            </div>
+          {% endif %}
+
+          {% if job.status == 'Draft' %}
+
+            {% if query.incomplete %}
+              <p>This job listing needs to be completed before it can be published.</p>
+            {% else %}
+              <p>This job listing is complete and needs to be published.</p>
+            {% endif %}
+
+            <div class="govuk-button-group">
+              {% if query.incomplete %}
+                {{ govukButton({
+                  text: "Complete job listing",
+                  href: '#',
+                  classes: 'govuk-!-margin-bottom-0'
+                }) }}
+              {% else %}
+                {{ govukButton({
+                  text: "Publish job listing",
+                  href: '#',
+                  classes: 'govuk-!-margin-bottom-0'
+                }) }}
+              {% endif %}
+              <a href="/jobs/{{job.id}}/preview">Preview</a>
+              <a href="#" class="govuk-!-margin-left-3">Copy</a>
+              <a href="#" class="govuk-!-margin-left-3">Delete</a>
+            </div>
+          {% endif %}
+
+
+        {% include "includes/job-sub-navigation.njk" %}
+
+          
+        <h2 class="govuk-heading-m govuk-!-margin-top-6">
+          Current applications
+        </h2>
+
+        <p>You can <a href="">download all applications</a>, select what applications you want to download  or add tags to help organise applications.</p>
+
+        <div class="govuk-tabs govuk-!-margin-top-5" data-module="govuk-tabs">
+        <h2 class="govuk-tabs__title">
+          Contents
+        </h2>
+        <ul class="govuk-tabs__list">
+          
+          
+          <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+            <a class="govuk-tabs__tab" href="#past-day">
+              All
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#unread">
+              Unread (1)
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#shortlisted">
+              Shortlisted (1)
+            </a>
+          </li>
+          <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#no">
+              Not considering (1)
+            </a>
+          </li>
+        </ul>
+      
+        <div class="govuk-tabs__panel" id="past-day">
+          
+          <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
+            <caption class="govuk-table__caption govuk-table__caption--m">All applications</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col" id="select-all">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="all">
+                    <label class="govuk-label govuk-checkboxes__label" for="all">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </th>
+                <th class="govuk-table__header" scope="col">Name</th>
+                <th class="govuk-table__header" scope="col">Contact details</th>
+                <th class="govuk-table__header" scope="col">Tag</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row govuk-table__row--selected">
+                <td class="govuk-table__cell">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Camilla Sanchez</a></td>
+                <td class="govuk-table__cell">csan@live.com</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--blue">
+                    Unread
+                  </strong>
+                </td>
+              </tr>
+              <tr class="govuk-table__row govuk-table__row--selected">
+                <td class="govuk-table__cell">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Arthur Felix</a></td>
+                <td class="govuk-table__cell">arthur.fel@hotmail.com</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--green">
+                    Shortlisted
+                  </strong>
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row govuk-table__row--selected">
+                <td class="govuk-table__cell">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Jane Doe</a></td>
+                <td class="govuk-table__cell">jdoe@gmail.com</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--purple">
+                    reviewed
+                  </strong>
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row govuk-table__row--selected">
+                <td class="govuk-table__cell">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Joe Gibb</a></td>
+                <td class="govuk-table__cell">joe.gibb@education.gov.uk</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--red">
+                    not considering
+                  </strong>
+                </td>
+              </tr>
+              
+              
+            </tbody>
+          </table>
+
+          <div class="govuk-button-group govuk-!-margin-top-5">
+              <form method="post" action="#">
+                  <button type="submit" class="govuk-button" data-module="govuk-button">
+                    Download selected applications
+                  </button>
+              </form>
+              <form method="post" action="tag">
+                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                      Tag selected applications
+                  </button>
+              </form>
+          </div>
+
+
         </div>
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="shortlisted">
+          <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
+            <caption class="govuk-table__caption govuk-table__caption--m">Shortlisted applications</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col" id="select-all">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="all">
+                    <label class="govuk-label govuk-checkboxes__label" for="all">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </th>
+                <th class="govuk-table__header" scope="col">Name</th>
+                <th class="govuk-table__header" scope="col">Contact details</th>
+                <th class="govuk-table__header" scope="col">Tag</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              
+              <tr class="govuk-table__row govuk-table__row--selected">
+                <td class="govuk-table__cell">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Arthur Felix</a></td>
+                <td class="govuk-table__cell">arthur.fel@hotmail.com</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--green">
+                    Shortlisted
+                  </strong>
+                </td>
+              </tr>
+
+              
+              
+              
+            </tbody>
+          </table>
+
+          <div class="govuk-button-group govuk-!-margin-top-5">
+              <form method="post" action="#">
+                  <button type="submit" class="govuk-button" data-module="govuk-button">
+                    Download selected applications
+                  </button>
+              </form>
+              <form method="post" action="tag">
+                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                      Tag selected applications
+                  </button>
+              </form>
+          </div>
+
+        </div>
+
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="no">
+          <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
+            <caption class="govuk-table__caption govuk-table__caption--m">Not considering these applications</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col" id="select-all">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="all">
+                    <label class="govuk-label govuk-checkboxes__label" for="all">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </th>
+                <th class="govuk-table__header" scope="col">Name</th>
+                <th class="govuk-table__header" scope="col">Contact details</th>
+                <th class="govuk-table__header" scope="col">Tag</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              
+              
+
+              <tr class="govuk-table__row govuk-table__row--selected">
+                <td class="govuk-table__cell">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Joe Gibb</a></td>
+                <td class="govuk-table__cell">joe.gibb@education.gov.uk</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--red">
+                    not considering
+                  </strong>
+                </td>
+              </tr>
+              
+              
+            </tbody>
+          </table>
+
+          <div class="govuk-button-group govuk-!-margin-top-5">
+              <form method="post" action="#">
+                  <button type="submit" class="govuk-button" data-module="govuk-button">
+                    Download selected applications
+                  </button>
+              </form>
+              <form method="post" action="tag">
+                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                      Tag selected applications
+                  </button>
+              </form>
+          </div>
+
+        </div>
+
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="unread">
+          
+          
+          <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
+            <caption class="govuk-table__caption govuk-table__caption--m">Applications yet to be reviewed</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col" id="select-all">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="all">
+                    <label class="govuk-label govuk-checkboxes__label" for="all">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </th>
+                <th class="govuk-table__header" scope="col">Name</th>
+                <th class="govuk-table__header" scope="col">Contact details</th>
+                <th class="govuk-table__header" scope="col">Tag</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row govuk-table__row--selected">
+                <td class="govuk-table__cell">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Camilla Sanchez</a></td>
+                <td class="govuk-table__cell">csan@live.com</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--blue">
+                    Unread
+                  </strong>
+                </td>
+              </tr>
+              
+              
+            </tbody>
+          </table>
+
+         <div class="govuk-button-group govuk-!-margin-top-5">
+              <form method="post" action="#">
+                  <button type="submit" class="govuk-button" data-module="govuk-button">
+                    Download selected applications
+                  </button>
+              </form>
+              <form method="post" action="tag">
+                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                      Tag selected applications
+                  </button>
+              </form>
+          </div>
+
+        </div>
+      </div>
+
     </div>
 
-    <div class="govuk-grid-row">
-        <div class="govuk-grid-column-full">
-            <dl class="govuk-summary-list">
-                
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        <a class="govuk-link--no-visited-state" href="applications_example">Jane Doe</a>
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        <p class="govuk-body">
-                            <strong class="govuk-tag govuk-tag--purple">
-                                reviewed
-                            </strong>
-                        </p>
-                        <p class="govuk-body govuk-body-s">Received on:17 May 2024 at 08:37</p>
-                    </dd>
-                    <dd class="govuk-summary-list__actions">
-                        <ul class="govuk-summary-list__actions-list">
-                            <li class="govuk-summary-list__actions-list-item">
-                                <a class="govuk-link govuk-link--no-visited-state" href="#">Shortlist<span class="govuk-visually-hidden"> name</span></a>
-                            </li>
-                            <li class="govuk-summary-list__actions-list-item">
-                                <a class="govuk-link govuk-link--no-visited-state" href="#">Decline<span class="govuk-visually-hidden"> name</span></a>
-                            </li>
-                        </ul>
-                    </dd>
-                </div>
+</div>
 
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        <a class="govuk-link--no-visited-state" href="#">Jane Doe</a>
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        <p class="govuk-body">
-                            <strong class="govuk-tag govuk-tag--purple">
-                                reviewed
-                            </strong>
-                        </p>
-                        <p class="govuk-body govuk-body-s">Received on:17 May 2024 at 08:37</p>
-                    </dd>
-                    <dd class="govuk-summary-list__actions">
-                        <ul class="govuk-summary-list__actions-list">
-                            <li class="govuk-summary-list__actions-list-item">
-                                <a class="govuk-link govuk-link--no-visited-state" href="#">Shortlist<span class="govuk-visually-hidden"> name</span></a>
-                            </li>
-                            <li class="govuk-summary-list__actions-list-item">
-                                <a class="govuk-link govuk-link--no-visited-state" href="#">Decline<span class="govuk-visually-hidden"> name</span></a>
-                            </li>
-                        </ul>
-                    </dd>
-                </div>
-
-                <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                        <a class="govuk-link--no-visited-state" href="#">Jane Doe</a>
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                        <p class="govuk-body">
-                            <strong class="govuk-tag govuk-tag--purple">
-                                reviewed
-                            </strong>
-                        </p>
-                        <p class="govuk-body govuk-body-s">Received on:17 May 2024 at 08:37</p>
-                    </dd>
-                    <dd class="govuk-summary-list__actions">
-                        <ul class="govuk-summary-list__actions-list">
-                            <li class="govuk-summary-list__actions-list-item">
-                                <a class="govuk-link govuk-link--no-visited-state" href="#">Shortlist<span class="govuk-visually-hidden"> name</span></a>
-                            </li>
-                            <li class="govuk-summary-list__actions-list-item">
-                                <a class="govuk-link govuk-link--no-visited-state" href="#">Decline<span class="govuk-visually-hidden"> name</span></a>
-                            </li>
-                        </ul>
-                    </dd>
-                </div>
-
-            </dl>
-        </div>
-    </div>
 
   
 

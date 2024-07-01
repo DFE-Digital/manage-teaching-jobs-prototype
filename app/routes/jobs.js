@@ -38,6 +38,22 @@ module.exports = router => {
     })
   })
 
+  router.get('/jobs/:id/tag', authentication.checkIsAuthenticated, (req, res) => {
+    let job = req.session.user.jobs.find(job => job.id == req.params.id)
+
+    res.render('jobs/tag', {
+      job
+    })
+  })
+
+  router.get('/jobs/:id/tag_single', authentication.checkIsAuthenticated, (req, res) => {
+    let job = req.session.user.jobs.find(job => job.id == req.params.id)
+
+    res.render('jobs/tag_single', {
+      job
+    })
+  })
+
   router.get('/jobs/:id/applications_example', authentication.checkIsAuthenticated, (req, res) => {
     let job = req.session.user.jobs.find(job => job.id == req.params.id)
 
