@@ -46,12 +46,26 @@ module.exports = router => {
     })
   })
 
+  router.post('/jobs/:id/tag', (req, res) => {
+      
+    req.flash('success', 'Tags applied')
+    res.redirect(`/jobs/${req.params.id}/applications`)
+
+  })
+
   router.get('/jobs/:id/tag_single', authentication.checkIsAuthenticated, (req, res) => {
     let job = req.session.user.jobs.find(job => job.id == req.params.id)
 
     res.render('jobs/tag_single', {
       job
     })
+  })
+
+  router.post('/jobs/:id/tag_single', (req, res) => {
+      
+    req.flash('success', 'Tag applied')
+    res.redirect(`/jobs/${req.params.id}/applications`)
+
   })
 
   router.get('/jobs/:id/applications_example', authentication.checkIsAuthenticated, (req, res) => {
