@@ -38,6 +38,28 @@ $(document).ready(function () {
 
   });
 
+  $(".copy-selected-emails").click(function(){
+
+      var originalText = $(this).text(); // Get the original text
+      $(this).text("emails copied"); // Change the button text
+
+      // Set a timeout to revert the text back after 3 seconds
+      setTimeout(() => {
+          $(this).text(originalText);
+      }, 2000);
+  });
+
+  $(".copy-email").click(function(){
+
+    var originalText = $(this).text(); // Get the original text
+    $(this).text("email copied"); // Change the button text
+
+    // Set a timeout to revert the text back after 3 seconds
+    setTimeout(() => {
+        $(this).text(originalText);
+    }, 2000);
+  });
+
 
   function uncheckElements(){
     var uncheck=document.getElementsByTagName('input');

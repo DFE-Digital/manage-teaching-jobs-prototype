@@ -104,12 +104,11 @@
 
         {% include "includes/job-sub-navigation.njk" %}
 
-          
         <h2 class="govuk-heading-m govuk-!-margin-top-6">
           Current applications
         </h2>
 
-        <p>You can <a href="">download all applications</a>, select what applications you want to download  or add tags to help organise applications.</p>
+        <p>You can <a class="govuk-link--no-visited-state" href="">download all applications</a>, select what applications you want to download  or add tags to help organise applications.</p>
 
         <div class="govuk-tabs govuk-!-margin-top-5" data-module="govuk-tabs">
         <h2 class="govuk-tabs__title">
@@ -129,13 +128,18 @@
             </a>
           </li>
           <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#shortlisted">
-              Shortlisted (1)
+            <a class="govuk-tabs__tab" href="#no">
+              Not considering or withdrawn (2)
             </a>
           </li>
           <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#no">
-              Not considering (1)
+            <a class="govuk-tabs__tab" href="#shortlisted">
+              Shortlisted (2)
+            </a>
+          </li>
+           <li class="govuk-tabs__list-item">
+            <a class="govuk-tabs__tab" href="#interview">
+              Invited to interview (1)
             </a>
           </li>
         </ul>
@@ -186,8 +190,44 @@
                     </label>
                   </div>
                 </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Arthur Felix</a></td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example_shortlisted">Arthur Felix</a></td>
                 <td class="govuk-table__cell">arthur.fel@hotmail.com</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--turquoise">
+                    Invited to interview
+                  </strong>
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row govuk-table__row--selected">
+                <td class="govuk-table__cell">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Lamine Yamal</a></td>
+                <td class="govuk-table__cell">la.mine@hotmail.com</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--yellow">
+                    Withdrawn
+                  </strong>
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row govuk-table__row--selected">
+                <td class="govuk-table__cell">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Otis Redham</a></td>
+                <td class="govuk-table__cell">o.tis@hotmail.com</td>
                 <td class="govuk-table__cell">
                   <strong class="govuk-tag govuk-tag--green">
                     Shortlisted
@@ -238,18 +278,19 @@
           <div class="govuk-button-group govuk-!-margin-top-5">
               <form method="post" action="#">
                   <button type="submit" class="govuk-button" data-module="govuk-button">
-                    Download selected applications
+                    Download selected 
                   </button>
               </form>
-              <form method="post" action="tag">
+              <form action="tag">
                   <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                      Tag selected applications
+                      Tag selected
                   </button>
               </form>
           </div>
 
 
         </div>
+
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="shortlisted">
           <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
             <caption class="govuk-table__caption govuk-table__caption--m">Shortlisted applications</caption>
@@ -279,8 +320,26 @@
                     </label>
                   </div>
                 </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Arthur Felix</a></td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example_shortlisted">Arthur Felix</a></td>
                 <td class="govuk-table__cell">arthur.fel@hotmail.com</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--green">
+                    Shortlisted
+                  </strong>
+                </td>
+              </tr>
+
+               <tr class="govuk-table__row govuk-table__row--selected">
+                <td class="govuk-table__cell">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Otis Redham</a></td>
+                <td class="govuk-table__cell">o.tis@hotmail.com</td>
                 <td class="govuk-table__cell">
                   <strong class="govuk-tag govuk-tag--green">
                     Shortlisted
@@ -297,14 +356,25 @@
           <div class="govuk-button-group govuk-!-margin-top-5">
               <form method="post" action="#">
                   <button type="submit" class="govuk-button" data-module="govuk-button">
-                    Download selected applications
+                    Download selected 
                   </button>
               </form>
-              <form method="post" action="tag">
+              <form action="tag">
                   <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                      Tag selected applications
+                      Tag selected
                   </button>
               </form>
+              <div>
+                 <button type="submit" class="copy-selected-emails govuk-button govuk-button--secondary" data-module="govuk-button" style="text-decoration:none;">
+                     Copy selected emails
+                  </button>
+              </div>   
+              <form action="interview">
+                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                      Add interview details
+                  </button>
+              </form>      
+              
           </div>
 
         </div>
@@ -348,6 +418,24 @@
                   </strong>
                 </td>
               </tr>
+
+              <tr class="govuk-table__row govuk-table__row--selected">
+                <td class="govuk-table__cell">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Lamine Yamal</a></td>
+                <td class="govuk-table__cell">la.mine@hotmail.com</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--yellow">
+                    Withdrawn
+                  </strong>
+                </td>
+              </tr>
               
               
             </tbody>
@@ -356,14 +444,19 @@
           <div class="govuk-button-group govuk-!-margin-top-5">
               <form method="post" action="#">
                   <button type="submit" class="govuk-button" data-module="govuk-button">
-                    Download selected applications
+                    Download selected 
                   </button>
               </form>
-              <form method="post" action="tag">
+              <form action="tag">
                   <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                      Tag selected applications
+                      Tag selected
                   </button>
               </form>
+              <div>
+                 <button type="submit" class="copy-selected-emails govuk-button govuk-button--secondary" data-module="govuk-button" style="text-decoration:none;">
+                     Copy selected emails
+                  </button>
+              </div>  
           </div>
 
         </div>
@@ -414,20 +507,107 @@
          <div class="govuk-button-group govuk-!-margin-top-5">
               <form method="post" action="#">
                   <button type="submit" class="govuk-button" data-module="govuk-button">
-                    Download selected applications
+                    Download selected 
                   </button>
               </form>
-              <form method="post" action="tag">
+              <form action="tag">
                   <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                      Tag selected applications
+                      Tag selected
                   </button>
               </form>
           </div>
 
         </div>
+
+
+        <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="interview">
+          <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
+            <caption class="govuk-table__caption govuk-table__caption--m">Invited to interview</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col" id="select-all">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="all">
+                    <label class="govuk-label govuk-checkboxes__label" for="all">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </th>
+                <th class="govuk-table__header" scope="col">Name</th>
+                <th class="govuk-table__header" scope="col">Contact details</th>
+                <th class="govuk-table__header" scope="col">Interview details</th>
+                <th class="govuk-table__header" scope="col">Tag</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              
+              <tr class="govuk-table__row govuk-table__row--selected">
+                <td class="govuk-table__cell">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example_shortlisted">Kiera Gordon</a></td>
+                <td class="govuk-table__cell">keira.g@hotmail.com</td>
+                <td class="govuk-table__cell">10am Thursday 4th July 2024</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--turquoise">
+                    Invited to interview
+                  </strong>
+                </td>
+              </tr>
+
+              
+              
+            </tbody>
+          </table>
+
+          <div class="govuk-button-group govuk-!-margin-top-5">
+              <form method="post" action="#">
+                  <button type="submit" class="govuk-button" data-module="govuk-button">
+                    Download selected 
+                  </button>
+              </form>
+              <form action="tag">
+                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                      Tag selected
+                  </button>
+              </form>
+              <div>
+                  <button type="submit" class="copy-selected-emails govuk-button govuk-button--secondary" data-module="govuk-button" style="text-decoration:none;">
+                     Copy selected emails
+                  </button>
+              </div>
+              <form action="tag">
+                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                      Edit interview details
+                  </button>
+              </form>   
+              
+              
+              
+          </div>
+
+        </div>
+
+
       </div>
 
+
+          {% for jobseeker in jobseekers %}
+          
+
+           <!-- {{jobseeker.profile.firstName}}, {{jobseeker.profile.lastName}}  {{jobseeker.emailAddress}}:: -->
+          
+
+          {% endfor %}
+
     </div>
+
+    
 
 </div>
 
