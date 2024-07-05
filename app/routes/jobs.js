@@ -127,6 +127,14 @@ module.exports = router => {
     })
   })
 
+  router.get('/jobs/:id/applications_example_interview', authentication.checkIsAuthenticated, (req, res) => {
+    let job = req.session.user.jobs.find(job => job.id == req.params.id)
+
+    res.render('jobs/applications_example_interview', {
+      job
+    })
+  })
+
   router.get('/jobs/:id/invitees', authentication.checkIsAuthenticated, (req, res) => {
     let job = req.session.user.jobs.find(job => job.id == req.params.id)
 

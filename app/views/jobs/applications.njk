@@ -129,7 +129,7 @@
           </li>
           <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#no">
-              Not considering or withdrawn (2)
+              Not considering (1)
             </a>
           </li>
           <li class="govuk-tabs__list-item">
@@ -193,8 +193,8 @@
                 <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example_shortlisted">Arthur Felix</a></td>
                 <td class="govuk-table__cell">arthur.fel@hotmail.com</td>
                 <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--turquoise">
-                    Invited to interview
+                  <strong class="govuk-tag govuk-tag--green">
+                    Shortlisted
                   </strong>
                 </td>
               </tr>
@@ -267,6 +267,24 @@
                 <td class="govuk-table__cell">
                   <strong class="govuk-tag govuk-tag--red">
                     not considering
+                  </strong>
+                </td>
+              </tr>
+
+              <tr class="govuk-table__row govuk-table__row--selected">
+                <td class="govuk-table__cell">
+                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                      <span class="govuk-visually-hidden">Select Aconcagua</span>
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example_interview">Kiera Gordon</a></td>
+                <td class="govuk-table__cell">keira.g@hotmail.com</td>
+                <td class="govuk-table__cell">
+                  <strong class="govuk-tag govuk-tag--turquoise">
+                    Invited to interview
                   </strong>
                 </td>
               </tr>
@@ -419,24 +437,6 @@
                 </td>
               </tr>
 
-              <tr class="govuk-table__row govuk-table__row--selected">
-                <td class="govuk-table__cell">
-                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                      <span class="govuk-visually-hidden">Select Aconcagua</span>
-                    </label>
-                  </div>
-                </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Lamine Yamal</a></td>
-                <td class="govuk-table__cell">la.mine@hotmail.com</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--yellow">
-                    Withdrawn
-                  </strong>
-                </td>
-              </tr>
-              
               
             </tbody>
           </table>
@@ -550,7 +550,7 @@
                     </label>
                   </div>
                 </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example_shortlisted">Kiera Gordon</a></td>
+                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example_interview">Kiera Gordon</a></td>
                 <td class="govuk-table__cell">keira.g@hotmail.com</td>
                 <td class="govuk-table__cell">10am Thursday 4th July 2024</td>
                 <td class="govuk-table__cell">
@@ -603,6 +603,26 @@
            <!-- {{jobseeker.profile.firstName}}, {{jobseeker.profile.lastName}}  {{jobseeker.emailAddress}}:: -->
           
 
+          {% endfor %}
+
+          {% for job in user.jobs %}
+            <div class="app-job-listings__job">
+              <div class="app-job-listings__job-row">
+                <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+                  <a href="/jobs/{{job.id}}">{{job.title}}</a>
+                </h2>
+                {{ govukTag({
+                  text: job.status,
+                  classes: job.status | jobStatusTagClass
+                }) }}
+              </div>
+              <div class="app-job-listings__job-row">
+                <p class="app-job-listings__role govuk-!-margin-bottom-0">{{job.role}}</p>
+                <p class="app-job-listings__copy govuk-!-margin-bottom-0">
+                  <a href="/jobs/new/copied">Copy</a>
+                </p>
+              </div>
+            </div>
           {% endfor %}
 
     </div>
