@@ -29,7 +29,7 @@
             <fieldset class="govuk-fieldset" aria-describedby="countries-hint">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 <h1 class="govuk-fieldset__heading">
-                    Add interview details for Arthur Felix
+                    Add interview details for {{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}
                 </h1>
                 </legend>
 
@@ -38,7 +38,7 @@
                     <div id="interview-hint" class="govuk-hint">
                         Enter the date and time of interview
                     </div>
-                    <input class="govuk-input" id="interview" name="eventName" type="text" aria-describedby="interview-hint">
+                    <input class="govuk-input" id="interviewDetails" name="interviewDetails" type="text" aria-describedby="interview-hint" value="{{ jobseeker.interviewDetails }}">
                 </div>
 
                 

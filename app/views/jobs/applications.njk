@@ -220,6 +220,16 @@
 
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="shortlisted">
 
+          {% set counterInterview = 0 %}
+            {% for jobseeker in jobseekers %}
+              {% if jobseeker.tag == 'Shortlisted' %}
+              
+              {% set counterInterview = counterInterview + 1 %}
+              {% endif %}
+          {% endfor %}
+
+          {% if counterInterview >= 1 %}
+
           <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
             <caption class="govuk-table__caption govuk-table__caption--m">Shortlisted applications</caption>
             <thead class="govuk-table__head">
@@ -304,6 +314,18 @@
               </form>      
               
           </div>
+
+          {% else %}
+
+            <h3 class="govuk-heading-m govuk-!-margin-top-0">
+              No applications have been shortlisted yet
+            </h3>
+
+            <p>
+              You can add applicants to Shortlisted by tagging them with the 'Shortlisted' tag.
+            </p>
+
+          {% endif %}
 
         </div>
 

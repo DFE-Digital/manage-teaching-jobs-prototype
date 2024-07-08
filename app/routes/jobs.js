@@ -127,6 +127,28 @@ module.exports = router => {
 
   //END TAG
 
+  //INTERVIEW DETAILS START
+
+  router.get('/jobs/application/interview/:id', authentication.checkIsAuthenticated, (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+    res.render('jobs/interview_single', {
+      jobseeker
+    })
+  })
+
+  router.post('/jobs/application/interview/:id', (req, res) => {
+    
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+    jobseeker.interviewDetails = req.session.data.interviewDetails
+    jobseeker.tag = 'Invite to interview'
+    
+    req.flash('success', 'Interview details added')
+    res.redirect(`/jobs/${req.params.id}/applications`)
+
+  })
+
 
   router.get('/jobs/:id/invitees', authentication.checkIsAuthenticated, (req, res) => {
     let job = req.session.user.jobs.find(job => job.id == req.params.id)
