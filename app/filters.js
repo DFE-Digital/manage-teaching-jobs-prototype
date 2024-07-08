@@ -83,7 +83,7 @@ module.exports = function (env) {
       case 'Reviewed':
         tagClass = 'govuk-tag--purple'
         break;
-      case 'Invite to interview':
+      case 'Invited to interview':
         tagClass = 'govuk-tag--turquoise'
         break;
       case 'Not considering':

@@ -134,7 +134,7 @@
           </li>
            <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#interview">
-              Invite to interview {% set counterUnread = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Invite to interview' %}{% set counterUnread = counterUnread + 1 %}{% endif %}{% endfor %}({{counterUnread}})
+              Invited to interview {% set counterUnread = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Invited to interview' %}{% set counterUnread = counterUnread + 1 %}{% endif %}{% endfor %}({{counterUnread}})
             </a>
           </li>
         </ul>
@@ -496,7 +496,7 @@
 
           {% set counterInterview = 0 %}
             {% for jobseeker in jobseekers %}
-              {% if jobseeker.tag == 'Invite to interview' %}
+              {% if jobseeker.tag == 'Invited to interview' %}
               
               {% set counterInterview = counterInterview + 1 %}
               {% endif %}
@@ -529,7 +529,7 @@
 
               {% for jobseeker in jobseekers %}
 
-                {% if jobseeker.tag !== 'Invite to interview' %}                 
+                {% if jobseeker.tag !== 'Invited to interview' %}                 
                 
                 {% else %}
 

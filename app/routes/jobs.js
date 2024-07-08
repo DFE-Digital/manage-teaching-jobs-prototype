@@ -142,8 +142,8 @@ module.exports = router => {
     let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
 
     jobseeker.interviewDetails = req.session.data.interviewDetails
-    jobseeker.tag = 'Invite to interview'
-    
+    jobseeker.tag = 'Invited to interview'
+
     req.flash('success', 'Interview details added')
     res.redirect(`/jobs/${req.params.id}/applications`)
 
