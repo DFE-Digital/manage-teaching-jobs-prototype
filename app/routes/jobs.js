@@ -43,35 +43,6 @@ module.exports = router => {
     })
   })
 
-  router.get('/jobs/:id/tag', authentication.checkIsAuthenticated, (req, res) => {
-    let job = req.session.user.jobs.find(job => job.id == req.params.id)
-
-    res.render('jobs/tag', {
-      job
-    })
-  })
-
-  router.post('/jobs/:id/tag', (req, res) => {
-      
-    req.flash('success', 'Tags applied')
-    res.redirect(`/jobs/${req.params.id}/applications`)
-
-  })
-
-  router.get('/jobs/:id/tag_single', authentication.checkIsAuthenticated, (req, res) => {
-    let job = req.session.user.jobs.find(job => job.id == req.params.id)
-
-    res.render('jobs/tag_single', {
-      job
-    })
-  })
-
-  router.post('/jobs/:id/tag_single', (req, res) => {
-      
-    req.flash('success', 'Tag applied')
-    res.redirect(`/jobs/${req.params.id}/applications`)
-
-  })
 
   router.get('/jobs/:id/interview', authentication.checkIsAuthenticated, (req, res) => {
     let job = req.session.user.jobs.find(job => job.id == req.params.id)
@@ -103,37 +74,59 @@ module.exports = router => {
 
   })
 
-  router.get('/jobs/:id/tag_single', authentication.checkIsAuthenticated, (req, res) => {
-    let job = req.session.user.jobs.find(job => job.id == req.params.id)
-
-    res.render('jobs/tag_single', {
-      job
-    })
-  })
-
-  router.get('/jobs/:id/applications_example', authentication.checkIsAuthenticated, (req, res) => {
-    let job = req.session.user.jobs.find(job => job.id == req.params.id)
+  
+  router.get('/jobs/application/:id', authentication.checkIsAuthenticated, (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
 
     res.render('jobs/applications_example', {
-      job
+      jobseeker
     })
   })
 
-  router.get('/jobs/:id/applications_example_shortlisted', authentication.checkIsAuthenticated, (req, res) => {
+
+  //TAG STUFF
+
+
+  router.get('/jobs/application/tag/:id', authentication.checkIsAuthenticated, (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+    res.render('jobs/tag_single', {
+      jobseeker
+    })
+  })
+
+  router.post('/jobs/application/tag/:id', (req, res) => {
+    
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+    jobseeker.tag = req.session.data.tag
+    jobseeker.interviewDetails = req.session.data.interviewDetails
+      
+    req.flash('success', 'Tags applied')
+    res.redirect(`/jobs/${req.params.id}/applications`)
+
+  })
+
+  //multiple people tags
+
+  router.get('/jobs/:id/tag', authentication.checkIsAuthenticated, (req, res) => {
     let job = req.session.user.jobs.find(job => job.id == req.params.id)
 
-    res.render('jobs/applications_example_shortlisted', {
+    res.render('jobs/tag', {
       job
     })
   })
 
-  router.get('/jobs/:id/applications_example_interview', authentication.checkIsAuthenticated, (req, res) => {
-    let job = req.session.user.jobs.find(job => job.id == req.params.id)
+  router.post('/jobs/:id/tag', (req, res) => {
+      
+    req.flash('success', 'Tags applied')
+    res.redirect(`/jobs/${req.params.id}/applications`)
 
-    res.render('jobs/applications_example_interview', {
-      job
-    })
   })
+
+
+  //END TAG
+
 
   router.get('/jobs/:id/invitees', authentication.checkIsAuthenticated, (req, res) => {
     let job = req.session.user.jobs.find(job => job.id == req.params.id)

@@ -43,13 +43,7 @@
               <a href="#" class="govuk-!-margin-left-3">Close early</a>
               <a href="#" class="govuk-!-margin-left-3">Extend closing date</a></p>
             </div>
-            <!--
-            {{ govukInsetText({
-              html: insetHtml,
-              classes: 'govuk-!-margin-top-0 govuk-!-margin-bottom-2 govuk-!-padding-bottom-3'
-            }) }}
-            -->
-
+         
           {% endif %}
 
           {% if job.status == 'Scheduled' %}
@@ -119,27 +113,28 @@
           
           <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
             <a class="govuk-tabs__tab" href="#past-day">
-              All
+              All (10)
             </a>
           </li>
           <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#unread">
-              Unread (1)
+              Unread {% set counterUnread = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Unread' %}{% set counterUnread = counterUnread + 1 %}{% endif %}{% endfor %}({{counterUnread}})
+
             </a>
           </li>
           <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#no">
-              Not considering (1)
+              Not considering {% set counterUnread = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Not considering' %}{% set counterUnread = counterUnread + 1 %}{% endif %}{% endfor %}({{counterUnread}})
             </a>
           </li>
           <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#shortlisted">
-              Shortlisted (2)
+              Shortlisted {% set counterUnread = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Shortlisted' %}{% set counterUnread = counterUnread + 1 %}{% endif %}{% endfor %}({{counterUnread}})
             </a>
           </li>
            <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#interview">
-              Invited to interview (1)
+              Invite to interview {% set counterUnread = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Invite to interview' %}{% set counterUnread = counterUnread + 1 %}{% endif %}{% endfor %}({{counterUnread}})
             </a>
           </li>
         </ul>
@@ -164,132 +159,46 @@
               </tr>
             </thead>
             <tbody class="govuk-table__body">
-              <tr class="govuk-table__row govuk-table__row--selected">
-                <td class="govuk-table__cell">
-                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                      <span class="govuk-visually-hidden">Select Aconcagua</span>
-                    </label>
-                  </div>
-                </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Camilla Sanchez</a></td>
-                <td class="govuk-table__cell">csan@live.com</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--blue">
-                    Unread
-                  </strong>
-                </td>
-              </tr>
-              <tr class="govuk-table__row govuk-table__row--selected">
-                <td class="govuk-table__cell">
-                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                      <span class="govuk-visually-hidden">Select Aconcagua</span>
-                    </label>
-                  </div>
-                </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example_shortlisted">Arthur Felix</a></td>
-                <td class="govuk-table__cell">arthur.fel@hotmail.com</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--green">
-                    Shortlisted
-                  </strong>
-                </td>
-              </tr>
 
-              <tr class="govuk-table__row govuk-table__row--selected">
-                <td class="govuk-table__cell">
-                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                      <span class="govuk-visually-hidden">Select Aconcagua</span>
-                    </label>
-                  </div>
-                </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Lamine Yamal</a></td>
-                <td class="govuk-table__cell">la.mine@hotmail.com</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--yellow">
-                    Withdrawn
-                  </strong>
-                </td>
-              </tr>
+              {% set counter = 0 %}
 
-              <tr class="govuk-table__row govuk-table__row--selected">
-                <td class="govuk-table__cell">
-                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                      <span class="govuk-visually-hidden">Select Aconcagua</span>
-                    </label>
-                  </div>
-                </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Otis Redham</a></td>
-                <td class="govuk-table__cell">o.tis@hotmail.com</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--green">
-                    Shortlisted
-                  </strong>
-                </td>
-              </tr>
+              {% for jobseeker in jobseekers %}
 
-              <tr class="govuk-table__row govuk-table__row--selected">
-                <td class="govuk-table__cell">
-                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                      <span class="govuk-visually-hidden">Select Aconcagua</span>
-                    </label>
-                  </div>
-                </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Jane Doe</a></td>
-                <td class="govuk-table__cell">jdoe@gmail.com</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--purple">
-                    reviewed
-                  </strong>
-                </td>
-              </tr>
+                {% if counter >= 10 %}                 
+                
+                {% else %}
 
-              <tr class="govuk-table__row govuk-table__row--selected">
-                <td class="govuk-table__cell">
-                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                      <span class="govuk-visually-hidden">Select Aconcagua</span>
-                    </label>
-                  </div>
-                </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Joe Gibb</a></td>
-                <td class="govuk-table__cell">joe.gibb@education.gov.uk</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--red">
-                    not considering
-                  </strong>
-                </td>
-              </tr>
+                  <tr class="govuk-table__row govuk-table__row--selected">
+                    <td class="govuk-table__cell">
+                      <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                        <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                        <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                          <span class="govuk-visually-hidden">Select {{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}</span>
+                        </label>
+                      </div>
+                    </td>
+                    <td class="govuk-table__cell">
+                      {% if jobseeker.tag == 'Withdrawn' %} 
+                        {{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}
+                      {% else %}
+                        <a class="govuk-link--no-visited-state" href="/jobs/application/{{ jobseeker.id }}">{{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}</a>
+                      {% endif %}
+                    </td>
+                    <td class="govuk-table__cell">{{ jobseeker.emailAddress }}</td>
+                    <td class="govuk-table__cell">
+                      {{ govukTag({
+                        text: jobseeker.tag,
+                        classes: jobseeker.tag | jobStatusTagClass
+                      }) }}
+                    </td>
+                  </tr>
 
-              <tr class="govuk-table__row govuk-table__row--selected">
-                <td class="govuk-table__cell">
-                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                      <span class="govuk-visually-hidden">Select Aconcagua</span>
-                    </label>
-                  </div>
-                </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example_interview">Kiera Gordon</a></td>
-                <td class="govuk-table__cell">keira.g@hotmail.com</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--turquoise">
-                    Invited to interview
-                  </strong>
-                </td>
-              </tr>
-              
-              
+                  {% set counter = counter + 1 %}
+
+                {% endif %}
+
+              {% endfor %}
+
             </tbody>
           </table>
 
@@ -310,6 +219,7 @@
         </div>
 
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="shortlisted">
+
           <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
             <caption class="govuk-table__caption govuk-table__caption--m">Shortlisted applications</caption>
             <thead class="govuk-table__head">
@@ -328,46 +238,46 @@
               </tr>
             </thead>
             <tbody class="govuk-table__body">
-              
-              <tr class="govuk-table__row govuk-table__row--selected">
-                <td class="govuk-table__cell">
-                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                      <span class="govuk-visually-hidden">Select Aconcagua</span>
-                    </label>
-                  </div>
-                </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example_shortlisted">Arthur Felix</a></td>
-                <td class="govuk-table__cell">arthur.fel@hotmail.com</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--green">
-                    Shortlisted
-                  </strong>
-                </td>
-              </tr>
 
-               <tr class="govuk-table__row govuk-table__row--selected">
-                <td class="govuk-table__cell">
-                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                      <span class="govuk-visually-hidden">Select Aconcagua</span>
-                    </label>
-                  </div>
-                </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Otis Redham</a></td>
-                <td class="govuk-table__cell">o.tis@hotmail.com</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--green">
-                    Shortlisted
-                  </strong>
-                </td>
-              </tr>
+              {% set counter = 0 %}
 
-              
-              
-              
+              {% for jobseeker in jobseekers %}
+
+                {% if jobseeker.tag !== 'Shortlisted' %}                 
+                
+                {% else %}
+
+                  <tr class="govuk-table__row govuk-table__row--selected">
+                    <td class="govuk-table__cell">
+                      <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                        <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                        <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                          <span class="govuk-visually-hidden">Select {{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}</span>
+                        </label>
+                      </div>
+                    </td>
+                    <td class="govuk-table__cell">
+                      {% if jobseeker.tag == 'Withdrawn' %} 
+                        {{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}
+                      {% else %}
+                        <a class="govuk-link--no-visited-state" href="/jobs/application/{{ jobseeker.id }}">{{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}</a>
+                      {% endif %}
+                    </td>
+                    <td class="govuk-table__cell">{{ jobseeker.emailAddress }}</td>
+                    <td class="govuk-table__cell">
+                      {{ govukTag({
+                        text: jobseeker.tag,
+                        classes: jobseeker.tag | jobStatusTagClass
+                      }) }}
+                    </td>
+                  </tr>
+
+                  {% set counter = counter + 1 %}
+
+                {% endif %}
+
+              {% endfor %}
+
             </tbody>
           </table>
 
@@ -398,8 +308,9 @@
         </div>
 
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="no">
-          <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
-            <caption class="govuk-table__caption govuk-table__caption--m">Not considering these applications</caption>
+
+         <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
+            <caption class="govuk-table__caption govuk-table__caption--m">Not considering applications</caption>
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th class="govuk-table__header" scope="col" id="select-all">
@@ -416,28 +327,46 @@
               </tr>
             </thead>
             <tbody class="govuk-table__body">
-              
-              
 
-              <tr class="govuk-table__row govuk-table__row--selected">
-                <td class="govuk-table__cell">
-                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                      <span class="govuk-visually-hidden">Select Aconcagua</span>
-                    </label>
-                  </div>
-                </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Joe Gibb</a></td>
-                <td class="govuk-table__cell">joe.gibb@education.gov.uk</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--red">
-                    not considering
-                  </strong>
-                </td>
-              </tr>
+              {% set counter = 0 %}
 
-              
+              {% for jobseeker in jobseekers %}
+
+                {% if jobseeker.tag !== 'Not considering' %}                 
+                
+                {% else %}
+
+                  <tr class="govuk-table__row govuk-table__row--selected">
+                    <td class="govuk-table__cell">
+                      <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                        <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                        <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                          <span class="govuk-visually-hidden">Select {{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}</span>
+                        </label>
+                      </div>
+                    </td>
+                    <td class="govuk-table__cell">
+                      {% if jobseeker.tag == 'Withdrawn' %} 
+                        {{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}
+                      {% else %}
+                        <a class="govuk-link--no-visited-state" href="/jobs/application/{{ jobseeker.id }}">{{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}</a>
+                      {% endif %}
+                    </td>
+                    <td class="govuk-table__cell">{{ jobseeker.emailAddress }}</td>
+                    <td class="govuk-table__cell">
+                      {{ govukTag({
+                        text: jobseeker.tag,
+                        classes: jobseeker.tag | jobStatusTagClass
+                      }) }}
+                    </td>
+                  </tr>
+
+                  {% set counter = counter + 1 %}
+
+                {% endif %}
+
+              {% endfor %}
+
             </tbody>
           </table>
 
@@ -465,7 +394,7 @@
           
           
           <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
-            <caption class="govuk-table__caption govuk-table__caption--m">Applications yet to be reviewed</caption>
+            <caption class="govuk-table__caption govuk-table__caption--m">Unread applications</caption>
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th class="govuk-table__header" scope="col" id="select-all">
@@ -482,25 +411,46 @@
               </tr>
             </thead>
             <tbody class="govuk-table__body">
-              <tr class="govuk-table__row govuk-table__row--selected">
-                <td class="govuk-table__cell">
-                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                      <span class="govuk-visually-hidden">Select Aconcagua</span>
-                    </label>
-                  </div>
-                </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example">Camilla Sanchez</a></td>
-                <td class="govuk-table__cell">csan@live.com</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--blue">
-                    Unread
-                  </strong>
-                </td>
-              </tr>
-              
-              
+
+              {% set counter = 0 %}
+
+              {% for jobseeker in jobseekers %}
+
+                {% if jobseeker.tag !== 'Unread' %}                 
+                
+                {% else %}
+
+                  <tr class="govuk-table__row govuk-table__row--selected">
+                    <td class="govuk-table__cell">
+                      <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                        <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                        <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                          <span class="govuk-visually-hidden">Select {{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}</span>
+                        </label>
+                      </div>
+                    </td>
+                    <td class="govuk-table__cell">
+                      {% if jobseeker.tag == 'Withdrawn' %} 
+                        {{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}
+                      {% else %}
+                        <a class="govuk-link--no-visited-state" href="/jobs/application/{{ jobseeker.id }}">{{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}</a>
+                      {% endif %}
+                    </td>
+                    <td class="govuk-table__cell">{{ jobseeker.emailAddress }}</td>
+                    <td class="govuk-table__cell">
+                      {{ govukTag({
+                        text: jobseeker.tag,
+                        classes: jobseeker.tag | jobStatusTagClass
+                      }) }}
+                    </td>
+                  </tr>
+
+                  {% set counter = counter + 1 %}
+
+                {% endif %}
+
+              {% endfor %}
+
             </tbody>
           </table>
 
@@ -521,8 +471,20 @@
 
 
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="interview">
+
+          {% set counterInterview = 0 %}
+            {% for jobseeker in jobseekers %}
+              {% if jobseeker.tag == 'Invite to interview' %}
+              
+              {% set counterInterview = counterInterview + 1 %}
+              {% endif %}
+          {% endfor %}
+
+          {% if counterInterview >= 1 %}
+              
+         
           <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
-            <caption class="govuk-table__caption govuk-table__caption--m">Invited to interview</caption>
+            <caption class="govuk-table__caption govuk-table__caption--m">Invited to interview applications</caption>
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th class="govuk-table__header" scope="col" id="select-all">
@@ -540,28 +502,47 @@
               </tr>
             </thead>
             <tbody class="govuk-table__body">
-              
-              <tr class="govuk-table__row govuk-table__row--selected">
-                <td class="govuk-table__cell">
-                  <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                    <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                    <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                      <span class="govuk-visually-hidden">Select Aconcagua</span>
-                    </label>
-                  </div>
-                </td>
-                <td class="govuk-table__cell"><a class="govuk-link--no-visited-state" href="applications_example_interview">Kiera Gordon</a></td>
-                <td class="govuk-table__cell">keira.g@hotmail.com</td>
-                <td class="govuk-table__cell">10am Thursday 4th July 2024</td>
-                <td class="govuk-table__cell">
-                  <strong class="govuk-tag govuk-tag--turquoise">
-                    Invited to interview
-                  </strong>
-                </td>
-              </tr>
 
-              
-              
+              {% set counter = 0 %}
+
+              {% for jobseeker in jobseekers %}
+
+                {% if jobseeker.tag !== 'Invite to interview' %}                 
+                
+                {% else %}
+
+                  <tr class="govuk-table__row govuk-table__row--selected">
+                    <td class="govuk-table__cell">
+                      <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                        <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                        <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                          <span class="govuk-visually-hidden">Select {{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}</span>
+                        </label>
+                      </div>
+                    </td>
+                    <td class="govuk-table__cell">
+                      {% if jobseeker.tag == 'Withdrawn' %} 
+                        {{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}
+                      {% else %}
+                        <a class="govuk-link--no-visited-state" href="/jobs/application/{{ jobseeker.id }}">{{ jobseeker.profile.firstName }} {{ jobseeker.profile.lastName }}</a>
+                      {% endif %}
+                    </td>
+                    <td class="govuk-table__cell">{{ jobseeker.emailAddress }}</td>
+                    <td class="govuk-table__cell">{{ jobseeker.interviewDetails }}</td>
+                    <td class="govuk-table__cell">
+                      {{ govukTag({
+                        text: jobseeker.tag,
+                        classes: jobseeker.tag | jobStatusTagClass
+                      }) }}
+                    </td>
+                  </tr>
+
+                  {% set counter = counter + 1 %}
+
+                {% endif %}
+
+              {% endfor %}
+
             </tbody>
           </table>
 
@@ -581,15 +562,26 @@
                      Copy selected emails
                   </button>
               </div>
-              <form action="tag">
+              <form action="interview_single?term=Edit">
                   <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
                       Edit interview details
                   </button>
               </form>   
-              
-              
-              
+
           </div>
+
+          {% else %}
+
+            <h3 class="govuk-heading-m govuk-!-margin-top-0">
+              No applications have been invited to interview yet
+            </h3>
+
+            <p>
+              You can add interview details and organise applicants who you are planning to interview by tagging applicants with the 'invite to interview' tag.
+            </p>
+
+          {% endif %}
+
 
         </div>
 
@@ -597,33 +589,9 @@
       </div>
 
 
-          {% for jobseeker in jobseekers %}
           
 
-           <!-- {{jobseeker.profile.firstName}}, {{jobseeker.profile.lastName}}  {{jobseeker.emailAddress}}:: -->
           
-
-          {% endfor %}
-
-          {% for job in user.jobs %}
-            <div class="app-job-listings__job">
-              <div class="app-job-listings__job-row">
-                <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
-                  <a href="/jobs/{{job.id}}">{{job.title}}</a>
-                </h2>
-                {{ govukTag({
-                  text: job.status,
-                  classes: job.status | jobStatusTagClass
-                }) }}
-              </div>
-              <div class="app-job-listings__job-row">
-                <p class="app-job-listings__role govuk-!-margin-bottom-0">{{job.role}}</p>
-                <p class="app-job-listings__copy govuk-!-margin-bottom-0">
-                  <a href="/jobs/new/copied">Copy</a>
-                </p>
-              </div>
-            </div>
-          {% endfor %}
 
     </div>
 

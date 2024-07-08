@@ -71,6 +71,24 @@ module.exports = function (env) {
       case 'Closed':
         tagClass = 'govuk-tag--red'
         break;
+      case 'Unread':
+        tagClass = 'govuk-tag--blue'
+        break;
+      case 'Shortlisted':
+        tagClass = 'govuk-tag--green'
+        break;
+      case 'Withdrawn':
+        tagClass = 'govuk-tag--yellow'
+        break;
+      case 'Reviewed':
+        tagClass = 'govuk-tag--purple'
+        break;
+      case 'Invite to interview':
+        tagClass = 'govuk-tag--turquoise'
+        break;
+      case 'Not considering':
+        tagClass = 'govuk-tag--red'
+        break;
     }
     return tagClass
   }
