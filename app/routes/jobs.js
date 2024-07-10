@@ -101,11 +101,39 @@ module.exports = router => {
 
     jobseeker.tag = req.session.data.tag
     jobseeker.interviewDetails = req.session.data.interviewDetails
-      
+
+   
     req.flash('success', 'Tags applied')
     res.redirect(`/jobs/${req.params.id}/applications`)
+   
 
   })
+
+  //FEEDBACK START
+
+  router.get('/jobs/:id/feedback', authentication.checkIsAuthenticated, (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+    res.render('jobs/applications/customise', {
+      jobseeker
+    })
+  })
+
+  router.post('/jobs/:id/feedback', (req, res) => {
+    
+    res.redirect(`/jobs/${req.params.id}/feedbackcheck`)
+   
+  })
+
+  router.get('/jobs/:id/feedbackcheck', authentication.checkIsAuthenticated, (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+    res.render('jobs/applications/check', {
+      jobseeker
+    })
+  })
+
+
 
   //multiple people tags
 
@@ -117,14 +145,7 @@ module.exports = router => {
     })
   })
 
-  router.post('/jobs/:id/tag', (req, res) => {
-      
-    req.flash('success', 'Tags applied')
-    res.redirect(`/jobs/${req.params.id}/applications`)
-
-  })
-
-
+  
   //END TAG
 
   //INTERVIEW DETAILS START
@@ -165,5 +186,6 @@ module.exports = router => {
       job
     })
   })
+
 
 }

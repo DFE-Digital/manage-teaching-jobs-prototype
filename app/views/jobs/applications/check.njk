@@ -1,0 +1,222 @@
+
+{% extends "layout.njk" %}
+
+{% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
+
+
+{% if data.invite.jobs.length %}
+  {% set theJobs = data.invite.jobs | join('<br>') %}
+{% else %}
+  {% set theJobs = '' %}
+{% endif %}
+
+
+{% set caption = 'Send bulk rejection emails'  %}
+{% set title = 'Check details and email applicants' %}
+
+{% set primaryNavId = 'jobs' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobseekers/"+jobseeker.id
+  }) }}
+{% endblock %}
+
+<script>
+    // JavaScript code to find and convert URLs to links
+    var htmlContent = document.querySelector('.email-message-body p').innerHTML;
+    var urlRegex = /(https?:\/\/[^\s]+)/g;
+    var htmlWithLinks = htmlContent.replace(urlRegex, function(url) {
+        return '<a href="' + url + '">' + url + '</a>';
+    });
+    document.querySelector('.email-message-body p').innerHTML = htmlWithLinks;
+</script>
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      {% set preview%}{{data['customise-message-1']}}{% endset %}
+
+      <h2 class="govuk-heading-m">
+        Preview of emails
+      </h2>
+
+      <h3 class="govuk-heading-s">
+        Email to eulalia.bartoletti@gmail.com
+      </h3>
+
+      <div class="email-message">
+
+        <table class="email-message-meta">
+          <tbody>    
+                <tr>
+                  <th scope="row">From</th>
+                  <td>
+                    Teaching Vacancies
+                  </td>
+                </tr>
+              <tr>
+                <th scope="row">To</th>
+                <td>
+                  eulalia.bartoletti@gmail.com
+                </td>
+              </tr>
+            <tr class="email-message-meta">
+              <th scope="row">Subject</th>
+              {% if theJobs == 'general' or theJobs == '' %}
+                <td>
+                  You have received an email about your application from {{user.organisation.name}}
+                </td>
+              {% else %}
+                <td>
+                  You have been invited to apply for {% if data.invite.jobs.length > 1 %}{{data.invite.jobs | length}} roles{% else %}a role{% endif %} at {{user.organisation.name}}
+                </td>
+              {% endif %}
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="email-message-body" style="white-space: pre-wrap;"><p style="Margin: 0 0 0 0; font-size: 19px; line-height: 25px; color: #0B0C0C;">
+{{preview}}</p>
+        </div>
+
+      </div>
+
+       <h3 class="govuk-heading-s">
+        Email to sidney.herman@gmail.com	
+      </h3>
+
+      <div class="email-message">
+
+        <table class="email-message-meta">
+          <tbody>    
+                <tr>
+                  <th scope="row">From</th>
+                  <td>
+                    Teaching Vacancies
+                  </td>
+                </tr>
+              <tr>
+                <th scope="row">To</th>
+                <td>
+                  sidney.herman@gmail.com	
+                </td>
+              </tr>
+            <tr class="email-message-meta">
+              <th scope="row">Subject</th>
+              {% if theJobs == 'general' or theJobs == '' %}
+                <td>
+                  You have received an email about your application from {{user.organisation.name}}
+                </td>
+              {% else %}
+                <td>
+                  You have been invited to apply for {% if data.invite.jobs.length > 1 %}{{data.invite.jobs | length}} roles{% else %}a role{% endif %} at {{user.organisation.name}}
+                </td>
+              {% endif %}
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="email-message-body" style="white-space: pre-wrap;"><p style="Margin: 0 0 0 0; font-size: 19px; line-height: 25px; color: #0B0C0C;">
+{{preview}}</p>
+        </div>
+
+      </div>
+
+      
+        <a href="feedback" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+          Customise email
+        </a>
+    
+      {% set includedHintHtml %}
+        
+        This will add your account email: {{user.emailAddress}} to the email being sent so you receive a carbon copy or ‘cc’.
+        
+      {% endset %}
+
+      
+      {{ govukRadios({
+        classes: "govuk-radios--inline",
+        name: "changedName",
+        fieldset: {
+          legend: {
+            text: "Do you want to receive a carbon copy of the emails being sent?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          html: includedHintHtml
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {% set textHtml %}
+        {{ govukInput({
+          id: "contact-by-text",
+          name: "contactByText",
+          type: "tel",
+          autocomplete: "tel",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Mobile phone number"
+          }
+        }) }}
+      {% endset -%}
+
+      <!--
+      <h2 class="govuk-heading-m">
+        Send email
+      </h2>
+     
+      <p>{{name}} will be sent an email from Teaching Vacancies with your message.</p>  
+      -->
+      
+      <form method="post">
+
+        <div class="govuk-inset-text">
+          2 individual emails will be sent to applicants notifying them with your message. Their tag will be updated to:
+          <strong class="govuk-tag govuk-tag--red">
+            Rejection email sent
+          </strong>
+        </div>
+              
+        <div class="govuk-button-group">
+
+          <button class="govuk-button" data-module="govuk-button">
+            
+              Send separate emails to applications
+           
+          </button>
+
+        </div>
+
+
+        <p><a href="/jobseekers/{{jobseeker.id}}">Cancel</a></p>
+      </form>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
