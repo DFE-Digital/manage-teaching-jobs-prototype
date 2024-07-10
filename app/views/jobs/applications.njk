@@ -392,6 +392,9 @@
             </tbody>
           </table>
 
+
+          
+
           <div class="govuk-button-group govuk-!-margin-top-5">
               <form method="post" action="#">
                   <button type="submit" class="govuk-button" data-module="govuk-button">
@@ -414,6 +417,58 @@
                   </button>
               </form>
           </div>
+
+
+
+          {% if data['carboncopy'] !== '' %} 
+
+          <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+
+            <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
+            <caption class="govuk-table__caption govuk-table__caption--m">Have been sent a rejection email</caption>
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col">Name</th>
+                <th class="govuk-table__header" scope="col">Contact details</th>
+                <th class="govuk-table__header" scope="col">Tag</th>
+                <th class="govuk-table__header" scope="col">Rejection email sent</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+
+                  <tr class="govuk-table__row govuk-table__row--selected">
+                  
+                    <td class="govuk-table__cell">
+                      Sienna Bergnaum
+                    </td>
+                    <td class="govuk-table__cell">sienna.bergnaum@gmail.com</td>
+                    <td class="govuk-table__cell">
+                      <strong class="govuk-tag govuk-tag--red">
+                        Rejection email sent
+                      </strong>
+                    </td>
+                    <td class="govuk-table__cell">Wednesday 10th July 2024</td>
+                  </tr>
+
+                  <tr class="govuk-table__row govuk-table__row--selected">
+                  
+                    <td class="govuk-table__cell">
+                      Beau King
+                    </td>
+                    <td class="govuk-table__cell">beau.king@gmail.com	</td>
+                    <td class="govuk-table__cell">
+                      <strong class="govuk-tag govuk-tag--red">
+                        Rejection email sent
+                      </strong>
+                    </td>
+                    <td class="govuk-table__cell">Wednesday 10th July 2024</td>
+                  </tr>
+
+            </tbody>
+          </table>
+
+          {% endif %}
 
         </div>
 

@@ -147,7 +147,7 @@
       
       {{ govukRadios({
         classes: "govuk-radios--inline",
-        name: "changedName",
+        name: "carboncopy",
         fieldset: {
           legend: {
             text: "Do you want to receive a carbon copy of the emails being sent?",
@@ -170,26 +170,6 @@
         ]
       }) }}
 
-      {% set textHtml %}
-        {{ govukInput({
-          id: "contact-by-text",
-          name: "contactByText",
-          type: "tel",
-          autocomplete: "tel",
-          classes: "govuk-!-width-one-third",
-          label: {
-            text: "Mobile phone number"
-          }
-        }) }}
-      {% endset -%}
-
-      <!--
-      <h2 class="govuk-heading-m">
-        Send email
-      </h2>
-     
-      <p>{{name}} will be sent an email from Teaching Vacancies with your message.</p>  
-      -->
       
       <form method="post">
 

@@ -133,6 +133,14 @@ module.exports = router => {
     })
   })
 
+  router.post('/jobs/:id/feedbackcheck', (req, res) => {
+
+    req.flash('success', 'Bulk rejection emails sent')
+    
+    res.redirect(`/jobs/${req.params.id}`)
+   
+  })
+
 
 
   //multiple people tags
