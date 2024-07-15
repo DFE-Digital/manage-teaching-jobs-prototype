@@ -418,12 +418,9 @@
               </form>
           </div>
 
-
-
-          {% if data['carboncopy'] !== '' %} 
+          {% if data['carboncopy'] == 'yes' %} 
 
           <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
 
             <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
             <caption class="govuk-table__caption govuk-table__caption--m">Have been sent a rejection email</caption>
@@ -468,6 +465,7 @@
             </tbody>
           </table>
 
+          {% else %}
           {% endif %}
 
         </div>
