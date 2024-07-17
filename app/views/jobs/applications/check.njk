@@ -11,7 +11,7 @@
 {% endif %}
 
 
-{% set caption = 'Send bulk rejection emails'  %}
+{% set caption = 'Send rejection emails'  %}
 {% set title = 'Check details and email applicants' %}
 
 {% set primaryNavId = 'jobs' %}
@@ -51,6 +51,21 @@
         Preview of emails
       </h2>
 
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What will the emails look like?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          
+          <p>The emails will be sent via GOV Notify and the Teaching Vacancies service.</p>
+
+          <p><img src="/public/images/emailexample.png" style="max-width: 100%"></p>
+
+        </div>
+      </details>
+
       <h3 class="govuk-heading-s">
         Email to eulalia.bartoletti@gmail.com
       </h3>
@@ -73,16 +88,10 @@
               </tr>
             <tr class="email-message-meta">
               <th scope="row">Subject</th>
-              {% if theJobs == 'general' or theJobs == '' %}
                 <td>
-                  You have received an email about your application from {{user.organisation.name}}
+                  {{ data ['subject']}}
                 </td>
-              {% else %}
-                <td>
-                  You have been invited to apply for {% if data.invite.jobs.length > 1 %}{{data.invite.jobs | length}} roles{% else %}a role{% endif %} at {{user.organisation.name}}
-                </td>
-              {% endif %}
-            </tr>
+              </tr>
           </tbody>
         </table>
 
@@ -114,15 +123,9 @@
               </tr>
             <tr class="email-message-meta">
               <th scope="row">Subject</th>
-              {% if theJobs == 'general' or theJobs == '' %}
                 <td>
-                  You have received an email about your application from {{user.organisation.name}}
+                  {{ data ['subject']}}
                 </td>
-              {% else %}
-                <td>
-                  You have been invited to apply for {% if data.invite.jobs.length > 1 %}{{data.invite.jobs | length}} roles{% else %}a role{% endif %} at {{user.organisation.name}}
-                </td>
-              {% endif %}
             </tr>
           </tbody>
         </table>
@@ -149,37 +152,8 @@
       
       <form method="post">
 
-
-      {{ govukRadios({
-        classes: "govuk-radios--inline",
-        name: "carboncopy",
-        fieldset: {
-          legend: {
-            text: "Do you want to receive a carbon copy of the emails being sent?",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--m"
-          }
-        },
-        hint: {
-          html: includedHintHtml
-        },
-        items: [
-          {
-            value: "yes",
-            text: "Yes"
-          },
-          {
-            value: "no",
-            text: "No"
-          }
-        ]
-      }) }}
-
         <div class="govuk-inset-text">
-          2 individual emails will be sent to applicants notifying them with your message. Their tag will be updated to:
-          <strong class="govuk-tag govuk-tag--red">
-            Rejection email sent
-          </strong>
+          Your account email: <b>{{user.emailAddress}}</b> will receive a blind carbon copy 'bcc' of the email. This will keep your email address private and secure.
         </div>
               
         <div class="govuk-button-group">

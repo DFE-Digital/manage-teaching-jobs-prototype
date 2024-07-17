@@ -3,7 +3,7 @@
 
 {% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
 
-{% set caption = 'Send bulk rejection emails'  %}
+{% set caption = 'Send rejection emails'  %}
 
 {% set title = 'Customise your message' %}
 
@@ -28,19 +28,44 @@
             {{caption}}
           </span>
             <label class="govuk-label govuk-label--l" for="customise-message-1">
-              What do you want the email to say?
+              Edit email
             </label>
           </h1>
 
 
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="template">
+              Template name
+            </label>
+            <input class="govuk-input" id="template" name="template" type="text" value="Standard rejection email">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="subject">
+              Subject
+            </label>
+            <input class="govuk-input" id="subject" name="subject" type="text" value="Thanks for your application, unfortunately we do not want to invite you to an interview.">
+          </div>
+
+
         <div class="govuk-form-group">
     
-<div id="event-name-hint" class="govuk-hint">
-    Enter your message for applicants. Your subject line and who the email is sent to will be automatically generated for you on the next page.
-  </div>
-<textarea class="govuk-textarea" id="customise-message-1" name="customise-message-1" rows="15" >
+          <label class="govuk-label" for="customise-message-1">
+            Message
+          </label>
+          <textarea class="govuk-textarea" id="customise-message-1" name="customise-message-1" rows="15" >
 Unfortunately we are not considering your application at this time, thank you for applying.
-</textarea>
+          </textarea>
+        </div>
+
+
+        <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="save" name="save" type="checkbox" value="save">
+            <label class="govuk-label govuk-checkboxes__label" for="save">
+              Save changes to template
+            </label>
+          </div>
         </div>
 
         <div class="govuk-button-group">

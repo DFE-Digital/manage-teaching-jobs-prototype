@@ -1,0 +1,66 @@
+
+{% extends "layout.njk" %}
+
+{% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
+
+{% set caption = 'Send rejection emails'  %}
+
+{% set title = 'Select a message template' %}
+
+{% set primaryNavId = 'jobs' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+
+        <h1 class="govuk-label-wrapper govuk-!-margin-bottom-7">
+           <span class="govuk-caption-l">
+            {{caption}}
+          </span>
+            <label class="govuk-label govuk-label--l" for="customise-message-1">
+              Select email template
+            </label>
+        </h1>
+
+        <div>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-1"><a class="govuk-link govuk-link--no-visited-state" href="feedback">Standard rejection email</a></h2>
+            <span class="govuk-caption-m govuk-!-margin-bottom-2">Thanks for your application, unfortunately we do not want to invite you to an interview.</span>
+            <p class="govuk-body-s"><a class="govuk-link govuk-link--no-visited-state" href="feedback">Delete template</a></p>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        </div>
+
+        <div>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-1"><a class="govuk-link govuk-link--no-visited-state" href="feedback">Feedback rejection email</a></h2>
+            <span class="govuk-caption-m govuk-!-margin-bottom-2">Thanks for your application, unfortunately we do not want to invite you to an interview but we have provided some feedback for you.</span>
+            <p class="govuk-body-s"><a class="govuk-link govuk-link--no-visited-state" href="feedback">Delete template</a></p>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        </div>
+
+        
+       
+
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Create new template
+          </button>
+
+
+
+        <p><a href="#">Cancel</a></p>
+      </form>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

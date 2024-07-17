@@ -102,7 +102,7 @@
           Current applications
         </h2>
 
-        <p>You can <a class="govuk-link--no-visited-state" href="">download all applications</a>, select what applications you want to download  or add tags to help organise applications.</p>
+        <p>You can <a class="govuk-link--no-visited-state" href="">download all applications</a>, select what applications you want to download or change the application status to help organise applications.</p>
 
         <div class="govuk-tabs govuk-!-margin-top-5" data-module="govuk-tabs">
         <h2 class="govuk-tabs__title">
@@ -155,7 +155,7 @@
                 </th>
                 <th class="govuk-table__header" scope="col">Name</th>
                 <th class="govuk-table__header" scope="col">Contact details</th>
-                <th class="govuk-table__header" scope="col">Tag</th>
+                <th class="govuk-table__header" scope="col">Application status</th>
               </tr>
             </thead>
             <tbody class="govuk-table__body">
@@ -210,7 +210,7 @@
               </form>
               <form action="tag">
                   <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                      Tag selected
+                      Update application status
                   </button>
               </form>
           </div>
@@ -244,7 +244,7 @@
                 </th>
                 <th class="govuk-table__header" scope="col">Name</th>
                 <th class="govuk-table__header" scope="col">Contact details</th>
-                <th class="govuk-table__header" scope="col">Tag</th>
+                <th class="govuk-table__header" scope="col">Application status</th>
               </tr>
             </thead>
             <tbody class="govuk-table__body">
@@ -299,7 +299,7 @@
               </form>
               <form action="tag">
                   <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                      Tag selected
+                      Update application status
                   </button>
               </form>
               <div>
@@ -345,7 +345,7 @@
                 </th>
                 <th class="govuk-table__header" scope="col">Name</th>
                 <th class="govuk-table__header" scope="col">Contact details</th>
-                <th class="govuk-table__header" scope="col">Tag</th>
+                <th class="govuk-table__header" scope="col">Application status</th>
               </tr>
             </thead>
             <tbody class="govuk-table__body">
@@ -403,7 +403,7 @@
               </form>
               <form action="tag">
                   <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                      Tag selected
+                      Update application status
                   </button>
               </form>
               <div>
@@ -411,14 +411,14 @@
                      Copy selected emails
                   </button>
               </div>  
-              <form action="feedback">
+              <form action="feedback_templates">
                   <button type="submit" class="govuk-button govuk-button--warning" data-module="govuk-button">
-                    Send bulk rejection email
+                    Send rejection emails
                   </button>
               </form>
           </div>
 
-          {% if data['carboncopy'] == 'yes' %} 
+          {% if data['template'] == 'Standard rejection email' %} 
 
           <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
@@ -428,7 +428,7 @@
               <tr class="govuk-table__row">
                 <th class="govuk-table__header" scope="col">Name</th>
                 <th class="govuk-table__header" scope="col">Contact details</th>
-                <th class="govuk-table__header" scope="col">Tag</th>
+                <th class="govuk-table__header" scope="col">Application status</th>
                 <th class="govuk-table__header" scope="col">Rejection email sent</th>
               </tr>
             </thead>
@@ -487,7 +487,7 @@
                 </th>
                 <th class="govuk-table__header" scope="col">Name</th>
                 <th class="govuk-table__header" scope="col">Contact details</th>
-                <th class="govuk-table__header" scope="col">Tag</th>
+                <th class="govuk-table__header" scope="col">Application status</th>
               </tr>
             </thead>
             <tbody class="govuk-table__body">
@@ -542,7 +542,7 @@
               </form>
               <form action="tag">
                   <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                      Tag selected
+                      Update application status
                   </button>
               </form>
           </div>
@@ -578,7 +578,7 @@
                 <th class="govuk-table__header" scope="col">Name</th>
                 <th class="govuk-table__header" scope="col">Contact details</th>
                 <th class="govuk-table__header" scope="col">Interview details</th>
-                <th class="govuk-table__header" scope="col">Tag</th>
+                <th class="govuk-table__header" scope="col">Application status</th>
               </tr>
             </thead>
             <tbody class="govuk-table__body">
@@ -634,7 +634,7 @@
               </form>
               <form action="tag">
                   <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                      Tag selected
+                      Update application status
                   </button>
               </form>
               <div>

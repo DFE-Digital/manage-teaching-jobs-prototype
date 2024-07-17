@@ -695,6 +695,59 @@
       }) }}
 
     </div>
+
+
+    <div class="govuk-grid-column-one-third">
+
+      <div class="govuk-summary-card govuk-!-margin-top-6">
+        <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+                Listing data
+            </h2>
+            
+        </div>
+        <div class="govuk-summary-card__content">
+
+            <dl class="govuk-summary-list" id="vacancy_statistics">
+              <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                <dt class="govuk-summary-list__key">Views</dt>
+                <dd class="govuk-summary-list__value">0</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                <dt class="govuk-summary-list__key">Saves</dt>
+                <dd class="govuk-summary-list__value">0</dd>
+              </div>
+            </dl>
+
+        </div>
+      </div>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+               Application data
+            </h2>
+            
+        </div>
+        <div class="govuk-summary-card__content">
+
+            <dl class="govuk-summary-list" id="job_applications_statistics">
+              <div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Applications</dt><dd class="govuk-summary-list__value">1</dd></div>
+              <div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Unread</dt><dd class="govuk-summary-list__value">0</dd></div>
+              <div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Shortlisted</dt><dd class="govuk-summary-list__value">0</dd></div>
+              <div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Rejected</dt><dd class="govuk-summary-list__value">0</dd></div>
+              <div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Withdrawn </dt><dd class="govuk-summary-list__value">0</dd></div>
+            </dl>
+
+        </div>
+      </div>
+    
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <p class="govuk-body">This may include data from candidates who have withdrawn their applications.<br>This is to ensure the anonymity of applicants who submit equal opportunities information.</p>
+          <a class="govuk-button govuk-button--secondary" data-module="govuk-button" href="/organisation/jobs/8960c3fe-b3b7-4401-8e74-4de0a72cb7b3/statistics.csv">Download statistics (csv, 0.2KB)</a>
+        </div>
+      
   </div>
 
 {% endblock %}

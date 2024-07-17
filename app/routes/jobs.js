@@ -103,13 +103,27 @@ module.exports = router => {
     jobseeker.interviewDetails = req.session.data.interviewDetails
 
    
-    req.flash('success', 'Tags applied')
+    req.flash('success', 'Application status updated')
     res.redirect(`/jobs/${req.params.id}/applications`)
    
 
   })
 
   //FEEDBACK START
+
+  router.get('/jobs/:id/feedback_templates', authentication.checkIsAuthenticated, (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+    res.render('jobs/applications/templates', {
+      jobseeker
+    })
+  })
+
+  router.post('/jobs/:id/feedback', (req, res) => {
+    
+    res.redirect(`/jobs/${req.params.id}/feedbackcheck`)
+   
+  })
 
   router.get('/jobs/:id/feedback', authentication.checkIsAuthenticated, (req, res) => {
     let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
@@ -135,7 +149,7 @@ module.exports = router => {
 
   router.post('/jobs/:id/feedbackcheck', (req, res) => {
 
-    req.flash('success', 'Bulk rejection emails sent')
+    req.flash('success', 'Rejection emails sent')
     
     res.redirect(`/jobs/${req.params.id}`)
    
