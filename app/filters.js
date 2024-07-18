@@ -71,9 +71,12 @@ module.exports = function (env) {
       case 'Closed':
         tagClass = 'govuk-tag--red'
         break;
-      case 'Unread':
-        tagClass = 'govuk-tag--blue'
-        break;
+        case 'Unread':
+          tagClass = 'govuk-tag--blue'
+          break;
+          case 'New':
+            tagClass = 'govuk-tag--blue'
+            break;
       case 'Shortlisted':
         tagClass = 'govuk-tag--green'
         break;
@@ -83,7 +86,7 @@ module.exports = function (env) {
       case 'Reviewed':
         tagClass = 'govuk-tag--purple'
         break;
-      case 'Invited to interview':
+      case 'Interviewing':
         tagClass = 'govuk-tag--turquoise'
         break;
       case 'Not considering':

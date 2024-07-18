@@ -11,7 +11,7 @@
 {% endif %}
 
 
-{% set caption = 'Send rejection emails'  %}
+{% set caption = 'Invite to interview'  %}
 {% set title = 'Check details and email applicants' %}
 
 {% set primaryNavId = 'jobs' %}
@@ -86,42 +86,7 @@
 
       </div>
 
-       <h3 class="govuk-heading-s">
-        Email to sidney.herman@gmail.com	
-      </h3>
-
-      <div class="email-message">
-
-        <table class="email-message-meta">
-          <tbody>    
-                <tr>
-                  <th scope="row">From</th>
-                  <td>
-                    Teaching Vacancies
-                  </td>
-                </tr>
-              <tr>
-                <th scope="row">To</th>
-                <td>
-                  sidney.herman@gmail.com	
-                </td>
-              </tr>
-            <tr class="email-message-meta">
-              <th scope="row">Subject</th>
-                <td>
-                  {{ data ['subject']}}
-                </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="email-message-body" style="white-space: pre-wrap;"><p style="Margin: 0 0 0 0; font-size: 19px; line-height: 25px; color: #0B0C0C;">
-{{preview}}</p>
-        </div>
-
-      </div>
-
-      <details class="govuk-details">
+       <details class="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
             What will the emails look like?
@@ -155,6 +120,8 @@
 
         </div>
       </details>
+
+
 
       
         <a href="feedback" class="govuk-button govuk-button--secondary" data-module="govuk-button">

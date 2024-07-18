@@ -1,0 +1,88 @@
+
+{% extends "layout.njk" %}
+
+{% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
+
+{% set caption = 'Invite to interview'  %}
+
+{% set title = 'Customise your message' %}
+
+{% set primaryNavId = 'jobs' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="interview_check">
+
+        <h1 class="govuk-label-wrapper">
+           <span class="govuk-caption-l">
+            {{caption}}
+          </span>
+            <label class="govuk-label govuk-label--l" for="customise-message-1">
+              Edit email
+            </label>
+          </h1>
+
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="template">
+              Template name
+            </label>
+            <input class="govuk-input" id="template" name="template" type="text" value="Interview template 1">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="subject">
+              Subject
+            </label>
+            <input class="govuk-input" id="subject" name="subject" type="text" value="Thanks for your application, we would like to invite you to an interview">
+          </div>
+
+
+        <div class="govuk-form-group">
+    
+          <label class="govuk-label" for="customise-message-1">
+            Message
+          </label>
+          <textarea class="govuk-textarea" id="customise-message-1" name="customise-message-1" rows="15" >
+We really liked your application and would love to have a chat with you. What is the best number to call you on?
+          </textarea>
+        </div>
+
+
+        <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="save" name="save" type="checkbox" value="save">
+            <label class="govuk-label govuk-checkboxes__label" for="save">
+              Save changes to template
+            </label>
+          </div>
+        </div>
+
+        <div class="govuk-button-group">
+
+          <button class="govuk-button" data-module="govuk-button">
+            Continue to preview of emails
+          </button>
+
+        </div>
+
+
+        <p><a href="#">Cancel</a></p>
+      </form>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

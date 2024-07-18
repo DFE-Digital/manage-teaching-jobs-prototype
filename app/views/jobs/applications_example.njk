@@ -60,11 +60,11 @@
                     </div>   
                     <form action="/jobs/application/interview/{{jobseeker.id}}">
                         <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                            Add interview details
+                            Invite to interview
                         </button>
                     </form>   
                 {% endif %} 
-                {% if jobseeker.tag == 'Invited to interview' %}
+                {% if jobseeker.tag == 'Interviewing' %}
                     <div>
                         <button type="submit" class="copy-email govuk-button govuk-button--secondary" data-module="govuk-button" style="text-decoration:none;">
                             Copy email

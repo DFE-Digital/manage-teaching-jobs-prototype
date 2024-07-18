@@ -47,31 +47,25 @@ module.exports = router => {
   router.get('/jobs/:id/interview', authentication.checkIsAuthenticated, (req, res) => {
     let job = req.session.user.jobs.find(job => job.id == req.params.id)
 
-    res.render('jobs/interview', {
+    res.render('jobs/applications/interview_templates', {
       job
     })
   })
 
-  router.get('/jobs/:id/interview_single', authentication.checkIsAuthenticated, (req, res) => {
+  router.get('/jobs/:id/interview_email', authentication.checkIsAuthenticated, (req, res) => {
     let job = req.session.user.jobs.find(job => job.id == req.params.id)
 
-    res.render('jobs/interview_single', {
+    res.render('jobs/applications/interview_customise', {
       job
     })
   })
 
-  router.post('/jobs/:id/interview_single', (req, res) => {
-      
-    req.flash('success', 'Interview details saved')
-    res.redirect(`/jobs/${req.params.id}/applications`)
+  router.get('/jobs/:id/interview_check', authentication.checkIsAuthenticated, (req, res) => {
+    let job = req.session.user.jobs.find(job => job.id == req.params.id)
 
-  })
-
-  router.post('/jobs/:id/interview', (req, res) => {
-      
-    req.flash('success', 'Interview details saved')
-    res.redirect(`/jobs/${req.params.id}/applications`)
-
+    res.render('jobs/applications/interview_check', {
+      job
+    })
   })
 
   
@@ -185,7 +179,7 @@ module.exports = router => {
     let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
 
     jobseeker.interviewDetails = req.session.data.interviewDetails
-    jobseeker.tag = 'Invited to interview'
+    jobseeker.tag = 'Interviewing'
 
     req.flash('success', 'Interview details added')
     res.redirect(`/jobs/${req.params.id}/applications`)

@@ -118,23 +118,23 @@
           </li>
           <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#unread">
-              Unread {% set counterUnread = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Unread' %}{% set counterUnread = counterUnread + 1 %}{% endif %}{% endfor %}({{counterUnread}})
+              New {% set counterNew = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'New' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
 
             </a>
           </li>
           <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#no">
-              Not considering {% set counterUnread = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Not considering' %}{% set counterUnread = counterUnread + 1 %}{% endif %}{% endfor %}({{counterUnread}})
+              Not considering {% set counterNew = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Not considering' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
             </a>
           </li>
           <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#shortlisted">
-              Shortlisted {% set counterUnread = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Shortlisted' %}{% set counterUnread = counterUnread + 1 %}{% endif %}{% endfor %}({{counterUnread}})
+              Shortlisted {% set counterNew = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Shortlisted' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
             </a>
           </li>
            <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#interview">
-              Invited to interview {% set counterUnread = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Invited to interview' %}{% set counterUnread = counterUnread + 1 %}{% endif %}{% endfor %}({{counterUnread}})
+              Interviewing {% set counterNew = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Interviewing' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
             </a>
           </li>
         </ul>
@@ -309,7 +309,7 @@
               </div>   
               <form action="interview">
                   <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                      Add interview details
+                      Invite to interview
                   </button>
               </form>      
               
@@ -474,7 +474,7 @@
           
           
           <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
-            <caption class="govuk-table__caption govuk-table__caption--m">Unread applications</caption>
+            <caption class="govuk-table__caption govuk-table__caption--m">New applications</caption>
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th class="govuk-table__header" scope="col" id="select-all">
@@ -496,7 +496,7 @@
 
               {% for jobseeker in jobseekers %}
 
-                {% if jobseeker.tag !== 'Unread' %}                 
+                {% if jobseeker.tag !== 'New' %}                 
                 
                 {% else %}
 
@@ -554,7 +554,7 @@
 
           {% set counterInterview = 0 %}
             {% for jobseeker in jobseekers %}
-              {% if jobseeker.tag == 'Invited to interview' %}
+              {% if jobseeker.tag == 'Interviewing' %}
               
               {% set counterInterview = counterInterview + 1 %}
               {% endif %}
@@ -564,7 +564,7 @@
               
          
           <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
-            <caption class="govuk-table__caption govuk-table__caption--m">Invited to interview applications</caption>
+            <caption class="govuk-table__caption govuk-table__caption--m">Interviewing applications</caption>
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th class="govuk-table__header" scope="col" id="select-all">
@@ -587,7 +587,7 @@
 
               {% for jobseeker in jobseekers %}
 
-                {% if jobseeker.tag !== 'Invited to interview' %}                 
+                {% if jobseeker.tag !== 'Interviewing' %}                 
                 
                 {% else %}
 
