@@ -62,10 +62,23 @@ module.exports = router => {
 
   router.get('/jobs/:id/interview_check', authentication.checkIsAuthenticated, (req, res) => {
     let job = req.session.user.jobs.find(job => job.id == req.params.id)
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
 
     res.render('jobs/applications/interview_check', {
-      job
+      job,
+      jobseeker
     })
+  })
+
+  router.post('/jobs/:id/interview_check', (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+    jobseeker.tag = 'Interviewing'
+    
+    req.flash('success', 'Interview emails sent')
+    
+    res.redirect(`/jobs/${req.params.id}`)
+   
   })
 
   
@@ -93,14 +106,21 @@ module.exports = router => {
     
     let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
 
-    jobseeker.tag = req.session.data.tag
-    jobseeker.interviewDetails = req.session.data.interviewDetails
+    if (req.session.data.tag == 'Interviewing'){
+      
+      res.redirect(`/jobs/${req.params.id}/interview`)
+
+    }else{
+
+      jobseeker.tag = req.session.data.tag      
+      req.flash('success', 'Application status updated')
+      res.redirect(`/jobs/${req.params.id}/applications`)
+
+
+    }
 
    
-    req.flash('success', 'Application status updated')
-    res.redirect(`/jobs/${req.params.id}/applications`)
-   
-
+    
   })
 
   //FEEDBACK START
