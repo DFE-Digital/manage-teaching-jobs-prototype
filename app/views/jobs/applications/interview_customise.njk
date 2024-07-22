@@ -18,17 +18,18 @@
 
 {% block content %}
 
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form action="interview_check">
+      <form method="post">
 
         <h1 class="govuk-label-wrapper">
            <span class="govuk-caption-l">
             {{caption}}
           </span>
             <label class="govuk-label govuk-label--l" for="customise-message-1">
-              Edit email
+              Edit email template
             </label>
           </h1>
 
@@ -41,11 +42,45 @@
           </div>
 
           <div class="govuk-form-group">
+            <label class="govuk-label" for="from">
+              From
+            </label>
+            <input class="govuk-input" id="from" name="from" type="text" value="{{user.organisation.name}}">
+          </div>
+
+          <div class="govuk-form-group">
             <label class="govuk-label" for="subject">
               Subject
             </label>
             <input class="govuk-input" id="subject" name="subject" type="text" value="Thanks for your application, we would like to invite you to an interview">
           </div>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--">
+                  Do you want to include your school logo in the email?
+              </legend>
+              <div id="changedName-hint" class="govuk-hint">
+                This will include the logo uploaded to your school profile into the email. 
+              </div>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="emaillogo" name="emaillogo" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="emaillogo">
+                    Yes
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="emaillogo-2" name="emaillogo" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="emaillogo-2">
+                    No
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+        
 
 
         <div class="govuk-form-group">

@@ -54,31 +54,33 @@ module.exports = router => {
 
   router.get('/jobs/:id/interview_email', authentication.checkIsAuthenticated, (req, res) => {
     let job = req.session.user.jobs.find(job => job.id == req.params.id)
+    let user = req.session.user
 
     res.render('jobs/applications/interview_customise', {
-      job
+      job,
+      user
     })
   })
+
+  router.post('/jobs/:id/interview_email', (req, res) => {
+    
+    req.flash('success', 'Email template updated')
+    
+    res.redirect(`/jobs/${req.params.id}/interview`)
+   
+  })
+
 
   router.get('/jobs/:id/interview_check', authentication.checkIsAuthenticated, (req, res) => {
     let job = req.session.user.jobs.find(job => job.id == req.params.id)
     let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+    let user = req.session.user
 
     res.render('jobs/applications/interview_check', {
       job,
-      jobseeker
+      jobseeker,
+      user
     })
-  })
-
-  router.post('/jobs/:id/interview_check', (req, res) => {
-    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
-
-    jobseeker.tag = 'Interviewing'
-    
-    req.flash('success', 'Interview emails sent')
-    
-    res.redirect(`/jobs/${req.params.id}`)
-   
   })
 
   
