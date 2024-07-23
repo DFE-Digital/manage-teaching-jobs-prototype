@@ -94,8 +94,6 @@ We really liked your application and would love to have a chat with you. What is
           </div>
         </div>
 
-      {% set preview%}{{data['customise-message-1']}}{% endset %}
-
       <h2 class="govuk-heading-m">
         Preview of emails
       </h2>
@@ -152,8 +150,22 @@ We really liked your application and would love to have a chat with you. What is
             <div id="email-logo">
               <img src="{{user.organisation.logo}}" alt="Logo" width="100">
             </div>
-            <h3 id="email-subject" class="govuk-heading-m govuk-!-margin-top-2">{{data['subject']}}</h3>
-            <p id="email-body">{{preview}}</p>
+            <h3 id="email-subject" class="govuk-heading-m govuk-!-margin-top-2">
+
+              {% if data['subject'] %}
+                {{data['subject']}}
+              {% else %}
+              Thanks for your application, we would like to invite you to an interview
+              {% endif %}
+
+            </h3>
+            <p id="email-body">
+              {% if data['customise-message-1'] %}
+                {{data['customise-message-1']}}
+              {% else %}
+              We really liked your application and would love to have a chat with you. What is the best number to call you on?
+              {% endif %}
+            </p>
 
           </div>
 

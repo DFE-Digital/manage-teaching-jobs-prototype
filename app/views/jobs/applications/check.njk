@@ -96,8 +96,6 @@ Unfortunately we are not considering your application at this time, thank you fo
           </div>
         </div>
 
-      {% set preview%}{{data['customise-message-1']}}{% endset %}
-
       <h2 class="govuk-heading-m">
         Preview of emails
       </h2>
@@ -154,9 +152,24 @@ Unfortunately we are not considering your application at this time, thank you fo
             <div id="email-logo">
               <img src="{{user.organisation.logo}}" alt="Logo" width="100">
             </div>
-            <h3 id="email-subject" class="govuk-heading-m govuk-!-margin-top-2">{{data['subject']}}</h3>
-            <p id="email-body">{{preview}}</p>
+            <h3 id="email-subject" class="govuk-heading-m govuk-!-margin-top-2">
+              
+              {{data['subject']}}
 
+              {% if data['subject'] %}
+                {{data['subject']}}
+              {% else %}
+                Thanks for your application, unfortunately we do not want to invite you to an interview.
+              {% endif %}
+            
+            </h3>
+            <p id="email-body">
+              {% if data['customise-message-1'] %}
+                {{data['customise-message-1']}}
+              {% else %}
+                Unfortunately we are not considering your application at this time, thank you for applying.
+              {% endif %}
+            </p>
           </div>
 
       </div>
