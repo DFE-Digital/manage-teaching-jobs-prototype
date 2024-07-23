@@ -33,7 +33,6 @@
             </label>
           </h1>
 
-
           <div class="govuk-form-group">
             <label class="govuk-label" for="template">
               Template name
@@ -55,32 +54,14 @@
             <input class="govuk-input" id="subject" name="subject" type="text" value="Thanks for your application, we would like to invite you to an interview">
           </div>
 
-          <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend--">
-                  Do you want to include your school logo in the email?
-              </legend>
-              <div id="changedName-hint" class="govuk-hint">
-                This will include the logo uploaded to your school profile into the email. 
-              </div>
-              <div class="govuk-radios" data-module="govuk-radios">
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="emaillogo" name="emaillogo" type="radio" value="yes">
-                  <label class="govuk-label govuk-radios__label" for="emaillogo">
-                    Yes
-                  </label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="emaillogo-2" name="emaillogo" type="radio" value="no">
-                  <label class="govuk-label govuk-radios__label" for="emaillogo-2">
-                    No
-                  </label>
-                </div>
-              </div>
-            </fieldset>
+          <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="save" name="save" type="checkbox" value="save" checked="checked">
+              <label class="govuk-label govuk-checkboxes__label" for="save">
+                Include logo in email
+              </label>
+            </div>
           </div>
-
-        
 
 
         <div class="govuk-form-group">
@@ -94,19 +75,11 @@ We really liked your application and would love to have a chat with you. What is
         </div>
 
 
-        <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="save" name="save" type="checkbox" value="save">
-            <label class="govuk-label govuk-checkboxes__label" for="save">
-              Save changes to template
-            </label>
-          </div>
-        </div>
-
+       
         <div class="govuk-button-group">
 
           <button class="govuk-button" data-module="govuk-button">
-            Continue to preview of emails
+           Save template
           </button>
 
         </div>

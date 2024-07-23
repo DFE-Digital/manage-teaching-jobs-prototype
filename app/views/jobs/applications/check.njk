@@ -35,7 +35,7 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
+   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <span class="govuk-caption-l">
@@ -45,16 +45,66 @@
         {{title}}
       </h1>
 
+      <h2 class="govuk-heading-m">
+        Edit email
+      </h2>
+
+
+        <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--s" for="from">
+              From
+            </label>
+            <div id="event-name-hint" class="govuk-hint">
+              'via Teaching Vacancies' will be added onto the end of what you enter.
+            </div>
+            <input class="govuk-input" id="from" name="from" type="text" value="{{user.organisation.name}}">
+          </div>
+
+          <div>
+            <p class="govuk-!-margin-bottom-0"><b>To</b></p>
+            <div class="govuk-inset-text govuk-!-margin-top-3">
+                <p class="govuk-!-margin-bottom-">eulalia.bartoletti@gmail.com, sidney.herman@gmail.com	</p>
+
+                <p class="govuk-!-margin-bottom-">2 separate emails will be sent</p>
+            </div>
+            
+          
+
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--s" for="subject">
+              Subject
+            </label>
+            <input class="govuk-input" id="subject" name="subject" type="text" value="Thanks for your application, unfortunately we do not want to invite you to an interview.">
+          </div>
+
+      <div class="govuk-form-group">
+    
+          <label class="govuk-label govuk-label--s" for="customise-message-1">
+            Message
+          </label>
+          <textarea class="govuk-textarea" id="customise-message-1" name="customise-message-1" rows="5" >
+Unfortunately we are not considering your application at this time, thank you for applying.
+          </textarea>
+      </div>
+
+      <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="save" name="save" type="checkbox" value="save" checked="checked">
+            <label class="govuk-label govuk-checkboxes__label" for="save">
+              Include profile logo in email
+            </label>
+          </div>
+        </div>
+
       {% set preview%}{{data['customise-message-1']}}{% endset %}
 
       <h2 class="govuk-heading-m">
         Preview of emails
       </h2>
 
-      <h3 class="govuk-heading-s">
-        Email to eulalia.bartoletti@gmail.com
-      </h3>
+      <p>The emails will be sent via GOV Notify and the Teaching Vacancies service.</p>
 
+      <!--
       <div class="email-message">
 
         <table class="email-message-meta">
@@ -62,13 +112,13 @@
                 <tr>
                   <th scope="row">From</th>
                   <td>
-                    Teaching Vacancies
+                  {{ data ['from']}}
                   </td>
                 </tr>
               <tr>
                 <th scope="row">To</th>
                 <td>
-                  eulalia.bartoletti@gmail.com
+                  {{jobseeker.emailAddress}} 
                 </td>
               </tr>
             <tr class="email-message-meta">
@@ -80,87 +130,38 @@
           </tbody>
         </table>
 
-        <div class="email-message-body" style="white-space: pre-wrap;"><p style="Margin: 0 0 0 0; font-size: 19px; line-height: 25px; color: #0B0C0C;">
+      <div class="email-message-body" style="white-space: pre-wrap;"><p style="Margin: 0 0 0 0; font-size: 19px; line-height: 25px; color: #0B0C0C;">
 {{preview}}</p>
         </div>
 
       </div>
+-->
 
-       <h3 class="govuk-heading-s">
-        Email to sidney.herman@gmail.com	
-      </h3>
-
-      <div class="email-message">
-
-        <table class="email-message-meta">
-          <tbody>    
-                <tr>
-                  <th scope="row">From</th>
-                  <td>
-                    Teaching Vacancies
-                  </td>
-                </tr>
-              <tr>
-                <th scope="row">To</th>
-                <td>
-                  sidney.herman@gmail.com	
-                </td>
-              </tr>
-            <tr class="email-message-meta">
-              <th scope="row">Subject</th>
-                <td>
-                  {{ data ['subject']}}
-                </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="email-message-body" style="white-space: pre-wrap;"><p style="Margin: 0 0 0 0; font-size: 19px; line-height: 25px; color: #0B0C0C;">
-{{preview}}</p>
-        </div>
-
-      </div>
-
-      <details class="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            What will the emails look like?
-          </span>
-        </summary>
-        <div class="govuk-details__text">
-          
-          <p>The emails will be sent via GOV Notify and the Teaching Vacancies service.</p>
-
-          <div class="email-message" tabindex="-1">
+      
+      <div class="email-message" tabindex="-1">
             
-              <div class="govuk-header">
-                <div class="govuk-header__container govuk-width-container" style="padding:0px;">
-                  <div class="govuk-header__logo" style="padding-left:20px; margin-bottom:0px;">
-                      <img src="/public/images/govuklogo.png" style="max-width: 100%">
-                  </div>
-                  
-                </div>
+          <div class="govuk-header">
+            <div class="govuk-header__container govuk-width-container" style="padding:0px;">
+              <div class="govuk-header__logo" style="padding-left:20px; margin-bottom:0px;">
+                  <img src="/public/images/govuklogo.png" style="max-width: 100%">
               </div>
+              
+            </div>
+          </div>
 
-              <div style="padding:20px">
-
-              <p class="govuk-heading-m">{{ data ['subject']}}</p>
-
-              <p>{{preview}}</p>
-
-              </div>
+          <div style="padding:20px">
+            
+            <div id="email-logo">
+              <img src="{{user.organisation.logo}}" alt="Logo" width="100">
+            </div>
+            <h3 id="email-subject" class="govuk-heading-m govuk-!-margin-top-2">{{data['subject']}}</h3>
+            <p id="email-body">{{preview}}</p>
 
           </div>
 
+      </div>
 
-        </div>
-      </details>
-
-      
-        <a href="feedback" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-          Customise email
-        </a>
-    
+   
       {% set includedHintHtml %}
         
         This will add your account email: {{user.emailAddress}} to the email being sent so you receive a carbon copy or ‘cc’.
@@ -180,7 +181,7 @@
 
           <button class="govuk-button" data-module="govuk-button">
             
-              Send separate emails to applications
+              Send 2 emails to applicants
            
           </button>
 
@@ -196,3 +197,12 @@
   </div>
 
 {% endblock %}
+
+
+    <script>
+        function updatePreview() {
+            const inputField = document.getElementById('inputField');
+            const preview = document.getElementById('preview');
+            preview.textContent = inputField.value;
+        }
+    </script>

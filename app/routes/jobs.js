@@ -136,8 +136,10 @@ module.exports = router => {
   })
 
   router.post('/jobs/:id/feedback', (req, res) => {
+
+    req.flash('success', 'Email template updated')
     
-    res.redirect(`/jobs/${req.params.id}/feedbackcheck`)
+    res.redirect(`/jobs/${req.params.id}/feedback_templates`)
    
   })
 

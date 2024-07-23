@@ -28,7 +28,7 @@
             {{caption}}
           </span>
             <label class="govuk-label govuk-label--l" for="customise-message-1">
-              Edit email
+              Edit email template
             </label>
           </h1>
 
@@ -41,12 +41,28 @@
           </div>
 
           <div class="govuk-form-group">
+            <label class="govuk-label" for="from">
+              From
+            </label>
+            <input class="govuk-input" id="from" name="from" type="text" value="{{user.organisation.name}}">
+          </div>
+
+
+          <div class="govuk-form-group">
             <label class="govuk-label" for="subject">
               Subject
             </label>
             <input class="govuk-input" id="subject" name="subject" type="text" value="Thanks for your application, unfortunately we do not want to invite you to an interview.">
           </div>
 
+        <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="save" name="save" type="checkbox" value="save" checked="checked">
+              <label class="govuk-label govuk-checkboxes__label" for="save">
+                Include logo in email
+              </label>
+            </div>
+          </div>
 
         <div class="govuk-form-group">
     
@@ -59,19 +75,10 @@ Unfortunately we are not considering your application at this time, thank you fo
         </div>
 
 
-        <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="save" name="save" type="checkbox" value="save">
-            <label class="govuk-label govuk-checkboxes__label" for="save">
-              Save changes to template
-            </label>
-          </div>
-        </div>
-
         <div class="govuk-button-group">
 
           <button class="govuk-button" data-module="govuk-button">
-            Continue to preview of emails
+            Save template
           </button>
 
         </div>
