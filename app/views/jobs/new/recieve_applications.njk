@@ -1,0 +1,70 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'How do you want to receive applications?' %}
+{% set caption = 'Create job listing - section 3 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="signIn" name="signIn" type="radio" value="government-gateway" aria-describedby="signIn-item-hint">
+                <label class="govuk-label govuk-radios__label" for="signIn">
+                  Through Teaching Vacancies
+                  <strong class="govuk-tag govuk-tag--green">
+                    Recommended
+                  </strong>
+                </label>
+                <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                  You'll need to upload an application form for applicants to download. We'll email you when you receive an application.
+                </div>
+              </div>
+              
+              <div class="govuk-radios__divider">or</div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="signIn-2" name="signIn" type="radio" value="govuk-one-login" aria-describedby="signIn-2-item-hint">
+                <label class="govuk-label govuk-radios__label" for="signIn-2">
+                 Through a third party website
+                </label>
+                <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
+                 You'll need to provide a link to the website.
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
