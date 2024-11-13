@@ -54,20 +54,16 @@
             <label class="govuk-label govuk-label--s" for="from">
               From
             </label>
-            
-           <p>As the email is being sent from the Teaching Vacancies service, the email address cannot be changed. However your school's name will be signed at the end of the email.</p>
-  
-            <div>
-
-            <div class="govuk-inset-text govuk-!-margin-top-3">
-              Teaching Vacancies
+            <div id="event-name-hint" class="govuk-hint">
+              'via Teaching Vacancies' will be added onto the end of what you enter.
             </div>
+            <input class="govuk-input" id="from" name="from" type="text" value="{{user.organisation.name}}">
           </div>
 
           <div>
             <p class="govuk-!-margin-bottom-0"><b>To</b></p>
             <div class="govuk-inset-text govuk-!-margin-top-3">
-           jtaylor@name.com
+              {{jobseeker.emailAddress}}
             </div>
           </div>
           
@@ -76,8 +72,7 @@
             <label class="govuk-label govuk-label--s" for="subject">
               Subject
             </label>
-            <input class="govuk-input" id="subject" name="subject" type="text" value="Update on your application for Maths teacher at Courtland school
-">
+            <input class="govuk-input" id="subject" name="subject" type="text" value="Thanks for your application, we would like to invite you to an interview">
           </div>
 
       <div class="govuk-form-group">
@@ -85,9 +80,8 @@
           <label class="govuk-label govuk-label--s" for="customise-message-1">
             Message
           </label>
-          
           <textarea class="govuk-textarea" id="customise-message-1" name="customise-message-1" rows="5" >
-Thanks for your application, we would like to invite you to an interview. We really liked your application. A member of our team will be in touch in the following days to arrange an interview.
+We really liked your application and would love to have a chat with you. What is the best number to call you on?
           </textarea>
       </div>
 
@@ -120,7 +114,7 @@ Thanks for your application, we would like to invite you to an interview. We rea
               <tr>
                 <th scope="row">To</th>
                 <td>
-                  jtaylor@name.com
+                  {{jobseeker.emailAddress}} 
                 </td>
               </tr>
             <tr class="email-message-meta">
@@ -161,7 +155,7 @@ Thanks for your application, we would like to invite you to an interview. We rea
               {% if data['subject'] %}
                 {{data['subject']}}
               {% else %}
-             Update on your application for Maths teacher at Courtland school
+              Thanks for your application, we would like to invite you to an interview
               {% endif %}
 
             </h3>
@@ -169,11 +163,7 @@ Thanks for your application, we would like to invite you to an interview. We rea
               {% if data['customise-message-1'] %}
                 {{data['customise-message-1']}}
               {% else %}
-Thanks for your application, we would like to invite you to an interview. We really liked your application. A member of our team will be in touch in the following days to arrange an interview.
-              <br>
-              <br>
-
-              <b>Courtland school via Teaching Vacancies
+              We really liked your application and would love to have a chat with you. What is the best number to call you on?
               {% endif %}
             </p>
 
@@ -194,17 +184,14 @@ Thanks for your application, we would like to invite you to an interview. We rea
       <form method="post">
 
         <div class="govuk-inset-text">
-          Your account email: <b>{{user.emailAddress}}</b> will receive a blind carbon copy 'bcc' of the email. This will keep your email address private and secure. Your account email: rachael@courtland.sch.uk will receive a blind carbon copy 'bcc' of the email. This will keep your email address private and secure. 
-          <br>
-          <br>
-          If an applicant responds to this email, we will forward their reply to your account email. Please note that Teaching Vacancies is not a messaging service; if you wish to continue communicating with the applicant, consider including your contact details in the message.
+          Your account email: <b>{{user.emailAddress}}</b> will receive a blind carbon copy 'bcc' of the email. This will keep your email address private and secure.
         </div>
               
         <div class="govuk-button-group">
 
           <button class="govuk-button" data-module="govuk-button">
             
-              Send emails to applicant
+              Send emails to applicants
            
           </button>
 
