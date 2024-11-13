@@ -11,7 +11,7 @@
 {% endif %}
 
 
-{% set caption = 'Invite to interview'  %}
+{% set caption = 'Reject application'  %}
 {% set title = 'Edit and send emails' %}
 
 {% set primaryNavId = 'jobs' %}
@@ -55,7 +55,7 @@
               From
             </label>
             
-           <p>As the email is being sent from the Teaching Vacancies service, the email address cannot be changed. However your school's name will be signed at the end of the email.</p>
+           <p>As the email is being sent from the Teaching Vacancies service, the email address cannot be changed. However your school's name will be signed at the end of the email </p>
   
             <div>
 
@@ -67,7 +67,7 @@
           <div>
             <p class="govuk-!-margin-bottom-0"><b>To</b></p>
             <div class="govuk-inset-text govuk-!-margin-top-3">
-           jtaylor@name.com
+              jtaylor@name.com
             </div>
           </div>
           
@@ -76,8 +76,7 @@
             <label class="govuk-label govuk-label--s" for="subject">
               Subject
             </label>
-            <input class="govuk-input" id="subject" name="subject" type="text" value="Update on your application for Maths teacher at Courtland school
-">
+            <input class="govuk-input" id="subject" name="subject" type="text" value="Update on your application for [Role title] at [School]">
           </div>
 
       <div class="govuk-form-group">
@@ -85,10 +84,10 @@
           <label class="govuk-label govuk-label--s" for="customise-message-1">
             Message
           </label>
-          
           <textarea class="govuk-textarea" id="customise-message-1" name="customise-message-1" rows="5" >
-Thanks for your application, we would like to invite you to an interview. We really liked your application. A member of our team will be in touch in the following days to arrange an interview.
-          </textarea>
+Thanks for your application, unfortunately we are not considering your application at this time, thank you for applying.
+
+You can apply for more roles at teaching-vacancies.service.gov.uk          </textarea>
       </div>
 
       <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
@@ -120,7 +119,7 @@ Thanks for your application, we would like to invite you to an interview. We rea
               <tr>
                 <th scope="row">To</th>
                 <td>
-                  jtaylor@name.com
+                  {{jobseeker.emailAddress}} 
                 </td>
               </tr>
             <tr class="email-message-meta">
@@ -161,7 +160,7 @@ Thanks for your application, we would like to invite you to an interview. We rea
               {% if data['subject'] %}
                 {{data['subject']}}
               {% else %}
-             Update on your application for Maths teacher at Courtland school
+             Update on your application for [Role title] at [School]
               {% endif %}
 
             </h3>
@@ -169,8 +168,11 @@ Thanks for your application, we would like to invite you to an interview. We rea
               {% if data['customise-message-1'] %}
                 {{data['customise-message-1']}}
               {% else %}
-Thanks for your application, we would like to invite you to an interview. We really liked your application. A member of our team will be in touch in the following days to arrange an interview.
-              <br>
+Thanks for your application, unfortunately we are not considering your application at this time, thank you for applying.
+<br>
+<br>
+
+You can apply for more roles at teaching-vacancies.service.gov.uk                   <br>
               <br>
 
               <b>Courtland school via Teaching Vacancies
@@ -194,17 +196,14 @@ Thanks for your application, we would like to invite you to an interview. We rea
       <form method="post">
 
         <div class="govuk-inset-text">
-          Your account email: <b>{{user.emailAddress}}</b> will receive a blind carbon copy 'bcc' of the email. This will keep your email address private and secure. Your account email: rachael@courtland.sch.uk will receive a blind carbon copy 'bcc' of the email. This will keep your email address private and secure. 
-          <br>
-          <br>
-          If an applicant responds to this email, we will forward their reply to your account email. Please note that Teaching Vacancies is not a messaging service; if you wish to continue communicating with the applicant, consider including your contact details in the message.
+          Your account email: <b>{{user.emailAddress}}</b> will receive a blind carbon copy 'bcc' of the email. This will keep your email address private and secure.
         </div>
               
         <div class="govuk-button-group">
 
           <button class="govuk-button" data-module="govuk-button">
             
-              Send emails to applicant
+              Send emails to applicants
            
           </button>
 
