@@ -1,0 +1,212 @@
+{% extends "layout_email.njk" %}
+
+
+
+{% block content %}
+
+
+
+    <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-full">
+
+
+                  <span class="govuk-caption-m">Part 1 of 4</span>
+
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+Self-disclosure form
+       
+            </h1>
+       
+
+   <div class="govuk-grid-column-two-thirds">
+              <div class="govuk-grid-row">
+    
+                   <p>
+You are being asked to complete this form because the role you are applying for is
+exempt from the Rehabilitation of Offenders Act 1974 in England, Scotland and Wales,
+or the Rehabilitation of Offenders (Northern Ireland) Order 1978 and involves contact
+with children or young people.
+</p>
+<p>
+As the role you have applied for involves work with children, you will also be required
+to undergo the relevant vetting and barring checks.
+</p>
+<p>
+All information you provide will be treated as confidential and managed in accordance
+with relevant data protection legislation and guidance. You have a legal right to access
+any information held about you.                    </p>
+
+
+   <h2 class="govuk-heading-m"> Personal details </h2>
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="width-20">
+   Name
+  </label>
+  <input class="govuk-input govuk-input--width-20" id="width-20" name="width20" type="text">
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="width-20">
+Previous name(s)
+  </label>
+  <input class="govuk-input govuk-input--width-20" id="width-20" name="width20" type="text">
+</div>
+
+<fieldset class="govuk-fieldset">
+  <div class="govuk-form-group">
+    <label class="govuk-label govuk-label--s" for="address-line-1">
+      Address line 1
+    </label>
+    <input class="govuk-input" id="address-line-1" name="addressLine1" type="text" autocomplete="address-line1">
+  </div>
+  <div class="govuk-form-group">
+    <label class="govuk-label govuk-label--s" for="address-line-2">
+      Address line 2 (optional)
+    </label>
+    <input class="govuk-input" id="address-line-2" name="addressLine2" type="text" autocomplete="address-line2">
+  </div>
+  <div class="govuk-form-group">
+    <label class="govuk-label govuk-label--s" for="address-town">
+      Town or city
+    </label>
+    <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="addressTown" type="text" autocomplete="address-level2">
+  </div>
+  <div class="govuk-form-group">
+    <label class="govuk-label govuk-label--s" for="address-county">
+      County (optional)
+    </label>
+    <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="addressCounty" type="text">
+  </div>
+  <div class="govuk-form-group">
+    <label class="govuk-label govuk-label--s" for="address-postcode">
+      Postcode
+    </label>
+    <input class="govuk-input govuk-input--width-10" id="address-postcode" name="addressPostcode" type="text" autocomplete="postal-code">
+  </div>
+</fieldset>
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="width-20">
+Telephone/mobile number
+  </label>
+  <input class="govuk-input govuk-input--width-20" id="width-20" name="width20" type="text">
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="width-20">
+Date of birth
+  </label>
+
+    </legend>
+    <div id="passport-issued-hint" class="govuk-hint">
+      For example, 27 3 2007
+    </div>
+    <div class="govuk-date-input" id="passport-issued">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<h2 class="govuk-heading-m">Criminal record declaration</h2>
+<p>
+The role is exempt from the Rehabilitation of Offenders Act 1974 in England,
+Scotland and Wales or the Rehabilitation of Offenders (Northern Ireland) Order
+1978. You are therefore required to declare all unspent convictions and conditional cautions and all spent convictions and adult cautions that are not protected (i.e.
+eligible to be filtered).
+</p>
+ <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <h1 class="govuk-fieldset__heading">
+  Do you have any unspent conditional cautions or
+convictions in the UK or overseas?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="england">
+        <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+        Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="whereDoYouLive-2" name="whereDoYouLive" type="radio" value="scotland">
+        <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+        No
+        </label>
+      </div>
+<br>
+  </fieldset>
+   <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      <h1 class="govuk-fieldset__heading">
+Do you have any spent adult cautions (simple or
+conditional) or convictions in the UK or overseas that
+are not protected (i.e. eligible to be filtered) as defined
+by the Rehabilitation of Offenders Act 1974 in England,
+Scotland and Wales or the Rehabilitation of Offenders
+(Northern Ireland) Order 1978?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="whereDoYouLive" name="whereDoYouLive" type="radio" value="england">
+        <label class="govuk-label govuk-radios__label" for="whereDoYouLive">
+        Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="whereDoYouLive-2" name="whereDoYouLive" type="radio" value="scotland">
+        <label class="govuk-label govuk-radios__label" for="whereDoYouLive-2">
+        No
+        </label>
+      </div>
+   </div>
+  </fieldset>
+   </div>
+
+   <br>
+   <br>
+
+
+
+<button type="submit" class="govuk-button" data-module="govuk-button">
+  Save and continue
+</button>
+
+
+
+
+
+                </div>
+
+    </div>
+    
+    
+
+  
+
+{% endblock %}
+
