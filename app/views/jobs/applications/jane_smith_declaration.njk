@@ -1,0 +1,90 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-full">
+
+            <span class="govuk-caption-m">Self-disclosure form</span>
+
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+              Jane Smith 
+       
+            </h1>
+
+               <strong class="govuk-tag govuk-tag--blue">
+          Pending
+        </strong>
+ 
+
+                  <div class="govuk-grid-row">
+
+                  <div class="govuk-grid-column-two-thirds">
+       <br>
+
+<p class="govuk-body">Once the declaration is recieved you will be able to view it here. If you have not heard back from the applicant’s referee, you can prompt a reminder. This will send a reminder email to your applicant. </p>
+         
+  <div class="govuk-button-group govuk-!-margin-top-5 govuk-!-margin-bottom-6">
+                <form method="post" action="#">
+                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                       Send reminder email
+                    </button>
+                </form>
+                <form action="/jobs/application/tag/">
+                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Upload declaration
+                    </button>
+                </form>
+            </div>
+  
+                </div>
+
+                     <div class="govuk-grid-column-one-third">
+
+            
+            <div class="govuk-summary-card">
+                <div class="govuk-summary-card__title-wrapper">
+                    <h2 class="govuk-summary-card__title">
+                        Communication history
+                    </h2>
+                        
+                    </ul>
+                </div>
+                <div class="govuk-summary-card__content">
+
+      
+
+                    <p class="govuk-!-margin-bottom-0">
+                Declaration requested via email
+                    </p>
+                    <p class="govuk-body-s govuk-!-margin-top-1">
+                        By Teaching Vacancies, 2024-06-28 16:32:22
+                    </p>
+
+
+
+               
+
+
+
+                </div>
+            </div>
+
+        </div>
+    
+
+  
+
+{% endblock %}
+
