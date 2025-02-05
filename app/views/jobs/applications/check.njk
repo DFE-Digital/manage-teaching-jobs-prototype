@@ -11,8 +11,8 @@
 {% endif %}
 
 
-{% set caption = 'Send rejection emails'  %}
-{% set title = 'Check details and email applicants' %}
+{% set caption = 'Reject applicant'  %}
+{% set title = 'Edit and send emails' %}
 
 {% set primaryNavId = 'jobs' %}
 
@@ -35,7 +35,7 @@
 
 {% block content %}
 
-   <div class="govuk-grid-row">
+  <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
       <span class="govuk-caption-l">
@@ -50,58 +50,88 @@
       </h2>
 
 
-        <div class="govuk-form-group">
-            <label class="govuk-label govuk-label--s" for="from">
-              From
-            </label>
-            <div id="event-name-hint" class="govuk-hint">
-              'via Teaching Vacancies' will be added onto the end of what you enter.
-            </div>
-            <input class="govuk-input" id="from" name="from" type="text" value="{{user.organisation.name}}">
-          </div>
-
           <div>
             <p class="govuk-!-margin-bottom-0"><b>To</b></p>
-            <div class="govuk-inset-text govuk-!-margin-top-3">
-                <p class="govuk-!-margin-bottom-">eulalia.bartoletti@gmail.com, sidney.herman@gmail.com	</p>
-
-                <p class="govuk-!-margin-bottom-">2 separate emails will be sent</p>
+              <div id="event-name-hint" class="govuk-hint">
+If you are sending an email to multiple applicants, emails will be sent seperatley.          
+            <div class="govuk-inset-text">
+          eulalia.bartoletti@gmail.com, 	sidney.herman@gmail.com
             </div>
-            
+          </div>
+
+
           
 
           <div class="govuk-form-group">
             <label class="govuk-label govuk-label--s" for="subject">
               Subject
             </label>
-            <input class="govuk-input" id="subject" name="subject" type="text" value="Thanks for your application, unfortunately we do not want to invite you to an interview.">
+            <input class="govuk-input" id="subject" name="subject" type="text" value="Update on your application for Maths teacher at Courtland school
+">
           </div>
 
       <div class="govuk-form-group">
     
           <label class="govuk-label govuk-label--s" for="customise-message-1">
-            Message
+            Content
           </label>
+
+
+      
+            <div class="govuk-inset-text govuk-!-margin-top-3">
+          Dear [applicant's first name]
+            </div>
+          </div>
+
+          
           <textarea class="govuk-textarea" id="customise-message-1" name="customise-message-1" rows="5" >
-Unfortunately we are not considering your application at this time, thank you for applying.
+Thanks for your application, unfortunately you have not been successful and we will not be considering your application at this time
+You can apply for more roles at www.teaching-vacancies.service.gov.uk.
+
+Sincerley, Courtland school
           </textarea>
-      </div>
+
+                    <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--s" for="subject">
+How should the applicant contact you?  (Optional)       </label>
+  <div id="event-name-hint" class="govuk-hint">
+Applicants will not be able to contact you through Teaching Vacancies. Provide an email you would like the applicant to contact you through and this will be added to your email.  </div>
+            <input class="govuk-input" id="subject" name="subject" type="text" value="hiring@courtlandprimaryschool.org.uk">
+          </div>
+  
+
 
       <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
           <div class="govuk-checkboxes__item">
             <input class="govuk-checkboxes__input" id="save" name="save" type="checkbox" value="save" checked="checked">
             <label class="govuk-label govuk-checkboxes__label" for="save">
-              Include profile logo in email
+              Include school or trust logo in email
+            </label>
+          </div>
+        </div>
+      <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="save" name="save" type="checkbox" value="save" checked="unchecked">
+            <label class="govuk-label govuk-checkboxes__label" for="save">
+              Email a copy to email@courtlandprimaryschool.org.uk
             </label>
           </div>
         </div>
 
-      <h2 class="govuk-heading-m">
-        Preview of emails
-      </h2>
 
-      <p>The emails will be sent via GOV Notify and the Teaching Vacancies service.</p>
 
+
+<details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      View email preview
+    </span>
+  </summary>
+
+<div class="govuk-!-padding-bottom-4"></div>
+      <p>To: jtaylor@name.com</p>
+      <p>Subject: Update on your application for Maths teacher at Courtland school</p>
+        
       <!--
       <div class="email-message">
 
@@ -116,7 +146,7 @@ Unfortunately we are not considering your application at this time, thank you fo
               <tr>
                 <th scope="row">To</th>
                 <td>
-                  {{jobseeker.emailAddress}} 
+                  jtaylor@name.com
                 </td>
               </tr>
             <tr class="email-message-meta">
@@ -138,14 +168,7 @@ Unfortunately we are not considering your application at this time, thank you fo
       
       <div class="email-message" tabindex="-1">
             
-          <div class="govuk-header">
-            <div class="govuk-header__container govuk-width-container" style="padding:0px;">
-              <div class="govuk-header__logo" style="padding-left:20px; margin-bottom:0px;">
-                  <img src="/public/images/govuklogo.png" style="max-width: 100%">
-              </div>
-              
-            </div>
-          </div>
+
 
           <div style="padding:20px">
             
@@ -153,28 +176,33 @@ Unfortunately we are not considering your application at this time, thank you fo
               <img src="{{user.organisation.logo}}" alt="Logo" width="100">
             </div>
             <h3 id="email-subject" class="govuk-heading-m govuk-!-margin-top-2">
-              
-              {{data['subject']}}
 
-              {% if data['subject'] %}
-                {{data['subject']}}
-              {% else %}
-                Thanks for your application, unfortunately we do not want to invite you to an interview.
-              {% endif %}
-            
+    
+
             </h3>
             <p id="email-body">
               {% if data['customise-message-1'] %}
                 {{data['customise-message-1']}}
               {% else %}
-                Unfortunately we are not considering your application at this time, thank you for applying.
-              {% endif %}
-            </p>
-          </div>
+Dear [applicant's first name],
+<div class="govuk-!-padding-bottom-3"></div>
 
+Thanks for your application, unfortunately you have not been successful and we will not be considering your application at this time
+You can apply for more roles at <a href="#" class="govuk-link">www.teaching-vacancies.service.gov.uk</a>.
+         <br>
+              <br>
+
+              <p>Sincerley, Courtland school</p>
+              <p>Do not reply to this email. Please respond to hiring@courtlandprimaryschool.org.uk</p>
+
+          </div>
+ {% endif %}
       </div>
 
    
+</details>
+
+       
       {% set includedHintHtml %}
         
         This will add your account email: {{user.emailAddress}} to the email being sent so you receive a carbon copy or ‘cc’.
@@ -182,19 +210,15 @@ Unfortunately we are not considering your application at this time, thank you fo
       {% endset %}
 
       
-
-      
+       
       <form method="post">
 
-        <div class="govuk-inset-text">
-          Your account email: <b>{{user.emailAddress}}</b> will receive a blind carbon copy 'bcc' of the email. This will keep your email address private and secure.
-        </div>
               
         <div class="govuk-button-group">
 
           <button class="govuk-button" data-module="govuk-button">
             
-              Send 2 emails to applicants
+              Send emails to applicant
            
           </button>
 
