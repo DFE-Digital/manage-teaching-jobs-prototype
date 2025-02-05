@@ -1,0 +1,127 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-full">
+
+            <span class="govuk-caption-m">Reference 1</span>
+
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+              Jane Smith 
+       
+            </h1>
+
+               <strong class="govuk-tag govuk-tag--blue">
+          Pending
+        </strong>
+ 
+
+                  <div class="govuk-grid-row">
+
+                  <div class="govuk-grid-column-two-thirds">
+       <br>
+
+<p class="govuk-body">Once the reference is recieved you will be able to view it here. If you have not heard back from the applicant’s referee, you can prompt a reminder. This will send a reminder email to your applicant. </p>
+         
+  <div class="govuk-button-group govuk-!-margin-top-5 govuk-!-margin-bottom-6">
+                <form method="post" action="#">
+                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                       Send reminder email
+                    </button>
+                </form>
+                <form action="/jobs/application/tag/">
+                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Upload reference
+                    </button>
+                </form>
+            </div>
+  
+            <h3 class="govuk-heading-m">
+              Referee details</h3>
+<div class="review-component__section__body">
+<dl class="govuk-summary-list" id="Referee details">
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Name</dt>
+<dt class="govuk-summary-list__value">Joe Gibbs</dt>
+<dt class="govuk-summary-list__value"><a class="govuk-link--no-visited-state" href="">Copy details</a></dt>
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Job title</dt>
+<dd class="govuk-summary-list__value">Teacher</dd>
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Organisation</dt>
+<dd class="govuk-summary-list__value">School</dd>
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Relationship to applicant</dt>
+<dd class="govuk-summary-list__value">Manager</dd>
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Email address</dt>
+<dd class="govuk-summary-list__value">joe.gibb@education.gov.uk</dd>
+<dt class="govuk-summary-list__value"><a class="govuk-link--no-visited-state" href="">Copy details</a></dt>
+</div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Phone number</dt>
+<dd class="govuk-summary-list__value">07927223600</dd>
+<dt class="govuk-summary-list__value"><a class="govuk-link--no-visited-state" href="">Copy details</a></dt></div></dl>
+
+    </div>
+    
+    
+    </div>
+     <div class="govuk-grid-column-one-third">
+
+            
+            <div class="govuk-summary-card">
+                <div class="govuk-summary-card__title-wrapper">
+                    <h2 class="govuk-summary-card__title">
+                        Communication history
+                    </h2>
+                        
+                    </ul>
+                </div>
+                <div class="govuk-summary-card__content">
+
+                    <p class="govuk-!-margin-bottom-0">
+                        Reference reminder triggered via email
+                    </p>
+                    <p class="govuk-body-s govuk-!-margin-top-1">
+                        By Katie Saunders, 2024-12-10 12:04:49
+                    </p>
+
+                    <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
+
+                    <p class="govuk-!-margin-bottom-0">
+                Reference requested via email
+                    </p>
+                    <p class="govuk-body-s govuk-!-margin-top-1">
+                        By Teaching Vacancies, 2024-12-09 16:32:22
+                    </p>
+
+               
+
+
+
+                </div>
+            </div>
+
+        </div>
+    
+
+  
+
+{% endblock %}
+

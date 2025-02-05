@@ -1,0 +1,159 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-full">
+
+            <span class="govuk-caption-m">Teacher at Bexleyheath Academy</span>
+
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+              Jane Smith 
+       
+            </h1>
+           <div class="govuk-inset-text">
+                    <p class=" govuk-!-margin-bottom-0 govuk-!-margin-top-0">
+                        Interview details: 10am Tuesday 21st January 2025
+                    </p>
+                </div>
+       
+
+            <div class="govuk-button-group govuk-!-margin-top-5 govuk-!-margin-bottom-6">
+                <form method="post" action="#">
+                    <button type="submit" class="govuk-button" data-module="govuk-button">
+                        Download application
+                    </button>
+                </form>
+                <form action="/jobs/application/tag/{{jobseeker.id}}">
+                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Update application status
+                    </button>
+                </form>
+
+                <ul class="app-sub-navigation__list">
+
+
+      
+
+        <li class="app-sub-navigation__item">
+          <a class="app-sub-navigation__link" href="/jobs/applications/jane_smith">Application</a>
+        </li>
+      
+
+        <li class="app-sub-navigation__item">
+          <a class="app-sub-navigation__link" aria-current="page" href="/jobs/applications/jane_smith_preinterview">Pre-interview checks</a>
+        </li>
+      
+    
+    </ul>
+
+            
+
+
+    <table class="govuk-table govuk-!-margin-top-5">
+
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+
+     
+           
+                    </label>
+                  </div>
+                </th>
+                <th class="govuk-table__header" scope="col">References</th>
+                <th class="govuk-table__header" scope="col">Last action</th>
+                <th class="govuk-table__header" scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                    <td class="govuk-table__cell">
+                      
+                        <a class="govuk-link--no-visited-state" href="/jobs/application/658653">Reference 1</a>
+                      
+                    </td>
+                    <td class="govuk-table__cell">Reminder sent Tuesday 10th December 2024</td>
+                    <td class="govuk-table__cell">
+        <strong class="govuk-tag govuk-tag--blue">
+          Pending
+        </strong>
+      </td>
+
+                    </td>
+                  </tr>
+
+                          <span class="govuk-visually-hidden">Select Talon Kirlin</span>
+                        </label>
+                      </div>
+                    </td>
+                    <td class="govuk-table__cell">
+                       
+             <a class="govuk-link--no-visited-state" href="/jobs/application/658653">Reference 2</a>
+                      
+                    </td>
+                 <td class="govuk-table__cell">Recieved Tuesday 10th December 2024</td>
+                    <td class="govuk-table__cell">
+        <strong class="govuk-tag govuk-tag--purple">
+          Received
+        </strong>
+      </td>
+    </tr>
+            </tbody>
+          </table>
+
+
+
+          <table class="govuk-table govuk-!-margin-top-5">
+
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+
+     
+           
+                    </label>
+                  </div>
+                </th>
+                <th class="govuk-table__header" scope="col">Declarations</th>
+                <th class="govuk-table__header" scope="col">Last action</th>
+                <th class="govuk-table__header" scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+                    <td class="govuk-table__cell">
+                      
+                        <a class="govuk-link--no-visited-state" href="/jobs/application/658653">Declaration 1</a>
+                      
+                    </td>
+                    <td class="govuk-table__cell">Reminder sent Tuesday 10th December 2024</td>
+                    <td class="govuk-table__cell">
+        <strong class="govuk-tag govuk-tag--blue">
+          Pending
+        </strong>
+      </td>
+
+                    </td>
+                  </tr>
+
+ 
+            </tbody>
+          </table>
+
+
+    </div>
+    
+    
+
+  
+
+{% endblock %}
+
