@@ -11,10 +11,23 @@
 
 {% block content %}
 
+<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <h3 class="govuk-notification-banner__heading">
+This declaration has been marked as completed.   </h3>
+   </div>
+</div>
+
 
     <div class="govuk-grid-row">
         
         <div class="govuk-grid-column-full">
+    
 
             <span class="govuk-caption-m">Self-disclosure form</span>
 
@@ -23,8 +36,8 @@
        
             </h1>
 
-               <strong class="govuk-tag govuk-tag--blue">
-          Pending
+               <strong class="govuk-tag govuk-tag--green">
+          Completed
         </strong>
  
 
@@ -35,13 +48,7 @@
 
 <p class="govuk-body">Once the self-disclosure form is recieved you will be able to view it here. A reminder will be sent a week after the first request. If the self-disclosure form has not been returned or this request is more urgent, you should reach out to the applicant directly.</p>
          
-  <div class="govuk-button-group govuk-!-margin-top-5 govuk-!-margin-bottom-6">
-                <form method="post" action="#">
-                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                       Manually mark as complete
-                    </button>
-                </form>
-</div>
+
   
                 </div>
 

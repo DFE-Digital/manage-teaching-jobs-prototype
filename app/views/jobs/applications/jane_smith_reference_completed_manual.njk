@@ -12,41 +12,58 @@
 {% block content %}
 
 
+<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <h3 class="govuk-notification-banner__heading">
+This reference has been marked as completed.   </h3>
+   </div>
+</div>
     <div class="govuk-grid-row">
         
         <div class="govuk-grid-column-full">
 
-            <span class="govuk-caption-m">Reference 1</span>
+            <span class="govuk-caption-m">Reference 2</span>
 
             <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
               Jane Smith 
        
             </h1>
 
-               <strong class="govuk-tag govuk-tag--blue">
-          Pending
+               <strong class="govuk-tag govuk-tag--green">
+          Completed
+         
         </strong>
- 
+
 
                   <div class="govuk-grid-row">
 
                   <div class="govuk-grid-column-two-thirds">
-       <br>
+<br>
 
-<p class="govuk-body">Once the reference is recieved you will be able to view it here. If you have not heard back from the applicant’s referee, you should reach out to the referee directly. If you have contacted the reference directly you can manualy mark it as recieved.</p>
-         
-  <div class="govuk-button-group govuk-!-margin-top-5 govuk-!-margin-bottom-6">
-                <form action="/jobs/application/tag/">
+ <div class="govuk-button-group govuk-!-margin-top-5 govuk-!-margin-bottom-6">
+                <form method="post" action="#">
                     <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                    Manually mark as recieved
+                       Print this page
                     </button>
                 </form>
             </div>
-  
+
             <h3 class="govuk-heading-m">
               Referee details</h3>
+
+
+                   
 <div class="review-component__section__body">
 <dl class="govuk-summary-list" id="Referee details">
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Title</dt>
+<dt class="govuk-summary-list__value">Mr</dt>
+</div>
 <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
 <dt class="govuk-summary-list__key">Name</dt>
 <dt class="govuk-summary-list__value">Joe Gibbs</dt>
@@ -75,43 +92,7 @@
 
     </div>
     
-    
-    </div>
-     <div class="govuk-grid-column-one-third">
-
-            
-            <div class="govuk-summary-card">
-                <div class="govuk-summary-card__title-wrapper">
-                    <h2 class="govuk-summary-card__title">
-                        Communication history
-                    </h2>
-                        
-                    </ul>
-                </div>
-                <div class="govuk-summary-card__content">
-
-                    <p class="govuk-!-margin-bottom-0">
-                        Reference reminder triggered via email
-                    </p>
-                    <p class="govuk-body-s govuk-!-margin-top-1">
-                        By Teaching Vacancies, 2024-12-16 12:04:49
-                    </p>
-
-                    <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
-
-                    <p class="govuk-!-margin-bottom-0">
-                Reference requested via email
-                    </p>
-                    <p class="govuk-body-s govuk-!-margin-top-1">
-                        By Teaching Vacancies, 2024-12-09 16:32:22
-                    </p>
-
-               
-
-
-
-                </div>
-            </div>
+      
 
         </div>
     
