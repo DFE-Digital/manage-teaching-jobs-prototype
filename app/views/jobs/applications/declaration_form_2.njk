@@ -1,6 +1,8 @@
 {% extends "layout_email.njk" %}
 
-
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
 
 {% block content %}
 
@@ -88,9 +90,9 @@ consideration to be added to one of the lists?
 
 
 
-<button type="submit" class="govuk-button" data-module="govuk-button">
+<a href="/jobs/applications/declaration_form_3" class="govuk-button" data-module="govuk-button">
   Save and continue
-</button>
+</a>
 
 
 
