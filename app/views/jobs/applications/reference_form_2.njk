@@ -1,0 +1,288 @@
+{% extends "layout_email.njk" %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+    <div class="govuk-grid-row">
+        
+
+   <div class="govuk-grid-column-two-thirds">
+
+                  <span class="govuk-caption-m">Part 2 of 5</span>
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+Professional and character reference enquiry for Jane Smith
+       
+            </h1>
+                       <h2 class="govuk-heading-m">Candidate details</h2>
+
+                    <div class="review-component__section__body">
+<dl class="govuk-summary-list" id="Candidate details">
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Full name</dt>
+<dt class="govuk-summary-list__value">Jane Smith</dt>
+
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Current role</dt>
+<dd class="govuk-summary-list__value">Primary teacher</dd>
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Organisation</dt>
+<dd class="govuk-summary-list__value">Hamstead School</dd>
+</div>
+    </div>
+    
+
+ 
+
+<div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+    <label class="govuk-label govuk-label--s">
+      How long have you known the candidate and in what capacity?
+    </label>
+
+
+  <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="withHint" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
+  <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
+    You can enter up to 200 characters
+  </div>
+</div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+      <label class="govuk-label govuk-label--s">
+Applicants employment start date    </label>
+    </legend>
+    <div id="passport-issued-hint" class="govuk-hint">
+      For example, 27 3 2007
+    </div>
+    <div class="govuk-date-input" id="passport-issued">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+    <label class="govuk-label govuk-label--s">
+      Is the applicant currently employed at this organisation?
+    </label>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changedName" name="changedName" type="radio" value="yes" onclick="toggleDatePicker()">
+        <label class="govuk-label govuk-radios__label" for="changedName">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changedName-2" name="changedName" type="radio" value="no" onclick="toggleDatePicker()">
+        <label class="govuk-label govuk-radios__label" for="changedName-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<!-- Date Picker (Appears if "No" is selected) -->
+<div id="date-picker" class="govuk-form-group" style="display: none;">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+    <label class="govuk-label govuk-label--s">
+      Applicant's employment end date
+    </label>
+    <div id="passport-issued-hint" class="govuk-hint">
+      For example, 27 3 2007
+    </div>
+    <div class="govuk-date-input" id="passport-issued">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<script>
+  function toggleDatePicker() {
+    var noSelected = document.getElementById("changedName-2").checked;
+    document.getElementById("date-picker").style.display = noSelected ? "block" : "none";
+  }
+</script>
+
+<div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+    <label class="govuk-label govuk-label--s">
+     Reason for leaving/considering leaving your employment
+    </label>
+
+  <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="withHint" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
+  <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
+    You can enter up to 200 characters
+  </div>
+</div>
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+   <label class="govuk-label govuk-label--s">
+Would you re-employ the applicant in the same job as they currently hold or held?
+    </label>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changedName" name="changedName" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="changedName">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changedName-2" name="changedName" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="changedName-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+            <p class="govuk-body">Please give reasons for you answer</p>
+
+  <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="withHint" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
+  <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
+    You can enter up to 200 characters
+  </div>
+</div>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+   <label class="govuk-label govuk-label--s">
+Would you re-employ the applicant in any role within your organisation?    </label>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changedName" name="changedName" type="radio" value="yes">
+        <label class="govuk-label govuk-radios__label" for="changedName">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changedName-2" name="changedName" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="changedName-2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="200">
+            <p class="govuk-body">Please give reasons for you answer</p>
+
+  <textarea class="govuk-textarea govuk-js-character-count" id="with-hint" name="withHint" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
+  <div id="with-hint-info" class="govuk-hint govuk-character-count__message">
+
+  </div>
+</div>
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="changedName-hint">
+    <label class="govuk-label govuk-label--s">
+Did the applicant leave your organisation before the conclusion of an investigation relating to conduct or safeguarding concerns?
+    </label>
+    <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changedName1" name="changedName" type="radio" value="yes" onclick="toggleReasonBox()">
+        <label class="govuk-label govuk-radios__label" for="changedName1">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="changedName2" name="changedName" type="radio" value="no" onclick="toggleReasonBox()">
+        <label class="govuk-label govuk-radios__label" for="changedName2">
+          No
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<!-- Reason Box (Appears when "Yes" is selected) -->
+<div id="reason-box" class="govuk-form-group" style="display: none;">
+  <label class="govuk-label" for="more-detail">
+    As you have chosen yes, please give details (include details any warnings or sanctions that could have been imposed, if the individual had not left before an investigation had concluded)
+  </label>
+  <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+</div>
+
+<script>
+  function toggleReasonBox() {
+    var yesSelected = document.getElementById("changedName1").checked;
+    var reasonBox = document.getElementById("reason-box");
+    reasonBox.style.display = yesSelected ? "block" : "none";
+  }
+</script>
+
+
+
+
+<a href="/jobs/applications/reference_form_3" class="govuk-button" data-module="govuk-button">
+  Save and continue
+</a>
+
+
+
+
+
+                </div>
+
+    </div>
+    
+    
+
+  
+
+{% endblock %}
+
