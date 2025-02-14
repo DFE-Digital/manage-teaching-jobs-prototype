@@ -1,0 +1,93 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+        
+             <div class="govuk-grid-column-two-thirds">
+
+            <span class="govuk-caption-m">Reference 1</span>
+
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+              Jane Smith 
+       
+            </h1>
+
+               <strong class="govuk-tag govuk-tag--blue">
+          Pending
+        </strong>
+ 
+
+        
+       <br>
+       <br>
+
+<p class="govuk-body">If you have sent and recieved your reference own refence form directly with the referee, you can manually mark it as received.</p>
+
+         
+<div class="govuk-button-group">
+  <a href="#" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+    Print this page
+  </a>
+  <a href="#" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+    Mark as received
+  </a>
+</div>
+
+            
+  
+            <h3 class="govuk-heading-m">
+              Referee details</h3>
+<div class="review-component__section__body">
+<dl class="govuk-summary-list" id="Referee details">
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Name</dt>
+<dt class="govuk-summary-list__value">Joe Gibbs</dt>
+<dt class="govuk-summary-list__value"><a class="govuk-link--no-visited-state" href="">Copy details</a></dt>
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Job title</dt>
+<dd class="govuk-summary-list__value">Teacher</dd>
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Organisation</dt>
+<dd class="govuk-summary-list__value">School</dd>
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Relationship to applicant</dt>
+<dd class="govuk-summary-list__value">Manager</dd>
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Email address</dt>
+<dd class="govuk-summary-list__value">joe.gibb@education.gov.uk</dd>
+<dt class="govuk-summary-list__value"><a class="govuk-link--no-visited-state" href="">Copy details</a></dt>
+</div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Phone number</dt>
+<dd class="govuk-summary-list__value">07927223600</dd>
+<dt class="govuk-summary-list__value"><a class="govuk-link--no-visited-state" href="">Copy details</a></dt></div></dl>
+
+    </div>
+
+    <br>
+
+<p><a class="govuk-link--no-visited-state" href="">Would you like to collect this reference through Teaching Vacancies?</a> </p>   
+    
+    </div>
+    
+        </div>
+    
+
+  
+
+{% endblock %}
+
