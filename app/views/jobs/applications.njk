@@ -577,7 +577,6 @@
         </th>
         <th class="govuk-table__header" scope="col">Name</th>
         <th class="govuk-table__header" scope="col">Contact details</th>
-         <th class="govuk-table__header" scope="col">Email sent</th>
         <th class="govuk-table__header" scope="col">Interview date</th>
         <th class="govuk-table__header" scope="col">Application status</th>
 
@@ -585,30 +584,7 @@
     </thead>
     <tbody class="govuk-table__body">
       <!-- Manually add jobseeker rows below -->
-      <tr class="govuk-table__row govuk-table__row--selected">
-        <td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="jobseeker-1">
-            <label class="govuk-label govuk-checkboxes__label" for="jobseeker-1">
-              <span class="govuk-visually-hidden">Select John Doe</span>
-            </label>
-          </div>
-        </td>
-        
-        <td class="govuk-table__cell">
-          <a class="govuk-link--no-visited-state" href="/jobs/application/1">John Doe</a>
-        </td>
-        <td class="govuk-table__cell">john.doe@example.com</td>
-           <td class="govuk-table__cell">13 December 2024</td>
-        <td class="govuk-table__cell">                                
-       <a class="govuk-link--no-visited-state" href="/jobs/application/1">Add interview date</a></td>
-        <td class="govuk-table__cell">
-          <span class="govuk-tag govuk-tag--green">Interviewing</span>
-                <div class="govuk-!-padding-bottom-2"></div>
-       <a class="govuk-link--no-visited-state" href="/jobs/application/1">Pre-interview checks</a>
-        </td>
- 
-      </tr>
+  
       <tr class="govuk-table__row govuk-table__row--selected">
         <td class="govuk-table__cell">
           <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
@@ -619,15 +595,36 @@
           </div>
         </td>
         <td class="govuk-table__cell">
-          <a class="govuk-link--no-visited-state" href="/jobs/application/2">Jane Smith</a>
+          <a class="govuk-link--no-visited-state" href="/jobs/686355/applications#interview">John Walters</a>
         </td>
-        <td class="govuk-table__cell">jane.smith@example.com</td>
-           <td class="govuk-table__cell">13 December 2024</td>
-        <td class="govuk-table__cell">21 January 2025</td>
+        <td class="govuk-table__cell">john.walters@example.com</td>
+        <td class="govuk-table__cell">  <a class="govuk-link--no-visited-state" href="/jobs/applications/add_interview_date">Add interview date</a></td>
         <td class="govuk-table__cell">
           <span class="govuk-tag govuk-tag--green">Interviewing</span>
         <div class="govuk-!-padding-bottom-2"></div>
-       <a class="govuk-link--no-visited-state" href="/jobs/application/1">Pre-interview checks</a>
+       <a class="govuk-link--no-visited-state" href="/jobs/686355/applications#interview">Pre-interview checks</a>
+        </td>
+
+      </tr>
+
+      <tr class="govuk-table__row govuk-table__row--selected">
+        <td class="govuk-table__cell">
+          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+            <input type="checkbox" class="govuk-checkboxes__input" id="jobseeker-2">
+            <label class="govuk-label govuk-checkboxes__label" for="jobseeker-2">
+              <span class="govuk-visually-hidden">Select Jane Smith</span>
+            </label>
+          </div>
+        </td>
+        <td class="govuk-table__cell">
+          <a class="govuk-link--no-visited-state" href="/jobs/applications/jane_smith">Jane Smith</a>
+        </td>
+        <td class="govuk-table__cell">jane.smith@example.com</td>
+        <td class="govuk-table__cell">3 March 2025</td>
+        <td class="govuk-table__cell">
+          <span class="govuk-tag govuk-tag--green">Interviewing</span>
+        <div class="govuk-!-padding-bottom-2"></div>
+       <a class="govuk-link--no-visited-state" href="/jobs/applications/jane_smith_preinterview">Pre-interview checks</a>
         </td>
 
       </tr>
