@@ -12,9 +12,24 @@
 {% block content %}
 
 
+<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <h3 class="govuk-notification-banner__heading">
+This reference has been marked as recieved.   </h3>
+   </div>
+</div>
     <div class="govuk-grid-row">
         
-             <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-grid-column-full">
+
+                  <div class="govuk-grid-row">
+
+                  <div class="govuk-grid-column-two-thirds">
 
             <span class="govuk-caption-m">Reference 1</span>
 
@@ -23,34 +38,35 @@
        
             </h1>
 
-               <strong class="govuk-tag govuk-tag--blue">
-          Pending
-        </strong>
- 
-
-        
-       <br>
-       <br>
-
-<p class="govuk-body">Once the reference is received you will be able to view it on this page. You will be able to send a reminder one week after the request.</p>
-<p class="govuk-body">If the request is more urgent, you should reach out to the referee directly. If you have sent and recieved your own reference form directly with the referee, you can manually mark it as received.</p>
-
+               <strong class="govuk-tag govuk-tag--purple">
+          Recieved
          
-<div class="govuk-button-group">
-  <a href="#" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-    Print this page
-  </a>
-  <a href="/jobs/applications/jane_smith_reference_markasdone" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-    Mark as received
-  </a>
-</div>
+        </strong>
 
-            
-  
+<br>
+
+
+<p><br>This reference has been manually marked as recieved.</p>
+
+ <div class="govuk-button-group govuk-!-margin-top-5 govuk-!-margin-bottom-6">
+                <form method="post" action="#">
+                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                       Print this page
+                    </button>
+                </form>
+            </div>
+
             <h3 class="govuk-heading-m">
               Referee details</h3>
+
+
+                   
 <div class="review-component__section__body">
 <dl class="govuk-summary-list" id="Referee details">
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Title</dt>
+<dt class="govuk-summary-list__value">Mr</dt>
+</div>
 <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
 <dt class="govuk-summary-list__key">Name</dt>
 <dt class="govuk-summary-list__value">Joe Gibbs</dt>
@@ -79,8 +95,11 @@
 
     </div>
     
+      
+
+        </div>
+        
     
-    </div>
      <div class="govuk-grid-column-one-third">
       
       <div class="timeline-component">
@@ -88,7 +107,15 @@
       <h3 class="govuk-heading-s">Communication history</h3>
 
       <ul class="timeline-component__items">
- <li class="timeline-component__item">
+        <li class="timeline-component__item">
+          <h4 class="timeline-component__key govuk-heading-s">Marked as recieved</h4>
+          <p class="timeline-component__value govuk-body">By Anna Wilson, 2024-02-18 16:32:22</p>
+        </li>
+                <li class="timeline-component__item">
+          <h4 class="timeline-component__key govuk-heading-s">Reminder email sent</h4>
+          <p class="timeline-component__value govuk-body">By Teaching Vacancies, 2024-02-14 16:32:22</p>
+        </li>
+        <li class="timeline-component__item">
           <h4 class="timeline-component__key govuk-heading-s">Reference requested</h4>
           <p class="timeline-component__value govuk-body">By Teaching Vacancies, 2024-02-7 16:32:22</p>
         </li>
@@ -98,9 +125,6 @@
 
 
     </div>
-        </div>
-    
-
   
 
 {% endblock %}

@@ -11,20 +11,24 @@
 
 {% block content %}
 
-<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+
+<div class="govuk-notification-banner" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
   <div class="govuk-notification-banner__header">
     <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-      Email sent
+     Reminder sent
     </h2>
   </div>
   <div class="govuk-notification-banner__content">
     <h3 class="govuk-notification-banner__heading">
-Reminder email has been sent to applicant's referee    </h3>
+Reminder email has been sent to applicant's referee. 
+Reach out to applicant, or the referee directly if you do not recieve a response.</h3>
    </div>
 </div>
+
+
     <div class="govuk-grid-row">
         
-        <div class="govuk-grid-column-full">
+             <div class="govuk-grid-column-two-thirds">
 
             <span class="govuk-caption-m">Reference 1</span>
 
@@ -38,20 +42,24 @@ Reminder email has been sent to applicant's referee    </h3>
         </strong>
  
 
-                  <div class="govuk-grid-row">
-
-                  <div class="govuk-grid-column-two-thirds">
+        
+       <br>
        <br>
 
-<p class="govuk-body">Once the reference is recieved you will be able to view it here. If you have not heard back from the applicant’s referee, you can prompt a reminder. This will send a reminder email to your applicant. </p>
+<p class="govuk-body">Once the reference is received you will be able to view it on this page.</p>
+<p class="govuk-body">If the request is more urgent, you should reach out to the referee directly. If you have sent and recieved your reference own refence form directly with the referee, you can manually mark it as received.</p>
+
          
-  <div class="govuk-button-group govuk-!-margin-top-5 govuk-!-margin-bottom-6">
-                <form action="/jobs/application/tag/">
-                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                    Upload reference
-                    </button>
-                </form>
-            </div>
+<div class="govuk-button-group">
+  <a href="#" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+    Print this page
+  </a>
+  <a href="/jobs/applications/jane_smith_reference_markasdone" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+    Mark as received
+  </a>
+</div>
+
+            
   
             <h3 class="govuk-heading-m">
               Referee details</h3>
@@ -88,41 +96,26 @@ Reminder email has been sent to applicant's referee    </h3>
     
     </div>
      <div class="govuk-grid-column-one-third">
+      
+      <div class="timeline-component">
 
-            
-            <div class="govuk-summary-card">
-                <div class="govuk-summary-card__title-wrapper">
-                    <h2 class="govuk-summary-card__title">
-                        Communication history
-                    </h2>
-                        
-                    </ul>
-                </div>
-                <div class="govuk-summary-card__content">
+      <h3 class="govuk-heading-s">Communication history</h3>
 
-                    <p class="govuk-!-margin-bottom-0">
-                        Reference reminder triggered via email
-                    </p>
-                    <p class="govuk-body-s govuk-!-margin-top-1">
-                        By Katie Saunders, 2024-12-10 12:04:49
-                    </p>
+      <ul class="timeline-component__items">
+        <li class="timeline-component__item">
+          <h4 class="timeline-component__key govuk-heading-s">Reminder email sent</h4>
+          <p class="timeline-component__value govuk-body">By Teaching Vacancies, 2024-02-14 16:32:22</p>
+        </li>
+        <li class="timeline-component__item">
+          <h4 class="timeline-component__key govuk-heading-s">Reference requested</h4>
+          <p class="timeline-component__value govuk-body">By Teaching Vacancies, 2024-02-7 16:32:22</p>
+        </li>
+      </ul>
 
-                    <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
-
-                    <p class="govuk-!-margin-bottom-0">
-                Reference requested via email
-                    </p>
-                    <p class="govuk-body-s govuk-!-margin-top-1">
-                        By Teaching Vacancies, 2024-12-09 16:32:22
-                    </p>
-
-               
+      </div>
 
 
-
-                </div>
-            </div>
-
+    </div>
         </div>
     
 

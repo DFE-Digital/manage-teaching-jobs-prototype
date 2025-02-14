@@ -12,6 +12,17 @@
 {% block content %}
 
 
+<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <h3 class="govuk-notification-banner__heading">
+This reference has been marked as completed.   </h3>
+   </div>
+</div>
     <div class="govuk-grid-row">
         
         <div class="govuk-grid-column-full">
@@ -23,8 +34,8 @@
        
             </h1>
 
-               <strong class="govuk-tag govuk-tag--purple">
-          Recieved
+               <strong class="govuk-tag govuk-tag--green">
+          Completed
          
         </strong>
 
@@ -34,14 +45,15 @@
                   <div class="govuk-grid-column-two-thirds">
 <br>
 
-<div class="govuk-button-group">
-  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-    Print this page
-  </button>
-  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-    Mark as completed
-  </button>
-</div>
+ <div class="govuk-button-group govuk-!-margin-top-5 govuk-!-margin-bottom-6">
+                <form method="post" action="#">
+                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                       Print this page
+                    </button>
+                </form>
+            </div>
+
+            
 
             <h3 class="govuk-heading-m">
               Referee details</h3>
@@ -183,9 +195,10 @@ I confirm the answers given in this form have been provided in good faith and ar
 <p>Space for signature if needed should we add digtial signatures</p>
 
   </div>
+  
 
 
-       <div class="govuk-grid-column-one-third">
+          <div class="govuk-grid-column-one-third">
       
       <div class="timeline-component">
 
@@ -193,8 +206,13 @@ I confirm the answers given in this form have been provided in good faith and ar
 
       <ul class="timeline-component__items">
         <li class="timeline-component__item">
+          <h4 class="timeline-component__key govuk-heading-s">Reference marked as complete</h4>
+          <p class="timeline-component__value govuk-body">By Kate Anderson, 2024-02-14 16:32:22</p>
+        </li>
+
+        <li class="timeline-component__item">
           <h4 class="timeline-component__key govuk-heading-s">Reference recieved</h4>
-          <p class="timeline-component__value govuk-body"> 2024-02-14 16:32:22</p>
+          <p class="timeline-component__value govuk-body">By Teaching Vacancies, 2024-02-14 16:32:22</p>
         </li>
         <li class="timeline-component__item">
           <h4 class="timeline-component__key govuk-heading-s">Reference requested</h4>
@@ -203,7 +221,7 @@ I confirm the answers given in this form have been provided in good faith and ar
       </ul>
 
       </div>
-
+  
 
 {% endblock %}
 
