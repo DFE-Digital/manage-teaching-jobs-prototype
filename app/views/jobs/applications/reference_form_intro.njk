@@ -1,0 +1,100 @@
+{% extends "layout_email.njk" %}
+
+
+
+{% block content %}
+
+
+
+   <div class="govuk-grid-row">
+   <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+        Give a reference for Jane Smith
+      </h1>
+
+      <p>Jane Smith has been invited for an interview at Courtland Primary School for the Science teacher position. They've said that you can give them a reference.</p>
+      <p>You can choose whether Jane Smith should be able to see the contents of your reference or if it should be confidential.</p>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">Can you give a reference for Jane Smith?</h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="canGiveReferenceYes" name="canGiveReference" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="canGiveReferenceYes">
+                Yes, I can give them a reference
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="canGiveReferenceNo" name="canGiveReference" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="canGiveReferenceNo">
+                No, I’m unable to give a reference
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Conditional Question (Hidden by Default) -->
+      <div id="conditional-question" class="govuk-form-group" style="display: none;">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">Can your reference be shared with Jane Smith?</h1>
+          </legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="shareReferenceYes" name="shareReference" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="shareReferenceYes">
+                Yes, if they request it 
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="shareReferenceNo" name="shareReference" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="shareReferenceNo">
+                No, it should be treated as confidential
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <br>
+
+      <!-- Continue Button -->
+      <a id="continue-button" href="/jobs/applications/reference_form_1" class="govuk-button" data-module="govuk-button">
+        Continue
+      </a>
+    </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const yesRadio = document.getElementById("canGiveReferenceYes");
+    const noRadio = document.getElementById("canGiveReferenceNo");
+    const conditionalQuestion = document.getElementById("conditional-question");
+    const continueButton = document.getElementById("continue-button");
+
+    function updatePageBehavior() {
+      if (yesRadio.checked) {
+        conditionalQuestion.style.display = "block";
+        continueButton.href = "/jobs/applications/reference_form_1";
+      } else {
+        conditionalQuestion.style.display = "none";
+        continueButton.href = "/jobs/applications/reference_form_rejected";
+      }
+    }
+
+    yesRadio.addEventListener("change", updatePageBehavior);
+    noRadio.addEventListener("change", updatePageBehavior);
+  });
+</script>
+
+    
+    
+
+  
+
+{% endblock %}
+
