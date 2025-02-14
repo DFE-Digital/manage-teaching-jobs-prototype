@@ -905,3 +905,72 @@ ul.gem-c-checkboxes__list {
   margin-bottom: 0;
   border-bottom: none
 }
+
+.timeline-component {
+  background-color: #f3f2f1;
+  margin-bottom: 25px;
+  padding: 30px;
+  border-radius: 5px; /* Optional: Adds a subtle rounded effect */
+}
+
+.timeline-component__items {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+  position: relative;
+}
+
+.timeline-component__item {
+  margin-bottom: 15px;
+  padding-left: 25px;
+  position: relative;
+}
+
+/* Vertical line for the timeline */
+.timeline-component__item::before {
+  content: "";
+  background-color: #1d70b8;
+  width: 5px;
+  height: calc(100% + 20px); /* Adjusted for better alignment */
+  position: absolute;
+  left: 5px;
+  top: 0;
+}
+
+/* Ensuring the first and last items are styled correctly */
+.timeline-component__item:first-of-type::before {
+  top: 10px; /* Aligns first item correctly */
+}
+
+.timeline-component__item:last-of-type::before {
+  height: 10px; /* Stops line after the last item */
+}
+
+/* Styles for the timeline key (title of each event) */
+.timeline-component__key {
+  display: block;
+  font-weight: bold;
+  line-height: 1.4;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+/* Adds a small marker before each key */
+.timeline-component__key::before {
+  content: "";
+  background-color: #1d70b8;
+  width: 15px;
+  height: 5px;
+  position: absolute;
+  left: -20px;
+  top: 45%;
+  transform: translateY(-50%);
+  border-radius: px;
+}
+
+/* Styles for the timeline value (description) */
+.timeline-component__value {
+  margin: 0;
+  font-size: 14px;
+  color: #4d4d4d;
+}
