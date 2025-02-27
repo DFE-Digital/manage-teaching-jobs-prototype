@@ -29,13 +29,20 @@
         <fieldset class="govuk-fieldset" aria-describedby="countries-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-What date have you scheduled the interview for the applicant with John Walters?</h1>
+What date and time have you scheduled John Walters' interview?</h1>
             </legend>
             <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
     <legend class="govuk-fieldset__legend">
-If the interview date changes later, you can update it in the applicant’s application section.   
+If the interview date changes later, you can update it in the applicant’s application section.      </legend>
+<br>
+<style>
+  .govuk-heading-m {
+    margin-bottom: 4px; /* Reduced margin to bring hint text closer */
+  }
+</style>
 
+<h3 class="govuk-heading-m">Date</h3>
  <div id="passport-issued-hint" class="govuk-hint">
       For example, 27 3 2025
     </div>
@@ -68,8 +75,22 @@ If the interview date changes later, you can update it in the applicant’s appl
   </fieldset>
 </div>
 <br>
+<style>
+  .govuk-heading-m {
+    margin-bottom: 4px; /* Reduced margin to bring hint text closer */
+  }
+</style>
 
+<h3 class="govuk-heading-m">Time</h3>
+<div id="passport-issued-hint" class="govuk-hint">
+ For example, 9am or 2:30pm - enter 12pm for midday
+</div>
 
+<div class="govuk-form-group">
+  <input class="govuk-input govuk-input--width-5" id="width-5" name="width5" type="text">
+</div>
+
+<br>
 <div class="govuk-button-group">
   <a href="#" role="button" class="govuk-button" data-module="govuk-button">
     Save and continue
