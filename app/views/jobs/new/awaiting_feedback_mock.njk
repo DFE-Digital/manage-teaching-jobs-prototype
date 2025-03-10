@@ -1,0 +1,134 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+{% block content %}
+<div class="govuk-grid-row"><div class="govuk-grid-column-three-quarters"><div class="help-guide--mobile help-guide--border-bottom"></div><span class="govuk-caption-l">Bexleyheath Academy</span><h1 class="govuk-heading-l">Awaiting feedback (6)</h1></div><div class="govuk-grid-column-one-quarter"><form class="button_to" method="post" action="/organisation/jobs"><button class="govuk-button float-right" data-module="govuk-button" new_tab="false" type="submit" data-govuk-button-init="">Create a job listing</button><input type="hidden" name="authenticity_token" value="vB1taY3AEfMs_zJSZnJvVL9E1PoEKIX3jhF9irw4yxm84ZZMGjYSTw47uRpGSc69aK8msoBsg5oNMEVyIMHDxA" autocomplete="off"></form></div></div>
+
+<div class="app-primary-navigation__nav">
+<nav class="app-primary-navigation sub-nav" aria-label="sub menu">
+    <ul class="app-primary-navigation__list">
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" href="/jobs/new/active_jobs_mock">Active jobs</a>
+        </li>
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" href="/jobs/new/closed_jobs_mock">Closed jobs</a>
+        </li>
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" href="#">Scheduled jobs</a>
+        </li>
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" href="#">Draft jobs</a>
+        </li>
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" aria-current="page" href="/jobs/new/awaiting_feedback_mock">Jobs awaiting feedback</a>
+        </li>
+    </ul>
+</nav>
+
+
+
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+   
+<div class="govuk-grid-row govuk-!-margin-bottom-7"><div class="govuk-grid-column-full">
+<li class="sort-component__list-item">End date (most recent)</li><li class="sort-component__list-item"><a class="govuk-link" href="#"><span class="govuk-visually-hidden">Sort by </span>Job title (a to z)</a></li></ul></div>
+<div class="govuk-grid-column-three-quarters" id="vacancy-results"><dl class="govuk-summary-list">
+
+<br>
+<div class="govuk-grid-row>
+<p class="govuk-body govuk-!-margin-bottom-4" id="awaiting_feedback_intro">Please tell us if you filled these expired jobs through Teaching Vacancies, and whether you listed them elsewhere. Your feedback will help us improve the service.</p>
+
+
+<div class="feedback-row divider-bottom" id="vacancy_37bad342-4a1e-4738-9e31-a331710638f3"><div class="govuk-grid-row"><div class="govuk-grid-column-one-third"><a class="govuk-link govuk-!-font-weight-bold govuk-!-font-size-24" href="/organisation/jobs/37bad342-4a1e-4738-9e31-a331710638f3">Teaching Assistant</a><dl class="govuk-body-s govuk-!-margin-top-1"><dt>Closing date</dt><dd class="govuk-!-margin-left-0">31 December 2024 at 11:59pm</dd></dl></div><div class="govuk-grid-column-two-thirds"><div class="govuk-form-group"><label for="publishers-vacancy-statistics-form-hired-status-field" class="govuk-label">Job filled on Teaching Vacancies?</label><select id="publishers-vacancy-statistics-form-hired-status-field" class="govuk-select govuk-!-width-full" form="37bad342-4a1e-4738-9e31-a331710638f3" name="publishers_vacancy_statistics_form[hired_status]"><option value="">--</option>
+<option value="hired_tvs">Yes</option>
+<option value="hired_other_free">No, we hired through another free listing</option>
+<option value="hired_paid">No, we hired through a paid service</option>
+<option value="hired_no_listing">No, we hired, but not through a listing or service</option>
+<option value="not_filled_ongoing">No, recruitment is ongoing</option>
+<option value="not_filled_not_looking">No, we're no longer recruiting for the job</option>
+<option value="hired_dont_know">I don't know</option></select></div><div class="govuk-form-group"><label for="publishers-vacancy-statistics-form-listed-elsewhere-field" class="govuk-label">Listed elsewhere?</label><select id="publishers-vacancy-statistics-form-listed-elsewhere-field" class="govuk-select govuk-!-width-full" form="37bad342-4a1e-4738-9e31-a331710638f3" name="publishers_vacancy_statistics_form[listed_elsewhere]"><option value="">--</option>
+<option value="listed_paid">Yes, on one or more paid services</option>
+<option value="listed_free">Yes, but only for free</option>
+<option value="listed_mix">Yes, a mix of paid and free listings</option>
+<option value="not_listed">No</option>
+<option value="listed_dont_know">I don't know</option></select></div><button type="submit" formnovalidate="formnovalidate" class="govuk-button govuk-!-margin-top-0" data-module="govuk-button" data-prevent-double-click="true" form="37bad342-4a1e-4738-9e31-a331710638f3" data-govuk-button-init="">Submit<span class="govuk-visually-hidden">feedback for Teaching Assistant</span></button></div></div></div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+<form class="new_publishers_vacancy_statistics_form" id="4bc40699-e7b0-4a52-ada3-06b5e922297f" action="/organisation/jobs/4bc40699-e7b0-4a52-ada3-06b5e922297f/statistics" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden" name="authenticity_token" value="CgFtd4ZbZ8lo8lSUp4jOsciNmFfLhUAupCX_MfP5mREK_ZZSEa1kdUo239yHs29YH2ZqH0_BRkMnBMfJbwCRzA" autocomplete="off"><div class="feedback-row divider-bottom" id="vacancy_4bc40699-e7b0-4a52-ada3-06b5e922297f"><div class="govuk-grid-row"><div class="govuk-grid-column-one-third"><a class="govuk-link govuk-!-font-weight-bold govuk-!-font-size-24" href="/organisation/jobs/4bc40699-e7b0-4a52-ada3-06b5e922297f">IT Technician</a><dl class="govuk-body-s govuk-!-margin-top-1"><dt>Closing date</dt><dd class="govuk-!-margin-left-0">19 November 2024 at 8am</dd></dl></div><div class="govuk-grid-column-two-thirds"><div class="govuk-form-group"><label for="publishers-vacancy-statistics-form-hired-status-field" class="govuk-label">Job filled on Teaching Vacancies?</label><select id="publishers-vacancy-statistics-form-hired-status-field" class="govuk-select govuk-!-width-full" form="4bc40699-e7b0-4a52-ada3-06b5e922297f" name="publishers_vacancy_statistics_form[hired_status]"><option value="">--</option>
+<option value="hired_tvs">Yes</option>
+<option value="hired_other_free">No, we hired through another free listing</option>
+<option value="hired_paid">No, we hired through a paid service</option>
+<option value="hired_no_listing">No, we hired, but not through a listing or service</option>
+<option value="not_filled_ongoing">No, recruitment is ongoing</option>
+<option value="not_filled_not_looking">No, we're no longer recruiting for the job</option>
+<option value="hired_dont_know">I don't know</option></select></div><div class="govuk-form-group"><label for="publishers-vacancy-statistics-form-listed-elsewhere-field" class="govuk-label">Listed elsewhere?</label><select id="publishers-vacancy-statistics-form-listed-elsewhere-field" class="govuk-select govuk-!-width-full" form="4bc40699-e7b0-4a52-ada3-06b5e922297f" name="publishers_vacancy_statistics_form[listed_elsewhere]"><option value="">--</option>
+<option value="listed_paid">Yes, on one or more paid services</option>
+<option value="listed_free">Yes, but only for free</option>
+<option value="listed_mix">Yes, a mix of paid and free listings</option>
+<option value="not_listed">No</option>
+<option value="listed_dont_know">I don't know</option></select></div><button type="submit" formnovalidate="formnovalidate" class="govuk-button govuk-!-margin-top-0" data-module="govuk-button" data-prevent-double-click="true" form="4bc40699-e7b0-4a52-ada3-06b5e922297f" data-govuk-button-init="">Submit<span class="govuk-visually-hidden">feedback for IT Technician</span></button></div></div></div></form>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+<div class="feedback-row divider-bottom" id="vacancy_7c11bd66-8355-4e71-979f-d34cc4a5fb22"><div class="govuk-grid-row"><div class="govuk-grid-column-one-third"><a class="govuk-link govuk-!-font-weight-bold govuk-!-font-size-24" href="/organisation/jobs/7c11bd66-8355-4e71-979f-d34cc4a5fb22">Science Teacher</a><dl class="govuk-body-s govuk-!-margin-top-1"><dt>Closing date</dt><dd class="govuk-!-margin-left-0">16 November 2024 at 8am</dd></dl></div><div class="govuk-grid-column-two-thirds"><div class="govuk-form-group"><label for="publishers-vacancy-statistics-form-hired-status-field" class="govuk-label">Job filled on Teaching Vacancies?</label><select id="publishers-vacancy-statistics-form-hired-status-field" class="govuk-select govuk-!-width-full" form="7c11bd66-8355-4e71-979f-d34cc4a5fb22" name="publishers_vacancy_statistics_form[hired_status]"><option value="">--</option>
+<option value="hired_tvs">Yes</option>
+<option value="hired_other_free">No, we hired through another free listing</option>
+<option value="hired_paid">No, we hired through a paid service</option>
+<option value="hired_no_listing">No, we hired, but not through a listing or service</option>
+<option value="not_filled_ongoing">No, recruitment is ongoing</option>
+<option value="not_filled_not_looking">No, we're no longer recruiting for the job</option>
+<option value="hired_dont_know">I don't know</option></select></div><div class="govuk-form-group"><label for="publishers-vacancy-statistics-form-listed-elsewhere-field" class="govuk-label">Listed elsewhere?</label><select id="publishers-vacancy-statistics-form-listed-elsewhere-field" class="govuk-select govuk-!-width-full" form="7c11bd66-8355-4e71-979f-d34cc4a5fb22" name="publishers_vacancy_statistics_form[listed_elsewhere]"><option value="">--</option>
+<option value="listed_paid">Yes, on one or more paid services</option>
+<option value="listed_free">Yes, but only for free</option>
+<option value="listed_mix">Yes, a mix of paid and free listings</option>
+<option value="not_listed">No</option>
+<option value="listed_dont_know">I don't know</option></select></div><button type="submit" formnovalidate="formnovalidate" class="govuk-button govuk-!-margin-top-0" data-module="govuk-button" data-prevent-double-click="true" form="7c11bd66-8355-4e71-979f-d34cc4a5fb22" data-govuk-button-init="">Submit<span class="govuk-visually-hidden">feedback for Science Teacher</span></button></div></div></div>
+
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+<div class="feedback-row divider-bottom" id="vacancy_037c7b18-70e9-4dec-9335-5a36122e30ca"><div class="govuk-grid-row"><div class="govuk-grid-column-one-third"><a class="govuk-link govuk-!-font-weight-bold govuk-!-font-size-24" href="/organisation/jobs/037c7b18-70e9-4dec-9335-5a36122e30ca">PE Teacher</a><dl class="govuk-body-s govuk-!-margin-top-1"><dt>Closing date</dt><dd class="govuk-!-margin-left-0">30 September 2024 at 11:59pm</dd></dl></div><div class="govuk-grid-column-two-thirds"><div class="govuk-form-group"><label for="publishers-vacancy-statistics-form-hired-status-field" class="govuk-label">Job filled on Teaching Vacancies?</label><select id="publishers-vacancy-statistics-form-hired-status-field" class="govuk-select govuk-!-width-full" form="037c7b18-70e9-4dec-9335-5a36122e30ca" name="publishers_vacancy_statistics_form[hired_status]"><option value="">--</option>
+<option value="hired_tvs">Yes</option>
+<option value="hired_other_free">No, we hired through another free listing</option>
+<option value="hired_paid">No, we hired through a paid service</option>
+<option value="hired_no_listing">No, we hired, but not through a listing or service</option>
+<option value="not_filled_ongoing">No, recruitment is ongoing</option>
+<option value="not_filled_not_looking">No, we're no longer recruiting for the job</option>
+<option value="hired_dont_know">I don't know</option></select></div><div class="govuk-form-group"><label for="publishers-vacancy-statistics-form-listed-elsewhere-field" class="govuk-label">Listed elsewhere?</label><select id="publishers-vacancy-statistics-form-listed-elsewhere-field" class="govuk-select govuk-!-width-full" form="037c7b18-70e9-4dec-9335-5a36122e30ca" name="publishers_vacancy_statistics_form[listed_elsewhere]"><option value="">--</option>
+<option value="listed_paid">Yes, on one or more paid services</option>
+<option value="listed_free">Yes, but only for free</option>
+<option value="listed_mix">Yes, a mix of paid and free listings</option>
+<option value="not_listed">No</option>
+<option value="listed_dont_know">I don't know</option></select></div><button type="submit" formnovalidate="formnovalidate" class="govuk-button govuk-!-margin-top-0" data-module="govuk-button" data-prevent-double-click="true" form="037c7b18-70e9-4dec-9335-5a36122e30ca" data-govuk-button-init="">Submit<span class="govuk-visually-hidden">feedback for PE Teacher</span></button></div></div></div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+
+
+<div class="feedback-row divider-bottom" id="vacancy_408bd615-a3a7-4f32-a23e-2cf9d8c60eff"><div class="govuk-grid-row"><div class="govuk-grid-column-one-third"><a class="govuk-link govuk-!-font-weight-bold govuk-!-font-size-24" href="/organisation/jobs/408bd615-a3a7-4f32-a23e-2cf9d8c60eff">Headteacher</a><dl class="govuk-body-s govuk-!-margin-top-1"><dt>Closing date</dt><dd class="govuk-!-margin-left-0">19 April 2024 at 8am</dd></dl></div><div class="govuk-grid-column-two-thirds"><div class="govuk-form-group"><label for="publishers-vacancy-statistics-form-hired-status-field" class="govuk-label">Job filled on Teaching Vacancies?</label><select id="publishers-vacancy-statistics-form-hired-status-field" class="govuk-select govuk-!-width-full" form="408bd615-a3a7-4f32-a23e-2cf9d8c60eff" name="publishers_vacancy_statistics_form[hired_status]"><option value="">--</option>
+<option value="hired_tvs">Yes</option>
+<option value="hired_other_free">No, we hired through another free listing</option>
+<option value="hired_paid">No, we hired through a paid service</option>
+<option value="hired_no_listing">No, we hired, but not through a listing or service</option>
+<option value="not_filled_ongoing">No, recruitment is ongoing</option>
+<option value="not_filled_not_looking">No, we're no longer recruiting for the job</option>
+<option value="hired_dont_know">I don't know</option></select></div><div class="govuk-form-group"><label for="publishers-vacancy-statistics-form-listed-elsewhere-field" class="govuk-label">Listed elsewhere?</label><select id="publishers-vacancy-statistics-form-listed-elsewhere-field" class="govuk-select govuk-!-width-full" form="408bd615-a3a7-4f32-a23e-2cf9d8c60eff" name="publishers_vacancy_statistics_form[listed_elsewhere]"><option value="">--</option>
+<option value="listed_paid">Yes, on one or more paid services</option>
+<option value="listed_free">Yes, but only for free</option>
+<option value="listed_mix">Yes, a mix of paid and free listings</option>
+<option value="not_listed">No</option>
+<option value="listed_dont_know">I don't know</option></select></div><button type="submit" formnovalidate="formnovalidate" class="govuk-button govuk-!-margin-top-0" data-module="govuk-button" data-prevent-double-click="true" form="408bd615-a3a7-4f32-a23e-2cf9d8c60eff" data-govuk-button-init="">Submit<span class="govuk-visually-hidden">feedback for Headteacher</span></button></div></div></div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+</div></div>
+<div class="govuk-grid-column-one-quarter"><div class="help-guide--desktop"><h2 class="govuk-heading-m">Accept job applications using our online form</h2><a class="govuk-link govuk-link--no-visited-state" href="/get-help-hiring/how-to-create-job-listings-and-accept-applications/accepting-job-applications-on-teaching-vacancies">Find out how to use the Teaching Vacancies application form</a>.</div></div></div>
+{% endblock %}

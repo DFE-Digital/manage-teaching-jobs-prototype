@@ -1,0 +1,44 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+{% block content %}
+<div class="govuk-grid-row"><div class="govuk-grid-column-three-quarters"><div class="help-guide--mobile help-guide--border-bottom"></div><span class="govuk-caption-l">Bexleyheath Academy</span><h1 class="govuk-heading-l">Active jobs (9)</h1></div><div class="govuk-grid-column-one-quarter"><form class="button_to" method="post" action="/organisation/jobs"><button class="govuk-button float-right" data-module="govuk-button" new_tab="false" type="submit" data-govuk-button-init="">Create a job listing</button><input type="hidden" name="authenticity_token" value="vB1taY3AEfMs_zJSZnJvVL9E1PoEKIX3jhF9irw4yxm84ZZMGjYSTw47uRpGSc69aK8msoBsg5oNMEVyIMHDxA" autocomplete="off"></form></div></div>
+
+<div class="app-primary-navigation__nav">
+<nav class="app-primary-navigation sub-nav" aria-label="sub menu">
+    <ul class="app-primary-navigation__list">
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" aria-current="page" href="/jobs/new/active_jobs_mock">Active jobs</a>
+        </li>
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" href="/jobs/new/closed_jobs_mock">Closed jobs</a>
+        </li>
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" href="#">Scheduled jobs</a>
+        </li>
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" href="#">Draft jobs</a>
+        </li>
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" href="/jobs/new/awaiting_feedback_mock">Jobs awaiting feedback</a>
+        </li>
+    </ul>
+</nav>
+
+
+
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+   
+<div class="govuk-grid-row govuk-!-margin-bottom-7"><div class="govuk-grid-column-full">
+<li class="sort-component__list-item">End date (most recent)</li><li class="sort-component__list-item"><a class="govuk-link" href="#"><span class="govuk-visually-hidden">Sort by </span>Job title (a to z)</a></li></ul></div>
+<div class="govuk-grid-column-three-quarters" id="vacancy-results"><dl class="govuk-summary-list">
+
+<dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"><a class="govuk-link" href="/jobs/686355">Science teacher</a></dt><dd class="govuk-summary-list__value">
+<div class="govuk-!-margin-bottom-1"><p class="govuk-body-s">View 0 applicants</p></div><dl><dt>Closing date: 20 March 2025 at 9am</dt></dl></dd><dd class="govuk-summary-list__actions"><a class="govuk-link" data-method="post" href="#">Copy job listing<span class="govuk-visually-hidden"> for Arts teacher</span></a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"><a class="govuk-link" href="#">Teacher</a></dt><dd class="govuk-summary-list__value"><div class="govuk-!-margin-bottom-1"><a class="govuk-link govuk-link--no-visited-state" href="#"><span>View 1 applicant</span><span class="govuk-visually-hidden"> for Teacher</span></a></div><dl><dt>Closing date: 28 March 2025 at 9am</dt></dl></dd><dd class="govuk-summary-list__actions"><a class="govuk-link" data-method="post" href="#">Copy job listing<span class="govuk-visually-hidden"> for Teacher</span></a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"><a class="govuk-link" href="#">Construction</a></dt><dd class="govuk-summary-list__value"><div class="govuk-!-margin-bottom-1"><p class="govuk-body-s">View 0 applicants</p></div><dl><dt>Closing date: 6 June 2025 at 8am</dt></dl></dd><dd class="govuk-summary-list__actions"><a class="govuk-link" data-method="post" href="#">Copy job listing<span class="govuk-visually-hidden"> for Construction</span></a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"><a class="govuk-link" href="#">Special Needs TA</a></dt><dd class="govuk-summary-list__value"><div class="govuk-!-margin-bottom-1"><p class="govuk-body-s">View 0 applicants</p></div><dl><dt>Closing date: 30 June 2025 at 11:59pm</dt></dl></dd><dd class="govuk-summary-list__actions"><a class="govuk-link" data-method="post" href="#">Copy job listing<span class="govuk-visually-hidden"> for Special Needs TA</span></a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"><a class="govuk-link" href="#">Teacher</a></dt><dd class="govuk-summary-list__value"><div class="govuk-!-margin-bottom-1"><a class="govuk-link govuk-link--no-visited-state" href="#"><span>View 1 applicant</span><span class="govuk-visually-hidden"> for Teacher</span></a></div><dl><dt>Closing date: 16 July 2025 at 8am</dt></dl></dd><dd class="govuk-summary-list__actions"><a class="govuk-link" data-method="post" href="#">Copy job listing<span class="govuk-visually-hidden"> for Teacher</span></a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"><a class="govuk-link" href="#">Arts teacher</a></dt><dd class="govuk-summary-list__value"><div class="govuk-!-margin-bottom-1"><a class="govuk-link govuk-link--no-visited-state" href="#"><span>View 1 applicant</span><span class="govuk-visually-hidden"> for Science teacher</span></a></div><dl><dt>Closing date: 16 July 2025 at 8am</dt></dl></dd><dd class="govuk-summary-list__actions"><a class="govuk-link" data-method="post" href="#">Copy job listing<span class="govuk-visually-hidden"> for Science teacher</span></a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"><a class="govuk-link" href="#">Chemistry teacher</a></dt><dd class="govuk-summary-list__value"><div class="govuk-!-margin-bottom-1"><a class="govuk-link govuk-link--no-visited-state" href="#"><span>View 2 applicants</span><span class="govuk-visually-hidden"> for chemistry teacher</span></a></div><dl><dt>Closing date: 31 July 2025 at 3pm</dt></dl></dd><dd class="govuk-summary-list__actions"><a class="govuk-link" data-method="post" href="#">Copy job listing<span class="govuk-visually-hidden"> for chemistry teacher</span></a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"><a class="govuk-link" href="#">Assistant Headteacher</a></dt><dd class="govuk-summary-list__value"><div class="govuk-!-margin-bottom-1"><a class="govuk-link govuk-link--no-visited-state" href="#"><span>View 5 applicants</span><span class="govuk-visually-hidden"> for Assistant Headteacher</span></a></div><dl><dt>Closing date: 1 December 2025 at 9am</dt></dl></dd><dd class="govuk-summary-list__actions"><a class="govuk-link" data-method="post" href="#">Copy job listing<span class="govuk-visually-hidden"> for Assistant Headteacher</span></a></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"><a class="govuk-link" href="#">Engineering</a></dt><dd class="govuk-summary-list__value"><div class="govuk-!-margin-bottom-1"><a class="govuk-link govuk-link--no-visited-state" href="#"><span>View 1 applicant</span><span class="govuk-visually-hidden"> for Engineering</span></a></div><dl><dt>Closing date: 15 December 2025 at 8am</dt></dl></dd><dd class="govuk-summary-list__actions"><a class="govuk-link" data-method="post" href="#">Copy job listing<span class="govuk-visually-hidden"> for Engineering</span></a></dd></div></dl></div>
+<div class="govuk-grid-column-one-quarter"><div class="help-guide--desktop"><h2 class="govuk-heading-m">Accept job applications using our online form</h2><a class="govuk-link govuk-link--no-visited-state" href="#">Find out how to use the Teaching Vacancies application form</a>.</div></div></div>
+{% endblock %}

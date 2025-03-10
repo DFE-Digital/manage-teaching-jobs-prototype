@@ -1,0 +1,75 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+{% block content %}
+<div class="govuk-grid-row"><div class="govuk-grid-column-three-quarters"><div class="help-guide--mobile help-guide--border-bottom"></div><span class="govuk-caption-l">Bexleyheath Academy</span><h1 class="govuk-heading-l">Closed jobs (6)</h1></div><div class="govuk-grid-column-one-quarter"><form class="button_to" method="post" action="/organisation/jobs"><button class="govuk-button float-right" data-module="govuk-button" new_tab="false" type="submit" data-govuk-button-init="">Create a job listing</button><input type="hidden" name="authenticity_token" value="vB1taY3AEfMs_zJSZnJvVL9E1PoEKIX3jhF9irw4yxm84ZZMGjYSTw47uRpGSc69aK8msoBsg5oNMEVyIMHDxA" autocomplete="off"></form></div></div>
+
+<div class="app-primary-navigation__nav">
+<nav class="app-primary-navigation sub-nav" aria-label="sub menu">
+    <ul class="app-primary-navigation__list">
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" href="/jobs/new/active_jobs_mock">Active jobs</a>
+        </li>
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" aria-current="page" href="/jobs/new/closed_jobs_mock">Closed jobs</a>
+        </li>
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" href="#">Scheduled jobs</a>
+        </li>
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" href="#">Draft jobs</a>
+        </li>
+        <li class="app-primary-navigation__item">
+            <a class="app-primary-navigation__link" href="/jobs/new/awaiting_feedback_mock">Jobs awaiting feedback</a>
+        </li>
+    </ul>
+</nav>
+
+
+
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+   
+<div class="govuk-grid-row govuk-!-margin-bottom-7"><div class="govuk-grid-column-full">
+<li class="sort-component__list-item">End date (most recent)</li><li class="sort-component__list-item"><a class="govuk-link" href="#"><span class="govuk-visually-hidden">Sort by </span>Job title (a to z)</a></li></ul></div>
+<div class="govuk-grid-column-three-quarters" id="vacancy-results"><dl class="govuk-summary-list">
+
+<div class="govuk-summary-list__row">
+<dt class="govuk-summary-list__key">
+<a class="govuk-link" href="#">xxxxxx</a></dt><dd class="govuk-summary-list__value">
+<p class="govuk-body-s">View 0 applicants</p>
+<dl><dt>Date listed:</dt>22 January 2025</dl>
+<dl><dt>Listing ended:</dt>1 March 2025 at 8am</dl>
+<a class="govuk-link govuk-link--no-visited-state" href="#"><span>Give feedback about this role</span><br>
+
+</dd><dd class="govuk-summary-list__actions"><ul class="govuk-summary-list__actions-list">
+
+
+<li class="govuk-summary-list__actions-list-item"><a class="govuk-link" data-method="post" href="#">Relist<span class="govuk-visually-hidden"> for xxxxxx</span></a></li><li class="govuk-summary-list__actions-list-item"><a class="govuk-link" data-method="post" href="#">Copy<span class="govuk-visually-hidden"> for xxxxxx</span></a></li></ul></dd></div>
+
+<div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"><a class="govuk-link" href="#">Teaching Assistant</a></dt><dd class="govuk-summary-list__value">
+<p class="govuk-body-s">View 0 applicants</p><dl><dt>Date listed:</dt>12 August 2024</dl><dl>
+<dt>Listing ended:</dt>31 December 2024 at 11:59pm</dl>
+<a class="govuk-link govuk-link--no-visited-state" href="/jobs/new/closed_jobs_feedback"><span>Give feedback about this role</span><br>
+
+
+</dd><dd class="govuk-summary-list__actions"><ul class="govuk-summary-list__actions-list"><li class="govuk-summary-list__actions-list-item"><a class="govuk-link" data-method="post" href="#">Relist<span class="govuk-visually-hidden"> for Teaching Assistant</span></a></li><li class="govuk-summary-list__actions-list-item">
+<a class="govuk-link" data-method="post" href="#">Copy<span class="govuk-visually-hidden"> for Teaching Assistant</span></a></li></ul></dd></div>
+
+
+<div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"><a class="govuk-link" href="#">Maths Teacher</a></dt><dd class="govuk-summary-list__value"><a class="govuk-link govuk-link--no-visited-state" href="#"><span>View 2 applicants</span><span class="govuk-visually-hidden"> for Maths Teacher</span></a><dl><dt>Date listed:</dt>10 September 2024</dl><dl><dt>Listing ended:</dt>31 December 2024 at 11:59pm</dl>
+<a class="govuk-link govuk-link--no-visited-state" href="#"><span>Give feedback about this role</span><br>
+</dd><dd class="govuk-summary-list__actions"><ul class="govuk-summary-list__actions-list"><li class="govuk-summary-list__actions-list-item"><a class="govuk-link" data-method="post" href="/organisation/jobs/774cdc72-0adf-4a43-8041-2ee5df52a78c/relist">Relist<span class="govuk-visually-hidden"> for Maths Teacher</span></a></li><li class="govuk-summary-list__actions-list-item"><a class="govuk-link" data-method="post" href="/organisation/jobs/774cdc72-0adf-4a43-8041-2ee5df52a78c/copy">Copy<span class="govuk-visually-hidden"> for Maths Teacher</span></a></li></ul></dd></div><div class="govuk-summary-list__row">
+
+<dt class="govuk-summary-list__key"><a class="govuk-link" href="#">Music Teacher</a></dt><dd class="govuk-summary-list__value"><a class="govuk-link govuk-link--no-visited-state" href="#"><span>View 2 applicants</span><span class="govuk-visually-hidden"> for Music Teacher</span></a><dl><dt>Date listed:</dt> 6 September 2024</dl><dl><dt>Listing ended:</dt>16 December 2024 at 8am</dl><a class="govuk-link govuk-link--no-visited-state" href="#"><span>Give feedback about this role</span><br>
+</dd><dd class="govuk-summary-list__actions"><ul class="govuk-summary-list__actions-list"><li class="govuk-summary-list__actions-list-item"><a class="govuk-link" data-method="post" href="#">Relist<span class="govuk-visually-hidden"> for Music Teacher</span></a></li><li class="govuk-summary-list__actions-list-item"><a class="govuk-link" data-method="post" href="/organisation/jobs/03bcdec6-d0fa-4447-958d-3209c02d177f/copy">Copy<span class="govuk-visually-hidden"> for Music Teacher</span></a></li></ul></dd></div>
+<div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"><a class="govuk-link" href="#">Science teacher</a></dt><dd class="govuk-summary-list__value"><dl><dt>Date listed:</dt>22 November 2024</dl><dl><dt>Listing ended:</dt>30 November 2024 at 8am</dl><a class="govuk-link govuk-link--no-visited-state" href="#"><span>Give feedback about this role</span><br>
+</dd><dd class="govuk-summary-list__actions"><ul class="govuk-summary-list__actions-list"><li class="govuk-summary-list__actions-list-item"><a class="govuk-link" data-method="post" href="#">Relist<span class="govuk-visually-hidden"> for science teacher</span></a></li><li class="govuk-summary-list__actions-list-item"><a class="govuk-link" data-method="post" href="#">Copy<span class="govuk-visually-hidden">Science teacher</span></a></li></ul></dd></div>
+
+<div class="govuk-summary-list__row"><dt class="govuk-summary-list__key"><a class="govuk-link" href="#">IT Technician</a></dt><dd class="govuk-summary-list__value"><a class="govuk-link govuk-link--no-visited-state" href="#"><span>View 2 applicants</span><span class="govuk-visually-hidden"> for IT Technician</span></a><dl><dt>Date listed:</dt>28 March 2024</dl><dl><dt>Listing ended:</dt>19 November 2024 at 8am</dl><a class="govuk-link govuk-link--no-visited-state" href="#"><span>Give feedback about this role</span><br>
+</dd><dd class="govuk-summary-list__actions"><ul class="govuk-summary-list__actions-list"><li class="govuk-summary-list__actions-list-item"><a class="govuk-link" data-method="post" href="/organisation/jobs/4bc40699-e7b0-4a52-ada3-06b5e922297f/relist">Relist<span class="govuk-visually-hidden"> for IT Technician</span></a></li><li class="govuk-summary-list__actions-list-item"><a class="govuk-link" data-method="post" href="/organisation/jobs/4bc40699-e7b0-4a52-ada3-06b5e922297f/copy">Copy<span class="govuk-visually-hidden"> for IT Technician</span></a></li></ul></dd></div></div><div class="govuk-grid-column-one-quarter"><div class="help-guide--desktop"><h2 class="govuk-heading-m">Accept job applications using our online form</h2><a class="govuk-link govuk-link--no-visited-state" href="/get-help-hiring/how-to-create-job-listings-and-accept-applications/accepting-job-applications-on-teaching-vacancies">Find out how to use the Teaching Vacancies application form</a>.</div></div></div>
+{% endblock %}

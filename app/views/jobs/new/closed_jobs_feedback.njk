@@ -1,0 +1,26 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+{% block content %}
+<div class="govuk-grid-row"><div class="govuk-grid-column-three-quarters">
+<span class="govuk-caption-xl">Jobs awaiting feedback</span>
+<h1 class="govuk-heading-xl">Teaching Assistant</h1>
+<p> 
+Please tell us if you filled these expired jobs through Teaching Vacancies, and whether you listed them elsewhere. Your feedback will help us improve the service. </p>
+</div>
+<div class="govuk-grid-column-two-thirds"><div class="govuk-form-group"><label for="publishers-vacancy-statistics-form-hired-status-field" class="govuk-label">Job filled on Teaching Vacancies?</label><select id="publishers-vacancy-statistics-form-hired-status-field" class="govuk-select govuk-!-width-full" form="37bad342-4a1e-4738-9e31-a331710638f3" name="publishers_vacancy_statistics_form[hired_status]"><option value="">--</option>
+<option value="hired_tvs">Yes</option>
+<option value="hired_other_free">No, we hired through another free listing</option>
+<option value="hired_paid">No, we hired through a paid service</option>
+<option value="hired_no_listing">No, we hired, but not through a listing or service</option>
+<option value="not_filled_ongoing">No, recruitment is ongoing</option>
+<option value="not_filled_not_looking">No, we're no longer recruiting for the job</option>
+<option value="hired_dont_know">I don't know</option></select></div><div class="govuk-form-group"><label for="publishers-vacancy-statistics-form-listed-elsewhere-field" class="govuk-label">Listed elsewhere?</label><select id="publishers-vacancy-statistics-form-listed-elsewhere-field" class="govuk-select govuk-!-width-full" form="37bad342-4a1e-4738-9e31-a331710638f3" name="publishers_vacancy_statistics_form[listed_elsewhere]"><option value="">--</option>
+<option value="listed_paid">Yes, on one or more paid services</option>
+<option value="listed_free">Yes, but only for free</option>
+<option value="listed_mix">Yes, a mix of paid and free listings</option>
+<option value="not_listed">No</option>
+<option value="listed_dont_know">I don't know</option></select></div><button type="submit" formnovalidate="formnovalidate" class="govuk-button govuk-!-margin-top-0" data-module="govuk-button" data-prevent-double-click="true" form="37bad342-4a1e-4738-9e31-a331710638f3" data-govuk-button-init="">Submit<span class="govuk-visually-hidden">feedback for Teaching Assistant</span></button></div>
+{% endblock %}
