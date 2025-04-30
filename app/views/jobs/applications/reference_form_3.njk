@@ -27,47 +27,52 @@
                         <label class="govuk-label govuk-label--s">
                             Is the applicant currently under investigation for any matter (incl. conduct, capability, or performance) under any of your employment policies?
                         </label>
-                        <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                        <div class="govuk-radios " data-module="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="changedName1" name="changedName1" type="radio" value="yes" onclick="toggleReasonBox1()">
+                                <input class="govuk-radios__input" id="changedName1" name="changedName1" type="radio" value="yes" data-aria-controls="conditional-contact">
                                 <label class="govuk-label govuk-radios__label" for="changedName1">
                                     Yes
                                 </label>
                             </div>
+                            <!-- Reason Box (Appears when "Yes" is selected for question 1) -->
+                                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                                <div class="govuk-form-group"> 
+                                <p class="govuk-body">You must ensure this has been reported to the Teaching Regulation Agency (TRA)</p>
+                            <label class="govuk-label" for="free-text">
+                            As you have chosen yes, please give details (this may include warnings that could have been imposed, if the individual had not left before an investigation had concluded)
+                            </label>
+                            <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                            </div>
+                        </div>
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="changedName2" name="changedName1" type="radio" value="no" onclick="toggleReasonBox1()">
                                 <label class="govuk-label govuk-radios__label" for="changedName2">
                                     No
                                 </label>
                             </div>
-                        </div>
-
-                        <!-- Reason Box (Appears when "Yes" is selected for question 1) -->
-                        <div id="reason-box1" class="govuk-form-group" style="display: none;">
-                            <label class="govuk-label" for="more-detail1">
-                                As you have chosen yes, please give details (this may include warnings that could have been imposed, if the individual had not left before an investigation had concluded)
-                            </label>
-                            <textarea class="govuk-textarea" id="more-detail1" name="moreDetail1" rows="5" aria-describedby="more-detail-hint1"></textarea>
-                        </div>
-                        <script>
-                            function toggleReasonBox1() {
-                                var yesSelected = document.getElementById("changedName1").checked;
-                                var reasonBox1 = document.getElementById("reason-box1");
-                                reasonBox1.style.display = yesSelected ? "block" : "none"; // Show when Yes is selected
-                            }
-                        </script>
+                        </div>               
 <br>
                         <!-- Question 3 (Warnings) -->
                         <label class="govuk-label govuk-label--s">
                             Are there any warnings on the applicant’s record (Disciplinary, Performance, or Absence related) that have not been disposed of?
                         </label>
-                        <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                        <div class="govuk-radios " data-module="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="changedName3" name="changedName3" type="radio" value="yes" onclick="toggleReasonBox2()">
+                                <input class="govuk-radios__input" id="changedName3" name="changedName3" type="radio" value="yes" data-aria-controls="conditional-contact2">
                                 <label class="govuk-label govuk-radios__label" for="changedName3">
                                     Yes
                                 </label>
                             </div>
+                                 <!-- Reason Box (Appears when "Yes" is selected for question 3) -->
+                                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact2">
+                                <div class="govuk-form-group"> 
+                                <p class="govuk-body">You must ensure this has been reported to the Teaching Regulation Agency (TRA)</p>
+                            <label class="govuk-label" for="free-text">
+                            As you have chosen yes, please give details why
+                            </label>
+                            <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                            </div>
+                        </div>
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="changedName4" name="changedName3" type="radio" value="no" onclick="toggleReasonBox2()">
                                 <label class="govuk-label govuk-radios__label" for="changedName4">
@@ -75,33 +80,24 @@
                                 </label>
                             </div>
                         </div>
-
-                        <!-- Reason Box (Appears when "Yes" is selected for question 3) -->
-                        <div id="reason-box2" class="govuk-form-group" style="display: none;">
-                            <label class="govuk-label" for="more-detail2">
-                                As you have chosen yes, please give details why
-                            </label>
-                            <textarea class="govuk-textarea" id="more-detail2" name="moreDetail2" rows="5" aria-describedby="more-detail-hint2"></textarea>
-                        </div>
-                        <script>
-                            function toggleReasonBox2() {
-                                var yesSelected = document.getElementById("changedName3").checked;
-                                var reasonBox2 = document.getElementById("reason-box2");
-                                reasonBox2.style.display = yesSelected ? "block" : "none"; // Show when Yes is selected
-                            }
-                        </script>
-<br>
+</br>
                         <!-- Question 4 (Safeguarding) -->
                         <label class="govuk-label govuk-label--s">
                             Are you aware of any allegations or concerns that have been raised (whether formal or informal) about the applicant that relate to any safeguarding issues/ or the applicant’s behaviour towards adults at risk and/children?
                         </label>
-                        <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                        <div class="govuk-radios govuk-" data-module="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="changedName5" name="changedName5" type="radio" value="yes">
+                                <input class="govuk-radios__input" id="changedName5" name="changedName5" type="radio" value="yes" data-aria-controls="conditional-contact3">
                                 <label class="govuk-label govuk-radios__label" for="changedName5">
                                     Yes
                                 </label>
                             </div>
+                              <!-- Reason Box (Appears when "Yes" is selected for question4) -->
+                                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact3">
+                                <div class="govuk-form-group"> 
+                                <p class="govuk-body">You must ensure this has been reported to the Teaching Regulation Agency (TRA)</p>
+                            </div>
+                        </div>
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="changedName-2" name="changedName5" type="radio" value="no">
                                 <label class="govuk-label govuk-radios__label" for="changedName-2">
@@ -110,45 +106,48 @@
                             </div>
                         </div>
 <br>
-                        <!-- Question 5 (Fit and Proper) -->
+
+                         <!-- Question 5 (Fit and Proper) -->
                         <label class="govuk-label govuk-label--s">
                             If the individual is employed in a position where they are subject to a fit and proper persons check, have they been investigated for, or been found not fit to practice?
                         </label>
-                        <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                        <div class="govuk-radios gove" data-module="govuk-radios">
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="fitAndProperYes" name="fitAndProper" type="radio" value="yes" onclick="toggleDatesDetailsBox()">
+                                <input class="govuk-radios__input" id="fitAndProperYes" name="fitAndProper" type="radio" value="yes" data-aria-controls="conditional-contact4">
                                 <label class="govuk-label govuk-radios__label" for="fitAndProperYes">
                                     Yes
                                 </label>
                             </div>
+                                <!-- Reason Box (Appears when "Yes" is selected for question5) -->
+                                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact4">
+                                <div class="govuk-form-group"> 
+                                <p class="govuk-body">You must ensure this has been reported to the Teaching Regulation Agency (TRA)</p>
+                            </div>
+                        </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="fitAndProperNo" name="fitAndProper" type="radio" value="no" onclick="toggleDatesDetailsBox()">
+                                <input class="govuk-radios__input" id="fitAndProperNo" name="fitAndProper" type="radio" value="no" data-aria-controls="conditional-contact5">
                                 <label class="govuk-label govuk-radios__label" for="fitAndProperNo">
                                     No
                                 </label>
                             </div>
+                             <!-- Dates and Details Box (Appears when "No" is selected) -->
+                         <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact5">
+                                <div class="govuk-form-group"> 
+                            <label class="govuk-label" for="free-text">
+                           If no, please give dates and details
+                            </label>
+                            <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                            </div>
+                        </div>
                         </div>
 
-                        <!-- Dates and Details Box (Appears when "No" is selected) -->
-                        <div id="dates-details-box" class="govuk-form-group" style="display: none;">
-                            <label class="govuk-label" for="dates-details">
-                                If no, please give dates and details
-                            </label>
-                            <textarea class="govuk-textarea" id="dates-details" name="datesDetails" rows="5" aria-describedby="dates-details-hint"></textarea>
-                        </div>
-                        <script>
-                            function toggleDatesDetailsBox() {
-                                var noSelected = document.getElementById("fitAndProperNo").checked;
-                                var datesDetailsBox = document.getElementById("dates-details-box");
-                                datesDetailsBox.style.display = noSelected ? "block" : "none"; // Show when No is selected
-                            }
-                        </script>
+                       
 <br>
                         <!-- Question 6 (Suitability) -->
                         <label class="govuk-label govuk-label--s">
                             To the best of your knowledge and with reference to the attached job description and person specification, are you satisfied that the applicant has the ability and is suitable to undertake this role?
                         </label>
-                        <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                        <div class="govuk-radios govuk" data-module="govuk-radios">
                             <div class="govuk-radios__item">
                                 <input class="govuk-radios__input" id="abilityYes" name="ability" type="radio" value="yes" onclick="toggleDatesDetailsBoxUnique()">
                                 <label class="govuk-label govuk-radios__label" for="abilityYes">
@@ -156,27 +155,24 @@
                                 </label>
                             </div>
                             <div class="govuk-radios__item">
-                                <input class="govuk-radios__input" id="abilityNo" name="ability" type="radio" value="no" onclick="toggleDatesDetailsBoxUnique()">
+                                <input class="govuk-radios__input" id="abilityNo" name="ability" type="radio" value="no" data-aria-controls="conditional-contact6">
                                 <label class="govuk-label govuk-radios__label" for="abilityNo">
                                     No
                                 </label>
                             </div>
-                        </div>
-
-                        <!-- Dates and Details Box (Appears when "No" is selected) -->
-                        <div id="dates-details-box-unique" class="govuk-form-group" style="display: none;">
-                            <label class="govuk-label" for="dates-details">
-                                If no, please give specific reasons for your concerns
+                             <!-- Dates and Details Box (Appears when "No" is selected) -->
+                              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact6">
+                                <div class="govuk-form-group"> 
+                            <label class="govuk-label" for="free-text">
+                          If no, please give specific reasons for your concerns
                             </label>
-                            <textarea class="govuk-textarea" id="dates-details" name="datesDetails" rows="5" aria-describedby="dates-details-hint"></textarea>
+                            <textarea class="govuk-textarea" id="more-detail" name="moreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+                            </div>
                         </div>
-                        <script>
-                            function toggleDatesDetailsBoxUnique() {
-                                var noSelected = document.getElementById("abilityNo").checked;
-                                var detailsBoxUnique = document.getElementById("dates-details-box-unique");
-                                detailsBoxUnique.style.display = noSelected ? "block" : "none"; // Show when No is selected
-                            }
-                        </script>
+                        </div>
+                    
+    
+                       
 <br>
 <br>
 
