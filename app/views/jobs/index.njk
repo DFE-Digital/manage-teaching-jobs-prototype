@@ -1,124 +1,103 @@
-
 {% extends "layout.njk" %}
 
-{% set title = 'Job listings (' + (user.jobs.length) +')' %}
-
+{% set title = 'Active Jobs (' + (user.jobs.length) + ')' %}
 {% set primaryNavId = 'jobs' %}
 
 {% block content %}
-  {{appPageHeader({
-    heading: {
-      text: title,
-      classes: 'govuk-heading-l'
-    },
-    items: [{
-      text: 'Create job listing',
-      href: '/jobs/new'
-    }]
-  })}}
+  <div class="govuk-width-container">
+  <span class="govuk-caption-xl">
+        Example school
+      </span>
+    {{ appPageHeader({
+      heading: {
+        text: title,
+        classes: 'govuk-heading-l'
+      },
+      items: [{
+        text: 'Create a job listing',
+        href: '/jobs/new'
+      }]
+    }) }}
 
+    <nav class="app-sub-navigation govuk-!-margin-top-6 govuk-!-margin-bottom-2" aria-label="Application menu">
+      <ul class="app-sub-navigation__list">
+        <li class="app-sub-navigation__item">
+          <a class="app-sub-navigation__link" aria-current="page" href="">Active jobs</a>
+        </li>
+        <li class="app-sub-navigation__item">
+          <a class="app-sub-navigation__link" href="">Draft jobs</a>
+        </li>
+        <li class="app-sub-navigation__item">
+          <a class="app-sub-navigation__link" href="">Scheduled jobs</a>
+        </li>
+        <li class="app-sub-navigation__item">
+          <a class="app-sub-navigation__link" href="">Closed jobs</a>
+        </li>
+        <li class="app-sub-navigation__item">
+          <a class="app-sub-navigation__link" href="">Jobs awaiting feedback</a>
+        </li>
+      </ul>
+    </nav>
 
-  <div class="app-filter-layout">
-    <div class="app-filter-layout__filter">
-      {% include "includes/jobs-filter-panel.njk" %}
-    </div>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
 
-    <div class="app-filter-layout__content">
-      {# {% include "includes/jobs-search-form.njk" %} #}
+    <ul class="sort-component__list govuk-!-margin-bottom-1">
+      <li class="sort-component__list-item govuk-body">
+        Closing date (soonest)
+      </li>
+      <li class="sort-component__list-item">
+        <a class="govuk-link" href="">
+          <span class="govuk-visually-hidden">Sort by </span>Job title (a to z)
+        </a>
+      </li>
+    </ul>
 
-      <div class="app-action-bar">
-        <div class="app-action-bar__filter"></div>
-      </div>
-
-      <div class="app-job-listings">
-
-        {% if  data['createJob']['role'] and data['createJob']['title'] %}
-
-        <div class="app-job-listings__job">
-          <div class="app-job-listings__job-row">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters app-job-listings govuk-!-margin-bottom-9">
+    {% for job in user.jobs %}
+      <div class="app-job-listings__job">
+        <div class="app-job-listings__job-row">
+          <div class="app-job-listings__title">
             <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
-              <a href="/jobs/example">{{data['createJob']['title']}}</a>
+              <a href="/jobs/{{ job.id }}">{{ job.title }}</a>
             </h2>
-              {{govukTag({
-                text: "ACTIVE",
-                classes: "govuk-tag--green"
-              })}}
           </div>
-          <div class="app-job-listings__job-row">
-            <p class="app-job-listings__role govuk-!-margin-bottom-0">{{data['createJob']['role']}}</p>
-            <p class="app-job-listings__copy govuk-!-margin-bottom-0">
-              <a href="/jobs/new/copied">Copy</a>
+
+          <div class="app-job-listings__meta govuk-!-margin-bottom-0">
+            <p class="govuk-body-s govuk-!-margin-bottom-1">
+              <a href="">View 3 applicants</a>
+            </p>
+            <p class="govuk-body-s govuk-!-margin-bottom-0">
+              Closing date: 16 July 2025 at 8am
             </p>
           </div>
-        </div>
 
-        {% endif %}
-
-        {% for job in user.jobs %}
-        <div class="app-job-listings__job">
-          <div class="app-job-listings__job-row">
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
-              <a href="/jobs/{{job.id}}">{{job.title}}</a>
-            </h2>
-            {{ govukTag({
-              text: job.status,
-              classes: job.status | jobStatusTagClass
-            }) }}
-          </div>
-          <div class="app-job-listings__job-row">
-            <p class="app-job-listings__role govuk-!-margin-bottom-0">{{job.role}}</p>
-            <p class="app-job-listings__copy govuk-!-margin-bottom-0">
-              <a href="/jobs/new/copied">Copy</a>
-            </p>
+          <div class="app-job-listings__copy govuk-!-margin-bottom-0">
+            <a href="/jobs/new/copied">Copy job listing</a>
           </div>
         </div>
-      {% endfor %}
       </div>
+    {% endfor %}
 
-      {{ govukPagination({
-          next: {
-            href: "#"
-          },
-          items: [
-            {
-              number: 1,
-              href: "#",
-              current: true
-            },
-            {
-              number: 2,
-              href: "#"
-            },
-            {
-              number: 3,
-              href: "#"
-            }
-          ]
-        }) }}
-    </div>
+    {{ govukPagination({
+      next: { href: "#" },
+      items: [
+        { number: 1, href: "#", current: true },
+        { number: 2, href: "#" },
+        { number: 3, href: "#" }
+      ]
+    }) }}
   </div>
 
-{% endblock %}
+  <div class="govuk-grid-column-one-quarter">
+    <div class="help-guide--desktop">
+      <h2 class="govuk-heading-m">Accept job applications using our online form</h2>
+      <a class="govuk-link govuk-link--no-visited-state" href="/get-help-hiring/how-to-create-job-listings-and-accept-applications/accepting-job-applications-on-teaching-vacancies">
+        Find out how to use the Teaching Vacancies application form
+      </a>.
+    </div>
+  </div>
+</div>
 
-{% block pageScripts %}
-  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
-  <script>
-    new AppFrontend.FilterToggleButton({
-      bigModeMediaQuery: '(min-width: 48.063em)',
-      startHidden: false,
-      toggleButton: {
-        container: $('.app-action-bar__filter'),
-        showText: 'Show filter',
-        hideText: 'Hide filter',
-        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
-      },
-      closeButton: {
-        container: $('.app-filter__header-action'),
-        text: 'Close'
-      },
-      filter: {
-        container: $('.app-filter-layout__filter')
-      }
-    })
-  </script>
+
 {% endblock %}
