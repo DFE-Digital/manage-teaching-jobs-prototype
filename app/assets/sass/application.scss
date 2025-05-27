@@ -101,6 +101,7 @@ h1 .govuk-tag {
 
 }
 
+
 .app-job-listings {
   margin-bottom: govuk-spacing(4);
   border-top: 1px solid govuk-colour('mid-grey');
@@ -109,31 +110,54 @@ h1 .govuk-tag {
 .app-job-listings__job {
   padding: govuk-spacing(3) 0;
   border-bottom: 1px solid govuk-colour('mid-grey');
-
-  h2 {
-    max-width: 280px;
-    float: left;
-  }
-
-  .app-job-listings__job-row {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .govuk-tag {
-    float: right;
-    margin-bottom: govuk-spacing(1);
-  }
-
-  .app-job-listings__role {
-    float: left;
-  }
-
-  .app-job-listings__copy {
-    float: right;
-  }
 }
 
+.app-job-listings__job-row {
+  display: flex;
+  align-items: flex-start; /* align all items to top */
+  justify-content: space-between; /* space left-center-right */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.app-job-listings__job-row > * {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.app-job-listings__job-row h2,
+.app-job-listings__meta,
+.app-job-listings__copy {
+  margin: 0;
+  padding: 0;
+}
+
+.app-job-listings__job-row h2 {
+  max-width: 100px;
+}
+
+.app-job-listings__meta {
+  margin: 0 auto;
+  max-width: 200px;
+  text-align: left; /* left align text inside center block */
+  font-family: "GDS Transport", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  white-space: normal;
+  vertical-align: top;
+}
+
+.app-job-listings__copy {
+  margin: 0;
+  flex-shrink: 0;
+  vertical-align: top;
+}
+
+.app-job-listings__copy a {
+  vertical-align: top;
+}
 
 
 
@@ -698,6 +722,8 @@ ul.gem-c-checkboxes__list {
 
 }
 
+
+
 .sort-component nav span {
   margin-right: 5px
 }
@@ -973,4 +999,31 @@ ul.gem-c-checkboxes__list {
   margin: 0;
   font-size: 14px;
   color: #4d4d4d;
+}
+
+
+.help-guide--border-bottom {
+  border-bottom:1px solid #b1b4b6
+}
+
+.help-guide--desktop {
+  background-color: #f3f2f1;
+  padding:15px
+}
+
+@media (max-width: 48.0525em) {
+  .help-guide--desktop {
+      display:none
+  }
+}
+
+.help-guide--mobile {
+  margin-bottom: 15px;
+  padding-bottom:20px
+}
+
+@media (min-width: 48.0625em) {
+  .help-guide--mobile {
+      display:none
+  }
 }
