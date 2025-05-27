@@ -136,11 +136,6 @@
               Interviewing {% set counterNew = 2 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Interviewing' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
             </a>
           </li>
-                   <li class="govuk-tabs__list-item">
-            <a class="govuk-tabs__tab" href="#job-offered">
-              Job offered {% set counterNew = 1 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Job offered' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
-            </a>
-          </li>
         </ul>
       
         <div class="govuk-tabs__panel" id="past-day">
@@ -208,17 +203,17 @@
 
           <div class="govuk-button-group govuk-!-margin-top-5">
               <form method="post" action="#">
-                  <button type="submit" disabled class="govuk-button" data-module="govuk-button">
+                  <button type="submit" class="govuk-button" data-module="govuk-button">
                     Download selected 
                   </button>
               </form>
               <form action="tag">
-                  <button type="submit" disabled class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
                       Update application status
                   </button>
               </form>
                     <form action="tag">
-                  <button type="submit" disabled class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
                       Copy selected emails
                   </button>
               </form>
@@ -304,22 +299,22 @@
 
           <div class="govuk-button-group govuk-!-margin-top-5">
               <form method="post" action="#">
-                  <button type="submit" disabled class="govuk-button" data-module="govuk-button">
+                  <button type="submit" class="govuk-button" data-module="govuk-button">
                     Download selected 
                   </button>
               </form>
               <form action="tag">
-                  <button type="submit" disabled class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
                       Update application status
                   </button>
               </form>
               <div>
-                 <button type="submit" disabled class="copy-selected-emails govuk-button govuk-button--secondary" data-module="govuk-button" style="text-decoration:none;">
+                 <button type="submit" class="copy-selected-emails govuk-button govuk-button--secondary" data-module="govuk-button" style="text-decoration:none;">
                      Copy selected emails
                   </button>
               </div>   
               <form action="interview">
-                  <button type="submit" disabled class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
                       Invite to interview
                   </button>
               </form>      
@@ -655,131 +650,8 @@
     </div>
 
   </div>
+
 </div>
-
-<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="job-offered">
-  <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all-offered">
-    <caption class="govuk-table__caption govuk-table__caption--m">Applicants offered a job</caption>
-    <div class="govuk-inset-text">
-Downloading applicants data will generate a CSV file that includes applicant's name, phone number, email, national insurance and TRN.</div>
-    <thead class="govuk-table__head">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__header" scope="col" id="select-all">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="all">
-            <label class="govuk-label govuk-checkboxes__label" for="all">
-              <span class="govuk-visually-hidden">Select all</span>
-            </label>
-          </div>
-        </th>
-        <th class="govuk-table__header" scope="col">Name</th>
-        <th class="govuk-table__header" scope="col">Contact details</th>
-        <th class="govuk-table__header" scope="col">Offer date</th>
-        <th class="govuk-table__header" scope="col">Application status</th>
-      </tr>
-    </thead>
-    <tbody class="govuk-table__body">
-      <!-- Example applicant rows -->
-      <tr class="govuk-table__row govuk-table__row--selected">
-        <td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="jobseeker-1">
-            <label class="govuk-label govuk-checkboxes__label" for="jobseeker-1">
-              <span class="govuk-visually-hidden">Select John Doe</span>
-            </label>
-          </div>
-        </td>
-        <td class="govuk-table__cell">
-          <a class="govuk-link--no-visited-state" href="/jobs/applications/john_doe">John Doe</a>
-        </td>
-        <td class="govuk-table__cell">john.doe@example.com</td>
-        <td class="govuk-table__cell">21 May 2025</td>
-        <td class="govuk-table__cell">
-          <span class="govuk-tag govuk-tag--blue">Job offered</span>
-        </td>
-      </tr>
-      <tr class="govuk-table__row govuk-table__row--selected">
-        <td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="jobseeker-2">
-            <label class="govuk-label govuk-checkboxes__label" for="jobseeker-2">
-              <span class="govuk-visually-hidden">Select Jane Smith</span>
-            </label>
-          </div>
-        </td>
-        <td class="govuk-table__cell">
-          <a class="govuk-link--no-visited-state" href="/jobs/applications/jane_smith">Jane Smith</a>
-        </td>
-        <td class="govuk-table__cell">jane.smith@example.com</td>
-        <td class="govuk-table__cell">22 May 2025</td>
-        <td class="govuk-table__cell">
-          <span class="govuk-tag govuk-tag--blue">Job offered</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="govuk-button-group govuk-!-margin-top-5">
-    <form method="post" action="#">
-      <button type="submit" class="govuk-button" data-module="govuk-button">Download selected</button>
-    </form>
-    <form action="tag">
-      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-        Update application status
-      </button>
-    </form>
-    <div>
-      <button type="submit" class="copy-selected-emails govuk-button govuk-button--secondary" data-module="govuk-button" style="text-decoration:none;">
-        Copy selected emails
-      </button>
-    </div>
-  </div>
-
-  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-  <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all-declined">
-    <caption class="govuk-table__caption govuk-table__caption--m">Offer declined</caption>
-    <thead class="govuk-table__head">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__header" scope="col">Name</th>
-        <th class="govuk-table__header" scope="col">Contact details</th>
-        <th class="govuk-table__header" scope="col">Decline date</th>
-        <th class="govuk-table__header" scope="col">Reason</th>
-      </tr>
-    </thead>
-    <tbody class="govuk-table__body">
-      <!-- Example declined applicant -->
-      <tr class="govuk-table__row govuk-table__row--selected">
-        <td class="govuk-table__cell">Alex Johnson</td>
-        <td class="govuk-table__cell">alex.johnson@example.com</td>
-        <td class="govuk-table__cell">23 May 2025</td>
-        <td class="govuk-table__cell">Accepted another offer</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const checkboxes = document.querySelectorAll('.govuk-checkboxes__input');
-    const actionButtons = document.querySelectorAll('.govuk-button-group button');
-
-    function updateButtonState() {
-      const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-      actionButtons.forEach(button => {
-        button.disabled = !anyChecked;
-      });
-    }
-
-    checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', updateButtonState);
-    });
-
-    // Optional: run on load in case browser autofills
-    updateButtonState();
-  });
-</script>
-
 
 
 {% endblock %}
