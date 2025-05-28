@@ -112,12 +112,12 @@
           
           <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
             <a class="govuk-tabs__tab" href="#past-day">
-              All (10)
+              All (15)
             </a>
           </li>
           <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#unread">
-              New {% set counterNew = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'New' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
+              New {% set counterNew = 2 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'New' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
 
             </a>
           </li>
@@ -133,7 +133,7 @@
           </li>
            <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#interview">
-              Interviewing {% set counterNew = 2 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Interviewing' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
+              Interviewing {% set counterNew = 3 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Interviewing' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
             </a>
           </li>
                    <li class="govuk-tabs__list-item">
@@ -209,7 +209,7 @@
           <div class="govuk-button-group govuk-!-margin-top-5">
               <form method="post" action="#">
                   <button type="submit" disabled class="govuk-button" data-module="govuk-button">
-                    Download selected 
+                    Download selected applications
                   </button>
               </form>
               <form action="tag">
@@ -305,7 +305,7 @@
           <div class="govuk-button-group govuk-!-margin-top-5">
               <form method="post" action="#">
                   <button type="submit" disabled class="govuk-button" data-module="govuk-button">
-                    Download selected 
+                    Download selected applications
                   </button>
               </form>
               <form action="tag">
@@ -409,7 +409,7 @@
           <div class="govuk-button-group govuk-!-margin-top-5">
               <form method="post" action="#">
                   <button type="submit" class="govuk-button" data-module="govuk-button">
-                    Download selected 
+                    Download selected applications
                   </button>
               </form>
               <form action="tag">
@@ -548,7 +548,7 @@
          <div class="govuk-button-group govuk-!-margin-top-5">
               <form method="post" action="#">
                   <button type="submit" class="govuk-button" data-module="govuk-button">
-                    Download selected 
+                    Download selected applications
                   </button>
               </form>
               <form action="tag">
@@ -641,7 +641,7 @@
 
   <div class="govuk-button-group govuk-!-margin-top-5">
     <form method="post" action="#">
-      <button type="submit" class="govuk-button" data-module="govuk-button">Download selected</button>
+      <button type="submit" class="govuk-button" data-module="govuk-button">Download selected applications</button>
     </form>
     <form action="tag">
       <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
@@ -655,13 +655,40 @@
     </div>
 
   </div>
+
+  <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+  <!-- Interview Unsuccessful Section -->
+  <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all-unsuccessful">
+    <caption class="govuk-table__caption govuk-table__caption--m">Interview unsuccessful</caption>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="col">Name</th>
+        <th class="govuk-table__header" scope="col">Contact details</th>
+        <th class="govuk-table__header" scope="col">Feedback date</th>
+        <th class="govuk-table__header" scope="col">Reason</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      <!-- Example unsuccessful applicant -->
+      <tr class="govuk-table__row govuk-table__row--selected">
+        <td class="govuk-table__cell">
+          <a class="govuk-link--no-visited-state" href="/jobs/applications/alex_johnson">Alex Johnson</a>
+        </td>
+        <td class="govuk-table__cell">alex.johnson@example.com</td>
+        <td class="govuk-table__cell">23 May 2025</td>
+        <td class="govuk-table__cell">Did not meet role requirements</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="job-offered">
+  <div class="govuk-inset-text">
+    Downloading applicants' data will generate a CSV file that includes each applicant's name, phone number, address, National Insurance number, and TRN.
+  </div>
   <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all-offered">
     <caption class="govuk-table__caption govuk-table__caption--m">Applicants offered a job</caption>
-    <div class="govuk-inset-text">
-Downloading applicants data will generate a CSV file that includes applicant's name, phone number, email, national insurance and TRN.</div>
     <thead class="govuk-table__head">
       <tr class="govuk-table__row">
         <th class="govuk-table__header" scope="col" id="select-all">
@@ -698,30 +725,13 @@ Downloading applicants data will generate a CSV file that includes applicant's n
           <span class="govuk-tag govuk-tag--blue">Job offered</span>
         </td>
       </tr>
-      <tr class="govuk-table__row govuk-table__row--selected">
-        <td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="jobseeker-2">
-            <label class="govuk-label govuk-checkboxes__label" for="jobseeker-2">
-              <span class="govuk-visually-hidden">Select Jane Smith</span>
-            </label>
-          </div>
-        </td>
-        <td class="govuk-table__cell">
-          <a class="govuk-link--no-visited-state" href="/jobs/applications/jane_smith">Jane Smith</a>
-        </td>
-        <td class="govuk-table__cell">jane.smith@example.com</td>
-        <td class="govuk-table__cell">22 May 2025</td>
-        <td class="govuk-table__cell">
-          <span class="govuk-tag govuk-tag--blue">Job offered</span>
-        </td>
-      </tr>
+
     </tbody>
   </table>
 
   <div class="govuk-button-group govuk-!-margin-top-5">
     <form method="post" action="#">
-      <button type="submit" class="govuk-button" data-module="govuk-button">Download selected</button>
+      <button type="submit" class="govuk-button" data-module="govuk-button">Download selected applications</button>
     </form>
     <form action="tag">
       <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
@@ -733,6 +743,11 @@ Downloading applicants data will generate a CSV file that includes applicant's n
         Copy selected emails
       </button>
     </div>
+    <form action="interview">
+      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+        Download applicant's data
+      </button>
+    </form>
   </div>
 
   <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
@@ -750,8 +765,10 @@ Downloading applicants data will generate a CSV file that includes applicant's n
     <tbody class="govuk-table__body">
       <!-- Example declined applicant -->
       <tr class="govuk-table__row govuk-table__row--selected">
-        <td class="govuk-table__cell">Alex Johnson</td>
-        <td class="govuk-table__cell">alex.johnson@example.com</td>
+                <td class="govuk-table__cell">
+          <a class="govuk-link--no-visited-state" href="/jobs/applications/maye.silver">Maye Silver</a>
+        </td>
+        <td class="govuk-table__cell">maye.silver@example.com</td>
         <td class="govuk-table__cell">23 May 2025</td>
         <td class="govuk-table__cell">Accepted another offer</td>
       </tr>
