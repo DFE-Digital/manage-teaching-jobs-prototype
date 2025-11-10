@@ -138,42 +138,77 @@ $(document).ready(function () {
   const subjectInput = document.getElementById('subject');
 
   // Add an event listener for the 'input' event
-  subjectInput.addEventListener('input', function() {
-      // Show an alert with the current input value
-      const subjectField = document.getElementById('subject');
+  if (subjectInput) {
+    subjectInput.addEventListener('input', function() {
       const subjectPreview = document.getElementById('email-subject');
-      subjectPreview.textContent = subjectField.value;
-      
-  });
+      if (subjectPreview) {
+        subjectPreview.textContent = subjectInput.value;
+      }
+    });
+  }
 
   // Get the subject element
   const messageInput = document.getElementById('customise-message-1');
 
-  // Add an event listener for the 'input' event
-  messageInput.addEventListener('input', function() {
-      // Show an alert with the current input value
-      const messageField = document.getElementById('customise-message-1');
-      const messagePreview = document.getElementById('email-body');
-      messagePreview.textContent = messageField.value;
-      
-  });
+  if (messageInput) {
+
+    // Add an event listener for the 'input' event
+    messageInput.addEventListener('input', function() {
+        // Show an alert with the current input value
+        const messageField = document.getElementById('customise-message-1');
+        const messagePreview = document.getElementById('email-body');
+        messagePreview.textContent = messageField.value;
+        
+    });
+  
+  }
 
 
   // Get the checkbox and the div elements
   const checkbox = document.getElementById('save');
   const myDiv = document.getElementById('email-logo');
 
-  // Add an event listener for the 'change' event
-  checkbox.addEventListener('change', function() {
-      // Check if the checkbox is checked
-      if (checkbox.checked) {
-          // Show the div
-          myDiv.style.display = 'block';
-      } else {
-          // Hide the div
-          myDiv.style.display = 'none';
-      }
+  if (checkbox) {
+
+    // Add an event listener for the 'change' event
+    checkbox.addEventListener('change', function() {
+        // Check if the checkbox is checked
+        if (checkbox.checked) {
+            // Show the div
+            myDiv.style.display = 'block';
+        } else {
+            // Hide the div
+            myDiv.style.display = 'none';
+        }
+    });
+
+  }
+
+  //application view tabs show/hide application or interview details
+
+  const showApplicationBtn = document.getElementById('show_application');
+  const showInterviewBtn = document.getElementById('show_interview');
+  const application = document.getElementById('application');
+  const interview = document.getElementById('interview');
+
+  showApplicationBtn.addEventListener('click', (e) => {
+
+    e.preventDefault();
+    application.style.display = 'block';
+    interview.style.display = 'none';
+    showApplicationBtn.setAttribute('aria-current', 'page');
+    showInterviewBtn.removeAttribute('aria-current');
   });
+
+  showInterviewBtn.addEventListener('click', (e) => {
+
+    e.preventDefault();
+    application.style.display = 'none';
+    interview.style.display = 'block';
+    showInterviewBtn.setAttribute('aria-current', 'page');
+    showApplicationBtn.removeAttribute('aria-current');
+  });
+
 
 
 

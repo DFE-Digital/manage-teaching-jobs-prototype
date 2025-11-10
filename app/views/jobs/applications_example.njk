@@ -40,6 +40,15 @@
                 </div>
             {% endif %} 
 
+            <ul class="app-sub-navigation__list">
+                <li class="app-sub-navigation__item">
+                    <a id="show_application" class="app-sub-navigation__link" aria-current="page" href="#">Application</a>
+                </li>
+                <li class="app-sub-navigation__item">
+                    <a id="show_interview" class="app-sub-navigation__link" href="#">Pre-interview checks</a>
+                </li>
+            </ul>
+
             <div class="govuk-button-group govuk-!-margin-top-5 govuk-!-margin-bottom-6">
                 <form method="post" action="#">
                     <button type="submit" class="govuk-button" data-module="govuk-button">
@@ -80,69 +89,518 @@
             </div>
 
         </div>
+
+        <div id="application">
         
-        <div class="govuk-grid-column-two-thirds">
+            <div class="govuk-grid-column-two-thirds">
 
-            
+                <h2 class="govuk-heading-m">Application sections</h2>
 
-            <ul class="govuk-list review-component__sections">
-                <li><div id="city"></div><div id="country"></div><div id="email_address"></div><div id="first_name"></div><div id="last_name"></div><div id="national_insurance_number"></div><div id="phone_number"></div><div id="previous_names"></div><div id="postcode"></div><div id="street_address"></div><div id="right_to_work_in_uk"></div><div id="teacher_reference_number"></div><div id="personal_details" class="review-component__section"><div class="review-component__section__heading"><div class="review-component__section__heading__title"><h3 class="govuk-heading-m">Personal details</h3></div><div class="review-component__section__heading__status"></div></div><div class="review-component__section__body"><dl class="govuk-summary-list"><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">First name</dt><dd class="govuk-summary-list__value">{{jobseeker.profile.firstName}}</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Last name</dt><dd class="govuk-summary-list__value">{{jobseeker.profile.lastName}}</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Your address</dt><dd class="govuk-summary-list__value"><div>10 street</div><div>York</div><div>yyo323yr</div><div>United Kingdom</div></dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Phone number</dt><dd class="govuk-summary-list__value">+447927223601</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Email address</dt><dd class="govuk-summary-list__value">{{jobseeker.emailAddress}}</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Do you need Skilled Worker visa sponsorship?</dt><dd class="govuk-summary-list__value">No, I already have the right to work in the UK</dd></div></dl></div></div></li><li><div id="qualified_teacher_status"></div><div id="qualified_teacher_status_year"></div><div id="qualified_teacher_status_details"></div><div id="statutory_induction_complete"></div><div id="professional_status" class="review-component__section"><div class="review-component__section__heading"><div class="review-component__section__heading__title"><h3 class="govuk-heading-m">Professional status</h3></div><div class="review-component__section__heading__status"></div></div><div class="review-component__section__body"><dl class="govuk-summary-list"><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Do you have qualified teacher status (QTS)?</dt><dd class="govuk-summary-list__value"><span class="govuk-body" id="qualified_teacher_status">Yes, awarded in </span><span class="govuk-body" id="qualified_teacher_status_year">2015</span></dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Have you completed your statutory induction period?</dt><dd class="govuk-summary-list__value">Yes</dd></div></dl></div></div></li><li><div id="qualifications_section_completed"></div><div id="qualifications" class="review-component__section"><div class="review-component__section__heading"><div class="review-component__section__heading__title"><h3 class="govuk-heading-m">Qualifications</h3></div><div class="review-component__section__heading__status"></div></div><div class="review-component__section__body"><h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">Postgraduate degree</h3><div class="govuk-!-margin-bottom-6"><p class="govuk-!-margin-bottom-1"><span class="govuk-!-display-inline-block">PGCE</span><span class="govuk-!-display-inline-block govuk-!-margin-left-1">(2:1)</span></p><p class="govuk-caption-m"><span class="govuk-!-display-inline-block">University</span><span class="govuk-!-display-inline-block">, 2015</span></p></div><h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">Undergraduate degree</h3><div class="govuk-!-margin-bottom-6"><p class="govuk-!-margin-bottom-1"><span class="govuk-!-display-inline-block">History</span><span class="govuk-!-display-inline-block govuk-!-margin-left-1">(2:1)</span></p><p class="govuk-caption-m"><span class="govuk-!-display-inline-block">University</span><span class="govuk-!-display-inline-block">, 2012</span></p></div><h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">A Levels</h3><div class="govuk-!-margin-bottom-6"><p class="govuk-!-margin-bottom-1">English (A)</p><p class="govuk-caption-m"><span class="govuk-!-display-inline-block">School</span><span class="govuk-!-display-inline-block">, 2009</span></p></div><h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">GCSEs</h3><div class="govuk-!-margin-bottom-6"><p class="govuk-!-margin-bottom-1">English (A)</p><p class="govuk-caption-m"><span class="govuk-!-display-inline-block">School</span><span class="govuk-!-display-inline-block">, 2007</span></p></div></div></div></li><li><div id="training_and_cpds_section_completed"></div><div id="training_and_cpds" class="review-component__section"><div class="review-component__section__heading"><div class="review-component__section__heading__title"><h3 class="govuk-heading-m">Training and continuing professional development (CPD)</h3></div><div class="review-component__section__heading__status"></div></div><div class="review-component__section__body"><p class="govuk-body">The candidate has not included any training or CPD.</p></div></div></li><li><div id="employment_history_section_completed"></div><div id="unexplained_employment_gaps_present"></div><div id="employment_history" class="review-component__section"><div class="review-component__section__heading"><div class="review-component__section__heading__title"><h3 class="govuk-heading-m">Work history</h3></div><div class="review-component__section__heading__status"></div></div><div class="review-component__section__body"><dl class="govuk-summary-list" id="teacher-0"><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">teacher</dt></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">School or other organisation</dt><dd class="govuk-summary-list__value">school 2</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Main duties</dt><dd class="govuk-summary-list__value">teaching</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Start date</dt><dd class="govuk-summary-list__value">January 2016</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Is this your current role?</dt><dd class="govuk-summary-list__value">Yes</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Reason for leaving role</dt><dd class="govuk-summary-list__value">na</dd></div></dl></div></div></li><li><div id="personal_statement"></div><div id="personal_statement" class="review-component__section"><div class="review-component__section__heading"><div class="review-component__section__heading__title"><h3 class="govuk-heading-m">Personal statement</h3></div><div class="review-component__section__heading__status"></div></div><div class="review-component__section__body"><div class="govuk-body review-component__section__body--border"><p>I am a teacher</p></div></div></div></li><li><div id="references" class="review-component__section"><div class="review-component__section__heading"><div class="review-component__section__heading__title"><h3 class="govuk-heading-m">References</h3></div><div class="review-component__section__heading__status"></div></div><div class="review-component__section__body"><dl class="govuk-summary-list" id="Joe Gibb"><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Joe Gibb</dt></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Job title</dt><dd class="govuk-summary-list__value">TEACHER</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Organisation</dt><dd class="govuk-summary-list__value">School</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Relationship to applicant</dt><dd class="govuk-summary-list__value">MANAGER</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Email address</dt><dd class="govuk-summary-list__value">joe.gibb@education.gov.uk</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Phone number</dt><dd class="govuk-summary-list__value">07927223600</dd></div></dl><dl class="govuk-summary-list" id="Joe Gibb"><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Joe Gibb</dt></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Job title</dt><dd class="govuk-summary-list__value">TEACHER</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Organisation</dt><dd class="govuk-summary-list__value">School</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Relationship to applicant</dt><dd class="govuk-summary-list__value">MANAGER</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Email address</dt><dd class="govuk-summary-list__value">joe.gibb@education.gov.uk</dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Phone number</dt><dd class="govuk-summary-list__value">07927223600</dd></div></dl></div></div></li><li><div id="support_needed"></div><div id="support_needed_details"></div><div id="ask_for_support" class="review-component__section"><div class="review-component__section__heading"><div class="review-component__section__heading__title"><h3 class="govuk-heading-m">Ask for support if you have a disability or other needs</h3></div><div class="review-component__section__heading__status"></div></div><div class="review-component__section__body"><dl class="govuk-summary-list"><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Do you want to ask for support so that you can attend an interview?</dt><dd class="govuk-summary-list__value"><div id="support_needed">No</div></dd></div></dl></div></div></li><li><div id="close_relationships"></div><div id="close_relationships_details"></div><div id="right_to_work_in_uk"></div><div id="safeguarding_issue"></div><div id="safeguarding_issue_details"></div><div id="declarations" class="review-component__section"><div class="review-component__section__heading"><div class="review-component__section__heading__title"><h3 class="govuk-heading-m">Declarations</h3></div><div class="review-component__section__heading__status"></div></div><div class="review-component__section__body"><dl class="govuk-summary-list"><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Do you want to declare any safeguarding issues, such as a criminal record or professional misconduct?</dt><dd class="govuk-summary-list__value"><div class="govuk-body" id="safeguarding_issue">No</div></dd></div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions"><dt class="govuk-summary-list__key">Do you have any family or close relationship with people within Bexleyheath Academy?</dt><dd class="govuk-summary-list__value"><div class="govuk-body" id="close_relationships">No</div></dd></div></dl></div></div></li></ul>
-            
-        </div>
+                <ul class="govuk-list" style="font-size: 1rem; padding-left:25px;">
+                    <li class="navigation-list-component__anchor"><a class="govuk-link" href="#personal_details">Personal details</a></li>
+                    <li class="navigation-list-component__anchor"><a class="govuk-link" href="#professional_status">Professional status</a></li>
+                    <li class="navigation-list-component__anchor"><a class="govuk-link" href="#qualifications">Qualifications</a></li>
+                    <li class="navigation-list-component__anchor"><a class="govuk-link" href="#training_and_cpds">Training and continuing professional development (CPD)</a></li>
+                    <li class="navigation-list-component__anchor"><a class="govuk-link" href="#professional_body_memberships">Professional body memberships (optional)</a></li>
+                    <li class="navigation-list-component__anchor"><a class="govuk-link" href="#employment_history">Work history</a></li>
+                    <li class="navigation-list-component__anchor"><a class="govuk-link" href="#personal_statement">Personal statement</a></li>
+                    <li class="navigation-list-component__anchor"><a class="govuk-link" href="#referees">References</a></li>
+                    <li class="navigation-list-component__anchor"><a class="govuk-link" href="#ask_for_support">Ask for support if you have a disability or other needs</a></li>
+                    <li class="navigation-list-component__anchor"><a class="govuk-link" href="#declarations">Declarations</a></li>
+                </ul>
 
-        <div class="govuk-grid-column-one-third">
-
-            
-            <div class="govuk-summary-card">
-                <div class="govuk-summary-card__title-wrapper">
-                    <h2 class="govuk-summary-card__title">
-                        Notes
-                    </h2>
-                    <ul class="govuk-summary-card__actions">
-                        <li class="govuk-summary-card__action">
-                            <a class="govuk-link govuk-link--no-visited-state" href="#">Edit notes</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-                <div class="govuk-summary-card__content">
-
-                    <p class="govuk-!-margin-bottom-0">
-                        Great work experience, I think we should shortlist
-                    </p>
-                    <p class="govuk-body-s govuk-!-margin-top-1">
-                        By Bob Smith, 2024-06-26 12:04:49 +0100
-                    </p>
-
-                    <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
-
-                    <p class="govuk-!-margin-bottom-0">
-                       Also like the personal statement
-                    </p>
-                    <p class="govuk-body-s govuk-!-margin-top-1">
-                        By Rachel Brown, 2024-06-28 16:32:22 +0100
-                    </p>
-
-                    <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
-
-
-                    <div class="govuk-form-group govuk-character-count govuk-!-margin-top-3" data-module="govuk-character-count" data-maxlength="150">
-                        <label class="govuk-label" for="label-as-page-heading">
-                            Add a note
-                        </label>
-                        <textarea class="govuk-textarea govuk-js-character-count" id="label-as-page-heading" name="labelAsPageHeading" rows="5" aria-describedby="label-as-page-heading-info"></textarea>
-                        <div id="label-as-page-heading-info" class="govuk-hint govuk-character-count__message govuk-body-s">
-                            You have 150 characters remaining
+                <div id="personal_details" class="review-component__section">
+                    <div class="review-component__section__body">
+                        <div class="govuk-summary-card">
+                            <div class="govuk-summary-card__title-wrapper">
+                                <h2 class="govuk-summary-card__title">Personal details</h2>
+                                <ul class="govuk-summary-card__actions">
+                                <li class="govuk-summary-card__action"><span class="govuk-visually-hidden"> (Personal details)</span></li>
+                                </ul>
+                            </div>
+                            <div class="govuk-summary-card__content">
+                                <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">First name</dt>
+                                    <dd class="govuk-summary-list__value">{{jobseeker.profile.firstName}}</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Last name</dt>
+                                    <dd class="govuk-summary-list__value">{{jobseeker.profile.lastName}}</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Your address</dt>
+                                    <dd class="govuk-summary-list__value">
+                                        <div>10 street</div>
+                                        <div>York</div>
+                                        <div>yyo323yr</div>
+                                        <div>United Kingdom</div>
+                                    </dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Phone number</dt>
+                                    <dd class="govuk-summary-list__value">+447927223601</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Email address</dt>
+                                    <dd class="govuk-summary-list__value">{{jobseeker.emailAddress}}</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Do you need Skilled Worker visa sponsorship?</dt>
+                                    <dd class="govuk-summary-list__value">No, I already have the right to work in the UK</dd>
+                                </div>
+                                </dl>
+                            </div>
                         </div>
                     </div>
-
-                    <button type="submit" class="govuk-button" data-module="govuk-button">
-                        Save note
-                    </button>
-
                 </div>
+
+                <div id="professional_status" class="review-component__section">
+                    <div class="review-component__section__body">
+                        <div class="govuk-summary-card">
+                            <div class="govuk-summary-card__title-wrapper">
+                                <h2 class="govuk-summary-card__title">Professional status</h2>
+                                <ul class="govuk-summary-card__actions">
+                                <li class="govuk-summary-card__action"><span class="govuk-visually-hidden"> (Professional status)</span></li>
+                                </ul>
+                            </div>
+                            <div class="govuk-summary-card__content">
+                                <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Do you have qualified teacher status (QTS)?</dt>
+                                    <dd class="govuk-summary-list__value"><span class="govuk-body" id="qualified_teacher_status">Yes, awarded in </span><span class="govuk-body" id="qualified_teacher_status_year">1990</span></dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Teacher reference number (TRN)</dt>
+                                    <dd class="govuk-summary-list__value">1234567</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Have you completed your induction period?</dt>
+                                    <dd class="govuk-summary-list__value">Yes</dd>
+                                </div>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="qualifications" class="review-component__section">
+                    <div class="review-component__section__body">
+                        <div class="govuk-summary-card">
+                            <div class="govuk-summary-card__title-wrapper">
+                                <h2 class="govuk-summary-card__title">Qualifications</h2>
+                                <ul class="govuk-summary-card__actions">
+                                <li class="govuk-summary-card__action"><span class="govuk-visually-hidden"> (Qualifications)</span></li>
+                                </ul>
+                            </div>
+                            <div class="govuk-summary-card__content">
+                                <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">Postgraduate qualification</h3>
+                                <div class="govuk-!-margin-bottom-6">
+                                <p class="govuk-!-margin-bottom-1"><span class="govuk-!-display-inline-block">Computer Science</span><span class="govuk-!-display-inline-block govuk-!-margin-left-1">- 2.1</span><span class="govuk-!-display-inline-block govuk-!-margin-left-1"> ()</span></p>
+                                <p class="govuk-caption-m"><span class="govuk-!-display-inline-block">Marblewald Technical College</span><span class="govuk-!-display-inline-block">, April 1991</span></p>
+                                </div>
+                                <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">Undergraduate degree</h3>
+                                <div class="govuk-!-margin-bottom-6">
+                                <p class="govuk-!-margin-bottom-1"><span class="govuk-!-display-inline-block">Criminology</span><span class="govuk-!-display-inline-block govuk-!-margin-left-1"> ()</span><span class="govuk-!-display-inline-block govuk-!-margin-left-1">(not finished yet stopped due to illness)</span></p>
+                                <p class="govuk-caption-m"><span class="govuk-!-display-inline-block">Marblewald TAFE</span></p>
+                                </div>
+                                <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">A Levels</h3>
+                                <div class="govuk-!-margin-bottom-6">
+                                <p class="govuk-!-margin-bottom-1">Creative Arts – A, Creative Arts – E, Biomedical Science – F, Medicine – D, Design – F</p>
+                                <p class="govuk-caption-m"><span class="govuk-!-display-inline-block">Ironbarrow High School</span><span class="govuk-!-display-inline-block">, September 2011</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <ul class="govuk-list review-component__sections">
+                   
+                   
+                    <li>
+                        <div id="training_and_cpds_section_completed"></div>
+                        <div id="training_and_cpds" class="review-component__section">
+                            <div class="review-component__section__heading">
+                                <div class="review-component__section__heading__title">
+                                <h3 class="govuk-heading-m">Training and continuing professional development (CPD)</h3>
+                                </div>
+                                <div class="review-component__section__heading__status"></div>
+                            </div>
+                            <div class="review-component__section__body">
+                                <p class="govuk-body">The candidate has not included any training or CPD.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="employment_history_section_completed"></div>
+                        <div id="unexplained_employment_gaps_present"></div>
+                        <div id="employment_history" class="review-component__section">
+                            <div class="review-component__section__heading">
+                                <div class="review-component__section__heading__title">
+                                <h3 class="govuk-heading-m">Work history</h3>
+                                </div>
+                                <div class="review-component__section__heading__status"></div>
+                            </div>
+                            <div class="review-component__section__body">
+                                <dl class="govuk-summary-list" id="teacher-0">
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">teacher</dt>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">School or other organisation</dt>
+                                    <dd class="govuk-summary-list__value">school 2</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Main duties</dt>
+                                    <dd class="govuk-summary-list__value">teaching</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Start date</dt>
+                                    <dd class="govuk-summary-list__value">January 2016</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Is this your current role?</dt>
+                                    <dd class="govuk-summary-list__value">Yes</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Reason for leaving role</dt>
+                                    <dd class="govuk-summary-list__value">na</dd>
+                                </div>
+                                </dl>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="personal_statement"></div>
+                        <div id="personal_statement" class="review-component__section">
+                            <div class="review-component__section__heading">
+                                <div class="review-component__section__heading__title">
+                                <h3 class="govuk-heading-m">Personal statement</h3>
+                                </div>
+                                <div class="review-component__section__heading__status"></div>
+                            </div>
+                            <div class="review-component__section__body">
+                                <div class="govuk-body review-component__section__body--border">
+                                <p>I am a teacher</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="references" class="review-component__section">
+                            <div class="review-component__section__heading">
+                                <div class="review-component__section__heading__title">
+                                <h3 class="govuk-heading-m">References</h3>
+                                </div>
+                                <div class="review-component__section__heading__status"></div>
+                            </div>
+
+                            <div class="govuk-button-group govuk-!-margin-top-5 govuk-!-margin-bottom-6">
+
+                                <p>Selecting request a reference will email the applicant and give them a link to enter a reference. You can also enter reference details manually.</p>
+
+                                <form action="/jobs/application/tag/257697">
+                                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                                        Request a reference
+                                    </button>
+                                </form>
+                                <form action="/jobs/application/tag/257697">
+                                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                                        Enter a reference
+                                    </button>
+                                </form>
+                            </div>
+
+
+                            <div class="review-component__section__body">
+                                <dl class="govuk-summary-list" id="Joe Gibb">
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Joe Gibb</dt>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Job title</dt>
+                                    <dd class="govuk-summary-list__value">TEACHER</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Organisation</dt>
+                                    <dd class="govuk-summary-list__value">School</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Relationship to applicant</dt>
+                                    <dd class="govuk-summary-list__value">MANAGER</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Email address</dt>
+                                    <dd class="govuk-summary-list__value">joe.gibb@education.gov.uk</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Phone number</dt>
+                                    <dd class="govuk-summary-list__value">07927223600</dd>
+                                </div>
+                                </dl>
+                                <dl class="govuk-summary-list" id="Joe Gibb">
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Joe Gibb</dt>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Job title</dt>
+                                    <dd class="govuk-summary-list__value">TEACHER</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Organisation</dt>
+                                    <dd class="govuk-summary-list__value">School</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Relationship to applicant</dt>
+                                    <dd class="govuk-summary-list__value">MANAGER</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Email address</dt>
+                                    <dd class="govuk-summary-list__value">joe.gibb@education.gov.uk</dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Phone number</dt>
+                                    <dd class="govuk-summary-list__value">07927223600</dd>
+                                </div>
+                                </dl>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="support_needed"></div>
+                        <div id="support_needed_details"></div>
+                        <div id="ask_for_support" class="review-component__section">
+                            <div class="review-component__section__heading">
+                                <div class="review-component__section__heading__title">
+                                <h3 class="govuk-heading-m">Ask for support if you have a disability or other needs</h3>
+                                </div>
+                                <div class="review-component__section__heading__status"></div>
+                            </div>
+                            <div class="review-component__section__body">
+                                <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Do you want to ask for support so that you can attend an interview?</dt>
+                                    <dd class="govuk-summary-list__value">
+                                        <div id="support_needed">No</div>
+                                    </dd>
+                                </div>
+                                </dl>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="close_relationships"></div>
+                        <div id="close_relationships_details"></div>
+                        <div id="right_to_work_in_uk"></div>
+                        <div id="safeguarding_issue"></div>
+                        <div id="safeguarding_issue_details"></div>
+                        <div id="declarations" class="review-component__section">
+                            <div class="review-component__section__heading">
+                                <div class="review-component__section__heading__title">
+                                <h3 class="govuk-heading-m">Declarations</h3>
+                                </div>
+                                <div class="review-component__section__heading__status"></div>
+                            </div>
+                            <div class="review-component__section__body">
+                                <dl class="govuk-summary-list">
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Do you want to declare any safeguarding issues, such as a criminal record or professional misconduct?</dt>
+                                    <dd class="govuk-summary-list__value">
+                                        <div class="govuk-body" id="safeguarding_issue">No</div>
+                                    </dd>
+                                </div>
+                                <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                                    <dt class="govuk-summary-list__key">Do you have any family or close relationship with people within Bexleyheath Academy?</dt>
+                                    <dd class="govuk-summary-list__value">
+                                        <div class="govuk-body" id="close_relationships">No</div>
+                                    </dd>
+                                </div>
+                                </dl>
+                            </div>
+                        </div>
+                    </li>
+                    </ul>
             </div>
 
+            <div class="govuk-grid-column-one-third">
+
+                
+                <div class="govuk-summary-card">
+                    <div class="govuk-summary-card__title-wrapper">
+                        <h2 class="govuk-summary-card__title">
+                            Notes
+                        </h2>
+                        <ul class="govuk-summary-card__actions">
+                            <li class="govuk-summary-card__action">
+                                <a class="govuk-link govuk-link--no-visited-state" href="#">Edit notes</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div class="govuk-summary-card__content">
+
+                        <p class="govuk-!-margin-bottom-0">
+                            Great work experience, I think we should shortlist
+                        </p>
+                        <p class="govuk-body-s govuk-!-margin-top-1">
+                            By Bob Smith, 2024-06-26 12:04:49 +0100
+                        </p>
+
+                        <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
+
+                        <p class="govuk-!-margin-bottom-0">
+                        Also like the personal statement
+                        </p>
+                        <p class="govuk-body-s govuk-!-margin-top-1">
+                            By Rachel Brown, 2024-06-28 16:32:22 +0100
+                        </p>
+
+                        <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+
+                        <div class="govuk-form-group govuk-character-count govuk-!-margin-top-3" data-module="govuk-character-count" data-maxlength="150">
+                            <label class="govuk-label" for="label-as-page-heading">
+                                Add a note
+                            </label>
+                            <textarea class="govuk-textarea govuk-js-character-count" id="label-as-page-heading" name="labelAsPageHeading" rows="5" aria-describedby="label-as-page-heading-info"></textarea>
+                            <div id="label-as-page-heading-info" class="govuk-hint govuk-character-count__message govuk-body-s">
+                                You have 150 characters remaining
+                            </div>
+                        </div>
+
+                        <button type="submit" class="govuk-button" data-module="govuk-button">
+                            Save note
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="interview">
+            <div class="govuk-grid-column-full">
+                
+                <table class="govuk-table">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header">Request type</th>
+                            <th scope="col" class="govuk-table__header">Form requests</th>
+                            <th scope="col" class="govuk-table__header">Last Action</th>
+                            <th scope="col" class="govuk-table__header">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Reference</th>
+                            <td class="govuk-table__cell ">John Doe</td>
+                            <td class="govuk-table__cell">Created Mon 10th November</td>
+                            <td class="govuk-table__cell">{{ govukTag({  text: jobseeker.tag,   classes: jobseeker.tag | jobStatusTagClass  }) }}</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Reference</th>
+                            <td class="govuk-table__cell ">John Doe</td>
+                            <td class="govuk-table__cell">Created Mon 10th November</td>
+                            <td class="govuk-table__cell">{{ govukTag({  text: jobseeker.tag,   classes: jobseeker.tag | jobStatusTagClass  }) }}</td>
+                        </tr>
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Reference</th>
+                            <td class="govuk-table__cell ">John Doe</td>
+                            <td class="govuk-table__cell">Created Mon 10th November</td>
+                            <td class="govuk-table__cell">{{ govukTag({  text: jobseeker.tag,   classes: jobseeker.tag | jobStatusTagClass  }) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="precheck-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h2 class="govuk-fieldset__heading">
+                            Pre-employment checklist
+                        </h2>
+                        </legend>
+                        <div id="precheck-hint" class="govuk-hint">
+                            Select all that have been completed to keep track.
+                        </div>
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="precheck" name="precheck" type="checkbox" value="identity">
+                                <label class="govuk-label govuk-checkboxes__label" for="precheck">
+                                    Verified identity
+                                </label>
+                                <div id="hint" class="govuk-hint govuk-checkboxes__hint">
+                                    There is guidance on <a target="_blank" href="https://www.gov.uk/government/publications/identity-proofing-and-verification-of-an-individual">how to prove and verify someone's identity (opens in new tab)</a>.
+                                </div>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="check-dbs" name="precheck" type="checkbox" value="enhanced-dbs">
+                                <label class="govuk-label govuk-checkboxes__label" for="check-dbs">
+                                    Enhanced DBS check
+                                </label>
+                                <div id="hint-dbs" class="govuk-hint govuk-checkboxes__hint">
+                                    Required for anyone in regulated activity with children. Keep a record of the DBS certificate number and issue date.
+                                </div>
+                            </div>
+
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="check-barred" name="precheck" type="checkbox" value="barred-list">
+                                <label class="govuk-label govuk-checkboxes__label" for="check-barred">
+                                    Separate children’s barred list check (if required)
+                                </label>
+                                <div id="hint-barred" class="govuk-hint govuk-checkboxes__hint">
+                                    Only needed if the person starts before the DBS certificate is available.
+                                </div>
+                            </div>
+
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="check-fitness" name="precheck" type="checkbox" value="fitness">
+                                <label class="govuk-label govuk-checkboxes__label" for="check-fitness">
+                                    Verified mental and physical fitness for role
+                                </label>
+                                <div id="hint-fitness" class="govuk-hint govuk-checkboxes__hint">
+                                    Confirm candidate has capacity to perform the role; relevant health questions may be asked.
+                                </div>
+                            </div>
+
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="check-right-to-work" name="precheck" type="checkbox" value="right-to-work">
+                                <label class="govuk-label govuk-checkboxes__label" for="check-right-to-work">
+                                    Verified right to work in the UK
+                                </label>
+                                <div id="hint-right-to-work" class="govuk-hint govuk-checkboxes__hint">
+                                    There is guidance on <a href="https://www.gov.uk/check-job-applicant-right-to-work" target="_blank">checking a job applicant's right to work (opens in new tab)</a>.
+                                </div>
+                            </div>
+
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="check-overseas" name="precheck" type="checkbox" value="overseas-checks">
+                                <label class="govuk-label govuk-checkboxes__label" for="check-overseas">
+                                    Overseas checks completed (if applicable)
+                                </label>
+                                <div id="hint-overseas" class="govuk-hint govuk-checkboxes__hint">
+                                    For candidates who have lived or worked outside the UK, carry out additional checks as appropriate.
+                                </div>
+                            </div>
+
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="check-qualifications" name="precheck" type="checkbox" value="qualifications">
+                                <label class="govuk-label govuk-checkboxes__label" for="check-qualifications">
+                                    Verified professional qualifications
+                                </label>
+                                <div id="hint-qualifications" class="govuk-hint govuk-checkboxes__hint">
+                                    The Teaching Regulation Agency’s (TRA) Employer Access Service should be used to verify any award of qualified teacher status (QTS), and the completion of teacher induction or probation.
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" class="govuk-button govuk-!-margin-top-3" data-module="govuk-button">
+                        Save checklist
+                    </button>
+                </div>
+
+            </div>
         </div>
 
     </div>

@@ -1027,3 +1027,11 @@ ul.gem-c-checkboxes__list {
       display:none
   }
 }
+
+.navigation-list-component__anchor::before {
+    content: "—";
+    height: 100%;
+    margin-left: -25px;
+    padding-right: 5px;
+    position: absolute;
+}
