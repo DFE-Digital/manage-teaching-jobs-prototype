@@ -1035,3 +1035,7 @@ ul.gem-c-checkboxes__list {
     padding-right: 5px;
     position: absolute;
 }
+
+#referees .govuk-summary-list__row--no-actions:after{
+  width:auto;
+}
