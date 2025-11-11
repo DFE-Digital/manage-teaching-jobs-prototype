@@ -1,0 +1,202 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+{% set title = [jobseeker.profile.firstName, jobseeker.profile.lastName] | join(' ') %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+
+    <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-full">
+
+            <span class="govuk-caption-m">Pre-employment checklist</span>
+
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+                {{title}}
+                {{ govukTag({
+                    text: jobseeker.tag,
+                    classes: jobseeker.tag | jobStatusTagClass
+                }) }}
+            </h1>
+
+        </div>
+
+        <div id="application">
+        
+            <div class="govuk-grid-column-two-thirds">
+
+                <form method="post">
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset" aria-describedby="precheck-hint">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                        <h2 class="govuk-fieldset__heading">
+                            Pre-employment checklist
+                        </h2>
+                        </legend>
+                        <div id="precheck-hint" class="govuk-hint">
+                            Select all that have been completed to keep track.
+                        </div>
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="precheck" name="precheck" type="checkbox" value="identity">
+                                <label class="govuk-label govuk-checkboxes__label" for="precheck">
+                                    Verified identity
+                                </label>
+                                <div id="hint" class="govuk-hint govuk-checkboxes__hint">
+                                    There is guidance on <a target="_blank" href="https://www.gov.uk/government/publications/identity-proofing-and-verification-of-an-individual">how to prove and verify someone's identity (opens in new tab)</a>.
+                                </div>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="check-dbs" name="precheck" type="checkbox" value="enhanced-dbs">
+                                <label class="govuk-label govuk-checkboxes__label" for="check-dbs">
+                                    Enhanced DBS check
+                                </label>
+                                <div id="hint-dbs" class="govuk-hint govuk-checkboxes__hint">
+                                    Required for anyone in regulated activity with children. Keep a record of the DBS certificate number and issue date.
+                                </div>
+                            </div>
+
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="check-barred" name="precheck" type="checkbox" value="barred-list">
+                                <label class="govuk-label govuk-checkboxes__label" for="check-barred">
+                                    Separate children’s barred list check (if required)
+                                </label>
+                                <div id="hint-barred" class="govuk-hint govuk-checkboxes__hint">
+                                    Only needed if the person starts before the DBS certificate is available.
+                                </div>
+                            </div>
+
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="check-fitness" name="precheck" type="checkbox" value="fitness">
+                                <label class="govuk-label govuk-checkboxes__label" for="check-fitness">
+                                    Verified mental and physical fitness for role
+                                </label>
+                                <div id="hint-fitness" class="govuk-hint govuk-checkboxes__hint">
+                                    Confirm candidate has capacity to perform the role; relevant health questions may be asked.
+                                </div>
+                            </div>
+
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="check-right-to-work" name="precheck" type="checkbox" value="right-to-work">
+                                <label class="govuk-label govuk-checkboxes__label" for="check-right-to-work">
+                                    Verified right to work in the UK
+                                </label>
+                                <div id="hint-right-to-work" class="govuk-hint govuk-checkboxes__hint">
+                                    There is guidance on <a href="https://www.gov.uk/check-job-applicant-right-to-work" target="_blank">checking a job applicant's right to work (opens in new tab)</a>.
+                                </div>
+                            </div>
+
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="check-overseas" name="precheck" type="checkbox" value="overseas-checks">
+                                <label class="govuk-label govuk-checkboxes__label" for="check-overseas">
+                                    Overseas checks completed (if applicable)
+                                </label>
+                                <div id="hint-overseas" class="govuk-hint govuk-checkboxes__hint">
+                                    For candidates who have lived or worked outside the UK, carry out additional checks as appropriate.
+                                </div>
+                            </div>
+
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="check-qualifications" name="precheck" type="checkbox" value="qualifications">
+                                <label class="govuk-label govuk-checkboxes__label" for="check-qualifications">
+                                    Verified professional qualifications
+                                </label>
+                                <div id="hint-qualifications" class="govuk-hint govuk-checkboxes__hint">
+                                    The Teaching Regulation Agency’s (TRA) Employer Access Service should be used to verify any award of qualified teacher status (QTS), and the completion of teacher induction or probation.
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" class="govuk-button govuk-!-margin-top-3" data-module="govuk-button">
+                        Save checklist
+                    </button>
+
+                </form>
+
+                </div>
+           
+                  
+                    
+            </div>
+
+            <div class="govuk-grid-column-one-third">
+
+                
+                <div class="govuk-summary-card">
+                    <div class="govuk-summary-card__title-wrapper">
+                        <h2 class="govuk-summary-card__title">
+                            Notes
+                        </h2>
+                        <ul class="govuk-summary-card__actions">
+                            <li class="govuk-summary-card__action">
+                                <a class="govuk-link govuk-link--no-visited-state" href="#">Edit notes</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div class="govuk-summary-card__content">
+
+                        <p class="govuk-!-margin-bottom-0">
+                            Great work experience, I think we should shortlist
+                        </p>
+                        <p class="govuk-body-s govuk-!-margin-top-1">
+                            By Bob Smith, 2024-06-26 12:04:49 +0100
+                        </p>
+
+                        <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
+
+                        <p class="govuk-!-margin-bottom-0">
+                        Also like the personal statement
+                        </p>
+                        <p class="govuk-body-s govuk-!-margin-top-1">
+                            By Rachel Brown, 2024-06-28 16:32:22 +0100
+                        </p>
+
+                        <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+
+                        <div class="govuk-form-group govuk-character-count govuk-!-margin-top-3" data-module="govuk-character-count" data-maxlength="150">
+                            <label class="govuk-label" for="label-as-page-heading">
+                                Add a note
+                            </label>
+                            <textarea class="govuk-textarea govuk-js-character-count" id="label-as-page-heading" name="labelAsPageHeading" rows="5" aria-describedby="label-as-page-heading-info"></textarea>
+                            <div id="label-as-page-heading-info" class="govuk-hint govuk-character-count__message govuk-body-s">
+                                You have 150 characters remaining
+                            </div>
+                        </div>
+
+                        <button type="submit" class="govuk-button" data-module="govuk-button">
+                            Save note
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+       
+
+    </div>
+    
+    
+
+  
+
+{% endblock %}

@@ -104,6 +104,24 @@ module.exports = router => {
     })
   })
 
+  router.get('/jobs/application/:id/checklist', authentication.checkIsAuthenticated, (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+    res.render('jobs/applications_example_checklist', {
+      jobseeker
+    })
+  })
+
+  router.post('/jobs/application/:id/checklist', (req, res) => {
+    
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+      jobseeker.tag = req.session.data.tag      
+      req.flash('success', 'Pre-interview checklist updated')
+      res.redirect(`/jobs/application/${req.params.id}`)
+    
+  })
+
 
   //TAG STUFF
 
