@@ -184,31 +184,44 @@ $(document).ready(function () {
 
   }
 
-  //application view tabs show/hide application or interview details
+  // Application view tabs show/hide sections
 
   const showApplicationBtn = document.getElementById('show_application');
   const showInterviewBtn = document.getElementById('show_interview');
+  const showEmploymentBtn = document.getElementById('show_employment');
+
   const application = document.getElementById('application');
   const interview = document.getElementById('interview');
+  const employment = document.getElementById('employment');
 
-  showApplicationBtn.addEventListener('click', (e) => {
+  function showSection(sectionToShow, buttonToActivate) {
+    // hide all sections
+    [application, interview, employment].forEach(sec => sec.style.display = 'none');
+    
+    // show selected section
+    sectionToShow.style.display = 'block';
 
+    // reset aria-current
+    [showApplicationBtn, showInterviewBtn, showEmploymentBtn].forEach(btn => btn.removeAttribute('aria-current'));
+    
+    // set aria-current on active button
+    buttonToActivate.setAttribute('aria-current', 'page');
+  }
+
+  showApplicationBtn.addEventListener('click', e => {
     e.preventDefault();
-    application.style.display = 'block';
-    interview.style.display = 'none';
-    showApplicationBtn.setAttribute('aria-current', 'page');
-    showInterviewBtn.removeAttribute('aria-current');
+    showSection(application, showApplicationBtn);
   });
 
-  showInterviewBtn.addEventListener('click', (e) => {
-
+  showInterviewBtn.addEventListener('click', e => {
     e.preventDefault();
-    application.style.display = 'none';
-    interview.style.display = 'block';
-    showInterviewBtn.setAttribute('aria-current', 'page');
-    showApplicationBtn.removeAttribute('aria-current');
+    showSection(interview, showInterviewBtn);
   });
 
+  showEmploymentBtn.addEventListener('click', e => {
+    e.preventDefault();
+    showSection(employment, showEmploymentBtn);
+  });
 
 
 
