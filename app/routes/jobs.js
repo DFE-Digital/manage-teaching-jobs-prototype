@@ -112,6 +112,7 @@ module.exports = router => {
     })
   })
 
+
   router.post('/jobs/application/:id', (req, res) => {
     
     let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
@@ -122,6 +123,35 @@ module.exports = router => {
     
   })
 
+  //ADDING A MANUAL REFERENCE STUFF
+
+   router.get('/jobs/application/:id/reference', authentication.checkIsAuthenticated, (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+    res.render('jobs/applications_example_reference', {
+      jobseeker
+    })
+  })
+
+  router.post('/jobs/application/:id/reference', (req, res) => {
+    
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+      jobseeker.tag = req.session.data.tag      
+      req.flash('success', 'New reference added')
+      res.redirect(`/jobs/application/${req.params.id}`)
+    
+  })
+
+  //ADDING A MANUAL REFERENCE STUFF
+
+   router.get('/jobs/application/:id/reference_example', authentication.checkIsAuthenticated, (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+    res.render('jobs/applications_example_reference_data', {
+      jobseeker
+    })
+  })
 
   //TAG STUFF
 

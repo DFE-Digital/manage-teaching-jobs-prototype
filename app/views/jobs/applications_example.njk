@@ -554,30 +554,49 @@
                     <tbody class="govuk-table__body">
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">Reference</th>
-                            <td class="govuk-table__cell ">John Doe</td>
+                            <td class="govuk-table__cell "><a class="govuk-link--no-visited-state" href="#">John Doe</a></td>
                             <td class="govuk-table__cell">Created Mon 10th November</td>
-                            <td class="govuk-table__cell">{{ govukTag({  text: jobseeker.tag,   classes: jobseeker.tag | jobStatusTagClass  }) }}</td>
+                            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue"> pending </strong></td>
                         </tr>
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">Reference</th>
-                            <td class="govuk-table__cell ">John Doe</td>
+                            <td class="govuk-table__cell "><a class="govuk-link--no-visited-state" href="#">John Doe</a></td>
                             <td class="govuk-table__cell">Created Mon 10th November</td>
-                            <td class="govuk-table__cell">{{ govukTag({  text: jobseeker.tag,   classes: jobseeker.tag | jobStatusTagClass  }) }}</td>
+                            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue"> pending </strong></td>
                         </tr>
+                        {% if data['refereeName'] %}
+                        <tr class="govuk-table__row">
+                            <th scope="row" class="govuk-table__header">Reference</th>
+                            <td class="govuk-table__cell "><a class="govuk-link--no-visited-state" href="/jobs/application/{{jobseeker.id}}/reference_example">Bob Dylan</a></td>
+                            <td class="govuk-table__cell">Created Mon 17th November</td>
+                            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green"> new </strong></td>
+                        </tr>
+                        {% endif %}  
                         <tr class="govuk-table__row">
                             <th scope="row" class="govuk-table__header">Self disclosure</th>
-                            <td class="govuk-table__cell "><a href="#">Self disclosure form</a></td>
+                            <td class="govuk-table__cell "><a class="govuk-link--no-visited-state" href="#">Self disclosure form</a></td>
                             <td class="govuk-table__cell">Created Mon 10th November</td>
-                            <td class="govuk-table__cell">{{ govukTag({  text: jobseeker.tag,   classes: jobseeker.tag | jobStatusTagClass  }) }}</td>
+                            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue"> pending </strong></td>
                         </tr>
-                        <tr class="govuk-table__row">
-                            <th scope="row" class="govuk-table__header">Pre-employment checks</th>
-                            <td class="govuk-table__cell "><a href="/jobs/application/{{jobseeker.id}}/checklist">Pre-employment checklist</a></td>
-                            <td class="govuk-table__cell">Created Mon 10th November</td>
-                            <td class="govuk-table__cell">{{ govukTag({  text: jobseeker.tag,   classes: jobseeker.tag | jobStatusTagClass  }) }}</td>
-                        </tr>
+                        
                     </tbody>
                 </table>
+
+                <div class="govuk-button-group govuk-!-margin-top-0 govuk-!-margin-bottom-6">
+
+                    <p>Selecting request a reference will email the applicant and give them a link to enter a reference. You can also enter reference details manually.</p>
+
+                    <form action="#">
+                        <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                            Request a reference
+                        </button>
+                    </form>
+                    <form action="/jobs/application/{{jobseeker.id}}/reference">
+                        <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                            Enter a reference
+                        </button>
+                    </form>
+                </div>
 
             </div>
         </div>
@@ -596,7 +615,7 @@
                                 </h2>
                             </legend>
                             <div id="precheck-hint" class="govuk-hint">
-                                Select all that have been completed to keep track.
+                                Select all that have been completed or are not needed to keep track.
                             </div>
                             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                                 <div class="govuk-checkboxes__item">

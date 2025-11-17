@@ -1,0 +1,176 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+{% set title = 'Enter a reference' %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+
+    <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-full">
+
+            <span class="govuk-caption-m">{{ data['refereeName'] }}</span>
+
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+                {{ data['refereeName'] }}
+            </h1>
+
+        </div>
+
+        <div id="application">
+        
+            <div class="govuk-grid-column-two-thirds">
+
+                <p>
+                    Once the reference is received you will be able to view it on this page. If you do not receive the reference within one week, you will be able to send a reminder.
+                </p>
+                <p>
+                    If the request is more urgent, you should reach out to the referee directly. If you have sent and received your own reference form for this referee, you can manually mark it as received.
+                </p>
+
+                <form method="post">
+
+                    <button type="submit" class="govuk-button govuk-button--secondary govuk-!-margin-top-3" data-module="govuk-button">
+                        Mark as received
+                    </button>
+
+                </form>
+
+                <h2 class="govuk-heading-m govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+                    Referee details
+                </h2>
+
+                <dl class="govuk-summary-list">
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Name
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['refereeName'] }}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Job title
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['refereeJob'] }}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Organisation
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['refereeOrganisation'] }}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Relationship to applicant
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['refereeRelationship'] }}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Email address
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['refereeEmail'] }}
+                        </dd>
+                    </div>
+                    <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">
+                            Phone Number
+                        </dt>
+                        <dd class="govuk-summary-list__value">
+                            {{ data['refereeNumber'] }}
+                        </dd>
+                    </div>
+                </dl>
+           
+                  
+                    
+            </div>
+
+            <div class="govuk-grid-column-one-third">
+
+                
+                <div class="govuk-summary-card">
+                    <div class="govuk-summary-card__title-wrapper">
+                        <h2 class="govuk-summary-card__title">
+                            Notes
+                        </h2>
+                        <ul class="govuk-summary-card__actions">
+                            <li class="govuk-summary-card__action">
+                                <a class="govuk-link govuk-link--no-visited-state" href="#">Edit notes</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div class="govuk-summary-card__content">
+
+                        <p class="govuk-!-margin-bottom-0">
+                            Great work experience, I think we should shortlist
+                        </p>
+                        <p class="govuk-body-s govuk-!-margin-top-1">
+                            By Bob Smith, 2024-06-26 12:04:49 +0100
+                        </p>
+
+                        <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
+
+                        <p class="govuk-!-margin-bottom-0">
+                        Also like the personal statement
+                        </p>
+                        <p class="govuk-body-s govuk-!-margin-top-1">
+                            By Rachel Brown, 2024-06-28 16:32:22 +0100
+                        </p>
+
+                        <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible">
+
+
+                        <div class="govuk-form-group govuk-character-count govuk-!-margin-top-3" data-module="govuk-character-count" data-maxlength="150">
+                            <label class="govuk-label" for="label-as-page-heading">
+                                Add a note
+                            </label>
+                            <textarea class="govuk-textarea govuk-js-character-count" id="label-as-page-heading" name="labelAsPageHeading" rows="5" aria-describedby="label-as-page-heading-info"></textarea>
+                            <div id="label-as-page-heading-info" class="govuk-hint govuk-character-count__message govuk-body-s">
+                                You have 150 characters remaining
+                            </div>
+                        </div>
+
+                        <button type="submit" class="govuk-button" data-module="govuk-button">
+                            Save note
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+       
+
+    </div>
+    
+    
+
+  
+
+{% endblock %}
