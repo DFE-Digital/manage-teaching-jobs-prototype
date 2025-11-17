@@ -308,16 +308,17 @@
 
                                     <p>Selecting request a reference will email the applicant and give them a link to enter a reference. You can also enter reference details manually.</p>
 
-                                    <form action="/jobs/application/tag/257697">
+                                    <form action="/jobs/application/{{jobseeker.id}}/requestareference">
                                         <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
                                             Request a reference
                                         </button>
                                     </form>
-                                    <form action="/jobs/application/tag/257697">
+                                    <form action="/jobs/application/{{jobseeker.id}}/reference">
                                         <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
                                             Enter a reference
                                         </button>
                                     </form>
+                                    
                                 </div>
 
                                 <dl class="govuk-summary-list" id="Pres. Bo Ward">
@@ -586,7 +587,7 @@
 
                     <p>Selecting request a reference will email the applicant and give them a link to enter a reference. You can also enter reference details manually.</p>
 
-                    <form action="#">
+                    <form action="/jobs/application/{{jobseeker.id}}/requestareference">
                         <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
                             Request a reference
                         </button>

@@ -135,7 +135,7 @@ module.exports = router => {
 
   router.post('/jobs/application/:id/reference', (req, res) => {
     
-    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+      let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
 
       jobseeker.tag = req.session.data.tag      
       req.flash('success', 'New reference added')
@@ -151,6 +151,16 @@ module.exports = router => {
     res.render('jobs/applications_example_reference_data', {
       jobseeker
     })
+  })
+
+  //REQUEST A REFERENCE BUTTON
+
+  router.get('/jobs/application/:id/requestareference', authentication.checkIsAuthenticated, (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+      jobseeker.tag = req.session.data.tag      
+      req.flash('success', 'Request for a reference email sent')
+      res.redirect(`/jobs/application/${req.params.id}`)
   })
 
   //TAG STUFF
