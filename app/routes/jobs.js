@@ -163,6 +163,16 @@ module.exports = router => {
       res.redirect(`/jobs/application/${req.params.id}`)
   })
 
+  //online checks
+
+   router.get('/jobs/application/:id/online_checks', authentication.checkIsAuthenticated, (req, res) => {
+    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+    res.render('jobs/applications_example_online_checks', {
+      jobseeker
+    })
+  })
+
   //TAG STUFF
 
 
