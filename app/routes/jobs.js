@@ -173,6 +173,27 @@ module.exports = router => {
     })
   })
 
+  router.post('/jobs/application/:id/online_checks', (req, res) => {
+    
+      let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+
+      jobseeker.tag = req.session.data.tag      
+      req.flash('success', 'Online checks completed')
+      res.redirect(`/jobs/application/${req.params.id}`)
+    
+  })
+
+  //reference upload journey
+
+   router.get('/reference/upload', authentication.checkIsAuthenticated, (req, res) => {
+    
+
+    res.render('reference/upload', {
+      
+      
+    })
+  })
+
   //TAG STUFF
 
 
