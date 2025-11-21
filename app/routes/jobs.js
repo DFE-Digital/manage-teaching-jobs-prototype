@@ -178,7 +178,7 @@ module.exports = router => {
       let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
 
       jobseeker.tag = req.session.data.tag      
-      req.flash('success', 'Online checks completed')
+      req.flash('success', 'Online checks updated')
       res.redirect(`/jobs/application/${req.params.id}`)
     
   })
