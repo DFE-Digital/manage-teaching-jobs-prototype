@@ -610,6 +610,9 @@
                                 Select all boxes below where checks have been completed to keep track of progress.
                             </div>
                             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+                                <p class="govuk-!-margin-top-6"><b>Mandatory checks</b></p>
+
                                 <div class="govuk-checkboxes__item">
                                     <input class="govuk-checkboxes__input" id="precheck" name="precheck" type="checkbox" value="identity" checked>
                                     <label class="govuk-label govuk-checkboxes__label" for="precheck">
@@ -626,16 +629,6 @@
                                     </label>
                                     <div id="hint-dbs" class="govuk-hint govuk-checkboxes__hint">
                                         Required for anyone in regulated activity with children. Record their DBS certificate and issue date.
-                                    </div>
-                                </div>
-
-                                <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="check-barred" name="precheck" type="checkbox" value="barred-list"  checked>
-                                    <label class="govuk-label govuk-checkboxes__label" for="check-barred">
-                                        Separate children’s barred list check (if required)
-                                    </label>
-                                    <div id="hint-barred" class="govuk-hint govuk-checkboxes__hint">
-                                        Only needed if the person starts before the DBS certificate is available.
                                     </div>
                                 </div>
 
@@ -660,16 +653,6 @@
                                 </div>
 
                                 <div class="govuk-checkboxes__item">
-                                    <input class="govuk-checkboxes__input" id="check-overseas" name="precheck" type="checkbox" value="overseas-checks">
-                                    <label class="govuk-label govuk-checkboxes__label" for="check-overseas">
-                                        Overseas checks completed (if applicable)
-                                    </label>
-                                    <div id="hint-overseas" class="govuk-hint govuk-checkboxes__hint">
-                                        For candidates who have lived or worked outside the UK, carry out additional checks as appropriate.
-                                    </div>
-                                </div>
-
-                                <div class="govuk-checkboxes__item">
                                     <input class="govuk-checkboxes__input" id="check-qualifications" name="precheck" type="checkbox" value="qualifications">
                                     <label class="govuk-label govuk-checkboxes__label" for="check-qualifications">
                                         Verified professional qualifications
@@ -678,6 +661,27 @@
                                         The Teaching Regulation Agency’s (TRA) Employer Access Service should be used to verify any award of qualified teacher status (QTS), and the completion of teacher induction or probation.
                                     </div>
                                 </div>
+                                <p class="govuk-!-margin-top-6"><b>Optional checks if required</b></p>
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="check-barred" name="precheck" type="checkbox" value="barred-list" >
+                                    <label class="govuk-label govuk-checkboxes__label" for="check-barred">
+                                        Separate children’s barred list check
+                                    </label>
+                                    <div id="hint-barred" class="govuk-hint govuk-checkboxes__hint">
+                                        Only needed if the person starts before the DBS certificate is available.
+                                    </div>
+                                </div>
+
+                                <div class="govuk-checkboxes__item">
+                                    <input class="govuk-checkboxes__input" id="check-overseas" name="precheck" type="checkbox" value="overseas-checks">
+                                    <label class="govuk-label govuk-checkboxes__label" for="check-overseas">
+                                        Overseas checks 
+                                    </label>
+                                    <div id="hint-overseas" class="govuk-hint govuk-checkboxes__hint">
+                                        For candidates who have lived or worked outside the UK, carry out additional checks as appropriate.
+                                    </div>
+                                </div>
+                                
                             </div>
                         </fieldset>
                     
