@@ -20,35 +20,20 @@
 
     <div class="govuk-grid-row">
         
-        <div class="govuk-grid-column-full">
-
-            <span class="govuk-caption-m">{{ data['refereeName'] }}</span>
-
-            <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
-                {{ data['refereeName'] }}
-            </h1>
-
-        </div>
-
         <div id="application">
         
             <div class="govuk-grid-column-two-thirds">
 
+                <span class="govuk-caption-m">Nola Jones</span>
+
+                <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+                    {{ data['refereeName'] }}
+                </h1>
+
                 <p>
-                    Once the reference is received you will be able to view it on this page. If you do not receive the reference within one week, you will be able to send a reminder.
+                    This reference was added manually by Bob Smith, 27 November 2025 10:32am.
                 </p>
-                <p>
-                    If the request is more urgent, you should reach out to the referee directly. If you have sent and received your own reference form for this referee, you can manually mark it as received.
-                </p>
-
-                <form method="post">
-
-                    <button type="submit" class="govuk-button govuk-button--secondary govuk-!-margin-top-3" data-module="govuk-button">
-                        Mark as received
-                    </button>
-
-                </form>
-
+                
                 <h2 class="govuk-heading-m govuk-!-margin-bottom-5 govuk-!-margin-top-0">
                     Referee details
                 </h2>
@@ -81,6 +66,7 @@
 
             <div class="govuk-grid-column-one-third">
 
+                <div class="timeline-component"><h2 class="timeline-component__heading govuk-heading-s">Communication history</h2><ul class="timeline-component__items"><li class="timeline-component__item"><h3 class="timeline-component__key govuk-heading-s">Marked as interviewing</h3><p class="timeline-component__value govuk-body">by Bob Smith - 21 November 2025 2:17pm</p></li></ul></div>
                 
                 <div class="govuk-summary-card">
                     <div class="govuk-summary-card__title-wrapper">
