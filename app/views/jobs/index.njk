@@ -6,7 +6,7 @@
 {% block content %}
   <div class="govuk-width-container">
   <span class="govuk-caption-xl">
-        Example school
+        {{user.organisation.name}}
       </span>
     {{ appPageHeader({
       heading: {
@@ -39,22 +39,46 @@
       </ul>
     </nav>
 
-    <hr class="govuk-section-break govuk-section-break--m govuk-section-break">
+    
 
-    <ul class="sort-component__list govuk-!-margin-bottom-1">
-      <li class="sort-component__list-item govuk-body">
-        Closing date (soonest)
-      </li>
-      <li class="sort-component__list-item">
-        <a class="govuk-link" href="">
-          <span class="govuk-visually-hidden">Sort by </span>Job title (a to z)
-        </a>
-      </li>
-    </ul>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-three-quarters app-job-listings govuk-!-margin-bottom-9">
-    {% for job in user.jobs %}
+<div class="govuk-grid-row govuk-!-margin-bottom-7 govuk-!-margin-top-7">
+		<div class="govuk-grid-column-one-third-at-desktop govuk-!-margin-bottom-4">
+			<a class="govuk-link govuk-link--no-visited-state" href="/publishers/publisher_preferences/63e20aab-99de-4769-8e12-eec49861433c/edit">Add or remove schools</a>
+			<div class="govuk-!-margin-top-2">
+				<form accept-charset="UTF-8" action="/publishers/publisher_preferences/63e20aab-99de-4769-8e12-eec49861433c" class="edit_publisher_preference" data-controller="form" data-hide-submit="true" id="edit_publisher_preference_63e20aab-99de-4769-8e12-eec49861433c" method="post" name="edit_publisher_preference_63e20aab-99de-4769-8e12-eec49861433c">
+					<input autocomplete="off" name="_method" type="hidden" value="patch"><input autocomplete="off" name="authenticity_token" type="hidden" value="nhAT4wNeQt7DNDDAHr8VfDqxqs-hVCU_7Gklub140K6CZykhbRFNMZ_ZnMQA8czQqqIxbJdH3NCcGDYZVIMTqw">
+					<div class="filters-component" data-controller="filters">
+						<div class="filters-component__heading"></div>
+						<div class="filters-component__groups">
+							<div class="filters-component__groups__group" data-filters-target="group" data-group="locations">
+								<div>
+									<div class="govuk-form-group" data-action="change-&gt;form#submitListener">
+										<fieldset class="govuk-fieldset">
+											<legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
+											<h2 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Locations</legend></h2>
+											
+										</fieldset>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><input autocomplete="off" id="publisher_preference_jobs_type" name="publisher_preference[jobs_type]" type="hidden" value="live">
+				</form>
+			</div>
+      {% if user.organisation.name !== 'Hope college' %}
+			<div class="help-guide--desktop govuk-!-margin-top-4">
+				<h2 class="govuk-heading-m">Accept job applications using our online form</h2><a class="govuk-link govuk-link--no-visited-state" href="/get-help-hiring/how-to-create-job-listings-and-accept-applications/accepting-job-applications-on-teaching-vacancies">Find out how to use the Teaching Vacancies application form</a>.
+			</div>
+      {% endif %}
+		</div>
+		<div class="govuk-grid-column-two-thirds-at-desktop" id="vacancy-results">
+			<div class="empty-section-component">
+				<p class="govuk-body govuk-!-margin-bottom-0">You currently have no active jobs.</p>
+			</div>
+
+
+      {% for job in user.jobs %}
       <div class="app-job-listings__job">
         <div class="app-job-listings__job-row">
           <div class="app-job-listings__title">
@@ -87,17 +111,9 @@
         { number: 3, href: "#" }
       ]
     }) }}
-  </div>
 
-  <div class="govuk-grid-column-one-quarter">
-    <div class="help-guide--desktop">
-      <h2 class="govuk-heading-m">Accept job applications using our online form</h2>
-      <a class="govuk-link govuk-link--no-visited-state" href="/get-help-hiring/how-to-create-job-listings-and-accept-applications/accepting-job-applications-on-teaching-vacancies">
-        Find out how to use the Teaching Vacancies application form
-      </a>.
-    </div>
-  </div>
-</div>
 
+		</div>
+	</div>
 
 {% endblock %}

@@ -1,5 +1,29 @@
 [
   {
+    "emailAddress": "bob@hopecollege.sch.uk",
+    "password": "tv",
+    "organisation": {
+      "id": "322b6a82-7098-490f-9ff0-6109bc525d78400",
+      "name": "Hope college",
+      "address": {
+        "address1": "10 Seed Street",
+        "town": "London",
+        "postcode": "N19 4PT"
+      },
+      "religion": "No religion",
+      "type": "Academy",
+      "phase": "Sixth form or college",
+      "ageGroup": "11 to 16",
+      "size": "100",
+      "website": "Not entered",
+      "emailAddress": "Not entered",
+      "about": "Not entered",
+      "safeguardingCommitment": "Not entered",
+      "logo": "Not entered",
+      "photo": "Not entered"
+    }
+  },
+  {
     "emailAddress": "rachael@courtland.sch.uk",
     "password": "tv",
     "organisation": {

@@ -17,6 +17,8 @@ $app-images-path: "/public/images/";
 @import "patterns/task-list";
 @import "patterns/related-items";
 @import "patterns/moj-file-upload";
+@import "patterns/newheader";
+
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 // Import local component styles
@@ -38,7 +40,7 @@ hr {
 
 .govuk-header__logo {
   @include govuk-media-query($from: tablet) {
-    width: 51%;
+    width: 50%;
   }
 }
 
