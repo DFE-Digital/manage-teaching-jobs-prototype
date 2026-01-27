@@ -37,6 +37,45 @@
         <div id="changedName-hint" class="govuk-hint">
            Select all that apply.
         </div>
+
+        {% if user.organisation.name == 'Hope college' %}
+
+         <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
+                  
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Teaching and lecturing">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
+                  Teaching and lecturing
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Support">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
+                  Support
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="SEN">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
+                  SEN
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Leadership">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
+                  Leadership
+                </label>   
+            </div>
+            <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Vocational">
+                <label class="govuk-label govuk-checkboxes__label" for="jobRole">
+                  Vocational
+                </label>   
+            </div>
+        
+        </div>
+
+        {% else %}
       
         <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
             
@@ -145,7 +184,7 @@
         </div>
 
 
-
+        {% endif %}
 
         {{ govukButton({
           text: "Save and continue"
