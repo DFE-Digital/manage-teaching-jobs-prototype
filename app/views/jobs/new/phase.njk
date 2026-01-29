@@ -31,7 +31,7 @@
         {% endset %}
       {% endif %}
 
-      <form action="/jobs/new/role" method="post">
+      <form action="/jobs/new/subjects" method="post">
 
         {% if query.multipleLocationsMissing %}
           {{ govukRadios({
@@ -58,6 +58,26 @@
             items: options
           }) }}
         {% else %}
+
+           {% if user.organisation.name == 'Hope college' %}
+             {% set options = [
+               { value: 'Secondary school', text: 'Secondary school' },
+               { value: 'Sixth form or college', text: 'Sixth form or college' },
+               { value: 'Further education', text: 'Further education' },
+               { value: 'Higher education', text: 'Higher education' },
+               { value: 'Adult', text: 'Adult' }
+             ] %}
+           {% else %}
+           
+             {% set options = [
+               { value: 'Primary school', text: 'Primary school' },
+               { value: 'Middle school', text: 'Middle school' },
+               { value: 'Secondary school', text: 'Secondary school' },
+               { value: 'Sixth form or college', text: 'Sixth form or college' },
+               { value: 'Through school', text: 'Through school' }
+             ] %}
+           {% endif %}
+
           {{ govukCheckboxes({
             idPrefix: "createJob[phase]",
             name: "createJob[phase]",
@@ -70,6 +90,8 @@
             },
             items: options
           }) }}
+
+
         {% endif %}
 
 

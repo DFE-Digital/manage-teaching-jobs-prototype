@@ -90,7 +90,15 @@ module.exports = router => {
     )) {
         // Send user to the next page
           res.redirect('contract');
-      } else {
+      } else if (whatRole && (whatRole.includes("Teaching and lecturing")
+          || whatRole.includes("Support")
+          || whatRole.includes("SEN")
+          || whatRole.includes("Leadership")
+          || whatRole.includes("Vocational")
+        )) {
+            // Send user to the next page
+              res.redirect('phase');
+        }else {
           // Send user to the ineligible page
           res.redirect('key-stage');
       }
