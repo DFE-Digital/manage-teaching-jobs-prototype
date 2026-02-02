@@ -1,6 +1,15 @@
 {% extends "layout.njk" %}
 
+
+{% if user.organisation.name == 'Hope college' %}
+
+{% set heading = 'Do you want to offer college visits?' %}
+
+{% else %}
+
 {% set heading = 'Do you want to offer school visits?' %}
+
+{% endif %}
 {% set caption = 'Create job listing - section 3 of 4' %}
 {% set title = heading + ' - ' + caption %}
 

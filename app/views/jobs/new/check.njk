@@ -9,6 +9,14 @@
   {% set heading = 'Check details and publish job listing' %}
 {% endif %}
 
+{% if user.organisation.name == 'Hope college' %}
+  {% set schoolVisitsText = 'Do you want to offer college visits?' %}
+  {% set schoolOfferText = 'What does your college offer?' %}
+{% else %}
+  {% set schoolVisitsText = 'Do you want to offer school visits?' %}
+  {% set schoolOfferText = 'What does your school offer?' %}
+{% endif %}
+
 {% set caption = 'Create job listing' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -35,7 +43,7 @@
       </h2>
 
       {% set workingPatterns %}
-        <p>{% if data['createJob']['partTimeDetails'] %}{{ data['createJob']['partTimeDetails'] }} {% endif %}
+        {{data['working-patterns']}}
       {% endset %}
 
       {% set salaryDetails %}
@@ -93,7 +101,7 @@
               text: "Role"
             },
             value: {
-              text: data['createJob']['role'] | join(', ')
+              text: data['jobRole']
             },
             actions: {
               items: [
@@ -110,7 +118,7 @@
               text: "Job title"
             },
             value: {
-              text: data['createJob']['title']
+              text: data['job-title']
             },
             actions: {
               items: [
@@ -397,7 +405,7 @@
           },
           {
             key: {
-              text: "Do you want to offer school visits?"
+              text: schoolVisitsText
             },
             value: {
               text: data['createJob']['school-visits']
@@ -546,7 +554,7 @@
           },
           {
             key: {
-              text: "What does your school offer?"
+              text: schoolOfferText
             },
             value: {
               text: data['createJob']['benefits']

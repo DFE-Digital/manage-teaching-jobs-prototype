@@ -13,6 +13,11 @@
   }) }}
 {% endblock %}
 
+{% if user.organisation.name == 'Hope college' %}
+  {% set orgType = 'college' %}
+{% else %}
+  {% set orgType = 'school' %}
+{% endif %}
 
 
 {% block content %}
@@ -27,23 +32,31 @@
         {{heading}}
       </h1>
 
-        {% if user.organisation.schools %}
-          <p>Your organisation description from your school profile will be included in the job listing.</p>
+        {% if user.organisation.name == 'Hope college' %}
+          <p>Your organisation description from your college profile will be included in the job listing.</p>
+          {% set example %}
+            <p class="govuk-!-margin-bottom-0">{{user.organisation.about | nl2br | safe}}</p>
+          {% endset %}
+          {{ govukDetails({
+            summaryText: "View your college description",
+            html: example
+          }) }}
         {% else %}
           <p>Your school description from your school profile will be included in the job listing.</p>
+          {% set example %}
+            <p class="govuk-!-margin-bottom-0">{{user.organisation.about | nl2br | safe}}</p>
+          {% endset %}
+          {{ govukDetails({
+            summaryText: "View your school description",
+            html: example
+          }) }}
         {% endif %}
-        {% set example %}
-          <p class="govuk-!-margin-bottom-0">{{user.organisation.about | nl2br | safe}}</p>
-        {% endset %}
-        {{ govukDetails({
-          summaryText: "View your school description",
-          html: example
-        }) }}
+        
 
         {% if user.organisation.schools %}
           <p>Your commitment to safeguarding statement from your organisation profile will be included in the job listing.</p>
         {% else %}
-          <p>Your commitment to safeguarding statement from your school profile will be included in the job listing.</p>
+          <p>Your commitment to safeguarding statement from your {{orgType}} profile will be included in the job listing.</p>
         {% endif %}
         {% set example %}
           <p class="govuk-!-margin-bottom-0">{{user.organisation.safeguardingCommitment | nl2br | safe}}</p>
@@ -54,16 +67,6 @@
         }) }}
 
       <form action="/jobs/new/upload">
-
-      {% if 'Administration, HR data and finance' in data['createJob']['role'] 
-         or 'Catering, cleaning and site management' in data['createJob']['role'] 
-         or 'IT support' in data['createJob']['role'] 
-         or 'Pastoral, health and welfare' in data['createJob']['role'] 
-         or 'Other leadership roles' in data['createJob']['role'] 
-         or 'Other support roles' in data['createJob']['role'] 
-      %}
-
-      {% else %}
 
         {{ govukRadios({
           idPrefix: "createJob[suitability]",
@@ -89,8 +92,6 @@
           ]
         }) }}
 
-        {% endif %}
-
         {{ govukCharacterCount({
           id: "createJob[skills]",
           name: "createJob[skills]",
@@ -101,11 +102,18 @@
           maxwords: 150
         }) }}
 
+
+        {% if user.organisation.name == 'Hope college' %}
+          {% set headingType = 'What does your college offer its staff?' %}
+        {% else %}
+          {% set headingType = 'What does your school offer its staff?' %}
+        {% endif %}
+
         {{ govukCharacterCount({
           id: "createJob[benefits]",
           name: "createJob[benefits]",
           label: {
-            html: 'What does your school offer its staff?',
+            html: headingType,
             classes: 'govuk-label--m'
           },
           maxwords: 150

@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Contract type' %}
+{% set heading = 'Contract information' %}
 {% set caption = 'Create job listing - section 1 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -46,7 +46,7 @@
         }) }}
       {% endset %}
 
-      <form action="/jobs/new/working-patterns">
+      <form action="/jobs/new/salary">
 
         {{ govukRadios({
           idPrefix: "createJob[contract]",
@@ -55,7 +55,7 @@
             legend: {
               html: h1,
               isPageHeading: true,
-              classes: "govuk-fieldset__legend--l"
+              classes: "govuk-fieldset__legend--m"
             }
           },
           items: [
@@ -81,6 +81,70 @@
               }
             }
           ]
+        }) }}
+
+        {{ govukCheckboxes({
+          name: "working-patterns",
+          fieldset: {
+            legend: {
+              text: "Working patterns",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "Select all that apply"
+          },
+          items: [
+            {
+              value: "full time",
+              text: "Full time"
+            },
+            {
+              value: "part time",
+              text: "Part time"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          classes: "govuk-radios--inline",
+          name: "job-share",
+          fieldset: {
+            legend: {
+              text: "Can this role be done as a job share?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, can this role be filled by 2 teachers who share responsibility for the class?"
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+        {{ govukTextarea({
+          name: "moreDetail",
+          id: "more-detail",
+          label: {
+            text: "Details of working hours/days (optional)",
+            classes: "govuk-label--m",
+            isPageHeading: true
+          },
+          hint: {
+            text: "For example, 16 hours a week, Monday to Wednesday."
+          }
         }) }}
 
         {{ govukButton({
