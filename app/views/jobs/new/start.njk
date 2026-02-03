@@ -1,0 +1,65 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Job role' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    
+
+        <form action="/jobs/new/title" method="post">
+        
+            <div class="govuk-grid-column-full">
+                <h1 class="govuk-heading-l">Create a job listing</h1>
+                <p class="govuk-body">Provide details about the role, how candidates should apply and when the listing should be published.</p>
+                <h3 class="govuk-heading-s">Contract details</h3>
+                <p class="govuk-body">You should include information about:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>job location</li>
+                    <li>if the role is full or part time</li>
+                    <li>the contract type, for example, permanent, temporary or fixed term</li>
+                    <li>salary details</li>
+                    <li>start date</li>
+                </ul>
+                <h3 class="govuk-heading-s">Information about the role</h3>
+                <p class="govuk-body">You should include:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>role details including job responsibilities</li>
+                    <li>whether visa sponsorship is available</li>
+                    <li>any additional documents, such as job description or person specification</li>
+                </ul>
+                <h3 class="govuk-heading-s">Listing details</h3>
+                <p class="govuk-body">You will need to specify:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>when the role should be published</li>
+                    <li>the closing date for applications</li>
+                </ul>
+                <p class="govuk-body">You will also be able to choose how to receive applications.</p>
+                
+                
+            </div>
+
+            {{ govukButton({
+            text: "Create a job listing"
+            }) }}
+
+        </form>
+
+
+        <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
