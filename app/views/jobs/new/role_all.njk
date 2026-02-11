@@ -38,7 +38,7 @@
            Select all that apply.
         </div>
 
-        {% if user.organisation.name == 'Hope college' %}
+        {% if user.organisation.name == 'Hope college' or data['roleType'] == 'furthereducation' %}
 
          <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
                   

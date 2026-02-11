@@ -1,6 +1,11 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Subjects (optional)' %}
+{% if user.organisation.name == 'Hope college' %}
+  {% set heading = 'Subjects' %}
+{% else %}
+  {% set heading = 'Subjects (optional)' %}
+{% endif %}
+
 {% set caption = 'Create job listing - section 1 of 4' %}
 {% set title = heading + ' - ' + caption %}
 

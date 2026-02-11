@@ -39,12 +39,58 @@
       </ul>
     </nav>
 
-    
 
+{% if user.organisation.name == 'Hope college' %}
+
+<div class="govuk-grid-row govuk-!-margin-bottom-7 govuk-!-margin-top-7">
+		
+		<div class="govuk-grid-column-two-thirds-at-desktop" id="vacancy-results">
+
+      {% if user.jobs.length == 0 %}
+			<div class="empty-section-component">
+				<p class="govuk-body govuk-!-margin-bottom-0">You currently have no active jobs.</p>
+			</div>
+      {% endif %}
+
+
+      {% for job in user.jobs %}
+      <div class="app-job-listings__job">
+        <div class="app-job-listings__job-row">
+          <div class="app-job-listings__title">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+              <a class="govuk-link--no-visited-state" href="/jobs/{{ job.id }}">{{ job.title }}</a>
+            </h2>
+          </div>
+
+          <div class="app-job-listings__meta govuk-!-margin-bottom-0">
+            <p class="govuk-body-s govuk-!-margin-bottom-0">
+              Closing date: 16 July 2025 at 8am
+            </p>
+          </div>
+
+          <div class="app-job-listings__copy govuk-!-margin-bottom-0">
+            <a href="/jobs/new/copied">Copy job listing</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+		</div>
+
+    <div class="govuk-grid-column-one-third-at-desktop govuk-!-margin-bottom-4">
+     
+			<div class="help-guide--desktop govuk-!-margin-top-4">
+				<h2 class="govuk-heading-m">Accept job applications using our online form</h2><a class="govuk-link govuk-link--no-visited-state" href="/get-help-hiring/how-to-create-job-listings-and-accept-applications/accepting-job-applications-on-teaching-vacancies">Find out how to use the Teaching Vacancies application form</a>.
+			</div>
+      
+		</div>
+</div>
+
+{% else %}
 
 <div class="govuk-grid-row govuk-!-margin-bottom-7 govuk-!-margin-top-7">
 		<div class="govuk-grid-column-one-third-at-desktop govuk-!-margin-bottom-4">
-			<div class="govuk-!-margin-top-2">
+			
+      <div class="govuk-!-margin-top-2">
 				<form accept-charset="UTF-8" action="/publishers/publisher_preferences/63e20aab-99de-4769-8e12-eec49861433c" class="edit_publisher_preference" data-controller="form" data-hide-submit="true" id="edit_publisher_preference_63e20aab-99de-4769-8e12-eec49861433c" method="post" name="edit_publisher_preference_63e20aab-99de-4769-8e12-eec49861433c">
 					<input autocomplete="off" name="_method" type="hidden" value="patch"><input autocomplete="off" name="authenticity_token" type="hidden" value="nhAT4wNeQt7DNDDAHr8VfDqxqs-hVCU_7Gklub140K6CZykhbRFNMZ_ZnMQA8czQqqIxbJdH3NCcGDYZVIMTqw">
 					<div class="filters-component" data-controller="filters">
@@ -55,8 +101,8 @@
 									<div class="govuk-form-group" data-action="change-&gt;form#submitListener">
 										<fieldset class="govuk-fieldset">
 											<legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
-											<h2 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Locations</legend></h2>
-											
+											  <h2 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Locations</h2>
+                      </legend>
 										</fieldset>
 									</div>
 								</div>
@@ -65,11 +111,11 @@
 					</div><input autocomplete="off" id="publisher_preference_jobs_type" name="publisher_preference[jobs_type]" type="hidden" value="live">
 				</form>
 			</div>
-      {% if user.organisation.name !== 'Hope college' %}
+     
 			<div class="help-guide--desktop govuk-!-margin-top-4">
 				<h2 class="govuk-heading-m">Accept job applications using our online form</h2><a class="govuk-link govuk-link--no-visited-state" href="/get-help-hiring/how-to-create-job-listings-and-accept-applications/accepting-job-applications-on-teaching-vacancies">Find out how to use the Teaching Vacancies application form</a>.
 			</div>
-      {% endif %}
+      
 		</div>
 		<div class="govuk-grid-column-two-thirds-at-desktop" id="vacancy-results">
 
@@ -105,6 +151,9 @@
    
 
 		</div>
-	</div>
+</div>
+
+
+{% endif %}
 
 {% endblock %}

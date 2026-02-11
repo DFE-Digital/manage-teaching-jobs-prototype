@@ -30,7 +30,7 @@ const generateUsers = () => {
 
   users.push(generateUser({
     emailAddress: 'leonie@lssecondary.sch.uk',
-    organisation: organisations.find(org => org.name == 'LS Secondary School')
+    organisation: organisations.find(org => org.name == 'LS Secondary School and College')
   }))
 
   users.push(generateUser({

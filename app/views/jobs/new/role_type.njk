@@ -1,0 +1,76 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'What type of role is this?' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      {% endset %}
+
+        <form action="/jobs/new/role_all" novalidate>
+
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="roleType-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    What type of education setting is this job for?
+                </h1>
+                </legend>
+                <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="roleType" name="roleType" type="radio" value="secondary" aria-describedby="roleType-item-hint">
+                        <label class="govuk-label govuk-radios__label" for="roleType">
+                            Secondary school job
+                        </label>
+                        <div id="roleType-item-hint" class="govuk-hint govuk-radios__hint">
+                            For roles teaching or supporting students aged 11–16 (Key Stages 3–4), including teaching, support and leadership positions within a secondary school.
+                        </div>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="roleType-2" name="roleType" type="radio" value="furthereducation" aria-describedby="roleType-2-item-hint">
+                        <label class="govuk-label govuk-radios__label" for="roleType-2">
+                            Sixth form / Further education job
+                        </label>
+                        <div id="roleType-2-item-hint" class="govuk-hint govuk-radios__hint">
+                           For roles teaching, lecturing or supporting students aged 16–19+, including A-level, BTEC, T-level, vocational, or college-based positions within sixth form colleges or further education settings.
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+
+        </form>
+
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

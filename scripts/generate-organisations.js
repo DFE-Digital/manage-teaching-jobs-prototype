@@ -171,7 +171,7 @@ const generateOrgs = () => {
    *************************************************/
 
    orgs.push(generateSchool({
-    name: 'LS Secondary School',
+    name: 'LS Secondary School and College',
     phase: 'Secondary school',
     logo: '/public/images/logos/courtland.png'
   }))

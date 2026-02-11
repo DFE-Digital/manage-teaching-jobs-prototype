@@ -26,7 +26,11 @@
         {{heading}}
       {% endset %}
 
-      <form action="/jobs/new/role_all" novalidate>
+      {% if user.organisation.name == 'LS Secondary School and College' %}
+        <form action="/jobs/new/role_type" novalidate>
+      {% else %}
+        <form action="/jobs/new/role_all" novalidate>
+      {% endif %}
 
           <div class="govuk-form-group">
             <h1 class="govuk-heading-l">              
@@ -36,10 +40,6 @@
               Job title
             </h1>
           </div>
-
-          <div id="school-hint" class="govuk-hint">
-              Enter a job title to see suggested job titles
-            </div>
 
           <input class="govuk-input govuk-!-margin-bottom-5" id="job-title" name="job-title" type="text">
 
