@@ -96,8 +96,12 @@ module.exports = router => {
           || whatRole.includes("Leadership")
           || whatRole.includes("Vocational")
         )) {
-            // Send user to the next page
-              res.redirect('phase');
+
+          req.session.data['createJob[phase]'] = 'Further education';
+
+          // Send user to the next page
+          res.redirect('subjects');
+
         }else {
           // Send user to the ineligible page
           res.redirect('key-stage');
@@ -155,6 +159,13 @@ module.exports = router => {
   })
 
   router.get('/jobs/new/sponsorship', (req, res) => {
+
+    res.render('jobs/new/sponsorship', {
+      
+    })
+  })
+
+    router.get('/jobs/new/sponsorship', (req, res) => {
 
     res.render('jobs/new/sponsorship', {
       
