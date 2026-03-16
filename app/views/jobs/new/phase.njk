@@ -59,22 +59,20 @@
           }) }}
         {% else %}
 
-           {% if user.organisation.name == 'Hope college' %}
+           {% if user.organisation.name == 'LS Secondary School and College' %}
              {% set options = [
                { value: 'Secondary school', text: 'Secondary school' },
-               { value: 'Sixth form or college', text: 'Sixth form or college' },
-               { value: 'Further education', text: 'Further education' },
-               { value: 'Higher education', text: 'Higher education' },
-               { value: 'Adult', text: 'Adult' }
+               { value: 'Sixth form or college', text: 'Sixth form' },
+               { value: 'Through school', text: 'All through school' },
+               { value: 'Further education or college', text: 'Further education or college' }
              ] %}
            {% else %}
            
              {% set options = [
-               { value: 'Primary school', text: 'Primary school' },
-               { value: 'Middle school', text: 'Middle school' },
                { value: 'Secondary school', text: 'Secondary school' },
-               { value: 'Sixth form or college', text: 'Sixth form or college' },
-               { value: 'Through school', text: 'Through school' }
+               { value: 'Sixth form or college', text: 'Sixth form' },
+               { value: 'Through school', text: 'All through school' },
+               { value: 'Further education or college', text: 'Further education or college' }
              ] %}
            {% endif %}
 

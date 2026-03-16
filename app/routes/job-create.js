@@ -80,31 +80,26 @@ module.exports = router => {
     
       var whatRole = req.session.data['jobRole'];
 
-      // Check whether the variable includes the string "england" or "scotland"
-      if (whatRole && (whatRole.includes("Administration, HR data and finance") 
-        || whatRole.includes("Catering, cleaning and site management") 
-        || whatRole.includes("IT support")
-        || whatRole.includes("Other support roles")
-        || whatRole.includes("Pastoral, health and welfare")
-        || whatRole.includes("Other leadership roles")
-    )) {
+      let org = req.session.user.organisation.name
+
+      if (org == 'Hope college'){
         // Send user to the next page
-          res.redirect('contract');
-      } else if (whatRole && (whatRole.includes("Teaching and lecturing")
-          || whatRole.includes("Support")
-          || whatRole.includes("SEN")
-          || whatRole.includes("Leadership")
-          || whatRole.includes("Vocational")
-        )) {
+        res.redirect('subjects');
+        req.session.data['createJob']['phase'] = 'further education or college';
+      } else {
+        res.redirect('phase');
+      }
 
-          req.session.data['createJob[phase]'] = 'Further education';
+  });
 
-          // Send user to the next page
+  router.post('/jobs/new/role_type', (req, res) => {
+    
+      var whatRole = req.session.data['roleType'];
+
+      if (whatRole == "Secondary school job"){
+          res.redirect('phase');
+      } else {
           res.redirect('subjects');
-
-        }else {
-          // Send user to the ineligible page
-          res.redirect('key-stage');
       }
 
   });

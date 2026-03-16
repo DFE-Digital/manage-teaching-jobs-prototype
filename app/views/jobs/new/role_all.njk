@@ -23,6 +23,7 @@
         {{heading}}
       {% endset %}
 
+     
         <form method="post" novalidate>
 
         <h1 class="govuk-fieldset__heading">
@@ -38,8 +39,7 @@
            Select all that apply.
         </div>
 
-        {% if user.organisation.name == 'Hope college' or data['roleType'] == 'furthereducation' %}
-
+        <!-- 
          <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
                   
             <div class="govuk-checkboxes__item">
@@ -75,16 +75,16 @@
         
         </div>
 
-        {% else %}
+        -->
       
         <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
             
             <p class="govuk-!-margin-top-6"><b>Teaching &amp; leadership</b></p>
       
             <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Teacher">
+                <input class="govuk-checkboxes__input" id="jobRole" name="jobRole" type="checkbox" value="Teacher or lecturer">
                 <label class="govuk-label govuk-checkboxes__label" for="jobRole">
-                  Teacher
+                  Teacher or lecturer
                 </label>   
             </div>
             <div class="govuk-checkboxes__item">
@@ -183,8 +183,6 @@
 
         </div>
 
-
-        {% endif %}
 
         {{ govukButton({
           text: "Save and continue"

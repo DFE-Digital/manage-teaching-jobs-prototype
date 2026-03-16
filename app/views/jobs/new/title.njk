@@ -26,11 +26,7 @@
         {{heading}}
       {% endset %}
 
-      {% if user.organisation.name == 'LS Secondary School and College' %}
-        <form action="/jobs/new/role_type" novalidate>
-      {% else %}
         <form action="/jobs/new/role_all" novalidate>
-      {% endif %}
 
           <div class="govuk-form-group">
             <h1 class="govuk-heading-l">              

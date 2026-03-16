@@ -23,7 +23,7 @@
         {{heading}}
       {% endset %}
 
-        <form action="/jobs/new/role_all" novalidate>
+        <form method="post" novalidate>
 
         <div class="govuk-form-group">
             <fieldset class="govuk-fieldset" aria-describedby="roleType-hint">
@@ -34,7 +34,7 @@
                 </legend>
                 <div class="govuk-radios" data-module="govuk-radios">
                     <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="roleType" name="roleType" type="radio" value="secondary" aria-describedby="roleType-item-hint">
+                        <input class="govuk-radios__input" id="roleType" name="roleType" type="radio" value="Secondary school job" aria-describedby="roleType-item-hint">
                         <label class="govuk-label govuk-radios__label" for="roleType">
                             Secondary school job
                         </label>
@@ -43,9 +43,9 @@
                         </div>
                     </div>
                     <div class="govuk-radios__item">
-                        <input class="govuk-radios__input" id="roleType-2" name="roleType" type="radio" value="furthereducation" aria-describedby="roleType-2-item-hint">
+                        <input class="govuk-radios__input" id="roleType-2" name="roleType" type="radio" value="Sixth form or Further education job" aria-describedby="roleType-2-item-hint">
                         <label class="govuk-label govuk-radios__label" for="roleType-2">
-                            Sixth form / Further education job
+                            Sixth form or Further education job
                         </label>
                         <div id="roleType-2-item-hint" class="govuk-hint govuk-radios__hint">
                            For roles teaching, lecturing or supporting students aged 16–19+, including A-level, BTEC, T-level, vocational, or college-based positions within sixth form colleges or further education settings.
