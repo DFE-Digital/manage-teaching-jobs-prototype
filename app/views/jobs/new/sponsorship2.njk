@@ -16,7 +16,7 @@
     <div class="govuk-grid-column-two-thirds">
     
    
-      <form action="/jobs/new/contact-details" method="post" novalidate>
+      <form action="/jobs/new/anonymised" method="post" novalidate>
 
         <div class="govuk-form-group">
           <fieldset aria-describedby="createJob-sponsorship-hint" class="govuk-fieldset">
@@ -28,8 +28,14 @@
               </legend>
             </h1>
             
-            <div id="sign-in-hint" class="govuk-hint">
-                If you’re not already a sponsor, you can <a target="_blank" href="https://www.gov.uk/guidance/recruit-teachers-from-overseas#apply-to-become-a-licensed-worker-sponsor">apply to become a licensed worker sponsor <span>(opens in new tab)</span></a>.
+            <div class="govuk-hint" id="publishers-job-listing-visa-sponsorship-form-visa-sponsorship-available-hint">
+              <p>To offer Skilled Worker visa sponsorship, this role must:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>meet the minimum salary requirements</li>
+                <li>be included on the list of eligible roles</li>
+              </ul>
+              <p><a href="https://www.gov.uk/skilled-worker-visa/if-you-work-in-healthcare-or-education" target="_blank">Learn more about Skilled Worker visa requirements for teaching jobs (opens in new tab).</a></p>
+              <p>Different salary rules apply for support roles in schools.<a href="https://www.gov.uk/government/publications/skilled-worker-visa-eligible-occupations/skilled-worker-visa-eligible-occupations-and-codes" target="_blank">Find out about eligible support roles and salary requirements (opens in new tab).</a></p>
             </div>
 
             <div class="govuk-radios" data-module="govuk-radios">

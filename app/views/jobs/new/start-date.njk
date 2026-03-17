@@ -132,16 +132,8 @@
           }) }}
         {% endset %}
 
-
-      {% if user.organisation.name == 'Hope college' %}
-
-        <form action="/jobs/new/process">
-
-      {% else %}
-
+      
         <form action="/jobs/new/method">
-
-      {% endif %}
 
         {{ govukRadios({
           idPrefix: "createJob[start-date]",

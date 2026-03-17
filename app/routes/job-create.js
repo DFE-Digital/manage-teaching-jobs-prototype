@@ -121,7 +121,7 @@ module.exports = router => {
   });
 
   router.post('/jobs/new/method', (req, res) => {
-    if(req.body['createJob'] && req.body['createJob'].method == 'Yes') {
+    if(req.session.data['signIn'] == 'Yes') {
       res.redirect('/jobs/new/school-visits')
     } else {
       res.redirect('/jobs/new/process')

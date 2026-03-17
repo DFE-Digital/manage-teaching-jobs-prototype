@@ -2,6 +2,8 @@
 
 {% if user.organisation.name == 'Hope college' %}
   {% set heading = 'Subjects' %}
+{% elif data ['createJob']['phase'] == 'Further education or college' %}
+  {% set heading = 'Subjects' %}
 {% else %}
   {% set heading = 'Subjects (optional)' %}
 {% endif %}

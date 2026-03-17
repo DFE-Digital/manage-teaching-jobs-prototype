@@ -59,18 +59,28 @@
           }) }}
         {% else %}
 
-           {% if user.organisation.name == 'LS Secondary School and College' %}
-             {% set options = [
+            {% if user.organisation.name == 'LS Secondary School and College' %}
+             
+              {% set options = [
                { value: 'Secondary school', text: 'Secondary school' },
-               { value: 'Sixth form or college', text: 'Sixth form' },
+               { value: 'Sixth form', text: 'Sixth form' },
                { value: 'Through school', text: 'All through school' },
                { value: 'Further education or college', text: 'Further education or college' }
-             ] %}
-           {% else %}
+              ] %}
+
+            {% elif user.organisation.name == 'ML Secondary School' %}
+
+              {% set options = [
+               { value: 'Secondary school', text: 'Secondary school' },
+               { value: 'Sixth form', text: 'Sixth form' },
+               { value: 'Through school', text: 'All through school' }
+               ] %}
+
+            {% else %}
            
              {% set options = [
                { value: 'Secondary school', text: 'Secondary school' },
-               { value: 'Sixth form or college', text: 'Sixth form' },
+               { value: 'Sixth form', text: 'Sixth form' },
                { value: 'Through school', text: 'All through school' },
                { value: 'Further education or college', text: 'Further education or college' }
              ] %}

@@ -1,6 +1,6 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Using the application form' %}
+{% set heading = 'Choose your application form' %}
 {% set caption = 'Create job listing - section 3 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -45,30 +45,27 @@
 
       
 
-      <form action="/jobs/new/method" method="post">
-
+      <form  method="post">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              <h1 class="govuk-fieldset__heading">
-                Select application form type
-              </h1>
-            </legend>
-            <div id="hint" class="govuk-hint">
-              Use the Teaching Vacancies application form for an online, KCSIE compliant form sent to your chosen email.
-            </div>
+           
+            <p class="govuk-body">Use Teaching Vacancies' application form for an online form compliant with <a class="govuk-link" href="https://www.gov.uk/government/publications/keeping-children-safe-in-education--2">Keeping children safe in education (KCSIE) guidance</a>.</p>
+            <p class="govuk-body">Online application forms make it quicker and easier for jobseekers to apply and may lead to more applicants for your role.</p>
+            <p class="govuk-body">If the job you are listing does not require applicants to provide religious information, you can use the first application form option provided below.</p>
+
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="signIn" name="signIn" type="radio" value="government-gateway" aria-describedby="signIn-item-hint">
+                <input class="govuk-radios__input" id="signIn" name="signIn" type="radio" value="Yes" aria-describedby="signIn-item-hint">
                 <label class="govuk-label govuk-radios__label" for="signIn">
-                 All school application form
+                  Online application form
                   <strong class="govuk-tag govuk-tag--green">
                     KCSIE compliant
                   </strong>
                 </label>
+                
                 <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
-                  Online application forms make it quicker and easier for candidates to apply for your role.
+                  <a class="govuk-link" target="_blank" rel="noreferrer noopener" href="https://qa.teaching-vacancies.service.gov.uk/organisation/jobs/5d8d8575-ef32-4383-84f8-08c44b0ae411/form_previews/plain">Download a preview of Teaching Vacancies' application form (opens in new tab)</a>
                 </div>
               </div>
 
@@ -76,12 +73,12 @@
               <div class="govuk-radios__divider">or</div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="signIn-2" name="signIn" type="radio" value="govuk-one-login" aria-describedby="signIn-2-item-hint">
+                <input class="govuk-radios__input" id="signIn-2" name="signIn" type="radio" value="Use other application form" aria-describedby="signIn-2-item-hint">
                 <label class="govuk-label govuk-radios__label" for="signIn-2">
-                  Use other application form method
+                  Use other application form
                 </label>
                 <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
-                 You'll need to provide additional details about how to apply
+                 You can upload your own form or provide a link to a website where applicants should apply.
                 </div>
               </div>
             </div>
