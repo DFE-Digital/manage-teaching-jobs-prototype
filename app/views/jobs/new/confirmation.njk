@@ -27,9 +27,22 @@
       Invite candidates to apply for this job
     </h2>
 
-    <p>3 candidate profiles match this job listing.</p>
+    <p>Your job listing will be published on 17 May 2026.</p>
 
-    <p><a href="/jobseekers?filters-role=Teacher">View candidate profiles</a></p>
+    <h2 class="govuk-heading-m">Next steps</h2>
+    <p>You can:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a class="govuk-link" href="#" rel="noreferrer noopener" target="_blank">preview the job listing (opens in new tab)</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#">make changes to the job listing</a>
+      </li>
+      <li>
+        <a class="govuk-link" href="#">manage your other job listings</a>
+      </li>
+    </ul>
+    <div class="divider-bottom"></div>
 
     {% if user.organisation.schools %}
       <h2 class="govuk-heading-m">
@@ -45,19 +58,70 @@
       <p><a href="/organisation">Complete school profile</a></p>
     {% endif%}
 
-    <h2 class="govuk-heading-m">
-      View or make changes to the job listing
-    </h2>
-
-    <p>You can <a href="/jobs/example">view the job listing</a> or <a href="/jobs/example">make changes to the job listing</a>.</p>
-
-    <h2 class="govuk-heading-m">
-      Give feedback
-    </h2>
-
-    <p class="govuk-body">
-      <a href="#" class="govuk-link">Give feedback about this service</a> (takes 30 seconds).
-    </p>
+  <h2 class="govuk-heading-m">Have time to share some feedback?</h2>
+		<p class="govuk-body">Your feedback can help us improve how you can list jobs.</p>
+		<form accept-charset="UTF-8" action="/organisation/jobs/5d8d8575-ef32-4383-84f8-08c44b0ae411/feedback" class="new_publishers_job_listing_feedback_form" id="new_publishers_job_listing_feedback_form" method="post" name="new_publishers_job_listing_feedback_form">
+			<input autocomplete="off" name="authenticity_token" type="hidden" value="w_aLb-0LWoXp8v1OOrYd9uc7WKi--wLxq1t1Gjf0DJQZDIzRichLVgNdtQJyyUOb3ktxhS1XNq8DzMnTdXLLDg">
+			<div class="govuk-form-group">
+				<fieldset class="govuk-fieldset">
+					<legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
+					<h3 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">How satisfied are you with the job listing process on Teaching Vacancies?</legend></h3><input autocomplete="off" id="publishers_job_listing_feedback_form_rating" name="publishers_job_listing_feedback_form[rating]" type="hidden" value="">
+					<div class="govuk-radios" data-govuk-radios-init="" data-module="govuk-radios">
+						<div class="govuk-radios__item">
+							<input class="govuk-radios__input" id="publishers-job-listing-feedback-form-rating-highly-satisfied-field" name="publishers_job_listing_feedback_form[rating]" type="radio" value="highly_satisfied"><label class="govuk-label govuk-radios__label" for="publishers-job-listing-feedback-form-rating-highly-satisfied-field">Highly satisfied</label>
+						</div>
+						<div class="govuk-radios__item">
+							<input class="govuk-radios__input" id="publishers-job-listing-feedback-form-rating-somewhat-satisfied-field" name="publishers_job_listing_feedback_form[rating]" type="radio" value="somewhat_satisfied"><label class="govuk-label govuk-radios__label" for="publishers-job-listing-feedback-form-rating-somewhat-satisfied-field">Somewhat satisfied</label>
+						</div>
+						<div class="govuk-radios__item">
+							<input class="govuk-radios__input" id="publishers-job-listing-feedback-form-rating-neither-field" name="publishers_job_listing_feedback_form[rating]" type="radio" value="neither"><label class="govuk-label govuk-radios__label" for="publishers-job-listing-feedback-form-rating-neither-field">Neither satisfied nor dissatisfied</label>
+						</div>
+						<div class="govuk-radios__item">
+							<input class="govuk-radios__input" id="publishers-job-listing-feedback-form-rating-somewhat-dissatisfied-field" name="publishers_job_listing_feedback_form[rating]" type="radio" value="somewhat_dissatisfied"><label class="govuk-label govuk-radios__label" for="publishers-job-listing-feedback-form-rating-somewhat-dissatisfied-field">Somewhat dissatisfied</label>
+						</div>
+						<div class="govuk-radios__item">
+							<input class="govuk-radios__input" id="publishers-job-listing-feedback-form-rating-highly-dissatisfied-field" name="publishers_job_listing_feedback_form[rating]" type="radio" value="highly_dissatisfied"><label class="govuk-label govuk-radios__label" for="publishers-job-listing-feedback-form-rating-highly-dissatisfied-field">Highly dissatisfied</label>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="govuk-form-group">
+				<label class="govuk-label govuk-label--s" for="publishers-job-listing-feedback-form-comment-field">Do you have any suggestions on how we should improve the service? (optional <span class="govuk-visually-hidden">field</span>)</label>
+				<textarea class="govuk-textarea" id="publishers-job-listing-feedback-form-comment-field" name="publishers_job_listing_feedback_form[comment]" rows="4"></textarea>
+			</div>
+			<div class="govuk-form-group">
+				<fieldset class="govuk-fieldset">
+					<legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
+					<h3 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Would you like to participate in our research?</legend></h3>
+					<div class="govuk-radios" data-govuk-radios-init="" data-module="govuk-radios">
+						<div class="govuk-radios__item">
+							<input aria-controls="publishers-job-listing-feedback-form-user-participation-response-interested-conditional" aria-expanded="false" class="govuk-radios__input" id="publishers-job-listing-feedback-form-user-participation-response-interested-field" name="publishers_job_listing_feedback_form[user_participation_response]" type="radio" value="interested"><label class="govuk-label govuk-radios__label" for="publishers-job-listing-feedback-form-user-participation-response-interested-field">Yes</label>
+						</div>
+						<div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="publishers-job-listing-feedback-form-user-participation-response-interested-conditional">
+							<div class="govuk-form-group">
+								<label class="govuk-label" for="publishers-job-listing-feedback-form-email-field">What is your email address?</label>
+								<div class="govuk-hint" id="publishers-job-listing-feedback-form-email-hint">
+									We'll only use this to tell you about opportunities to take part in user research that helps us improve Department for Education services.
+								</div><input aria-describedby="publishers-job-listing-feedback-form-email-hint" class="govuk-input" id="publishers-job-listing-feedback-form-email-field" name="publishers_job_listing_feedback_form[email]" required="required" type="email" value="alex.lee@education.gov.uk">
+							</div>
+							<div class="govuk-form-group">
+								<label class="govuk-label" for="publishers-job-listing-feedback-form-occupation-field">Occupation</label>
+								<div class="govuk-hint" id="publishers-job-listing-feedback-form-occupation-hint">
+									We'll only use this to tell you about opportunities to take part in user research that is relevant to you.
+								</div>
+								<textarea aria-describedby="publishers-job-listing-feedback-form-occupation-hint" class="govuk-textarea" id="publishers-job-listing-feedback-form-occupation-field" name="publishers_job_listing_feedback_form[occupation]" required="required" rows="1"></textarea>
+							</div>
+						</div>
+						<div class="govuk-radios__item">
+							<input class="govuk-radios__input" id="publishers-job-listing-feedback-form-user-participation-response-uninterested-field" name="publishers_job_listing_feedback_form[user_participation_response]" type="radio" value="uninterested"><label class="govuk-label govuk-radios__label" for="publishers-job-listing-feedback-form-user-participation-response-uninterested-field">No</label>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			<div class="govuk-button-group">
+				<button class="govuk-button" data-govuk-button-init="" data-module="govuk-button" data-prevent-double-click="true" formnovalidate="formnovalidate" type="submit">Submit feedback</button><a class="govuk-link govuk-link--no-visited-state" href="/organisation/jobs">Skip feedback</a>
+			</div>
+		</form>
 
     </div>
   </div>

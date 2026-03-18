@@ -152,7 +152,7 @@
               text: "Subjects"
             },
             value: {
-              text: data['createJob']['subjects'] | join(', ') or 'None'
+              text: data['subjects'] | join(', ') or 'None'
             },
             actions: {
               items: [
@@ -163,7 +163,7 @@
                 }
               ]
             }
-          } if data['createJob']['subjects'],
+          } if data['subjects'],
           {
             key: {
               text: "Contract type"
@@ -431,6 +431,23 @@
               items: [
                 {
                   href: "/jobs/new/sponsorship",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "How would you like to view your applications?"
+            },
+            value: {
+              text: data['createJob']['anonymised']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/anonymised",
                   text: "Change",
                   visuallyHiddenText: "TODO"
                 }
