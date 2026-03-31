@@ -133,7 +133,7 @@
         {% endset %}
 
       
-        <form action="/jobs/new/method">
+        <form action="/jobs/new/salary">
 
         {{ govukRadios({
           idPrefix: "createJob[start-date]",
@@ -147,7 +147,12 @@
           },
           items: [
             {
-              value: "Specific date",
+              value: "As soon as possible",
+              text: "As soon as possible",
+              checked: checked("['createJob']['start-date']", "As soon as possible")
+            },
+            {
+              value: "As soon as possible",
               text: "Specific date",
               checked: checked("['createJob']['start-date']", "Specific date"),
               conditional: {

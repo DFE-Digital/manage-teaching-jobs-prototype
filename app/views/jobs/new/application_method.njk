@@ -20,8 +20,12 @@
       <h1 class="govuk-heading-l">
         {{heading}}
       </h1>
-<p class="govuk-body">Use Teaching Vacancies' online application form, compliant with <a>keeping children safe in education (KCSIE) guidance.</a> </p>
-<p class="govuk-body">Online application forms make it quicker and easier for candidares to apply and may lead to more applicants for your role.</a> </p>
+
+      <p class="govuk-body">Use Teaching Vacancies' application form for an online form compliant with <a class="govuk-link" href="https://www.gov.uk/government/publications/keeping-children-safe-in-education--2">Keeping children safe in education (KCSIE) guidance</a>.</p><p class="govuk-body">Online application forms make it quicker and easier for jobseekers to apply and may lead to more applicants for your role.</p><p class="govuk-body">If the job you are listing does not require applicants to provide religious information, you can use the first application form option provided below.</p>
+
+
+
+<form action="/jobs/new/anonymised">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
@@ -29,11 +33,14 @@
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="signIn" name="signIn" type="radio" value="government-gateway" aria-describedby="signIn-item-hint">
                 <label class="govuk-label govuk-radios__label" for="signIn">
-                  Teaching Vacancies' online application form
+                  Online application form
                   <strong class="govuk-tag govuk-tag--green">
                     KCSIE compliant
                   </strong>
                 </label>
+                <div class="govuk-hint govuk-radios__hint" id="publishers-job-listing-applying-for-the-job-form-application-form-type-no-religion-hint">
+                  <a class="govuk-link" href="#" rel="noreferrer noopener" target="_blank">Download a preview of Teaching Vacancies' application form (opens in new tab)</a>
+                </div>
            
               </div>
               

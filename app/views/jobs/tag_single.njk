@@ -37,49 +37,75 @@
                 <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="tag" name="tag" type="radio" value="New">
                     <label class="govuk-label govuk-radios__label" for="tag">
-                        New  
                         <strong class="govuk-tag govuk-tag--blue">
                             New
                         </strong>
                     </label>
+                    <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                        New applications.
+                    </div>
                 </div>
-                <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="tag-4" name="tag" type="radio" value="Not considering">
-                    <label class="govuk-label govuk-radios__label" for="tag-4">
-                        Not considering
-                        <strong class="govuk-tag govuk-tag--red">
-                            not considering
-                        </strong>
-                    </label>
-                </div>
+                
                 <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="tag-3" name="tag" type="radio" value="Reviewed">
                     <label class="govuk-label govuk-radios__label" for="tag-3">
-                        Reviewed
                         <strong class="govuk-tag govuk-tag--purple">
-                            reviewed
+                            Reviewed
                         </strong>
                     </label>
+                    <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                        Applications that have been reviewed. Reviewed applications will remain in the 'New' tab until shortlisted or not considering.
+                    </div>
                 </div>
+
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="tag-4" name="tag" type="radio" value="Not considering">
+                    <label class="govuk-label govuk-radios__label" for="tag-4">
+                        <strong class="govuk-tag govuk-tag--red">
+                            Not considering
+                        </strong>
+                    </label>
+                    <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                        Applications that you are not taking forward to interview. You can create an email to send to them to let them know.
+                    </div>
+                </div>
+
                 <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="tag-2" name="tag" type="radio" value="Shortlisted">
                     <label class="govuk-label govuk-radios__label" for="tag-2">
-                        Shortlisted
-                        <strong class="govuk-tag govuk-tag--green">
+                        <strong class="govuk-tag govuk-tag--yellow">
                             Shortlisted
                         </strong>
                     </label>
+                    <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                        Applications that have been shortlisted.
+                    </div>
                 </div>
-                <div class="govuk-radios__divider">or</div>
-                
+
                 <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="tag-5" name="tag" type="radio" value="Interviewing" data-aria-controls="conditional-tag-5">
-                    <label class="govuk-label govuk-radios__label" for="tag-5">
-                        Invite to interview
-                        <strong class="govuk-tag govuk-tag--turquoise">
+                    <input class="govuk-radios__input" id="tag-2" name="tag" type="radio" value="Interviewing">
+                    <label class="govuk-label govuk-radios__label" for="tag-2">
+                        <strong class="govuk-tag govuk-tag--green">
                             Interviewing
                         </strong>
                     </label>
+                    <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                        Candidates you plan to interview. You can create an email to send to them to let them know. You will also be able to trigger pre-interview checks through the Teaching Vacancies service.
+                    </div>
+                </div>
+
+                <div class="govuk-radios__divider">or</div>
+                
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="tag-5" name="tag" type="radio" value="Offered" data-aria-controls="conditional-tag-5">
+                    <label class="govuk-label govuk-radios__label" for="tag-5">
+                        <strong class="govuk-tag govuk-tag--pink">
+                            Job offered
+                        </strong>
+                    </label>
+                    <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                        Candidates that have been offered a job. If they decline the offer you will have the option to update the status later.
+                    </div>
                 </div>
             </div>
 
