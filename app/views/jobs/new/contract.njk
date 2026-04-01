@@ -107,6 +107,19 @@
           ]
         }) }}
 
+        {{ govukTextarea({
+          name: "moreDetail",
+          id: "more-detail",
+          label: {
+            text: "Details of working hours/days (optional)",
+            classes: "govuk-label--s",
+            isPageHeading: true
+          },
+          hint: {
+            text: "For example, 16 hours a week, Monday to Wednesday."
+          }
+        }) }}
+
         {{ govukRadios({
           classes: "govuk-radios--inline",
           name: "job-share",
@@ -131,21 +144,7 @@
             }
           ]
         }) }}
-
-        {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
-
-        {{ govukTextarea({
-          name: "moreDetail",
-          id: "more-detail",
-          label: {
-            text: "Details of working hours/days (optional)",
-            classes: "govuk-label--m",
-            isPageHeading: true
-          },
-          hint: {
-            text: "For example, 16 hours a week, Monday to Wednesday."
-          }
-        }) }}
+        
 
         {{ govukButton({
           text: "Save and continue"
