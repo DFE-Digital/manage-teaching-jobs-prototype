@@ -32,8 +32,6 @@
 
       <form action="/jobs/new/contract">
 
-      {{ data ['createJob']['phase'] }}
-
      {% set phase = data['createJob']['phase'] %}
 
      {% if phase and (phase.includes('college') or phase.includes('Further education or college')) %}
