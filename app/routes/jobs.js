@@ -209,20 +209,9 @@ module.exports = router => {
     
     let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
 
-    if (req.session.data.tag == 'Interviewing'){
-      
-      res.redirect(`/jobs/${req.params.id}/interview`)
-
-    }else{
-
       jobseeker.tag = req.session.data.tag      
       req.flash('success', 'Application status updated')
-      res.redirect(`/jobs/${req.params.id}/applications`)
-
-
-    }
-
-   
+      res.redirect(`/jobs/541463/applications`)
     
   })
 

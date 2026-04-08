@@ -89,7 +89,7 @@ module.exports = function (env) {
       case 'Interviewing':
         tagClass = 'govuk-tag--green'
         break;
-      case 'Not considering':
+      case 'Not progressing':
         tagClass = 'govuk-tag--red'
         break;
     }

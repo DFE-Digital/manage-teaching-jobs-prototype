@@ -123,7 +123,7 @@
           </li>
           <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#no">
-              Not considering {% set counterNew = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Not considering' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
+              Not progressing {% set counterNew = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Not progressing' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
             </a>
           </li>
           <li class="govuk-tabs__list-item">
@@ -338,7 +338,7 @@
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="no">
 
          <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
-            <caption class="govuk-table__caption govuk-table__caption--m">Not considering applications</caption>
+            <caption class="govuk-table__caption govuk-table__caption--m">Not progressing applications</caption>
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th class="govuk-table__header" scope="col" id="select-all">
@@ -360,7 +360,7 @@
 
               {% for jobseeker in jobseekers %}
 
-                {% if jobseeker.tag !== 'Not considering' %}                 
+                {% if jobseeker.tag !== 'Not progressing' %}                 
                 
                 {% else %}
 

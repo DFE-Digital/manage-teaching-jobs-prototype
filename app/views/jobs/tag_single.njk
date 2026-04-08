@@ -29,40 +29,24 @@
         <fieldset class="govuk-fieldset" aria-describedby="countries-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-                What application status do you want to assign to {{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}}?
+                What application status do you want to assign to this applicant?
             </h1>
             </legend>
 
+            <div class="govuk-inset-text">
+                <p class="govuk-body">Applicant:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>{{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}}</li>
+                </ul>
+            </div>
+
             <div class="govuk-radios" data-module="govuk-radios">
-                <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="tag" name="tag" type="radio" value="New">
-                    <label class="govuk-label govuk-radios__label" for="tag">
-                        <strong class="govuk-tag govuk-tag--blue">
-                            New
-                        </strong>
-                    </label>
-                    <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
-                        New applications.
-                    </div>
-                </div>
                 
                 <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="tag-3" name="tag" type="radio" value="Reviewed">
-                    <label class="govuk-label govuk-radios__label" for="tag-3">
-                        <strong class="govuk-tag govuk-tag--purple">
-                            Reviewed
-                        </strong>
-                    </label>
-                    <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
-                        Applications that have been reviewed. Reviewed applications will remain in the 'New' tab until shortlisted or not considering.
-                    </div>
-                </div>
-
-                <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="tag-4" name="tag" type="radio" value="Not considering">
+                    <input class="govuk-radios__input" id="tag-4" name="tag" type="radio" value="Not progressing">
                     <label class="govuk-label govuk-radios__label" for="tag-4">
                         <strong class="govuk-tag govuk-tag--red">
-                            Not considering
+                            Not progressing
                         </strong>
                     </label>
                     <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">

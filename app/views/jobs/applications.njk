@@ -18,7 +18,6 @@
 
         <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
           {{job.title}}
-          {{job.title}}
           {{ govukTag({
             text: job.status,
             classes: job.status | jobStatusTagClass
@@ -114,13 +113,13 @@
 
           <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
             <a class="govuk-tabs__tab" href="#unread">
-              New {% set counterNew = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'New' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
+              Unread {% set counterNew = 0 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Unread' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
 
             </a>
           </li>
           <li class="govuk-tabs__list-item">
             <a class="govuk-tabs__tab" href="#no">
-              Not considering {% set counterNew = 2 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Not considering' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
+              Not progressing {% set counterNew = 2 %}{% for jobseeker in jobseekers %}{% if jobseeker.tag == 'Not progressing' %}{% set counterNew = counterNew + 1 %}{% endif %}{% endfor %}({{counterNew}})
             </a>
           </li>
           <li class="govuk-tabs__list-item">
@@ -203,8 +202,7 @@
                         text: jobseeker.tag,
                         classes: jobseeker.tag | jobStatusTagClass
                       }) }}
- 
-        </td>
+                    </td>
                     </td>
                   </tr>
 
@@ -218,26 +216,17 @@
           </table>
 
           <div class="govuk-button-group govuk-!-margin-top-5">
-              <form method="post" action="#">
-                  <button type="submit" disabled class="govuk-button" data-module="govuk-button">
-                    Download selected applications
-                  </button>
-              </form>
               <form action="tag">
-                  <button type="submit" disabled class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  <button type="submit" disabled class="govuk-button" data-module="govuk-button">
                       Update application status
                   </button>
               </form>
-              <div>
-                 <button type="submit" disabled class="copy-selected-emails govuk-button govuk-button--secondary" data-module="govuk-button" style="text-decoration:none;">
-                     Copy selected emails
-                  </button>
-              </div>   
-              <form action="interview">
+              <form method="post" action="#">
                   <button type="submit" disabled class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                      Invite to interview
+                    Download selected applications
                   </button>
-              </form>      
+              </form>
+                   
               
           </div>
 
@@ -258,7 +247,7 @@
         <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="no">
 
          <table class="govuk-table govuk-!-margin-top-5" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
-            <caption class="govuk-table__caption govuk-table__caption--m">Not considering applications</caption>
+            <caption class="govuk-table__caption govuk-table__caption--m">Not progressing applications</caption>
             <thead class="govuk-table__head">
               <tr class="govuk-table__row">
                 <th class="govuk-table__header" scope="col" id="select-all">
@@ -280,7 +269,7 @@
 
               {% for jobseeker in jobseekers %}
 
-                {% if jobseeker.tag !== 'Not considering' %}                 
+                {% if jobseeker.tag !== 'Not progressing' %}                 
                 
                 {% else %}
 
@@ -322,24 +311,14 @@
           
 
           <div class="govuk-button-group govuk-!-margin-top-5">
-              <form method="post" action="#">
-                  <button type="submit" class="govuk-button" data-module="govuk-button">
-                    Download selected applications
-                  </button>
-              </form>
               <form action="tag">
-                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  <button type="submit" disabled class="govuk-button" data-module="govuk-button">
                       Update application status
                   </button>
               </form>
-              <div>
-                 <button type="submit" class="copy-selected-emails govuk-button govuk-button--secondary" data-module="govuk-button" style="text-decoration:none;">
-                     Copy selected emails
-                  </button>
-              </div>  
-              <form action="feedback_templates">
-                  <button type="submit" class="govuk-button govuk-button--warning" data-module="govuk-button">
-                    Send rejection emails
+              <form method="post" action="#">
+                  <button type="submit" disabled class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Download selected applications
                   </button>
               </form>
           </div>
@@ -422,7 +401,7 @@
 
               {% for jobseeker in jobseekers %}
 
-                {% if jobseeker.tag !== 'New' %}                 
+                {% if jobseeker.tag !== 'Unread' %}                 
                 
                 {% else %}
 
@@ -461,19 +440,14 @@
           </table>
 
          <div class="govuk-button-group govuk-!-margin-top-5">
-              <form method="post" action="#">
-                  <button type="submit" class="govuk-button" data-module="govuk-button">
-                    Download selected applications
-                  </button>
-              </form>
               <form action="tag">
-                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                  <button type="submit" disabled class="govuk-button" data-module="govuk-button">
                       Update application status
                   </button>
               </form>
-                                  <form action="tag">
-                  <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-                      Copy selected emails
+              <form method="post" action="#">
+                  <button type="submit" disabled class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Download selected applications
                   </button>
               </form>
           </div>
@@ -555,19 +529,16 @@
   </table>
 
   <div class="govuk-button-group govuk-!-margin-top-5">
-    <form method="post" action="#">
-      <button type="submit" class="govuk-button" data-module="govuk-button">Download selected applications</button>
-    </form>
     <form action="tag">
-      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-        Update application status
-      </button>
-    </form>
-    <div>
-      <button type="submit" class="copy-selected-emails govuk-button govuk-button--secondary" data-module="govuk-button" style="text-decoration:none;">
-        Copy selected emails
-      </button>
-    </div>
+                  <button type="submit" disabled class="govuk-button" data-module="govuk-button">
+                      Update application status
+                  </button>
+              </form>
+              <form method="post" action="#">
+                  <button type="submit" disabled class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Download selected applications
+                  </button>
+              </form>
 
   </div>
 
@@ -643,24 +614,16 @@ Downloading applicant data will generate a CSV file that includes each applicant
   </table>
 
   <div class="govuk-button-group govuk-!-margin-top-5">
-    <form method="post" action="#">
-      <button type="submit" class="govuk-button" data-module="govuk-button">Download selected applications</button>
-    </form>
     <form action="tag">
-      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-        Mark offer as declined
-      </button>
-    </form>
-    <div>
-      <button type="submit" class="copy-selected-emails govuk-button govuk-button--secondary" data-module="govuk-button" style="text-decoration:none;">
-        Copy selected emails
-      </button>
-    </div>
-    <form action="interview">
-      <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
-        Download applicant's data
-      </button>
-    </form>
+                  <button type="submit" disabled class="govuk-button" data-module="govuk-button">
+                      Update application status
+                  </button>
+              </form>
+              <form method="post" action="#">
+                  <button type="submit" disabled class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Download selected applications
+                  </button>
+              </form>
   </div>
 
   <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
