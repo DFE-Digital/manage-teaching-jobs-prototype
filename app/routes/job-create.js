@@ -78,14 +78,13 @@ module.exports = router => {
 
   router.post('/jobs/new/role_all', (req, res) => {
     
-      var whatRole = req.session.data['jobRole'];
-
       let org = req.session.user.organisation.name
 
       if (org == 'Hope college'){
         // Send user to the next page
+        req.session.data.createJob ??= {};
+        req.session.data.createJob.phase = 'further education or college';
         res.redirect('subjects');
-        req.session.data['createJob']['phase'] = 'further education or college';
       } else {
         res.redirect('phase');
       }
