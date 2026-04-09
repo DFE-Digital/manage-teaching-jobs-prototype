@@ -211,14 +211,14 @@ module.exports = router => {
 
       jobseeker.tag = req.session.data.tag      
       req.flash('success', 'Application status updated')
-      res.redirect(`/jobs/541463/applications`)
+      res.redirect(`/jobs/686355/applications`)
     
   })
 
   router.post('/jobs/:id/tag', (req, res) => {
     
       req.flash('success', 'Application status updated')
-      res.redirect('/jobs/541463/applications')
+      res.redirect('/jobs/686355/applications')
     
   })
 
