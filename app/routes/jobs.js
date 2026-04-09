@@ -215,6 +215,13 @@ module.exports = router => {
     
   })
 
+  router.post('/jobs/:id/tag', (req, res) => {
+    
+      req.flash('success', 'Application status updated')
+      res.redirect('/jobs/541463/applications')
+    
+  })
+
   //FEEDBACK START
 
   router.get('/jobs/:id/feedback_templates', authentication.checkIsAuthenticated, (req, res) => {
