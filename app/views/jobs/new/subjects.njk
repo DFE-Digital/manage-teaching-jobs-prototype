@@ -2,7 +2,7 @@
 
 {% if user.organisation.name == 'Hope college' %}
   {% set heading = 'Subjects' %}
-{% elif data ['createJob']['phase'] == 'Further education or college' %}
+{% elif data ['createJob']['phase'] == 'Sixth form or college' %}
   {% set heading = 'Subjects' %}
 {% else %}
   {% set heading = 'Subjects (optional)' %}
@@ -34,7 +34,7 @@
 
      {% set phase = data['createJob']['phase'] %}
 
-     {% if phase and (phase.includes('college') or phase.includes('Further education or college')) %}
+     {% if phase and (phase.includes('college') or phase.includes('Sixth form or college')) %}
 
         {{ appCheckboxFilter({
         idPrefix: "subjects",
