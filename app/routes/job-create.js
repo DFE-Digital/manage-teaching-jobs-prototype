@@ -167,6 +167,31 @@ module.exports = router => {
   })
 
 
+  router.post('/jobs/new/application_method', (req, res) => {
+    if(req.session.data['signIn'] == 'other') {
+      res.redirect('/jobs/new/how')
+    } else {
+      res.redirect('/jobs/new/anonymised')
+    }
+  })
+
+  router.post('/jobs/new/how', (req, res) => {
+    if(req.session.data['how'] == 'By email') {
+      res.redirect('/jobs/new/receive_applications')
+    } else {
+      res.redirect('/jobs/new/website')
+    }
+  })
+
+  router.get('/jobs/new/receive_applications', (req, res) => {
+    
+    res.render('jobs/new/receive_applications', {
+      
+    })
+  })
+
+
+
   router.post('/jobs/new/working-patterns', (req, res) => {
     const validator = new Validator(req, res);
 
