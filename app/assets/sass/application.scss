@@ -1041,3 +1041,49 @@ ul.gem-c-checkboxes__list {
 #referees .govuk-summary-list__row--no-actions:after{
   width:auto;
 }
+
+
+
+
+//old design preview job advert check your answers page
+
+
+.old-design{
+
+  .banner-button-component__button {
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 1.1875rem;
+    line-height: 1.25;
+    background-color: inherit;
+    background-position: top 0 left 0;
+    background-repeat: no-repeat;
+    background-size: 20px 25px;
+    border: 0;
+    border-bottom: 3px solid #f47738;
+    color: #1d70b8;
+    cursor: pointer;
+    flex: 1;
+    font-weight: 700;
+    height: 100%;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    text-align: left;
+    text-decoration: none;
+    width:100%;
+  }
+
+  .icon--alert-blue {
+    background-image: url('https://teaching-vacancies-prototype.herokuapp.com/public/images/bell.svg');
+  }
+
+  .icon--save {
+    background-image: url('https://teaching-vacancies-prototype.herokuapp.com/public/images/heart.svg');
+  }
+
+
+
+}
