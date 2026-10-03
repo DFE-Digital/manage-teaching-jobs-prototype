@@ -1,5 +1,5 @@
 
-const authentication = require('../middleware/authenticaton')
+const authentication = require('../middleware/authentication')
 const Validator = require('../helpers/validator')
 
 module.exports = router => {

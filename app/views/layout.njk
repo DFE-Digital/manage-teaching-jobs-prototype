@@ -67,9 +67,9 @@
 
 {% if useAutoStoreData %}
   {% block footer %}
-    {% set sharingUrl %}
-      {{protocol}}://{{hostname}}{{path}}?userEmailaddress={{user.emailAddress}}
-    {% endset %}
+    {% if user.emailAddress %}
+      {% set sharingUrl = sharingOrigin + path + '?userEmailAddress=' + user.emailAddress %}
+    {% endif %}
 
     {{ govukFooter({
       meta: {
@@ -83,8 +83,9 @@
             text: "Sign in as profile"
           },
           {
+            href: sharingUrl,
             text: sharingUrl
-          }
+          } if sharingUrl
         ],
         visuallyHiddenTitle: "Footer links"
       }

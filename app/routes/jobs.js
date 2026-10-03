@@ -1,5 +1,10 @@
 
-const authentication = require('../middleware/authenticaton')
+const authentication = require('../middleware/authentication')
+const { findById } = require('../helpers/lookup')
+
+function jobseekerFromRequest (req) {
+  return findById(req.session.user && req.session.user.jobseekers, req.params.id)
+}
 
 module.exports = router => {
 
@@ -45,10 +50,14 @@ module.exports = router => {
 
 
   router.get('/jobs/:id/interview', authentication.checkIsAuthenticated, (req, res) => {
-    let job = req.session.user.jobs.find(job => job.id == req.params.id)
+    const jobseeker = jobseekerFromRequest(req)
+    if (!jobseeker) {
+      res.redirect('/jobs')
+      return
+    }
 
     res.render('jobs/applications/interview_templates', {
-      job
+      jobseeker
     })
   })
 
@@ -72,27 +81,28 @@ module.exports = router => {
 
 
   router.get('/jobs/:id/interview_check', authentication.checkIsAuthenticated, (req, res) => {
-    let job = req.session.user.jobs.find(job => job.id == req.params.id)
-    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
-    let user = req.session.user
+    const jobseeker = jobseekerFromRequest(req)
+    if (!jobseeker) {
+      res.redirect('/jobs')
+      return
+    }
 
     res.render('jobs/applications/interview_check', {
-      job,
       jobseeker,
-      user
+      user: req.session.user
     })
   })
 
-  router.post('/jobs/:id/interview_check', (req, res) => {
-
-    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+  router.post('/jobs/:id/interview_check', authentication.checkIsAuthenticated, (req, res) => {
+    const jobseeker = jobseekerFromRequest(req)
+    if (!jobseeker) {
+      res.redirect('/jobs')
+      return
+    }
 
     jobseeker.tag = 'Interviewing'
-    
     req.flash('success', 'Emails sent')
-    
-    res.redirect(`/jobs/${req.params.id}/applications`)
-   
+    res.redirect(`/jobs/application/${jobseeker.id}`)
   })
 
   
@@ -113,14 +123,16 @@ module.exports = router => {
   })
 
 
-  router.post('/jobs/application/:id', (req, res) => {
-    
-    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+  router.post('/jobs/application/:id', authentication.checkIsAuthenticated, (req, res) => {
+    const jobseeker = jobseekerFromRequest(req)
+    if (!jobseeker) {
+      res.redirect('/jobs')
+      return
+    }
 
-      jobseeker.tag = req.session.data.tag      
-      req.flash('success', 'Pre-employment checklist updated')
-      res.redirect(`/jobs/application/${req.params.id}`)
-    
+    jobseeker.tag = req.session.data && req.session.data.tag
+    req.flash('success', 'Pre-employment checklist updated')
+    res.redirect(`/jobs/application/${req.params.id}`)
   })
 
   //ADDING A MANUAL REFERENCE STUFF
@@ -133,14 +145,16 @@ module.exports = router => {
     })
   })
 
-  router.post('/jobs/application/:id/reference', (req, res) => {
-    
-      let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+  router.post('/jobs/application/:id/reference', authentication.checkIsAuthenticated, (req, res) => {
+    const jobseeker = jobseekerFromRequest(req)
+    if (!jobseeker) {
+      res.redirect('/jobs')
+      return
+    }
 
-      jobseeker.tag = req.session.data.tag      
-      req.flash('success', 'New reference added')
-      res.redirect(`/jobs/application/${req.params.id}`)
-    
+    jobseeker.tag = req.session.data && req.session.data.tag
+    req.flash('success', 'New reference added')
+    res.redirect(`/jobs/application/${req.params.id}`)
   })
 
   //ADDING A MANUAL REFERENCE STUFF
@@ -156,11 +170,15 @@ module.exports = router => {
   //REQUEST A REFERENCE BUTTON
 
   router.get('/jobs/application/:id/requestareference', authentication.checkIsAuthenticated, (req, res) => {
-    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+    const jobseeker = jobseekerFromRequest(req)
+    if (!jobseeker) {
+      res.redirect('/jobs')
+      return
+    }
 
-      jobseeker.tag = req.session.data.tag      
-      req.flash('success', 'Request for a reference email sent')
-      res.redirect(`/jobs/application/${req.params.id}`)
+    jobseeker.tag = req.session.data && req.session.data.tag
+    req.flash('success', 'Request for a reference email sent')
+    res.redirect(`/jobs/application/${req.params.id}`)
   })
 
   //online checks
@@ -173,14 +191,16 @@ module.exports = router => {
     })
   })
 
-  router.post('/jobs/application/:id/online_checks', (req, res) => {
-    
-      let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+  router.post('/jobs/application/:id/online_checks', authentication.checkIsAuthenticated, (req, res) => {
+    const jobseeker = jobseekerFromRequest(req)
+    if (!jobseeker) {
+      res.redirect('/jobs')
+      return
+    }
 
-      jobseeker.tag = req.session.data.tag      
-      req.flash('success', 'Online checks updated')
-      res.redirect(`/jobs/application/${req.params.id}`)
-    
+    jobseeker.tag = req.session.data && req.session.data.tag
+    req.flash('success', 'Online checks updated')
+    res.redirect(`/jobs/application/${req.params.id}`)
   })
 
   //reference upload journey
@@ -205,14 +225,16 @@ module.exports = router => {
     })
   })
 
-  router.post('/jobs/application/tag/:id', (req, res) => {
-    
-    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+  router.post('/jobs/application/tag/:id', authentication.checkIsAuthenticated, (req, res) => {
+    const jobseeker = jobseekerFromRequest(req)
+    if (!jobseeker) {
+      res.redirect('/jobs')
+      return
+    }
 
-      jobseeker.tag = req.session.data.tag      
-      req.flash('success', 'Application status updated')
-      res.redirect(`/jobs/686355/applications`)
-    
+    jobseeker.tag = req.session.data && req.session.data.tag
+    req.flash('success', 'Application status updated')
+    res.redirect(`/jobs/application/${jobseeker.id}`)
   })
 
   router.post('/jobs/:id/tag', (req, res) => {
@@ -295,16 +317,18 @@ module.exports = router => {
     })
   })
 
-  router.post('/jobs/application/interview/:id', (req, res) => {
-    
-    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+  router.post('/jobs/application/interview/:id', authentication.checkIsAuthenticated, (req, res) => {
+    const jobseeker = jobseekerFromRequest(req)
+    if (!jobseeker) {
+      res.redirect('/jobs')
+      return
+    }
 
-    jobseeker.interviewDetails = req.session.data.interviewDetails
+    jobseeker.interviewDetails = req.session.data && req.session.data.interviewDetails
     jobseeker.tag = 'Interviewing'
 
     req.flash('success', 'Interview details added')
-    res.redirect(`/jobs/${req.params.id}/applications`)
-
+    res.redirect(`/jobs/application/${jobseeker.id}`)
   })
 
 

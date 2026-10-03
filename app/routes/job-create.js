@@ -1,5 +1,5 @@
 
-const authentication = require('../middleware/authenticaton')
+const authentication = require('../middleware/authentication')
 const Validator = require('../helpers/validator')
 
 module.exports = router => {
@@ -153,17 +153,7 @@ module.exports = router => {
   })
 
   router.get('/jobs/new/sponsorship', (req, res) => {
-
-    res.render('jobs/new/sponsorship', {
-      
-    })
-  })
-
-    router.get('/jobs/new/sponsorship', (req, res) => {
-
-    res.render('jobs/new/sponsorship', {
-      
-    })
+    res.render('jobs/new/sponsorship')
   })
 
 
