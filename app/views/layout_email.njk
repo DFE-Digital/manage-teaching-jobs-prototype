@@ -56,9 +56,9 @@
 
 {% if useAutoStoreData %}
   {% block footer %}
-    {% set sharingUrl %}
-      {{protocol}}://{{hostname}}{{path}}?userEmailaddress={{user.emailAddress}}
-    {% endset %}
+    {% if user.emailAddress %}
+      {% set sharingUrl = sharingOrigin + path + '?userEmailAddress=' + user.emailAddress %}
+    {% endif %}
 
     {{ govukFooter({
       meta: {
@@ -68,8 +68,9 @@
             text: "Clear data"
           },
           {
+            href: sharingUrl,
             text: sharingUrl
-          }
+          } if sharingUrl
         ],
         visuallyHiddenTitle: "Footer links"
       }

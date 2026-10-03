@@ -1,5 +1,5 @@
 
-const authentication = require('../middleware/authenticaton')
+const authentication = require('../middleware/authentication')
 const organisationHelper = require('../helpers/organisation')
 
 module.exports = router => {

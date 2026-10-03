@@ -1,7 +1,20 @@
 const users = require('../data/users.json')
 const organisationHelper = require('../helpers/organisation')
 const userHelper = require('../helpers/user')
-const authentication = require('../middleware/authenticaton')
+const authentication = require('../middleware/authentication')
+
+function safeReturnPath (value) {
+  if (typeof value !== 'string') return null
+  if (!value.startsWith('/') || value.startsWith('//') || value.includes('\\')) return null
+  return value
+}
+
+function usersForProfilePicker () {
+  return users.map(user => {
+    user.organisation.hasMissingInformation = organisationHelper.hasMissingInformation(user.organisation)
+    return user
+  })
+}
 
 module.exports = router => {
 
@@ -15,47 +28,32 @@ module.exports = router => {
 
   router.get('/account/sign-in-as-profile', (req, res) => {
     res.render('account/sign-in-as-profile', {
-      users: users.map(user => {
-        user.organisation.hasMissingInformation = organisationHelper.hasMissingInformation(user.organisation)
-        return user
-      })
-    })
-  })
-
-  router.get('/account/sign-in', (req, res) => {
-    res.render('account/sign-in', {
-      users: users.map(user => {
-        user.organisation.hasMissingInformation = organisationHelper.hasMissingInformation(user.organisation)
-        return user
-      })
+      users: usersForProfilePicker()
     })
   })
 
   router.post('/account/sign-in', (req, res) => {
+    const emailAddress = req.body.emailAddress
+    const user = emailAddress ? userHelper.getUser(emailAddress) : null
+    const passwordRejected = user && req.body.password && req.body.password !== user.password
 
-    let user
-
-    if(req.body.emailAddress) {
-      user = userHelper.getUser(req.body.emailAddress)
-    }
-
-    // very defensive because we can assume that if an emailAddress has been submitted
-    // then it will be a valid email address for an existing user
-    // but just in case we'll grab the the first user's email address
-    // and use that to retrieve a fully built user object
-    if(!user) {
-      user = userHelper.getUser(users[0].emailAddress)
+    if (!user || passwordRejected) {
+      res.status(401).render('account/sign-in', {
+        error: 'Enter the email address and password for your account',
+        emailAddress
+      })
+      return
     }
 
     res.locals.user = req.session.user = user
 
-    if(organisationHelper.hasMissingInformation(user.organisation)) {
+    const returnUrl = safeReturnPath(req.body.returnUrl)
+    if (organisationHelper.hasMissingInformation(user.organisation)) {
       res.redirect('/interruptions/complete-profile')
-    } else if(req.body.returnUrl) {
-      res.redirect(req.body.returnUrl)
+    } else if (returnUrl) {
+      res.redirect(returnUrl)
     } else {
       res.redirect('/interruptions/profiles')
-      // res.redirect('/jobs')
     }
   })
 

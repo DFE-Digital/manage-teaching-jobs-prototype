@@ -1,7 +1,17 @@
 
-const authentication = require('../middleware/authenticaton')
 const _ = require('lodash')
-const { use } = require('browser-sync')
+const authentication = require('../middleware/authentication')
+const { findById } = require('../helpers/lookup')
+const roleOptions = require('../data/roles').map(item => {
+  return { text: item, value: item }
+})
+const phaseOptions = require('../data/phases').map(item => {
+  return { text: item, value: item }
+})
+
+function findJobseeker (req) {
+  return findById(req.session.user && req.session.user.jobseekers, req.params.id)
+}
 
 function isQTSRelevant(jobseeker) {
   let relevant = false
@@ -20,15 +30,22 @@ function isQTSRelevant(jobseeker) {
 module.exports = router => {
 
   router.get('/jobseeker-clear', function (req, res) {
-      
-      delete req.session.data.filters-rightToWork
-      delete req.session.data.filters-qts
-      delete req.session.data.filters-role
-      delete req.session.data.filters-workingPatterns
-      delete req.session.data.filters-keyStages
-      delete req.session.data.filters-subjects
+    const filterKeys = [
+      'filters-rightToWork',
+      'filters-qts',
+      'filters-role',
+      'filters-workingPatterns',
+      'filters-keyStages',
+      'filters-subjects'
+    ]
 
-      res.redirect('/jobseekers')
+    if (req.session.data) {
+      filterKeys.forEach(key => {
+        delete req.session.data[key]
+      })
+    }
+
+    res.redirect('/jobseekers')
   })
 
 
@@ -59,13 +76,8 @@ module.exports = router => {
       }
     })
 
-    let roles = require('../data/roles').map(item => {
-      return { text: item, value: item }
-    })
-
-    let phases = require('../data/phases').map(item => {
-      return { text: item, value: item }
-    })
+    let roles = roleOptions
+    let phases = phaseOptions
 
     let showSubjectsFilter = false
 
@@ -123,15 +135,19 @@ module.exports = router => {
   })
 
   router.get('/jobseekers/:id', authentication.checkIsAuthenticated, (req, res) => {
-    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+    const jobseeker = findJobseeker(req)
+    if (!jobseeker) {
+      res.redirect('/jobseekers')
+      return
+    }
 
-    let workHistory = jobseeker.profile.workHistory.sort((a, b) => {
+    let workHistory = (jobseeker.profile.workHistory || []).slice().sort((a, b) => {
       let dateA = new Date(a.startDate);
       let dateB = new Date(b.startDate);
       return dateB - dateA;
     })
 
-    let qualifications = jobseeker.profile.qualifications
+    let qualifications = jobseeker.profile.qualifications || []
 
     let qualificationsGroup = _.sortBy(qualifications, function(item) {
       return item.year
@@ -160,7 +176,11 @@ module.exports = router => {
   })
 
   router.get('/jobseekers/:id/invites', authentication.checkIsAuthenticated, (req, res) => {
-    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+    const jobseeker = findJobseeker(req)
+    if (!jobseeker) {
+      res.redirect('/jobseekers')
+      return
+    }
 
     res.render('jobseekers/invites/index', {
       jobseeker
@@ -168,7 +188,11 @@ module.exports = router => {
   })
 
   router.get('/jobseekers/:id/invites/new', authentication.checkIsAuthenticated, (req, res) => {
-    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+    const jobseeker = findJobseeker(req)
+    if (!jobseeker) {
+      res.redirect('/jobseekers')
+      return
+    }
 
     let publishedJobs = req.session.user.jobs.filter(job => job.status == 'Active')
 
@@ -213,7 +237,11 @@ module.exports = router => {
   })
 
   router.get('/jobseekers/:id/invites/new/check', authentication.checkIsAuthenticated, (req, res) => {
-    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+    const jobseeker = findJobseeker(req)
+    if (!jobseeker) {
+      res.redirect('/jobseekers')
+      return
+    }
 
     res.render('jobseekers/invites/new/check', {
       jobseeker
@@ -228,7 +256,11 @@ module.exports = router => {
 
   //customise message
   router.get('/jobseekers/:id/invites/new/customise', authentication.checkIsAuthenticated, (req, res) => {
-    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+    const jobseeker = findJobseeker(req)
+    if (!jobseeker) {
+      res.redirect('/jobseekers')
+      return
+    }
 
     res.render('jobseekers/invites/new/customise', {
       jobseeker
@@ -241,7 +273,11 @@ module.exports = router => {
 
   //customise message general
   router.get('/jobseekers/:id/invites/new/customise-general', authentication.checkIsAuthenticated, (req, res) => {
-    let jobseeker = req.session.user.jobseekers.find(jobseeker => jobseeker.id == req.params.id)
+    const jobseeker = findJobseeker(req)
+    if (!jobseeker) {
+      res.redirect('/jobseekers')
+      return
+    }
 
     res.render('jobseekers/invites/new/customise-general', {
       jobseeker
@@ -250,7 +286,8 @@ module.exports = router => {
 
   router.post('/jobseekers/:id/invites/new/customise-general', authentication.checkIsAuthenticated, (req, res) => {
 
-    req.session.data['invite-jobs'] == 'general'
+    if (!req.session.data) req.session.data = {}
+    req.session.data['invite-jobs'] = 'general'
 
     res.redirect(`/jobseekers/${req.params.id}/invites/new/check`)
   })
@@ -283,13 +320,8 @@ module.exports = router => {
       }
     })
 
-    let roles = require('../data/roles').map(item => {
-      return { text: item, value: item }
-    })
-
-    let phases = require('../data/phases').map(item => {
-      return { text: item, value: item }
-    })
+    let roles = roleOptions
+    let phases = phaseOptions
 
     let showSubjectsFilter = false
 

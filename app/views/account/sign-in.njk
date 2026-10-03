@@ -13,18 +13,37 @@
         {{heading}}
       </h1>
 
+      {% if error %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: error,
+              href: "#emailAddress"
+            }
+          ]
+        }) }}
+      {% endif %}
+
       <form method="post">
+        {% if query.returnUrl %}
+          <input type="hidden" name="returnUrl" value="{{ query.returnUrl }}">
+        {% endif %}
 
         {{ govukInput({
           label: {
             text: "Email address",
             classes: "govuk-label--m"
           },
-          id: "email",
-          name: "email",
+          id: "emailAddress",
+          name: "emailAddress",
           type: "email",
           autocomplete: "email",
-          spellcheck: false
+          spellcheck: false,
+          value: emailAddress,
+          errorMessage: {
+            text: error
+          } if error
         }) }}
 
         {{ govukInput({
