@@ -1,0 +1,76 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'statistics' %}
+{% set title = 'Statistics' %}
+
+{% block content %}
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+    {{ job.title }}
+    {{ govukTag({
+      text: job.status,
+      classes: job.status | jobStatusTagClass
+    }) }}
+  </h1>
+
+  {% include "includes/job-sub-navigation.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-summary-card govuk-!-margin-top-6">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Listing data statistics
+          </h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list" id="vacancy_statistics">
+            <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+              <dt class="govuk-summary-list__key">Views</dt>
+              <dd class="govuk-summary-list__value">13</dd>
+            </div>
+            <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+              <dt class="govuk-summary-list__key">Saves</dt>
+              <dd class="govuk-summary-list__value">4</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Application data statistics
+          </h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list" id="job_applications_statistics">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Applications</dt>
+              <dd class="govuk-summary-list__value">10</dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">New</dt>
+              <dd class="govuk-summary-list__value">6</dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Shortlisted</dt>
+              <dd class="govuk-summary-list__value">1</dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Rejected</dt>
+              <dd class="govuk-summary-list__value">2</dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">Withdrawn</dt>
+              <dd class="govuk-summary-list__value">1</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <p class="govuk-body">This may include data from candidates who have withdrawn their applications.</p>
+      <p>This is to ensure the anonymity of applicants who submit equal opportunities information.</p>
+    </div>
+  </div>
+{% endblock %}

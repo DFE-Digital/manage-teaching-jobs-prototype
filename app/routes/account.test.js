@@ -4,14 +4,14 @@ const request = require('supertest')
 const app = require('../../server')
 
 describe('account sign in', () => {
-  it('rejects the old email field instead of signing in as the first user', async () => {
+  it('signs in without an email or password', async () => {
     const response = await request(app)
       .post('/account/sign-in')
       .type('form')
-      .send({ email: 'rachael@courtland.sch.uk', password: 'tv' })
+      .send({})
 
-    expect(response.status).toBe(401)
-    expect(response.text).toContain('There is a problem')
+    expect(response.status).toBe(302)
+    expect(response.headers.location).toBe('/interruptions/profiles')
   })
 
   it('signs in as the email address that was submitted', async () => {

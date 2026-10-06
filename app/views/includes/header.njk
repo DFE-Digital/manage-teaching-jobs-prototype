@@ -34,10 +34,10 @@
     <div class="govuk-header__content">
 
           <nav class="govuk-header__navigation" aria-label="Top Menu">
-            <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu" aria-expanded="false" hidden="">Menu</button>
-            <ul id="navigation" class="govuk-header__navigation-list">
-                <li class="govuk-header__navigation-item"><a class="govuk-header__link" href="/organisation">{{activeNav}}{{user.organisation.name}} profile</a></li>
-                <li class="govuk-header__navigation-item"><a class="govuk-header__link" href="/account/sign-in/">Sign out</a></li>
+            <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="header-navigation" aria-label="Show or hide menu" aria-expanded="false" hidden="">Menu</button>
+            <ul id="header-navigation" class="govuk-header__navigation-list">
+                <li class="govuk-header__navigation-item"><a class="govuk-header__link" href="/organisation">{% if user %}{{ user.organisation.name }} {% endif %}Profile</a></li>
+                <li class="govuk-header__navigation-item"><a class="govuk-header__link" href="/sign-out">Sign out</a></li>
             </ul>
           </nav>      
       </div>
@@ -56,36 +56,36 @@
           Teaching Vacancies
       </span>
       <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
-        <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden>
+        <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="service-navigation" hidden>
           Menu
         </button>
-        <ul class="govuk-service-navigation__list" id="navigation">
-          <li class="govuk-service-navigation__item {% if activeNav == 'jobs' %} govuk-service-navigation__item--active {% endif %}">
-            <a class="govuk-service-navigation__link" href="/jobs">
+        <ul class="govuk-service-navigation__list" id="service-navigation">
+          <li class="govuk-service-navigation__item{% if primaryNavId == 'jobs' %} govuk-service-navigation__item--active{% endif %}">
+            <a class="govuk-service-navigation__link" href="/jobs"{% if primaryNavId == 'jobs' %} aria-current="true"{% endif %}>
               Manage jobs
             </a>
           </li>
-          {% if user.organisation.name !== 'Hope college2' %} 
-          <li class="govuk-service-navigation__item {% if activeNav == 'fe' %} govuk-service-navigation__item--active {% endif %}">
-            <a class="govuk-service-navigation__link" href="#">
+          {% if not user or user.organisation.name !== 'Hope college2' %}
+          <li class="govuk-service-navigation__item{% if primaryNavId == 'messages' %} govuk-service-navigation__item--active{% endif %}">
+            <a class="govuk-service-navigation__link" href="/messages"{% if primaryNavId == 'messages' %} aria-current="true"{% endif %}>
               Messages
             </a>
           </li>
           {% endif %}
-          <li class="govuk-service-navigation__item {% if activeNav == 'jobseekers' %} govuk-service-navigation__item--active {% endif %}">
-            <a class="govuk-service-navigation__link" href="/jobseekers">
+          <li class="govuk-service-navigation__item{% if primaryNavId == 'jobseekers' %} govuk-service-navigation__item--active{% endif %}">
+            <a class="govuk-service-navigation__link" href="/jobseekers"{% if primaryNavId == 'jobseekers' %} aria-current="true"{% endif %}>
               Candidate profiles
             </a>
           </li>
-          <li class="govuk-service-navigation__item {% if activeNav == 'schools' %} govuk-service-navigation__item--active {% endif %}">
-            <a class="govuk-service-navigation__link" href="#">
-              Statistics 
+          <li class="govuk-service-navigation__item{% if primaryNavId == 'statistics' %} govuk-service-navigation__item--active{% endif %}">
+            <a class="govuk-service-navigation__link" href="/statistics"{% if primaryNavId == 'statistics' %} aria-current="true"{% endif %}>
+              Statistics
             </a>
           </li>
-          {% if user.organisation.name !== 'Hope college2' %} 
-          <li class="govuk-service-navigation__item {% if activeNav == 'schools' %} govuk-service-navigation__item--active {% endif %}">
-            <a class="govuk-service-navigation__link" href="#">
-              Notifications 
+          {% if not user or user.organisation.name !== 'Hope college2' %}
+          <li class="govuk-service-navigation__item{% if primaryNavId == 'notifications' %} govuk-service-navigation__item--active{% endif %}">
+            <a class="govuk-service-navigation__link" href="/notifications"{% if primaryNavId == 'notifications' %} aria-current="true"{% endif %}>
+              Notifications
             </a>
           </li>
           {% endif %}

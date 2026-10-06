@@ -13,19 +13,7 @@
         {{heading}}
       </h1>
 
-      {% if error %}
-        {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: [
-            {
-              text: error,
-              href: "#emailAddress"
-            }
-          ]
-        }) }}
-      {% endif %}
-
-      <form method="post">
+      <form method="post" novalidate>
         {% if query.returnUrl %}
           <input type="hidden" name="returnUrl" value="{{ query.returnUrl }}">
         {% endif %}
@@ -40,10 +28,7 @@
           type: "email",
           autocomplete: "email",
           spellcheck: false,
-          value: emailAddress,
-          errorMessage: {
-            text: error
-          } if error
+          value: emailAddress
         }) }}
 
         {{ govukInput({

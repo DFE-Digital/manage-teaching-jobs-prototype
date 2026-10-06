@@ -30,6 +30,7 @@ router.all('*', (req, res, next) => {
 require('./routes/interruptions')(router)
 require('./routes/organisation')(router)
 require('./routes/account')(router)
+require('./routes/service-nav')(router)
 require('./routes/job-create')(router)
 require('./routes/job-edit')(router)
 require('./routes/jobs')(router)

@@ -1,7 +1,9 @@
 {% extends "layout.njk" %}
 
-{% set title = 'Active Jobs (' + (user.jobs.length) + ')' %}
+{% set title = title or ('Active jobs (' + (jobs | default(user.jobs) | length) + ')') %}
 {% set primaryNavId = 'jobs' %}
+{% set jobListId = jobListId or 'active' %}
+{% set listedJobs = jobs if jobs else user.jobs %}
 
 {% block content %}
   <div class="govuk-width-container">
@@ -19,22 +21,22 @@
       }]
     }) }}
 
-    <nav class="app-sub-navigation govuk-!-margin-top-6 govuk-!-margin-bottom-2" aria-label="Application menu">
+    <nav class="app-sub-navigation govuk-!-margin-top-6 govuk-!-margin-bottom-2" aria-label="Job listings">
       <ul class="app-sub-navigation__list">
         <li class="app-sub-navigation__item">
-          <a class="app-sub-navigation__link" aria-current="page" href="">Active jobs</a>
+          <a class="app-sub-navigation__link"{% if jobListId == 'active' %} aria-current="page"{% endif %} href="/jobs">Active jobs</a>
         </li>
         <li class="app-sub-navigation__item">
-          <a class="app-sub-navigation__link" href="">Draft jobs</a>
+          <a class="app-sub-navigation__link"{% if jobListId == 'draft' %} aria-current="page"{% endif %} href="/jobs/draft">Draft jobs</a>
         </li>
         <li class="app-sub-navigation__item">
-          <a class="app-sub-navigation__link" href="">Scheduled jobs</a>
+          <a class="app-sub-navigation__link"{% if jobListId == 'scheduled' %} aria-current="page"{% endif %} href="/jobs/scheduled">Scheduled jobs</a>
         </li>
         <li class="app-sub-navigation__item">
-          <a class="app-sub-navigation__link" href="">Closed jobs</a>
+          <a class="app-sub-navigation__link"{% if jobListId == 'closed' %} aria-current="page"{% endif %} href="/jobs/closed">Closed jobs</a>
         </li>
         <li class="app-sub-navigation__item">
-          <a class="app-sub-navigation__link" href="">Jobs awaiting feedback</a>
+          <a class="app-sub-navigation__link"{% if jobListId == 'awaiting-feedback' %} aria-current="page"{% endif %} href="/jobs/awaiting-feedback">Jobs awaiting feedback</a>
         </li>
       </ul>
     </nav>
@@ -46,14 +48,14 @@
 		
 		<div class="govuk-grid-column-two-thirds-at-desktop" id="vacancy-results">
 
-      {% if user.jobs.length == 0 %}
+      {% if listedJobs.length == 0 %}
 			<div class="empty-section-component">
-				<p class="govuk-body govuk-!-margin-bottom-0">You currently have no active jobs.</p>
+				<p class="govuk-body govuk-!-margin-bottom-0">{{ jobListEmpty or 'You currently have no jobs.' }}</p>
 			</div>
       {% endif %}
 
 
-      {% for job in user.jobs %}
+      {% for job in listedJobs %}
       <div class="app-job-listings__job">
         <div class="app-job-listings__job-row">
           <div class="app-job-listings__title">
@@ -119,14 +121,14 @@
 		</div>
 		<div class="govuk-grid-column-two-thirds-at-desktop" id="vacancy-results">
 
-      {% if user.jobs.length == 0 %}
+      {% if listedJobs.length == 0 %}
 			<div class="empty-section-component">
-				<p class="govuk-body govuk-!-margin-bottom-0">You currently have no active jobs.</p>
+				<p class="govuk-body govuk-!-margin-bottom-0">{{ jobListEmpty or 'You currently have no jobs.' }}</p>
 			</div>
       {% endif %}
 
 
-      {% for job in user.jobs %}
+      {% for job in listedJobs %}
       <div class="app-job-listings__job">
         <div class="app-job-listings__job-row">
           <div class="app-job-listings__title">

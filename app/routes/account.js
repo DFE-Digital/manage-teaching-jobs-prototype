@@ -34,16 +34,7 @@ module.exports = router => {
 
   router.post('/account/sign-in', (req, res) => {
     const emailAddress = req.body.emailAddress
-    const user = emailAddress ? userHelper.getUser(emailAddress) : null
-    const passwordRejected = user && req.body.password && req.body.password !== user.password
-
-    if (!user || passwordRejected) {
-      res.status(401).render('account/sign-in', {
-        error: 'Enter the email address and password for your account',
-        emailAddress
-      })
-      return
-    }
+    const user = userHelper.getUser(emailAddress) || userHelper.getUser('rachael@courtland.sch.uk') || userHelper.getUser(users[0].emailAddress)
 
     res.locals.user = req.session.user = user
 

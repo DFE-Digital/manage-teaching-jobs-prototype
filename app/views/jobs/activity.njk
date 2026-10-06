@@ -1,0 +1,40 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'activity' %}
+{% set title = 'Activity' %}
+
+{% block content %}
+  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
+    {{ job.title }}
+    {{ govukTag({
+      text: job.status,
+      classes: job.status | jobStatusTagClass
+    }) }}
+  </h1>
+
+  {% include "includes/job-sub-navigation.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">Activity</h2>
+
+      <div class="timeline-component">
+        <ul class="timeline-component__items">
+          <li class="timeline-component__item">
+            <h3 class="timeline-component__key govuk-heading-s">Listing viewed 13 times</h3>
+            <p class="timeline-component__value govuk-body">By candidates on Teaching Vacancies</p>
+          </li>
+          <li class="timeline-component__item">
+            <h3 class="timeline-component__key govuk-heading-s">Application received</h3>
+            <p class="timeline-component__value govuk-body">By a candidate, 6 October 2026</p>
+          </li>
+          <li class="timeline-component__item">
+            <h3 class="timeline-component__key govuk-heading-s">Job listing published</h3>
+            <p class="timeline-component__value govuk-body">By {{ user.organisation.name }}, {{ job.publishDate | date }}{% if job.closingTime %} at {{ job.closingTime }}{% endif %}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

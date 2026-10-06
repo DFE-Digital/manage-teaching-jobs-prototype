@@ -1,0 +1,72 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Statistics' %}
+{% set primaryNavId = 'statistics' %}
+
+{% block content %}
+  <span class="govuk-caption-xl">{{ user.organisation.name }}</span>
+  <h1 class="govuk-heading-l">Statistics</h1>
+
+  <p class="govuk-body">Listing and application data for all of your organisation’s job listings.</p>
+
+  {% if jobStats.length %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-summary-card govuk-!-margin-top-2">
+          <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">All listings</h2>
+          </div>
+          <div class="govuk-summary-card__content">
+            <dl class="govuk-summary-list">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Views</dt>
+                <dd class="govuk-summary-list__value">{{ totals.views }}</dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Saves</dt>
+                <dd class="govuk-summary-list__value">{{ totals.saves }}</dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Applications</dt>
+                <dd class="govuk-summary-list__value">{{ totals.applications }}</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">By job listing</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Job listing</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Views</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Saves</th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Applications</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {% for job in jobStats %}
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              <a class="govuk-link" href="{{ job.href }}">{{ job.title }}</a>
+            </th>
+            <td class="govuk-table__cell">
+              {{ govukTag({
+                text: job.status,
+                classes: job.status | jobStatusTagClass
+              }) }}
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">{{ job.views }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">{{ job.saves }}</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">{{ job.applications }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="govuk-body">There are no job listings to show statistics for.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Notifications' %}
+{% set primaryNavId = 'notifications' %}
+
+{% block content %}
+  <span class="govuk-caption-xl">{{ user.organisation.name }}</span>
+  <h1 class="govuk-heading-l">Notifications</h1>
+
+  <p class="govuk-body">Updates about your job listings and matching candidate profiles.</p>
+
+  {% if notifications.length %}
+    <ul class="govuk-list">
+      {% for item in notifications %}
+        <li class="govuk-!-margin-bottom-6">
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
+            <a class="govuk-link" href="{{ item.href }}">{{ item.title }}</a>
+          </h2>
+          <p class="govuk-body govuk-!-margin-bottom-1">{{ item.body }}</p>
+          <p class="govuk-hint govuk-!-margin-bottom-0">{{ item.receivedOn }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="govuk-body">You have no notifications.</p>
+  {% endif %}
+{% endblock %}

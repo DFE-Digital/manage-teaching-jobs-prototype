@@ -6,11 +6,59 @@ function jobseekerFromRequest (req) {
   return findById(req.session.user && req.session.user.jobseekers, req.params.id)
 }
 
+function jobFromRequest (req) {
+  return findById(req.session.user && req.session.user.jobs, req.params.id)
+}
+
+const JOB_LISTS = {
+  active: {
+    status: 'Active',
+    heading: 'Active jobs',
+    empty: 'You currently have no active jobs.'
+  },
+  draft: {
+    status: 'Draft',
+    heading: 'Draft jobs',
+    empty: 'You currently have no draft jobs.'
+  },
+  scheduled: {
+    status: 'Scheduled',
+    heading: 'Scheduled jobs',
+    empty: 'You currently have no scheduled jobs.'
+  },
+  closed: {
+    status: 'Closed',
+    heading: 'Closed jobs',
+    empty: 'You currently have no closed jobs.'
+  },
+  'awaiting-feedback': {
+    status: 'Closed',
+    heading: 'Jobs awaiting feedback',
+    empty: 'You currently have no jobs awaiting feedback.'
+  }
+}
+
+function renderJobList (listId) {
+  return (req, res) => {
+    const list = JOB_LISTS[listId]
+    const jobs = (req.session.user.jobs || []).filter(job => job.status === list.status)
+
+    res.render('jobs/index', {
+      jobs,
+      jobListId: listId,
+      jobListEmpty: list.empty,
+      title: `${list.heading} (${jobs.length})`
+    })
+  }
+}
+
 module.exports = router => {
 
-  router.get('/jobs', authentication.checkIsAuthenticated, (req, res) => {
-    res.render('jobs/index')
-  })
+  router.get('/jobs', authentication.checkIsAuthenticated, renderJobList('active'))
+  router.get('/jobs/draft', authentication.checkIsAuthenticated, renderJobList('draft'))
+  router.get('/jobs/scheduled', authentication.checkIsAuthenticated, renderJobList('scheduled'))
+  router.get('/jobs/closed', authentication.checkIsAuthenticated, renderJobList('closed'))
+  router.get('/jobs/awaiting-feedback', authentication.checkIsAuthenticated, renderJobList('awaiting-feedback'))
 
   router.get('/jobs/example', authentication.checkIsAuthenticated, (req, res) => {
 
@@ -20,9 +68,37 @@ module.exports = router => {
   })
 
   router.get('/jobs/:id', authentication.checkIsAuthenticated, (req, res) => {
-    let job = req.session.user.jobs.find(job => job.id == req.params.id)
+    const job = jobFromRequest(req)
+    if (!job) {
+      res.redirect('/jobs')
+      return
+    }
 
     res.render('jobs/show', {
+      job
+    })
+  })
+
+  router.get('/jobs/:id/statistics', authentication.checkIsAuthenticated, (req, res) => {
+    const job = jobFromRequest(req)
+    if (!job) {
+      res.redirect('/jobs')
+      return
+    }
+
+    res.render('jobs/statistics', {
+      job
+    })
+  })
+
+  router.get('/jobs/:id/activity', authentication.checkIsAuthenticated, (req, res) => {
+    const job = jobFromRequest(req)
+    if (!job) {
+      res.redirect('/jobs')
+      return
+    }
+
+    res.render('jobs/activity', {
       job
     })
   })
