@@ -10,7 +10,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-l">
-           Candidate profiles (<span id="candidate-count">12</span>)
+           Candidate profiles (<span id="candidate-count">{{ jobseekers.length if jobseekers else user.jobseekers.length }}</span>)
         </h1>
     </div>
   </div>
@@ -810,9 +810,9 @@
 
 
     {% if user.organisation.schools %}
-      <p class="govuk-body-l">These candidates are willing to travel to a location that’s near to at least one of your schools.</p>
+      <p class="govuk-body">These candidates are willing to travel to a location near your school or college.</p>
     {% else %}
-      <p class="govuk-body-l">These candidates are willing to travel to a location that’s near to your school.</p>
+      <p class="govuk-body">These candidates are willing to travel to a location near your school or college.</p>
     {% endif %}
 
     <p>Ordered by most recently updated.</p>
@@ -821,6 +821,15 @@
       </div>
 
       <div class="app-list">
+        {% if not jobseekers or jobseekers.length == 0 %}
+          <h2 class="govuk-heading-m">No candidates found</h2>
+          <p class="govuk-body">This may be because:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>candidates have not turned on their profile</li>
+            <li>candidates are outside of the role's location</li>
+          </ul>
+          <p class="govuk-body">You may get more results if you remove some filters, if you have used them.</p>
+        {% endif %}
         {% for jobseeker in jobseekers %}
 
           <!-- text for profile QTS -->

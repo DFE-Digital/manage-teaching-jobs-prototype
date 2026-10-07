@@ -18,6 +18,7 @@ $app-images-path: "/public/images/";
 @import "patterns/related-items";
 @import "patterns/moj-file-upload";
 @import "patterns/newheader";
+@import "patterns/govuk-homepage";
 
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
@@ -36,6 +37,24 @@ hr {
 
 .govuk-header {
   border-bottom: 10px solid #1d70b8;
+}
+
+.app-homepage .govuk-header,
+.app-homepage .govuk-header__container {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+.homepage-header__caption {
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.app-homepage .app-prototype-index-column {
+  box-sizing: border-box;
+  width: 960px;
+  max-width: 100%;
 }
 
 .govuk-header__logo {
@@ -106,7 +125,6 @@ h1 .govuk-tag {
 
 .app-job-listings {
   margin-bottom: govuk-spacing(4);
-  border-top: 1px solid govuk-colour('mid-grey');
 }
 
 .app-job-listings__job {
@@ -116,49 +134,67 @@ h1 .govuk-tag {
 
 .app-job-listings__job-row {
   display: flex;
-  align-items: flex-start; /* align all items to top */
-  justify-content: space-between; /* space left-center-right */
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: govuk-spacing(4);
   width: 100%;
   box-sizing: border-box;
 }
 
-.app-job-listings__job-row > * {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 0;
+.app-job-listings__title {
+  flex: 1 1 32%;
+  min-width: 0;
 }
 
-.app-job-listings__job-row h2,
-.app-job-listings__meta,
-.app-job-listings__copy {
-  margin: 0;
-  padding: 0;
-}
-
-.app-job-listings__job-row h2 {
-  max-width: 100px;
+.app-job-listings__title h2 {
+  max-width: none;
 }
 
 .app-job-listings__meta {
-  margin: 0 auto;
-  //max-width: 200px;
-  text-align: left; /* left align text inside center block */
-  font-family: "GDS Transport", Arial, sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.25;
-  white-space: normal;
-  vertical-align: top;
+  flex: 1 1 40%;
+  text-align: left;
 }
 
 .app-job-listings__copy {
-  margin: 0;
-  flex-shrink: 0;
-  vertical-align: top;
+  flex: 0 0 auto;
+  text-align: right;
 }
 
-.app-job-listings__copy a {
-  vertical-align: top;
+.app-job-listings__copy--split {
+  padding-left: govuk-spacing(3);
+  border-left: 1px solid govuk-colour('mid-grey');
+  text-align: left;
+}
+
+.app-job-listings__job-row--feedback {
+  align-items: flex-start;
+}
+
+.app-job-listings__feedback {
+  flex: 1 1 55%;
+}
+
+.app-messages-empty {
+  border-left: 8px solid govuk-colour('mid-grey');
+  padding: govuk-spacing(2) govuk-spacing(3);
+  color: govuk-colour('dark-grey');
+}
+
+.app-statistics-empty {
+  color: govuk-colour('dark-grey');
+  text-align: center;
+  padding: govuk-spacing(6) 0;
+}
+
+.app-message-search {
+  display: flex;
+  align-items: flex-end;
+  gap: govuk-spacing(2);
+  max-width: 40rem;
+}
+
+.app-message-search__input {
+  flex: 1;
 }
 
 

@@ -4,158 +4,231 @@
 {% set primaryNavId = 'jobs' %}
 {% set jobListId = jobListId or 'active' %}
 {% set listedJobs = jobs if jobs else user.jobs %}
+{% set sort = sort or 'closing-date-soonest' %}
+{% set sortLabels = {
+  'closing-date-soonest': 'closing date (soonest)',
+  'closing-date-latest': 'closing date (most recent)',
+  'most-applicants': 'most applicants'
+} %}
+{% set showSort = jobListId == 'active' or jobListId == 'awaiting-feedback' %}
 
 {% block content %}
-  <div class="govuk-width-container">
   <span class="govuk-caption-xl">
-        {{user.organisation.name}}
-      </span>
-    {{ appPageHeader({
-      heading: {
-        text: title,
-        classes: 'govuk-heading-l'
-      },
-      items: [{
-        text: 'Create a job listing',
-        href: '/jobs/new/start'
-      }]
-    }) }}
+    {{ user.organisation.name }}
+  </span>
+  {{ appPageHeader({
+    heading: {
+      text: title,
+      classes: 'govuk-heading-l'
+    },
+    items: [{
+      text: 'Create a job listing',
+      href: '/jobs/new/start'
+    }, {
+      text: 'Create a job template',
+      href: '/jobs/templates',
+      classes: 'govuk-button--secondary'
+    }]
+  }) }}
 
-    <nav class="app-sub-navigation govuk-!-margin-top-6 govuk-!-margin-bottom-2" aria-label="Job listings">
-      <ul class="app-sub-navigation__list">
-        <li class="app-sub-navigation__item">
-          <a class="app-sub-navigation__link"{% if jobListId == 'active' %} aria-current="page"{% endif %} href="/jobs">Active jobs</a>
-        </li>
-        <li class="app-sub-navigation__item">
-          <a class="app-sub-navigation__link"{% if jobListId == 'draft' %} aria-current="page"{% endif %} href="/jobs/draft">Draft jobs</a>
-        </li>
-        <li class="app-sub-navigation__item">
-          <a class="app-sub-navigation__link"{% if jobListId == 'scheduled' %} aria-current="page"{% endif %} href="/jobs/scheduled">Scheduled jobs</a>
-        </li>
-        <li class="app-sub-navigation__item">
-          <a class="app-sub-navigation__link"{% if jobListId == 'closed' %} aria-current="page"{% endif %} href="/jobs/closed">Closed jobs</a>
-        </li>
-        <li class="app-sub-navigation__item">
-          <a class="app-sub-navigation__link"{% if jobListId == 'awaiting-feedback' %} aria-current="page"{% endif %} href="/jobs/awaiting-feedback">Jobs awaiting feedback</a>
-        </li>
-      </ul>
-    </nav>
+  <nav class="app-sub-navigation govuk-!-margin-top-2 govuk-!-margin-bottom-2" aria-label="Job listings">
+    <ul class="app-sub-navigation__list">
+      <li class="app-sub-navigation__item">
+        <a class="app-sub-navigation__link"{% if jobListId == 'active' %} aria-current="page"{% endif %} href="/jobs">Active jobs</a>
+      </li>
+      <li class="app-sub-navigation__item">
+        <a class="app-sub-navigation__link"{% if jobListId == 'draft' %} aria-current="page"{% endif %} href="/jobs/draft">Draft jobs</a>
+      </li>
+      <li class="app-sub-navigation__item">
+        <a class="app-sub-navigation__link"{% if jobListId == 'scheduled' %} aria-current="page"{% endif %} href="/jobs/scheduled">Scheduled jobs</a>
+      </li>
+      <li class="app-sub-navigation__item">
+        <a class="app-sub-navigation__link"{% if jobListId == 'closed' %} aria-current="page"{% endif %} href="/jobs/closed">Closed jobs</a>
+      </li>
+      <li class="app-sub-navigation__item">
+        <a class="app-sub-navigation__link"{% if jobListId == 'awaiting-feedback' %} aria-current="page"{% endif %} href="/jobs/awaiting-feedback">Jobs awaiting feedback</a>
+      </li>
+      <li class="app-sub-navigation__item">
+        <a class="app-sub-navigation__link"{% if jobListId == 'templates' %} aria-current="page"{% endif %} href="/jobs/templates">Saved job templates</a>
+      </li>
+    </ul>
+  </nav>
 
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">" + flash + "</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
 
-{% if user.organisation.name == 'Hope college' %}
-
-<div class="govuk-grid-row govuk-!-margin-bottom-7 govuk-!-margin-top-7">
-		
-		<div class="govuk-grid-column-two-thirds-at-desktop" id="vacancy-results">
-
-      {% if listedJobs.length == 0 %}
-			<div class="empty-section-component">
-				<p class="govuk-body govuk-!-margin-bottom-0">{{ jobListEmpty or 'You currently have no jobs.' }}</p>
-			</div>
-      {% endif %}
-
-
-      {% for job in listedJobs %}
-      <div class="app-job-listings__job">
-        <div class="app-job-listings__job-row">
-          <div class="app-job-listings__title">
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
-              <a class="govuk-link--no-visited-state" href="/jobs/{{ job.id }}">{{ job.title }}</a>
-            </h2>
-          </div>
-
-          <div class="app-job-listings__meta govuk-!-margin-bottom-0">
-            <p class="govuk-body-s govuk-!-margin-bottom-0">
-              Closing date: 16 July 2025 at 8am
-            </p>
-          </div>
-
-          <div class="app-job-listings__copy govuk-!-margin-bottom-0">
-            <a href="/jobs/new/copied">Copy job listing</a>
-          </div>
-        </div>
+  {% if showSort %}
+    <div class="govuk-grid-row govuk-!-margin-top-6">
+      <div class="govuk-grid-column-two-thirds-at-desktop">
+        <p class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-2">Sorted by {{ sortLabels[sort] }}</p>
       </div>
-    {% endfor %}
-		</div>
+      <div class="govuk-grid-column-one-third-at-desktop">
+        {% if jobListId == 'active' %}
+          {% set sortItems = [
+            { value: "closing-date-soonest", text: "closing date (soonest)", selected: sort == "closing-date-soonest" },
+            { value: "closing-date-latest", text: "closing date (most recent)", selected: sort == "closing-date-latest" },
+            { value: "most-applicants", text: "most applicants", selected: sort == "most-applicants" }
+          ] %}
+        {% else %}
+          {% set sortItems = [
+            { value: "closing-date-latest", text: "closing date (most recent)", selected: sort == "closing-date-latest" }
+          ] %}
+        {% endif %}
+        <form method="get" action="{{ path }}" class="govuk-!-margin-bottom-2">
+          {{ govukSelect({
+            id: "sort",
+            name: "sort",
+            classes: "govuk-!-width-full",
+            formGroup: {
+              classes: "govuk-!-margin-bottom-2"
+            },
+            label: {
+              text: "Sort by",
+              classes: "govuk-label--s"
+            },
+            items: sortItems,
+            attributes: {
+              onchange: "this.form.submit()"
+            }
+          }) }}
+        </form>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if jobListId == 'awaiting-feedback' and listedJobs.length %}
+    <p class="govuk-body govuk-!-margin-top-2">Tell us whether these jobs were filled through Teaching Vacancies and whether you listed them anywhere else. Your feedback will help us improve the service.</p>
+  {% endif %}
+
+  <div class="govuk-grid-row govuk-!-margin-bottom-7{% if not showSort %} govuk-!-margin-top-6{% endif %}">
+    <div class="govuk-grid-column-two-thirds-at-desktop" id="vacancy-results">
+      {% if listedJobs.length == 0 %}
+        <div class="empty-section-component">
+          <p class="govuk-body govuk-!-margin-bottom-0">{{ jobListEmpty }}</p>
+        </div>
+      {% else %}
+        <div class="app-job-listings">
+          {% for job in listedJobs %}
+            {% set jobTitle %}{{ job.title }}{% if job.subjects and job.subjects.length %} ({{ job.subjects | join(', ') }}){% endif %} {{ job.listingNumber or job.id }}{% endset %}
+
+            {% if jobListId == 'awaiting-feedback' %}
+              <div class="app-job-listings__job">
+                <div class="app-job-listings__job-row app-job-listings__job-row--feedback">
+                  <div class="app-job-listings__title">
+                    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
+                      <a class="govuk-link govuk-link--no-visited-state" href="/jobs/{{ job.id }}">{{ jobTitle }}</a>
+                    </h2>
+                    <p class="govuk-body-s govuk-!-margin-bottom-0">Closing date<br>{{ job.closingDate | date }} at {{ job.closingTime }}</p>
+                  </div>
+                  <div class="app-job-listings__feedback">
+                    <form method="post" action="/jobs/awaiting-feedback">
+                      <input type="hidden" name="jobId" value="{{ job.id }}">
+                      {{ govukSelect({
+                        id: "filled-" + job.id,
+                        name: "filledThroughTeachingVacancies",
+                        classes: "govuk-!-width-full",
+                        label: {
+                          text: "Was this job filled through Teaching Vacancies?"
+                        },
+                        items: [
+                          { value: "", text: "--" },
+                          { value: "yes", text: "Yes" },
+                          { value: "hired-free-listing", text: "No, we hired through another free listing" },
+                          { value: "hired-paid-service", text: "No, we hired through a paid service" },
+                          { value: "hired-not-listing", text: "No, we hired, but not through a listing or service" },
+                          { value: "recruitment-ongoing", text: "No, recruitment is ongoing" },
+                          { value: "no-longer-recruiting", text: "No, we're no longer recruiting for the job" },
+                          { value: "dont-know", text: "I don't know" }
+                        ]
+                      }) }}
+                      {{ govukSelect({
+                        id: "listed-" + job.id,
+                        name: "listedAnywhereElse",
+                        classes: "govuk-!-width-full",
+                        label: {
+                          text: "Did you list this job anywhere else?"
+                        },
+                        items: [
+                          { value: "", text: "--" },
+                          { value: "yes-paid", text: "Yes, on one or more paid services" },
+                          { value: "yes-free", text: "Yes, but only for free" },
+                          { value: "yes-mix", text: "Yes, a mix of paid and free listings" },
+                          { value: "no", text: "No" },
+                          { value: "dont-know", text: "I don't know" }
+                        ]
+                      }) }}
+                      {{ govukButton({
+                        text: "Submit"
+                      }) }}
+                    </form>
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              <div class="app-job-listings__job">
+                <div class="app-job-listings__job-row">
+                  <div class="app-job-listings__title">
+                    <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
+                      <a class="govuk-link govuk-link--no-visited-state" href="{% if jobListId == 'templates' %}/jobs/new/copied{% else %}/jobs/{{ job.id }}{% endif %}">{{ jobTitle }}</a>
+                    </h2>
+                  </div>
+
+                  <div class="app-job-listings__meta">
+                    {% if jobListId == 'active' %}
+                      {% if job.applicantCount > 0 %}
+                        <p class="govuk-body-s govuk-!-margin-bottom-1">
+                          <a class="govuk-link govuk-link--no-visited-state" href="/jobs/{{ job.id }}/applications">View {{ job.applicantCount }} applicants</a>
+                        </p>
+                      {% else %}
+                        <p class="govuk-body-s govuk-!-margin-bottom-1">View 0 applicants</p>
+                      {% endif %}
+                      <p class="govuk-body-s govuk-!-margin-bottom-0">Closing date: {{ job.closingDate | date }} at {{ job.closingTime }}</p>
+                    {% elif jobListId == 'draft' %}
+                      <p class="govuk-body-s govuk-!-margin-bottom-1">Date created: {{ job.publishDate | date }}</p>
+                      <p class="govuk-body-s govuk-!-margin-bottom-0">Date last updated: {{ job.publishDate | date }}</p>
+                    {% elif jobListId == 'scheduled' %}
+                      <p class="govuk-body-s govuk-!-margin-bottom-1">Publish date: {{ job.publishDate | date }}</p>
+                      <p class="govuk-body-s govuk-!-margin-bottom-0">Closing date: {{ job.closingDate | date }} at {{ job.closingTime }}</p>
+                    {% elif jobListId == 'closed' %}
+                      <p class="govuk-body-s govuk-!-margin-bottom-1">View {{ job.applicantCount or 0 }} applicants</p>
+                      <p class="govuk-body-s govuk-!-margin-bottom-1">Date listed: {{ job.publishDate | date }}</p>
+                      <p class="govuk-body-s govuk-!-margin-bottom-1">Listing ended: {{ job.closingDate | date }} at {{ job.closingTime }}</p>
+                      <p class="govuk-body-s govuk-!-margin-bottom-0">
+                        <a class="govuk-link" href="/jobs/{{ job.id }}/feedback">Give feedback about this role</a>
+                      </p>
+                    {% endif %}
+                  </div>
+
+                  {% if jobListId != 'draft' %}
+                    <div class="app-job-listings__copy{% if jobListId == 'closed' %} app-job-listings__copy--split{% endif %}">
+                      {% if jobListId == 'templates' %}
+                        <a class="govuk-link" href="/jobs/new/copied">Use template</a>
+                      {% elif jobListId == 'closed' %}
+                        <p class="govuk-body-s govuk-!-margin-bottom-1"><a class="govuk-link" href="/jobs/new/copied">Relist</a></p>
+                        <p class="govuk-body-s govuk-!-margin-bottom-0"><a class="govuk-link" href="/jobs/{{ job.id }}/save-template">Save as template</a></p>
+                      {% else %}
+                        <a class="govuk-link" href="/jobs/{{ job.id }}/save-template">Save as template</a>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
 
     <div class="govuk-grid-column-one-third-at-desktop govuk-!-margin-bottom-4">
-			<div class="help-guide--desktop govuk-!-margin-top-4">
-				<h2 class="govuk-heading-m">Accept job applications using our online form</h2>
-        <a class="govuk-link govuk-link--no-visited-state" target="_blank" href="https://teaching-vacancies.service.gov.uk/get-help-hiring/how-to-create-job-listings-and-accept-applications/using-the-teaching-vacancies-application-form">Find out how to use the Teaching Vacancies application form</a>.
-			</div>
-      
-		</div>
-</div>
-
-{% else %}
-
-<div class="govuk-grid-row govuk-!-margin-bottom-7 govuk-!-margin-top-7">
-		<div class="govuk-grid-column-one-third-at-desktop govuk-!-margin-bottom-4">
-			
-      <div class="govuk-!-margin-top-2">
-				<form accept-charset="UTF-8" action="/publishers/publisher_preferences/63e20aab-99de-4769-8e12-eec49861433c" class="edit_publisher_preference" data-controller="form" data-hide-submit="true" id="edit_publisher_preference_63e20aab-99de-4769-8e12-eec49861433c" method="post" name="edit_publisher_preference_63e20aab-99de-4769-8e12-eec49861433c">
-					<input autocomplete="off" name="_method" type="hidden" value="patch"><input autocomplete="off" name="authenticity_token" type="hidden" value="nhAT4wNeQt7DNDDAHr8VfDqxqs-hVCU_7Gklub140K6CZykhbRFNMZ_ZnMQA8czQqqIxbJdH3NCcGDYZVIMTqw">
-					<div class="filters-component" data-controller="filters">
-						<div class="filters-component__heading"></div>
-						<div class="filters-component__groups">
-							<div class="filters-component__groups__group" data-filters-target="group" data-group="locations">
-								<div>
-									<div class="govuk-form-group" data-action="change-&gt;form#submitListener">
-										<fieldset class="govuk-fieldset">
-											<legend class="govuk-fieldset__legend govuk-fieldset__legend--s"></legend>
-											  <h2 class="govuk-fieldset__heading"><legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Locations</h2>
-                      </legend>
-										</fieldset>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div><input autocomplete="off" id="publisher_preference_jobs_type" name="publisher_preference[jobs_type]" type="hidden" value="live">
-				</form>
-			</div>
-     
-			<div class="help-guide--desktop govuk-!-margin-top-4">
-				<h2 class="govuk-heading-m">Accept job applications using our online form</h2><a class="govuk-link govuk-link--no-visited-state" target="_blank" href="https://teaching-vacancies.service.gov.uk/get-help-hiring/how-to-create-job-listings-and-accept-applications/using-the-teaching-vacancies-application-form">Find out how to use the Teaching Vacancies application form</a>.
-			</div>
-      
-		</div>
-		<div class="govuk-grid-column-two-thirds-at-desktop" id="vacancy-results">
-
-      {% if listedJobs.length == 0 %}
-			<div class="empty-section-component">
-				<p class="govuk-body govuk-!-margin-bottom-0">{{ jobListEmpty or 'You currently have no jobs.' }}</p>
-			</div>
-      {% endif %}
-
-
-      {% for job in listedJobs %}
-      <div class="app-job-listings__job">
-        <div class="app-job-listings__job-row">
-          <div class="app-job-listings__title">
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-0">
-              <a class="govuk-link--no-visited-state" href="/jobs/{{ job.id }}">{{ job.title }}</a>
-            </h2>
-          </div>
-
-          <div class="app-job-listings__meta govuk-!-margin-bottom-0">
-            <p class="govuk-body-s govuk-!-margin-bottom-0">
-              Closing date: 16 July 2025 at 8am
-            </p>
-          </div>
-
-          <div class="app-job-listings__copy govuk-!-margin-bottom-0">
-            <a href="/jobs/new/copied">Copy job listing</a>
-          </div>
-        </div>
+      <div class="help-guide--desktop">
+        <h2 class="govuk-heading-m">Accept job applications using our online form</h2>
+        <p class="govuk-body govuk-!-margin-bottom-0">
+          <a class="govuk-link govuk-link--no-visited-state" target="_blank" href="https://teaching-vacancies.service.gov.uk/get-help-hiring/how-to-create-job-listings-and-accept-applications/using-the-teaching-vacancies-application-form">Find out how to use the Teaching Vacancies application form</a>.
+        </p>
       </div>
-    {% endfor %}
-
-   
-
-		</div>
-</div>
-
-
-{% endif %}
-
+    </div>
+  </div>
 {% endblock %}

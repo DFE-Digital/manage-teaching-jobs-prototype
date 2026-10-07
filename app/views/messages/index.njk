@@ -1,43 +1,98 @@
 {% extends "layout.njk" %}
 
-{% set title = 'Messages' %}
+{% set title = 'Candidate messages' %}
 {% set primaryNavId = 'messages' %}
+{% set folder = folder or 'inbox' %}
+{% set conversationCount = messages.length %}
 
 {% block content %}
-  <span class="govuk-caption-xl">{{ user.organisation.name }}</span>
-  <h1 class="govuk-heading-l">Messages</h1>
+  <h1 class="govuk-heading-l">Candidate messages</h1>
 
-  <p class="govuk-body">Emails sent from your organisation to candidates.</p>
+  {{ appSubNavigation({
+    classes: 'govuk-!-margin-bottom-6',
+    navigationLabel: 'Messages',
+    items: [{
+      html: 'Inbox (' + conversationCount + ')',
+      href: '/messages',
+      active: folder == 'inbox'
+    }, {
+      html: 'Archive',
+      href: '/messages/archive',
+      active: folder == 'archive'
+    }]
+  }) }}
+
+  <form method="get" action="{{ path }}" class="govuk-!-margin-bottom-6">
+    <h2 class="govuk-heading-s govuk-!-margin-bottom-1">Search messages</h2>
+    <p class="govuk-hint">Search by candidate name, job title or message content</p>
+    <div class="app-message-search">
+      {{ govukInput({
+        id: "q",
+        name: "q",
+        formGroup: {
+          classes: "govuk-!-margin-bottom-0 app-message-search__input"
+        },
+        label: {
+          text: "Search messages",
+          classes: "govuk-visually-hidden"
+        },
+        value: query.q,
+        attributes: {
+          placeholder: "Enter candidate name, job title, or message content"
+        }
+      }) }}
+      {{ govukButton({
+        text: "Search",
+        classes: "govuk-!-margin-bottom-0"
+      }) }}
+    </div>
+  </form>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body govuk-!-font-weight-bold">Showing 0 to 0 of 0 conversations</p>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {{ govukSelect({
+        id: "sort",
+        name: "sort",
+        label: {
+          text: "Sort by"
+        },
+        items: [
+          {
+            value: "unread",
+            text: "Unread on top",
+            selected: true
+          },
+          {
+            value: "newest",
+            text: "Newest"
+          },
+          {
+            value: "oldest",
+            text: "Oldest"
+          }
+        ]
+      }) }}
+    </div>
+  </div>
 
   {% if messages.length %}
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Candidate</th>
-          <th scope="col" class="govuk-table__header">Subject</th>
-          <th scope="col" class="govuk-table__header">Sent</th>
-          <th scope="col" class="govuk-table__header">Status</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        {% for message in messages %}
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-              <a class="govuk-link" href="{{ message.href }}">{{ message.name }}</a>
-            </td>
-            <td class="govuk-table__cell">{{ message.subject }}</td>
-            <td class="govuk-table__cell">{{ message.sentOn }}</td>
-            <td class="govuk-table__cell">
-              {{ govukTag({
-                text: message.status,
-                classes: "govuk-tag--blue" if message.status == "Opened" else "govuk-tag--grey"
-              }) }}
-            </td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+    <ul class="govuk-list">
+      {% for message in messages %}
+        <li class="govuk-!-margin-bottom-4">
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
+            <a class="govuk-link" href="{{ message.href }}">{{ message.name }}</a>
+          </h2>
+          <p class="govuk-body govuk-!-margin-bottom-1">{{ message.subject }}</p>
+          <p class="govuk-hint govuk-!-margin-bottom-0">{{ message.sentOn }}</p>
+        </li>
+      {% endfor %}
+    </ul>
   {% else %}
-    <p class="govuk-body">You have not sent any messages yet.</p>
+    <div class="app-messages-empty">
+      <p class="govuk-body govuk-!-margin-bottom-0">{% if folder == 'archive' %}No archived messages yet.{% else %}No messages yet.{% endif %}</p>
+    </div>
   {% endif %}
 {% endblock %}

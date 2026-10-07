@@ -1,10 +1,19 @@
 
 {% extends "layout.njk" %}
 
-{% if schools %}
+{% set organisation = organisation or user.organisation %}
+{% if 'college' in (organisation.phase | default('') | lower) %}
+  {% set title = 'College profile' %}
+  {% set completeBanner = 'Complete your college profile' %}
+  {% set previewLabel = 'Preview college profile' %}
+{% elif schools %}
   {% set title = 'Organisation profile' %}
+  {% set completeBanner = 'Complete your organisation profile' %}
+  {% set previewLabel = 'Preview organisation profile' %}
 {% else %}
   {% set title = 'School profile' %}
+  {% set completeBanner = 'Complete your school profile' %}
+  {% set previewLabel = 'Preview school profile' %}
 {% endif %}
 
 {% set primaryNavId = 'organisation' %}
@@ -18,15 +27,9 @@
   }) if flash and flash.length }}
 
   {% if showCompleteProfileBanner and not flash.length %}
-    {% if schools %}
-      {{ govukNotificationBanner({
-        text: "Complete your organisation profile"
-      }) }}
-    {% else %}
-      {{ govukNotificationBanner({
-        text: "Complete your school profile"
-      }) }}
-    {% endif %}
+    {{ govukNotificationBanner({
+      text: completeBanner
+    }) }}
   {% endif %}
 
   <div class="govuk-grid-row">
@@ -37,7 +40,7 @@
       </h1>
 
       {% if organisation.schools %}
-        <p><a href="/organisation/{{organisation.id}}/preview">Preview organisation profile</a></p>
+        <p><a href="/organisation/{{organisation.id}}/preview">{{ previewLabel }}</a></p>
         {{appSchoolSummaryList({ organisation: organisation })}}
         <h2 class="govuk-heading-m govuk-!-margin-top-8">Schools</h2>
 
@@ -59,7 +62,7 @@
           </div>
         {% endfor %}
       {% else %}
-        <p><a href="/organisation/{{organisation.id}}/preview">Preview school profile</a></p>
+        <p><a href="/organisation/{{organisation.id}}/preview">{{ previewLabel }}</a></p>
         {{appSchoolSummaryList({ organisation: organisation })}}
       {% endif %}
 

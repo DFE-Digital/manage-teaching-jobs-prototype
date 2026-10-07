@@ -107,16 +107,22 @@
   padding: 0px 0;
 }
 
-/* Service name */
-.govuk-service-navigation__service-name .govuk-service-navigation__link {
+/* Service name — match GOV.UK Design System service navigation */
+.govuk-service-navigation__service-name .govuk-service-navigation__link,
+.govuk-service-navigation__service-name .govuk-service-navigation__link:link,
+.govuk-service-navigation__service-name .govuk-service-navigation__link:visited,
+.govuk-service-navigation__service-name .govuk-service-navigation__link:hover,
+.govuk-service-navigation__service-name .govuk-service-navigation__link:active {
+  color: #0b0c0c !important;
   font-size: 19px;
-  font-weight: bold;
-  color: #1d70b8;
+  font-weight: 700;
   text-decoration: none;
 }
 
 .govuk-service-navigation__service-name .govuk-service-navigation__link:hover {
   text-decoration: underline;
+  text-decoration-thickness: max(3px, 0.1875rem);
+  text-underline-offset: 0.1578em;
 }
 
 /* Navigation links */

@@ -35,18 +35,71 @@ const JOB_LISTS = {
     status: 'Closed',
     heading: 'Jobs awaiting feedback',
     empty: 'You currently have no jobs awaiting feedback.'
+  },
+  templates: {
+    heading: 'Saved job templates',
+    empty: 'You do not have any saved job templates yet'
   }
+}
+
+const ACTIVE_APPLICANT_COUNTS = [55, 55, 53]
+
+function listingNumber (job) {
+  return String(job.id).slice(-3)
+}
+
+function withListMeta (jobs, listId) {
+  return jobs.map((job, index) => {
+    const applicantCount = listId === 'active' && ACTIVE_APPLICANT_COUNTS[index] !== undefined
+      ? ACTIVE_APPLICANT_COUNTS[index]
+      : 0
+
+    return Object.assign({}, job, {
+      applicantCount,
+      listingNumber: listingNumber(job)
+    })
+  })
+}
+
+function sortJobs (jobs, sort) {
+  const sorted = jobs.slice()
+
+  if (sort === 'closing-date-latest') {
+    sorted.sort((a, b) => new Date(b.closingDate) - new Date(a.closingDate))
+  } else if (sort === 'most-applicants') {
+    sorted.sort((a, b) => (b.applicantCount || 0) - (a.applicantCount || 0))
+  } else {
+    sorted.sort((a, b) => new Date(a.closingDate) - new Date(b.closingDate))
+  }
+
+  return sorted
 }
 
 function renderJobList (listId) {
   return (req, res) => {
     const list = JOB_LISTS[listId]
-    const jobs = (req.session.user.jobs || []).filter(job => job.status === list.status)
+    const defaultSort = listId === 'awaiting-feedback' ? 'closing-date-latest' : 'closing-date-soonest'
+    const sort = req.query.sort || defaultSort
+    let jobs
+
+    if (listId === 'templates') {
+      jobs = req.session.jobTemplates || []
+    } else {
+      jobs = sortJobs(
+        (req.session.user.jobs || []).filter(job => job.status === list.status),
+        'closing-date-soonest'
+      )
+      jobs = withListMeta(jobs, listId)
+      if (sort !== 'closing-date-soonest') {
+        jobs = sortJobs(jobs, sort)
+      }
+    }
 
     res.render('jobs/index', {
       jobs,
       jobListId: listId,
       jobListEmpty: list.empty,
+      sort,
       title: `${list.heading} (${jobs.length})`
     })
   }
@@ -59,6 +112,33 @@ module.exports = router => {
   router.get('/jobs/scheduled', authentication.checkIsAuthenticated, renderJobList('scheduled'))
   router.get('/jobs/closed', authentication.checkIsAuthenticated, renderJobList('closed'))
   router.get('/jobs/awaiting-feedback', authentication.checkIsAuthenticated, renderJobList('awaiting-feedback'))
+  router.get('/jobs/templates', authentication.checkIsAuthenticated, renderJobList('templates'))
+  router.post('/jobs/awaiting-feedback', authentication.checkIsAuthenticated, (req, res) => {
+    req.flash('success', 'Feedback submitted')
+    res.redirect('/jobs/awaiting-feedback')
+  })
+
+  router.get('/jobs/:id/save-template', authentication.checkIsAuthenticated, (req, res) => {
+    const job = jobFromRequest(req)
+    if (!job) {
+      res.redirect('/jobs')
+      return
+    }
+
+    req.session.jobTemplates = req.session.jobTemplates || []
+    const alreadySaved = req.session.jobTemplates.find(template => template.id == job.id)
+    if (!alreadySaved) {
+      req.session.jobTemplates.push({
+        id: job.id,
+        title: job.title,
+        subjects: job.subjects,
+        listingNumber: listingNumber(job)
+      })
+    }
+
+    req.flash('success', 'Job listing saved as a template')
+    res.redirect('/jobs/templates')
+  })
 
   router.get('/jobs/example', authentication.checkIsAuthenticated, (req, res) => {
 

@@ -1,72 +1,69 @@
 {% extends "layout.njk" %}
 
-{% set title = 'Statistics' %}
+{% set title = 'Statistics dashboard' %}
 {% set primaryNavId = 'statistics' %}
+{% set statsTab = statsTab or 'overview' %}
+{% set listingCount = jobCount or (user.jobs | length) %}
 
 {% block content %}
-  <span class="govuk-caption-xl">{{ user.organisation.name }}</span>
-  <h1 class="govuk-heading-l">Statistics</h1>
+  <h1 class="govuk-heading-l">Statistics dashboard</h1>
 
-  <p class="govuk-body">Listing and application data for all of your organisation’s job listings.</p>
+  <p class="govuk-body">This may include equal opportunities data from people who have withdrawn their applications. We include this to help keep the data anonymous.</p>
 
-  {% if jobStats.length %}
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <div class="govuk-summary-card govuk-!-margin-top-2">
-          <div class="govuk-summary-card__title-wrapper">
-            <h2 class="govuk-summary-card__title">All listings</h2>
-          </div>
-          <div class="govuk-summary-card__content">
-            <dl class="govuk-summary-list">
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">Views</dt>
-                <dd class="govuk-summary-list__value">{{ totals.views }}</dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">Saves</dt>
-                <dd class="govuk-summary-list__value">{{ totals.saves }}</dd>
-              </div>
-              <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">Applications</dt>
-                <dd class="govuk-summary-list__value">{{ totals.applications }}</dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-      </div>
-    </div>
+  {{ appSubNavigation({
+    classes: 'govuk-!-margin-top-4 govuk-!-margin-bottom-6',
+    navigationLabel: 'Statistics',
+    items: [{
+      html: 'Overview',
+      href: '/statistics',
+      active: statsTab == 'overview'
+    }, {
+      html: 'Equal opportunities',
+      href: '/statistics/equal-opportunities',
+      active: statsTab == 'equal-opportunities'
+    }]
+  }) }}
 
-    <table class="govuk-table">
-      <caption class="govuk-table__caption govuk-table__caption--m">By job listing</caption>
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Job listing</th>
-          <th scope="col" class="govuk-table__header">Status</th>
-          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Views</th>
-          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Saves</th>
-          <th scope="col" class="govuk-table__header govuk-table__header--numeric">Applications</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        {% for job in jobStats %}
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">
-              <a class="govuk-link" href="{{ job.href }}">{{ job.title }}</a>
-            </th>
-            <td class="govuk-table__cell">
-              {{ govukTag({
-                text: job.status,
-                classes: job.status | jobStatusTagClass
-              }) }}
-            </td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">{{ job.views }}</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">{{ job.saves }}</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">{{ job.applications }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+  <p class="govuk-body">This data is from the current academic year. If a job is live in two academic years (for example from August 2025 to September 2025) it will be counted for both academic years. This data resets each academic year.</p>
+
+  {% if statsTab == 'overview' %}
+    <p class="govuk-body">
+      <a class="govuk-link" href="/jobs">View your {{ listingCount }} job listings from this academic year</a>
+    </p>
+    <p class="govuk-body">Download all historical job listing data as a CSV.</p>
+    {{ govukButton({
+      text: "Download statistics (CSV, 0.2 KB)",
+      classes: "govuk-button--secondary",
+      href: "#"
+    }) }}
+
+    <h2 class="govuk-heading-m">Job listing source</h2>
+    {{ govukButton({
+      text: "Show data as a table",
+      classes: "govuk-button--secondary"
+    }) }}
+    <p class="app-statistics-empty">No data</p>
   {% else %}
-    <p class="govuk-body">There are no job listings to show statistics for.</p>
+    <p class="govuk-body">You have received 0 applications this academic year.</p>
+    <p class="govuk-body">Download all historical equal opportunities data as a CSV.</p>
+    {{ govukButton({
+      text: "Download statistics (CSV, 0.2 KB)",
+      classes: "govuk-button--secondary",
+      href: "#"
+    }) }}
+
+    <h2 class="govuk-heading-m">Applicant age</h2>
+    {{ govukButton({
+      text: "Show data as a table",
+      classes: "govuk-button--secondary"
+    }) }}
+    <p class="app-statistics-empty">No data</p>
+
+    <h2 class="govuk-heading-m">Disability</h2>
+    {{ govukButton({
+      text: "Show data as a table",
+      classes: "govuk-button--secondary"
+    }) }}
+    <p class="app-statistics-empty">No data</p>
   {% endif %}
 {% endblock %}
