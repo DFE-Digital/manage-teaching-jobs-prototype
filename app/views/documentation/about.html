@@ -1,0 +1,284 @@
+{% extends "layout.njk" %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation" %}
+
+{% block pageTitle %}
+  About this prototype - Manage teaching jobs - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "About this prototype"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">About this prototype</h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <p class="govuk-body">How the hiring staff prototype is built, what the mock data looks like, and how the main journeys move between pages. This mirrors the jobseeker documentation in <code>teaching-vacancies-prototype</code> at <code>/1-1/documentation</code>.</p>
+
+      <h2 class="govuk-heading-l">Prototype hub and homepage header</h2>
+
+      <p class="govuk-body">The service entry point is <code>/</code>, rendered from <code>app/views/index.njk</code>. It is not the live hiring staff service; it is an index of links into journeys.</p>
+
+      <p class="govuk-body">The blue band under the GOV.UK header is <code>div.homepage-header</code> (styles in <code>app/assets/sass/patterns/_govuk-homepage.scss</code>). It contains:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><code>homepage-header__caption</code> — “Hiring staff prototype”</li>
+        <li><code>homepage-header__title</code> — “Teaching Vacancies Service”</li>
+        <li><code>homepage-header__lede</code> — “Manage teaching jobs”</li>
+        <li><code>homepage-header__link</code> — cross-link to the jobseeker prototype</li>
+      </ul>
+
+      <p class="govuk-body">The body lists “Current version”, “Key pages”, and “References”. Deep links often append <code>?userEmailAddress=...</code> so the auth middleware signs you in as a mock user without using the sign-in form.</p>
+
+      <h2 class="govuk-heading-l">Tech stack</h2>
+
+      <p class="govuk-body">This repository is a GOV.UK Prototype Kit copy of the hiring staff area of Teaching Vacancies. It is not production software.</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Prototype Kit 12.0.4 — start with <code>npm start</code></li>
+        <li>Express routes in <code>app/routes/</code>, wired from <code>app/routes.js</code></li>
+        <li>Nunjucks templates in <code>app/views/</code></li>
+        <li>GOV.UK Frontend 4</li>
+        <li>Sass compiled by Gulp; Browser Sync when enabled in <code>app/config.js</code></li>
+        <li>In-memory sessions. Restarting the server signs you out</li>
+        <li>Form posts stored on the session by the kit (<code>useAutoStoreData</code>)</li>
+        <li>JSON fixtures in <code>app/data/</code>. <code>users.json</code> is regenerated on <code>npm install</code>. No database and no live API</li>
+        <li>Single version — no <code>/1-0</code> prefix (unlike the jobseeker repo)</li>
+      </ul>
+
+      <p class="govuk-body">When running alongside the jobseeker prototype on port 3000, start this app on another port (for example <code>PORT=3100 npm start</code>). With Browser Sync on, the public URL is the <code>PORT</code> value; Express listens on <code>PORT - 50</code>.</p>
+
+      <h2 class="govuk-heading-l">Repository layout</h2>
+
+      <pre class="govuk-body-s"><code>app/
+├── routes.js              # Mounts route modules; documentation routes
+├── routes/                # Express handlers (one file per feature area)
+├── views/                 # Nunjucks templates
+├── data/                  # JSON fixtures
+├── helpers/               # user, organisation, lookup, validator
+├── middleware/            # authentication.js
+└── assets/                # Sass and JavaScript source
+
+public/                    # Compiled CSS/JS and images</code></pre>
+
+      <h2 class="govuk-heading-l">Route modules</h2>
+
+      <table class="govuk-table govuk-table--small-text-until-tablet">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Module</th>
+            <th scope="col" class="govuk-table__header">Responsibility</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>account.js</code></td>
+            <td class="govuk-table__cell">Sign in, sign out, account creation stub</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>interruptions.js</code></td>
+            <td class="govuk-table__cell">Post sign-in gates — complete profile, choose profile</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>organisation.js</code></td>
+            <td class="govuk-table__cell">Organisation and school profile, preview as jobseekers see it, edit about, logo, photo, email, website, flexible working</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>job-create.js</code></td>
+            <td class="govuk-table__cell">Create listing journey under <code>/jobs/new/...</code></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>job-edit.js</code></td>
+            <td class="govuk-table__cell">Edit published or draft listings</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>jobs.js</code></td>
+            <td class="govuk-table__cell">Job lists, job page, applications, interviews, references, feedback, tags, per-job statistics</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>jobseekers.js</code></td>
+            <td class="govuk-table__cell">Candidate profile search, profile view, invite-to-apply flows</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>service-nav.js</code></td>
+            <td class="govuk-table__cell">Messages, notifications, service-wide statistics</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>filtering.js</code></td>
+            <td class="govuk-table__cell">Shared filter behaviour (for example candidate search)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 class="govuk-heading-l">Views</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><code>index.njk</code> — prototype hub (homepage header and link lists)</li>
+        <li><code>start.njk</code> — hiring staff GOV.UK start page</li>
+        <li><code>jobs/</code>, <code>jobs/new/</code>, <code>jobs/edit/</code>, <code>jobs/applications/</code> — listings and applications</li>
+        <li><code>jobseekers/</code> — candidate profiles and invites</li>
+        <li><code>organisation/</code> — profile management and preview</li>
+        <li><code>account/</code>, <code>interruptions/</code></li>
+        <li><code>messages/</code>, <code>notifications/</code>, <code>statistics/</code></li>
+        <li><code>components/</code>, <code>includes/</code> — shared UI (filters, job list, navigation)</li>
+        <li><code>documentation/</code> — this page</li>
+      </ul>
+
+      <h2 class="govuk-heading-l">JSON mock data</h2>
+
+      <p class="govuk-body">On sign-in, <code>app/helpers/user.js</code> loads a user from <code>users.json</code>, attaches matching jobs from <code>jobs.json</code> (by organisation name), and attaches jobseekers from <code>jobseekers.json</code> (filtered by phase for single schools; all jobseekers for MAT-style users with <code>organisation.schools</code>).</p>
+
+      <h3 class="govuk-heading-m">User</h3>
+      <p class="govuk-body">Example: <code>rachael@courtland.sch.uk</code> (complete school profile). <code>bob@hopecollege.sch.uk</code> has missing organisation fields for “complete profile” interruption flows.</p>
+      {% raw %}
+      <pre class="govuk-body-s"><code>{
+  "emailAddress": "rachael@courtland.sch.uk",
+  "organisation": {
+    "name": "Courtland Primary School",
+    "phase": "Primary school",
+    "about": "…",
+    "logo": "/public/images/logos/courtland.png"
+  }
+}</code></pre>
+      {% endraw %}
+
+      <h3 class="govuk-heading-m">Job</h3>
+      <p class="govuk-body">Records in <code>jobs.json</code>. Lists use <code>status</code> (Active, Draft, Scheduled, Closed). A job page is <code>/jobs/:id</code>.</p>
+      {% raw %}
+      <pre class="govuk-body-s"><code>{
+  "id": "686355",
+  "status": "Active",
+  "title": "Science lecturer",
+  "role": "Lecturer",
+  "workingPatterns": ["Full time"],
+  "closingDate": "2026-12-15T17:00:00.000Z",
+  "organisation": { "name": "Hope college", "phase": "Primary school" }
+}</code></pre>
+      {% endraw %}
+
+      <h3 class="govuk-heading-m">Candidate profile</h3>
+      <p class="govuk-body">Records in <code>jobseekers.json</code>, shaped like jobseeker profiles in the other prototype. Shown at <code>/jobseekers/:id</code>.</p>
+      {% raw %}
+      <pre class="govuk-body-s"><code>{
+  "id": "658653",
+  "profile": {
+    "firstName": "Adriana",
+    "lastName": "Grady",
+    "roles": ["Teacher"],
+    "phases": ["Primary school"],
+    "qts": "Yes"
+  }
+}</code></pre>
+      {% endraw %}
+
+      <h2 class="govuk-heading-l">Authentication</h2>
+
+      <p class="govuk-body"><code>app/middleware/authentication.js</code> (<code>checkIsAuthenticated</code>):</p>
+      <ol class="govuk-list govuk-list--number">
+        <li>If <code>req.session.user</code> exists, continue.</li>
+        <li>Else if <code>?userEmailAddress=</code> matches <code>users.json</code>, store user on session.</li>
+        <li>Else redirect to <code>/account/sign-in?returnUrl=...</code>.</li>
+      </ol>
+
+      <p class="govuk-body">After sign-in, incomplete organisation data can redirect to <code>/interruptions/complete-profile</code> before the main service.</p>
+
+      <h2 class="govuk-heading-l">Feature flows</h2>
+
+      <h3 class="govuk-heading-m">Prototype hub</h3>
+      <pre class="mermaid">flowchart LR
+  hub["/ index"] --> start["/start"]
+  hub --> jobs["/jobs?userEmailAddress=…"]
+  hub --> docs["/documentation/about"]</pre>
+
+      <h3 class="govuk-heading-m">Sign in and service entry</h3>
+      <pre class="mermaid">flowchart TD
+  start["/start"] --> signIn["/account/sign-in"]
+  signIn --> interrupt{"Profile complete?"}
+  interrupt -->|No| complete["/interruptions/complete-profile"]
+  interrupt -->|Yes| jobs["/jobs"]</pre>
+
+      <h3 class="govuk-heading-m">Manage jobs</h3>
+      <pre class="mermaid">flowchart LR
+  active["/jobs"] --> show["/jobs/:id"]
+  show --> apps["/jobs/:id/applications"]
+  apps --> app["/jobs/application/:id"]
+  new["/jobs/new"] --> publish["Listing published or draft"]</pre>
+
+      <h3 class="govuk-heading-m">Candidate profiles</h3>
+      <pre class="mermaid">flowchart LR
+  search["/jobseekers"] --> profile["/jobseekers/:id"]
+  profile --> invite["/jobseekers/:id/invites/new"]</pre>
+
+      <h3 class="govuk-heading-m">Organisation profile</h3>
+      <pre class="mermaid">flowchart LR
+  org["/organisation"] --> edit["/organisation/:id/about/edit"]
+  org --> preview["/organisation/:id/preview"]</pre>
+
+      <h2 class="govuk-heading-l">Sibling jobseeker prototype</h2>
+
+      <p class="govuk-body">Jobseekers search, apply, and manage profiles in <code>teaching-vacancies-prototype</code> (mounted at <code>/1-1</code> for current work). Hiring staff publish listings and review applications here; jobseekers apply in the other repo. Shared concepts: job records, organisation names, and candidate profile shape.</p>
+
+      <h2 class="govuk-heading-l">Where to make changes</h2>
+
+      <ol class="govuk-list govuk-list--number">
+        <li>Hiring staff UI and routes — <code>app/views/</code> and <code>app/routes/</code></li>
+        <li>Mock users, jobs, or candidates — <code>app/data/</code> (regenerate users with <code>npm run generate-data</code> when using the generator scripts)</li>
+        <li>Hub homepage header and index links — <code>app/views/index.njk</code> and <code>_govuk-homepage.scss</code></li>
+        <li>Jobseeker-facing work — sibling repo <code>teaching-vacancies-prototype/app/versions/1-1/</code></li>
+      </ol>
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related">
+        <h2 class="govuk-heading-s app-related__heading" id="related-content">Related content</h2>
+        <nav aria-labelledby="related-content">
+          <ul class="app-related__list">
+            <li class="app-related__item">
+              <a class="govuk-link" href="/">Prototype hub</a>
+            </li>
+            <li class="app-related__item">
+              <a class="govuk-link" href="/start">Sign in to manage teaching jobs</a>
+            </li>
+            <li class="app-related__item">
+              <a class="govuk-link" href="https://teaching-vacancies-prototype.herokuapp.com/1-1/documentation" rel="noopener noreferrer" target="_blank">Jobseeker documentation<span class="govuk-visually-hidden"> (opens in new tab)</span></a>
+            </li>
+            <li class="app-related__item">
+              <a class="govuk-link" href="https://teaching-vacancies-prototype.herokuapp.com/1-1/documentation/project-structure" rel="noopener noreferrer" target="_blank">Jobseeker project structure<span class="govuk-visually-hidden"> (opens in new tab)</span></a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+
+  <div class="app-diagram-fullscreen" data-module="app-diagram-fullscreen" hidden role="dialog" aria-modal="true" aria-label="Diagram full screen">
+    <div class="app-diagram-fullscreen__toolbar">
+      <button type="button" class="govuk-button govuk-button--secondary app-diagram-fullscreen__close">Close</button>
+    </div>
+    <div class="app-diagram-fullscreen__stage"></div>
+  </div>
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script src="/public/javascripts/diagram-fullscreen.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: false, securityLevel: 'strict' })
+    mermaid.run({ querySelector: 'pre.mermaid' }).then(AppFrontend.diagramFullscreen)
+  </script>
+{% endblock %}

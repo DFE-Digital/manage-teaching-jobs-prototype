@@ -36,4 +36,12 @@ require('./routes/job-edit')(router)
 require('./routes/jobs')(router)
 require('./routes/jobseekers')(router)
 
+router.get('/documentation', (req, res) => {
+  res.redirect('/documentation/about')
+})
+
+router.get('/documentation/about', (req, res) => {
+  res.render('documentation/about.html')
+})
+
 module.exports = router
