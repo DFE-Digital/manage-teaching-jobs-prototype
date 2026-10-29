@@ -50,67 +50,7 @@ module.exports = router => {
 
 
   router.get('/jobseekers', authentication.checkIsAuthenticated, (req, res) => {
-    let user = req.session.user
-
-    let locationCheckboxes
-
-
-    if(user.organisation.schools) {
-      locationCheckboxes = [{
-        text: 'Head office',
-        value: 'Head office'
-      }].concat(user.organisation.schools.map(item => {
-        return {
-          text: item.name,
-          value: item.name
-        }
-      }))
-    }
-
-    let jobCheckboxes = user.jobs
-    .filter(job => job.status == 'Active')
-    .map(job => {
-      return {
-        text: job.title,
-        value: job.title
-      }
-    })
-
-    let roles = roleOptions
-    let phases = phaseOptions
-
-    let showSubjectsFilter = false
-
-    let phasesThatAreRelevantToSubjectFilter = [
-      'Secondary school',
-      'Middle school',
-      'Sixth form or college',
-      'Through school'
-    ]
-
-    if(user.organisation.phase && phasesThatAreRelevantToSubjectFilter.includes(user.organisation.phase)) {
-      showSubjectsFilter = true
-    }
-
-    if(user.organisation.schools) {
-      if(user.organisation.schools.filter(school => phasesThatAreRelevantToSubjectFilter.includes(school.phase)).length) {
-        showSubjectsFilter = true
-      }
-    }
-
-    let jobseekers = user.jobseekers.map(jobseeker => {
-      jobseeker.showQTS = isQTSRelevant(jobseeker)
-      return jobseeker
-    })
-
-    res.render('jobseekers/index', {
-      jobseekers,
-      locationCheckboxes,
-      jobCheckboxes,
-      roles,
-      phases,
-      showSubjectsFilter
-    })
+    res.render('interruptions/profiles')
   })
 
   router.get('/jobshare', authentication.checkIsAuthenticated, (req, res) => {

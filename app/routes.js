@@ -14,7 +14,7 @@ function sharingOrigin (req) {
   return `${protocol}://${host}`
 }
 
-router.all('*', (req, res, next) => {
+router.use((req, res, next) => {
   res.locals.referrer = req.query.referrer
   res.locals.path = req.path
   res.locals.protocol = req.protocol

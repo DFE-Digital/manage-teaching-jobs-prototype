@@ -1,49 +1,107 @@
 {% extends "layout.njk" %}
 
-{% set title = 'You can now view candidate profiles and invite them to apply for jobs' %}
+{% set showOrganisationTools = not user or user.organisation.name != "Hope college2" %}
+{% set landingPage = query.v2 is defined %}
+{% set title = "Welcome" %}
+{% if landingPage %}
+  {% set mainClasses = "govuk-main-wrapper--auto-spacing app-account-main-wrapper" %}
+{% endif %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">
-        {{title}}
-      </h1>
+  {% if landingPage %}
+    {{ govukNotificationBanner({
+      titleText: "Important",
+      html: '<p class="govuk-notification-banner__heading">The candidate profiles feature has been retired.</p><p class="govuk-body">You can no longer view candidate profiles or invite candidates to apply for jobs.</p>'
+    }) }}
 
-      <p>A candidate’s profile includes their job preferences, experience and qualifications.</p>
-
-      <p>These candidates have specified:</p>
-
-      {% if user.organisation.schools %}
-        <ul class="govuk-list govuk-list--bullet">
-          <li>
-            that they’re able to travel to at least one of your schools
-          </li>
-          <li>
-            that they’re interested in an education phase that matches at least one of your schools
-          </li>
-        </ul>
-      {% else %}
-        <ul class="govuk-list govuk-list--bullet">
-          <li>
-            that they’re able to travel to your school
-          </li>
-          <li>
-            that they’re interested in an education phase that matches your school
-          </li>
-        </ul>
-      {% endif %}
-
-      <p>You’ll also be notified about any new candidate profiles that match your job listings.</p>
-
-      {{ govukButton({
-        text: "View candidate profiles",
-        href: "/jobseekers"
-      }) }}
-
-      <p><a href="/jobs">Continue to job listings</a></p>
-
+    {% if user %}
+      <span class="govuk-caption-xl">{{ user.organisation.name }}</span>
+    {% endif %}
+    <div class="app-page-header app-account-page-header govuk-!-margin-bottom-4">
+      <div class="app-page-header__title">
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-0" id="account-heading">Welcome</h1>
+      </div>
     </div>
-  </div>
+    <p class="govuk-body" id="account-intro">
+      {%- if showOrganisationTools -%}
+        Manage jobs, messages, statistics and notifications in one place.
+      {%- else -%}
+        Manage jobs and statistics in one place.
+      {%- endif -%}
+    </p>
+
+    <div class="app-account-hub">
+      <section class="app-account-featured" aria-labelledby="account-heading" aria-describedby="account-intro">
+        <ul class="app-account-featured-list">
+          <li class="app-account-featured-list__item">
+            <a class="app-account-featured-list__item-link" href="/jobs">
+              <span class="app-account-featured__icon app-account-featured__icon--jobs" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="7.5" width="17" height="13" rx="1"/><path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"/></svg>
+              </span>
+              <span class="app-account-featured-list__text">
+                <span class="app-account-featured-list__title">Manage jobs</span>
+                <span class="app-account-featured-list__description">View and manage your job listings, including drafts, scheduled and closed jobs.</span>
+              </span>
+            </a>
+          </li>
+          {% if showOrganisationTools %}
+            <li class="app-account-featured-list__item">
+              <a class="app-account-featured-list__item-link" href="/messages">
+                <span class="app-account-featured__icon app-account-featured__icon--messages" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 6.5h15v11h-9l-4 3v-3h-2z"/></svg>
+                </span>
+                <span class="app-account-featured-list__text">
+                  <span class="app-account-featured-list__title">Messages</span>
+                  <span class="app-account-featured-list__description">Read and reply to messages from candidates about your job listings.</span>
+                </span>
+              </a>
+            </li>
+          {% endif %}
+          <li class="app-account-featured-list__item">
+            <a class="app-account-featured-list__item-link" href="/statistics">
+              <span class="app-account-featured__icon app-account-featured__icon--statistics" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 19.5h15"/><path d="M7 16.5v-5"/><path d="M12 16.5V7.5"/><path d="M17 16.5v-8"/></svg>
+              </span>
+              <span class="app-account-featured-list__text">
+                <span class="app-account-featured-list__title">Statistics</span>
+                <span class="app-account-featured-list__description">See an overview of your job listings and equal opportunities data.</span>
+              </span>
+            </a>
+          </li>
+          {% if showOrganisationTools %}
+            <li class="app-account-featured-list__item">
+              <a class="app-account-featured-list__item-link" href="/notifications">
+                <span class="app-account-featured__icon app-account-featured__icon--notifications" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 16.5h12l-1.2-2.2V10a4.8 4.8 0 0 0-9.6 0v4.3z"/><path d="M10 16.5a2 2 0 0 0 4 0"/></svg>
+                </span>
+                <span class="app-account-featured-list__text">
+                  <span class="app-account-featured-list__title">Notifications</span>
+                  <span class="app-account-featured-list__description">Read updates about your job listings and hiring activity.</span>
+                </span>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </section>
+    </div>
+  {% else %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        {{ govukNotificationBanner({
+          titleText: "Important",
+          html: '<p class="govuk-notification-banner__heading">The candidate profiles feature has been retired.</p><p class="govuk-body">You can no longer view candidate profiles or invite candidates to apply for jobs.</p>'
+        }) }}
+
+        <h1 class="govuk-heading-l">Welcome</h1>
+
+        <p class="govuk-body">You can view and manage your job listings.</p>
+
+        <p class="govuk-body"><a class="govuk-link" href="/jobs">Continue to Manage jobs</a></p>
+
+      </div>
+    </div>
+  {% endif %}
 
 {% endblock %}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="630" height="315" viewBox="0 0 630 315" role="img" aria-labelledby="school-photo-title">
+  <title id="school-photo-title">School photo placeholder</title>
+  <rect width="630" height="315" fill="#f3f2f1"/>
+  <rect x="1" y="1" width="628" height="313" fill="none" stroke="#b1b4b6" stroke-width="2" stroke-dasharray="8 6"/>
+  <path fill="#b1b4b6" d="M0 220h630v95H0z"/>
+  <path fill="#85994b" d="M0 220 120 140l90 80 110-130 130 110 180-150v170H0z"/>
+  <circle cx="520" cy="72" r="36" fill="#ffdd00"/>
+  <rect x="180" y="118" width="270" height="102" fill="#505a5f"/>
+  <rect x="204" y="96" width="222" height="28" fill="#505a5f"/>
+  <text x="315" y="292" fill="#505a5f" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">School photo</text>
+</svg>

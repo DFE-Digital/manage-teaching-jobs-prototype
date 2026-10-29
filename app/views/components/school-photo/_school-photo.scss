@@ -3,6 +3,11 @@
   margin-bottom: govuk-spacing(5);
 
   img {
+    display: block;
     width: 100%;
+    max-width: 630px;
+    height: auto;
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
   }
 }

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="630" height="400" viewBox="0 0 630 400" role="img" aria-labelledby="map-placeholder-title">
+  <title id="map-placeholder-title">Map placeholder</title>
+  <rect width="630" height="400" fill="#f3f2f1"/>
+  <path fill="#b1b4b6" d="M0 320h630v80H0z"/>
+  <path fill="#dee0e2" d="M40 40h180v120H40zm210 40h160v160H250zm190-20h150v200H440z"/>
+  <path fill="#cadbee" d="M80 280 200 120l120 80 110-60 120 140v40H80z"/>
+  <path fill="#d4351c" d="m315 168-18 36h36z"/>
+  <circle cx="315" cy="168" r="10" fill="#fff" stroke="#d4351c" stroke-width="3"/>
+  <text x="315" y="372" fill="#505a5f" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Map showing school location</text>
+</svg>

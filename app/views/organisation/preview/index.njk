@@ -14,6 +14,13 @@
   {% endset %}
 {% endif %}
 
+{% set logoPlaceholder = "/public/images/placeholders/school-logo.svg" %}
+{% set photoPlaceholder = "/public/images/placeholders/school-photo.svg" %}
+{% set mapPlaceholder = "/public/images/placeholders/map.svg" %}
+{% set previewLogo = organisation.logo if organisation.logo != 'Not entered' else logoPlaceholder %}
+{% set previewPhoto = organisation.photo if organisation.photo != 'Not entered' else photoPlaceholder %}
+{% set previewMap = "/public/images/maps/single.png" %}
+
 {% block beforeContent %}
   {% if organisation.id == user.organisation.id %}
     {{ govukBackLink({
@@ -33,9 +40,7 @@
     <div class="govuk-grid-column-two-thirds">
 
       <div class="app-school-title">
-        {% if organisation.logo != 'Not entered' %}
-          <img src="{{organisation.logo}}">
-        {% endif %}
+        <img class="app-school-title__logo" src="{{ previewLogo }}" alt="{% if organisation.logo != 'Not entered' %}School logo{% else %}School logo placeholder{% endif %}" width="70" height="70">
         <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
           {{title}}
         </h1>
@@ -139,11 +144,9 @@
           About {{organisation.name}}
         </h2>
 
-        {% if organisation.photo != 'Not entered' %}
-          <div class="app-school-photo">
-            <img src="{{organisation.photo}}">
-          </div>
-        {% endif %}
+        <div class="app-school-photo">
+          <img src="{{ previewPhoto }}" alt="{% if organisation.photo != 'Not entered' %}Photo of {{ organisation.name }}{% else %}School photo placeholder{% endif %}" width="630" height="315">
+        </div>
 
         <p>{{organisation.about | nl2br | safe}}</p>
       {% endif %}
@@ -162,7 +165,7 @@
       <p>{{address}}</p>
 
       <div class="app-map">
-        <img src="/public/images/maps/courtland.png">
+        <img src="{{ previewMap }}" alt="Map showing the location of {{ organisation.name }}" width="630" height="400">
       </div>
 
       <h2 class="govuk-heading-m">

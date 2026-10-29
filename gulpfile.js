@@ -36,6 +36,13 @@ gulp.task('watch', gulp.parallel(
   'watch-assets-v6',
   'watch-component-assets'
 ))
+gulp.task('watch-prototype', gulp.parallel(
+  'watch-sass',
+  'watch-assets',
+  'watch-sass-v6',
+  'watch-assets-v6',
+  'watch-component-assets'
+))
 gulp.task('default', gulp.series(
   'generate-assets',
   gulp.parallel(

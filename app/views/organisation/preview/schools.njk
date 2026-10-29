@@ -8,6 +8,9 @@
   {% endfor %}
 {% endset %}
 
+{% set logoPlaceholder = "/public/images/placeholders/school-logo.svg" %}
+{% set previewLogo = organisation.logo if organisation.logo != 'Not entered' else logoPlaceholder %}
+
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Exit preview",
@@ -19,9 +22,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <div class="app-school-title">
-        {% if organisation.logo != 'Not entered' %}
-          <img src="{{organisation.logo}}">
-        {% endif %}
+        <img class="app-school-title__logo" src="{{ previewLogo }}" alt="{% if organisation.logo != 'Not entered' %}Organisation logo{% else %}Organisation logo placeholder{% endif %}" width="70" height="70">
         <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
           {{title}}
         </h1>

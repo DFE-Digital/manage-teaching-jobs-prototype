@@ -1,0 +1,37 @@
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+
+{% if not homepage %}
+  {% set showOrganisationTools = not user or user.organisation.name != "Hope college2" %}
+  {% set navigation = [] %}
+  {% set _ = navigation.push({
+    href: "/jobs",
+    text: "Manage jobs",
+    current: primaryNavId == "jobs"
+  }) %}
+  {% if showOrganisationTools %}
+    {% set _ = navigation.push({
+      href: "/messages",
+      text: "Messages",
+      current: primaryNavId == "messages"
+    }) %}
+  {% endif %}
+  {% set _ = navigation.push({
+    href: "/statistics",
+    text: "Statistics",
+    current: primaryNavId == "statistics"
+  }) %}
+  {% if showOrganisationTools %}
+    {% set _ = navigation.push({
+      href: "/notifications",
+      text: "Notifications",
+      current: primaryNavId == "notifications"
+    }) %}
+  {% endif %}
+
+  {{ govukServiceNavigation({
+    serviceName: "Teaching Vacancies",
+    serviceUrl: "/interruptions/profiles?v2" if user else "/jobs",
+    navigationId: "service-navigation",
+    navigation: navigation
+  }) }}
+{% endif %}

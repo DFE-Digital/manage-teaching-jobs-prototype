@@ -33,14 +33,18 @@
   {% endif %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">
-        {{title}}
-      </h1>
+      <div class="app-page-header govuk-!-margin-bottom-6">
+        <div class="app-page-header__title">
+          <h1 class="govuk-heading-l govuk-!-margin-bottom-0">{{ title }}</h1>
+        </div>
+        <div class="app-page-header__actions">
+          <a class="govuk-link" href="/organisation/{{ organisation.id }}/preview">{{ previewLabel }}</a>
+        </div>
+      </div>
 
       {% if organisation.schools %}
-        <p><a href="/organisation/{{organisation.id}}/preview">{{ previewLabel }}</a></p>
         {{appSchoolSummaryList({ organisation: organisation })}}
         <h2 class="govuk-heading-m govuk-!-margin-top-8">Schools</h2>
 
@@ -62,7 +66,6 @@
           </div>
         {% endfor %}
       {% else %}
-        <p><a href="/organisation/{{organisation.id}}/preview">{{ previewLabel }}</a></p>
         {{appSchoolSummaryList({ organisation: organisation })}}
       {% endif %}
 

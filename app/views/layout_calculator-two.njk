@@ -50,15 +50,16 @@
   {% if title %}{{ title }} - {% endif %}{{ serviceName }} - GOV.UK
 {% endblock %}
 
-{% block header %}
+{% block govukHeader %}
   {% include "includes/header.njk" %}
-    {{ govukPhaseBanner({
-      tag: {
-        text: "Beta"
-      },
-      classes: 'app-phase-banner govuk-width-container',
-      html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-    }) }}
+{% endblock %}
+
+{% block govukServiceNavigation %}
+  {% include "includes/service-navigation.njk" %}
+{% endblock %}
+
+{% block headerEnd %}
+  {% include "includes/phase-banner.njk" %}
   {% include "includes/primary-navigation-out.njk" %}
   {% include "includes/calculator-banner-two.njk" %}
 {% endblock %}

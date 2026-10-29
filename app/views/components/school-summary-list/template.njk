@@ -6,16 +6,19 @@
   {% set descriptionPrompt = "Enter an organisation description" %}
   {% set logoLabel = "Organisation logo" %}
   {% set photoLabel = "Organisation photo" %}
+  {% set detailsCardTitle = "Organisation details" %}
 {% elif isCollege %}
   {% set descriptionLabel = "College description" %}
   {% set descriptionPrompt = "Enter a college description" %}
   {% set logoLabel = "Organisation logo" %}
   {% set photoLabel = "Organisation photo" %}
+  {% set detailsCardTitle = "College details" %}
 {% else %}
   {% set descriptionLabel = "School description" %}
   {% set descriptionPrompt = "Enter a school description" %}
   {% set logoLabel = "School logo" %}
   {% set photoLabel = "School photo" %}
+  {% set detailsCardTitle = "School details" %}
 {% endif %}
 
 {% set address %}
@@ -90,30 +93,41 @@
   {% endif %}
 {% endset %}
 
+{% set logoPlaceholder = "/public/images/placeholders/school-logo.svg" %}
+{% set photoPlaceholder = "/public/images/placeholders/school-photo.svg" %}
+
 {% set logo %}
   {% if params.organisation.logo != 'Not entered' %}
-    <img src="{{params.organisation.logo}}" alt="Logo" width="150">
+    <div class="app-school-profile-media app-school-profile-media--logo">
+      <img src="{{ params.organisation.logo }}" alt="School logo" class="app-school-profile-media__image" width="150" height="150" onerror="this.onerror=null;this.src='{{ logoPlaceholder }}';">
+    </div>
   {% else %}
-    <div class="app-field-highlight">
+    <div class="app-field-highlight app-school-profile-media app-school-profile-media--logo">
       <p class="app-field-highlight__instruction">Add a school logo</p>
-      Not entered
+      <img src="{{ logoPlaceholder }}" alt="" class="app-school-profile-media__image app-school-profile-media__image--placeholder" width="150" height="150">
     </div>
   {% endif %}
 {% endset %}
 
 {% set photo %}
   {% if params.organisation.photo != 'Not entered' %}
-    <img src="{{params.organisation.photo}}" alt="Photo" width="100%">
+    <div class="app-school-profile-media app-school-profile-media--photo">
+      <img src="{{ params.organisation.photo }}" alt="School building" class="app-school-profile-media__image" width="630" height="315" onerror="this.onerror=null;this.src='{{ photoPlaceholder }}';">
+    </div>
   {% else %}
-    <div class="app-field-highlight">
+    <div class="app-field-highlight app-school-profile-media app-school-profile-media--photo">
       <p class="app-field-highlight__instruction">Add a school photo</p>
-      Not entered
+      <img src="{{ photoPlaceholder }}" alt="" class="app-school-profile-media__image app-school-profile-media__image--placeholder" width="630" height="315">
     </div>
   {% endif %}
 {% endset %}
 
-
 {{ govukSummaryList({
+  card: {
+    title: {
+      text: detailsCardTitle
+    }
+  },
   rows: [
     {
       key: {
@@ -173,6 +187,24 @@
     },
     {
       key: {
+        text: "Ofsted report"
+      },
+      value: {
+        html: '<a href="#">View Ofsted report (opens in new tab)</a>'
+      }
+    } if not params.organisation.schools
+  ]
+}) }}
+
+{{ govukSummaryList({
+  card: {
+    title: {
+      text: "Contact details"
+    }
+  },
+  rows: [
+    {
+      key: {
         text: "Email address"
       },
       value: {
@@ -204,24 +236,17 @@
           }
         ]
       }
-    },
-     {
-      key: {
-        text: "Are you open to flexible working?"
-      },
-      value: {
-        html: flexibleWorking
-      },
-      actions: {
-        items: [
-          {
-            href: "/organisation/flexible/edit",
-            text: "Change",
-            visuallyHiddenText: "flexible"
-          }
-        ]
-      }
-    } if false,
+    }
+  ]
+}) }}
+
+{{ govukSummaryList({
+  card: {
+    title: {
+      text: "Description and safeguarding"
+    }
+  },
+  rows: [
     {
       key: {
         text: descriptionLabel
@@ -255,7 +280,18 @@
           }
         ]
       }
-    },
+    }
+  ]
+}) }}
+
+{{ govukSummaryList({
+  classes: "govuk-summary-list--profile-media",
+  card: {
+    title: {
+      text: "Logo and photo"
+    }
+  },
+  rows: [
     {
       key: {
         text: logoLabel
@@ -289,14 +325,6 @@
           }
         ]
       }
-    },
-    {
-      key: {
-        text: "Ofsted report"
-      },
-      value: {
-        html: '<a href="#">View Ofsted report (opens in new tab)</a>'
-      }
-    } if not params.organisation.schools
+    }
   ]
 }) }}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150" role="img" aria-labelledby="school-logo-title">
+  <title id="school-logo-title">School logo placeholder</title>
+  <rect width="150" height="150" fill="#f3f2f1"/>
+  <rect x="1" y="1" width="148" height="148" fill="none" stroke="#b1b4b6" stroke-width="2" stroke-dasharray="6 4"/>
+  <path fill="#505a5f" d="M75 36 42 54v52h66V54L75 36zm0 8.2 26 14.8V100H49V58.8l26-14.6z"/>
+  <text x="75" y="128" fill="#505a5f" font-family="Arial, sans-serif" font-size="11" text-anchor="middle">School logo</text>
+</svg>
