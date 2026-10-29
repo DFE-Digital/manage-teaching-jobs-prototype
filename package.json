@@ -4,7 +4,8 @@
   "version": "14.0.0",
   "private": true,
   "engines": {
-    "node": ">=22.x"
+    "node": "24.x",
+    "npm": "11.x"
   },
   "scripts": {
     "generate-data": "node ./scripts/generate-organisations.js && node ./scripts/generate-users.js",
