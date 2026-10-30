@@ -1,7 +1,9 @@
 
 {% extends "layout.njk" %}
 
-{% if 'Today' in data['createJob']['publishDate'] %}
+{% set publishDate = data.createJob and data.createJob.publishDate %}
+{% set publishingToday = publishDate == 'Today (6 June 2022)' %}
+{% if publishingToday %}
   {% set heading = 'Job listing published' %}
 {% else %}
   {% set heading = 'Job listing scheduled' %}
@@ -17,10 +19,8 @@
       titleText: heading
     }) }}
 
-    {% if 'Today' in data['createJob']['publishDate'] %}
-
-    {% else %}
-      <p>Your job listing will be published on {{data['createJob']['publishDate']}} at 9am.</p>
+    {% if not publishingToday and publishDate %}
+      <p>Your job listing will be published on {{ publishDate }} at 9am.</p>
     {% endif %}
 
     <h2 class="govuk-heading-m">
@@ -56,7 +56,7 @@
       </h2>
       <p>Any information you add to your profile will be included in your job listings.</p>
       <p><a href="/organisation">Complete school profile</a></p>
-    {% endif%}
+    {% endif %}
 
   <h2 class="govuk-heading-m">Have time to share some feedback?</h2>
 		<p class="govuk-body">Your feedback can help us improve how you can list jobs.</p>

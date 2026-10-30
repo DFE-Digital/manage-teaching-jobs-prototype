@@ -49,22 +49,22 @@
 
       {% set salaryDetails %}
         <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
-          {% if data['createJob']['full-time-salary'] %} 
+          {% if data.createJob['full-time-salary'] %}
           <li>
             <p>Full-time equivalent salary:<br>
-            {{data['createJob']['full-time-salary']}}</p>
+            {{ data.createJob['full-time-salary'] }}</p>
           </li>
           {% endif %}
-          {% if data['createJob']['actual-salary'] %} 
+          {% if data.createJob['actual-salary'] %}
           <li>
             <p>Actual salary:<br>
-            {{data['createJob']['actual-salary']}}</p>
+            {{ data.createJob['actual-salary'] }}</p>
           </li>
           {% endif %}
-          {% if data['createJob']['pay-scale'] %} 
+          {% if data.createJob['pay-scale'] %}
           <li class="govuk-!-margin-bottom-0">
             <p class="govuk-!-margin-bottom-0">Pay scale:<br>
-            {{data['createJob']['pay-scale']}}</p>
+            {{ data.createJob['pay-scale'] }}</p>
           </li>
           {% endif %}
         </ul>
@@ -215,7 +215,7 @@
                 }
               ]
             }
-          } if not hideAdditionalAllowances,
+          },
           {
             key: {
               text: "Do you want to include additional allowances?"
@@ -264,7 +264,7 @@
               text: "Publish date"
             },
             value: {
-              text:  data['createJob']['publishDate']
+              text: data.createJob.publishDate
             },
             actions: {
               items: [

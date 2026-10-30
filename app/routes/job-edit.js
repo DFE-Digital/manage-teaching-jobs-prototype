@@ -2,6 +2,7 @@
 const authentication = require('../middleware/authentication')
 const Validator = require('../helpers/validator')
 const { isCollegeFeCreateJob } = require('../lib/fe-parity')
+const buildCreateJobCheckDisplay = require('../lib/create-job-check-display')
 
 function renderEditJobPage (view, req, res) {
   res.render(view, {
@@ -19,7 +20,11 @@ module.exports = router => {
   })
 
   router.get('/jobs/edit/check', authentication.checkIsAuthenticated, (req, res) => {
-    renderEditJobPage('jobs/edit/check', req, res)
+    const sessionData = req.session.data || {}
+    res.render('jobs/edit/check', {
+      data: buildCreateJobCheckDisplay(sessionData),
+      hideAdditionalAllowances: isCollegeFeCreateJob(sessionData, req.session.user)
+    })
   })
 
   router.get('/jobs/edit/:id/role', (req, res) => {
