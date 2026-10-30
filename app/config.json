@@ -5,8 +5,8 @@
   "useAutoStoreData": true,
   "useCookieSessionStore": false,
   "useDocumentation": true,
-  "useHttps": false,
-  "useBrowserSync": false,
+  "useHttps": true,
+  "useBrowserSync": true,
   "basePlugins": [
     "govuk-frontend"
   ]

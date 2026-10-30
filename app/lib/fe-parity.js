@@ -22,6 +22,13 @@ function isCollegeFeCreateJob (data, user) {
     if (orgName.includes('college') && !orgName.includes('school and college')) {
       return true
     }
+    const orgPhase = String(org.phase || '').toLowerCase()
+    if (
+      orgPhase.includes('sixth form or college') ||
+      orgPhase.includes('further education')
+    ) {
+      return true
+    }
   }
 
   return phaseValues(data).some(phase =>

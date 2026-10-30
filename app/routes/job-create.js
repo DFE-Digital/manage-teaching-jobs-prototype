@@ -1,8 +1,26 @@
 
 const authentication = require('../middleware/authentication')
 const Validator = require('../helpers/validator')
+const { isCollegeFeCreateJob } = require('../lib/fe-parity')
+
+function renderCreateJobPage (view, req, res) {
+  res.render(view, {
+    hideAdditionalAllowances: isCollegeFeCreateJob(
+      req.session.data || {},
+      req.session.user
+    )
+  })
+}
 
 module.exports = router => {
+
+  router.get('/jobs/new/salary', authentication.checkIsAuthenticated, (req, res) => {
+    renderCreateJobPage('jobs/new/salary', req, res)
+  })
+
+  router.get('/jobs/new/check', authentication.checkIsAuthenticated, (req, res) => {
+    renderCreateJobPage('jobs/new/check', req, res)
+  })
 
   router.get('/jobs/new', authentication.checkIsAuthenticated, (req, res) => {
     let org = req.session.user.organisation

@@ -5,16 +5,18 @@
  */
 
 module.exports = {
-  guideTitle: 'Remove additional allowances for colleges',
+  guideTitle: 'Remove the additional allowances section from the application process',
   guideDescription:
-    'Ticket #3436 (FE parity): college hiring staff cannot offer school-style additional allowances, so those questions are hidden when creating or editing a job listing for a further education or college organisation.',
+    'Ticket #3436 (FE parity): FE colleges cannot offer school-style additional allowances, so those fields are removed from college hiring-staff and jobseeker journeys where they would otherwise appear.',
   imageDir: 'fe-additional-allowances-3436',
   collegeUserQuery: '?userEmailAddress=bob@hopecollege.sch.uk',
   schoolUserQuery: '?userEmailAddress=rachael@courtland.sch.uk',
   userNeed:
-    'As FE college hiring staff, I do not offer additional allowances like schools do, so I should not be asked about them when I publish a college vacancy.',
+    'As FE College hiring staff, I do not have the ability to offer additional allowances to jobseekers so I differentiate from schools.',
+  devNote:
+    'Remove the additional allowances box from the college online application form, Quick Apply and also from the job summary page for hiring staff, and ensure the feature does not appear in the job seeker journey. In this hiring staff prototype, create and edit job listing salary and check your answers pages hide allowances for college/FE organisations; the jobseeker prototype covers application form, Quick Apply and listing views.',
   successCriteria:
-    'College and further education create/edit journeys hide additional allowances on the salary step and on check your answers. School hiring staff still see the allowances questions.',
+    'Neither Hiring Staff nor Job Seekers can see the additional allowances fields in either journey.',
   implemented: [
     'app/lib/fe-parity.js — isCollegeFeCreateJob() (Hope college, College org type, FE phase strings, Sixth form or Further education job role type).',
     'Nunjucks filter isCollegeFeCreateJob on jobs/new/salary.njk and jobs/edit/salary.njk — heading becomes “Salary” and allowance radios are omitted.',

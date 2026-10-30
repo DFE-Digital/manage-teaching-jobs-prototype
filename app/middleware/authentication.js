@@ -17,7 +17,14 @@ function signInFromQuery (req, res) {
 }
 
 const bootstrapUserFromQuery = (req, res, next) => {
-  if (!req.session.user) {
+  const emailAddress = req.query.userEmailAddress
+  if (!emailAddress) {
+    next()
+    return
+  }
+
+  const signedInAs = req.session.user && req.session.user.emailAddress
+  if (signedInAs !== emailAddress) {
     signInFromQuery(req, res)
   }
   next()
@@ -25,6 +32,7 @@ const bootstrapUserFromQuery = (req, res, next) => {
 
 const checkIsAuthenticated = (req, res, next) => {
   if (req.session.user) {
+    res.locals.user = req.session.user
     next()
     return
   }

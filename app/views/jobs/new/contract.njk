@@ -15,13 +15,6 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% set h1 %}
-        <span class="govuk-caption-l">
-          {{caption}}
-        </span>
-        {{heading}}
-      {% endset %}
-
       {% set fixed %}
         {{ govukInput({
           id: "createJob[fixed--length]",
@@ -46,6 +39,13 @@
         }) }}
       {% endset %}
 
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      </h1>
+
       <form action="/jobs/new/salary">
 
         {{ govukRadios({
@@ -53,8 +53,8 @@
           name: "createJob[contract]",
           fieldset: {
             legend: {
-              html: h1,
-              isPageHeading: true,
+              text: "Contract type",
+              isPageHeading: false,
               classes: "govuk-fieldset__legend--m"
             }
           },

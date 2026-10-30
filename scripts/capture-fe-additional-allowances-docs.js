@@ -9,7 +9,7 @@ const fs = require('fs')
 const path = require('path')
 const { chromium } = require('playwright')
 
-const BASE = process.env.PROTOTYPE_BASE_URL || 'https://127.0.0.1:3100'
+const BASE = process.env.PROTOTYPE_BASE_URL || 'http://127.0.0.1:3100'
 const OUT_DIR = path.join(__dirname, '../app/assets/images/documentation/fe-additional-allowances-3436')
 
 const CAPTURES = [

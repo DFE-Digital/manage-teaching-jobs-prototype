@@ -1,6 +1,7 @@
 const express = require('express')
 const config = require('./config')
 const authentication = require('./middleware/authentication')
+const { isCollegeFeCreateJob } = require('./lib/fe-parity')
 const router = express.Router()
 
 function sharingOrigin (req) {
@@ -26,6 +27,10 @@ router.use((req, res, next) => {
   res.locals.sharingOrigin = sharingOrigin(req)
   res.locals.query = req.query
   res.locals.user = req.session.user
+  res.locals.hideAdditionalAllowances = isCollegeFeCreateJob(
+    res.locals.data || req.session.data || {},
+    req.session.user
+  )
   res.locals.flash = req.flash('success') // pass through 'success' messages only
   next()
 })
