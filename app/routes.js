@@ -52,9 +52,4 @@ router.get('/documentation/about', (req, res) => {
   res.render('documentation/about.html')
 })
 
-router.get('/documentation/fe-additional-allowances-3436', (req, res) => {
-  const guide = require('./data/fe-additional-allowances-3436')
-  res.render('documentation/fe-additional-allowances-3436.html', { guide })
-})
-
 module.exports = router
