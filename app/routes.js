@@ -1,5 +1,6 @@
 const express = require('express')
 const config = require('./config')
+const authentication = require('./middleware/authentication')
 const router = express.Router()
 
 function sharingOrigin (req) {
@@ -13,6 +14,8 @@ function sharingOrigin (req) {
   const host = port === browserSyncPort ? `${hostname}:${publicPort}` : headerHost
   return `${protocol}://${host}`
 }
+
+router.use(authentication.bootstrapUserFromQuery)
 
 router.use((req, res, next) => {
   res.locals.referrer = req.query.referrer
@@ -42,6 +45,11 @@ router.get('/documentation', (req, res) => {
 
 router.get('/documentation/about', (req, res) => {
   res.render('documentation/about.html')
+})
+
+router.get('/documentation/fe-additional-allowances-3436', (req, res) => {
+  const guide = require('./data/fe-additional-allowances-3436')
+  res.render('documentation/fe-additional-allowances-3436.html', { guide })
 })
 
 module.exports = router

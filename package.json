@@ -4,7 +4,8 @@
   "version": "14.0.0",
   "private": true,
   "engines": {
-    "node": ">=22.x"
+    "node": "24.x",
+    "npm": "11.x"
   },
   "scripts": {
     "generate-data": "node ./scripts/generate-organisations.js && node ./scripts/generate-users.js",
@@ -14,7 +15,9 @@
     "serve": "node lib/prototype-serve.js",
     "lint": "standard",
     "rapidtest": "jest --bail",
-    "test": "gulp generate-assets && jest && npm run lint"
+    "test": "gulp generate-assets && jest && npm run lint",
+    "capture:fe-additional-allowances-docs": "node scripts/capture-fe-additional-allowances-docs.js",
+    "install:git-hooks": "node scripts/install-git-hooks.js"
   },
   "dependencies": {
     "@faker-js/faker": "^7.4.0",
@@ -58,6 +61,7 @@
   "devDependencies": {
     "glob": "^7.1.4",
     "jest": "^27.3.1",
+    "playwright": "^1.64.1",
     "standard": "^14.3.3",
     "supertest": "^6.1.6"
   },

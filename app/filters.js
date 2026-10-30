@@ -56,6 +56,12 @@ module.exports = function (env) {
 
   ------------------------------------------------------------------ */
 
+  const { isCollegeFeCreateJob } = require('./lib/fe-parity')
+
+  filters.isCollegeFeCreateJob = function (data, user) {
+    return isCollegeFeCreateJob(data, user)
+  }
+
   filters.jobStatusTagClass = (jobStatus) => {
     let tagClass;
     switch(jobStatus) {

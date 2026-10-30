@@ -2,7 +2,8 @@
 
 {% set version = 2 %}
 
-{% set heading = 'Salary and allowances' %}
+{% set hideAdditionalAllowances = isCollegeFeCreateJob(data, user) %}
+{% set heading = 'Salary' if hideAdditionalAllowances else 'Salary and allowances' %}
 {% set caption = 'Create job listing - section 1 of 4' %}
 {% set title = heading + ' - ' + caption %}
 
@@ -130,6 +131,7 @@
           ]
         }) }}
 
+        {% if not hideAdditionalAllowances %}
         {{ govukRadios({
           idPrefix: "additional-allowances",
           name: "additional-allowances",
@@ -155,6 +157,7 @@
             }
           ]
         }) }}
+        {% endif %}
 
 
 
