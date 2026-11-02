@@ -4,12 +4,18 @@
 {% set landingPage = query.v2 is defined %}
 {% if landingPage and user %}
   {% set title = user.organisation.name %}
+{% elif user %}
+  {% set title = user.organisation.name %}
 {% else %}
   {% set title = "Home" %}
 {% endif %}
-{% if landingPage %}
-  {% set mainClasses = "govuk-main-wrapper--auto-spacing app-account-main-wrapper" %}
-{% endif %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-account-main-wrapper" %}
+
+{% set profilesRetiredBannerHtml %}
+  <p class="govuk-notification-banner__heading">The candidate profiles feature has been retired.</p>
+  <p class="govuk-body">You can no longer view candidate profiles or invite candidates to apply for jobs.</p>
+  <p class="govuk-body">You can still <a class="govuk-link" href="/jobs">view and manage your job listings</a>.</p>
+{% endset %}
 
 {% block content %}
 
@@ -73,13 +79,14 @@
       </section>
     </div>
   {% else %}
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body">
-          <a class="govuk-link" href="/jobs">View and manage your job listings</a>
-        </p>
-      </div>
-    </div>
+    {% if user %}
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">{{ user.organisation.name }}</h1>
+    {% endif %}
+
+    {{ govukNotificationBanner({
+      titleText: "Important",
+      html: profilesRetiredBannerHtml
+    }) }}
   {% endif %}
 
 {% endblock %}
