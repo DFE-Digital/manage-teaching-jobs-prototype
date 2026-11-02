@@ -80,7 +80,7 @@
     </div>
   {% else %}
     {% if user %}
-      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">{{ user.organisation.name }}</h1>
+      <h1 class="govuk-heading-l govuk-visually-hidden">{{ user.organisation.name }}</h1>
     {% endif %}
 
     {{ govukNotificationBanner({
