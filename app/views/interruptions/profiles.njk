@@ -2,7 +2,11 @@
 
 {% set showOrganisationTools = not user or user.organisation.name != "Hope college2" %}
 {% set landingPage = query.v2 is defined %}
-{% set title = "Welcome" %}
+{% if landingPage and user %}
+  {% set title = user.organisation.name %}
+{% else %}
+  {% set title = "Home" %}
+{% endif %}
 {% if landingPage %}
   {% set mainClasses = "govuk-main-wrapper--auto-spacing app-account-main-wrapper" %}
 {% endif %}
@@ -10,29 +14,12 @@
 {% block content %}
 
   {% if landingPage %}
-    {{ govukNotificationBanner({
-      titleText: "Important",
-      html: '<p class="govuk-notification-banner__heading">The candidate profiles feature has been retired.</p><p class="govuk-body">You can no longer view candidate profiles or invite candidates to apply for jobs.</p>'
-    }) }}
-
     {% if user %}
-      <span class="govuk-caption-xl">{{ user.organisation.name }}</span>
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">{{ user.organisation.name }}</h1>
     {% endif %}
-    <div class="app-page-header app-account-page-header govuk-!-margin-bottom-4">
-      <div class="app-page-header__title">
-        <h1 class="govuk-heading-l govuk-!-margin-bottom-0" id="account-heading">Welcome</h1>
-      </div>
-    </div>
-    <p class="govuk-body" id="account-intro">
-      {%- if showOrganisationTools -%}
-        Manage jobs, messages, statistics and notifications in one place.
-      {%- else -%}
-        Manage jobs and statistics in one place.
-      {%- endif -%}
-    </p>
 
     <div class="app-account-hub">
-      <section class="app-account-featured" aria-labelledby="account-heading" aria-describedby="account-intro">
+      <section class="app-account-featured" aria-label="Account tasks">
         <ul class="app-account-featured-list">
           <li class="app-account-featured-list__item">
             <a class="app-account-featured-list__item-link" href="/jobs">
@@ -88,18 +75,9 @@
   {% else %}
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-
-        {{ govukNotificationBanner({
-          titleText: "Important",
-          html: '<p class="govuk-notification-banner__heading">The candidate profiles feature has been retired.</p><p class="govuk-body">You can no longer view candidate profiles or invite candidates to apply for jobs.</p>'
-        }) }}
-
-        <h1 class="govuk-heading-l">Welcome</h1>
-
-        <p class="govuk-body">You can view and manage your job listings.</p>
-
-        <p class="govuk-body"><a class="govuk-link" href="/jobs">Continue to Manage jobs</a></p>
-
+        <p class="govuk-body">
+          <a class="govuk-link" href="/jobs">View and manage your job listings</a>
+        </p>
       </div>
     </div>
   {% endif %}
