@@ -4,6 +4,13 @@
   padding-top: 20px;
 }
 
+// Candidate profiles retirement — two-thirds width per layout guidance
+.app-profiles-retired-banner {
+  box-sizing: border-box;
+  max-width: 630px;
+  width: 100%;
+}
+
 .app-account-hub {
   margin-bottom: 35px;
 }

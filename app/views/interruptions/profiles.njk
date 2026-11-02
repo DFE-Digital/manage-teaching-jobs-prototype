@@ -12,9 +12,12 @@
 {% set mainClasses = "govuk-main-wrapper--auto-spacing app-account-main-wrapper" %}
 
 {% set profilesRetiredBannerHtml %}
-  <p class="govuk-notification-banner__heading">The candidate profiles feature has been retired.</p>
-  <p class="govuk-body">You can no longer view candidate profiles or invite candidates to apply for jobs.</p>
-  <p class="govuk-body">You can still <a class="govuk-link" href="/jobs">view and manage your job listings</a>.</p>
+  <p class="govuk-notification-banner__heading">
+    The candidate profiles feature has been retired
+  </p>
+  <p class="govuk-body govuk-!-margin-bottom-0">
+    You can no longer view candidate profiles or invite candidates to apply for jobs. You can still <a class="govuk-notification-banner__link" href="/jobs">view and manage your job listings</a>.
+  </p>
 {% endset %}
 
 {% block content %}
@@ -79,14 +82,15 @@
       </section>
     </div>
   {% else %}
+    {{ govukNotificationBanner({
+      titleText: "Important",
+      html: profilesRetiredBannerHtml,
+      classes: "app-profiles-retired-banner"
+    }) }}
+
     {% if user %}
       <h1 class="govuk-heading-l govuk-visually-hidden">{{ user.organisation.name }}</h1>
     {% endif %}
-
-    {{ govukNotificationBanner({
-      titleText: "Important",
-      html: profilesRetiredBannerHtml
-    }) }}
   {% endif %}
 
 {% endblock %}
