@@ -50,6 +50,32 @@ describe('account sign in', () => {
   })
 })
 
+describe('profiles interruption', () => {
+  it('renders the v2 welcome page with page header actions', async () => {
+    const agent = request.agent(app)
+    await agent
+      .post('/account/sign-in')
+      .type('form')
+      .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
+
+    const response = await agent.get('/interruptions/profiles?v2')
+    expect(response.status).toBe(200)
+    expect(response.text).toContain('app-profiles-welcome-banner')
+    expect(response.text).toContain('We have retired candidate profiles')
+    expect(response.text).toContain('From 15 January 2027')
+    expect(response.text).toContain('invite candidates to apply for jobs')
+    expect(response.text).not.toContain('View your job listings')
+    expect(response.text).not.toContain('The candidate profiles feature has been retired')
+    expect(response.text).toContain('moj-page-header-actions')
+    expect(response.text).toContain('Create a job listing')
+    expect(response.text).toContain('Create a job template')
+    expect(response.text.indexOf('app-profiles-welcome-banner')).toBeLessThan(
+      response.text.indexOf('moj-page-header-actions')
+    )
+    expect(response.text).not.toContain('template not found')
+  })
+})
+
 describe('candidate and application routes', () => {
   async function signedInAgent () {
     const agent = request.agent(app)

@@ -1,4 +1,5 @@
 {% extends "layout.njk" %}
+{% from "components/moj-page-header-actions/macro.njk" import mojPageHeaderActions %}
 
 {% set showOrganisationTools = not user or user.organisation.name != "Hope college2" %}
 {% set landingPage = query.v2 is defined %}
@@ -23,8 +24,34 @@
 {% block content %}
 
   {% if landingPage %}
+    {{ govukNotificationBanner({
+      titleText: "Important",
+      html: '
+        <p class="govuk-notification-banner__heading">
+          We have retired candidate profiles
+        </p>
+        <p class="govuk-body govuk-!-margin-bottom-0">
+          From 15 January 2027, you can no longer view candidate profiles or invite candidates to apply for jobs.
+        </p>
+      ',
+      classes: "app-profiles-welcome-banner govuk-!-margin-bottom-6"
+    }) }}
+
     {% if user %}
-      <h1 class="govuk-heading-l govuk-!-margin-bottom-4">{{ user.organisation.name }}</h1>
+      {{ mojPageHeaderActions({
+        heading: {
+          text: user.organisation.name,
+          classes: 'govuk-heading-l'
+        },
+        items: [{
+          text: 'Create a job listing',
+          href: '/jobs/new/start'
+        }, {
+          text: 'Create a job template',
+          href: '/jobs/templates',
+          classes: 'govuk-button--secondary'
+        }]
+      }) }}
     {% endif %}
 
     <div class="app-account-hub">
