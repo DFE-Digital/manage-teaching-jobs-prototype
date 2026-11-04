@@ -50,6 +50,32 @@ describe('account sign in', () => {
   })
 })
 
+describe('job applications', () => {
+  it('shows the job title in the h1 for the signed-in organisation', async () => {
+    const agent = request.agent(app)
+    await agent
+      .post('/account/sign-in')
+      .type('form')
+      .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
+
+    const response = await agent.get('/jobs/686355/applications')
+    expect(response.status).toBe(200)
+    expect(response.text).toContain('Science lecturer')
+  })
+
+  it('redirects when the job does not belong to the signed-in organisation', async () => {
+    const agent = request.agent(app)
+    await agent
+      .post('/account/sign-in')
+      .type('form')
+      .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
+
+    const response = await agent.get('/jobs/000000/applications')
+    expect(response.status).toBe(302)
+    expect(response.headers.location).toBe('/jobs')
+  })
+})
+
 describe('profiles interruption', () => {
   it('renders the v2 welcome page with page header actions', async () => {
     const agent = request.agent(app)

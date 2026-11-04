@@ -184,11 +184,13 @@ module.exports = router => {
   })
 
   router.get('/jobs/:id/applications', authentication.checkIsAuthenticated, (req, res) => {
-    let user = req.session.user
-    let job = req.session.user.jobs.find(job => job.id == req.params.id)
-    let jobseekers = user.jobseekers.map(jobseeker => {
-      return jobseeker
-    })
+    const job = jobFromRequest(req)
+    if (!job) {
+      res.redirect('/jobs')
+      return
+    }
+
+    const jobseekers = req.session.user.jobseekers.map(jobseeker => jobseeker)
 
     res.render('jobs/applications', {
       job,
@@ -197,7 +199,11 @@ module.exports = router => {
   })
 
   router.get('/jobs/:id/download', authentication.checkIsAuthenticated, (req, res) => {
-    let job = req.session.user.jobs.find(job => job.id == req.params.id)
+    const job = jobFromRequest(req)
+    if (!job) {
+      res.redirect('/jobs')
+      return
+    }
 
     res.render('jobs/download', {
       job
@@ -396,7 +402,7 @@ module.exports = router => {
   router.post('/jobs/:id/tag', (req, res) => {
     
       req.flash('success', 'Application status updated')
-      res.redirect('/jobs/686355/applications')
+      res.redirect(`/jobs/${req.params.id}/applications`)
     
   })
 
