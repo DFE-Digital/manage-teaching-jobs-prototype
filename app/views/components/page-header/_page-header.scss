@@ -4,10 +4,22 @@
   margin-bottom: govuk-spacing(7);
   min-height: govuk-spacing(7); // Match button height
   text-align: justify; // Trick to remove the need for floats
+
+  @include govuk-media-query($from: tablet) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+  }
+
   &:after {
     content: '';
     display: inline-block;
     width: 100%;
+
+    @include govuk-media-query($from: tablet) {
+      display: none;
+    }
   }
 
 }
@@ -24,23 +36,24 @@
   }
 
   @include govuk-media-query($from: tablet) {
-    display: inline-block;
-    vertical-align: middle;
+    flex: 1 1 auto;
   }
 
 }
 
 
 .app-page-header__actions {
+  @include govuk-font($size: 19);
 
   @include govuk-media-query($from: tablet) {
-    display: inline-block;
-    vertical-align: middle;
+    flex: 0 0 auto;
+    text-align: right;
   }
 
 }
 
 .app-page-header__action {
+  @include govuk-font($size: 19);
 
   &:last-child {
     margin-bottom: 0;

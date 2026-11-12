@@ -45,7 +45,7 @@
       <section class="app-prototype-index">
         <div class="app-prototype-index__heading-row">
           <h2 class="govuk-heading-m app-prototype-index__heading">Current version</h2>
-          <p class="app-prototype-index__updated">Last updated: 9 October 2026</p>
+          <p class="app-prototype-index__updated">Last updated: 5 November 2026</p>
         </div>
         <ul class="app-prototype-list">
           {% call prototypeItem("/start", "Sign in to manage teaching jobs", "The hiring staff start page, sign in, and request an account.") %}
@@ -102,6 +102,9 @@
           {% call prototypeItem("/organisation" + schoolUser, "Organisation profile", "School profile used on listings.") %}
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1d70b8" stroke-width="1.5" aria-hidden="true"><path d="M4.5 19.5h15"/><path d="M6.5 19.5V6.5h7v13"/><path d="M13.5 10.5h4v9"/><path d="M8.5 9.5h3M8.5 12.5h3M8.5 15.5h3"/></svg>
           {% endcall %}
+          {% call prototypeItem("/organisation" + schoolUser + "&incomplete", "Incomplete school profile", "Courtland Primary — missing email, description, logo and photo.") %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1d70b8" stroke-width="1.5" aria-hidden="true"><path d="M4.5 19.5h15"/><path d="M6.5 19.5V6.5h7v13"/><path d="M13.5 10.5h4v9"/><path d="M8.5 9.5h3M8.5 12.5h3M8.5 15.5h3"/></svg>
+          {% endcall %}
           {% call prototypeItem("/organisation" + collegeUser, "Incomplete college profile", "Hope college profile with missing information.") %}
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1d70b8" stroke-width="1.5" aria-hidden="true"><path d="M4.5 19.5h15"/><path d="M6.5 19.5V6.5h7v13"/><path d="M13.5 10.5h4v9"/><path d="M8.5 9.5h3M8.5 12.5h3M8.5 15.5h3"/></svg>
           {% endcall %}
@@ -125,6 +128,9 @@
           {% endcall %}
           {% call prototypeItem("/documentation/about", "Documentation", "Tech stack, mock JSON, route modules, and page flows for this prototype.") %}
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1d70b8" stroke-width="1.5" aria-hidden="true"><path d="M7.5 3.5h6l4 4v13h-10z"/><path d="M13.5 3.5v4h4"/><path d="M9.5 12.5h6M9.5 15.5h6"/></svg>
+          {% endcall %}
+          {% call prototypeItem("/documentation/job-listing-flow" + schoolUser, "Job listing flow (publication)", "Map 1 (HS1–HS22): create listing journey with links to each prototype screen.") %}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1d70b8" stroke-width="1.5" aria-hidden="true"><path d="M4 5.5h16v13H4z"/><path d="M7.5 9h9M7.5 12h9M7.5 15h6"/></svg>
           {% endcall %}
         </ul>
       </section>

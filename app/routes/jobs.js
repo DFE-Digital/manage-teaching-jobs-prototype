@@ -1,4 +1,5 @@
 
+const path = require('path')
 const authentication = require('../middleware/authentication')
 const { findById } = require('../helpers/lookup')
 
@@ -138,6 +139,83 @@ module.exports = router => {
 
     req.flash('success', 'Job listing saved as a template')
     res.redirect('/jobs/templates')
+  })
+
+  router.get('/jobs/:id/close-early', authentication.checkIsAuthenticated, (req, res) => {
+    const job = jobFromRequest(req)
+    if (!job) {
+      res.redirect('/jobs')
+      return
+    }
+
+    res.render('jobs/close-early/index', { job })
+  })
+
+  router.post('/jobs/:id/close-early', authentication.checkIsAuthenticated, (req, res) => {
+    const job = jobFromRequest(req)
+    if (!job) {
+      res.redirect('/jobs')
+      return
+    }
+
+    job.status = 'Closed'
+    job.closingDate = new Date().toISOString()
+    req.flash('success', 'Job listing closed')
+    res.redirect(`/jobs/${req.params.id}`)
+  })
+
+  router.get('/jobs/:id/extend-closing-date', authentication.checkIsAuthenticated, (req, res) => {
+    const job = jobFromRequest(req)
+    if (!job) {
+      res.redirect('/jobs')
+      return
+    }
+
+    res.render('jobs/extend-closing-date/index', { job })
+  })
+
+  router.post('/jobs/:id/extend-closing-date', authentication.checkIsAuthenticated, (req, res) => {
+    const job = jobFromRequest(req)
+    if (!job) {
+      res.redirect('/jobs')
+      return
+    }
+
+    const closingDate = req.body.closingDate
+    if (closingDate && closingDate.day && closingDate.month && closingDate.year) {
+      job.closingDate = new Date(
+        `${closingDate.year}-${closingDate.month}-${closingDate.day}`
+      ).toISOString()
+    }
+    if (req.body.closingTime) {
+      job.closingTime = req.body.closingTime
+    }
+
+    req.flash('success', 'Closing date updated')
+    res.redirect(`/jobs/${req.params.id}`)
+  })
+
+  router.get('/jobs/:id/blank-application-form', authentication.checkIsAuthenticated, (req, res) => {
+    const job = jobFromRequest(req)
+    if (!job) {
+      res.redirect('/jobs')
+      return
+    }
+
+    res.render('jobs/blank-application-form', { job })
+  })
+
+  router.get('/jobs/:id/blank-application-form/download', authentication.checkIsAuthenticated, (req, res) => {
+    const job = jobFromRequest(req)
+    if (!job) {
+      res.redirect('/jobs')
+      return
+    }
+
+    res.download(
+      path.join(__dirname, '../assets/documents/blank-application-form.pdf'),
+      'application-form.pdf'
+    )
   })
 
   router.get('/jobs/example', authentication.checkIsAuthenticated, (req, res) => {

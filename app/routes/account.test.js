@@ -76,6 +76,62 @@ describe('job applications', () => {
   })
 })
 
+describe('organisation profile', () => {
+  it('updates organisation logo without the check page', async () => {
+    const agent = request.agent(app)
+    await agent
+      .post('/account/sign-in')
+      .type('form')
+      .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
+
+    const orgId = 'ea4959ee-de5a-4f6b-a657-40a5ec15b794'
+    const response = await agent
+      .post(`/organisation/${orgId}/logo/edit`)
+      .type('form')
+      .send({})
+
+    expect(response.status).toBe(302)
+    expect(response.headers.location).toBe('/organisation')
+
+    const profile = await agent.get('/organisation')
+    expect(profile.text).toContain('Organisation logo updated')
+    expect(profile.text).toContain('Organisation logo')
+    expect(profile.text).toContain('Organisation photo')
+  })
+
+  it('renders school profile preview with summary and job alert', async () => {
+    const agent = request.agent(app)
+    await agent
+      .post('/account/sign-in')
+      .type('form')
+      .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
+
+    const orgId = 'ea4959ee-de5a-4f6b-a657-40a5ec15b794'
+    const response = await agent.get(`/organisation/${orgId}/preview`)
+    expect(response.status).toBe(200)
+    expect(response.text).toContain('Edit preview')
+    expect(response.text).toContain('School name')
+    expect(response.text).toContain('Set up a job alert')
+    expect(response.text).toContain('Commitment to safeguarding')
+  })
+
+  it('shows incomplete school profile when ?incomplete is set', async () => {
+    const agent = request.agent(app)
+    await agent
+      .post('/account/sign-in')
+      .type('form')
+      .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
+
+    const response = await agent.get('/organisation?incomplete')
+    expect(response.status).toBe(200)
+    expect(response.text).toContain('Complete your school profile')
+    expect(response.text).toContain('Enter an email address')
+    expect(response.text).toContain('Enter a school description')
+    expect(response.text).toContain('Add an organisation logo')
+    expect(response.text).toContain('http://piercing-cymbal.co')
+  })
+})
+
 describe('profiles interruption', () => {
   it('renders the v2 welcome page with page header actions', async () => {
     const agent = request.agent(app)
@@ -88,7 +144,7 @@ describe('profiles interruption', () => {
     expect(response.status).toBe(200)
     expect(response.text).toContain('app-profiles-welcome-banner')
     expect(response.text).toContain('We have retired candidate profiles')
-    expect(response.text).toContain('From 15 January 2027')
+    expect(response.text).toContain('From [DD Month YYYY]')
     expect(response.text).toContain('invite candidates to apply for jobs')
     expect(response.text).not.toContain('View your job listings')
     expect(response.text).not.toContain('The candidate profiles feature has been retired')

@@ -4,33 +4,35 @@
 
 {% set address %}
   {% for part, value in organisation.address %}
-    {{value}}{% if not loop.last %}, {% endif %}
+    {{ value }}{% if not loop.last %}, {% endif %}
   {% endfor %}
+{% endset %}
+
+{% set schoolType %}
+  {{ organisation.type }}{% if organisation.religion and organisation.religion != 'Not entered' %}, {{ organisation.religion }}{% endif %}{% if organisation.ageGroup %}, ages {{ organisation.ageGroup }}{% endif %}
 {% endset %}
 
 {% if organisation.website != 'Not entered' %}
   {% set website %}
-    <a href="{{organisation.website}}">{{organisation.website}} (opens in new tab)</a>
+    <a class="govuk-link" href="{{ organisation.website }}" rel="noopener noreferrer">{{ organisation.website }} (opens in new tab)</a>
   {% endset %}
 {% endif %}
 
 {% set logoPlaceholder = "/public/images/placeholders/school-logo.svg" %}
 {% set photoPlaceholder = "/public/images/placeholders/school-photo.svg" %}
+{% set previewLogo = logoPlaceholder if organisation.logo == 'Not entered' or organisation.logo == logoPlaceholder else organisation.logo %}
 {% set mapPlaceholder = "/public/images/placeholders/map.svg" %}
-{% set previewLogo = organisation.logo if organisation.logo != 'Not entered' else logoPlaceholder %}
-{% set previewPhoto = organisation.photo if organisation.photo != 'Not entered' else photoPlaceholder %}
-{% set previewMap = "/public/images/maps/single.png" %}
 
 {% block beforeContent %}
   {% if organisation.id == user.organisation.id %}
     {{ govukBackLink({
-      text: "Exit preview",
+      text: "Edit preview",
       href: "/organisation"
     }) }}
   {% else %}
     {{ govukBackLink({
-      text: "Exit preview",
-      href: "/organisation/schools/"+organisation.id
+      text: "Edit preview",
+      href: "/organisation/schools/" + organisation.id
     }) }}
   {% endif %}
 {% endblock %}
@@ -39,161 +41,103 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <div class="app-school-title">
-        <img class="app-school-title__logo" src="{{ previewLogo }}" alt="{% if organisation.logo != 'Not entered' %}School logo{% else %}School logo placeholder{% endif %}" width="70" height="70">
-        <h1 class="govuk-heading-l govuk-!-margin-bottom-1">
-          {{title}}
-        </h1>
-        <p>{{address}}</p>
+      <div class="app-school-title app-school-title--preview">
+        <img class="app-school-title__logo" src="{{ previewLogo }}" alt="" width="100" height="100">
+        <h1 class="govuk-heading-l govuk-!-margin-bottom-1">{{ title }}</h1>
+        <p class="govuk-body govuk-!-margin-bottom-0">{{ address }}</p>
       </div>
+
     </div>
   </div>
 
   {% if organisation.schools %}
-    {{appSubNavigation({
+    {{ appSubNavigation({
       items: [{
-        href: '/organisation/'+organisation.id+'/preview',
+        href: '/organisation/' + organisation.id + '/preview',
         text: 'Organisation',
         active: true
       }, {
-        href: '/organisation/'+organisation.id+'/preview/schools',
+        href: '/organisation/' + organisation.id + '/preview/schools',
         text: 'Schools'
       }]
-    })}}
+    }) }}
   {% endif %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if organisation.phase or organisation.size or organisation.ageGroup or organisation.website != 'Not entered' or organisation.emailAddress != 'Not entered' %}
-
-
-      <h2 class="govuk-heading-m">
-        Summary
-      </h2>
+      <h2 class="govuk-heading-m">Summary</h2>
 
       {% if organisation.parentOrganisation %}
-        <p>Part of <a href="/organisation/{{organisation.parentOrganisation.id}}/preview">{{organisation.parentOrganisation.name}}</a>.</p>
+        <p class="govuk-body">Part of <a class="govuk-link" href="/organisation/{{ organisation.parentOrganisation.id }}/preview">{{ organisation.parentOrganisation.name }}</a>.</p>
       {% endif %}
 
       {{ govukSummaryList({
         rows: [
           {
-            key: {
-              text: "Education phase"
-            },
-            value: {
-              text: organisation.phase
-            }
-          } if organisation.phase,
+            key: { text: "School name" },
+            value: { text: organisation.name }
+          },
           {
-            key: {
-              text: "School size"
-            },
-            value: {
-              text: organisation.size + ' pupils'
-            }
-          } if organisation.size,
+            key: { text: "Address" },
+            value: { text: address }
+          },
           {
-            key: {
-              text: "Age range"
-            },
-            value: {
-              text: organisation.ageGroup
-            }
+            key: { text: "School type" },
+            value: { text: schoolType }
+          } if organisation.type,
+          {
+            key: { text: "Education phase" },
+            value: { text: organisation.phase }
+          } if organisation.phase and organisation.phase != 'Not entered',
+          {
+            key: { text: "Age range" },
+            value: { text: organisation.ageGroup }
           } if organisation.ageGroup,
           {
-            key: {
-              text: "Religious character"
-            },
-            value: {
-              text: organisation.religion
-            }
-          } if organisation.religion,
+            key: { text: "Size" },
+            value: { text: organisation.size + " pupils enrolled" }
+          } if organisation.size,
           {
-            key: {
-              text: "Website"
-            },
-            value: {
-              html: website
-            }
+            key: { text: "Website address" },
+            value: { html: website }
           } if organisation.website != 'Not entered',
           {
-            key: {
-              text: "Ofsted report"
-            },
-            value: {
-              html: '<a href="#">View Ofsted report (opens in new tab)</a>'
-            }
-          } if not organisation.schools,
-          {
-            key: {
-              text: "Email address"
-            },
-            value: {
-              html: '<a href="#">'+organisation.emailAddress+'</a>'
-            }
-          } if organisation.emailAddress != 'Not entered'
+            key: { text: "Ofsted report" },
+            value: { html: '<a class="govuk-link" href="#">View Ofsted report (opens in new tab)</a>' }
+          } if not organisation.schools
         ]
       }) }}
 
-      {% endif %}
-
-      {% if organisation.about != 'Not entered' or organisation.photo != 'Not entered' %}
-        <h2 class="govuk-heading-m">
-          About {{organisation.name}}
-        </h2>
-
-        <div class="app-school-photo">
-          <img src="{{ previewPhoto }}" alt="{% if organisation.photo != 'Not entered' %}Photo of {{ organisation.name }}{% else %}School photo placeholder{% endif %}" width="630" height="315">
-        </div>
-
-        <p>{{organisation.about | nl2br | safe}}</p>
-      {% endif %}
-
       {% if organisation.safeguardingCommitment != 'Not entered' %}
-        <h2 class="govuk-heading-m">
-          Commitment to safeguarding
-        </h2>
-        <p>{{organisation.safeguardingCommitment | nl2br | safe}}</p>
+        <h2 class="govuk-heading-m govuk-!-margin-top-8">Commitment to safeguarding</h2>
+        <div class="govuk-body">{{ organisation.safeguardingCommitment | escape | nl2br }}</div>
       {% endif %}
 
-      <h2 class="govuk-heading-m">
-        Location and map
-      </h2>
-
-      <p>{{address}}</p>
-
-      <div class="app-map">
-        <img src="{{ previewMap }}" alt="Map showing the location of {{ organisation.name }}" width="630" height="400">
+      <h2 class="govuk-heading-m govuk-!-margin-top-8">Location and map</h2>
+      <p class="govuk-body">{{ address }}</p>
+      <div class="app-map app-map--placeholder govuk-!-margin-bottom-8">
+        <img src="{{ mapPlaceholder }}" alt="Map showing the location of {{ organisation.name }}" width="630" height="400">
       </div>
 
-      <h2 class="govuk-heading-m">
-        Current jobs
-      </h2>
+      <h2 class="govuk-heading-m">Current jobs</h2>
       {% if jobs.length %}
-        {# <p><a href="#">Set up job alert</a></p> #}
-        {{appJobList({
+        {{ appJobList({
           jobs: jobs,
           heading: {
-            level: 3
+            level: 3,
+            classes: 'govuk-heading-m app-job-list__title'
           }
-        })}}
+        }) }}
       {% else %}
-        <p>There are no jobs - <a href="#">set up job alert</a>.</p>
+        <p class="govuk-body">There are no current jobs at this school.</p>
       {% endif %}
 
-      <h2 class="govuk-heading-m">
-        Set up a job alert
-      </h2>
-
-      <p>Get a job alert whenever a role is listed at {{organisation.name}}.</p>
-
+      <h2 class="govuk-heading-m govuk-!-margin-top-8">Set up a job alert</h2>
+      <p class="govuk-body">Get a job alert whenever a role is listed at {{ organisation.name }}.</p>
       {{ govukButton({
-        text: "Set up job alert",
-        classes: 'govuk-button--secondary'
+        text: "Set up job alert"
       }) }}
-
 
     </div>
   </div>

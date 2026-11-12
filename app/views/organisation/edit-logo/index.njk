@@ -1,19 +1,17 @@
 {% extends "layout.njk" %}
 
 {% if user.organisation.schools %}
-  {% set heading = 'Organisation logo' %}
   {% set caption = 'Organisation profile' %}
 {% else %}
-  {% set heading = 'School logo' %}
   {% set caption = 'School profile' %}
 {% endif %}
-
+{% set heading = 'Organisation logo' %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "javascript:history.back();"
+    href: "/organisation"
   }) }}
 {% endblock %}
 
@@ -22,60 +20,48 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <span class="govuk-caption-l">
-        {{caption}}
-      </span>
-      <h1 class="govuk-heading-l">
-        {{heading}}
-      </h1>
+      <span class="govuk-caption-l">{{ caption }}</span>
+      <h1 class="govuk-heading-l">{{ heading }}</h1>
 
-      <p>The logo must be:</p>
+      <p class="govuk-body">The logo must be:</p>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li>
-          300 pixels by 300 pixels
-        </li>
-        <li>
-          a PNG or JPG
-        </li>
-        <li>
-          smaller than 5MB
-        </li>
+        <li>a PNG, JPG or JPEG</li>
+        <li>smaller than 5MB</li>
       </ul>
 
-      <p><a href="#">Contact support</a> if you need help adding your {% if user.organisation.schools %}organisation{% else %}school{% endif %} logo.</p>
+      <p class="govuk-body">The logo will display the best if it is a square.</p>
 
-      <h2 class="govuk-heading-m">
-        Your current logo
-      </h2>
+      <p class="govuk-body">
+        <a class="govuk-link" href="#">Contact support</a> if you need help adding your organisation logo.
+      </p>
 
-      <img src="{{user.organisation.logo}}" alt="Logo" width="150">
+      <form method="post" enctype="multipart/form-data" class="govuk-!-margin-top-6">
 
-      <p class="govuk-body govuk-!-margin-bottom-1">logo.jpg, 2MB</p>
-
-      <p class="govuk-body govuk-!-margin-bottom-8"><a href="delete">Delete this logo</a></p>
-
-      <form method="post">
-
-        <h2 class="govuk-heading-m">
-          Change your logo
-        </h2>
-
-          {{ govukFileUpload({
-            id: "createJob[application-form]",
-            name: "createJob[application-form]",
-            label: {
-              text: "Upload a file",
-              classes: 'govuk-label--s'
-            }
-          }) }}
-
+        {{ govukFileUpload({
+          id: "organisation-logo",
+          name: "organisation-logo",
+          label: {
+            text: "Upload a file",
+            classes: "govuk-label--m"
+          },
+          javascript: true,
+          chooseFilesButtonText: "Choose file",
+          dropInstructionText: "or drop file",
+          attributes: {
+            accept: ".png,.jpg,.jpeg,image/png,image/jpeg"
+          }
+        }) }}
 
         {{ govukButton({
-          text: "Continue"
+          text: "Update organisation logo",
+          classes: "govuk-!-margin-top-6"
         }) }}
       </form>
-      <p><a href="/organisation">Cancel</a></p>
+
+      <p class="govuk-body govuk-!-margin-top-3">
+        <a class="govuk-link" href="/organisation">Cancel</a>
+      </p>
 
     </div>
   </div>

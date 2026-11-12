@@ -11,3 +11,15 @@
     object-fit: cover;
   }
 }
+
+.app-map--placeholder {
+  box-sizing: border-box;
+  max-width: 630px;
+  border: 1px solid govuk-colour('mid-grey');
+  background: govuk-colour('light-grey');
+
+  img {
+    object-fit: contain;
+    vertical-align: middle;
+  }
+}

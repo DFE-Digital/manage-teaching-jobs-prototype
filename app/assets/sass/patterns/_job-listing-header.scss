@@ -1,0 +1,39 @@
+.app-job-listing-header__page-header {
+  margin-bottom: govuk-spacing(4);
+}
+
+.app-job-listing-header__title {
+  .govuk-tag {
+    vertical-align: middle;
+  }
+}
+
+.app-job-listing-header__download {
+  display: inline-block;
+  padding: govuk-spacing(2) govuk-spacing(3);
+  border: 1px solid govuk-colour("mid-grey");
+  background: govuk-colour("light-grey");
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.app-job-listing-header__inset {
+  max-width: 640px;
+}
+
+.app-job-listing-header__links {
+  @include govuk-font($size: 19);
+  margin-bottom: 0;
+
+  li {
+    display: inline;
+    margin-right: govuk-spacing(4);
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set title = 'Extend closing date' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobs/" + job.id
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">{{ job.title }}</span>
+      <h1 class="govuk-heading-l">Extend the closing date</h1>
+
+      <p class="govuk-body">The listing currently closes on {{ job.closingDate | date }} at {{ job.closingTime }}.</p>
+
+      <form method="post" action="/jobs/{{ job.id }}/extend-closing-date">
+        {{ govukDateInput({
+          id: "closing-date",
+          name: "closingDate",
+          fieldset: {
+            legend: {
+              text: "New closing date",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, 2 4 2027"
+          },
+          items: [
+            {
+              name: "closingDate[day]",
+              classes: "govuk-input--width-2",
+              value: data['closingDate'] and data['closingDate'].day
+            },
+            {
+              name: "closingDate[month]",
+              classes: "govuk-input--width-2",
+              value: data['closingDate'] and data['closingDate'].month
+            },
+            {
+              name: "closingDate[year]",
+              classes: "govuk-input--width-4",
+              value: data['closingDate'] and data['closingDate'].year
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          name: "closingTime",
+          fieldset: {
+            legend: {
+              text: "Closing time",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "9am",
+              text: "9am",
+              checked: job.closingTime == '9am'
+            },
+            {
+              value: "11:59pm",
+              text: "11:59pm",
+              checked: job.closingTime == '11:59pm'
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -48,6 +48,16 @@ exports.getMissingInformation = (org) => {
 }
 
 
+/** Prototype-only: partial incomplete profile (matches design screenshots). */
+exports.incompleteOrganisationForPrototype = (org) => {
+  return Object.assign({}, org, {
+    emailAddress: 'Not entered',
+    about: 'Not entered',
+    logo: 'Not entered',
+    photo: 'Not entered'
+  })
+}
+
 exports.hasMissingInformation = (org) => {
   let hasMissingInformation = false
 

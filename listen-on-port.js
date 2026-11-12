@@ -12,21 +12,31 @@ var useBrowserSync = config.useBrowserSync.toLowerCase()
 var env = utils.getNodeEnv()
 
 utils.findAvailablePort(server, function (port) {
-  console.log('Listening on port ' + port + '   url: http://localhost:' + port)
   if (env === 'production' || useBrowserSync === 'false') {
+    console.log('Listening on port ' + port + '   url: http://localhost:' + port)
     server.listen(port)
-  } else {
-    server.listen(port - 50, function () {
-      browserSync({
-        proxy: 'localhost:' + (port - 50),
-        port: port,
-        ui: false,
-        files: ['public/**/*.*', 'app/views/**/*.*'],
-        ghostMode: false,
-        open: false,
-        notify: false,
-        logLevel: 'error'
-      })
-    })
+    return
   }
+
+  const appPort = port - 50
+  server.listen(appPort, function () {
+    const sync = browserSync.create()
+    sync.init({
+      proxy: 'localhost:' + appPort,
+      port: port,
+      ui: false,
+      files: ['public/**/*.*', 'app/views/**/*.*'],
+      ghostMode: false,
+      open: false,
+      notify: false,
+      logLevel: 'error'
+    }, function (err) {
+      if (err) {
+        console.error('BrowserSync could not start on port ' + port + ': ' + err.message)
+        console.error('Use http://localhost:' + appPort + ' (Express only), or stop the other dev server on port ' + port + '.')
+        return
+      }
+      console.log('Listening on port ' + port + '   url: http://localhost:' + port)
+    })
+  })
 })

@@ -6,7 +6,13 @@ module.exports = router => {
 
   router.get('/organisation', authentication.checkIsAuthenticated, (req, res) => {
     let user = req.session.user
-    let showCompleteProfileBanner = organisationHelper.hasMissingInformation(user.organisation)
+    const prototypeIncomplete = req.query.incomplete !== undefined
+    let organisation = user.organisation
+    if (prototypeIncomplete && !organisation.schools) {
+      organisation = organisationHelper.incompleteOrganisationForPrototype(organisation)
+    }
+    let showCompleteProfileBanner = prototypeIncomplete ||
+      organisationHelper.hasMissingInformation(user.organisation)
     let schools
     if(user.organisation.schools) {
       schools = user.organisation.schools.map(school => {
@@ -21,7 +27,7 @@ module.exports = router => {
 
     res.render('organisation/show', {
       showCompleteProfileBanner,
-      organisation: user.organisation,
+      organisation,
       schools
     })
   })
@@ -40,7 +46,9 @@ module.exports = router => {
       organisation = userOrganisation
     }
 
-    let jobs = req.session.user.jobs.filter(job => job.status == 'Active')
+    let jobs = req.session.user.jobs.filter(job =>
+      job.status === 'Active' && job.organisation.name === organisation.name
+    )
 
     res.render('organisation/preview/index', {
       organisation,
@@ -300,8 +308,24 @@ module.exports = router => {
   })
 
   router.post('/organisation/:id/logo/edit', authentication.checkIsAuthenticated, (req, res) => {
-    req.session.data.logo = '/public/images/logos/courtland.png'
-    res.redirect(`/organisation/${req.params.id}/logo/edit/check`)
+    req.session.data = req.session.data || {}
+    req.session.data.logo = '/public/images/logos/st-anthonys-primary.png'
+
+    let organisation = req.session.user.organisation
+    const isEditingSchoolWithinOrganisation = organisation.id !== req.params.id
+
+    if (isEditingSchoolWithinOrganisation) {
+      organisation = organisation.schools.find(school => school.id == req.params.id)
+    }
+
+    organisation.logo = req.session.data.logo
+    req.flash('success', 'Organisation logo updated')
+
+    if (isEditingSchoolWithinOrganisation) {
+      res.redirect(`/organisation/schools/${req.params.id}`)
+    } else {
+      res.redirect('/organisation')
+    }
   })
 
   router.get('/organisation/:id/logo/edit/check', authentication.checkIsAuthenticated, (req, res) => {
@@ -329,7 +353,7 @@ module.exports = router => {
       if(organisation.schools) {
         req.flash('success', 'Organisation logo updated')
       } else {
-        req.flash('success', 'School logo updated')
+        req.flash('success', 'Organisation logo updated')
       }
       res.redirect('/organisation')
     }

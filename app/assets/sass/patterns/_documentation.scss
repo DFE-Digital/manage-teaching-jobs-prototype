@@ -86,3 +86,56 @@
 .app-documentation .app-related--topic {
   margin-top: 30px;
 }
+
+.app-job-listing-flow-legend {
+  display: block;
+  max-width: 40em;
+}
+
+.app-job-listing-flow-legend__swatch {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+  vertical-align: -0.15em;
+  border: 2px solid #0b0c0c;
+}
+
+.app-job-listing-flow-legend__swatch--all {
+  background: #fff7e6;
+  border-color: #f47738;
+}
+
+.app-job-listing-flow-legend__swatch--start {
+  background: #28a197;
+  border-color: #005a5c;
+}
+
+.app-job-listing-flow-legend__swatch--kcsie {
+  background: #cce2f0;
+  border-color: #1d70b8;
+}
+
+.app-job-listing-flow-legend__swatch--content-debt {
+  background: #f4c2c2;
+  border-color: #d13118;
+}
+
+.app-job-listing-flow-legend__swatch--design-debt {
+  background: #b1b4b6;
+  border-color: #505a5f;
+}
+
+.app-job-listing-flow-legend__swatch--end {
+  background: #d4351c;
+  border-color: #942514;
+}
+
+.app-documentation-job-listing-flow .govuk-table {
+  margin-bottom: 2rem;
+}
+
+.app-job-listing-flow__step-cell {
+  white-space: nowrap;
+  vertical-align: top;
+}

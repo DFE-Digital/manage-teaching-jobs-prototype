@@ -5,13 +5,7 @@
 {% set title = 'Statistics' %}
 
 {% block content %}
-  <h1 class="govuk-heading-l govuk-!-margin-bottom-6">
-    {{ job.title }}
-    {{ govukTag({
-      text: job.status,
-      classes: job.status | jobStatusTagClass
-    }) }}
-  </h1>
+  {% include "includes/job-listing-header.njk" %}
 
   {% include "includes/job-sub-navigation.njk" %}
 

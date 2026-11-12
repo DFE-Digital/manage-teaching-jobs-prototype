@@ -52,4 +52,16 @@ router.get('/documentation/about', (req, res) => {
   res.render('documentation/about.html')
 })
 
+const buildJobListingFlowGuide = require('./data/job-listing-flow')
+
+router.get('/documentation/job-listing-flow', (req, res) => {
+  res.render('documentation/job-listing-flow.html', {
+    guide: buildJobListingFlowGuide()
+  })
+})
+
+router.get('/documentation/job-listing-flow.html', (req, res) => {
+  res.redirect(301, '/documentation/job-listing-flow')
+})
+
 module.exports = router

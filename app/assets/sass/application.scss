@@ -21,6 +21,7 @@ $app-images-path: "/public/images/";
 @import "patterns/govuk-homepage";
 @import "patterns/documentation";
 @import "patterns/guide";
+@import "patterns/job-listing-header";
 
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
@@ -938,54 +939,64 @@ ul.gem-c-checkboxes__list {
   border-bottom: none
 }
 
-// Logo and photo card: block layout (table-layout: fixed breaks images in table cells)
+// Logo and photo card: label | image preview | Change (summary list row)
 .govuk-summary-card__content .govuk-summary-list--profile-media {
-  display: block;
-  width: 100%;
   table-layout: auto;
 
   .govuk-summary-list__row {
-    display: block;
+    vertical-align: middle;
   }
 
-  .govuk-summary-list__key,
-  .govuk-summary-list__value,
-  .govuk-summary-list__actions {
-    display: block;
-    width: 100%;
-    padding-right: 0;
+  .govuk-summary-list__value {
+    width: 55%;
   }
 
   .govuk-summary-list__actions {
-    margin-bottom: govuk-spacing(3);
-    text-align: left;
+    vertical-align: middle;
+    text-align: right;
   }
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk-media-query($until: tablet) {
+    .govuk-summary-list__row {
+      display: block;
+      margin-bottom: govuk-spacing(4);
+    }
+
+    .govuk-summary-list__key,
+    .govuk-summary-list__value,
     .govuk-summary-list__actions {
-      margin-bottom: 0;
+      display: block;
+      width: 100%;
+      padding-right: 0;
+    }
+
+    .govuk-summary-list__actions {
+      margin-top: govuk-spacing(2);
+      text-align: left;
     }
   }
 }
 
 .app-school-profile-media {
-  margin-top: govuk-spacing(1);
-  max-width: 630px;
+  margin: 0;
 }
 
 .app-school-profile-media__image {
   display: block;
   max-width: 100%;
   height: auto;
-  vertical-align: middle;
 }
 
 .app-school-profile-media--logo .app-school-profile-media__image {
   width: 150px;
+  height: 150px;
+  object-fit: contain;
 }
 
 .app-school-profile-media--photo .app-school-profile-media__image {
   width: 100%;
+  max-width: 630px;
+  object-fit: contain;
 }
 
 .app-school-profile-media__image--placeholder {
