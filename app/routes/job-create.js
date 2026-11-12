@@ -37,7 +37,10 @@ module.exports = router => {
   })
 
   router.get('/jobs/new/locations', (req, res) => {
-    let org = req.session.user.organisation
+    const org = req.session.user.organisation
+    const sessionData = req.session.data || {}
+    const createJob = sessionData.createJob || sessionData['createJob']
+    const savedLocations = createJob && createJob.locations
 
     let locationOptions = [{
       text: 'Head office',
@@ -45,17 +48,17 @@ module.exports = router => {
       hint: {
         text: [org.address.address1, org.address.town, org.address.postcode].join(', ')
       },
-      checked: req.session.data['createJob'] && req.session.data['createJob'].locations && req.session.data['createJob'].locations.find(location => location == 'Head office')
+      checked: savedLocations && savedLocations.find(location => location == 'Head office')
     }]
 
-    let schoolOptions = req.session.user.organisation.schools.map(item => {
+    let schoolOptions = (org.schools || []).map(item => {
       return {
         text: item.name,
         value: item.name,
         hint: {
           text: [item.address.address1, item.address.town, item.address.postcode].join(', ')
         },
-        checked: req.session.data['createJob'] && req.session.data['createJob'].locations && req.session.data['createJob'].locations.find(location => location == item.name)
+        checked: savedLocations && savedLocations.find(location => location == item.name)
       }
     })
 

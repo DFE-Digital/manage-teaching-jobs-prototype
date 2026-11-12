@@ -18,8 +18,9 @@ const stepsRaw = [
     route: 'GET /jobs/new/locations',
     type: 'all',
     optional: true,
-    note: 'Multi-school organisations',
-    path: '/jobs/new/locations'
+    note: 'Multi-school organisations — use bob@hopecollege.sch.uk',
+    path: '/jobs/new/locations',
+    openQuery: '?userEmailAddress=bob@hopecollege.sch.uk'
   },
   { id: 'HS4', name: 'Job title', route: 'GET /jobs/new/title', type: 'all', path: '/jobs/new/title' },
   { id: 'HS5', name: 'Job role', route: 'GET /jobs/new/role_all', type: 'design-debt', path: '/jobs/new/role_all' },
@@ -101,6 +102,9 @@ const stepsRaw = [
 function resolveOpenHref (step) {
   if (!step.path) {
     return null
+  }
+  if (step.openQuery) {
+    return step.path + step.openQuery
   }
   return withUser(step.path)
 }
