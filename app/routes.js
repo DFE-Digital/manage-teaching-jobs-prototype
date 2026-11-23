@@ -18,6 +18,9 @@ function sharingOrigin (req) {
 
 router.use(authentication.bootstrapUserFromQuery)
 
+// Create listing screens use user.organisation in templates; require sign-in (or ?userEmailAddress=)
+router.use('/jobs/new', authentication.checkIsAuthenticated)
+
 router.use((req, res, next) => {
   res.locals.referrer = req.query.referrer
   res.locals.path = req.path
@@ -62,6 +65,18 @@ router.get('/documentation/job-listing-flow', (req, res) => {
 
 router.get('/documentation/job-listing-flow.html', (req, res) => {
   res.redirect(301, '/documentation/job-listing-flow')
+})
+
+const buildJobListingFlowImprovements = require('./data/job-listing-flow-improvements')
+
+router.get('/documentation/job-listing-flow-improvements', (req, res) => {
+  res.render('documentation/job-listing-flow-improvements.html', {
+    guide: buildJobListingFlowImprovements()
+  })
+})
+
+router.get('/documentation/job-listing-flow-improvements.html', (req, res) => {
+  res.redirect(301, '/documentation/job-listing-flow-improvements')
 })
 
 module.exports = router

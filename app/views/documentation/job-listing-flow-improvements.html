@@ -1,0 +1,147 @@
+{% extends "layout.njk" %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation app-documentation-job-listing-flow app-guide-wrapper" %}
+
+{% block pageTitle %}
+  {{ guide.pageTitle }} - Documentation - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Documentation", href: "/documentation/about" },
+      { text: guide.flowDocTitle, href: guide.flowDocHref },
+      { text: guide.pageTitle }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <a class="govuk-back-link" href="{{ guide.flowDocHref }}">Back to job listing flow map</a>
+
+  <h1 class="govuk-heading-xl govuk-!-margin-top-4 govuk-!-margin-bottom-2">{{ guide.pageTitle }}</h1>
+  <p class="govuk-body-l">{{ guide.lead }}</p>
+
+  <p class="govuk-body">
+    Compare screens on the
+    <a class="govuk-link" href="{{ guide.flowDocHref }}">{{ guide.flowDocTitle }}</a>
+    page (HS1–HS22).
+  </p>
+
+  {{ govukInsetText({
+    text: guide.proposedOutcome,
+    classes: "govuk-!-margin-top-6"
+  }) }}
+
+  <h2 class="govuk-heading-l govuk-!-margin-top-8">Standards and principles</h2>
+  <ul class="govuk-list govuk-list--bullet">
+    {% for item in guide.standards %}
+      <li><strong>{{ item.ref }}:</strong> {{ item.text }}</li>
+    {% endfor %}
+  </ul>
+  <p class="govuk-body">
+    <a class="govuk-link" href="https://www.gov.uk/service-manual/service-standard" rel="noopener noreferrer" target="_blank">GOV.UK Service Standard<span class="govuk-visually-hidden"> (opens in new tab)</span></a>,
+    <a class="govuk-link" href="https://design-system.service.gov.uk/" rel="noopener noreferrer" target="_blank">GOV.UK Design System<span class="govuk-visually-hidden"> (opens in new tab)</span></a>,
+    <a class="govuk-link" href="https://design-system.dwp.gov.uk/content/" rel="noopener noreferrer" target="_blank">DWP content design guidance<span class="govuk-visually-hidden"> (opens in new tab)</span></a>.
+  </p>
+
+  <h2 class="govuk-heading-l govuk-!-margin-top-8">Journey-level improvements</h2>
+  <ol class="govuk-list govuk-list--number">
+    {% for item in guide.journeyImprovements %}
+      <li class="govuk-!-margin-bottom-4">
+        <h3 class="govuk-heading-s govuk-!-margin-bottom-1">{{ item.title }}</h3>
+        <p class="govuk-body govuk-!-margin-bottom-1"><strong>Current:</strong> {{ item.detail }}</p>
+        <p class="govuk-body govuk-!-margin-bottom-1"><strong>Recommendation:</strong> {{ item.recommendation }}</p>
+        <p class="govuk-body govuk-!-margin-bottom-1"><strong>Rationale:</strong> {{ item.rationale }}</p>
+        <p class="govuk-body-s govuk-!-margin-bottom-0">Patterns: {{ item.patterns | join(', ') }}</p>
+      </li>
+    {% endfor %}
+  </ol>
+
+  <h2 class="govuk-heading-l govuk-!-margin-top-8">Step-by-step improvements</h2>
+  <p class="govuk-body">Aligned to the publication map (HS1–HS22). Open the prototype screen in a new tab to compare.</p>
+
+  <table class="govuk-table govuk-table--small-text-until-tablet app-job-listing-flow__table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header">Step</th>
+        <th scope="col" class="govuk-table__header">Screen</th>
+        <th scope="col" class="govuk-table__header">Patterns</th>
+        <th scope="col" class="govuk-table__header">Prototype</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      {% for step in guide.stepImprovements %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell app-job-listing-flow__step-cell">{{ step.id }}</td>
+          <td class="govuk-table__cell">{{ step.name }}</td>
+          <td class="govuk-table__cell govuk-!-font-size-16">{{ step.patterns | join(', ') }}</td>
+          <td class="govuk-table__cell">
+            {% if step.openHref %}
+              <a class="govuk-link" href="{{ step.openHref }}" target="_blank" rel="noopener noreferrer">Open<span class="govuk-visually-hidden"> {{ step.id }}</span></a>
+            {% else %}
+              —
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% for step in guide.stepImprovements %}
+    <section class="app-guide__section" aria-labelledby="improve-{{ step.id }}">
+      <h3 class="govuk-heading-m" id="improve-{{ step.id }}">{{ step.id }} — {{ step.name }}</h3>
+
+      {% if step.flowNote %}
+        <p class="govuk-body-s govuk-!-margin-bottom-2">Map note: {{ step.flowNote }}</p>
+      {% endif %}
+
+      <dl class="govuk-summary-list govuk-summary-list--no-border">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Current prototype</dt>
+          <dd class="govuk-summary-list__value">{{ step.current }}</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Recommendation</dt>
+          <dd class="govuk-summary-list__value">{{ step.recommendation }}</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">Rationale</dt>
+          <dd class="govuk-summary-list__value">{{ step.rationale }}</dd>
+        </div>
+        <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+          <dt class="govuk-summary-list__key">GOV.UK patterns</dt>
+          <dd class="govuk-summary-list__value">{{ step.patterns | join(', ') }}</dd>
+        </div>
+      </dl>
+
+      {% if step.openHref %}
+        <p class="app-guide__prototype-link govuk-body-s">
+          <a class="govuk-link" href="{{ step.openHref }}" target="_blank" rel="noopener noreferrer">Open {{ step.id }} in prototype<span class="govuk-visually-hidden"> (opens in new tab)</span></a>
+          <span class="govuk-body-s"> — <code>{{ step.prototypePath }}</code></span>
+        </p>
+      {% endif %}
+    </section>
+  {% endfor %}
+
+  <aside class="app-related app-related--topic">
+    <h2 class="govuk-heading-s app-related__heading">Related</h2>
+    <ul class="app-related__list">
+      <li class="app-related__item">
+        <a class="govuk-link" href="{{ guide.flowDocHref }}">{{ guide.flowDocTitle }}</a>
+      </li>
+      <li class="app-related__item">
+        <a class="govuk-link" href="/documentation/about">About this prototype</a>
+      </li>
+      <li class="app-related__item">
+        <a class="govuk-link" href="https://design-system.service.gov.uk/patterns/task-list-pages/" rel="noopener noreferrer" target="_blank">Task list pattern<span class="govuk-visually-hidden"> (opens in new tab)</span></a>
+      </li>
+      <li class="app-related__item">
+        <a class="govuk-link" href="https://design-system.service.gov.uk/patterns/check-answers/" rel="noopener noreferrer" target="_blank">Check answers pattern<span class="govuk-visually-hidden"> (opens in new tab)</span></a>
+      </li>
+    </ul>
+  </aside>
+{% endblock %}

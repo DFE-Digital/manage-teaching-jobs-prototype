@@ -13,7 +13,7 @@
         {{heading}}
       </h1>
 
-      <form method="post" novalidate>
+      <form method="post" action="/account/sign-in" novalidate>
         {% if query.returnUrl %}
           <input type="hidden" name="returnUrl" value="{{ query.returnUrl }}">
         {% endif %}
