@@ -5,6 +5,7 @@ const authentication = require('../middleware/authentication')
 const Validator = require('../helpers/validator')
 const { isCollegeFeCreateJob } = require('../lib/fe-parity')
 const buildCreateJobCheckDisplay = require('../lib/create-job-check-display')
+const buildCreateJobSubjectItems = require('../../../lib/build-create-job-subject-items')
 
 function renderCreateJobPage (view, req, res) {
   res.render(view, {
@@ -133,7 +134,13 @@ module.exports = router => {
   })
 
   router.get('/jobs/new/subjects', (req, res) => {
-    renderCreateJobPage('jobs/new/subjects', req, res)
+    const data = req.session.data || {}
+    const showCollegeSubjectList = isCollegeFeCreateJob(data, req.session.user)
+    res.render('jobs/new/subjects', {
+      showCollegeSubjectList,
+      subjectItems: buildCreateJobSubjectItems(data),
+      hideAdditionalAllowances: showCollegeSubjectList
+    })
   })
 
   router.get('/jobs/new/school-visits', (req, res) => {

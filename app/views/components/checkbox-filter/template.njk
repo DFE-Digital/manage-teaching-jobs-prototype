@@ -16,7 +16,11 @@
       }
     }) -%}
 
-      {%- if params.selectedItems.length -%}
+      {%- if params.afterLegendHtml -%}
+        {{ params.afterLegendHtml | safe }}
+      {%- endif -%}
+
+      {%- if params.selectedItems and params.selectedItems.length -%}
         <div class="app-checkbox-filter__selected">
 
           <ul class="app-checkbox-filter__tags">

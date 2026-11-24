@@ -121,7 +121,8 @@ const stepImprovements = [
     id: 'HS7',
     name: 'Key stage',
     prototypePath: '/jobs/new/key-stage',
-    current: 'Optional; branches to subjects or contract.',
+    current:
+      '1.1: Shown only for teaching-path roles when phase is middle, secondary, through school, or sixth form or college; legend “Which key stages will the post cover?”; always continues to subjects.',
     recommendation: 'Use checkboxes only for teaching roles; skip for non-teaching. Clear legend: “Which key stages will the post cover?”',
     rationale: 'Conditional journey — don’t show irrelevant questions (plain English + minimal burden).',
     patterns: ['Checkboxes', 'Conditional routing']
@@ -130,7 +131,8 @@ const stepImprovements = [
     id: 'HS8',
     name: 'Subjects',
     prototypePath: '/jobs/new/subjects',
-    current: 'Subject checkboxes; college path differs.',
+    current:
+      '1.1: Same searchable checkbox filter as 1.0; skipped with key stage when role is not on the teaching path; optional for primary-style phases.',
     recommendation: 'Autocomplete multi-select with “popular subjects” shortcuts; optional for non-teaching roles.',
     rationale: 'Matches jobseeker search facets; reduces list fatigue.',
     patterns: ['Select', 'Checkboxes']
@@ -265,7 +267,7 @@ const stepImprovements = [
 
 const furtherImprovements = {
   intro:
-    'The recommendations above are the full backlog. Version 1.1 of this prototype implements part of the journey (task list start, section captions, some back links, listing dates inset, application method layout, check page grouping, confirmation next steps). The items below are not done in 1.1 yet.',
+    'The recommendations above are the full backlog. Version 1.1 of this prototype implements part of the journey (task list start, section captions, some back links, HS7–HS8 conditional routing for key stage and subjects, listing dates inset, application method layout, check page grouping, confirmation next steps). The items below are not done in 1.1 yet.',
   journey: [
     {
       title: 'Make “Save and finish later” real',
@@ -298,11 +300,6 @@ const furtherImprovements = {
       id: 'HS5–HS6',
       name: 'Job role and education phase',
       detail: 'Replace long role checkbox list with grouped autocomplete or radios; merge or skip phase when role implies it.'
-    },
-    {
-      id: 'HS7–HS8',
-      name: 'Key stage and subjects',
-      detail: 'Tighter conditional routing and subject autocomplete with shortcuts — not implemented.'
     },
     {
       id: 'HS9–HS10',

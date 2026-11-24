@@ -2,14 +2,14 @@
 
 {% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
 
-{% set heading = 'Key stage' %}
+{% set heading = 'Which key stages will the post cover?' %}
 {% set caption = createJobCaption.jobDetails %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "javascript:history.back();"
+    href: "/jobs/new/phase"
   }) }}
 {% endblock %}
 
@@ -25,7 +25,7 @@
         {{heading}}
       {% endset %}
       
-       <form method="post" novalidate>
+       <form action="/jobs/new/key-stage" method="post" novalidate>
 
         {{ govukCheckboxes({
           idPrefix: "createJob[key-stages]",
@@ -70,8 +70,8 @@
             },
              {
               value: "Further education",
-              text: "Further education option?",
-              checked: checked("['createJob']['key-stages']", "Key stage 5")
+              text: "Further education",
+              checked: checked("['createJob']['key-stages']", "Further education")
             }
           ]
         }) }}

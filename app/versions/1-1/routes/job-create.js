@@ -5,6 +5,8 @@ const { isCollegeFeCreateJob } = require('../lib/fe-parity')
 const buildCreateJobCheckDisplay = require('../lib/create-job-check-display')
 const buildCreateJobSectionSummary = buildCreateJobCheckDisplay.buildCreateJobSectionSummary
 const createJobTaskProgress = require('../lib/create-job-task-progress')
+const createJobRoleRouting = require('../lib/create-job-role-routing')
+const buildCreateJobSubjectItems = require('../../../lib/build-create-job-subject-items')
 
 const CREATE_JOB_TASK_BY_PATH = {
   '/jobs/new/locations': 'job-location',
@@ -258,7 +260,17 @@ module.exports = router => {
   })
 
   router.post('/jobs/new/phase', (req, res) => {
-    res.redirect('/jobs/new/subjects')
+    const data = req.session.data || {}
+  const next = createJobRoleRouting.nextStepAfterPhase(data)
+  if (next === 'section-summary') {
+    goToSectionSummary(req, res, 'job-details', 'job-role-phase-subjects')
+    return
+  }
+  if (next === 'key-stage') {
+    res.redirect('/jobs/new/key-stage')
+    return
+  }
+  res.redirect('/jobs/new/subjects')
   })
 
   router.post('/jobs/new/subjects', (req, res) => {
@@ -292,19 +304,39 @@ module.exports = router => {
   })
 
   router.get('/jobs/new/key-stage', (req, res) => {
-    
-    res.render('jobs/new/key-stage', {
-      
-    })
+    const data = req.session.data || {}
+    if (!createJobRoleRouting.requiresTeachingKeyStageFlow(data)) {
+      return res.redirect('/jobs/new/section-summary/job-details')
+    }
+    const phase = data.createJob && data.createJob.phase
+    if (!createJobRoleRouting.shouldAskKeyStage(phase)) {
+      return res.redirect('/jobs/new/subjects')
+    }
+    renderCreateJobPage('jobs/new/key-stage', req, res)
   })
 
   router.get('/jobs/new/subjects', (req, res) => {
     const data = req.session.data || {}
+    const teachingFlow = createJobRoleRouting.requiresTeachingKeyStageFlow(data)
+    if (!teachingFlow) {
+      return res.redirect('/jobs/new/section-summary/job-details')
+    }
     if (data.subjects) {
       data.createJob = data.createJob || {}
       data.createJob.subjects = Array.isArray(data.subjects) ? data.subjects : [data.subjects]
     }
-    renderCreateJobPage('jobs/new/subjects', req, res)
+    const phase = data.createJob && data.createJob.phase
+    const backFromSubjectsHref = createJobRoleRouting.shouldAskKeyStage(phase)
+      ? '/jobs/new/key-stage'
+      : '/jobs/new/phase'
+    const orgName = req.session.user.organisation.name
+    const showCollegeSubjectList = createJobRoleRouting.phaseUsesCollegeSubjectList(phase, orgName)
+    res.render('jobs/new/subjects', {
+      showCollegeSubjectList,
+      backFromSubjectsHref,
+      subjectItems: buildCreateJobSubjectItems(data),
+      hideAdditionalAllowances: isCollegeFeCreateJob(data, req.session.user)
+    })
   })
 
   router.get('/jobs/new/school-visits', (req, res) => {
@@ -377,18 +409,21 @@ module.exports = router => {
   })
 
   router.post('/jobs/new/role_all', (req, res) => {
-    
-      let org = req.session.user.organisation.name
+      const data = req.session.data || {}
+      const org = req.session.user.organisation.name
 
       if (org == 'Hope college'){
-        // Send user to the next page
         req.session.data.createJob ??= {};
         req.session.data.createJob.phase = 'further education or college';
-        res.redirect('subjects');
-      } else {
-        res.redirect('phase');
+        if (createJobRoleRouting.requiresTeachingKeyStageFlow(data)) {
+          res.redirect('/jobs/new/subjects');
+        } else {
+          goToSectionSummary(req, res, 'job-details', 'job-role-phase-subjects')
+        }
+        return
       }
 
+      res.redirect('/jobs/new/phase');
   });
 
   router.post('/jobs/new/role_type', (req, res) => {
@@ -405,16 +440,7 @@ module.exports = router => {
 
 
   router.post('/jobs/new/key-stage', (req, res) => {
-    
-      var keyStages = req.session.data['createJob']['key-stages'];
-
-      // Check whether the variable includes the string "england" or "scotland"
-      if (keyStages && (keyStages.includes("Key stage 3") || keyStages.includes("Key stage 4") || keyStages.includes("Key stage 5"))) {
-          res.redirect('subjects');
-      } else {
-        goToSectionSummary(req, res, 'job-details', 'job-role-phase-subjects')
-      }
-
+    res.redirect('/jobs/new/subjects')
   });
 
   router.post('/jobs/new/method', (req, res) => {

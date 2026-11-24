@@ -19,7 +19,12 @@ AppFrontend.CheckboxFilter.prototype.setupHeading = function() {
 }
 
 AppFrontend.CheckboxFilter.prototype.setupTextBox = function() {
-  this.legend.after(this.getTextBoxHtml())
+  var anchor = this.container.find('.app-checkbox-filter__filter-anchor')
+  if (anchor.length) {
+    anchor.after(this.getTextBoxHtml())
+  } else {
+    this.legend.after(this.getTextBoxHtml())
+  }
   this.textBox = this.container.find('.app-checkbox-filter__filter-input')
   this.textBox.on('keyup', $.proxy(this, 'onTextBoxKeyUp'))
 }
