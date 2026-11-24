@@ -2,6 +2,11 @@
 
 {% set title = 'Notifications' %}
 {% set primaryNavId = 'notifications' %}
+{% set breadcrumbLabel = "Notifications" %}
+
+{% block beforeContent %}
+  {% include "includes/account-breadcrumbs.njk" %}
+{% endblock %}
 
 {% block content %}
   <h1 class="govuk-heading-l">Notifications</h1>

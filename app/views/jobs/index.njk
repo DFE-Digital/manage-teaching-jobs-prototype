@@ -11,6 +11,11 @@
   'most-applicants': 'most applicants'
 } %}
 {% set showSort = jobListId == 'active' or jobListId == 'awaiting-feedback' %}
+{% set breadcrumbLabel = "Manage jobs" %}
+
+{% block beforeContent %}
+  {% include "includes/account-breadcrumbs.njk" %}
+{% endblock %}
 
 {% block content %}
   <span class="govuk-caption-xl">

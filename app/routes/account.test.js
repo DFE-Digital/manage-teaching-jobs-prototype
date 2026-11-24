@@ -11,7 +11,7 @@ describe('account sign in', () => {
       .send({})
 
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/interruptions/profiles?v2')
+    expect(response.headers.location).toBe('/home')
   })
 
   it('signs in as the email address that was submitted', async () => {
@@ -46,7 +46,7 @@ describe('account sign in', () => {
       })
 
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/interruptions/profiles?v2')
+    expect(response.headers.location).toBe('/home')
   })
 
   it('redirects to the v2 welcome landing after sign-in', async () => {
@@ -56,7 +56,7 @@ describe('account sign in', () => {
       .type('form')
       .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
 
-    expect(signIn.headers.location).toBe('/interruptions/profiles?v2')
+    expect(signIn.headers.location).toBe('/home')
 
     const landing = await agent.get(signIn.headers.location)
     expect(landing.status).toBe(200)
@@ -90,7 +90,7 @@ describe('job applications', () => {
     expect(response.headers.location).toBe('/jobs')
   })
 
-  it('sends sign-in with returnUrl /interruptions/profiles to the v2 landing', async () => {
+  it('sends sign-in with returnUrl /interruptions/profiles to home', async () => {
     const response = await request(app)
       .post('/account/sign-in')
       .type('form')
@@ -101,7 +101,7 @@ describe('job applications', () => {
       })
 
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/interruptions/profiles?v2')
+    expect(response.headers.location).toBe('/home')
   })
 })
 
@@ -162,7 +162,7 @@ describe('organisation profile', () => {
 })
 
 describe('profiles interruption', () => {
-  it('redirects /interruptions/profiles to the v2 welcome landing', async () => {
+  it('redirects /interruptions/profiles to home', async () => {
     const agent = request.agent(app)
     await agent
       .post('/account/sign-in')
@@ -171,14 +171,14 @@ describe('profiles interruption', () => {
 
     const response = await agent.get('/interruptions/profiles')
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/interruptions/profiles?v2')
+    expect(response.headers.location).toBe('/home')
 
-    const landing = await agent.get('/interruptions/profiles?v2')
+    const landing = await agent.get('/home')
     expect(landing.text).toContain('We have retired candidate profiles')
     expect(landing.text).not.toContain('The candidate profiles feature has been retired')
   })
 
-  it('renders the v2 welcome page with page header actions', async () => {
+  it('redirects /interruptions/profiles?v2 to home', async () => {
     const agent = request.agent(app)
     await agent
       .post('/account/sign-in')
@@ -186,6 +186,18 @@ describe('profiles interruption', () => {
       .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
 
     const response = await agent.get('/interruptions/profiles?v2')
+    expect(response.status).toBe(302)
+    expect(response.headers.location).toBe('/home')
+  })
+
+  it('renders the welcome home page with page header actions', async () => {
+    const agent = request.agent(app)
+    await agent
+      .post('/account/sign-in')
+      .type('form')
+      .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
+
+    const response = await agent.get('/home')
     expect(response.status).toBe(200)
     expect(response.text).toContain('app-profiles-welcome-banner')
     expect(response.text).toContain('We have retired candidate profiles')

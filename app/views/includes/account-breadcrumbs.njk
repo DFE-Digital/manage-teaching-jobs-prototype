@@ -1,0 +1,13 @@
+{# Expect breadcrumbLabel in the including template #}
+{{ govukBreadcrumbs({
+  classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+  items: [
+    {
+      text: "Home",
+      href: "/home"
+    },
+    {
+      text: breadcrumbLabel
+    }
+  ]
+}) }}

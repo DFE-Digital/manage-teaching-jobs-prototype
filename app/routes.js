@@ -38,6 +38,12 @@ router.use((req, res, next) => {
   next()
 })
 
+router.get('/home', authentication.checkIsAuthenticated, (req, res) => {
+  res.render('interruptions/profiles', {
+    homePage: true
+  })
+})
+
 require('./routes/interruptions')(router)
 require('./routes/organisation')(router)
 require('./routes/account')(router)

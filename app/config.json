@@ -1,6 +1,6 @@
 {
   "serviceName": "Manage teaching jobs",
-  "port": 3000,
+  "port": 3006,
   "useAuth": true,
   "useAutoStoreData": true,
   "useCookieSessionStore": false,

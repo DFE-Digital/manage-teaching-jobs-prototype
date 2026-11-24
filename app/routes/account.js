@@ -42,12 +42,12 @@ module.exports = router => {
     if (organisationHelper.hasMissingInformation(user.organisation)) {
       res.redirect('/interruptions/complete-profile')
     } else if (returnUrl) {
-      const destination = returnUrl === '/interruptions/profiles'
-        ? '/interruptions/profiles?v2'
+      const destination = (returnUrl === '/interruptions/profiles' || returnUrl === '/interruptions/profiles?v2')
+        ? '/home'
         : returnUrl
       res.redirect(destination)
     } else {
-      res.redirect('/interruptions/profiles?v2')
+      res.redirect('/home')
     }
   })
 

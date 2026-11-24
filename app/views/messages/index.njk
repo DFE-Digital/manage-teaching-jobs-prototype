@@ -4,6 +4,11 @@
 {% set primaryNavId = 'messages' %}
 {% set folder = folder or 'inbox' %}
 {% set conversationCount = messages.length %}
+{% set breadcrumbLabel = "Messages" %}
+
+{% block beforeContent %}
+  {% include "includes/account-breadcrumbs.njk" %}
+{% endblock %}
 
 {% block content %}
   <h1 class="govuk-heading-l">Candidate messages</h1>

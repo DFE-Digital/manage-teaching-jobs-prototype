@@ -2,7 +2,7 @@
 {% from "components/moj-page-header-actions/macro.njk" import mojPageHeaderActions %}
 
 {% set showOrganisationTools = not user or user.organisation.name != "Hope college2" %}
-{% set landingPage = query.v2 is defined %}
+{% set landingPage = homePage or query.v2 is defined %}
 {% if landingPage and user %}
   {% set title = user.organisation.name %}
 {% elif user %}

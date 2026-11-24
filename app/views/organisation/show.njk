@@ -17,6 +17,11 @@
 {% endif %}
 
 {% set primaryNavId = 'organisation' %}
+{% set breadcrumbLabel = title %}
+
+{% block beforeContent %}
+  {% include "includes/account-breadcrumbs.njk" %}
+{% endblock %}
 
 {% block content %}
 

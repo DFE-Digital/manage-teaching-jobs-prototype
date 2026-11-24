@@ -4,6 +4,11 @@
 {% set primaryNavId = 'statistics' %}
 {% set statsTab = statsTab or 'overview' %}
 {% set listingCount = jobCount or (user.jobs | length) %}
+{% set breadcrumbLabel = "Statistics" %}
+
+{% block beforeContent %}
+  {% include "includes/account-breadcrumbs.njk" %}
+{% endblock %}
 
 {% block content %}
   <h1 class="govuk-heading-l">Statistics dashboard</h1>

@@ -258,6 +258,16 @@ if (typeof (routes) !== 'function') {
   app.use('/', routes)
 }
 
+const appAuthentication = require('./app/middleware/authentication')
+app.get(
+  '/home',
+  appAuthentication.bootstrapUserFromQuery,
+  appAuthentication.checkIsAuthenticated,
+  function (req, res) {
+    res.render('interruptions/profiles', { homePage: true })
+  }
+)
+
 if (useDocumentation) {
   // Clone app locals to documentation app locals
   // Use Object.assign to ensure app.locals is cloned to prevent additions from

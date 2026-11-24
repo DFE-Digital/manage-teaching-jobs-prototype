@@ -30,7 +30,7 @@
 
   {{ govukServiceNavigation({
     serviceName: "Teaching Vacancies",
-    serviceUrl: "/interruptions/profiles?v2" if user else "/jobs",
+    serviceUrl: "/home" if user else "/jobs",
     navigationId: "service-navigation",
     navigation: navigation
   }) }}
