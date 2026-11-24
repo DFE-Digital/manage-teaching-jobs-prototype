@@ -1,0 +1,69 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Anonymise applications' %}
+
+{% set caption = 'Create job listing - section 3 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      {% endset %}
+
+      <form action="/jobs/new/contact-details" method="post" novalidate>
+
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l"></legend>
+                <h1 class="govuk-fieldset__heading">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <span class="govuk-caption-l">Create job listing - section 3 of 4</span> Anonymise applications
+                    </legend>
+                </h1>
+                <p>You can choose to view candidates' personal details, or to anonymise their applications. Shortlisted applications cannot be anonymised.</p>
+
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m"><h2 class="govuk-fieldset__heading">How would you like to view your applications?</h2></legend>
+                <div class="govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="createJob[anonymised]" name="createJob[anonymised]" type="radio" value="Anonymously"> 
+                        <label class="govuk-label govuk-radios__label" for="createJob[anonymised]">Anonymously</label>
+                        <div class="govuk-hint govuk-radios__hint" id="publishers-job-listing-anonymise-applications-form-anonymise-applications-true-hint">You will not be able to view personal details for any applicants unless they are shortlisted.</div>
+                    </div>
+                    <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="createJob[anonymised]-2" name="createJob[anonymised]" type="radio" value="View personal details"> 
+                        <label class="govuk-label govuk-radios__label" for="createJob[anonymised]-2">View personal details</label>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

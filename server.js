@@ -29,7 +29,7 @@ const config = require('./app/config.js')
 const documentationRoutes = require('./docs/documentation_routes.js')
 const prototypeAdminRoutes = require('./lib/prototype-admin-routes.js')
 const packageJson = require('./package.json')
-const routes = require('./app/routes.js')
+const prototypeVersions = require('./app/versions/mount')
 const utils = require('./lib/utils.js')
 const extensions = require('./lib/extensions/extensions.js')
 
@@ -205,9 +205,14 @@ if (useV6) {
   app.use('/public/v6/javascripts/govuk/', express.static(path.join(__dirname, '/node_modules/govuk_frontend_toolkit/javascripts/govuk/')))
 }
 
+app.use(prototypeVersions.session)
+
 // Automatically store all data users enter
 if (useAutoStoreData === 'true') {
-  app.use(utils.autoStoreData)
+  app.use(function (req, res, next) {
+    if (req.prototypeVersion) return next()
+    utils.autoStoreData(req, res, next)
+  })
   utils.addCheckedFunction(nunjucksAppEnv)
   if (useDocumentation) {
     utils.addCheckedFunction(nunjucksDocumentationEnv)
@@ -249,24 +254,8 @@ if (promoMode === 'true') {
   })
 }
 
-// Load routes (found in app/routes.js)
-if (typeof (routes) !== 'function') {
-  console.log(routes.bind)
-  console.log('Warning: the use of bind in routes is deprecated - please check the Prototype Kit documentation for writing routes.')
-  routes.bind(app)
-} else {
-  app.use('/', routes)
-}
-
-const appAuthentication = require('./app/middleware/authentication')
-app.get(
-  '/home',
-  appAuthentication.bootstrapUserFromQuery,
-  appAuthentication.checkIsAuthenticated,
-  function (req, res) {
-    res.render('interruptions/profiles', { homePage: true })
-  }
-)
+app.use(prototypeVersions.fixQueryAmpersandInPath)
+prototypeVersions.mount(app)
 
 if (useDocumentation) {
   // Clone app locals to documentation app locals
@@ -305,8 +294,11 @@ app.get(/\.html?$/i, function (req, res) {
 
 // Auto render any view that exists
 
-// App folder routes get priority
+// App folder routes get priority (skip mounted version URLs)
 app.get(/^([^.]+)$/, function (req, res, next) {
+  if (prototypeVersions.versionPathSkip(req)) {
+    return next()
+  }
   utils.matchRoutes(req, res, next)
 })
 
@@ -327,7 +319,10 @@ if (useV6) {
 }
 
 // Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
-app.post(/^\/([^.]+)$/, function (req, res) {
+app.post(/^\/([^.]+)$/, function (req, res, next) {
+  if (prototypeVersions.versionPathSkip(req)) {
+    return next()
+  }
   res.redirect(url.format({
     pathname: '/' + req.params[0],
     query: req.query

@@ -1,0 +1,92 @@
+{% set listingNumber = (job.id ~ '').slice(-3) %}
+{% set jobListingTitle = job.title + ' ' + listingNumber %}
+
+<div class="app-job-listing-header govuk-!-margin-bottom-6">
+  <div class="app-page-header app-job-listing-header__page-header govuk-!-margin-bottom-4">
+    <div class="app-page-header__title app-job-listing-header__title">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">
+        {{ jobListingTitle }}
+        {{ govukTag({
+          text: job.status,
+          classes: 'govuk-!-margin-left-2 ' + (job.status | jobStatusTagClass)
+        }) }}
+      </h1>
+    </div>
+    {% if job.status == 'Active' or job.status == 'Scheduled' %}
+      <div class="app-page-header__actions">
+        <a class="govuk-link app-job-listing-header__download" href="/jobs/{{ job.id }}/blank-application-form">Download a blank application form</a>
+      </div>
+    {% endif %}
+  </div>
+
+  {% if job.status == 'Active' %}
+    {% set summaryHtml %}
+      <p class="govuk-!-margin-bottom-2">This job listing was published on {{ job.publishDate | date }}. It will close on {{ job.closingDate | date }} at {{ job.closingTime }}.</p>
+      <ul class="govuk-list app-job-listing-header__links">
+        <li><a target="_blank" rel="noopener noreferrer" href="/jobs/{{ job.id }}/preview">View (opens in new tab)</a></li>
+        <li><a href="/jobs/{{ job.id }}/close-early">Close early</a></li>
+        <li><a href="/jobs/{{ job.id }}/extend-closing-date">Extend closing date</a></li>
+        <li><a href="/jobs/{{ job.id }}/save-template">Save as template</a></li>
+      </ul>
+    {% endset %}
+    {{ govukInsetText({
+      html: summaryHtml,
+      classes: 'app-job-listing-header__inset govuk-!-margin-top-0 govuk-!-margin-bottom-0'
+    }) }}
+  {% endif %}
+
+  {% if job.status == 'Scheduled' %}
+    {% set summaryHtml %}
+      <p class="govuk-!-margin-bottom-2">This job listing will be published on {{ job.publishDate | date }}. It will close on {{ job.closingDate | date }} at {{ job.closingTime }}.</p>
+      <ul class="govuk-list app-job-listing-header__links">
+        <li><a href="/jobs/{{ job.id }}/preview">Preview</a></li>
+        <li><a href="/jobs/new/copied">Copy listing</a></li>
+        <li><a href="#">Delete</a></li>
+        <li><a href="#">Convert to draft</a></li>
+      </ul>
+    {% endset %}
+    {{ govukInsetText({
+      html: summaryHtml,
+      classes: 'app-job-listing-header__inset govuk-!-margin-top-0 govuk-!-margin-bottom-0'
+    }) }}
+  {% endif %}
+
+  {% if job.status == 'Closed' %}
+    {% set summaryHtml %}
+      <p class="govuk-!-margin-bottom-2">This job listing was published on {{ job.publishDate | date }}. It closed on {{ job.closingDate | date }} at {{ job.closingTime }}.</p>
+      <ul class="govuk-list app-job-listing-header__links">
+        <li><a target="_blank" rel="noopener noreferrer" href="/jobs/{{ job.id }}/preview">View (opens in new tab)</a></li>
+        <li><a href="/jobs/{{ job.id }}/extend-closing-date">Extend closing date</a></li>
+        <li><a href="/jobs/{{ job.id }}/save-template">Save as template</a></li>
+      </ul>
+    {% endset %}
+    {{ govukInsetText({
+      html: summaryHtml,
+      classes: 'app-job-listing-header__inset govuk-!-margin-top-0 govuk-!-margin-bottom-0'
+    }) }}
+  {% endif %}
+
+  {% if job.status == 'Draft' %}
+    {% set summaryHtml %}
+      {% if query.incomplete %}
+        <p class="govuk-!-margin-bottom-2">This job listing needs to be completed before it can be published.</p>
+      {% else %}
+        <p class="govuk-!-margin-bottom-2">This job listing is complete and needs to be published.</p>
+      {% endif %}
+      <ul class="govuk-list app-job-listing-header__links">
+        {% if query.incomplete %}
+          <li><a href="#">Complete job listing</a></li>
+        {% else %}
+          <li><a href="#">Publish job listing</a></li>
+        {% endif %}
+        <li><a href="/jobs/{{ job.id }}/preview">Preview</a></li>
+        <li><a href="/jobs/new/copied">Copy listing</a></li>
+        <li><a href="#">Delete</a></li>
+      </ul>
+    {% endset %}
+    {{ govukInsetText({
+      html: summaryHtml,
+      classes: 'app-job-listing-header__inset govuk-!-margin-top-0 govuk-!-margin-bottom-0'
+    }) }}
+  {% endif %}
+</div>

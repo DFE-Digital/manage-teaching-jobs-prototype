@@ -1,0 +1,94 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Education phase' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if query.multipleLocationsMissing %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        <h1 class="govuk-heading-l">
+          {{heading}}
+        </h1>
+      {% else %}
+        {% set h1 %}
+          <span class="govuk-caption-l">
+            {{caption}}
+          </span>
+          {{heading}}
+        {% endset %}
+      {% endif %}
+
+      <form action="/jobs/new/role" method="post">
+
+        {% if query.multipleLocationsMissing %}
+          {{ govukRadios({
+            idPrefix: "createJob[phase]",
+            name: "createJob[phase]",
+            fieldset: {
+              legend: {
+                html: 'Education phase for [location 1]',
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: options
+          }) }}
+
+          {{ govukRadios({
+            idPrefix: "createJob[phase]",
+            name: "createJob[phase]",
+            fieldset: {
+              legend: {
+                html: 'Education phase for [location 2]',
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            items: options
+          }) }}
+        {% else %}
+          {{ govukCheckboxes({
+            idPrefix: "createJob[phase]",
+            name: "createJob[phase]",
+            fieldset: {
+              legend: {
+                html: h1,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            items: options
+          }) }}
+        {% endif %}
+
+
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+
+      </form>
+
+      <p><a href="#">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

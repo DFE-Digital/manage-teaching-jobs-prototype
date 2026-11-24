@@ -1,0 +1,30 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Account created' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: title
+      }) }}
+
+      {% if user.organisation.schools %}
+        <h2 class="govuk-heading-m"> Complete organisation profile </h2>
+        <p>The details stored in your organisation profile are included in your job listings.</p>
+        <p><a href="/organisation">Complete your organisation profile</a></p>
+      {% else %}
+        <h2 class="govuk-heading-m"> Complete school profile </h2>
+        <p>The details stored in your school profile are included in your job listings.</p>
+        <p><a href="/organisation">Complete your school profile</a></p>
+      {% endif %}
+
+      <h2 class="govuk-heading-m">Create job listing</h2>
+      <p>You can create a job listing.</p>
+      <p><a href="/jobs">Create job listing</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

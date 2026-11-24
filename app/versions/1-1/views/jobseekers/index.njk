@@ -1,0 +1,981 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Candidate profiles (' + user.jobseekers.length + ')' %}
+
+{% set primaryNavId = 'jobseekers' %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+           Candidate profiles (<span id="candidate-count">{{ jobseekers.length if jobseekers else user.jobseekers.length }}</span>)
+        </h1>
+    </div>
+  </div>
+
+   <!-- set a 0 that we can loop through and + 1 to -->
+
+  {% set countOfMatch = 0 %}
+  
+  {% if data['filters-rightToWork'] %}  {% set filterRightToWork %}{{data['filters-rightToWork'] }}{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterRightToWork %}{% endset %} {% endif %}
+  {% if data['filters-qts'] %}  {% set filterQTS %}{{data['filters-qts'] }}{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterQTS %}{% endset %} {% endif %}
+  {% if data['filters-role'] %}  {% set filterRole %}{{ data['filters-role'] }}{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %}  {% set filterRole %}{% endset %} {% endif %}
+  {% if data['filters-workingPatterns'] %}  {% set filterPatterns %}{{data['filters-workingPatterns'] }}{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterPatterns %}{% endset %} {% endif %}
+  {% if data['filters-keyStages'] %}  {% set filterStages %}{{data['filters-keyStages'] }}{% endset %} {% set countOfMatch = countOfMatch + 1 %} {% else %} {% set filterStages %}{% endset %} {% endif %}
+  {% if data['filters-subjects'] %}  {% set filterSubjects %}{{data['filters-subjects'] }}{% endset %} {% set countOfMatch = countOfMatch + 1  %} {% else %} {% set filterSubjects %}{% endset %} {% endif %}
+
+  <!-- each time there is a match, we plus 1 -->
+
+  <!-- we then only show the jobs that have a number match, meaning they match the filters! -->
+
+  <div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+      
+      {% set filterOptionsHtml %}
+
+        {% if locationCheckboxes %}
+
+          {{ govukCheckboxes({
+            idPrefix: "filters-locations",
+            name: "filters-locations",
+            classes: "govuk-checkboxes--small",
+            fieldset: {
+              legend: {
+                text: "Location",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: locationCheckboxes
+          }) }}
+        {% endif %}
+
+
+    <h3 class="govuk-heading-s">Preferred roles</h3>
+
+    <div class="app-c-option-select js-collapsible {% if 'Teacher' in filterRole or 'Head of year or phase' in filterRole  or 'Head of department or curriculum' in filterRole  or 'Assistant headteacher' in filterRole  or 'Headteacher' in filterRole  or 'SENDCo (special educational needs and disabilities coordinator)' in filterRole or 'Other leadership roles' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
+
+        <div class="app-c-option-select__heading js-container-heading">
+            <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="{% if 'Teacher' in filterRole or 'Head of year or phase' in filterRole  or 'Head of department or curriculum' in filterRole  or 'Assistant headteacher' in filterRole  or 'Headteacher' in filterRole  or 'SENDCo (special educational needs and disabilities coordinator)' in filterRole or 'Other leadership roles' in filterRole %}true{% else %}false{% endif %}" id="option-teaching-and-leadership" aria-controls="list-of-key-stage-1">
+              Teaching & leadership <span class="govuk-visually-hidden">jobs</span>
+            </button>
+            <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--up" aria-hidden="true" focusable="false"><path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"></path></svg>
+            <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--down" aria-hidden="true" focusable="false"><path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"></path></svg>
+        </div>
+
+        <div id="list-of-key-stage-1" role="group" aria-labelledby="option-teaching-and-leadership" class="app-c-option-select__container js-options-container" tabindex="-1">
+            <div class="app-c-option-select__container-inner">
+                <div class="gem-c-checkboxes govuk-form-group govuk-checkboxes--small" data-module="gem-checkboxes">
+                    <fieldset class="govuk-fieldset govuk-checkboxes--small govuk-!-margin-left-1">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s app-c-option-select__legend">Teaching</legend>
+
+                        <ul class="govuk-checkboxes gem-c-checkboxes__list" data-module="govuk-checkboxes">
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Teacher' in filterRole  %} checked {% endif %} type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-teacher" value="Teacher">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-teacher">
+                                        Teacher
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Head of year or phase' in filterRole  %} checked {% endif %} type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-head-of-year" value="Head of year or phase">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-head-of-year">
+                                        Head of year or phase
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Head of department or curriculum' in filterRole  %} checked {% endif %} type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-head-of-department-or-curriculum" value="Head of department or curriculum">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-head-of-department-or-curriculum">
+                                        Head of department or curriculum
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Assistant headteacher' in filterRole  %} checked {% endif %} type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-assistant-headteacher" value="Assistant headteacher">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-assistant-headteacher">
+                                        Assistant headteacher
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Deputy headteacher' in filterRole  %} checked {% endif %} type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-deputy-headteacher" value="Deputy headteacher">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-deputy-headteacher">
+                                        Deputy headteacher
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Headteacher' in filterRole  %} checked {% endif %} type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-headteacher" value="Headteacher">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-headteacher">
+                                        Headteacher
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'SENDCo (special educational needs and disabilities coordinator)' in filterRole  %} checked {% endif %} type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-sendco" value="SENDCo (special educational needs and disabilities coordinator)">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-sendco">
+                                       SENDCo (special educational needs and disabilities coordinator)
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Other leadership roles' in filterRole  %} checked {% endif %} type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-other" value="Other leadership roles">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-other">
+                                       Other leadership roles
+                                    </label>
+                                </li>
+                        </ul>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="app-c-option-select js-collapsible {% if 'Teaching assistant' in filterRole or 'Head of year or phase' in filterRole  or 'HLTA (Higher level teaching assistant)' in filterRole or 'Learning support or cover supervisor' in filterRole or 'Other teaching support' in filterRole %} js-opened {% else %} js-closed {% endif %}" data-testid="key-stage-1" data-module="option-select" data-closed-on-load="true">
+
+        <div class="app-c-option-select__heading js-container-heading">
+            <button class="js-container-button app-c-option-select__title app-c-option-select__button" type="button" aria-expanded="{% if 'Teaching assistant' in filterRole or 'Head of year or phase' in filterRole  or 'HLTA (Higher level teaching assistant)' in filterRole or 'Learning support or cover supervisor' in filterRole or 'Other teaching support' in filterRole %}true{% else %}false{% endif %}" id="option-teaching-support" aria-controls="list-of-key-stage-1">Support</button>
+            <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--up" aria-hidden="true" focusable="false"><path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"></path></svg>
+            <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--down" aria-hidden="true" focusable="false"><path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"></path></svg>
+        </div>
+
+        <div id="list-of-key-stage-1" role="group" aria-labelledby="option-teaching-support" class="app-c-option-select__container js-options-container" tabindex="-1">
+            <div class="app-c-option-select__container-inner">
+                <div class="gem-c-checkboxes govuk-form-group govuk-checkboxes--small" data-module="gem-checkboxes">
+                    <fieldset class="govuk-fieldset govuk-checkboxes--small govuk-!-margin-left-1">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s app-c-option-select__legend">Support</legend>
+
+                        <ul class="govuk-checkboxes gem-c-checkboxes__list" data-module="govuk-checkboxes">
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input  {% if 'Teaching assistant' in filterRole  %} checked {% endif %} type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-teaching-assistant" value="Teaching assistant">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-teaching-assistant">
+                                        Teaching assistant
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'HLTA (Higher level teaching assistant)' in filterRole  %} checked {% endif %} type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-hlta" value="HLTA (Higher level teaching assistant)">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-hlta">
+                                        HLTA (Higher level teaching assistant)
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Learning support or cover supervisor' in filterRole  %} checked {% endif %} type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-learning-support" value="Learning support or cover supervisor">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-learning-support">
+                                        Learning support or cover supervisor
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Other teaching support' in filterRole  %} checked {% endif %} type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-other-teaching-support" value="Other teaching support">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-other-teaching-support">
+                                        Other teaching support
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Administration, HR, data and finance' in filterRole  %} checked {% endif %}  type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-admin" value="Administration, HR, data and finance">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-admin">
+                                        Administration, HR, data and finance
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Catering, cleaning and site management' in filterRole  %} checked {% endif %}  type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-catering" value="Catering, cleaning and site management">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-catering">
+                                        Catering, cleaning and site management
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'IT support' in filterRole  %} checked {% endif %}  type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-it" value="IT support">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-it">
+                                        IT support
+                                    </label>
+                                </li>
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Pastoral, health and welfare' in filterRole  %} checked {% endif %}  type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-pastoral" value="Pastoral, health and welfare">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-pastoral">
+                                        Pastoral, health and welfare
+                                    </label>
+                                </li>
+                                
+                                <li class="govuk-checkboxes__item" data-testid="job-name">
+                                    <input {% if 'Other support roles' in filterRole  %} checked {% endif %}  type="checkbox" name="filters-role" class="govuk-checkboxes__input" id="job-other-support" value="Other support roles">
+                                    <label class="govuk-label govuk-checkboxes__label" for="job-other-support">
+                                        Other support roles
+                                    </label>
+                                </li>
+                        </ul>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--###################
+
+    END OF COLLAPSIBLE FILTERS
+
+     ################### -->
+
+      <div class="govuk-form-group  govuk-!-margin-top-6">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Visa sponsorship</legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" {% if 'Does have the right to work in the UK' in filterRightToWork  %} checked {% endif %} id="filters-rightToWork" name="filters-rightToWork" type="checkbox" value="Does have the right to work in the UK"> <label class="govuk-label govuk-checkboxes__label" for="filters-rightToWork">Does not need visa sponsorship</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" {% if 'Does not have the right to work in the UK' in filterRightToWork  %} checked {% endif %} id="filters-rightToWork-2" name="filters-rightToWork" type="checkbox" value="Does not have the right to work in the UK"> <label class="govuk-label govuk-checkboxes__label" for="filters-rightToWork]-2">Needs visa sponsorship</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Qualified teaching status (QTS)</legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" {% if 'Does not have QTS' in filterQTS %}checked {% endif %}  id="filters-qts" name="filters-qts" type="checkbox" value="Does not have QTS"> <label class="govuk-label govuk-checkboxes__label" for="filters-qts">Does not have QTS</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" {% if 'On track to receive QTS' in filterQTS %}checked {% endif %}  id="filters-qts]-2" name="filters-qts" type="checkbox" value="On track to receive QTS"> <label class="govuk-label govuk-checkboxes__label" for="filters-qts]-2">On track to receive QTS</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" {% if 'Awarded QTS within the last 2 years' in filterQTS %}checked {% endif %}  id="filters-qts]-3" name="filters-qts" type="checkbox" value="Awarded QTS within the last 2 years"> <label class="govuk-label govuk-checkboxes__label" for="filters-qts]-3">Awarded QTS within the last 2 years</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" {% if 'Awarded QTS 3 or more years ago' in filterQTS %} checked {% endif %}  id="filters-qts]-4" name="filters-qts" type="checkbox" value="Awarded QTS 3 or more years ago"> <label class="govuk-label govuk-checkboxes__label" for="filters-qts]-4">Awarded QTS 3 or more years ago</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Preferred working pattern</legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" {% if 'Full time' in filterPatterns %}checked {% endif %}  id="filters-workingPatterns" name="filters-workingPatterns" type="checkbox" value="Full time"> <label class="govuk-label govuk-checkboxes__label" for="filters-workingPatterns">Full time</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" {% if 'Part time' in filterPatterns %}checked {% endif %}  id="filters-workingPatterns-2" name="filters-workingPatterns" type="checkbox" value="Part time"> <label class="govuk-label govuk-checkboxes__label" for="filters-workingPatterns]-2">Part time</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {% if user.organisation.schools %}
+          {{ govukCheckboxes({
+            idPrefix: "filters-phase",
+            name: "filters-phase",
+            classes: "govuk-checkboxes--small",
+            fieldset: {
+              legend: {
+                text: "Preferred education phase",
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: phases
+          }) }}
+        {% endif %}
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Preferred key stage</legend>
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" {% if 'Early years' in filterStages %}checked {% endif %}  id="filters-keyStages" name="filters-keyStages" type="checkbox" value="Early years"> <label class="govuk-label govuk-checkboxes__label" for="filters-keyStages">Early years</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" {% if 'Key stage 1' in filterStages %}checked {% endif %}  id="filters-keyStages]-2" name="filters-keyStages" type="checkbox" value="Key stage 1"> <label class="govuk-label govuk-checkboxes__label" for="filters-keyStages]-2">Key stage 1</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" {% if 'Key stage 2' in filterStages %}checked {% endif %}  id="filters-keyStages]-3" name="filters-keyStages" type="checkbox" value="Key stage 2"> <label class="govuk-label govuk-checkboxes__label" for="filters-keyStages]-3">Key stage 2</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" {% if 'Key stage 3' in filterStages %}checked {% endif %}  id="filters-keyStages]-4" name="filters-keyStages" type="checkbox" value="Key stage 3"> <label class="govuk-label govuk-checkboxes__label" for="filters-keyStages]-4">Key stage 3</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" {% if 'Key stage 4' in filterStages %}checked {% endif %}  id="filters-keyStages]-5" name="filters-keyStages" type="checkbox" value="Key stage 4"> <label class="govuk-label govuk-checkboxes__label" for="filters-keyStages]-5">Key stage 4</label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" {% if 'Key stage 5' in filterStages %}checked {% endif %}  id="filters-keyStages]-6" name="filters-keyStages" type="checkbox" value="Key stage 5"> <label class="govuk-label govuk-checkboxes__label" for="filters-keyStages]-6">Key stage 5</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="app-checkbox-filter govuk-checkboxes--small app-checkbox-filter--enhanced" id="subjects">
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Preferred subject</legend> 
+               <div class="app-checkbox-filter__container" style="height: 354.333px;">
+                <div class="govuk-checkboxes app-checkbox-filter__container-inner">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Accounting' in filterSubjects %}checked {% endif %} type="checkbox" value="Accounting"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Accounting</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint">
+                      Includes Finance and accounting
+                    </div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Art and design' in filterSubjects %}checked {% endif %} type="checkbox" value="Art and design"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Art and design</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Biology' in filterSubjects %}checked {% endif %} type="checkbox" value="Biology"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Biology</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Business studies' in filterSubjects %}checked {% endif %} type="checkbox" value="Business studies"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Business studies</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Chemistry' in filterSubjects %}checked {% endif %} type="checkbox" value="Chemistry"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Chemistry</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Citizenship' in filterSubjects %}checked {% endif %} type="checkbox" value="Citizenship"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Citizenship</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Classics' in filterSubjects %}checked {% endif %} type="checkbox" value="Classics"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Classics</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint">
+                      Includes Latin
+                    </div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Computing' in filterSubjects %}checked {% endif %} type="checkbox" value="Computing"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Computing</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint">
+                      Includes Computer science, Information technology, and ICT
+                    </div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Dance' in filterSubjects %}checked {% endif %} type="checkbox" value="Dance"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Dance</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Design and technology' in filterSubjects %}checked {% endif %} type="checkbox" value="Design and technology"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Design and technology</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint">
+                      Includes Product design, Textiles and Systems and control
+                    </div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Drama' in filterSubjects %}checked {% endif %} type="checkbox" value="Drama"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Drama</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint">
+                      Includes Theatre studies and Performing arts
+                    </div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Economics' in filterSubjects %}checked {% endif %} type="checkbox" value="Economics"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Economics</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Engineering' in filterSubjects %}checked {% endif %} type="checkbox" value="Engineering"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Engineering</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'English' in filterSubjects %}checked {% endif %} type="checkbox" value="English"> <label class="govuk-label govuk-checkboxes__label" for="subjects">English</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint">
+                      Includes English language and literature
+                    </div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Food Technology' in filterSubjects %}checked {% endif %} type="checkbox" value="Food Technology"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Food Technology</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint">
+                      Includes Hospitality and catering
+                    </div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'French' in filterSubjects %}checked {% endif %} type="checkbox" value="French"> <label class="govuk-label govuk-checkboxes__label" for="subjects">French</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Geography' in filterSubjects %}checked {% endif %} type="checkbox" value="Geography"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Geography</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'German' in filterSubjects %}checked {% endif %} type="checkbox" value="German"> <label class="govuk-label govuk-checkboxes__label" for="subjects">German</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Health and social care' in filterSubjects %}checked {% endif %} type="checkbox" value="Health and social care"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Health and social care</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'History' in filterSubjects %}checked {% endif %} type="checkbox" value="History"> <label class="govuk-label govuk-checkboxes__label" for="subjects">History</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Humanities' in filterSubjects %}checked {% endif %} type="checkbox" value="Humanities"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Humanities</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'ICT' in filterSubjects %}checked {% endif %} type="checkbox" value="ICT"> <label class="govuk-label govuk-checkboxes__label" for="subjects">ICT</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Law' in filterSubjects %}checked {% endif %} type="checkbox" value="Law"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Law</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Mandarin' in filterSubjects %}checked {% endif %} type="checkbox" value="Mandarin"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Mandarin</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Mathematics' in filterSubjects %}checked {% endif %} type="checkbox" value="Mathematics"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Mathematics</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Media studies' in filterSubjects %}checked {% endif %} type="checkbox" value="Media studies"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Media studies</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Music' in filterSubjects %}checked {% endif %} type="checkbox" value="Music"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Music</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Philosophy' in filterSubjects %}checked {% endif %} type="checkbox" value="Philosophy"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Philosophy</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Physical education' in filterSubjects %}checked {% endif %} type="checkbox" value="Physical education"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Physical education</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Physics' in filterSubjects %}checked {% endif %} type="checkbox" value="Physics"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Physics</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Politics' in filterSubjects %}checked {% endif %} type="checkbox" value="Politics"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Politics</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Psychology' in filterSubjects %}checked {% endif %} type="checkbox" value="Psychology"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Psychology</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Religious education' in filterSubjects %}checked {% endif %} type="checkbox" value="Religious education"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Religious education</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint">
+                      Includes religious studies
+                    </div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Relationships and sex education' in filterSubjects %}checked {% endif %} type="checkbox" value="Relationships and sex education"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Relationships and sex education</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Science' in filterSubjects %}checked {% endif %} type="checkbox" value="Science"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Science</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Social sciences' in filterSubjects %}checked {% endif %} type="checkbox" value="Social sciences"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Social sciences</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Sociology' in filterSubjects %}checked {% endif %} type="checkbox" value="Sociology"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Sociology</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Spanish' in filterSubjects %}checked {% endif %} type="checkbox" value="Spanish"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Spanish</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="subjects" name="filters-subjects" {% if 'Statistics' in filterSubjects %}checked {% endif %} type="checkbox" value="Statistics"> <label class="govuk-label govuk-checkboxes__label" for="subjects">Statistics</label>
+                    <div class="govuk-hint govuk-checkboxes__hint" id="subjects-hint"></div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="govuk-visually-hidden" id="subjectscheckboxes-status" role="status">
+            39 options found, 0 selected
+          </div>
+        </div>
+
+      {% endset %}
+
+      <div class="app-filter">
+        <div class="app-filter__header">
+          <div class="app-filter__header-title">
+            <h2 class="govuk-heading-m">Filter</h2>
+          </div>
+          <div class="app-filter__header-action">
+
+          </div>
+        </div>
+        <div class="app-filter__content">
+
+          {% if filterRightToWork.length or filterQTS.length or filterRole.length or filterPatterns.length or filterStages.length  or filterSubjects.length %} 
+
+            <div class="app-filter__selected">
+              <div class="app-filter__selected-heading">
+                  <div class="app-filter__heading-title" style="width:100%; ">
+                    <p class="govuk-body govuk-!-margin-bottom-1" style="float:left; ">Selected filters</p>
+                    <p class="govuk-body" style="float:right; "><a id="clearfilters" class="govuk-link govuk-link--no-visited-state" href="#">Clear filters</a></p>
+                  </div>
+              </div>
+
+              {% if filterRightToWork.length %}
+                    
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Visa sponsorship</h3>
+                  <ul class="app-filter-tags">
+                  {% if 'Does have the right to work in the UK' in filterRightToWork %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Does not need visa sponsorship</a></li>
+                  {% endif %}
+                  {% if 'Does not have the right to work in the UK' in filterRightToWork %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Needs visa sponsorship</a></li>
+                  {% endif %}
+                  </ul>
+
+              {% endif %}
+
+              {% if filterQTS.length %}
+                    
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Qualified teaching status (QTS)</h3>
+                  <ul class="app-filter-tags">
+                  {% if 'Does not have QTS' in filterQTS %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Does not have QTS</a></li>
+                  {% endif %}
+                  {% if 'On track to receive QTS' in filterQTS %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>On track to receive QTS</a></li>
+                  {% endif %}
+                  {% if 'Awarded QTS within the last 2 years' in filterQTS %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Awarded QTS within the last 2 years</a></li>
+                  {% endif %}
+                  {% if 'Awarded QTS 3 or more years ago' in filterQTS %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Awarded QTS 3 or more years ago</a></li>
+                  {% endif %}
+                  </ul>
+
+              {% endif %}
+
+              {% if filterRole.length %}
+                    
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Preferred role</h3>
+                  <ul class="app-filter-tags">
+                  <!-- // teaching and leadership -->
+
+                  {% if 'Teacher' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Teacher</a></li>
+                  {% endif %}
+                  {% if 'Head of year or phase' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Head of year or phase</a></li>
+                  {% endif %}
+                  {% if 'Head of department or curriculum' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Head of department or curriculum</a></li>
+                  {% endif %}
+                  {% if 'Assistant headteacher' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Assistant headteacher</a></li>
+                  {% endif %}
+                  {% if 'Deputy headteacher' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Deputy headteacher</a></li>
+                  {% endif %}
+                  {% if 'Headteacher' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Headteacher</a></li>
+                  {% endif %}
+                  {% if 'SENDCo (special educational needs and disabilities coordinator' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>SENDCo (special educational needs and disabilities coordinator)</a></li>
+                  {% endif %}
+                  {% if 'Other leadership roles' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Other leadership roles</a></li>
+                  {% endif %}
+
+                  <!-- // Teaching support  -->
+
+                  {% if 'Teaching assistant' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Teaching assistant</a></li>
+                  {% endif %}
+                  {% if 'HLTA (Higher level teaching assistant)' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>HLTA (Higher level teaching assistant)</a></li>
+                  {% endif %}
+                  {% if 'Learning support or cover supervisor' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Learning support or cover supervisor</a></li>
+                  {% endif %}
+                  {% if 'Other teaching support' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Other teaching support</a></li>
+                  {% endif %}
+
+                  <!-- // other -->
+
+                  {% if 'Administration, HR, data and finance' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Administration, HR, data and finance</a></li>
+                  {% endif %}
+                  {% if 'Catering, cleaning and site management' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Catering, cleaning and site management</a></li>
+                  {% endif %}
+                  {% if 'IT support' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>IT support</a></li>
+                  {% endif %}
+                  {% if 'Pastoral, health and welfare' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Pastoral, health and welfare</a></li>
+                  {% endif %}
+                  {% if 'Other support roles' in filterRole %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Other support roles</a></li>
+                  {% endif %}
+                  </ul>
+
+              {% endif %}
+
+              {% if filterPatterns.length %}
+                    
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Preferred working pattern</h3>
+                  <ul class="app-filter-tags">
+                  {% if 'Full time' in filterPatterns %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Full time</a></li>
+                  {% endif %}
+                  {% if 'Part time' in filterPatterns %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Part time</a></li>
+                  {% endif %}
+                  </ul>
+
+              {% endif %}
+
+              {% if filterStages.length %}
+                    
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Preferred working pattern</h3>
+                  <ul class="app-filter-tags">
+                  {% if 'Early years' in filterStages %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Early years</a></li>
+                  {% endif %}
+                  {% if 'Key stage 1' in filterStages %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Key stage 1</a></li>
+                  {% endif %}
+                  {% if 'Key stage 2' in filterStages %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Key stage 2</a></li>
+                  {% endif %}
+                  {% if 'Key stage 3' in filterStages %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Key stage 3</a></li>
+                  {% endif %}
+                  {% if 'Key stage 4' in filterStages %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Key stage 4</a></li>
+                  {% endif %}
+                  {% if 'Key stage 5' in filterStages %} 
+                      <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Key stage 5</a></li>
+                  {% endif %}
+                  </ul>
+
+              {% endif %}
+
+              {% if filterSubjects.length %}
+                    
+                  <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Preferred subject</h3>
+                  <ul class="app-filter-tags">
+                    {% if 'Accounting' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Accounting</a></li>
+                    {% endif %}
+                    {% if 'Art and design' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Art and design</a></li>
+                    {% endif %}
+                    {% if 'Biology' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Biology</a></li>
+                    {% endif %}
+                    {% if 'Business studies' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Business studies</a></li>
+                    {% endif %}
+                    {% if 'Chemistry' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Chemistry</a></li>
+                    {% endif %}
+                    {% if 'Citizenship' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Citizenship</a></li>
+                    {% endif %}
+                    {% if 'Computing' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Computing</a></li>
+                    {% endif %}
+                    {% if 'Dance' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Dance</a></li>
+                    {% endif %}
+                    {% if 'Design and technology' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Design and technology</a></li>
+                    {% endif %}
+                    {% if 'Drama' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Drama</a></li>
+                    {% endif %}
+                    {% if 'Economics' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Economics</a></li>
+                    {% endif %}
+                    {% if 'Engineering' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Engineering</a></li>
+                    {% endif %}
+                    {% if 'English' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>English</a></li>
+                    {% endif %}
+                    {% if 'Food Technology' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Food Technology</a></li>
+                    {% endif %}
+                    {% if 'French' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>French</a></li>
+                    {% endif %}
+                    {% if 'Geography' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Geography</a></li>
+                    {% endif %}
+                    {% if 'German' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>German</a></li>
+                    {% endif %}
+                    {% if 'Health and social care' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Health and social care</a></li>
+                    {% endif %}
+                    {% if 'History' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>History</a></li>
+                    {% endif %}
+                    {% if 'Humanities' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Humanities</a></li>
+                    {% endif %}
+                    {% if 'ICT' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>ICT</a></li>
+                    {% endif %}
+                    {% if 'Law' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Law</a></li>
+                    {% endif %}
+                    {% if 'Mandarin' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Mandarin</a></li>
+                    {% endif %}
+                    {% if 'Mathematics' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Mathematics</a></li>
+                    {% endif %}
+                    {% if 'Media studies' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Media studies</a></li>
+                    {% endif %}
+                    {% if 'Music' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Music</a></li>
+                    {% endif %}
+                    {% if 'Philosophy' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Philosophy</a></li>
+                    {% endif %}
+                    {% if 'Physical education' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Physical education</a></li>
+                    {% endif %}
+                    {% if 'Physics' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Physics</a></li>
+                    {% endif %}
+                    {% if 'Politics' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Politics</a></li>
+                    {% endif %}
+                    {% if 'Psychology' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Psychology</a></li>
+                    {% endif %}
+                    {% if 'Religious education' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Religious education</a></li>
+                    {% endif %}
+                    {% if 'Relationships and sex education' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Relationships and sex education</a></li>
+                    {% endif %}
+                    {% if 'Science' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Science</a></li>
+                    {% endif %}
+                    {% if 'Social sciences' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Social sciences</a></li>
+                    {% endif %}
+                    {% if 'Sociology' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Sociology</a></li>
+                    {% endif %}
+                    {% if 'Spanish' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Spanish</a></li>
+                    {% endif %}
+                    {% if 'Statistics' in filterSubjects %} 
+                        <li><a class="app-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span>Statistics</a></li>
+                    {% endif %}
+                  </ul>
+
+              {% endif %}
+
+
+              
+            </div>
+
+          {% endif %}
+
+          <div class="app-filter__options">
+            <form id="filtersform" method="get" action="/jobseekers" novalidate>
+              <button id="applyfilters" class="govuk-button" data-module="govuk-button">
+                Apply filters
+              </button>
+              {{filterOptionsHtml | safe}}
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    {% if filterRole.length %}
+      {% set interestedRoles %}
+        {% if 'Teacher' in filterRole %}teacher{% endif %}{% if 'Head of year or phase' in filterRole %}, head of year or phase{% endif %}
+        {% if 'Head of department or curriculum' in filterRole %}and head of department or curriculum{% endif %}
+      {% endset %}
+    {% endif %}
+
+    
+
+    {# <p><b>Sort by:</b> Added most recently | <a href="#">Turned on least recently</a></p> #}
+
+    <div class="app-filter-layout__content">
+
+
+    {% if user.organisation.schools %}
+      <p class="govuk-body">These candidates are willing to travel to a location near your school or college.</p>
+    {% else %}
+      <p class="govuk-body">These candidates are willing to travel to a location near your school or college.</p>
+    {% endif %}
+
+    <p>Ordered by most recently updated.</p>
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
+      </div>
+
+      <div class="app-list">
+        {% if not jobseekers or jobseekers.length == 0 %}
+          <h2 class="govuk-heading-m">No candidates found</h2>
+          <p class="govuk-body">This may be because:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>candidates have not turned on their profile</li>
+            <li>candidates are outside of the role's location</li>
+          </ul>
+          <p class="govuk-body">You may get more results if you remove some filters, if you have used them.</p>
+        {% endif %}
+        {% for jobseeker in jobseekers %}
+
+          <!-- text for profile QTS -->
+          {% set teachingStatus %}
+            {% if jobseeker.profile.qts == 'Yes' %}
+              Awarded QTS {{jobseeker.profile.qtsAwardedYear}}
+            {% elseif jobseeker.profile.qts == 'I’m on track to receive QTS' %}
+              On track to receive QTS
+            {% else %}
+              Does not have QTS
+            {% endif %}
+          {% endset %}
+          
+
+          <!-- QTS check 1-->
+          {% set jobseekerCheckQTS %}{% if jobseeker.profile.qts == 'Yes' %}Yes{% elseif jobseeker.profile.qts == 'I’m on track to receive QTS' %}Yes{% else %}No{% endif %}{% endset %}
+
+          <!-- QTS check 2, change text to Yes to confirm match -->
+          {% set filterForQts %}{% if filters-qts == "Does not have QTS" %}No{% else %}Yes{% endif %}{% endset %}
+
+          <!-- set a 0 that we can loop through and + 1 to -->
+          {% set countOfJobMatch = 0 %}
+          
+          {% if jobseeker.profile.rightToWork in filterRightToWork %} {% set countOfJobMatch = countOfJobMatch + 1 %}  {% endif %}
+          {% if data['filters-qts'] %} {% if jobseekerCheckQTS in filterForQts %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}{% endif %}
+          {% if filterRole in jobseeker.profile.roles %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+          {% if filterPatterns in jobseeker.profile.workingPatterns %} {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+          {% if jobseeker.profile.keyStages in filterStages %}  {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+          {% if jobseeker.profile.subjects in filterSubjects %}  {% set countOfJobMatch = countOfJobMatch + 1 %} {% endif %}
+          <!-- each time there is a match, we plus 1 -->
+
+          <!-- we then only show the jobs that have a number match, meaning they match the filters! -->
+
+          {% if countOfMatch == countOfJobMatch %}
+
+          <div class="app-list__item">
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-0 govuk-!-margin-right-2">
+              <a class="govuk-link--no-visited-state" href="/jobseekers/{{jobseeker.id}}">{{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}}</a>
+            </h2>
+            {% if jobseeker.showQTS %}
+              <p class="govuk-!-font-size-16 govuk-!-margin-top-1 govuk-!-margin-bottom-0">{{teachingStatus}}</p>
+            {% endif %}
+
+            {% set currentJob %}{% for item in jobseeker.profile.workHistory %}{% if item.currentRole == 'Yes' %}{{item.role}}{% else %}{% endif %}{% endfor %}{% endset %}
+            {% set latestJob %}{% for item in jobseeker.profile.workHistory %}{% if loop.last %}{{item.role}}{% else %}{% endif %}{% endfor %}{% endset %}
+
+      
+            {{ govukSummaryList({
+              classes: 'govuk-summary-list--no-border app-summary-list--compact',
+              rows: [
+                {
+                  key: {
+                    text: "Current role"
+                  },
+                  value: {
+                    html: currentJob
+                  }
+                } if currentJob,
+                {
+                  key: {
+                    text: "Latest role"
+                  },
+                  value: {
+                    html: latestJob
+                  }
+                } if currentJob == '',
+                {
+                  key: {
+                    text: "Preferred education phase"
+                  },
+                  value: {
+                    text: jobseeker.profile.phases | join(', ') | capitalize
+                  }
+                } if user.organisation.schools,
+                {
+                  key: {
+                    text: "Preferred key stages"
+                  },
+                  value: {
+                    text: jobseeker.profile.keyStages | join(', ') | capitalize
+                  }
+                }if jobseeker.profile.keyStages,
+                {
+                  key: {
+                    text: "Preferred working patterns"
+                  },
+                  value: {
+                    text: jobseeker.profile.workingPatterns | join(', ') | capitalize
+                  }
+                },
+                {
+                  key: {
+                    text: "Preferred subjects"
+                  },
+                  value: {
+                    text: jobseeker.profile.subjects | join(', ') | capitalize
+                  }
+                } if jobseeker.profile.subjects
+              ]
+            }) }}
+          </div>
+           
+        
+        {% endif %}
+
+
+        {% endfor %}
+      </div>
+
+      <div id="try-another-search" class="divider-bottom" style="display:none;">
+        <div class="govuk-heading-m">Try another search</div>
+        <p class="govuk-body">You may get more results if you remove some filters if you have used them.</p>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+
+    new AppFrontend.CheckboxFilter({
+      container: $('#subjects'),
+      textBox: {
+        label: 'Search for subject'
+      }
+    })
+
+  </script>
+{% endblock %}

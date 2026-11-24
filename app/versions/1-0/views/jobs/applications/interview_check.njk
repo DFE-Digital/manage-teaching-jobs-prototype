@@ -1,0 +1,243 @@
+
+{% extends "layout.njk" %}
+
+{% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
+
+
+{% if data.invite.jobs.length %}
+  {% set theJobs = data.invite.jobs | join('<br>') %}
+{% else %}
+  {% set theJobs = '' %}
+{% endif %}
+
+
+{% set caption = 'Invite to interview'  %}
+{% set title = 'Edit and send emails' %}
+
+{% set primaryNavId = 'jobs' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobseekers/"+jobseeker.id
+  }) }}
+{% endblock %}
+
+<script>
+    // JavaScript code to find and convert URLs to links
+    var htmlContent = document.querySelector('.email-message-body p').innerHTML;
+    var urlRegex = /(https?:\/\/[^\s]+)/g;
+    var htmlWithLinks = htmlContent.replace(urlRegex, function(url) {
+        return '<a href="' + url + '">' + url + '</a>';
+    });
+    document.querySelector('.email-message-body p').innerHTML = htmlWithLinks;
+</script>
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        Edit email
+      </h2>
+
+
+          <div>
+            <p class="govuk-!-margin-bottom-0"><b>To</b></p>
+            <div class="govuk-inset-text govuk-!-margin-top-3">
+           jtaylor@name.com
+            </div>
+          </div>
+
+
+          
+
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--s" for="subject">
+              Subject
+            </label>
+            <input class="govuk-input" id="subject" name="subject" type="text" value="Update on your application for Maths teacher at Courtland school
+">
+          </div>
+
+      <div class="govuk-form-group">
+    
+          <label class="govuk-label govuk-label--s" for="customise-message-1">
+            Content
+          </label>
+
+
+      
+            <div class="govuk-inset-text govuk-!-margin-top-3">
+          Dear [applicant's first name]
+            </div>
+          </div>
+
+          
+          <textarea class="govuk-textarea" id="customise-message-1" name="customise-message-1" rows="5" >
+Thanks for your application, we would like to invite you to an interview. We really liked your application. A member of our team will be in touch in the following days to arrange an interview.
+
+Sincerley, Courtland school
+          </textarea>
+
+                    <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--s" for="subject">
+How should the applicant contact you?  (Optional)       </label>
+  <div id="event-name-hint" class="govuk-hint">
+Applicants will not be able to contact you through Teaching Vacancies. Provide an email you would like the applicant to contact you through and this will be added to your email.  </div>
+            <input class="govuk-input" id="subject" name="subject" type="text" value="hiring@courtlandprimaryschool.org.uk">
+          </div>
+  
+
+
+      <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="save" name="save" type="checkbox" value="save" checked="checked">
+            <label class="govuk-label govuk-checkboxes__label" for="save">
+              Include school or trust logo in email
+            </label>
+          </div>
+        </div>
+      <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="save" name="save" type="checkbox" value="save" checked="unchecked">
+            <label class="govuk-label govuk-checkboxes__label" for="save">
+              Email a copy to email@courtlandprimaryschool.org.uk
+            </label>
+          </div>
+        </div>
+
+
+
+
+
+<details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      View email preview
+    </span>
+  </summary>
+
+<div class="govuk-!-padding-bottom-4"></div>
+      <p>To: jtaylor@name.com</p>
+      <p>Subject: Update on your application for Maths teacher at Courtland school</p>
+        
+      <!--
+      <div class="email-message">
+
+        <table class="email-message-meta">
+          <tbody>    
+                <tr>
+                  <th scope="row">From</th>
+                  <td>
+                  {{ data ['from']}}
+                  </td>
+                </tr>
+              <tr>
+                <th scope="row">To</th>
+                <td>
+                  jtaylor@name.com
+                </td>
+              </tr>
+            <tr class="email-message-meta">
+              <th scope="row">Subject</th>
+                <td>
+                  {{ data ['subject']}}
+                </td>
+              </tr>
+          </tbody>
+        </table>
+
+      <div class="email-message-body" style="white-space: pre-wrap;"><p style="Margin: 0 0 0 0; font-size: 19px; line-height: 25px; color: #0B0C0C;">
+{{preview}}</p>
+        </div>
+
+      </div>
+-->
+
+      
+      <div class="email-message" tabindex="-1">
+            
+
+
+          <div style="padding:20px">
+            
+            <div id="email-logo">
+              <img src="{{user.organisation.logo}}" alt="Logo" width="100">
+            </div>
+            <h3 id="email-subject" class="govuk-heading-m govuk-!-margin-top-2">
+
+    
+
+            </h3>
+            <p id="email-body">
+              {% if data['customise-message-1'] %}
+                {{data['customise-message-1']}}
+              {% else %}
+Dear [applicant's first name],
+<div class="govuk-!-padding-bottom-3"></div>
+
+Thanks for your application, we would like to invite you to an interview. We really liked your application. A member of our team will be in touch in the following days to arrange an interview.
+              <br>
+              <br>
+
+              <p>Sincerley, Courtland school</p>
+              <p>Do not reply to this email. Please respond to hiring@courtlandprimaryschool.org.uk</p>
+
+          </div>
+ {% endif %}
+      </div>
+
+   
+</details>
+
+       
+      {% set includedHintHtml %}
+        
+        This will add your account email: {{user.emailAddress}} to the email being sent so you receive a carbon copy or ‘cc’.
+        
+      {% endset %}
+
+      
+
+      
+      <form method="post">
+
+              
+        <div class="govuk-button-group">
+
+          <button class="govuk-button" data-module="govuk-button">
+            
+              Send emails to applicant
+           
+          </button>
+
+        </div>
+
+
+        <p><a href="/jobseekers/{{jobseeker.id}}">Cancel</a></p>
+      </form>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
+
+
+    <script>
+        function updatePreview() {
+            const inputField = document.getElementById('inputField');
+            const preview = document.getElementById('preview');
+            preview.textContent = inputField.value;
+        }
+    </script>

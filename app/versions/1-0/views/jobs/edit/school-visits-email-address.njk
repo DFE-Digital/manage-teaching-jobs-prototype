@@ -1,0 +1,84 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Email address to arrange a school visit' %}
+{% set caption = 'Create job listing - section 4 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      {% endset %}
+
+      {% set emailAddress %}
+        {{ govukInput({
+          id: "createJob[school-visits-email-address--another]",
+          name: "createJob[school-visits-email-address--another]",
+          label: {
+            text: "Email address",
+            classes: 'govuk-label--s'
+          },
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false
+        }) }}
+      {% endset %}
+
+      <form action="/jobs/new/email-address">
+
+        {{ govukRadios({
+          idPrefix: "createJob[school-visits-email-address]",
+          name: "createJob[school-visits-email-address]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "existing.email@example.com",
+              text: "existing.email@example.com",
+              checked: checked("['createJob']['school-visits-email-address']", "existing.email@example.com")
+            },
+            {
+              value: "Another email address",
+              text: "Another email address",
+              checked: checked("['createJob']['school-visits-email-address']", "Another email address"),
+              conditional: {
+                html: emailAddress
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

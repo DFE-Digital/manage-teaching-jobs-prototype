@@ -1,0 +1,70 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Choose your application form' %}
+{% set caption = 'Create job listing - section 3 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+      <p class="govuk-body">Use Teaching Vacancies' application form for an online form compliant with <a class="govuk-link" href="https://www.gov.uk/government/publications/keeping-children-safe-in-education--2" target="_blank" rel="noopener noreferrer">Keeping children safe in education (KCSIE) guidance (opens in a new tab)</a>.</p><p class="govuk-body">Online application forms make it quicker and easier for jobseekers to apply and may lead to more applicants for your role.</p><p class="govuk-body">If the job you are listing does not require applicants to provide religious information, you can use the first application form option provided below.</p>
+
+
+
+      <form method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="signIn" name="signIn" type="radio" value="online">
+                <label class="govuk-label govuk-radios__label" for="signIn">
+                  KCSIE compliant online application form
+                </label>
+              </div>
+              
+              <div class="govuk-radios__divider">or</div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="signIn-2" name="signIn" type="radio" value="other" aria-describedby="signIn-2-item-hint">
+                <label class="govuk-label govuk-radios__label" for="signIn-2">
+                  Use other application form method
+                </label>
+                <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
+                 You'll need to provide additional details about how to apply.
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "layout.njk" %}
+
+{% if user.organisation.schools %}
+  {% set heading = 'Check details and update organisation logo' %}
+  {% set caption = 'Organisation profile' %}
+  {% set label = 'Organisation logo' %}
+  {% set buttonText = 'Update organisation logo' %}
+{% else %}
+  {% set heading = 'Check details and update organisation logo' %}
+  {% set caption = 'School profile' %}
+  {% set label = 'Organisation logo' %}
+  {% set buttonText = 'Update organisation logo' %}
+{% endif %}
+
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+      <img src="{{data.logo}}" alt="Logo" width="150">
+
+      <p class="govuk-body govuk-!-margin-bottom-1">logo.jpg, 2MB</p>
+
+      <p class="govuk-body govuk-!-margin-bottom-8"><a href="../edit">Change <span class="govuk-visually-hidden">{{label}}</span></a></p>
+
+      <form method="post">
+
+        {{ govukButton({
+          text: buttonText
+        }) }}
+
+      </form>
+
+      <p><a href="/organisation">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

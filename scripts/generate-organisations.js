@@ -3,7 +3,8 @@ const path = require('path')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 const _ = require('lodash');
-const phases = require('../app/data/phases.js')
+const versionDataDir = require('./version-data-dir')
+const phases = require(path.join(versionDataDir, 'phases.js'))
 const { v4: uuidv4 } = require('uuid')
 
 const generateSchool = (params = {}) => {
@@ -288,4 +289,4 @@ const generateOrgsFile = (filePath) => {
   )
 }
 
-generateOrgsFile(path.join(__dirname, '../app/data/organisations.json'))
+generateOrgsFile(path.join(versionDataDir, 'organisations.json'))

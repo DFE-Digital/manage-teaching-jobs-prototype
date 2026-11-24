@@ -1,0 +1,304 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Using the application form' %}
+{% set caption = 'Create job listing - section 3 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+      <p>This application form:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          provides a quick and simple experience for applicants
+        </li>
+        <li>
+          makes it easy for you to view, shortlist or reject applications in one place
+        </li>
+        <li>
+          is always up to date with the ‘keeping children safe in education’ guidelines
+        </li>
+      </ul>
+
+      {% set example %}
+        <h2 class="govuk-heading-m">
+          Personal details
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "First name"
+              },
+              value: {
+                text: "Roy"
+              }
+            },
+            {
+              key: {
+                text: "Last name"
+              },
+              value: {
+                text: "Smith"
+              }
+            },
+            {
+              key: {
+                text: "Address"
+              },
+              value: {
+                html: '50 Lawrence Street<br>London<br>N1 4SP'
+              }
+            },
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                text: "roy.smith@example.com"
+              }
+            },
+            {
+              key: {
+                text: "Phone number"
+              },
+              value: {
+                text: "07903 451 321"
+              }
+            },
+            {
+              key: {
+                text: "Teacher reference number (TRN)"
+              },
+              value: {
+                text: "1234567"
+              }
+            },
+            {
+              key: {
+                text: "National Insurance number"
+              },
+              value: {
+                text: "QQ 12 34 56 A"
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Professional status
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Do you have qualified teacher status (QTS)?"
+              },
+              value: {
+                text: "I’m on track to receive my QTS"
+              }
+            },
+            {
+              key: {
+                text: "Have you completed your statutory induction year?"
+              },
+              value: {
+                text: "Yes"
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Qualifications
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Stuff"
+              },
+              value: {
+                text: "Stuff"
+              }
+            },
+            {
+              key: {
+                text: "Stuff"
+              },
+              value: {
+                text: "Stuff"
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Work history
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Stuff"
+              },
+              value: {
+                text: "Stuff"
+              }
+            },
+            {
+              key: {
+                text: "Stuff"
+              },
+              value: {
+                text: "Stuff"
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Personal statement
+        </h2>
+
+        <p>Nunc non diam ac felis placerat vestibulum id a purus. Nam venenatis efficitur feugiat. Nunc tincidunt nulla lobortis, blandit purus quis, lacinia nisl. Donec malesuada augue eu nisl gravida, et eleifend ipsum tristique.</p>
+        <p>Quisque mollis, enim non volutpat tristique, est nibh lacinia nisi, quis varius ex enim tempor orci. Sed in dignissim ex.</p>
+
+        <h2 class="govuk-heading-m">
+          References
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Stuff"
+              },
+              value: {
+                text: "Stuff"
+              }
+            },
+            {
+              key: {
+                text: "Stuff"
+              },
+              value: {
+                text: "Stuff"
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Disability support and other needs
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Do you want to ask for support so that you can attend an interview?"
+              },
+              value: {
+                html: "Yes<br>Sit iusto voluptatum. Natus autem minima."
+              }
+            }
+          ]
+        }) }}
+
+        <h2 class="govuk-heading-m">
+          Declarations
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Do you have any family or close relationship with people within Bexleyheath Academy?"
+              },
+              value: {
+                html: "No"
+              }
+            },
+            {
+              key: {
+                text: "Do you have the right to work in the UK?"
+              },
+              value: {
+                html: "Yes"
+              }
+            }
+          ]
+        }) }}
+      {% endset %}
+
+      {{ govukDetails({
+        summaryText: "See what an application form looks like",
+        html: example
+      }) }}
+
+      <form action="/jobs/new/method" method="post">
+
+        {{ govukRadios({
+          idPrefix: "createJob[method]",
+          name: "createJob[method]",
+          fieldset: {
+            legend: {
+              html: "Do you want to use the application form?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              checked: checked("['createJob']['method']", "Yes")
+            },
+            {
+              value: "No",
+              text: "No",
+              checked: checked("['createJob']['method']", "No"),
+              hint: {
+                text: 'You’ll need to provide additional details about how to apply'
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

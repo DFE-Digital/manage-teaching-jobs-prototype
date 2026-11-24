@@ -1,0 +1,92 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Job title' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% set roleType %}{{data ['roletype'] }}{% endset %}
+
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      {% endset %}
+
+        <form action="/jobs/new/role_all" novalidate>
+
+          <div class="govuk-form-group">
+            <h1 class="govuk-heading-l">              
+              <span class="govuk-caption-l">
+                Create job listing - section 1 of 4
+              </span>
+              Job title
+            </h1>
+          </div>
+
+          <input class="govuk-input govuk-!-margin-bottom-5" id="job-title" name="job-title" type="text">
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/autocomplete/accessible-autocomplete.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+
+      // Get references to the source and target input fields
+      const sourceInput = document.getElementById('job-title');
+      const targetInput = document.getElementById('createJob[title]');
+
+      // Add an input event listener to the source input field
+      sourceInput.addEventListener('input', function() {
+          targetInput.value = sourceInput.value;
+      });
+
+      // Add a blur event listener to the source input field
+      sourceInput.addEventListener('blur', function() {
+         targetInput.value = sourceInput.value;
+      });
+
+      setTimeout(
+      function()
+      {
+        $('.autocomplete__menu').blur();
+        $('.autocomplete__menu').removeClass('autocomplete__menu--visible');
+        $('.autocomplete__menu').addClass('autocomplete__menu--hidden');
+
+      }, 100);
+
+
+    })
+  </script>
+{% endblock %}

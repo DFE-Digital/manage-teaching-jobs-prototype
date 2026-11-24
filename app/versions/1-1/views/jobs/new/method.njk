@@ -1,0 +1,104 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Choose your application form' %}
+{% set caption = 'Create job listing - section 3 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+      <!--
+      <div class="govuk-inset-text app-inset-text" style="border-color:#00703c; background:#ebf3ef">
+        <p>Take advantage of our KCSIE compliant digital form. Review, shortlist or reject applications all in one place.</p>
+
+        <div class="testimonial">
+          <div class="testimonial__image">
+            <img src="/public/images/teacher.png"/>
+          </div>
+          <div class="testimonial__text">
+            <p class="quote">
+              "The teaching vacancies form is my first choice when it comes to processing applications and getting the best choice of experienced teachers."
+            </p>
+            <p class="person">
+              <b>Jane Doe, Headteacher at Courtland trust</b>
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      -->
+
+      
+
+      <form  method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
+           
+            <p class="govuk-body">Use Teaching Vacancies' application form for an online form compliant with <a class="govuk-link" href="https://www.gov.uk/government/publications/keeping-children-safe-in-education--2">Keeping children safe in education (KCSIE) guidance</a>.</p>
+            <p class="govuk-body">Online application forms make it quicker and easier for jobseekers to apply and may lead to more applicants for your role.</p>
+            <p class="govuk-body">If the job you are listing does not require applicants to provide religious information, you can use the first application form option provided below.</p>
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="signIn" name="signIn" type="radio" value="Yes" aria-describedby="signIn-item-hint">
+                <label class="govuk-label govuk-radios__label" for="signIn">
+                  Online application form
+                  <strong class="govuk-tag govuk-tag--green">
+                    KCSIE compliant
+                  </strong>
+                </label>
+                
+                <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                  <a class="govuk-link" target="_blank" rel="noreferrer noopener" href="https://qa.teaching-vacancies.service.gov.uk/organisation/jobs/5d8d8575-ef32-4383-84f8-08c44b0ae411/form_previews/plain">Download a preview of Teaching Vacancies' application form (opens in new tab)</a>
+                </div>
+              </div>
+
+
+              <div class="govuk-radios__divider">or</div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="signIn-2" name="signIn" type="radio" value="Use other application form" aria-describedby="signIn-2-item-hint">
+                <label class="govuk-label govuk-radios__label" for="signIn-2">
+                  Use other application form
+                </label>
+                <div id="signIn-2-item-hint" class="govuk-hint govuk-radios__hint">
+                 You can upload your own form or provide a link to a website where applicants should apply.
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

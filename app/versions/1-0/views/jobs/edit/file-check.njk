@@ -1,0 +1,87 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Upload additional documents' %}
+{% set caption = 'Create job listing - section 4 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+       <h2 class="govuk-heading-m">Files added</h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "File 1"
+            },
+            value: {
+              html: '<a download href="#">job-description.pdf</a>, 2MB'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Delete",
+                  visuallyHiddenText: "file 1"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <form action="/jobs/new/file-check" method="post">
+
+        {{ govukRadios({
+          idPrefix: "createJob[add-another-file]",
+          name: "createJob[add-another-file]",
+          fieldset: {
+            legend: {
+              text: "Do you want to upload another document?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

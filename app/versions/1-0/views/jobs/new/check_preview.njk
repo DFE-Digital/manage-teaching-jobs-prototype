@@ -1,0 +1,179 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Preview job' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row old-design">
+		<div class="govuk-grid-column-full">
+			<div class="app-logo-title">
+				<div class="app-logo-title__image"><img src="https://loremflickr.com/100/100/construction"></div>
+				<div class="app-logo-title__tex">
+					<h1 class="govuk-heading-xl govuk-!-margin-bottom-0">Lecturer in construction</h1><span class="govuk-caption-l">Greenwood College</span>
+				</div>
+			</div>
+			<div class="govuk-grid-row banner-buttons govuk-!-margin-bottom-7">
+				<div class="govuk-grid-column-one-third">
+					<button class="banner-button-component__button icon icon--left icon--alert-blue" type="submit">Get a job alert for similar jobs</button>
+				</div>
+				<div class="govuk-grid-column-one-third">
+					<button class="banner-button-component__button icon icon--left icon--save" type="submit">Save this job for later</button>
+				</div>
+			</div>
+		</div>
+		<div class="govuk-grid-column-one-third">
+			<div class="timeline-component">
+				<h3 class="govuk-heading-s">16 days remaining to apply</h3>
+				<ul class="timeline-component__items">
+					<li class="timeline-component__item">
+						<h4 class="timeline-component__key govuk-heading-s">Closing date</h4>
+						<p class="timeline-component__value govuk-body">15 December 2026 at 5pm</p>
+					</li>
+					<li class="timeline-component__item">
+						<h4 class="timeline-component__key govuk-heading-s">Date listed</h4>
+						<p class="timeline-component__value govuk-body">10 January 2024</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="govuk-grid-column-two-thirds">
+			<h2 class="govuk-heading-l govuk-!-margin-bottom-5">Job details</h2>
+			<hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-top-2">
+			<h2 class="govuk-heading-l govuk-!-margin-bottom-5"></h2>
+			
+
+			<dl class="govuk-summary-list">
+                <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Job role</dt>
+                        <dd class="govuk-summary-list__value">Teacher or lecturer</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Subject</dt>
+                        <dd class="govuk-summary-list__value">Civil Engineering</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Working pattern</dt>
+                        <dd class="govuk-summary-list__value">
+                            <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+                                <li class="govuk-!-margin-bottom-0">Full time -</li>
+                            </ul>
+                        </dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Job start date</dt>
+                        <dd class="govuk-summary-list__value">10 January 2024</dd>
+                </div>
+                <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__key">Actual salary</dt>
+                        <dd class="govuk-summary-list__value">£31,000 - £34,000</dd>
+                </div>
+			</dl>
+
+
+			<h2 class="govuk-heading-m">What skills and experience we’re looking for</h2>
+			<div class="app-prose govuk-!-margin-bottom-6">
+				<p>The successful candidate will have strong subject knowledge in construction or a related discipline, with experience teaching or training learners in a further education or vocational setting. You will be confident delivering practical and classroom-based sessions, assessing learner work, and supporting students to develop both technical skills and industry readiness. Experience with curriculum planning, assessment, and working with awarding bodies is highly desirable.</p>
+			</div>
+			<h2 class="govuk-heading-m">What the <span style="text-transform:lowercase;">college</span> offers its staff</h2>
+			<div class="app-prose govuk-!-margin-bottom-6">
+				<ul>
+					<li>A supportive and collaborative college environment</li>
+					<li>Modern construction workshops and teaching facilities</li>
+					<li>Opportunities for professional development and teaching qualifications</li>
+					<li>Strong links with local employers and industry partners</li>
+					<li>The chance to support learners progressing into apprenticeships, employment, or further study.</li>
+				</ul>
+			</div>
+			<h2 class="govuk-heading-m">Arrange a visit</h2>
+			<p>To arrange a visit and increase the chance of a successful application, email <a href="mailto:"></a>.</p>
+			<h2 class="govuk-heading-m">Further information about the job</h2>
+			<div class="app-prose">
+				<p>Applicants should hold a relevant degree, HNC/HND, or industry-recognised qualification in construction or a related trade. A recognised teaching qualification, or willingness to work towards one, is desirable. Recent industry experience and knowledge of health and safety requirements would be an advantage. An enhanced DBS check will be required.</p>
+			</div>
+			<h2 class="govuk-heading-m" id="apply">Apply for the job</h2>
+			<p>Apply through the <span style="text-transform:lowercase;">college</span> website.</p>
+			<div class="govuk-inset-text">
+				Skilled worker visa sponsorship is not available for this job.
+			</div><button class="govuk-button" data-module="govuk-button">Apply through website</button>
+			<h2 class="govuk-heading-l">About the <span style="text-transform:lowercase;">college</span></h2>
+			<dl class="govuk-summary-list">
+				<dd>
+					<div class="govuk-summary-list__row">
+						<dl>
+							<dt class="govuk-summary-list__key">Name</dt>
+							<dd class="govuk-summary-list__value">Greenwood College</dd>
+						</dl>
+					</div>
+					<div class="govuk-summary-list__row">
+						<dl>
+							<dt class="govuk-summary-list__key">Address</dt>
+							<dd class="govuk-summary-list__value">32 Grove Street</dd>
+						</dl>
+					</div>
+					<div class="govuk-summary-list__row">
+						<dl>
+							<dt class="govuk-summary-list__key">Type</dt>
+							<dd class="govuk-summary-list__value">College</dd>
+						</dl>
+					</div>
+					<div class="govuk-summary-list__row">
+						<dl>
+							<dt class="govuk-summary-list__key">Education phase</dt>
+							<dd class="govuk-summary-list__value">Further education</dd>
+						</dl>
+					</div>
+					<div class="govuk-summary-list__row">
+						<dl>
+							<dt class="govuk-summary-list__key">Age group</dt>
+							<dd class="govuk-summary-list__value">16 to 19</dd>
+						</dl>
+					</div>
+					<div class="govuk-summary-list__row">
+						<dl>
+							<dt class="govuk-summary-list__key">Size</dt>
+							<dd class="govuk-summary-list__value">400 pupils enrolled</dd>
+						</dl>
+					</div>
+					<div class="govuk-summary-list__row">
+						<dl>
+							<dt class="govuk-summary-list__key">Ofsted report</dt>
+							<dd class="govuk-summary-list__value">
+								<a href="#">View Ofsted report (opens in new tab)</a>
+							</dd>
+						</dl>
+					</div>
+					<div class="govuk-summary-list__row">
+						<dl>
+							<dt class="govuk-summary-list__key">Email address</dt>
+							<dd class="govuk-summary-list__value">
+								<a href="recruitment@greenwoodcollege.ac.uk">recruitment@greenwoodcollege.ac.uk</a>
+							</dd>
+						</dl>
+					</div>
+					<div class="govuk-summary-list__row">
+						<dl>
+							<dt class="govuk-summary-list__key">Website</dt>
+							<dd class="govuk-summary-list__value">
+								<a href="http://greenwoodcollege.ac.uk">http://greenwoodcollege.ac.uk (opens in new tab)</a>
+							</dd>
+						</dl>
+					</div>
+				</dd>
+			</dl>
+			<h2 class="govuk-heading-m">Location and map</h2>
+			<p>32 Grove Street, <span style="text-transform: uppercase;">5 1GF</span>.</p>
+			<div class="app-map"><img src="/public/images/maps/single.png"></div>
+			<hr>
+			<section>
+				<p class="icon icon--left icon--alert-blue govuk-!-margin-top-7" style="background-repeat: no-repeat; padding-left:30px"><a class="govuk-link" href="/jobsfeonly_alert">Get a job alert</a> when similar jobs are listed</p>
+			</section>
+		</div>
+	</div>
+
+{% endblock %}

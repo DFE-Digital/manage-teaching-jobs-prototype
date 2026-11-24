@@ -1,0 +1,78 @@
+
+{% extends "layout.njk" %}
+
+{% set title = 'Candidate profiles (0)' %}
+
+{% set primaryNavId = 'jobseekers' %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">
+          {{title}}
+        </h1>
+
+    </div>
+  </div>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <div class="app-filter-layout__filter">
+      {% include "includes/profiles-filter-panel.njk" %}
+    </div>
+
+</div>
+
+
+   <div id="search-results" class="govuk-grid-column-two-thirds">
+
+        <div class="govuk-grid-column-">
+            <h2 class="govuk-heading-m">No candidates found</h2>
+            <p class="govuk-body">This may be because:</p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>candidates have not turned on their profile</li>
+                <li>candidates are outside of the role's location</li>
+            </ul>
+            <p class="govuk-body">You may get more results if you remove some filters, if you have used them.</p>
+        </div>
+
+    </div>
+    
+  </div>
+
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+
+    new AppFrontend.CheckboxFilter({
+      container: $('#subjects'),
+      textBox: {
+        label: 'Search for subject'
+      }
+    })
+
+  </script>
+{% endblock %}

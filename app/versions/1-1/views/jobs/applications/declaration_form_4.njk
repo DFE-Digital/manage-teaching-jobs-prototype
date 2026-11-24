@@ -1,0 +1,198 @@
+{% extends "layout_email.njk" %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+
+    <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-full">
+
+
+                  <span class="govuk-caption-m">Part 4 of 4</span>
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+Self-disclosure form
+       
+            </h1>
+       
+
+   <div class="govuk-grid-column-two-thirds">
+              <div class="govuk-grid-row">
+    
+              
+
+<h2 class="govuk-heading-m">Confirmation of declaration</h2>
+
+ <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+    <div id="waste-hint" class="govuk-hint">
+      Select all options in order to complete the declaration. You may be asked for a wet signature at your interview.
+    </div>
+    <div class="govuk-checkboxes--small" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+        <label class="govuk-label govuk-checkboxes__label" for="waste">
+         I agree that the information provided here may be processed in connection
+with recruitment purposes and I understand that an offer of employment may
+be withdrawn or disciplinary action may be taken if information is not
+disclosed by me and subsequently come to the organisation’s attention.
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="mines">
+        <label class="govuk-label govuk-checkboxes__label" for="waste-2">
+In accordance with the organisation’s procedures if required I agree to
+provide a valid criminal record certificate and consent to the organisation
+clarifying any information provided on the disclosure with the agencies
+providing it.
+        </label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+        <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+I agree to inform the organisation within 24 hours if I am subsequently
+investigated by any agency or organisation in relation to concerns about my
+behaviour towards children or young people.
+        </label>
+      </div>
+
+            <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="farm">
+        <label class="govuk-label govuk-checkboxes__label" for="waste-3">
+I understand that the information contained on this form, the results of the
+criminal record check and information supplied by third parties may be
+supplied by the organisation to other persons or organisations in
+circumstances where this is considered necessary to safeguard children.
+        </label>
+      </div>
+
+    </div>
+  </fieldset>
+</div>  <br>
+
+
+    <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">Signature</h1>
+        </legend>
+
+        <div class="govuk-hint">
+            Please provide your signature below.
+        </div>
+
+        <canvas id="signature-pad" width="400" height="200" class="signature-box"></canvas>
+
+        <br>
+<style>
+    .govuk-button-spacing {
+        margin-right: 20px; /* Adjust the value as needed */
+    }
+</style>
+
+<button type="button" class="govuk-button govuk-button--secondary govuk-button-spacing" onclick="clearCanvas()">Clear</button>
+<button type="button" class="govuk-button govuk-button--secondary" onclick="saveSignature()">Save signature</button>
+
+    </fieldset>
+</div>
+
+<style>
+    .signature-box {
+        display: block;
+        width: 400px;
+        height: 200px;
+        border: 2px solid #0b0c0c; /* GOV.UK black border */
+        background-color: white;
+        cursor: crosshair;
+        touch-action: none; /* Prevent scrolling while signing */
+    }
+</style>
+
+<script>
+    const canvas = document.getElementById('signature-pad');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+
+    function getPosition(event) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+            x: (event.clientX || event.touches[0].clientX) - rect.left,
+            y: (event.clientY || event.touches[0].clientY) - rect.top
+        };
+    }
+
+    function startDrawing(event) {
+        event.preventDefault();
+        drawing = true;
+        const { x, y } = getPosition(event);
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+    }
+
+    function draw(event) {
+        event.preventDefault();
+        if (!drawing) return;
+        const { x, y } = getPosition(event);
+        ctx.lineTo(x, y);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+    }
+
+    function stopDrawing() {
+        drawing = false;
+        ctx.closePath();
+    }
+
+    function clearCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function saveSignature() {
+        alert("Signature saved. It will remain on the canvas)");
+    }
+
+    clearCanvas();
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+    canvas.addEventListener('touchstart', startDrawing);
+    canvas.addEventListener('touchmove', draw);
+    canvas.addEventListener('touchend', stopDrawing);
+</script>
+
+</body>
+   <br>
+   
+
+
+
+<div class="govuk-button-group">
+  <a href="/jobs/applications/declaration_form_confirmation_page" button type="submit" class="govuk-button" data-module="govuk-button">
+    Submit declaration
+  </button>
+  <a class="govuk-link" href="#">Cancel</a>
+</div>
+
+
+
+
+                </div>
+
+    </div>
+    
+    
+
+  
+
+{% endblock %}
+

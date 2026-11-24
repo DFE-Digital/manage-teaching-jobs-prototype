@@ -1,0 +1,96 @@
+{% extends "layout.njk" %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation app-documentation-job-listing-flow" %}
+
+{% block pageTitle %}
+  {{ guide.pageTitle }} - Documentation - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      { text: "Home", href: "/" },
+      { text: "Documentation", href: "/documentation/about" },
+      { text: guide.pageTitle }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <a class="govuk-back-link" href="/documentation/about">Back to documentation contents</a>
+
+  <h1 class="govuk-heading-xl govuk-!-margin-top-4 govuk-!-margin-bottom-2">{{ guide.pageTitle }}</h1>
+  <p class="govuk-body-l">{{ guide.lead }}</p>
+
+  <p class="govuk-body">
+    Start the flow from
+    <a class="govuk-link" href="{{ guide.entryHref }}">Create a job listing</a>
+    (<code class="govuk-body-s">{{ guide.entryExample }}</code> signs you in as Courtland Primary).
+  </p>
+
+  <h2 class="govuk-heading-l">Journey steps</h2>
+  <p class="govuk-body">Rows follow the service map order (HS1–HS22). Optional screens are marked. <strong>Open</strong> links jump to that screen signed in as Rachael at Courtland Primary. Main routes live under <code class="govuk-body-s">app/views/jobs/new/</code> with POST branching in <code class="govuk-body-s">app/routes/job-create.js</code>.</p>
+
+  <table class="govuk-table app-job-listing-flow__table">
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header">Step <span class="govuk-visually-hidden">(colour matches legend)</span></th>
+        <th scope="col" class="govuk-table__header">Screen</th>
+        <th scope="col" class="govuk-table__header app-job-listing-flow__route-col" hidden>Prototype route</th>
+        <th scope="col" class="govuk-table__header">Open</th>
+      </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+      {% for step in guide.steps %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell app-job-listing-flow__step-cell">
+            <span class="app-job-listing-flow-legend__swatch app-job-listing-flow-legend__swatch--{{ step.type }}" aria-hidden="true"></span>
+            {{ step.id }}<span class="govuk-visually-hidden"> — {{ step.type }}</span>
+          </td>
+          <td class="govuk-table__cell">
+            {{ step.name }}{% if step.optional %} (optional){% endif %}{% if step.note %} — {{ step.note }}{% endif %}
+          </td>
+          <td class="govuk-table__cell govuk-!-font-size-16 app-job-listing-flow__route-col" hidden>{{ step.route }}</td>
+          <td class="govuk-table__cell">
+            {% if step.openHref %}
+              <a class="govuk-link" href="{{ step.openHref }}" target="_blank" rel="noopener noreferrer">Open<span class="govuk-visually-hidden"> {{ step.id }} {{ step.name }}</span></a>
+              {% if step.extraLinks and step.extraLinks.length %}
+                {% for link in step.extraLinks %}
+                  <br><a class="govuk-link govuk-!-font-size-16" href="{{ link.href }}" target="_blank" rel="noopener noreferrer">{{ link.label }}</a>
+                {% endfor %}
+              {% endif %}
+            {% else %}
+              Not linked
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 class="govuk-heading-l">Other application paths</h2>
+  <p class="govuk-body govuk-!-margin-bottom-2">If the publisher chooses a non-KCSIE online form or offline applications after HS16, the prototype continues through:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li><a class="govuk-link" href="/jobs/new/process{{ guide.userQuery }}" target="_blank" rel="noopener noreferrer">How to receive applications</a> (<code class="govuk-body-s">/jobs/new/process</code>)</li>
+    <li><a class="govuk-link" href="/jobs/new/form{{ guide.userQuery }}" target="_blank" rel="noopener noreferrer">Upload application form</a> (<code class="govuk-body-s">/jobs/new/form</code>)</li>
+    <li><a class="govuk-link" href="/jobs/new/link{{ guide.userQuery }}" target="_blank" rel="noopener noreferrer">Link to website</a> (<code class="govuk-body-s">/jobs/new/link</code>)</li>
+  </ul>
+
+  <h2 class="govuk-heading-l govuk-!-margin-top-6">Improvements</h2>
+  <p class="govuk-body">
+    <a class="govuk-link" href="/documentation/job-listing-flow-improvements">Job listing flow — improvements</a>
+    — step-by-step UX and content recommendations using GOV.UK patterns and the Service Standard.
+  </p>
+
+  <h2 class="govuk-heading-l govuk-!-margin-top-6">Legend</h2>
+  <ul class="govuk-list govuk-!-margin-bottom-6 app-job-listing-flow-legend">
+    <li><span class="app-job-listing-flow-legend__swatch app-job-listing-flow-legend__swatch--all"></span> All journeys</li>
+    <li><span class="app-job-listing-flow-legend__swatch app-job-listing-flow-legend__swatch--start"></span> Start journey (HS2)</li>
+    <li><span class="app-job-listing-flow-legend__swatch app-job-listing-flow-legend__swatch--kcsie"></span> KCSIE option (HS16)</li>
+    <li><span class="app-job-listing-flow-legend__swatch app-job-listing-flow-legend__swatch--content-debt"></span> Content debt (HS11)</li>
+    <li><span class="app-job-listing-flow-legend__swatch app-job-listing-flow-legend__swatch--design-debt"></span> Design debt (HS5)</li>
+    <li><span class="app-job-listing-flow-legend__swatch app-job-listing-flow-legend__swatch--end"></span> End journey — check and publish (HS21)</li>
+  </ul>
+{% endblock %}

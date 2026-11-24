@@ -1,0 +1,288 @@
+
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobseekers' %}
+
+{% set subNavId = 'candidateProfile' %}
+
+{% set title = [jobseeker.profile.firstName, jobseeker.profile.lastName] | join(' ') %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  {% set teachingStatus %}
+    {% if jobseeker.profile.qts == 'Yes' %}
+      QTS awarded in {{jobseeker.profile.qtsAwardedYear}}.
+    {% elseif jobseeker.profile.qts == 'I’m on track to receive QTS' %}
+      On track to receive QTS.
+    {% else %}
+      Does not have QTS.
+    {% endif %}
+  {% endset %}
+
+  {% set locations %}
+    {% for item in jobseeker.profile.locations %}
+      {{item.location}} ({{item.radius}})
+      {%- if not loop.last -%}
+      ,
+      {%- endif -%}
+    {% endfor %}
+  {% endset %}
+
+  <div class="govuk-grid-row ">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-2">
+        {{title}}
+      </h1>
+      {% set currentJob %}{% for item in jobseeker.profile.workHistory %}{% if item.currentRole == 'Yes' %}{{item.role}}{% else %}{% endif %}{% endfor %}{% endset %}
+      {% set latestJob %}{% for item in jobseeker.profile.workHistory %}{% if loop.last %}{{item.role}}{% else %}{% endif %}{% endfor %}{% endset %}
+
+      {% if currentJob %}
+        <span class="govuk-caption-l govuk-!-margin-top-0 govuk-!-margin-bottom-4">{{currentJob}}</span>
+      {% else %}
+        <span class="govuk-caption-l govuk-!-margin-top-0 govuk-!-margin-bottom-4">Previously {{latestJob}}</span>
+      {% endif %}
+
+      {# <p><a href="/jobseekers/{{jobseeker.id}}/invites/new">Invite to apply for a job</a></p> #}
+
+        <div class="govuk-button-group">
+        
+          <a target="_blank" href="mailto:{{jobseeker.emailAddress}}" role="button" draggable="false" class="govuk-button govuk-!-margin-bottom-2" data-module="govuk-button">
+            {{jobseeker.emailAddress}} 
+          </a>
+
+          <a id="copy-email" href="#" role="button" draggable="false" class="govuk-button govuk-button--secondary govuk-!-margin-bottom-2" data-module="govuk-button">
+              Copy email <span class="govuk-visually-hidden">address {{jobseeker.emailAddress}}</span>
+          </a>
+
+        </div>
+        
+        {% if showQTS %}
+          <p class="govuk-!-margin-bottom-5">{{teachingStatus}}</p>
+        {% endif %}
+
+    </div>
+  </div>
+  
+
+  <div class="govuk-grid-row ">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      {# <div class="govuk-button-group">
+
+        <p><a href="/jobseekers/{{jobseeker.id}}/invites">Previous invitations</a></p>
+      </div> #}
+
+     
+      <div class="app-profile__section app-profile__section--first">
+        <h2 class="govuk-heading-m govuk-!-font-size-27">
+          Contact details
+        </h2>
+
+        {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Email address"
+                },
+                value: {
+                  html: '<span id="email-address" class="govuk-!-margin-right-1">' + jobseeker.emailAddress + '</span>'
+                }
+              },
+              {
+                key: {
+                  text: "Phone number"
+                },
+                value: {
+                  html: '<a href="tel:'+ jobseeker.profile.phoneNumber + '">'+ jobseeker.profile.phoneNumber + '</a>'
+                }
+              } if jobseeker.profile.phoneNumber
+            ]
+          }) }}
+      </div>
+
+      {% if jobseeker.profile.roles %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Job preferences
+          </h2>
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Qualified teaching status (QTS)"
+                },
+                value: {
+                  text: teachingStatus
+                }
+              } if teachingStatus | trim | length and 1 == 2,
+              {             
+                key: {
+                  text: "Preferred roles"
+                },
+                value: {
+                  text: jobseeker.profile.roles | join(', ')
+                }
+              } if jobseeker.profile.roles,
+              {
+                key: {
+                  text: "Education phase"
+                },
+                value: {
+                  text: jobseeker.profile.phases | join(', ')
+                }
+              } if jobseeker.profile.phases,
+              {
+                key: {
+                  text: "Key stages"
+                },
+                value: {
+                  text: jobseeker.profile.keyStages | join(', ') | capitalize
+                }
+              } if jobseeker.profile.keyStages,
+              {
+                key: {
+                  text: "Subjects"
+                },
+                value: {
+                  text: jobseeker.profile.subjects
+                }
+              } if jobseeker.profile.subjects,
+              {
+                key: {
+                  text: "Working pattern"
+                },
+                value: {
+                  text: jobseeker.profile.workingPatterns
+                }
+              } if jobseeker.profile.workingPatterns
+            ]
+          }) }}
+        </div>
+      {% endif %}
+
+      {% if jobseeker.profile.about %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            About
+          </h2>
+
+          <p>{{jobseeker.profile.about | nl2br | safe }}</p>
+        </div>
+      {% endif %}
+
+
+
+
+
+      {# {% if jobseeker.profile.qts %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Qualified teaching status (QTS)
+          </h2>
+
+
+
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "QTS"
+                },
+                value: {
+                  text: teachingStatus
+                }
+              } if teachingStatus | trim | length
+            ]
+          }) }}
+        </div>
+      {% endif %} #}
+
+
+
+
+
+      {% if workHistory.length %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Work history
+          </h2>
+          <div class="app-list">
+            {% for item in workHistory %}
+              <div class="app-list__item {% if loop.first %}app-list__item--first{% endif %} {% if loop.last %}app-list__item--last{% endif %}">
+                <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-0">
+                  {{item.employer}}
+                </h3>
+                <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{item.role}}</p>
+                <p class="govuk-!-margin-bottom-0 govuk-!-margin-top0">{{item.roleSubject}}</p>
+                <p class="govuk-caption-m govuk-!-margin-bottom-0">
+                  {{item.startDate | monthYear}}
+                  to
+                  {% if item.endDate %}
+                    {{item.endDate | monthYear}}
+                  {% else %}
+                    present
+                  {% endif %}
+                </p>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if jobseeker.profile.qualifications %}
+        <div class="app-profile__section">
+          <h2 class="govuk-heading-m govuk-!-font-size-27">
+            Qualifications
+          </h2>
+          <div class="app-qualifications">
+            {% for key, type in qualificationsGroup %}
+              <div class="app-qualifications__item {% if loop.first %}app-qualifications__item--first{% endif %} {% if loop.last %}app-qualifications__item--last{% endif %}">
+                <h3 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-1">
+                  {{key}}s
+                </h3>
+
+                {% for key, qualifications in type %}
+
+                  <div class="app-qualifications__item-section">
+
+                    <p class="govuk-!-margin-bottom-1">
+                      {% for qualification in qualifications %}
+                        {{qualification.subject}}
+                        {%- if qualification.grade %}
+                          ({{qualification.grade}})
+                        {%- else %}
+                          {% if qualification.type == 'Degree' %}
+                            (not finished yet)
+                          {% endif %}
+                        {%- endif %}
+                        {%- if not loop.last %},{% endif%}
+                      {% endfor %}
+                    </p>
+
+                    <p class="govuk-caption-m govuk-!-margin-bottom-0">
+                      {{qualifications[0].organisation}}
+                      {%- if qualifications[0].year -%}
+                        , {{qualifications[0].year}}
+                      {%- endif %}
+                    </p>
+                  </div>
+
+                {% endfor%}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock %}

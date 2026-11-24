@@ -1,0 +1,60 @@
+
+{% extends "layout.njk" %}
+
+{% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
+
+{% set caption =  name + ' - send custom email'  %}
+
+{% set title = 'Customise your message' %}
+
+{% set primaryNavId = 'jobseekers' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobseekers/"+jobseeker.id
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+
+        <div class="govuk-form-group">
+          <span class="govuk-caption-l">
+            {{caption}}
+          </span>
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="customise-message-1">
+              Customise email
+            </label>
+          </h1>
+<textarea class="govuk-textarea" id="customise-message-1" name="customise-message-1" rows="8" >
+Dear {{jobseeker.profile.firstName}}, Rachael at {{user.organisation.name}} has reviewed your profile. 
+
+You can contact {{user.organisation.name}} by emailing: {{user.emailAddress}}
+
+</textarea>
+        </div>
+
+        <div class="govuk-button-group">
+
+          <button class="govuk-button" data-module="govuk-button">
+            Save and preview
+          </button>
+
+        </div>
+
+
+        <p><a href="/jobseekers/{{jobseeker.id}}">Cancel</a></p>
+      </form>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+
+{% extends "layout.njk" %}
+
+{% set heading = 'Sign in' %}
+
+{% set title = heading %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Teaching AI
+      </h1>
+
+      <img src="https://strategyeducation.co.uk/wp-content/uploads/2018/03/Does-AI-pose-a-threat-to-teachers.jpg"style="max-width:500px;">
+
+      <form action="year">
+
+        <p style="margin-top:50px;">
+
+        Welcome to the future of learning, where knowledge meets innovation! Meet our cutting-edge teaching AI bot, an unparalleled virtual guide designed to ignite your curiosity and empower your intellect. 🚀
+        </P>
+
+<p>Embark on a journey of discovery as this intelligent companion becomes your virtual mentor, offering personalized lessons tailored to your unique learning style. With its vast repository of information and adaptive teaching techniques, this AI bot is more than just a tutor – it's a companion on your quest for knowledge.</p>
+
+
+        {{ govukButton({
+          text: "Generate a lesson plan"
+        }) }}
+
+
+
+
+      </form>
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

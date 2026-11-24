@@ -2,22 +2,23 @@
 
 const request = require('supertest')
 const app = require('../../server')
+const V = '/1-0'
 
 describe('account sign in', () => {
   it('signs in without an email or password', async () => {
     const response = await request(app)
-      .post('/account/sign-in')
+      .post(`${V}/account/sign-in`)
       .type('form')
       .send({})
 
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/home')
+    expect(response.headers.location).toBe(`${V}/home`)
   })
 
   it('signs in as the email address that was submitted', async () => {
     const agent = request.agent(app)
     const response = await agent
-      .post('/account/sign-in')
+      .post(`${V}/account/sign-in`)
       .type('form')
       .send({
         emailAddress: 'rachael@courtland.sch.uk',
@@ -26,9 +27,9 @@ describe('account sign in', () => {
       })
 
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/jobs')
+    expect(response.headers.location).toBe(`${V}/jobs`)
 
-    const jobs = await agent.get('/jobs')
+    const jobs = await agent.get(`${V}/jobs`)
     expect(jobs.status).toBe(200)
     expect(jobs.text).toContain('userEmailAddress=rachael@courtland.sch.uk')
     expect(jobs.text).not.toContain('userEmailaddress')
@@ -37,7 +38,7 @@ describe('account sign in', () => {
 
   it('ignores an off-site return URL', async () => {
     const response = await request(app)
-      .post('/account/sign-in')
+      .post(`${V}/account/sign-in`)
       .type('form')
       .send({
         emailAddress: 'rachael@courtland.sch.uk',
@@ -46,17 +47,17 @@ describe('account sign in', () => {
       })
 
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/home')
+    expect(response.headers.location).toBe(`${V}/home`)
   })
 
   it('redirects to the v2 welcome landing after sign-in', async () => {
     const agent = request.agent(app)
     const signIn = await agent
-      .post('/account/sign-in')
+      .post(`${V}/account/sign-in`)
       .type('form')
       .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
 
-    expect(signIn.headers.location).toBe('/home')
+    expect(signIn.headers.location).toBe(`${V}/home`)
 
     const landing = await agent.get(signIn.headers.location)
     expect(landing.status).toBe(200)
@@ -69,11 +70,11 @@ describe('job applications', () => {
   it('shows the job title in the h1 for the signed-in organisation', async () => {
     const agent = request.agent(app)
     await agent
-      .post('/account/sign-in')
+      .post(`${V}/account/sign-in`)
       .type('form')
       .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
 
-    const response = await agent.get('/jobs/686355/applications')
+    const response = await agent.get(`${V}/jobs/686355/applications`)
     expect(response.status).toBe(200)
     expect(response.text).toContain('Science lecturer')
   })
@@ -81,18 +82,18 @@ describe('job applications', () => {
   it('redirects when the job does not belong to the signed-in organisation', async () => {
     const agent = request.agent(app)
     await agent
-      .post('/account/sign-in')
+      .post(`${V}/account/sign-in`)
       .type('form')
       .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
 
-    const response = await agent.get('/jobs/000000/applications')
+    const response = await agent.get(`${V}/jobs/000000/applications`)
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/jobs')
+    expect(response.headers.location).toBe(`${V}/jobs`)
   })
 
   it('sends sign-in with returnUrl /interruptions/profiles to home', async () => {
     const response = await request(app)
-      .post('/account/sign-in')
+      .post(`${V}/account/sign-in`)
       .type('form')
       .send({
         emailAddress: 'rachael@courtland.sch.uk',
@@ -101,7 +102,7 @@ describe('job applications', () => {
       })
 
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/home')
+    expect(response.headers.location).toBe(`${V}/home`)
   })
 })
 
@@ -109,20 +110,20 @@ describe('organisation profile', () => {
   it('updates organisation logo without the check page', async () => {
     const agent = request.agent(app)
     await agent
-      .post('/account/sign-in')
+      .post(`${V}/account/sign-in`)
       .type('form')
       .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
 
     const orgId = 'ea4959ee-de5a-4f6b-a657-40a5ec15b794'
     const response = await agent
-      .post(`/organisation/${orgId}/logo/edit`)
+      .post(`${V}/organisation/${orgId}/logo/edit`)
       .type('form')
       .send({})
 
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/organisation')
+    expect(response.headers.location).toBe(`${V}/organisation`)
 
-    const profile = await agent.get('/organisation')
+    const profile = await agent.get(`${V}/organisation`)
     expect(profile.text).toContain('Organisation logo updated')
     expect(profile.text).toContain('Organisation logo')
     expect(profile.text).toContain('Organisation photo')
@@ -131,12 +132,12 @@ describe('organisation profile', () => {
   it('renders school profile preview with summary and job alert', async () => {
     const agent = request.agent(app)
     await agent
-      .post('/account/sign-in')
+      .post(`${V}/account/sign-in`)
       .type('form')
       .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
 
     const orgId = 'ea4959ee-de5a-4f6b-a657-40a5ec15b794'
-    const response = await agent.get(`/organisation/${orgId}/preview`)
+    const response = await agent.get(`${V}/organisation/${orgId}/preview`)
     expect(response.status).toBe(200)
     expect(response.text).toContain('Edit preview')
     expect(response.text).toContain('School name')
@@ -147,11 +148,11 @@ describe('organisation profile', () => {
   it('shows incomplete school profile when ?incomplete is set', async () => {
     const agent = request.agent(app)
     await agent
-      .post('/account/sign-in')
+      .post(`${V}/account/sign-in`)
       .type('form')
       .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
 
-    const response = await agent.get('/organisation?incomplete')
+    const response = await agent.get(`${V}/organisation?incomplete`)
     expect(response.status).toBe(200)
     expect(response.text).toContain('Complete your school profile')
     expect(response.text).toContain('Enter an email address')
@@ -165,15 +166,15 @@ describe('profiles interruption', () => {
   it('redirects /interruptions/profiles to home', async () => {
     const agent = request.agent(app)
     await agent
-      .post('/account/sign-in')
+      .post(`${V}/account/sign-in`)
       .type('form')
       .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
 
-    const response = await agent.get('/interruptions/profiles')
+    const response = await agent.get(`${V}/interruptions/profiles`)
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/home')
+    expect(response.headers.location).toBe(`${V}/home`)
 
-    const landing = await agent.get('/home')
+    const landing = await agent.get(`${V}/home`)
     expect(landing.text).toContain('We have retired candidate profiles')
     expect(landing.text).not.toContain('The candidate profiles feature has been retired')
   })
@@ -181,23 +182,23 @@ describe('profiles interruption', () => {
   it('redirects /interruptions/profiles?v2 to home', async () => {
     const agent = request.agent(app)
     await agent
-      .post('/account/sign-in')
+      .post(`${V}/account/sign-in`)
       .type('form')
       .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
 
-    const response = await agent.get('/interruptions/profiles?v2')
+    const response = await agent.get(`${V}/interruptions/profiles?v2`)
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/home')
+    expect(response.headers.location).toBe(`${V}/home`)
   })
 
   it('renders the welcome home page with page header actions', async () => {
     const agent = request.agent(app)
     await agent
-      .post('/account/sign-in')
+      .post(`${V}/account/sign-in`)
       .type('form')
       .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
 
-    const response = await agent.get('/home')
+    const response = await agent.get(`${V}/home`)
     expect(response.status).toBe(200)
     expect(response.text).toContain('app-profiles-welcome-banner')
     expect(response.text).toContain('We have retired candidate profiles')
@@ -219,7 +220,7 @@ describe('candidate and application routes', () => {
   async function signedInAgent () {
     const agent = request.agent(app)
     await agent
-      .post('/account/sign-in')
+      .post(`${V}/account/sign-in`)
       .type('form')
       .send({ emailAddress: 'rachael@courtland.sch.uk', password: 'tv' })
     return agent
@@ -227,21 +228,21 @@ describe('candidate and application routes', () => {
 
   it('clears candidate filters without crashing', async () => {
     const agent = await signedInAgent()
-    const response = await agent.get('/jobseeker-clear')
+    const response = await agent.get(`${V}/jobseeker-clear`)
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/jobseekers')
+    expect(response.headers.location).toBe(`${V}/jobseekers`)
   })
 
   it('redirects when a candidate is not on the signed-in account', async () => {
     const agent = await signedInAgent()
-    const response = await agent.get('/jobseekers/does-not-exist')
+    const response = await agent.get(`${V}/jobseekers/does-not-exist`)
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/jobseekers')
+    expect(response.headers.location).toBe(`${V}/jobseekers`)
   })
 
   it('shows a candidate who belongs to the signed-in school', async () => {
     const agent = await signedInAgent()
-    const response = await agent.get('/jobseekers/658653')
+    const response = await agent.get(`${V}/jobseekers/658653`)
     expect(response.status).toBe(200)
     expect(response.text).toContain('Adriana')
   })
@@ -249,11 +250,11 @@ describe('candidate and application routes', () => {
   it('does not crash when updating a missing application', async () => {
     const agent = await signedInAgent()
     const response = await agent
-      .post('/jobs/application/tag/does-not-exist')
+      .post(`${V}/jobs/application/tag/does-not-exist`)
       .type('form')
       .send({ tag: 'Shortlisted' })
 
     expect(response.status).toBe(302)
-    expect(response.headers.location).toBe('/jobs')
+    expect(response.headers.location).toBe(`${V}/jobs`)
   })
 })

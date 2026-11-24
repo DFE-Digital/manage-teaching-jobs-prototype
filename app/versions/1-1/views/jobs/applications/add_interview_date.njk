@@ -1,0 +1,107 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+
+<div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+        <span class="govuk-caption-l">Add interview date</span>
+
+
+        <form method="post">
+
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="countries-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+What date and time have you scheduled for Jane Smith's interview?</h1>
+            </legend>
+            <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+    <legend class="govuk-fieldset__legend">
+If the interview date or time changes later, you can update it in the candidate’s application section.      </legend>
+<br>
+<style>
+  .govuk-heading-m {
+    margin-bottom: 4px; /* Reduced margin to bring hint text closer */
+  }
+</style>
+
+<h3 class="govuk-heading-m">Date</h3>
+ <div id="passport-issued-hint" class="govuk-hint">
+      For example, 27 3 2025
+    </div>
+    <div class="govuk-date-input" id="passport-issued">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+            Day
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+            Month
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+            Year
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<br>
+<style>
+  .govuk-heading-m {
+    margin-bottom: 4px; /* Reduced margin to bring hint text closer */
+  }
+</style>
+
+<h3 class="govuk-heading-m">Time</h3>
+<div id="passport-issued-hint" class="govuk-hint">
+ For example, 9am or 2:30pm - enter 12pm for midday
+</div>
+
+<div class="govuk-form-group">
+  <input class="govuk-input govuk-input--width-5" id="width-5" name="width5" type="text">
+</div>
+
+<br>
+<div class="govuk-button-group">
+  <a href="#" role="button" class="govuk-button" data-module="govuk-button">
+    Save and continue
+  </a>
+  <a class="govuk-link" href="#">Cancel</a>
+</div>
+
+
+    </div>
+
+</div>
+  
+
+{% endblock %}

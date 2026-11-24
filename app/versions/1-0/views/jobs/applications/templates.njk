@@ -1,0 +1,82 @@
+
+{% extends "layout.njk" %}
+
+{% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
+
+{% set caption = 'Send rejection emails'  %}
+
+{% set title = 'Select a message template' %}
+
+{% set primaryNavId = 'jobs' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+ {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form method="post">
+
+        <h1 class="govuk-label-wrapper govuk-!-margin-bottom-7">
+           <span class="govuk-caption-l">
+            {{caption}}
+          </span>
+            <label class="govuk-label govuk-label--l" for="customise-message-1">
+              Select email template
+            </label>
+        </h1>
+        
+
+        <div>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-1"><a class="govuk-link govuk-link--no-visited-state" href="feedbackcheck">Standard rejection email</a></h2>
+            <p><span class="govuk-caption-m govuk-!-margin-bottom-2">Thanks for your application, unfortunately we do not want to invite you to an interview.</span></p>
+            <p><span class="govuk-caption-m govuk-!-margin-bottom-2">Unfortunately we are Not progressing your application at this time, thank you for applying.</span></p>
+
+            <p class="">
+              <a class="govuk-link govuk-link--no-visited-state govuk-!-margin-right-2" href="feedback">Edit template</a>
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Delete template</a>
+            </p>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        </div>
+
+        <div>
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-1"><a class="govuk-link govuk-link--no-visited-state" href="feedbackcheck">Feedback rejection email</a></h2>
+            <p><span class="govuk-caption-m govuk-!-margin-bottom-2">Thanks for your application, unfortunately we do not want to invite you to an interview but we have provided some feedback for you.</span></p>
+            <p><span class="govuk-caption-m govuk-!-margin-bottom-2">We have provided some feedback for you below:</span></p>
+            <p class="">
+              <a class="govuk-link govuk-link--no-visited-state govuk-!-margin-right-2" href="feedback">Edit template</a>
+              <a class="govuk-link govuk-link--no-visited-state" href="#">Delete template</a>
+            </p>
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+        </div>
+
+        
+       
+
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Create new template
+          </button>
+
+
+
+        <p><a href="#">Cancel</a></p>
+      </form>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

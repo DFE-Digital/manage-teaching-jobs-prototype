@@ -1,0 +1,218 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+
+    <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-full">
+
+            <span class="govuk-caption-m">Bus/Coach Driver at Countryside High School</span>
+
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+              Andy Smith
+       
+            </h1>       
+
+            <div class="govuk-button-group govuk-!-margin-top-5 govuk-!-margin-bottom-6">
+                <form method="post" action="#">
+                    <button type="submit" class="govuk-button" data-module="govuk-button">
+                        Download application
+                    </button>
+                </form>
+                <form action="/jobs/application/tag/{{jobseeker.id}}">
+                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                    Update application status
+                    </button>
+                </form>
+
+                <ul class="app-sub-navigation__list">
+
+
+      
+
+        <li class="app-sub-navigation__item">
+          <a class="app-sub-navigation__link" aria-current="page" href="/jobs/applications/jane_smith">Application</a>
+        </li>
+      
+    
+    </ul>
+
+                {% if jobseeker.tag == 'Shortlisted' %}
+                    <div>
+                        <button type="submit" class="copy-email govuk-button govuk-button--secondary" data-module="govuk-button" style="text-decoration:none;">
+                            Copy email
+                        </button>
+                    </div>   
+                    <form action="/jobs/{{jobseeker.id}}/interview">
+                        <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                            Invite to interview
+                        </button>
+                    </form>   
+                {% endif %} 
+                {% if jobseeker.tag == 'Interviewing' %}
+                    <div>
+                        <button type="submit" class="copy-email govuk-button govuk-button--secondary" data-module="govuk-button" style="text-decoration:none;">
+                            Copy email
+                        </button>
+                    </div>   
+                    <form action="interview_single">
+                        <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                            Edit interview details
+                        </button>
+                    </form>   
+                {% endif %}  
+
+            </div>
+
+        </div>
+        
+        <div class="govuk-grid-column-two-thirds">
+
+            <div class="govuk-summary-card">
+  <div class="govuk-summary-card__title-wrapper">
+    <h2 class="govuk-summary-card__title">
+     Personal details
+    </h2>
+  </div>
+  <div class="govuk-summary-card__content">
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+        First name
+        </dt>
+        <dd class="govuk-summary-list__value">
+       Andy
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> age (Lead tenant)</span></a>
+        </dd>
+      </div>
+<div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Last name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Smith
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> nationality (Lead tenant)</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Phone number
+        </dt>
+        <dd class="govuk-summary-list__value">
+         +44 07 1121 1121
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> nationality (Lead tenant)</span></a>
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+         Email address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          andy.smith@example.com
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> nationality (Lead tenant)</span></a>
+        </dd>
+      </div>
+      
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Do you need Skilled Worker visa sponsorship?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          No, I already have the right to work in the UK
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> nationality (Lead tenant)</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+        Teacher reference number (TRN)
+        </dt>
+        <dd class="govuk-summary-list__value">
+          None
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#"><span class="govuk-visually-hidden"> working situation (Lead tenant)</span></a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+
+
+            </div>
+
+            
+
+        <div class="govuk-grid-column-one-third">
+
+            
+            <div class="govuk-summary-card">
+                <div class="govuk-summary-card__title-wrapper">
+                    <h2 class="govuk-summary-card__title">
+                        Notes
+                    </h2>
+                    <ul class="govuk-summary-card__actions">
+                        <li class="govuk-summary-card__action">
+                            <a class="govuk-link govuk-link--no-visited-state" href="#"></a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="govuk-summary-card__content">
+
+
+
+                    <div class="govuk-form-group govuk-character-count govuk-!-margin-top-3" data-module="govuk-character-count" data-maxlength="150">
+                        <label class="govuk-label" for="label-as-page-heading">
+                            Add a note
+                        </label>
+                        <textarea class="govuk-textarea govuk-js-character-count" id="label-as-page-heading" name="labelAsPageHeading" rows="5" aria-describedby="label-as-page-heading-info"></textarea>
+                        <div id="label-as-page-heading-info" class="govuk-hint govuk-character-count__message govuk-body-s">
+                            You have 150 characters remaining
+                        </div>
+                    </div>
+
+                    <button type="submit" class="govuk-button" data-module="govuk-button">
+                        Save note
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
+    
+
+  
+
+{% endblock %}
+

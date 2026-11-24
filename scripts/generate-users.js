@@ -3,7 +3,8 @@ const path = require('path')
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 
-const organisations = require('../app/data/organisations.json')
+const versionDataDir = require('./version-data-dir')
+const organisations = require(path.join(versionDataDir, 'organisations.json'))
 
 const generateUser = (params = {}) => {
   let user = {}

@@ -1,0 +1,131 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <h3 class="govuk-notification-banner__heading">
+This reference has been marked as recieved.   </h3>
+   </div>
+</div>
+    <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-full">
+
+                  <div class="govuk-grid-row">
+
+                  <div class="govuk-grid-column-two-thirds">
+
+            <span class="govuk-caption-m">Reference 1</span>
+
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+              Jane Smith 
+       
+            </h1>
+
+               <strong class="govuk-tag govuk-tag--purple">
+          Recieved
+         
+        </strong>
+
+<br>
+
+
+<p><br>This reference has been manually marked as recieved.</p>
+
+ <div class="govuk-button-group govuk-!-margin-top-5 govuk-!-margin-bottom-6">
+                <form method="post" action="#">
+                    <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+                       Print this page
+                    </button>
+                </form>
+            </div>
+
+            <h3 class="govuk-heading-m">
+              Referee details</h3>
+
+
+                   
+<div class="review-component__section__body">
+<dl class="govuk-summary-list" id="Referee details">
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Title</dt>
+<dt class="govuk-summary-list__value">Mr</dt>
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Name</dt>
+<dt class="govuk-summary-list__value">Joe Gibbs</dt>
+<dt class="govuk-summary-list__value"><a class="govuk-link--no-visited-state" href="">Copy details</a></dt>
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Job title</dt>
+<dd class="govuk-summary-list__value">Teacher</dd>
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Organisation</dt>
+<dd class="govuk-summary-list__value">School</dd>
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Relationship to applicant</dt>
+<dd class="govuk-summary-list__value">Manager</dd>
+</div>
+<div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Email address</dt>
+<dd class="govuk-summary-list__value">joe.gibb@education.gov.uk</dd>
+<dt class="govuk-summary-list__value"><a class="govuk-link--no-visited-state" href="">Copy details</a></dt>
+</div><div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+<dt class="govuk-summary-list__key">Phone number</dt>
+<dd class="govuk-summary-list__value">07927223600</dd>
+<dt class="govuk-summary-list__value"><a class="govuk-link--no-visited-state" href="">Copy details</a></dt></div></dl>
+
+    </div>
+    
+      
+
+        </div>
+        
+    
+     <div class="govuk-grid-column-one-third">
+      
+      <div class="timeline-component">
+
+      <h3 class="govuk-heading-s">Communication history</h3>
+
+      <ul class="timeline-component__items">
+        <li class="timeline-component__item">
+          <h4 class="timeline-component__key govuk-heading-s">Marked as recieved</h4>
+          <p class="timeline-component__value govuk-body">By Anna Wilson, 2024-02-18 16:32:22</p>
+        </li>
+                <li class="timeline-component__item">
+          <h4 class="timeline-component__key govuk-heading-s">Reminder email sent</h4>
+          <p class="timeline-component__value govuk-body">By Teaching Vacancies, 2024-02-14 16:32:22</p>
+        </li>
+        <li class="timeline-component__item">
+          <h4 class="timeline-component__key govuk-heading-s">Reference requested</h4>
+          <p class="timeline-component__value govuk-body">By Teaching Vacancies, 2024-02-7 16:32:22</p>
+        </li>
+      </ul>
+
+      </div>
+
+
+    </div>
+  
+
+{% endblock %}
+

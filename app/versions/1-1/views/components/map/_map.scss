@@ -1,0 +1,25 @@
+.app-map {
+
+  margin-bottom: govuk-spacing(7);
+
+  img {
+    display: block;
+    width: 100%;
+    max-width: 630px;
+    height: auto;
+    aspect-ratio: 630 / 400;
+    object-fit: cover;
+  }
+}
+
+.app-map--placeholder {
+  box-sizing: border-box;
+  max-width: 630px;
+  border: 1px solid govuk-colour('mid-grey');
+  background: govuk-colour('light-grey');
+
+  img {
+    object-fit: contain;
+    vertical-align: middle;
+  }
+}

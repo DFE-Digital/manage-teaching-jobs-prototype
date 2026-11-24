@@ -1,0 +1,115 @@
+
+{% extends "layout.njk" %}
+
+{% set name = jobseeker.profile.firstName + ' ' + jobseeker.profile.lastName %}
+
+{% set caption =  name + ' - invite to apply for a job'  %}
+
+{% set title = 'Check details and invite candidate to apply' %}
+
+{% set primaryNavId = 'jobseekers' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobseekers/"+jobseeker.id
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{title}}
+      </h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Jobs to invite candidate to apply for"
+            },
+            value: {
+              html: data['invite-jobs'] | safe
+            },
+            actions: {
+              items: [
+                {
+                  href: '/jobseekers/'+jobseeker.id+'/invites/new',
+                  text: "Change",
+                  visuallyHiddenText: "Jobs to invite candidate to apply for"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Preview of email
+      </h2>
+
+      {% set preview%}
+
+        {% if data['customise-message-1'] %}
+
+          <p id="customText">{{data['customise-message-1']}}</p>
+
+          <p class="govuk-!-margin-bottom-1">{{data.invite.jobs}} at {{user.organisation.name}}:</p>
+          <p><a href="#">https://teaching-vacancies.school.com/123</a></p>
+
+        {% else %} 
+
+          <p>Dear {{jobseeker.profile.firstName}}</p>
+
+            {% if data.invite.jobs.length > 1 %}
+              <p>Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for {{data.invite.jobs | length}} roles.</p>
+              {# <ul class="govuk-list govuk-list--bullet"> #}
+                {% for role in data.invite.jobs %}
+                  <p>{{role}} at {{user.organisation.name}}<br> <a href="#">https://teaching-vacancies.school.com/123</a></p>
+                {% endfor %}
+              {# </ul> #}
+            {% else %}
+              <p>Rachael at {{user.organisation.name}} has reviewed your profile. They’d like to invite you to apply for a role.</p>
+
+              <p class="govuk-!-margin-bottom-1">{{data.invite.jobs}} at {{user.organisation.name}}:</p>
+              <p><a href="#">https://teaching-vacancies.school.com/123</a></p>
+            {% endif %}
+
+        {% endif %}
+
+      {% endset %}
+
+      {{ govukInsetText({
+        html: preview
+      }) }}
+
+      <form method="post">
+       
+        <div class="govuk-button-group">
+
+          <button class="govuk-button" data-module="govuk-button">
+            Send invite to apply
+          </button>
+
+          <a href="customise" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+            Customise email
+          </a>
+
+        </div>
+
+
+        <p><a href="/jobseekers/{{jobseeker.id}}">Cancel</a></p>
+      </form>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

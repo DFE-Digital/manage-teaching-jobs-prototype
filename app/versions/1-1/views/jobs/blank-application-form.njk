@@ -1,0 +1,27 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set title = 'Blank application form' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobs/" + job.id
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Download a blank application form</h1>
+
+      <p class="govuk-body">Use this form when you want candidates to apply offline or to prepare applications before submitting them through Teaching Vacancies.</p>
+
+      {{ govukButton({
+        text: "Download application-form.pdf (2MB)",
+        href: "/jobs/" + job.id + "/blank-application-form/download",
+        classes: "govuk-button--secondary"
+      }) }}
+    </div>
+  </div>
+{% endblock %}

@@ -4,11 +4,12 @@ const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 
 
-const organisationHelper = require('../app/helpers/organisation')
+const organisationHelper = require('../app/versions/1-1/helpers/organisation')
 
-const organisations = require('../app/data/organisations.json')
-const users = require('../app/data/users.json')
-const roles = require('../app/data/roles.js')
+const versionDataDir = require('./version-data-dir')
+const organisations = require(path.join(versionDataDir, 'organisations.json'))
+const users = require(path.join(versionDataDir, 'users.json'))
+const roles = require(path.join(versionDataDir, 'roles.js'))
 
 // generators
 const generateTitle = require('./jobGenerators/title')
@@ -286,4 +287,4 @@ const generateJobsFile = (filePath) => {
   )
 }
 
-generateJobsFile(path.join(__dirname, '../app/data/jobs.json'))
+generateJobsFile(path.join(versionDataDir, 'jobs.json'))

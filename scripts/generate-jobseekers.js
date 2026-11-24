@@ -4,8 +4,9 @@ const _ = require('lodash');
 const faker =  require('@faker-js/faker').faker
 faker.setLocale('en_GB');
 const { DateTime } = require('luxon')
-const roles = require('../app/data/roles.js')
-const phases = require('../app/data/phases.js')
+const versionDataDir = require('./version-data-dir')
+const roles = require(path.join(versionDataDir, 'roles.js'))
+const phases = require(path.join(versionDataDir, 'phases.js'))
 
 const generateKeyStages = require('./jobseekerGenerators/key-stages')
 const generateSubjects = require('./generators/subjects')
@@ -203,4 +204,4 @@ const generateJobseekersFile = (filePath) => {
   )
 }
 
-generateJobseekersFile(path.join(__dirname, '../app/data/jobseekers.json'))
+generateJobseekersFile(path.join(versionDataDir, 'jobseekers.json'))

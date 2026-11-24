@@ -1,0 +1,56 @@
+{% extends "layout.njk" %}
+
+{% set caption = 'Teaching AI' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+      {% endset %}
+
+      <form action="additional">
+
+       <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--l" for="event-name">
+                What's the learning objective?
+                </label>
+            </h1>
+            <input class="govuk-input" id="event-name" name="eventName" type="text">
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
+
+
+
+year group, 
+subject
+topic,
+any additional needs
+
+lesson objective

@@ -1,0 +1,203 @@
+{% extends "layout_email.njk" %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+
+    <div class="govuk-grid-row">
+        
+        <div class="govuk-grid-column-full">
+
+                 <span class="govuk-caption-m">Part 5 of 5</span>
+
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+  Reference enquiry for Jane Smith
+       
+            </h1>
+                  
+
+   <div class="govuk-grid-column-two-thirds">
+              <div class="govuk-grid-row">
+
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+   Referee Details
+      </h1>
+    </legend>
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="width-20">
+    Name
+  </label>
+  <input class="govuk-input govuk-input--width-20" id="width-20" name="width20" type="text">
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="width-20">
+Job title
+  </label>
+  <input class="govuk-input govuk-input--width-20" id="width-20" name="width20" type="text">
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="width-20">
+Phone number
+  </label>
+  <input class="govuk-input govuk-input--width-20" id="width-20" name="width20" type="text">
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="width-20">
+Email address
+  </label>
+  <input class="govuk-input govuk-input--width-20" id="width-20" name="width20" type="text">
+</div>
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="width-20">
+Orginisation name
+  </label>
+  <input class="govuk-input govuk-input--width-20" id="width-20" name="width20" type="text">
+</div>
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+        <label class="govuk-label govuk-checkboxes__label" for="organisation">
+          I confirm the answers given in this form have been provided in good faith and are correct to the best of my knowledge and belief
+        </label>
+      </div>
+    
+    </div>
+  </fieldset>
+</div>
+
+
+    <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">Signature</h1>
+        </legend>
+
+        <div class="govuk-hint">
+            Please provide your signature below.
+        </div>
+
+        <canvas id="signature-pad" width="400" height="200" class="signature-box"></canvas>
+
+        <br>
+<style>
+    .govuk-button-spacing {
+        margin-right: 20px; /* Adjust the value as needed */
+    }
+</style>
+
+<button type="button" class="govuk-button govuk-button--secondary govuk-button-spacing" onclick="clearCanvas()">Clear</button>
+<button type="button" class="govuk-button govuk-button--secondary" onclick="saveSignature()">Save signature</button>
+
+    </fieldset>
+</div>
+
+<style>
+    .signature-box {
+        display: block;
+        width: 400px;
+        height: 200px;
+        border: 2px solid #0b0c0c; /* GOV.UK black border */
+        background-color: white;
+        cursor: crosshair;
+        touch-action: none; /* Prevent scrolling while signing */
+    }
+</style>
+
+<script>
+    const canvas = document.getElementById('signature-pad');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+
+    function getPosition(event) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+            x: (event.clientX || event.touches[0].clientX) - rect.left,
+            y: (event.clientY || event.touches[0].clientY) - rect.top
+        };
+    }
+
+    function startDrawing(event) {
+        event.preventDefault();
+        drawing = true;
+        const { x, y } = getPosition(event);
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+    }
+
+    function draw(event) {
+        event.preventDefault();
+        if (!drawing) return;
+        const { x, y } = getPosition(event);
+        ctx.lineTo(x, y);
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+    }
+
+    function stopDrawing() {
+        drawing = false;
+        ctx.closePath();
+    }
+
+    function clearCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function saveSignature() {
+        alert("Signature saved. It will remain on the canvas)");
+    }
+
+    clearCanvas();
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+    canvas.addEventListener('touchstart', startDrawing);
+    canvas.addEventListener('touchmove', draw);
+    canvas.addEventListener('touchend', stopDrawing);
+</script>
+
+</body>
+<br>
+<br>
+
+
+<a href="/jobs/applications/reference_form_confirmation_page" class="govuk-button" data-module="govuk-button">
+  Save and continue
+</a>
+
+
+                </div>
+
+    </div>
+    
+
+    
+    
+
+  
+
+{% endblock %}
+

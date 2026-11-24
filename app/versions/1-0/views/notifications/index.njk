@@ -1,0 +1,17 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Notifications' %}
+{% set primaryNavId = 'notifications' %}
+{% set breadcrumbLabel = "Notifications" %}
+
+{% block beforeContent %}
+  {% include "includes/account-breadcrumbs.njk" %}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">Notifications</h1>
+
+  <div class="empty-section-component">
+    <p class="govuk-body govuk-!-margin-bottom-0">You have no notifications.</p>
+  </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% from "govuk/macros/logo.njk" import govukLogo %}
+{% from "includes/header-account-icons.njk" import headerUserAccountIcon, headerSignOutIcon %}
+
+<header class="govuk-header">
+  <div class="govuk-header__container govuk-width-container">
+    <div class="govuk-header__logo">
+      <a href="/" class="govuk-header__homepage-link">
+        {{ govukLogo({
+          classes: "govuk-header__logotype",
+          ariaLabelText: "GOV.UK"
+        }) }}
+      </a>
+    </div>
+    {% if not homepage %}
+      <div class="govuk-header__content">
+        <nav class="govuk-header__navigation govuk-header__navigation--end" aria-label="Account navigation">
+          <ul id="navigation" class="govuk-header__navigation-list">
+            <li class="govuk-header__navigation-item{% if primaryNavId == 'organisation' %} govuk-header__navigation-item--active{% endif %}">
+              <a class="govuk-header__link govuk-header__link--with-icon govuk-header__link--account{% if primaryNavId == 'organisation' %} govuk-header__link--active{% endif %}" href="/organisation"{% if primaryNavId == 'organisation' %} aria-current="page"{% endif %}>
+                {{ headerUserAccountIcon() }}<span class="govuk-header__link-text">{% if user %}{{ user.organisation.name }} {% endif %}Profile</span>
+              </a>
+            </li>
+            <li class="govuk-header__navigation-item">
+              <a class="govuk-header__link govuk-header__link--with-icon govuk-header__link--sign-out" href="/sign-out">
+                {{ headerSignOutIcon() }}<span class="govuk-header__link-text">Sign out</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    {% endif %}
+  </div>
+</header>

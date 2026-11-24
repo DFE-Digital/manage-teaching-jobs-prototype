@@ -1,0 +1,30 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set title = 'Close job listing early' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobs/" + job.id
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">{{ job.title }}</span>
+      <h1 class="govuk-heading-l">Do you want to close this job listing early?</h1>
+
+      <p class="govuk-body">If you close this listing, candidates will no longer be able to apply. The listing will move to your closed jobs.</p>
+
+      <form method="post" action="/jobs/{{ job.id }}/close-early">
+        {{ govukButton({
+          text: "Yes, close this listing",
+          classes: "govuk-!-margin-bottom-0"
+        }) }}
+        <a class="govuk-link govuk-!-margin-left-3" href="/jobs/{{ job.id }}">Cancel</a>
+      </form>
+    </div>
+  </div>
+{% endblock %}
