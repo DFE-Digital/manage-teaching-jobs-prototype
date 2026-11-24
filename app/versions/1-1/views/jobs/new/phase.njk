@@ -1,7 +1,9 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 {% set heading = 'Education phase' %}
-{% set caption = 'Create job listing - section 1 of 4' %}
+{% set caption = createJobCaption.jobDetails %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -31,7 +33,7 @@
         {% endset %}
       {% endif %}
 
-      <form action="/jobs/new/subjects" method="post">
+      <form action="/jobs/new/phase" method="post">
 
         {% if query.multipleLocationsMissing %}
           {{ govukRadios({
@@ -59,30 +61,39 @@
           }) }}
         {% else %}
 
+            {% set savedPhase = data.createJob.phase if data.createJob else none %}
+            {% if savedPhase is string %}
+              {% set savedPhases = [savedPhase] %}
+            {% elif savedPhase %}
+              {% set savedPhases = savedPhase %}
+            {% else %}
+              {% set savedPhases = [] %}
+            {% endif %}
+
             {% if user.organisation.name == 'LS Secondary School and College' %}
              
               {% set options = [
-               { value: 'Secondary school', text: 'Secondary school' },
-               { value: 'Sixth form or college', text: 'Sixth form or college' },
-               { value: 'Through school', text: 'All through school' }
+               { value: 'Secondary school', text: 'Secondary school', checked: 'Secondary school' in savedPhases },
+               { value: 'Sixth form or college', text: 'Sixth form or college', checked: 'Sixth form or college' in savedPhases },
+               { value: 'Through school', text: 'All through school', checked: 'Through school' in savedPhases }
               ] %}
 
             {% elif user.organisation.name == 'ML Secondary School' %}
 
               {% set options = [
-               { value: 'Secondary school', text: 'Secondary school' },
-               { value: 'Sixth form or college', text: 'Sixth form or college' },
-               { value: 'Through school', text: 'All through school' }
+               { value: 'Secondary school', text: 'Secondary school', checked: 'Secondary school' in savedPhases },
+               { value: 'Sixth form or college', text: 'Sixth form or college', checked: 'Sixth form or college' in savedPhases },
+               { value: 'Through school', text: 'All through school', checked: 'Through school' in savedPhases }
                ] %}
 
             {% else %}
            
              {% set options = [
-               { value: 'Nursery', text: 'Nursery' },
-               { value: 'Primary school', text: 'Primary school' },
-               { value: 'Secondary school', text: 'Secondary school' },
-               { value: 'Sixth form or college', text: 'Sixth form or college' },
-               { value: 'Through school', text: 'All through school' }
+               { value: 'Nursery', text: 'Nursery', checked: 'Nursery' in savedPhases },
+               { value: 'Primary school', text: 'Primary school', checked: 'Primary school' in savedPhases },
+               { value: 'Secondary school', text: 'Secondary school', checked: 'Secondary school' in savedPhases },
+               { value: 'Sixth form or college', text: 'Sixth form or college', checked: 'Sixth form or college' in savedPhases },
+               { value: 'Through school', text: 'All through school', checked: 'Through school' in savedPhases }
              ] %}
            {% endif %}
 
@@ -109,10 +120,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
 
       </form>
 

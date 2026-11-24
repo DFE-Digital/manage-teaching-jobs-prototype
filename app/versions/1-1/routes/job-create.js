@@ -3,6 +3,95 @@ const authentication = require('../middleware/authentication')
 const Validator = require('../helpers/validator')
 const { isCollegeFeCreateJob } = require('../lib/fe-parity')
 const buildCreateJobCheckDisplay = require('../lib/create-job-check-display')
+const buildCreateJobSectionSummary = buildCreateJobCheckDisplay.buildCreateJobSectionSummary
+const createJobTaskProgress = require('../lib/create-job-task-progress')
+
+const CREATE_JOB_TASK_BY_PATH = {
+  '/jobs/new/locations': 'job-location',
+  '/jobs/new/title': 'job-title',
+  '/jobs/new/title_auto': 'job-title',
+  '/jobs/new/role_all': 'job-role-phase-subjects',
+  '/jobs/new/role_type': 'job-role-phase-subjects',
+  '/jobs/new/role': 'job-role-phase-subjects',
+  '/jobs/new/role_teaching': 'job-role-phase-subjects',
+  '/jobs/new/role_non_teaching': 'job-role-phase-subjects',
+  '/jobs/new/phase': 'job-role-phase-subjects',
+  '/jobs/new/subjects': 'job-role-phase-subjects',
+  '/jobs/new/key-stage': 'job-role-phase-subjects',
+  '/jobs/new/key-stage2': 'job-role-phase-subjects',
+  '/jobs/new/contract': 'contract-working-pattern',
+  '/jobs/new/working-patterns': 'contract-working-pattern',
+  '/jobs/new/salary': 'salary',
+  '/jobs/new/start-date': 'job-start-date',
+  '/jobs/new/about': 'about-the-role',
+  '/jobs/new/religious_questions': 'about-the-role',
+  '/jobs/new/upload': 'about-the-role',
+  '/jobs/new/file': 'about-the-role',
+  '/jobs/new/file-check': 'about-the-role',
+  '/jobs/new/sponsorship': 'visa-sponsorship',
+  '/jobs/new/school-visits': 'school-visits',
+  '/jobs/new/school-visits-email-address': 'school-visits',
+  '/jobs/new/sponsorship2': 'visa-sponsorship',
+  '/jobs/new/listing-dates': 'listing-dates',
+  '/jobs/new/application_method': 'application-method',
+  '/jobs/new/how': 'application-method',
+  '/jobs/new/process': 'application-method',
+  '/jobs/new/method': 'application-method',
+  '/jobs/new/method_old': 'application-method',
+  '/jobs/new/method_faith': 'application-method',
+  '/jobs/new/method_catholic': 'application-method',
+  '/jobs/new/anonymised': 'application-method',
+  '/jobs/new/website': 'application-method',
+  '/jobs/new/receive_applications': 'application-method',
+  '/jobs/new/form': 'application-method',
+  '/jobs/new/link': 'application-method',
+  '/jobs/new/contact-details': 'contact-details',
+  '/jobs/new/email-address': 'contact-details',
+  '/jobs/new/phone': 'contact-details',
+  '/jobs/new/check': 'check-and-publish'
+}
+
+function finishCreateJobSection (req, res, sectionKey, options) {
+  createJobTaskProgress.completeSection(req, sectionKey, options)
+  req.flash('success', createJobTaskProgress.sectionSavedMessage(sectionKey))
+  res.redirect('/jobs/new/start')
+}
+
+function continueCreateJobTask (req, res, taskId, nextPath) {
+  if (taskId && req.session.data) {
+    createJobTaskProgress.markCompleted(req.session.data, [taskId])
+  }
+  res.redirect(nextPath)
+}
+
+const SECTION_SUMMARY_KEYS = [
+  'job-details',
+  'pay-and-contract',
+  'about-the-role',
+  'applications-and-publish'
+]
+
+function goToSectionSummary (req, res, sectionKey, taskId) {
+  if (!SECTION_SUMMARY_KEYS.includes(sectionKey)) {
+    return res.redirect('/jobs/new/start')
+  }
+  if (taskId && req.session.data) {
+    createJobTaskProgress.markCompleted(req.session.data, [taskId])
+  }
+  res.redirect(`/jobs/new/section-summary/${sectionKey}`)
+}
+
+function renderSectionSummary (sectionKey, req, res) {
+  if (!SECTION_SUMMARY_KEYS.includes(sectionKey)) {
+    return res.redirect('/jobs/new/start')
+  }
+  const sessionData = req.session.data || {}
+  res.render('jobs/new/section-summary', {
+    sectionKey,
+    data: buildCreateJobSectionSummary(sessionData),
+    hideAdditionalAllowances: isCollegeFeCreateJob(sessionData, req.session.user)
+  })
+}
 
 function renderCreateJobPage (view, req, res) {
   res.render(view, {
@@ -15,12 +104,48 @@ function renderCreateJobPage (view, req, res) {
 
 module.exports = router => {
 
+  router.use('/jobs/new', (req, res, next) => {
+    const isSaveLater = (req.method === 'POST' && req.body.saveAndFinishLater) ||
+      (req.method === 'GET' && req.query.saveAndFinishLater)
+
+    if (isSaveLater) {
+      const taskId = CREATE_JOB_TASK_BY_PATH[req.path]
+      if (req.session.data && taskId) {
+        createJobTaskProgress.markSectionInProgressFromTask(
+          req.session.data,
+          taskId,
+          req.session.user
+        )
+      }
+      req.flash('success', createJobTaskProgress.PROGRESS_SAVED_MESSAGE)
+      return res.redirect('/jobs/new/start')
+    }
+
+    if (req.method === 'GET') {
+      const taskId = CREATE_JOB_TASK_BY_PATH[req.path]
+      const sessionData = req.session.data
+      if (taskId && sessionData) {
+        if (
+          taskId === 'check-and-publish' &&
+          !createJobTaskProgress.canStartCheckAndPublish(sessionData, req.session.user)
+        ) {
+          return next()
+        }
+        createJobTaskProgress.markInProgress(sessionData, taskId)
+      }
+    }
+    next()
+  })
+
   router.get('/jobs/new/salary', authentication.checkIsAuthenticated, (req, res) => {
     renderCreateJobPage('jobs/new/salary', req, res)
   })
 
   router.get('/jobs/new/check', authentication.checkIsAuthenticated, (req, res) => {
     const sessionData = req.session.data || {}
+    if (!createJobTaskProgress.canStartCheckAndPublish(sessionData, req.session.user)) {
+      return res.redirect('/jobs/new/start')
+    }
     res.render('jobs/new/check', {
       data: buildCreateJobCheckDisplay(sessionData),
       hideAdditionalAllowances: isCollegeFeCreateJob(sessionData, req.session.user)
@@ -28,12 +153,75 @@ module.exports = router => {
   })
 
   router.get('/jobs/new', authentication.checkIsAuthenticated, (req, res) => {
-    let org = req.session.user.organisation
-    if(org.schools && org.schools.length > 1) {
-      res.redirect('/jobs/new/locations')
-    } else {
-      res.redirect('/jobs/new/title')
+    res.redirect('/jobs/new/start')
+  })
+
+  router.get('/jobs/new/start', authentication.checkIsAuthenticated, (req, res) => {
+    renderCreateJobPage('jobs/new/start', req, res)
+  })
+
+  router.get('/jobs/new/abandon', authentication.checkIsAuthenticated, (req, res) => {
+    renderCreateJobPage('jobs/new/abandon', req, res)
+  })
+
+  router.post('/jobs/new/abandon', authentication.checkIsAuthenticated, (req, res) => {
+    const data = req.session.data || {}
+    ;[
+      'createJob',
+      'createJobTaskProgress',
+      'createJobListingPublished',
+      'job-title',
+      'jobRole',
+      'subjects',
+      'how',
+      'website',
+      'signIn',
+      'moreDetail',
+      'job-share',
+      'working-patterns',
+      'religion-question',
+      'createJob-sponsorship',
+      'roleType'
+    ].forEach(key => {
+      delete data[key]
+    })
+    renderCreateJobPage('jobs/new/abandoned', req, res)
+  })
+
+  router.get('/jobs/new/section-summary/:sectionKey', authentication.checkIsAuthenticated, (req, res) => {
+    renderSectionSummary(req.params.sectionKey, req, res)
+  })
+
+  router.post('/jobs/new/section-summary/:sectionKey', authentication.checkIsAuthenticated, (req, res) => {
+    const { sectionKey } = req.params
+    if (!SECTION_SUMMARY_KEYS.includes(sectionKey)) {
+      return res.redirect('/jobs/new/start')
     }
+    finishCreateJobSection(req, res, sectionKey)
+  })
+
+  router.get('/jobs/new/confirmation', authentication.checkIsAuthenticated, (req, res) => {
+    renderCreateJobPage('jobs/new/confirmation', req, res)
+  })
+
+  router.post('/jobs/new/locations', (req, res) => {
+    continueCreateJobTask(req, res, 'job-location', '/jobs/new/title')
+  })
+
+  router.post('/jobs/new/title', (req, res) => {
+    continueCreateJobTask(req, res, 'job-title', '/jobs/new/role_all')
+  })
+
+  router.post('/jobs/new/contract', (req, res) => {
+    continueCreateJobTask(req, res, 'contract-working-pattern', '/jobs/new/salary')
+  })
+
+  router.post('/jobs/new/salary', authentication.checkIsAuthenticated, (req, res) => {
+    continueCreateJobTask(req, res, 'salary', '/jobs/new/start-date')
+  })
+
+  router.post('/jobs/new/about', (req, res) => {
+    continueCreateJobTask(req, res, 'about-the-role', '/jobs/new/school-visits')
   })
 
   router.get('/jobs/new/locations', (req, res) => {
@@ -69,6 +257,14 @@ module.exports = router => {
     })
   })
 
+  router.post('/jobs/new/phase', (req, res) => {
+    res.redirect('/jobs/new/subjects')
+  })
+
+  router.post('/jobs/new/subjects', (req, res) => {
+    goToSectionSummary(req, res, 'job-details', 'job-role-phase-subjects')
+  })
+
   router.get('/jobs/new/phase', (req, res) => {
     const options = [{
       value: 'Nursery',
@@ -100,6 +296,84 @@ module.exports = router => {
     res.render('jobs/new/key-stage', {
       
     })
+  })
+
+  router.get('/jobs/new/subjects', (req, res) => {
+    const data = req.session.data || {}
+    if (data.subjects) {
+      data.createJob = data.createJob || {}
+      data.createJob.subjects = Array.isArray(data.subjects) ? data.subjects : [data.subjects]
+    }
+    renderCreateJobPage('jobs/new/subjects', req, res)
+  })
+
+  router.get('/jobs/new/school-visits', (req, res) => {
+    renderCreateJobPage('jobs/new/school-visits', req, res)
+  })
+
+  router.post('/jobs/new/school-visits', (req, res) => {
+    continueCreateJobTask(req, res, 'school-visits', '/jobs/new/sponsorship2')
+  })
+
+  router.get('/jobs/new/sponsorship2', (req, res) => {
+    renderCreateJobPage('jobs/new/sponsorship2', req, res)
+  })
+
+  router.post('/jobs/new/sponsorship2', (req, res) => {
+    goToSectionSummary(req, res, 'about-the-role', 'visa-sponsorship')
+  })
+
+  router.get('/jobs/new/listing-dates', (req, res) => {
+    renderCreateJobPage('jobs/new/listing-dates', req, res)
+  })
+
+  router.post('/jobs/new/listing-dates', (req, res) => {
+    continueCreateJobTask(req, res, 'listing-dates', '/jobs/new/application_method')
+  })
+
+  router.post('/jobs/new/start-date', (req, res) => {
+    goToSectionSummary(req, res, 'pay-and-contract', 'job-start-date')
+  })
+
+  router.post('/jobs/new/form', (req, res) => {
+    res.redirect('/jobs/new/school-visits')
+  })
+
+  router.post('/jobs/new/link', (req, res) => {
+    res.redirect('/jobs/new/school-visits')
+  })
+
+  router.get('/jobs/new/contact-details', (req, res) => {
+    renderCreateJobPage('jobs/new/contact-details', req, res)
+  })
+
+  router.post('/jobs/new/contact-details', (req, res) => {
+    goToSectionSummary(req, res, 'applications-and-publish', 'contact-details')
+  })
+
+  router.post('/jobs/new/check', (req, res) => {
+    createJobTaskProgress.markPublished(req)
+    res.redirect('/jobs/new/confirmation')
+  })
+
+  router.get('/jobs/new/anonymised', (req, res) => {
+    renderCreateJobPage('jobs/new/anonymised', req, res)
+  })
+
+  router.post('/jobs/new/anonymised', (req, res) => {
+    continueCreateJobTask(req, res, 'application-method', '/jobs/new/contact-details')
+  })
+
+  router.get('/jobs/new/website', (req, res) => {
+    renderCreateJobPage('jobs/new/website', req, res)
+  })
+
+  router.post('/jobs/new/website', (req, res) => {
+    continueCreateJobTask(req, res, 'application-method', '/jobs/new/contact-details')
+  })
+
+  router.post('/jobs/new/receive_applications', (req, res) => {
+    continueCreateJobTask(req, res, 'application-method', '/jobs/new/contact-details')
   })
 
   router.post('/jobs/new/role_all', (req, res) => {
@@ -136,11 +410,9 @@ module.exports = router => {
 
       // Check whether the variable includes the string "england" or "scotland"
       if (keyStages && (keyStages.includes("Key stage 3") || keyStages.includes("Key stage 4") || keyStages.includes("Key stage 5"))) {
-        // Send user to the next page
           res.redirect('subjects');
       } else {
-          // Send user to the ineligible page
-          res.redirect('contract');
+        goToSectionSummary(req, res, 'job-details', 'job-role-phase-subjects')
       }
 
   });
@@ -182,6 +454,10 @@ module.exports = router => {
     res.render('jobs/new/sponsorship')
   })
 
+
+  router.get('/jobs/new/application_method', (req, res) => {
+    renderCreateJobPage('jobs/new/application_method', req, res)
+  })
 
   router.post('/jobs/new/application_method', (req, res) => {
     if(req.session.data['signIn'] == 'other') {
@@ -241,10 +517,10 @@ module.exports = router => {
       })
     }
 
-    if(validator.validate()) {
-      res.redirect('/jobs/new/salary')
+    if (validator.validate()) {
+      continueCreateJobTask(req, res, 'contract-working-pattern', '/jobs/new/salary')
     } else {
-      res.render('jobs/new/working-patterns');
+      res.render('jobs/new/working-patterns')
     }
   })
 

@@ -1,63 +1,60 @@
 {% extends "layout.njk" %}
 
-{% set heading = 'Job role' %}
-{% set caption = 'Create job listing - section 1 of 4' %}
-{% set title = heading + ' - ' + caption %}
+{% set heading = 'Create a job listing' %}
+{% set title = heading %}
 
 {% block beforeContent %}
   {{ govukBackLink({
-    text: "Back",
-    href: "javascript:history.back();"
+    text: "Back to manage jobs",
+    href: "/jobs"
   }) }}
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
-    
+    <div class="govuk-grid-column-full">
 
-        <form action="/jobs/new/title" method="post">
-        
-            <div class="govuk-grid-column-full">
-                <h1 class="govuk-heading-l">Create a job listing</h1>
-                <p class="govuk-body">Provide details about the role, how candidates should apply and when the listing should be published.</p>
-                <h3 class="govuk-heading-s">Contract details</h3>
-                <p class="govuk-body">You should include information about:</p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>job location</li>
-                    <li>if the role is full or part time</li>
-                    <li>the contract type, for example, permanent, temporary or fixed term</li>
-                    <li>salary details</li>
-                    <li>start date</li>
-                </ul>
-                <h3 class="govuk-heading-s">Information about the role</h3>
-                <p class="govuk-body">You should include:</p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>role details including job responsibilities</li>
-                    <li>whether visa sponsorship is available</li>
-                    <li>any additional documents, such as job description or person specification</li>
-                </ul>
-                <h3 class="govuk-heading-s">Listing details</h3>
-                <p class="govuk-body">You will need to specify:</p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>when the role should be published</li>
-                    <li>the closing date for applications</li>
-                </ul>
-                <p class="govuk-body">You will also be able to choose how to receive applications.</p>
-                
-                
-            </div>
+      {{ govukNotificationBanner({
+        html: '<h2 class="govuk-heading-m govuk-!-margin-bottom-0">' + flash + '</h2>',
+        type: 'success',
+        icon: false
+      }) if flash and flash.length }}
 
-            {{ govukButton({
-            text: "Create a job listing"
-            }) }}
+      <h1 class="govuk-heading-l">{{ heading }}</h1>
 
-        </form>
+      <p class="govuk-body">
+        You can save a draft at any step and finish later. To continue a saved listing, go to manage jobs and select draft jobs.
+      </p>
 
+      {{ govukDetails({
+        summaryText: "What you will need",
+        html: '
+          <p class="govuk-body">Before you publish, you will need:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>contract type, salary and working pattern</li>
+            <li>a job description or person specification (optional file)</li>
+            <li>publish and closing dates</li>
+            <li>how you want to receive applications</li>
+          </ul>
+        '
+      }) }}
 
-        <p><a href="#">Cancel</a></p>
+      {% include "includes/create-job-task-list.njk" %}
 
+      <div class="govuk-button-group govuk-!-margin-top-6">
+        {{ govukButton({
+          text: "Save and finish later",
+          href: "/jobs/new/start",
+          classes: "govuk-button--secondary"
+        }) }}
 
+        {{ govukButton({
+          text: "Abandon job listing",
+          href: "/jobs/new/abandon",
+          classes: "govuk-button--warning"
+        }) }}
+      </div>
 
     </div>
   </div>

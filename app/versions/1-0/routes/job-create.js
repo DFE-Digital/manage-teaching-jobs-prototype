@@ -1,4 +1,6 @@
 
+const fs = require('fs')
+const path = require('path')
 const authentication = require('../middleware/authentication')
 const Validator = require('../helpers/validator')
 const { isCollegeFeCreateJob } = require('../lib/fe-parity')
@@ -36,6 +38,26 @@ module.exports = router => {
     }
   })
 
+  router.get('/jobs/new/start', authentication.checkIsAuthenticated, (req, res) => {
+    renderCreateJobPage('jobs/new/start', req, res)
+  })
+
+  router.post('/jobs/new/start', (req, res) => {
+    res.redirect('/jobs/new/title')
+  })
+
+  router.get('/jobs/new/title', authentication.checkIsAuthenticated, (req, res) => {
+    renderCreateJobPage('jobs/new/title', req, res)
+  })
+
+  router.post('/jobs/new/title', (req, res) => {
+    res.redirect('/jobs/new/role_all')
+  })
+
+  router.get('/jobs/new/role_all', authentication.checkIsAuthenticated, (req, res) => {
+    renderCreateJobPage('jobs/new/role_all', req, res)
+  })
+
   router.get('/jobs/new/locations', (req, res) => {
     const org = req.session.user.organisation
     const sessionData = req.session.data || {}
@@ -69,6 +91,14 @@ module.exports = router => {
     })
   })
 
+  router.post('/jobs/new/phase', (req, res) => {
+    res.redirect('/jobs/new/subjects')
+  })
+
+  router.post('/jobs/new/subjects', (req, res) => {
+    res.redirect('/jobs/new/contract')
+  })
+
   router.get('/jobs/new/phase', (req, res) => {
     const options = [{
       value: 'Nursery',
@@ -100,6 +130,79 @@ module.exports = router => {
     res.render('jobs/new/key-stage', {
       
     })
+  })
+
+  router.get('/jobs/new/subjects', (req, res) => {
+    renderCreateJobPage('jobs/new/subjects', req, res)
+  })
+
+  router.get('/jobs/new/school-visits', (req, res) => {
+    renderCreateJobPage('jobs/new/school-visits', req, res)
+  })
+
+  router.post('/jobs/new/school-visits', (req, res) => {
+    const upload = req.body.createJob && req.body.createJob.upload
+    if (upload !== undefined) {
+      if (upload === 'Yes') {
+        res.redirect('/jobs/new/file')
+        return
+      }
+      res.redirect('/jobs/new/check')
+      return
+    }
+    res.redirect('/jobs/new/sponsorship2')
+  })
+
+  router.get('/jobs/new/sponsorship2', (req, res) => {
+    renderCreateJobPage('jobs/new/sponsorship2', req, res)
+  })
+
+  router.post('/jobs/new/sponsorship2', (req, res) => {
+    res.redirect('/jobs/new/listing-dates')
+  })
+
+  router.get('/jobs/new/listing-dates', (req, res) => {
+    renderCreateJobPage('jobs/new/listing-dates', req, res)
+  })
+
+  router.post('/jobs/new/listing-dates', (req, res) => {
+    res.redirect('/jobs/new/application_method')
+  })
+
+  router.post('/jobs/new/form', (req, res) => {
+    res.redirect('/jobs/new/school-visits')
+  })
+
+  router.post('/jobs/new/link', (req, res) => {
+    res.redirect('/jobs/new/school-visits')
+  })
+
+  router.get('/jobs/new/contact-details', (req, res) => {
+    renderCreateJobPage('jobs/new/contact-details', req, res)
+  })
+
+  router.post('/jobs/new/contact-details', (req, res) => {
+    res.redirect('/jobs/new/check')
+  })
+
+  router.get('/jobs/new/anonymised', (req, res) => {
+    renderCreateJobPage('jobs/new/anonymised', req, res)
+  })
+
+  router.post('/jobs/new/anonymised', (req, res) => {
+    res.redirect('/jobs/new/contact-details')
+  })
+
+  router.get('/jobs/new/website', (req, res) => {
+    renderCreateJobPage('jobs/new/website', req, res)
+  })
+
+  router.post('/jobs/new/website', (req, res) => {
+    res.redirect('/jobs/new/contact-details')
+  })
+
+  router.post('/jobs/new/receive_applications', (req, res) => {
+    res.redirect('/jobs/new/contact-details')
   })
 
   router.post('/jobs/new/role_all', (req, res) => {
@@ -183,6 +286,10 @@ module.exports = router => {
   })
 
 
+  router.get('/jobs/new/application_method', (req, res) => {
+    renderCreateJobPage('jobs/new/application_method', req, res)
+  })
+
   router.post('/jobs/new/application_method', (req, res) => {
     if(req.session.data['signIn'] == 'other') {
       res.redirect('/jobs/new/how')
@@ -246,6 +353,17 @@ module.exports = router => {
     } else {
       res.render('jobs/new/working-patterns');
     }
+  })
+
+  const viewsRoot = path.join(__dirname, '../views')
+
+  router.get(/^\/jobs\/new\/([^./]+)$/, authentication.checkIsAuthenticated, (req, res, next) => {
+    const view = `jobs/new/${req.params[0]}`
+    const viewFile = path.join(viewsRoot, `${view}.njk`)
+    if (!fs.existsSync(viewFile)) {
+      return next()
+    }
+    renderCreateJobPage(view, req, res)
   })
 
 }

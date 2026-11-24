@@ -1,0 +1,37 @@
+{% macro formatStartDate(parts, mockDay, mockMonth, mockYear) %}
+  {%- set day = parts.day if parts and parts.day else mockDay -%}
+  {%- set month = parts.month if parts and parts.month else mockMonth -%}
+  {%- set year = parts.year if parts and parts.year else mockYear -%}
+  {%- set monthNames = {
+    "1": "January", "01": "January",
+    "2": "February", "02": "February",
+    "3": "March", "03": "March",
+    "4": "April", "04": "April",
+    "5": "May", "05": "May",
+    "6": "June", "06": "June",
+    "7": "July", "07": "July",
+    "8": "August", "08": "August",
+    "9": "September", "09": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December"
+  } -%}
+  {%- set monthName = monthNames[month] if monthNames[month] else month -%}
+  {{- day }} {{ monthName }} {{ year -}}
+{% endmacro %}
+
+{% macro jobStartDateDisplay(data) %}
+  {%- set createJob = data.createJob if data and data.createJob else {} -%}
+  {%- set choice = createJob['start-date'] -%}
+  {%- if choice == 'Date range' -%}
+    {{- formatStartDate(createJob['start-date--from'], '1', '9', '2024') }} to {{ formatStartDate(createJob['start-date--to'], '31', '12', '2024') -}}
+  {%- elif choice == 'Specific date' -%}
+    {{- formatStartDate(createJob['start-date--specific'], '1', '9', '2024') -}}
+  {%- elif choice == 'Other' -%}
+    {{- createJob['start-date--other'] if createJob['start-date--other'] else 'Easter term' -}}
+  {%- elif choice -%}
+    {{- choice -}}
+  {%- else -%}
+    As soon as possible
+  {%- endif -%}
+{% endmacro %}

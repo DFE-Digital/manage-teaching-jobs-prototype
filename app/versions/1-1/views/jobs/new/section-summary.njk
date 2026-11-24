@@ -1,0 +1,66 @@
+{% extends "layout.njk" %}
+
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
+{% if sectionKey == 'job-details' %}
+  {% set caption = createJobCaption.jobDetails %}
+  {% set heading = 'Check job details' %}
+{% elif sectionKey == 'pay-and-contract' %}
+  {% set caption = createJobCaption.payAndContract %}
+  {% set heading = 'Check pay and contract' %}
+{% elif sectionKey == 'about-the-role' %}
+  {% set caption = createJobCaption.aboutTheRole %}
+  {% set heading = 'Check about the role' %}
+{% elif sectionKey == 'applications-and-publish' %}
+  {% set caption = createJobCaption.applicationsAndPublish %}
+  {% set heading = 'Check applications and publish' %}
+{% endif %}
+{% set title = heading + ' - ' + caption %}
+
+{% if user.organisation.name == 'Hope college' %}
+  {% set schoolVisitsText = 'Do you want to offer college visits?' %}
+  {% set schoolOfferText = 'What does your college offer?' %}
+{% else %}
+  {% set schoolVisitsText = 'Do you want to offer school visits?' %}
+  {% set schoolOfferText = 'What does your school offer?' %}
+{% endif %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobs/new/start"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{ caption }}</span>
+      <h1 class="govuk-heading-l">{{ heading }}</h1>
+
+      <p class="govuk-body">
+        Check your answers before continuing to the task list.
+      </p>
+
+      {% if sectionKey == 'job-details' %}
+        {% include "includes/create-job-summary-job-details.njk" %}
+      {% elif sectionKey == 'pay-and-contract' %}
+        {% include "includes/create-job-summary-pay-and-contract.njk" %}
+      {% elif sectionKey == 'about-the-role' %}
+        {% include "includes/create-job-summary-about-the-role.njk" %}
+      {% elif sectionKey == 'applications-and-publish' %}
+        {% include "includes/create-job-summary-applications-and-publish.njk" %}
+      {% endif %}
+
+      <form action="/jobs/new/section-summary/{{ sectionKey }}" method="post" class="govuk-!-margin-top-6">
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ saveAndFinishLater(path) }}
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

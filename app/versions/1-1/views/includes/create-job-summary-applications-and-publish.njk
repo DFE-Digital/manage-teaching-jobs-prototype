@@ -1,0 +1,69 @@
+{% set applicationHow = data.createJob.process or data.how %}
+{% set websiteLink = data.website or data.createJob.website %}
+{% if applicationHow == 'Through a website' and not websiteLink %}
+  {% set websiteLink = 'https://example.com' %}
+{% endif %}
+{% set receiveApplications %}
+  {{ applicationHow }}{% if applicationHow == 'Through a website' %}<br>{{ websiteLink }}{% endif %}
+{% endset %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: { text: "Publish date" },
+      value: { text: data.createJob.publishDate },
+      actions: {
+        items: [{ href: "/jobs/new/listing-dates", text: "Change", visuallyHiddenText: "publish date" }]
+      }
+    },
+    {
+      key: { text: "Closing date and time" },
+      value: { text: data.createJob['closing-date-display'] or '31 April 2024 at 9am' },
+      actions: {
+        items: [{ href: "/jobs/new/listing-dates", text: "Change", visuallyHiddenText: "closing date" }]
+      }
+    },
+    {
+      key: { text: "Do you want to use the application form?" },
+      value: { text: data['signIn'] },
+      actions: {
+        items: [{ href: "/jobs/new/application_method", text: "Change", visuallyHiddenText: "application form" }]
+      }
+    },
+    {
+      key: { text: "How do you want to receive applications?" },
+      value: { html: receiveApplications },
+      actions: {
+        items: [{ href: "/jobs/new/application_method", text: "Change", visuallyHiddenText: "application method" }]
+      }
+    } if data['createJob']['process'] or data.how,
+    {
+      key: { text: "How would you like to view your applications?" },
+      value: { text: data['createJob']['anonymised'] },
+      actions: {
+        items: [{ href: "/jobs/new/anonymised", text: "Change", visuallyHiddenText: "anonymised applications" }]
+      }
+    } if data['createJob']['anonymised'],
+    {
+      key: { text: "Email address" },
+      value: { text: data['createJob']['contact-details--another'] or 'test@example.com' },
+      actions: {
+        items: [{ href: "/jobs/new/contact-details", text: "Change", visuallyHiddenText: "email address" }]
+      }
+    },
+    {
+      key: { text: "Do you want to give a contact phone number?" },
+      value: { text: data['createJob']['provide-phone-number'] },
+      actions: {
+        items: [{ href: "/jobs/new/contact-details", text: "Change", visuallyHiddenText: "contact phone" }]
+      }
+    },
+    {
+      key: { text: "Phone number" },
+      value: { text: data['createJob']['phone-number'] },
+      actions: {
+        items: [{ href: "/jobs/new/contact-details", text: "Change", visuallyHiddenText: "phone number" }]
+      }
+    } if data['createJob']['phone-number']
+  ]
+}) }}

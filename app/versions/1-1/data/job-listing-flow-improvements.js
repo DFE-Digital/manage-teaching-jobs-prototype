@@ -263,6 +263,101 @@ const stepImprovements = [
   }
 ]
 
+const furtherImprovements = {
+  intro:
+    'The recommendations above are the full backlog. Version 1.1 of this prototype implements part of the journey (task list start, section captions, some back links, listing dates inset, application method layout, check page grouping, confirmation next steps). The items below are not done in 1.1 yet.',
+  journey: [
+    {
+      title: 'Make “Save and finish later” real',
+      detail:
+        'Draft save is not wired consistently across steps — no autosave on continue or return banner when resuming from Manage jobs → Draft jobs.'
+    },
+    {
+      title: 'Use explicit back links on every step',
+      detail:
+        'Many branch screens still use javascript:history.back(), which breaks when users open steps from this documentation page.'
+    },
+    {
+      title: 'Pre-fill from organisation and school profile',
+      detail:
+        'Location, phase, safeguarding text and contact details are only partly defaulted (for example contact email radios). Broader profile defaults and summary-only “Change” flows are outstanding.'
+    },
+    {
+      title: 'Task list progress and status',
+      detail:
+        'Tags on the create listing task list stay “Not started”; no completed or “Cannot start yet” states tied to session data.'
+    },
+    {
+      title: 'Entry from Manage jobs (HS1)',
+      detail:
+        'Jobs list primary call to action, draft count and scheduled listing surfacing are unchanged from the baseline map.'
+    }
+  ],
+  steps: [
+    {
+      id: 'HS5–HS6',
+      name: 'Job role and education phase',
+      detail: 'Replace long role checkbox list with grouped autocomplete or radios; merge or skip phase when role implies it.'
+    },
+    {
+      id: 'HS7–HS8',
+      name: 'Key stage and subjects',
+      detail: 'Tighter conditional routing and subject autocomplete with shortcuts — not implemented.'
+    },
+    {
+      id: 'HS9–HS10',
+      name: 'Contract, working pattern and start date',
+      detail: 'Still separate screens; not merged into one “Contract and working pattern” page with start date.'
+    },
+    {
+      id: 'HS11',
+      name: 'Salary and allowances',
+      detail: 'Progressive disclosure and simplified pay-type question — content debt remains.'
+    },
+    {
+      id: 'HS12',
+      name: 'About the role',
+      detail: 'Not split into shorter pages; safeguarding pre-fill from org profile and character counts not added.'
+    },
+    {
+      id: 'HS13–HS14',
+      name: 'School visits and visa sponsorship',
+      detail: 'Still separate screens; not combined with contact details or repositioned within About the role.'
+    },
+    {
+      id: 'HS16',
+      name: 'Application method (faith and variants)',
+      detail: 'Standard path improved; faith and other variants still live on separate templates rather than one branched screen.'
+    },
+    {
+      id: 'HS17',
+      name: 'Anonymise applications',
+      detail: 'Conditional skip when not using the Teaching Vacancies form — routing unchanged.'
+    },
+    {
+      id: 'HS18–HS19',
+      name: 'Upload documents',
+      detail: 'Yes/no and file upload not merged; file-check loop unchanged.'
+    },
+    {
+      id: 'HS20',
+      name: 'Contact details',
+      detail: 'Organisation email pre-select and offline-application email de-duplication not fully done.'
+    },
+    {
+      id: 'HS21',
+      name: 'Check and publish',
+      detail: 'Summary is grouped by task list section in 1.1; sticky primary publish control on mobile not added.'
+    },
+    {
+      id: '—',
+      name: 'Hub and test coverage',
+      detail:
+        'Prototype hub could deep-link to /jobs/new/start for 1.1 smoke tests. Automated tests still target version 1.0 paths only.'
+    }
+  ]
+}
+
 function enrichSteps (steps) {
   const pathById = Object.fromEntries(flowGuide.steps.map(s => [s.id, s]))
   return steps.map(step => {
@@ -283,6 +378,7 @@ module.exports = function buildJobListingFlowImprovements () {
     standards,
     journeyImprovements,
     stepImprovements: enrichSteps(stepImprovements),
+    furtherImprovements,
     proposedOutcome: 'A simplified happy path could remove roughly 5–8 screens for a typical primary school teaching role by combining related questions, pre-filling profile data, and branching only when organisation type or application method requires it.'
   }
 }

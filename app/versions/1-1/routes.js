@@ -2,6 +2,8 @@ const express = require('express')
 const config = require('../../config')
 const authentication = require('./middleware/authentication')
 const { isCollegeFeCreateJob } = require('./lib/fe-parity')
+const createJobTaskProgress = require('./lib/create-job-task-progress')
+const createJobCaptions = require('./lib/create-job-captions')
 const router = express.Router()
 
 function sharingOrigin (req) {
@@ -35,6 +37,16 @@ router.use((req, res, next) => {
     req.session.user
   )
   res.locals.flash = req.flash('success') // pass through 'success' messages only
+  const createJobSessionData = res.locals.data || req.session.data || {}
+  res.locals.createJobTaskStatus = createJobTaskProgress.getTaskStatuses(
+    createJobSessionData,
+    req.session.user
+  )
+  res.locals.createJobCanStartCheckAndPublish = createJobTaskProgress.canStartCheckAndPublish(
+    createJobSessionData,
+    req.session.user
+  )
+  res.locals.createJobCaption = createJobCaptions
   next()
 })
 

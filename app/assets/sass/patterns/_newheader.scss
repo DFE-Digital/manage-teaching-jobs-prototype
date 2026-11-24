@@ -92,10 +92,7 @@
 }
 
 .govuk-header__link-icon {
-  display: block;
-  flex-shrink: 0;
-  width: 1.3157894737rem;
-  height: 1.3157894737rem;
+  display: none;
 }
 
 .govuk-header__link--with-icon:hover,
@@ -121,6 +118,13 @@
 
   .govuk-header__navigation .govuk-header__link--with-icon {
     gap: 0;
+  }
+
+  .govuk-header__link-icon {
+    display: block;
+    flex-shrink: 0;
+    width: 1.3157894737rem;
+    height: 1.3157894737rem;
   }
 
   .govuk-header__navigation .govuk-header__link--with-icon .govuk-header__link-text {

@@ -1,0 +1,39 @@
+{{ govukSummaryList({
+  rows: [
+    {
+      key: { text: "Is this role suitable for an early career teacher (ECT)?" },
+      value: { text: data['createJob']['suitability'] },
+      actions: {
+        items: [{ href: "/jobs/new/about", text: "Change", visuallyHiddenText: "ECT suitability" }]
+      }
+    } if data['createJob']['suitability'],
+    {
+      key: { text: "What skills and experience are you looking for?" },
+      value: { text: data['createJob']['skills'] },
+      actions: {
+        items: [{ href: "/jobs/new/about", text: "Change", visuallyHiddenText: "skills" }]
+      }
+    },
+    {
+      key: { text: schoolOfferText },
+      value: { text: data['createJob']['benefits'] },
+      actions: {
+        items: [{ href: "/jobs/new/about", text: "Change", visuallyHiddenText: "school offer" }]
+      }
+    },
+    {
+      key: { text: schoolVisitsText },
+      value: { text: data['createJob']['school-visits'] },
+      actions: {
+        items: [{ href: "/jobs/new/school-visits", text: "Change", visuallyHiddenText: "school visits" }]
+      }
+    },
+    {
+      key: { text: "Can you offer skilled worker visa sponsorship to non-UK citizens for this role?" },
+      value: { text: data['createJob-sponsorship'] or data.createJob.sponsorship },
+      actions: {
+        items: [{ href: "/jobs/new/sponsorship2", text: "Change", visuallyHiddenText: "visa sponsorship" }]
+      }
+    }
+  ]
+}) }}

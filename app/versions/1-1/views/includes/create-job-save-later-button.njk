@@ -1,0 +1,14 @@
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% macro saveAndFinishLater(formAction) %}
+  {{ govukButton({
+    text: 'Save and finish later',
+    name: 'saveAndFinishLater',
+    value: 'true',
+    classes: 'govuk-!-margin-left-1 govuk-button--secondary',
+    attributes: {
+      formaction: formAction,
+      formmethod: 'post'
+    }
+  }) }}
+{% endmacro %}

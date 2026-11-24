@@ -1,0 +1,46 @@
+{# Job role options aligned with Teaching Vacancies build/job_role (QA). #}
+{% set savedRoles = data.jobRole if data.jobRole else [] %}
+{% if savedRoles is string %}
+  {% set savedRoles = [savedRoles] %}
+{% endif %}
+
+{% set supportRoles = [
+  'Teaching assistant',
+  'HLTA (higher level teaching assistant)',
+  'Learning support or cover supervisor',
+  'Administration, HR, data and finance',
+  'Catering, cleaning and site management',
+  'IT support',
+  'Pastoral, health and welfare',
+  'Leadership and management',
+  'Business support, administration and corporate services',
+  'Student support, learning and progress',
+  'Marketing and communications',
+  'Apprenticeships and commercial services',
+  'Other support role'
+] %}
+
+<div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
+
+  <p class="govuk-heading-s govuk-!-margin-top-6 govuk-!-margin-bottom-3">Teaching and leadership</p>
+
+  <div class="govuk-checkboxes__item">
+    <input class="govuk-checkboxes__input" id="jobRole-teacher" name="jobRole" type="checkbox" value="Teacher or lecturer"{% if "Teacher or lecturer" in savedRoles %} checked{% endif %}>
+    <label class="govuk-label govuk-checkboxes__label" for="jobRole-teacher">
+      Teacher or lecturer
+    </label>
+  </div>
+
+  <p class="govuk-heading-s govuk-!-margin-top-6 govuk-!-margin-bottom-3">Support</p>
+
+  {% for role in supportRoles %}
+    {% set roleId = 'jobRole-' + loop.index %}
+    <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="{{ roleId }}" name="jobRole" type="checkbox" value="{{ role }}"{% if role in savedRoles %} checked{% endif %}>
+      <label class="govuk-label govuk-checkboxes__label" for="{{ roleId }}">
+        {{ role }}
+      </label>
+    </div>
+  {% endfor %}
+
+</div>

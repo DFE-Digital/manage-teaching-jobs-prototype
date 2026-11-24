@@ -127,11 +127,36 @@
     </section>
   {% endfor %}
 
+  <h2 class="govuk-heading-l govuk-!-margin-top-8" id="further-improvements">Further improvements</h2>
+  <p class="govuk-body">{{ guide.furtherImprovements.intro }}</p>
+
+  <h3 class="govuk-heading-m govuk-!-margin-top-6">Journey — not done yet in prototype 1.1</h3>
+  <ul class="govuk-list govuk-list--bullet">
+    {% for item in guide.furtherImprovements.journey %}
+      <li class="govuk-!-margin-bottom-2">
+        <strong>{{ item.title }}</strong> — {{ item.detail }}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h3 class="govuk-heading-m govuk-!-margin-top-6">Steps — not done yet in prototype 1.1</h3>
+  <ol class="govuk-list govuk-list--number">
+    {% for item in guide.furtherImprovements.steps %}
+      <li class="govuk-!-margin-bottom-3">
+        <strong>{{ item.id }}{% if item.name %} — {{ item.name }}{% endif %}</strong>
+        <p class="govuk-body govuk-!-margin-bottom-0">{{ item.detail }}</p>
+      </li>
+    {% endfor %}
+  </ol>
+
   <aside class="app-related app-related--topic">
     <h2 class="govuk-heading-s app-related__heading">Related</h2>
     <ul class="app-related__list">
       <li class="app-related__item">
         <a class="govuk-link" href="{{ guide.flowDocHref }}">{{ guide.flowDocTitle }}</a>
+      </li>
+      <li class="app-related__item">
+        <a class="govuk-link" href="#further-improvements">Further improvements (not in 1.1 yet)</a>
       </li>
       <li class="app-related__item">
         <a class="govuk-link" href="/documentation/about">About this prototype</a>

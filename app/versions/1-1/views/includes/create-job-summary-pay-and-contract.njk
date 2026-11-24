@@ -1,0 +1,52 @@
+{% from "includes/job-start-date-display.njk" import jobStartDateDisplay %}
+
+{% set workingPatterns %}
+  {{ data['working-patterns'] }}
+{% endset %}
+
+{% set salaryDetails %}
+  <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+    {% if data.createJob['full-time-salary'] %}
+    <li><p>Full-time equivalent salary:<br>{{ data.createJob['full-time-salary'] }}</p></li>
+    {% endif %}
+    {% if data.createJob['actual-salary'] %}
+    <li><p>Actual salary:<br>{{ data.createJob['actual-salary'] }}</p></li>
+    {% endif %}
+    {% if data.createJob['pay-scale'] %}
+    <li class="govuk-!-margin-bottom-0"><p class="govuk-!-margin-bottom-0">Pay scale:<br>{{ data.createJob['pay-scale'] }}</p></li>
+    {% endif %}
+  </ul>
+{% endset %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: { text: "Contract type" },
+      value: { text: data['createJob']['contract'] },
+      actions: {
+        items: [{ href: "/jobs/new/contract", text: "Change", visuallyHiddenText: "contract type" }]
+      }
+    },
+    {
+      key: { text: "Working patterns" },
+      value: { html: workingPatterns },
+      actions: {
+        items: [{ href: "/jobs/new/working-patterns", text: "Change", visuallyHiddenText: "working patterns" }]
+      }
+    },
+    {
+      key: { text: "Salary details" },
+      value: { html: salaryDetails },
+      actions: {
+        items: [{ href: "/jobs/new/salary", text: "Change", visuallyHiddenText: "salary" }]
+      }
+    },
+    {
+      key: { text: "Job start date" },
+      value: { text: jobStartDateDisplay(data) },
+      actions: {
+        items: [{ href: "/jobs/new/start-date", text: "Change", visuallyHiddenText: "job start date" }]
+      }
+    }
+  ]
+}) }}

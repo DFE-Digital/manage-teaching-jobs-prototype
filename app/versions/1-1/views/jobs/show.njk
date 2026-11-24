@@ -434,19 +434,28 @@
         About the role
       </h2>
 
+      {% set skillsAndExperienceText = job.skillsAndExperience or "- Passion for learning and teaching and be committed to raising standards\n- Up to date with current pedagogical thinking\n- Able to inspire others to ensure the delivery of high-quality learning experiences for our students\n- Fantastic subject knowledge and understand how to teach highly challenging lessons so that students can reach the top grades in the subject\n- High expectations of themselves and others, ambitious and committed to ongoing professional development" %}
+      {% set whatSchoolOffersText = job.whatSchoolOffers or "- A bespoke curriculum offering students a strong core entitlement in English, Mathematics and Science\n- A full extra-curricular programme with opportunities for enrichment activities for all\n- An excellent opportunity for continued personal development through our Talent Pathway\n- A wide range of staff benefits\n- Excellent resources and facilities\n- A wonderful community that is involved within school life" %}
+
       {% set skillsAndExperience %}
         <div class="app-prose govuk-!-margin-bottom-0">
-          {% markdown %}
-            {{job.skillsAndExperience}}
-          {% endmarkdown %}
+          <ul class="govuk-list govuk-list--bullet">
+            {% for line in skillsAndExperienceText.split("\n") %}
+              {% set item = line | trim | replace("- ", "") %}
+              {% if item %}<li>{{ item }}</li>{% endif %}
+            {% endfor %}
+          </ul>
         </div>
       {% endset %}
 
       {% set whatSchoolOffers %}
         <div class="app-prose govuk-!-margin-bottom-0">
-          {% markdown %}
-            {{job.whatSchoolOffers}}
-          {% endmarkdown %}
+          <ul class="govuk-list govuk-list--bullet">
+            {% for line in whatSchoolOffersText.split("\n") %}
+              {% set item = line | trim | replace("- ", "") %}
+              {% if item %}<li>{{ item }}</li>{% endif %}
+            {% endfor %}
+          </ul>
         </div>
       {% endset %}
 

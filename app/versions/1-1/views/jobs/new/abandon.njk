@@ -1,0 +1,36 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Are you sure you want to abandon this job listing?' %}
+{% set caption = createJobCaption.createListing %}
+{% set title = heading %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/jobs/new/start"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{ caption }}</span>
+      <h1 class="govuk-heading-l">{{ heading }}</h1>
+
+      <p class="govuk-body">The answers you have entered will be deleted. You will not be able to get them back.</p>
+
+      <form action="/jobs/new/abandon" method="post">
+        {{ govukButton({
+          text: "Yes, abandon job listing",
+          classes: "govuk-button--warning"
+        }) }}
+      </form>
+
+      <p class="govuk-body">
+        <a class="govuk-link" href="/jobs/new/start">No, continue with this listing</a>
+      </p>
+
+    </div>
+  </div>
+{% endblock %}

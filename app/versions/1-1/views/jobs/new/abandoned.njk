@@ -1,0 +1,23 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Job listing abandoned' %}
+{% set caption = createJobCaption.createListing %}
+{% set title = heading %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">{{ caption }}</span>
+      <h1 class="govuk-heading-l">{{ heading }}</h1>
+
+      <p class="govuk-body">You have abandoned this job listing. Nothing has been saved.</p>
+
+      {{ govukButton({
+        text: "Back to Manage jobs",
+        href: "/jobs"
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

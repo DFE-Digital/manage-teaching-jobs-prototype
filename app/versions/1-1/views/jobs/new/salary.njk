@@ -1,10 +1,11 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 {% set version = 2 %}
 
-{% set hideAdditionalAllowances = isCollegeFeCreateJob(data, user) %}
-{% set heading = 'Salary' if hideAdditionalAllowances else 'Salary and allowances' %}
-{% set caption = 'Create job listing - section 1 of 4' %}
+{% set heading = 'Salary' %}
+{% set caption = createJobCaption.payAndContract %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -61,18 +62,6 @@
     }) }}
   {% endset %}
 
-  {% set allowances %}
-    {{ govukTextarea({
-      id: "createJob[allowances]",
-      name: "createJob[allowances]",
-      label: {
-        text: "Additional allowances",
-        classes: 'govuk-label--s'
-      },
-      value: data['createJob']['allowances']
-    }) }}
-  {% endset %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -83,7 +72,7 @@
         {{heading}}
       </h1>
 
-      <form action="/jobs/new/about">
+      <form action="/jobs/new/salary" method="post" novalidate>
         {{ govukCheckboxes({
           idPrefix: "createJob[salary-details]",
           name: "createJob[salary-details]",
@@ -101,7 +90,7 @@
             {
               value: "Full-time equivalent salary",
               text: "Full-time equivalent salary",
-              checked: checked("['createJob']['salary-details']", "Full-time equivalent salary"),
+              checked: checked("['createJob']['salary-details']", "Full-time equivalent salary") or (data.createJob and data.createJob['full-time-salary']),
               hint: {
                 text: 'This is what the annual salary would be for someone working full time.'
               },
@@ -112,7 +101,7 @@
             {
               value: "Actual salary",
               text: "Actual salary",
-              checked: checked("['createJob']['salary-details']", "Actual salary"),
+              checked: checked("['createJob']['salary-details']", "Actual salary") or (data.createJob and data.createJob['actual-salary']),
               hint: {
                 text: 'This is the annual amount someone will take home.'
               },
@@ -123,7 +112,7 @@
             {
               value: "Pay scale",
               text: "Pay scale",
-              checked: checked("['createJob']['salary-details']", "Pay scale"),
+              checked: checked("['createJob']['salary-details']", "Pay scale") or (data.createJob and data.createJob['pay-scale']),
               conditional: {
                 html: payscale
               }
@@ -131,44 +120,11 @@
           ]
         }) }}
 
-        {% if not hideAdditionalAllowances %}
-        {{ govukRadios({
-          idPrefix: "additional-allowances",
-          name: "additional-allowances",
-          fieldset: {
-            legend: {
-              text: "Do you want to include additional allowances?",
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          hint: {
-            text: 'For example, special educational needs (SEN) or teaching and learning responsibility (TLR) payments.'
-          },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes",
-              conditional: {
-                html: allowances
-              }
-            }, {
-              value: "No",
-              text: "No"
-            }
-          ]
-        }) }}
-        {% endif %}
-
-
-
         {{ govukButton({
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
       </form>
       <p><a href="#">Cancel</a></p>
 

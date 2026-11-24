@@ -1,7 +1,9 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 {% set heading = 'Do you want to upload any additional documents?' %}
-{% set caption = 'Create job listing - section 4 of 4' %}
+{% set caption = createJobCaption.aboutTheRole %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -25,7 +27,7 @@
 
 
 
-      <form action="/jobs/new/school-visits" method="post">
+      <form action="/jobs/new/upload" method="post">
 
         {{ govukRadios({
           idPrefix: "createJob[upload]",
@@ -56,10 +58,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
       </form>
       <p><a href="#">Cancel</a></p>
 

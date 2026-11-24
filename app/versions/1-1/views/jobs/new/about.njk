@@ -1,7 +1,9 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 {% set heading = 'About the role' %}
-{% set caption = 'Create job listing - section 4 of 4' %}
+{% set caption = createJobCaption.aboutTheRole %}
 {% set title = heading + ' - ' + caption %}
 
 {% set roleType %}{{data ['roletype'] }}{% endset %}
@@ -9,7 +11,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "javascript:history.back();"
+    href: "/jobs/new/start-date"
   }) }}
 {% endblock %}
 
@@ -66,7 +68,7 @@
           html: example
         }) }}
 
-      <form action="/jobs/new/upload">
+      <form action="/jobs/new/about" method="post" novalidate>
 
         {{ govukRadios({
           idPrefix: "createJob[suitability]",
@@ -195,10 +197,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
       </form>
       <p><a href="#">Cancel</a></p>
 

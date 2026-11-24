@@ -1,13 +1,15 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 {% set heading = 'Locations where the job is based' %}
-{% set caption = 'Create job listing - section 1 of 4' %}
+{% set caption = createJobCaption.jobDetails %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "javascript:history.back();"
+    href: "/jobs/new/start"
   }) }}
 {% endblock %}
 
@@ -22,7 +24,7 @@
         {{heading}}
       {% endset %}
 
-      <form action="/jobs/new/role_all" method="post">
+      <form action="/jobs/new/locations" method="post" novalidate>
         {{ govukCheckboxes({
           idPrefix: "createJob[locations]",
           name: "createJob[locations]",
@@ -40,10 +42,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
 
       </form>
 

@@ -1,9 +1,11 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 
 {% set heading = 'Link to website' %}
 
-{% set caption = 'Create job listing - section 3 of 4' %}
+{% set caption = createJobCaption.applicationsAndPublish %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -24,7 +26,7 @@
         {{heading}}
       {% endset %}
 
-      <form action="/jobs/new/contact-details" method="post">
+      <form action="/jobs/new/website" method="post">
 
         {{ govukInput({
         label: {
@@ -36,17 +38,15 @@
             text: "For example, https://example.com"
         },
         id: "website",
-        name: "website"
+        name: "website",
+        value: data.website or data.createJob.website
         }) }}
 
         {{ govukButton({
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
       </form>
       <p><a href="#">Cancel</a></p>
 

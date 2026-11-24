@@ -4,6 +4,8 @@ const path = require('path')
 const nunjucks = require('nunjucks')
 const extensions = require('../../lib/extensions/extensions')
 const utils = require('../../lib/utils')
+const markdown = require('nunjucks-markdown')
+const { marked } = require('marked')
 
 const VERSIONS = ['1-0', '1-1']
 
@@ -12,7 +14,6 @@ const VERSION_PATTERN = new RegExp(`^/(${VERSIONS.join('|')})(?:/|$)`)
 const SHARED_ROOTS = [
   '/public',
   '/docs',
-  '/documentation',
   '/prototype-admin',
   '/node_modules',
   '/govuk',
@@ -130,6 +131,7 @@ function createEnv (version) {
   })
   utils.addNunjucksFilters(env)
   utils.addCheckedFunction(env)
+  markdown.register(env, marked)
   return env
 }
 

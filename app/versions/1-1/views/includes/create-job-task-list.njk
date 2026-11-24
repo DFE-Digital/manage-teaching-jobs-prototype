@@ -1,0 +1,127 @@
+{# GOV.UK task list for create job listing (HS2 / journey improvement #1) #}
+{% macro taskTag(taskId) %}
+  {% set tag = createJobTaskStatus[taskId] or { text: 'Not started', tagClass: 'govuk-tag--grey' } %}
+  <strong class="govuk-tag {{ tag.tagClass }} app-task-list__tag">{{ tag.text }}</strong>
+{% endmacro %}
+
+<ol class="app-task-list govuk-!-margin-top-6">
+  <li>
+    <h2 class="app-task-list__section">
+      <span class="app-task-list__section-number">1. </span>Job details
+    </h2>
+    <ul class="app-task-list__items">
+      {% if user.organisation.schools and user.organisation.schools.length > 1 %}
+        <li class="app-task-list__item">
+          <span class="app-task-list__task-name">
+            <a href="/jobs/new/locations">Job location</a>
+          </span>
+          {{ taskTag('job-location') }}
+        </li>
+      {% endif %}
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a href="/jobs/new/title">Job title</a>
+        </span>
+        {{ taskTag('job-title') }}
+      </li>
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a href="/jobs/new/role_all">Job role, phase and subjects</a>
+        </span>
+        {{ taskTag('job-role-phase-subjects') }}
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h2 class="app-task-list__section">
+      <span class="app-task-list__section-number">2. </span>Pay and contract
+    </h2>
+    <ul class="app-task-list__items">
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a href="/jobs/new/contract">Contract and working pattern</a>
+        </span>
+        {{ taskTag('contract-working-pattern') }}
+      </li>
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a href="/jobs/new/salary">Salary</a>
+        </span>
+        {{ taskTag('salary') }}
+      </li>
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a href="/jobs/new/start-date">Job start date</a>
+        </span>
+        {{ taskTag('job-start-date') }}
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h2 class="app-task-list__section">
+      <span class="app-task-list__section-number">3. </span>About the role
+    </h2>
+    <ul class="app-task-list__items">
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a href="/jobs/new/about">About the role</a>
+        </span>
+        {{ taskTag('about-the-role') }}
+      </li>
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a href="/jobs/new/school-visits">School visits</a>
+        </span>
+        {{ taskTag('school-visits') }}
+      </li>
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a href="/jobs/new/sponsorship2">Visa sponsorship</a>
+        </span>
+        {{ taskTag('visa-sponsorship') }}
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h2 class="app-task-list__section">
+      <span class="app-task-list__section-number">4. </span>Applications and publish
+    </h2>
+    <ul class="app-task-list__items">
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a href="/jobs/new/listing-dates">Publish and closing dates</a>
+        </span>
+        {{ taskTag('listing-dates') }}
+      </li>
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a href="/jobs/new/application_method">How to receive applications</a>
+        </span>
+        {{ taskTag('application-method') }}
+      </li>
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a href="/jobs/new/contact-details">Contact details</a>
+        </span>
+        {{ taskTag('contact-details') }}
+      </li>
+    </ul>
+  </li>
+  <li>
+    <h2 class="app-task-list__section">
+      <span class="app-task-list__section-number">5. </span>Check and publish
+    </h2>
+    <ul class="app-task-list__items">
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          {% if createJobCanStartCheckAndPublish %}
+            <a href="/jobs/new/check">Check and publish</a>
+          {% else %}
+            Check and publish
+          {% endif %}
+        </span>
+        {{ taskTag('check-and-publish') }}
+      </li>
+    </ul>
+  </li>
+</ol>

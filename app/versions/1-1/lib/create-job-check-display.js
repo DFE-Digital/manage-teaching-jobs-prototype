@@ -67,4 +67,23 @@ function buildCreateJobCheckDisplay (sessionData = {}) {
   }
 }
 
+/**
+ * Section summary pages — use session answers only (no demo fill-ins).
+ */
+function buildCreateJobSectionSummary (sessionData = {}) {
+  const createJob = sessionData.createJob || {}
+  const jobTitle =
+    sessionData['job-title'] ||
+    createJob.title ||
+    ''
+
+  return {
+    ...sessionData,
+    createJob,
+    'job-title': jobTitle,
+    jobRole: sessionData.jobRole || ''
+  }
+}
+
 module.exports = buildCreateJobCheckDisplay
+module.exports.buildCreateJobSectionSummary = buildCreateJobSectionSummary

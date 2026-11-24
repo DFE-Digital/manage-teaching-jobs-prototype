@@ -1,0 +1,51 @@
+{% set jobTitle = data['job-title'] or data.createJob.title %}
+{% set jobTitleDisplay = jobTitle if jobTitle else '—' %}
+{% set jobRoleDisplay = data.jobRole if data.jobRole else '—' %}
+{% set phaseDisplay = data.createJob.phase if data.createJob.phase else '—' %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: { text: "Locations where the job is based" },
+      value: { text: data.createJob.locations | join(', ') if data.createJob.locations else "—" },
+      actions: {
+        items: [{ href: "/jobs/new/locations", text: "Change", visuallyHiddenText: "locations" }]
+      }
+    } if user.organisation.schools and user.organisation.schools.length > 1,
+    {
+      key: { text: "Job title" },
+      value: { text: jobTitleDisplay },
+      actions: {
+        items: [{ href: "/jobs/new/title", text: "Change", visuallyHiddenText: "job title" }]
+      }
+    },
+    {
+      key: { text: "Role" },
+      value: { text: jobRoleDisplay },
+      actions: {
+        items: [{ href: "/jobs/new/role_all", text: "Change", visuallyHiddenText: "role" }]
+      }
+    },
+    {
+      key: { text: "Education phase" },
+      value: { text: phaseDisplay },
+      actions: {
+        items: [{ href: "/jobs/new/phase", text: "Change", visuallyHiddenText: "education phase" }]
+      }
+    },
+    {
+      key: { text: "Key stage" },
+      value: { text: data.createJob['key-stages'] | join(', ') },
+      actions: {
+        items: [{ href: "/jobs/new/key-stage", text: "Change", visuallyHiddenText: "key stage" }]
+      }
+    } if data.createJob['key-stages'] and data.createJob['key-stages'].length,
+    {
+      key: { text: "Subjects" },
+      value: { text: data.subjects | join(', ') if data.subjects and data.subjects.length else 'None' },
+      actions: {
+        items: [{ href: "/jobs/new/subjects", text: "Change", visuallyHiddenText: "subjects" }]
+      }
+    } if data.subjects
+  ]
+}) }}

@@ -1,13 +1,15 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 {% set heading = 'Choose your application form' %}
-{% set caption = 'Create job listing - section 3 of 4' %}
+{% set caption = createJobCaption.applicationsAndPublish %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "javascript:history.back();"
+    href: "/jobs/new/listing-dates"
   }) }}
 {% endblock %}
 
@@ -21,11 +23,17 @@
         {{heading}}
       </h1>
 
-      <p class="govuk-body">Use Teaching Vacancies' application form for an online form compliant with <a class="govuk-link" href="https://www.gov.uk/government/publications/keeping-children-safe-in-education--2" target="_blank" rel="noopener noreferrer">Keeping children safe in education (KCSIE) guidance (opens in a new tab)</a>.</p><p class="govuk-body">Online application forms make it quicker and easier for jobseekers to apply and may lead to more applicants for your role.</p><p class="govuk-body">If the job you are listing does not require applicants to provide religious information, you can use the first application form option provided below.</p>
+      <p class="govuk-body">How do you want to receive applications for this job?</p>
 
+      {{ govukDetails({
+        summaryText: "About KCSIE compliant application forms",
+        html: '
+          <p class="govuk-body">Teaching Vacancies forms comply with <a class="govuk-link" href="https://www.gov.uk/government/publications/keeping-children-safe-in-education--2" target="_blank" rel="noopener noreferrer">Keeping children safe in education (KCSIE) guidance (opens in new tab)</a>. Online forms make it quicker for jobseekers to apply.</p>
+          <p class="govuk-body">Use the KCSIE option unless applicants must provide religious information — then choose another method.</p>
+        '
+      }) }}
 
-
-      <form method="post">
+      <form action="/jobs/new/application_method" method="post" class="govuk-!-margin-top-6">
 
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" aria-describedby="signIn-hint">
@@ -55,10 +63,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
       </form>
       <p><a href="#">Cancel</a></p>
 

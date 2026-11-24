@@ -21,7 +21,7 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-grid-column-full">
 
       {% set h1 %}
         <span class="govuk-caption-l">
@@ -30,13 +30,14 @@
         {{heading}}
       {% endset %}
 
-      <form action="/jobs/new/contract">
+      <form action="/jobs/new/subjects" method="post">
 
-     {% set phase = data['createJob']['phase'] %}
+     {% set phase = data.createJob and data.createJob.phase %}
 
      {% if phase and (phase.includes('college') or phase.includes('Sixth form or college')) %}
 
         {{ appCheckboxFilter({
+        classes: "app-checkbox-filter--no-scroll",
         idPrefix: "subjects",
         name: "subjects",
         legend: {
@@ -143,6 +144,7 @@
       {% else %}
       
        {{ appCheckboxFilter({
+          classes: "app-checkbox-filter--no-scroll",
           idPrefix: "subjects",
           name: "subjects",
           legend: {

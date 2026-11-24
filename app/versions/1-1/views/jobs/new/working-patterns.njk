@@ -1,7 +1,9 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 {% set heading = 'Working patterns' %}
-{% set caption = 'Create job listing - section 1 of 4' %}
+{% set caption = createJobCaption.payAndContract %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -82,27 +84,27 @@
             {
               value: "Full time",
               text: "Full time",
-              checked: checked("['createJob']['workingPatterns']", "Full time")
+              checked: checked("['createJob']['workingPatterns']", "Full time") or checked("['createJob']['workingPatterns']", "full time") or checked("working-patterns", "Full time") or checked("working-patterns", "full time")
             },
             {
               value: "Part time",
               text: "Part time",
-              checked: checked("['createJob']['workingPatterns']", "Part time")
+              checked: checked("['createJob']['workingPatterns']", "Part time") or checked("['createJob']['workingPatterns']", "part time") or checked("working-patterns", "Part time") or checked("working-patterns", "part time")
             },
             {
               value: "Flexible",
               text: "Flexible",
-              checked: checked("['createJob']['workingPatterns']", "Flexible")
+              checked: checked("['createJob']['workingPatterns']", "Flexible") or checked("working-patterns", "Flexible") or checked("working-patterns", "flexible")
             },
             {
               value: "Job share",
               text: "Job share",
-              checked: checked("['createJob']['workingPatterns']", "Job share")
+              checked: checked("['createJob']['workingPatterns']", "Job share") or checked("working-patterns", "Job share") or checked("working-patterns", "job share")
             },
             {
               value: "Term time",
               text: "Term time",
-              checked: checked("['createJob']['workingPatterns']", "Term time")
+              checked: checked("['createJob']['workingPatterns']", "Term time") or checked("working-patterns", "Term time") or checked("working-patterns", "term time")
             }
           ]
         }) }}
@@ -126,10 +128,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
       </form>
       <p><a href="#">Cancel</a></p>
 

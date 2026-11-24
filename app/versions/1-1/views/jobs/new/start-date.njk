@@ -1,7 +1,9 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 {% set heading = 'Job start date' %}
-{% set caption = 'Create job listing - section 2 of 4' %}
+{% set caption = createJobCaption.payAndContract %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -23,6 +25,7 @@
         {{heading}}
       {% endset %}
 
+        {% set specificDate = data.createJob['start-date--specific'] if data.createJob and data.createJob['start-date--specific'] else {} %}
         {% set dateHtml %}
           {{ govukDateInput({
             id: "createJob[start-date--specific]",
@@ -40,21 +43,23 @@
               name: "createJob[start-date--specific][day]",
               label: "Day",
               classes: "govuk-input--width-2",
-              value: data['createJob']['start-date--specific'].day
+              value: specificDate.day
             }, {
               name: "createJob[start-date--specific][month]",
               label: "Month",
               classes: "govuk-input--width-2",
-              value: data['createJob']['start-date--specific'].month
+              value: specificDate.month
             }, {
               name: "createJob[start-date--specific][year]",
               label: "Year",
               classes: "govuk-input--width-4",
-              value: data['createJob']['start-date--specific'].year
+              value: specificDate.year
             }]
           }) }}
         {% endset %}
 
+        {% set fromDate = data.createJob['start-date--from'] if data.createJob and data.createJob['start-date--from'] else {} %}
+        {% set toDate = data.createJob['start-date--to'] if data.createJob and data.createJob['start-date--to'] else {} %}
         {% set rangeHtml %}
           {{ govukDateInput({
             id: "createJob[start-date--from]",
@@ -72,17 +77,17 @@
               name: "createJob[start-date--from][day]",
               label: "Day",
               classes: "govuk-input--width-2",
-              value: data['createJob']['start-date--from'].day
+              value: fromDate.day
             }, {
               name: "createJob[start-date--from][month]",
               label: "Month",
               classes: "govuk-input--width-2",
-              value: data['createJob']['start-date--from'].month
+              value: fromDate.month
             }, {
               name: "createJob[start-date--from][year]",
               label: "Year",
               classes: "govuk-input--width-4",
-              value: data['createJob']['start-date--from'].year
+              value: fromDate.year
             }]
           }) }}
 
@@ -102,17 +107,17 @@
               name: "createJob[start-date--to][day]",
               label: "Day",
               classes: "govuk-input--width-2",
-              value: data['createJob']['start-date--to'].day
+              value: toDate.day
             }, {
               name: "createJob[start-date--to][month]",
               label: "Month",
               classes: "govuk-input--width-2",
-              value: data['createJob']['start-date--to'].month
+              value: toDate.month
             }, {
               name: "createJob[start-date--to][year]",
               label: "Year",
               classes: "govuk-input--width-4",
-              value: data['createJob']['start-date--to'].year
+              value: toDate.year
             }]
           }) }}
         {% endset %}
@@ -133,7 +138,7 @@
         {% endset %}
 
       
-        <form action="/jobs/new/salary">
+        <form action="/jobs/new/start-date" method="post">
 
         {{ govukRadios({
           idPrefix: "createJob[start-date]",
@@ -152,7 +157,7 @@
               checked: checked("['createJob']['start-date']", "As soon as possible")
             },
             {
-              value: "As soon as possible",
+              value: "Specific date",
               text: "Specific date",
               checked: checked("['createJob']['start-date']", "Specific date"),
               conditional: {
@@ -182,10 +187,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
 
       </form>
 

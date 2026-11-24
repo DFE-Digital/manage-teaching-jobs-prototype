@@ -1,7 +1,9 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 {% set heading = "Can you offer skilled worker visa sponsorship to non-UK citizens for this role?" %}
-{% set caption = 'Create job listing - section 3 of 4' %}
+{% set caption = createJobCaption.aboutTheRole %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -16,14 +18,14 @@
     <div class="govuk-grid-column-two-thirds">
     
    
-      <form action="/jobs/new/listing-dates" method="post" novalidate>
+      <form action="/jobs/new/sponsorship2" method="post" novalidate>
 
         <div class="govuk-form-group">
           <fieldset aria-describedby="createJob-sponsorship-hint" class="govuk-fieldset">
             
             <h1 class="govuk-fieldset__heading">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                <span class="govuk-caption-l">Create job listing - section 3 of 4</span> 
+                <span class="govuk-caption-l">{{ caption }}</span>
                 {{heading}}
               </legend>
             </h1>
@@ -64,10 +66,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
       </form>
       <p><a href="#">Cancel</a></p>
 

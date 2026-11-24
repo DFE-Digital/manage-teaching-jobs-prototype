@@ -1,7 +1,9 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 {% set heading = 'Applicants religious information' %}
-{% set caption = 'Create job listing - section 3 of 4' %}
+{% set caption = createJobCaption.aboutTheRole %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -57,10 +59,7 @@ Do not ask applicants about their religion</label>
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
       </form>
       <p><a href="#">Cancel</a></p>
 

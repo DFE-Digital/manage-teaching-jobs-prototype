@@ -53,7 +53,7 @@ module.exports = router => {
 
   router.get('/sign-out', (req, res) => {
     res.locals.user = req.session.user = null
-    res.redirect('/')
+    res.render('account/signed-out')
   })
 
   router.post('/account/new', (req, res) => {

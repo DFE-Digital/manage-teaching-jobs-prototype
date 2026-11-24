@@ -1,7 +1,9 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 {% set heading = 'Publish and closing dates' %}
-{% set caption = 'Create job listing - section 2 of 4' %}
+{% set caption = createJobCaption.applicationsAndPublish %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -22,6 +24,10 @@
       <h1 class="govuk-heading-l">
         {{heading}}
       </h1>
+
+      {{ govukInsetText({
+        text: "If you do not choose a closing date, we will set the listing to close 4 weeks after it is published."
+      }) }}
 
       {% set specificDate %}
         {{ govukDateInput({
@@ -71,7 +77,7 @@
         }) }}
       {% endset %}
 
-      <form action="/jobs/new/application_method">
+      <form action="/jobs/new/listing-dates" method="post">
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Publish date</legend>
@@ -188,10 +194,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
 
       </form>
 

@@ -122,6 +122,15 @@ AppFrontend.CheckboxFilter.prototype.getVisibleCheckboxes = function() {
 }
 
 AppFrontend.CheckboxFilter.prototype.setupHeight = function() {
+  if (this.container.hasClass('app-checkbox-filter--no-scroll')) {
+    this.setContainerHeight('auto')
+    this.checkboxesContainer.css({
+      maxHeight: 'none',
+      overflow: 'visible'
+    })
+    return
+  }
+
   var initialOptionContainerHeight = this.checkboxesContainer.height()
   var height = this.checkboxesInnerContainer.outerHeight(true)
 

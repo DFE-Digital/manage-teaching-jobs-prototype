@@ -1,7 +1,9 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 {% set heading = 'Job role' %}
-{% set caption = 'Create job listing - section 1 of 4' %}
+{% set caption = createJobCaption.jobDetails %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -42,10 +44,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
 
       </form>
 

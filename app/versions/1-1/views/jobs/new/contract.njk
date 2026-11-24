@@ -1,7 +1,9 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 {% set heading = 'Contract information' %}
-{% set caption = 'Create job listing - section 1 of 4' %}
+{% set caption = createJobCaption.payAndContract %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -46,7 +48,7 @@
         {{heading}}
       </h1>
 
-      <form action="/jobs/new/salary">
+      <form action="/jobs/new/contract" method="post" novalidate>
 
         {{ govukRadios({
           idPrefix: "createJob[contract]",
@@ -98,11 +100,13 @@
           items: [
             {
               value: "full time",
-              text: "Full time"
+              text: "Full time",
+              checked: checked("working-patterns", "full time") or checked("working-patterns", "Full time") or checked("['createJob']['workingPatterns']", "Full time") or checked("['createJob']['workingPatterns']", "full time")
             },
             {
               value: "part time",
-              text: "Part time"
+              text: "Part time",
+              checked: checked("working-patterns", "part time") or checked("working-patterns", "Part time") or checked("['createJob']['workingPatterns']", "Part time") or checked("['createJob']['workingPatterns']", "part time")
             }
           ]
         }) }}
@@ -117,7 +121,8 @@
           },
           hint: {
             text: "For example, 16 hours a week, Monday to Wednesday."
-          }
+          },
+          value: data.moreDetail
         }) }}
 
         {{ govukRadios({
@@ -136,11 +141,13 @@
           items: [
             {
               value: "yes",
-              text: "Yes"
+              text: "Yes",
+              checked: checked("job-share", "yes")
             },
             {
               value: "no",
-              text: "No"
+              text: "No",
+              checked: checked("job-share", "no")
             }
           ]
         }) }}
@@ -150,10 +157,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
       </form>
       <p><a href="#">Cancel</a></p>
 

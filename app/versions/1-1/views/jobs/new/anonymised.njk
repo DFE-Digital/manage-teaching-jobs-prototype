@@ -1,8 +1,10 @@
 {% extends "layout.njk" %}
 
+{% from "includes/create-job-save-later-button.njk" import saveAndFinishLater %}
+
 {% set heading = 'Anonymise applications' %}
 
-{% set caption = 'Create job listing - section 3 of 4' %}
+{% set caption = createJobCaption.applicationsAndPublish %}
 {% set title = heading + ' - ' + caption %}
 
 {% block beforeContent %}
@@ -23,14 +25,14 @@
         {{heading}}
       {% endset %}
 
-      <form action="/jobs/new/contact-details" method="post" novalidate>
+      <form action="/jobs/new/anonymised" method="post" novalidate>
 
         <div class="govuk-form-group">
             <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l"></legend>
                 <h1 class="govuk-fieldset__heading">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                        <span class="govuk-caption-l">Create job listing - section 3 of 4</span> Anonymise applications
+                        <span class="govuk-caption-l">{{ caption }}</span> Anonymise applications
                     </legend>
                 </h1>
                 <p>You can choose to view candidates' personal details, or to anonymise their applications. Shortlisted applications cannot be anonymised.</p>
@@ -54,10 +56,7 @@
           text: "Save and continue"
         }) }}
 
-        {{ govukButton({
-          text: 'Save and finish later',
-          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
-        }) }}
+        {{ saveAndFinishLater(path) }}
       </form>
       <p><a href="#">Cancel</a></p>
 
