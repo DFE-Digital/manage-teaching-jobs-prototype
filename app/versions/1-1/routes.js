@@ -97,4 +97,14 @@ router.get('/documentation/job-listing-flow-improvements.html', (req, res) => {
   res.redirect(301, '/documentation/job-listing-flow-improvements')
 })
 
+router.get('/documentation/your-account', (req, res) => {
+  res.render('documentation/your-account', {
+    guide: require('../../data/your-account')
+  })
+})
+
+router.get('/documentation/your-account.html', (req, res) => {
+  res.redirect(301, '/documentation/your-account')
+})
+
 module.exports = router

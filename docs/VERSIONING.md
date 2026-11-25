@@ -6,19 +6,20 @@ This prototype follows the same URL pattern as [teaching-vacancies-prototype](ht
 |-----|---------|
 | `/` | Version hub (pick a snapshot) |
 | `/1-0/...` | Version **1.0** — frozen baseline |
-| `/1-1/...` | Version **1.1** — current work |
+| `/1-1/...` | Version **1.1** — WIP (create job flow improvements) |
+| `/1-2/...` | Version **1.2** — WIP (forked from 1.0) |
 | `/jobs`, `/home`, etc. (no prefix) | **Legacy redirect** → `/1-0/...` |
 
 ## Layout
 
 - `app/versions/mount.js` — mounts each version, session data, link rewriting
-- `app/versions/1-0/` and `app/versions/1-1/` — full copies of `routes`, `views`, `data`, `middleware`, `helpers`, `lib`
+- `app/versions/1-0/`, `app/versions/1-1/`, and `app/versions/1-2/` — full copies of `routes`, `views`, `data`, `middleware`, `helpers`, `lib`
 - `app/views/prototypes/index.njk` — homepage hub
 - `app/config.json`, `app/config.js` — shared kit config
 
 ## New version (for example 1-2)
 
-1. Copy the previous version: `cp -R app/versions/1-1 app/versions/1-2`
+1. Copy the version you are forking: e.g. `cp -R app/versions/1-0 app/versions/1-2`
 2. Add `'1-2'` to `VERSIONS` in `app/versions/mount.js`
 3. Update `server.js` skip logic via `prototypeVersions.versionPathSkip` (uses `VERSIONS` from mount)
 4. Update the hub in `app/views/prototypes/index.njk`

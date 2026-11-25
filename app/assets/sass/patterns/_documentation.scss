@@ -139,3 +139,11 @@
   white-space: nowrap;
   vertical-align: top;
 }
+
+.app-documentation-your-account__swatch-wrap {
+  display: inline-block;
+
+  .app-account-featured__icon {
+    margin: 0;
+  }
+}

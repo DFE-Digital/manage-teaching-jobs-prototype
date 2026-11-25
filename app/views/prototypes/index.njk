@@ -1,8 +1,9 @@
 {% set homepage = true %}
 {% set bodyClasses = "app-homepage" %}
 {% set title = "Teaching Vacancies Service" %}
-{% set latestVersion = "1-1" %}
-{% set latestPrefix = "/1-1" %}
+{% set latestVersion = "1-2" %}
+{% set latestPrefix = "/1-2" %}
+{% set wipPrefix = "/1-1" %}
 {% set frozenPrefix = "/1-0" %}
 
 {% extends "layout.njk" %}
@@ -60,9 +61,12 @@
 
         <div class="app-prototype-index__group">
           <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Work in progress</h3>
-          <p class="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-4">Version 1.1 — ideation and to-be journey design. Not for production comparison.</p>
+          <p class="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-4">New design work forks from the 1.0 baseline. Not for production comparison.</p>
           <ul class="app-prototype-list">
-            {% call prototypeItem(latestPrefix + "/index", "Version 1.1", "Open the WIP hiring staff prototype.") %}
+            {% call prototypeItem(latestPrefix + "/index", "Version 1.2", "Open the latest WIP hiring staff prototype (forked from 1.0).") %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1d70b8" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="3.25"/><path d="M5.5 19.25c.8-3.2 3-5 6.5-5s5.7 1.8 6.5 5"/><path d="M19 4.5v4M17 6.5h4"/></svg>
+            {% endcall %}
+            {% call prototypeItem(wipPrefix + "/index", "Version 1.1", "Open the WIP hiring staff prototype (create job flow improvements).") %}
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1d70b8" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="3.25"/><path d="M5.5 19.25c.8-3.2 3-5 6.5-5s5.7 1.8 6.5 5"/><path d="M19 4.5v4M17 6.5h4"/></svg>
             {% endcall %}
           </ul>

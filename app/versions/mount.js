@@ -7,7 +7,7 @@ const utils = require('../../lib/utils')
 const markdown = require('nunjucks-markdown')
 const { marked } = require('marked')
 
-const VERSIONS = ['1-0', '1-1']
+const VERSIONS = ['1-0', '1-1', '1-2']
 
 const VERSION_PATTERN = new RegExp(`^/(${VERSIONS.join('|')})(?:/|$)`)
 
