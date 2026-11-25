@@ -1,0 +1,73 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <h3 class="govuk-notification-banner__heading">
+This declaration has been marked as completed.   </h3>
+   </div>
+</div>
+
+                <div class="govuk-grid-row">
+
+                  <div class="govuk-grid-column-two-thirds">
+    
+
+            <span class="govuk-caption-m">Self-disclosure form</span>
+
+            <h1 class="govuk-heading-l govuk-!-margin-bottom-5 govuk-!-margin-top-0">
+              Jane Smith 
+       
+            </h1>
+
+               <strong class="govuk-tag govuk-tag--green">
+          Completed
+        </strong>
+ 
+       <br>
+  
+       <br>
+
+<p class="govuk-body">This self-disclosure form has been marked as completed.</p>
+         
+
+  
+                </div>
+                     <div class="govuk-grid-column-one-third">
+      
+      <div class="timeline-component">
+
+      <h3 class="govuk-heading-s">Communication history</h3>
+
+      <ul class="timeline-component__items">
+        <li class="timeline-component__item">
+          <h4 class="timeline-component__key govuk-heading-s">Self-disclosure marked as completed</h4>
+          <p class="timeline-component__value govuk-body">By Kate Anderson, 2024-02-14 16:32:22</p>
+        </li>
+      
+        <li class="timeline-component__item">
+          <h4 class="timeline-component__key govuk-heading-s">Self-disclosure requested</h4>
+          <p class="timeline-component__value govuk-body">By Teaching Vacancies, 2024-02-7 16:32:22</p>
+        </li>
+      </ul>
+
+      </div>
+      </div>  
+
+{% endblock %}
+

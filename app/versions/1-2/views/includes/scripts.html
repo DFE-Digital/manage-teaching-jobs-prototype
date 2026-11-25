@@ -1,0 +1,17 @@
+<!-- Javascript -->
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+{% for script in extensionConfig.scripts %}
+  <script src="{{ script.src }}"{% if script.type %} type="{{ script.type }}"{% endif %}></script>
+{% endfor %}
+
+<script src="/public/javascripts/application.js"></script>
+
+{% if useAutoStoreData %}
+  <script src="/public/javascripts/auto-store-data.js"></script>
+{% endif %}
+
+<script type="text/javascript">
+  var AppFrontend = {}
+</script>
+<script type="text/javascript" src="/public/javascripts/components/checkbox-filter/checkbox-filter.js"></script>

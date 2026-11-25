@@ -1,0 +1,59 @@
+{% extends "layout.njk" %}
+
+
+{% set heading = 'Email address' %}
+
+{% if user.organisation.schools %}
+  {% set caption = 'Organisation profile' %}
+{% else %}
+  {% set caption = 'School profile' %}
+{% endif %}
+
+{% if organisation.emailAddress == 'Not entered' %}
+  {% set emailAddress = '' %}
+{% else %}
+  {% set emailAddress = organisation.emailAddress %}
+{% endif %}
+
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+
+      <form method="post">
+
+        {{ govukInput({
+          label: {
+            text: heading,
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          value: emailAddress,
+          id: "email",
+          name: "email"
+        }) }}
+
+        {{ govukButton({
+          text: "Update email address"
+        }) }}
+
+      </form>
+      <p><a href="/organisation">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

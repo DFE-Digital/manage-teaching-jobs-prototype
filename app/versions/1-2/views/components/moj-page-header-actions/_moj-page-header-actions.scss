@@ -1,0 +1,66 @@
+// MOJ Design System: page header actions
+// https://design-patterns.service.justice.gov.uk/components/page-header-actions/
+
+.moj-page-header-actions {
+  display: flex;
+  min-height: govuk-spacing(7);
+  margin-bottom: govuk-spacing(7);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: govuk-spacing(2);
+}
+
+.moj-page-header-actions__title {
+  [class^="govuk-heading-"] {
+    margin-bottom: 0;
+  }
+}
+
+.moj-page-header-actions__actions {
+  .moj-button-group {
+    margin-bottom: 0;
+  }
+
+  .govuk-button {
+    margin-bottom: 0;
+  }
+}
+
+// MOJ button group (inline variant used by page header actions)
+.moj-button-group {
+  $horizontal-gap: govuk-spacing(3);
+  $vertical-gap: govuk-spacing(3);
+  $button-shadow-size: $govuk-border-width-form-element;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include govuk-responsive-margin(6, "bottom", $adjustment: $vertical-gap * -1);
+
+  .govuk-button {
+    margin-bottom: $vertical-gap + $button-shadow-size;
+  }
+
+  @mixin moj-button-group-inline() {
+    margin-right: ($horizontal-gap * -1);
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+
+    .govuk-button {
+      width: auto;
+      margin-right: $horizontal-gap;
+    }
+  }
+
+  &--inline {
+    @include govuk-media-query($until: tablet) {
+      @include moj-button-group-inline;
+    }
+  }
+
+  @include govuk-media-query($from: tablet) {
+    @include moj-button-group-inline;
+  }
+}

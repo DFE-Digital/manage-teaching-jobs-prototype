@@ -1,0 +1,60 @@
+
+{% extends "layout.njk" %}
+
+{% set heading = 'Sign in' %}
+
+{% set title = heading %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+      <form method="post" action="/account/sign-in" novalidate>
+        {% if query.returnUrl %}
+          <input type="hidden" name="returnUrl" value="{{ query.returnUrl }}">
+        {% endif %}
+
+        {{ govukInput({
+          label: {
+            text: "Email address",
+            classes: "govuk-label--m"
+          },
+          id: "emailAddress",
+          name: "emailAddress",
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false,
+          value: data.emailAddress or "rachael@courtland.sch.uk"
+        }) }}
+
+        {{ govukInput({
+          id: "password",
+          name: "password",
+          label: {
+            text: "Password",
+            classes: "govuk-label--m"
+          },
+          type: "password",
+          value: data.password or "Courtland1"
+        }) }}
+
+        {{ govukButton({
+          text: "Sign in"
+        }) }}
+
+
+
+
+      </form>
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

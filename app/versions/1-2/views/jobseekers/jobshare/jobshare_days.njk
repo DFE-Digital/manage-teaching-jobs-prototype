@@ -1,0 +1,70 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Job role' %}
+{% set caption = 'Job share matching - question 1 of 3' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      {% endset %}
+
+      <form action="/jobshare/days">
+
+        <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="jobshare-days-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                    What days of the week are you looking to find a jobshare for?
+                </h1>
+                </legend>
+                <div id="jobshare-days-hint" class="govuk-hint">
+                Select all that apply.
+                </div>
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="jobshare-days" name="jobshare-days" type="checkbox" value="Monday">
+                      <label class="govuk-label govuk-checkboxes__label" for="jobshare-days">
+                        Monday
+                      </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                      <input class="govuk-checkboxes__input" id="jobshare-days" name="jobshare-days" type="checkbox" value="Tuesday">
+                      <label class="govuk-label govuk-checkboxes__label" for="jobshare-days">
+                        Tuesday
+                      </label>
+                  </div>
+                </div>
+            </fieldset>
+        </div>
+
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+      </form>
+
+      <p><a href="/">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

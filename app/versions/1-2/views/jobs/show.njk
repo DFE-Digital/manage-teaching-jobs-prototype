@@ -1,0 +1,673 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'job' %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+  {% include "includes/job-listing-header.njk" %}
+
+
+
+  {% include "includes/job-sub-navigation.njk" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-6">
+        Job details
+      </h2>
+
+      {% set workingPatterns %}
+        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+
+          {% for workingPattern in job.workingPatterns %}
+            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
+              {{workingPattern}} -
+              {% if workingPattern == 'Full time' %}
+                {{job.fullTimeDetails}}
+              {% else %}
+                {{job.partTimeDetails}}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endset %}
+
+      {% set salaryDetails %}
+        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+          {% for salaryDetail in job.salaryDetails %}
+            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
+                {{salaryDetail}}:<br>
+                {% if salaryDetail == 'Full-time equivalent salary' %}
+                  {{job.fullTimeEquivalentSalaryDetails}}
+                {% elseif salaryDetail == 'Actual salary' %}
+                  {{job.actualSalaryDetails}}
+                {% else %}
+                  {{job.payScaleDetails}}
+                {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endset %}
+
+      {% set additionalDocuments %}
+        <ul class="govuk-list govuk-list--spaced govuk-!-margin-bottom-0">
+          {% for document in job.additionalDocuments %}
+            <li {% if loop.last %} class="govuk-!-margin-bottom-0" {% endif %}>
+              <a href="#">{{document.file}} ({{document.size}})</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endset %}
+
+       {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Locations where the job is based"
+            },
+            value: {
+              text: "Farnham Heath End, Hale Reeds, Farnham, Surrey, GU9 9BN"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/locations",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.organisation.schools,
+          {
+            key: {
+              text: "Role"
+            },
+            value: {
+              text: job.role
+            },
+            actions: {
+              items: [
+                {
+                  href: '/jobs/edit/' + job.id + '/role',
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Job title"
+            },
+            value: {
+              text: job.title
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/title",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Key stage"
+            },
+            value: {
+              text: job.keyStages | join(', ')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/key-stage",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.keyStages,
+          {
+            key: {
+              text: "Subjects"
+            },
+            value: {
+              text: job.subjects | join(', ')
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/subjects",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.subjects,
+          {
+            key: {
+              text: "Contract type"
+            },
+            value: {
+              text: job.contractType + ' - ' + job.contractLength
+            },
+            actions: {
+              items: [
+                {
+                  href: "jobs/new/contract",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Working patterns"
+            },
+            value: {
+              html: workingPatterns
+            },
+            actions: {
+              items: [
+                {
+                  href: "jobs/new/working-patterns",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Salary details"
+            },
+            value: {
+              html: salaryDetails
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/salary",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Dates
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Publish date"
+            },
+            value: {
+              text: job.publishDate | date
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/listing-dates",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Closing date"
+            },
+            value: {
+              text: job.closingDate | date + ' at ' + job.closingTime
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/listing-dates",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Job start date"
+            },
+            value: {
+              html: job.startDate | date
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/start-date",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Application process
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Do you want to use the application form?"
+            },
+            value: {
+              text: job.isUsingApplicationForm
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/method",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "How would you like applications to be submitted?"
+            },
+            value: {
+              text: job.applicationMethod
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/process",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.applicationMethod,
+          {
+            key: {
+              text: "Application form"
+            },
+            value: {
+              html: '<a href="#">' + job.applicationForm.file + '(' + job.applicationForm.size +')</a>'
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/form",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.applicationForm,
+          {
+            key: {
+              text: "Email address to receive applications"
+            },
+            value: {
+              html: job.emailAddressForApplications
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/form",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.emailAddressForApplications,
+          {
+            key: {
+              text: "Link to website"
+            },
+            value: {
+              html: job.linkToWebsite
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/link",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.linkToWebsite,
+          {
+            key: {
+              text: "Do you want to offer school visits?"
+            },
+            value: {
+              text: job.offersSchoolVisits
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/school-visits",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.offersSchoolVisits,
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              html: job.contactEmailAddress
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you want to give a contact phone number?"
+            },
+            value: {
+              text: job.hasContactPhoneNumber
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Phone number"
+            },
+            value: {
+              text: "0207 3456 3746"
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.contactPhoneNumber
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        About the role
+      </h2>
+
+      {% set skillsAndExperience %}
+        <div class="app-prose govuk-!-margin-bottom-0">
+          {% markdown %}
+            {{job.skillsAndExperience}}
+          {% endmarkdown %}
+        </div>
+      {% endset %}
+
+      {% set whatSchoolOffers %}
+        <div class="app-prose govuk-!-margin-bottom-0">
+          {% markdown %}
+            {{job.whatSchoolOffers}}
+          {% endmarkdown %}
+        </div>
+      {% endset %}
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Is this role suitable for an early career teacher (ECT)?"
+            },
+            value: {
+              text: data['createJob']['suitability']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/about",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if data['createJob']['suitability'],
+          {
+            key: {
+              text: "What skills and experience are you looking for?"
+            },
+            value: {
+              html: skillsAndExperience
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/about",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What does your school offer?"
+            },
+            value: {
+              html: whatSchoolOffers
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/about",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you want to give information about your commitment to safeguarding?"
+            },
+            value: {
+              text: job.hasSafeguardingCommitment
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/about",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Information about your commitment to safeguarding"
+            },
+            value: {
+              text: job.safeguardingCommitment
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/about",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.safeguardingCommitment,
+          {
+            key: {
+              text: "Do you want to add further details about the role?"
+            },
+            value: {
+              text: job.hasFurtherDetailsAboutTheRole
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/about",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Further details about the role"
+            },
+            value: {
+              text: job.furtherDetailsAboutTheRole
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/about",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.furtherDetailsAboutTheRole,
+          {
+            key: {
+              text: "Do you want to upload any additional documents?"
+            },
+            value: {
+              text: job.hasAdditionalDocuments
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/upload",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Additional documents"
+            },
+            value: {
+              html: additionalDocuments
+            },
+            actions: {
+              items: [
+                {
+                  href: "/jobs/new/file-check",
+                  text: "Change",
+                  visuallyHiddenText: "TODO"
+                }
+              ]
+            }
+          } if job.additionalDocuments
+        ]
+      }) }}
+
+    </div>
+
+
+    <div class="govuk-grid-column-one-third">
+
+      <!--
+
+      <div class="govuk-summary-card govuk-!-margin-top-6">
+        <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+                Listing data statistics
+            </h2>
+            
+        </div>
+        <div class="govuk-summary-card__content">
+
+            <dl class="govuk-summary-list" id="vacancy_statistics">
+              <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                <dt class="govuk-summary-list__value">Views</dt>
+                <dd class="govuk-summary-list__key">13</dd>
+              </div>
+              <div class="govuk-summary-list__row govuk-summary-list__row--no-actions">
+                <dt class="govuk-summary-list__value">Saves</dt>
+                <dd class="govuk-summary-list__key">4</dd>
+              </div>
+            </dl>
+
+        </div>
+      </div>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+            <h2 class="govuk-summary-card__title">
+               Application data statistics
+            </h2>
+            
+        </div>
+        <div class="govuk-summary-card__content">
+
+            
+            <dl class="govuk-summary-list" id="job_applications_statistics">
+              <div class="govuk-summary-list__row govuk-summary-list"><dt class="govuk-summary-list__value">Applications</dt><dd class="govuk-summary-list__key">10</dd></div>
+              <div class="govuk-summary-list__row govuk-summary-list"><dt class="govuk-summary-list__value">New</dt><dd class="govuk-summary-list__key">6</dd></div>
+              <div class="govuk-summary-list__row govuk-summary-list"><dt class="govuk-summary-list__value">Shortlisted</dt><dd class="govuk-summary-list__key">1</dd></div>
+              <div class="govuk-summary-list__row govuk-summary-list"><dt class="govuk-summary-list__value">Rejected</dt><dd class="govuk-summary-list__key">2</dd></div>
+              <div class="govuk-summary-list__row govuk-summary-list"><dt class="govuk-summary-list__value">Withdrawn </dt><dd class="govuk-summary-list__key">1</dd></div>
+            </dl>
+
+        </div>
+      </div>
+    
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+          <p class="govuk-body">This may include data from candidates who have withdrawn their applications.</p>
+          <p>This is to ensure the anonymity of applicants who submit equal opportunities information.</p>
+          <a class="govuk-button govuk-button--secondary" data-module="govuk-button" href="/organisation/jobs/8960c3fe-b3b7-4401-8e74-4de0a72cb7b3/statistics.csv">Download statistics (csv, 0.2KB)</a>
+        </div>
+
+      -->
+      
+  </div>
+
+{% endblock %}

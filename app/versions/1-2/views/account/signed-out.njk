@@ -1,0 +1,17 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Signed out' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "You have signed out"
+      }) }}
+
+      <p class="govuk-body">
+        <a class="govuk-link" href="/account/sign-in">Sign in again</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}

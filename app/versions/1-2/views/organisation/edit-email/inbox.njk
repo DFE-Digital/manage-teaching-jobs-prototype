@@ -1,0 +1,33 @@
+{% extends "layout_email.njk" %}
+
+{% set subject = "Confirm your profile email update with Teaching Vacancies" %}
+{% set from = "dfe.teaching.vacancies@notifications.service.gov.uk" %}
+{% set to = "Jane Doe <jane.doe@example.com>" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-m">
+      Confirm your profile email update with Teaching Vacancies
+    </h1>
+
+    <p>You have requested to update your Teacher Vacancies profile with this email address.</p>
+
+    <h2 class="govuk-heading-m">
+      What to do now
+    </h2>
+
+    <p><a href="/organisation/{{organisation.id}}/email/confirmation">Verify email and update profile</a></p>
+
+    <h2 class="govuk-heading-m">
+      Not requested this?
+    </h2>
+
+    <p>If you did not make this request, please email<br/><a href="#">teaching.vacancies@education.gov.uk</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

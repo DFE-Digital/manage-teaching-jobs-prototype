@@ -1,0 +1,114 @@
+{% extends "layout.njk" %}
+
+{% set primaryNavId = 'jobs' %}
+{% set subNavId = 'applications' %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  {{ govukNotificationBanner({
+    html: "<h2 class=\"govuk-heading-m\">"+flash+"</h2>",
+    type: "success",
+    icon: false
+  }) if flash and flash.length }}
+
+
+<div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+        <span class="govuk-caption-l">Update application status</span>
+
+
+        <form method="post">
+
+        <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="countries-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+                What application status do you want to assign to this applicant?
+            </h1>
+            </legend>
+
+            <div class="govuk-inset-text">
+                <p class="govuk-body">Applicant:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>{{jobseeker.profile.firstName}} {{jobseeker.profile.lastName}}</li>
+                </ul>
+            </div>
+
+            <div class="govuk-radios" data-module="govuk-radios">
+                
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="tag-4" name="tag" type="radio" value="Not progressing">
+                    <label class="govuk-label govuk-radios__label" for="tag-4">
+                        <strong class="govuk-tag govuk-tag--red">
+                            Not progressing
+                        </strong>
+                    </label>
+                    <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                        Applications that you are not taking forward to interview. You can create an email to send to them to let them know.
+                    </div>
+                </div>
+
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="tag-2" name="tag" type="radio" value="Shortlisted">
+                    <label class="govuk-label govuk-radios__label" for="tag-2">
+                        <strong class="govuk-tag govuk-tag--yellow">
+                            Shortlisted
+                        </strong>
+                    </label>
+                    <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                        Applications that have been shortlisted.
+                    </div>
+                </div>
+
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="tag-2" name="tag" type="radio" value="Interviewing">
+                    <label class="govuk-label govuk-radios__label" for="tag-2">
+                        <strong class="govuk-tag govuk-tag--green">
+                            Interviewing
+                        </strong>
+                    </label>
+                    <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                        Candidates you plan to interview. You can create an email to send to them to let them know. You will also be able to trigger pre-interview checks through the Teaching Vacancies service.
+                    </div>
+                </div>
+
+                <div class="govuk-radios__divider">or</div>
+                
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="tag-5" name="tag" type="radio" value="Offered" data-aria-controls="conditional-tag-5">
+                    <label class="govuk-label govuk-radios__label" for="tag-5">
+                        <strong class="govuk-tag govuk-tag--pink">
+                            Job offered
+                        </strong>
+                    </label>
+                    <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                        Candidates that have been offered a job. If they decline the offer you will have the option to update the status later.
+                    </div>
+                </div>
+            </div>
+
+        </fieldset>
+        </div>
+
+        <button type="submit" class="govuk-button" data-module="govuk-button">
+            Save and continue
+        </button>
+
+        </form>
+
+        <p class="govuk-body">
+            <a href="applications" class="govuk-link">Cancel</a>
+        </p>
+
+    </div>
+
+</div>
+  
+
+{% endblock %}

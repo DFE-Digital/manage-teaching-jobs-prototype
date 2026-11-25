@@ -1,0 +1,79 @@
+{% extends "layout.njk" %}
+
+{% set heading = "Can you offer skilled worker visa sponsorship to non-UK citizens for this role?" %}
+{% set caption = 'Create job listing - section 3 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+   
+      <form action="/jobs/new/listing-dates" method="post" novalidate>
+
+        <div class="govuk-form-group">
+          <fieldset aria-describedby="createJob-sponsorship-hint" class="govuk-fieldset">
+            
+            <h1 class="govuk-fieldset__heading">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <span class="govuk-caption-l">Create job listing - section 3 of 4</span> 
+                {{heading}}
+              </legend>
+            </h1>
+            
+            <div class="govuk-hint" id="publishers-job-listing-visa-sponsorship-form-visa-sponsorship-available-hint">
+              <p>To offer Skilled Worker visa sponsorship, this role must:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>meet the minimum salary requirements</li>
+                <li>be included on the list of eligible roles</li>
+              </ul>
+              <p><a href="https://www.gov.uk/skilled-worker-visa/if-you-work-in-healthcare-or-education" target="_blank">Learn more about Skilled Worker visa requirements for teaching jobs (opens in new tab).</a></p>
+              <p>Different salary rules apply for support roles in schools.<a href="https://www.gov.uk/government/publications/skilled-worker-visa-eligible-occupations/skilled-worker-visa-eligible-occupations-and-codes" target="_blank">Find out about eligible support roles and salary requirements (opens in new tab).</a></p>
+            </div>
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input aria-controls="conditional-createJob-sponsorship" aria-expanded="false" class="govuk-radios__input" id="createJob-sponsorship" name="createJob-sponsorship" type="radio" value="Yes"> <label class="govuk-label govuk-radios__label" for="createJob-sponsorship">Yes</label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-createJob-sponsorship">
+                <p>This will help jobseekers who are looking for sponsorship to find your job more easily.</p>
+               </div>
+              <div class="govuk-radios__item">
+                <input aria-controls="conditional-createJob-sponsorship-2" aria-expanded="false" class="govuk-radios__input" id="createJob-sponsorship-2" name="createJob-sponsorship" type="radio" value="No"> <label class="govuk-label govuk-radios__label" for="createJob-sponsorship-2">No</label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-createJob-sponsorship-2">
+                <p>This will tell job seekers on your job listing that you cannot offer sponsorship for this role.</p>
+              </div>
+            </div>
+
+            </div>
+           
+            
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

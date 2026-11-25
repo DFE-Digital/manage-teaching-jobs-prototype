@@ -1,0 +1,77 @@
+{% extends "layout.njk" %}
+
+{% set showCollege = showCollegeSubjectList | default(false) %}
+{% if user.organisation.name == 'Hope college' or showCollege %}
+  {% set heading = 'Which subject or subjects is this job for?' %}
+{% else %}
+  {% set heading = 'Which subject or subjects is this job for? (optional)' %}
+{% endif %}
+
+{% set caption = 'Create job listing - section 1 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: backFromSubjectsHref or "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">{{ caption }}</span>
+        {{ heading }}
+      {% endset %}
+
+      {% set subjectsAfterLegend %}
+        <p class="govuk-body govuk-!-margin-bottom-2">Select all that apply. You can leave this blank if the job is not for a specific subject.</p>
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Search subjects</h2>
+        <p class="govuk-hint govuk-!-margin-bottom-4">Start typing a subject, then select it from the list. Leave this blank if the subject is not listed.</p>
+        <span class="app-checkbox-filter__filter-anchor" hidden></span>
+      {% endset %}
+
+      <form action="/jobs/new/subjects" method="post">
+
+        {{ appCheckboxFilter({
+          classes: "app-checkbox-filter--no-scroll",
+          idPrefix: "subjects",
+          name: "subjects",
+          legend: {
+            html: h1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          },
+          afterLegendHtml: subjectsAfterLegend,
+          items: subjectItems
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script type="text/javascript">
+    new AppFrontend.CheckboxFilter({
+      container: $('#subjects'),
+      textBox: {
+        label: 'Search subjects'
+      }
+    })
+  </script>
+{% endblock %}

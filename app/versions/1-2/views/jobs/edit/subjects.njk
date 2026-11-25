@@ -1,0 +1,285 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Subjects (optional)' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      {% endset %}
+
+      <form action="/jobs/new/contract">
+
+        {{ appCheckboxFilter({
+          idPrefix: "subjects",
+          name: "subjects",
+          legend: {
+            html: h1,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          },
+          items: [
+            {
+              value: "Accounting",
+              text: "Accounting",
+              hint: {
+                text: 'Includes Finance and accounting'
+              },
+              checked: checked("['createJob']['subjects']", "Accounting")
+            },
+            {
+              value: "Art and design",
+              text: "Art and design",
+              checked: checked("['createJob']['subjects']", "Art and design")
+            },
+            {
+              value: "Biology",
+              text: "Biology",
+              checked: checked("['createJob']['subjects']", "Biology")
+            },
+            {
+              value: "Business studies",
+              text: "Business studies",
+              checked: checked("['createJob']['subjects']", "Business studies")
+            },
+            {
+              value: "Chemistry",
+              text: "Chemistry",
+              checked: checked("['createJob']['subjects']", "Chemistry")
+            },
+            {
+              value: "Citizenship",
+              text: "Citizenship",
+              checked: checked("['createJob']['subjects']", "Citizenship")
+            },
+            {
+              value: "Classics",
+              text: "Classics",
+              hint: {
+                text: 'Includes Latin'
+              },
+              checked: checked("['createJob']['subjects']", "Classics")
+            },
+            {
+              value: "Computing",
+              text: "Computing",
+              hint: {
+                text: 'Includes Computer science, Information technology, and ICT'
+              },
+              checked: checked("['createJob']['subjects']", "Computing")
+            },
+            {
+              value: "Dance",
+              text: "Dance",
+              checked: checked("['createJob']['subjects']", "Dance")
+            },
+            {
+              value: "Design and technology",
+              text: "Design and technology",
+              hint: {
+                text: 'Includes Product design, Textiles and Systems and control'
+              },
+              checked: checked("['createJob']['subjects']", "Design and technology")
+            },
+            {
+              value: "Drama",
+              text: "Drama",
+              hint: {
+                text: 'Includes Theatre studies and Performing arts'
+              },
+              checked: checked("['createJob']['subjects']", "Drama")
+            },
+            {
+              value: "Economics",
+              text: "Economics",
+              checked: checked("['createJob']['subjects']", "Economics")
+            },
+            {
+              value: "Engineering",
+              text: "Engineering",
+              checked: checked("['createJob']['subjects']", "Engineering")
+            },
+            {
+              value: "English",
+              text: "English",
+              hint: {
+                text: 'Includes English language and literature'
+              },
+              checked: checked("['createJob']['subjects']", "English")
+            },
+            {
+              value: "Food Technology",
+              text: "Food Technology",
+              hint: {
+                text: 'Includes Hospitality and catering'
+              },
+              checked: checked("['createJob']['subjects']", "Food Technology")
+            },
+            {
+              value: "French",
+              text: "French",
+              checked: checked("['createJob']['subjects']", "French")
+            },
+            {
+              value: "Geography",
+              text: "Geography",
+              checked: checked("['createJob']['subjects']", "Geography")
+            },
+            {
+              value: "German",
+              text: "German",
+              checked: checked("['createJob']['subjects']", "German")
+            },
+            {
+              value: "Health and social care",
+              text: "Health and social care",
+              checked: checked("['createJob']['subjects']", "Health and social care")
+            },
+            {
+              value: "History",
+              text: "History",
+              checked: checked("['createJob']['subjects']", "History")
+            },
+            {
+              value: "Humanities",
+              text: "Humanities",
+              checked: checked("['createJob']['subjects']", "Humanities")
+            },
+            {
+              value: "ICT",
+              text: "ICT",
+              checked: checked("['createJob']['subjects']", "ICT")
+            },
+            {
+              value: "Law",
+              text: "Law",
+              checked: checked("['createJob']['subjects']", "Law")
+            },
+            {
+              value: "Mandarin",
+              text: "Mandarin",
+              checked: checked("['createJob']['subjects']", "Mandarin")
+            },
+            {
+              value: "Mathematics",
+              text: "Mathematics",
+              checked: checked("['createJob']['subjects']", "Mathematics")
+            },
+            {
+              value: "Media studies",
+              text: "Media studies",
+              checked: checked("['createJob']['subjects']", "Media studies")
+            },
+            {
+              value: "Music",
+              text: "Music",
+              checked: checked("['createJob']['subjects']", "Music")
+            },
+            {
+              value: "Philosophy",
+              text: "Philosophy",
+              checked: checked("['createJob']['subjects']", "Philosophy")
+            },
+            {
+              value: "Physical education",
+              text: "Physical education",
+              checked: checked("['createJob']['subjects']", "Physical education")
+            },
+            {
+              value: "Physics",
+              text: "Physics",
+              checked: checked("['createJob']['subjects']", "Physics")
+            },
+            {
+              value: "Politics",
+              text: "Politics",
+              checked: checked("['createJob']['subjects']", "Politics")
+            },
+            {
+              value: "Psychology",
+              text: "Psychology",
+              checked: checked("['createJob']['subjects']", "Psychology")
+            },
+            {
+              value: "Religious education",
+              text: "Religious education",
+              hint: {
+                text: 'Includes religious studies'
+              },
+              checked: checked("['createJob']['subjects']", "Religious education")
+            },
+            {
+              value: "Relationships and sex education",
+              text: "Relationships and sex education",
+              checked: checked("['createJob']['subjects']", "Relationships and sex education")
+            },
+            {
+              value: "Science",
+              text: "Science",
+              checked: checked("['createJob']['subjects']", "Science")
+            },
+            {
+              value: "Social sciences",
+              text: "Social sciences",
+              checked: checked("['createJob']['subjects']", "Social sciences")
+            },
+            {
+              value: "Sociology",
+              text: "Sociology",
+              checked: checked("['createJob']['subjects']", "Sociology")
+            },
+            {
+              value: "Spanish",
+              text: "Spanish",
+              checked: checked("['createJob']['subjects']", "Spanish")
+            },
+            {
+              value: "Statistics",
+              text: "Statistics",
+              checked: checked("['createJob']['subjects']", "Statistics")
+            }]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script type="text/javascript">
+    new AppFrontend.CheckboxFilter({
+      container: $('#subjects'),
+      textBox: {
+        label: 'Search for subject'
+      }
+    })
+  </script>
+{% endblock %}

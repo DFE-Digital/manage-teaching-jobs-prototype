@@ -1,0 +1,34 @@
+
+{% extends "layout.njk" %}
+
+{% if user.organisation.schools %}
+  {% set title = 'Add your school logos and photos' %}
+  {% set title = 'Complete your organisation profile' %}
+{% else %}
+  {% set title = 'Add your school logo and photo' %}
+  {% set title = 'Complete your school profile' %}
+{% endif %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if user.organisation.schools %}
+        <h1 class="govuk-heading-l">{{title}}</h1>
+        <p>The details stored in your organisation profile are included in your job listings.</p>
+      {% else %}
+        <h1 class="govuk-heading-l">{{title}}</h1>
+        <p>The details stored in your school profile are included in your job listings.</p>
+      {% endif %}
+
+      {{ govukButton({
+        text: title,
+        href: "/organisation"
+      }) }}
+
+      <p><a href="/home">Continue to your account</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

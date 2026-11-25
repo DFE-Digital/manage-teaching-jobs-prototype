@@ -1,0 +1,84 @@
+{% extends "layout.njk" %}
+
+{% set title = 'Do you want to ask applicants for their religion?' + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% if user.organisation.schools %}
+    {% set organisationLabel = 'organisation profile' %}
+  {% else %}
+    {% set organisationLabel = 'school profile' %}
+  {% endif %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form action="/jobs/new/about">
+      
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="religion-question-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <span class="govuk-caption-l">
+                    Create job listing - section 3 of 4
+                    </span>
+                    <h1 class="govuk-fieldset__heading">
+                      What religious information do you want to ask applicants for?
+                    </h1>
+                </legend>
+                <div id="religion-question-hint" class="govuk-hint">
+                  Select all that apply or do not ask about religion.
+                </div>
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="religion-question" name="religion-question" type="checkbox" value="Religious denomination or faith">
+                    <label class="govuk-label govuk-checkboxes__label" for="religion-question">
+                      Religious denomination or faith
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="religion-question-2" name="religion-question" type="checkbox" value="Address of place of worship">
+                    <label class="govuk-label govuk-checkboxes__label" for="religion-question-2">
+                      Address of place of worship
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="religion-question-3" name="religion-question" type="checkbox" value="Religious referee">
+                    <label class="govuk-label govuk-checkboxes__label" for="religion-question-3">
+                       Religious referee
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="religion-question-4" name="religion-question" type="checkbox" value="Baptism certificate">
+                    <label class="govuk-label govuk-checkboxes__label" for="religion-question-4">
+                      Baptism certificate or date and address of baptism
+                    </label>
+                  </div>
+                  <div class="govuk-checkboxes__divider">or</div>
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="religion-question-6" name="religion-question" type="checkbox" value="none" data-behaviour="exclusive">
+                    <label class="govuk-label govuk-checkboxes__label" for="religion-question-6">
+                      No, do not ask about religion
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+      </form>
+      <p><a href="/organisation">Cancel</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

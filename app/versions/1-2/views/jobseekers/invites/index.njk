@@ -1,0 +1,130 @@
+{% extends "layout.njk" %}
+
+{% set title = [jobseeker.profile.firstName, jobseeker.profile.lastName] | join(' ') %}
+{% set heading = 'Invitations to apply' %}
+{% set primaryNavId = 'jobseekers' %}
+{% set subNavId = 'candidateInvitations' %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+    {{title}}
+  </h1>
+
+  <div class="govuk-button-group">
+   
+    {{ govukButton({
+        text: "Send email",
+        href: '/jobseekers/' + jobseeker.id + '/invites/new',
+        classes: 'govuk-!-margin-bottom-2'
+    }) }}
+
+  </div>
+
+  {% include "includes/candidate-profile-sub-navigation.njk" %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if user.organisation.phase == 'Secondary school' %}
+        {{ govukTable({
+        head: [
+          {
+            text: "Emails sent to candidate"
+          },
+          {
+            text: "Sent by"
+          },
+          {
+            text: "Date"
+          }
+        ],
+        rows: [
+          [
+            {
+              html: 'General enquiry sent'
+            },
+            {
+              html: "Rachael Harvey"
+            },
+            {
+              html: "18 August 2022 at 9am"
+            }
+          ],
+          [
+            {
+              html: '<a href="#">Teacher of Geography</a>'
+            },
+            {
+              html: "Molly Capstick"
+            },
+            {
+              html: "10 May 2022 at 10:13pm"
+            }
+          ]
+        ]
+      }) }}
+
+      {% else %}
+        {{ govukTable({
+        head: [
+          {
+            text: "Emails sent to candidate"
+          },
+          {
+            text: "Sent by"
+          },
+          {
+            text: "Date"
+          }
+        ],
+        rows: [
+          [
+            {
+              html: 'General enquiry sent'
+            },
+            {
+              html: "Rachael Harvey"
+            },
+            {
+              html: "18 August 2022 at 9am"
+            }
+          ],
+          [
+            {
+              html: '<a href="#">Teacher of KS1 or KS2</a>'
+            },
+            {
+              html: "Rachael Harvey"
+            },
+            {
+              html: "18 August 2022 at 9am"
+            }
+          ],
+          [
+            {
+              html: '<a href="#">Class teacher</a>'
+            },
+            {
+              html: "Molly Capstick"
+            },
+            {
+              html: "10 May 2022 at 10:13pm"
+            }
+          ]
+        ]
+      }) }}
+
+      {% endif %}
+
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+{% endblock %}

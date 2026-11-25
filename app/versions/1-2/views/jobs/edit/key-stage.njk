@@ -1,0 +1,89 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Key stage' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      {% endset %}
+
+      {{user | log}}
+
+      <form action="/jobs/new/subjects">
+        {{ govukCheckboxes({
+          idPrefix: "createJob[key-stages]",
+          name: "createJob[key-stages]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "Early years",
+              text: "Early years",
+              checked: checked("['createJob']['key-stages']", "Early years")
+            } if user.organisation.phase == 'Primary school' or user.organisation.trustType == 'primary',
+            {
+              value: "Key stage 1",
+              text: "Key stage 1",
+              checked: checked("['createJob']['key-stages']", "Key stage 1")
+            } if user.organisation.phase == 'Primary school' or user.organisation.trustType == 'primary',
+            {
+              value: "Key stage 2",
+              text: "Key stage 2",
+              checked: checked("['createJob']['key-stages']", "Key stage 2")
+            } if user.organisation.phase == 'Primary school' or user.organisation.trustType == 'primary',
+            {
+              value: "Key stage 3",
+              text: "Key stage 3",
+              checked: checked("['createJob']['key-stages']", "Key stage 3")
+            } if user.organisation.phase == 'Secondary school' or user.organisation.trustType == 'secondary',
+            {
+              value: "Key stage 4",
+              text: "Key stage 4",
+              checked: checked("['createJob']['key-stages']", "Key stage 4")
+            } if user.organisation.phase == 'Secondary school' or user.organisation.trustType == 'secondary',
+            {
+              value: "Key stage 5",
+              text: "Key stage 5",
+              checked: checked("['createJob']['key-stages']", "Key stage 5")
+            } if user.organisation.phase == 'Secondary school' or user.organisation.trustType == 'secondary'
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

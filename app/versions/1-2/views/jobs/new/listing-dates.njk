@@ -1,0 +1,239 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Publish and closing dates' %}
+{% set caption = 'Create job listing - section 2 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <span class="govuk-caption-l">
+        {{caption}}
+      </span>
+      <h1 class="govuk-heading-l">
+        {{heading}}
+      </h1>
+
+      {% set specificDate %}
+        {{ govukDateInput({
+          id: "createJob[publishDate--anotherDate]",
+          name: "createJob[publish--anotherDate]",
+          fieldset: {
+            legend: {
+              text: "Another date",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 2023"
+          },
+          items: [{
+            name: "createJob[publishDate--anotherDate][day]",
+            label: "Day",
+            classes: "govuk-input--width-2",
+            value: data['createJob']['publishDate--anotherDate'].day
+          }, {
+            name: "createJob[publishDate--anotherDate][month]",
+            label: "Month",
+            classes: "govuk-input--width-2",
+            value: data['createJob']['publishDate--anotherDate'].month
+          }, {
+            name: "createJob[publishDate--anotherDate][year]",
+            label: "Year",
+            classes: "govuk-input--width-4",
+            value: data['createJob']['publishDate--anotherDate'].year
+          }]
+        }) }}
+      {% endset %}
+
+      {% set timeHtml %}
+        {{ govukInput({
+          id: "createJob[closing-time--another-time]",
+          name: "createJob[closing-time--another-time]",
+          label: {
+            text: "Time",
+            classes: 'govuk-label--s'
+          },
+          classes: 'govuk-input--width-5',
+          hint: {
+            text: "For example, 2pm or 14:30"
+          },
+          value: data['createJob']['closing-time--another-time']
+        }) }}
+      {% endset %}
+
+      <form action="/jobs/new/application_method">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Publish date</legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input checked class="govuk-radios__input" id="createJob[publishDate]" name="createJob[publishDate]" type="radio" value="Today (6 June 2022)"> <label class="govuk-label govuk-radios__label" for="createJob[publishDate]"><span id="todayDate"></span></label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="createJob[publishDate]-2" name="createJob[publishDate]" type="radio" value="Tomorrow (7 June 2022)"> <label class="govuk-label govuk-radios__label" for="createJob[publishDate]-2"><span id="tomorrowDate"></span></label>
+              </div>
+              <div class="govuk-radios__item">
+                <input aria-controls="conditional-createJob[publishDate]-3" aria-expanded="false" class="govuk-radios__input" id="createJob[publishDate]-3" name="createJob[publishDate]" type="radio" value="Another date"> <label class="govuk-label govuk-radios__label" for="createJob[publishDate]-3">Another date</label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-createJob[publishDate]-3">
+                <div class="govuk-form-group">
+                  <fieldset aria-describedby="createJob[publishDate--anotherDate]-hint" class="govuk-fieldset" role="group">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Another date</legend>
+                    <div class="govuk-hint" id="createJob[publishDate--anotherDate]-hint">
+                      For example, 31 3 2023
+                    </div>
+                    <div class="govuk-date-input" id="createJob[publishDate--anotherDate]">
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="createJob[publishDate--anotherDate]-createJob[publishDate--anotherDate][day]">Day</label> 
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="createJob[publishDate--anotherDate]-createJob[publishDate--anotherDate][day]" name="createJob[publishDate--anotherDate][day]" type="text">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="createJob[publishDate--anotherDate]-createJob[publishDate--anotherDate][month]">Month</label> 
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="createJob[publishDate--anotherDate]-createJob[publishDate--anotherDate][month]" name="createJob[publishDate--anotherDate][month]" type="text">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="createJob[publishDate--anotherDate]-createJob[publishDate--anotherDate][year]">Year</label> 
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="createJob[publishDate--anotherDate]-createJob[publishDate--anotherDate][year]" name="createJob[publishDate--anotherDate][year]" type="text">
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+
+        {{ govukDateInput({
+          id: "createJob-list[closing-date]",
+          name: "createJob-list[closing-date]",
+          fieldset: {
+            legend: {
+              text: "Closing date",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 2023"
+          },
+          items: [{
+            name: "createJob[closing-date][day]",
+            label: "Day",
+            classes: "govuk-input--width-2",
+            value: data['createJob']['closing-date'].day
+          }, {
+            name: "createJob[closing-date][month]",
+            label: "Month",
+            classes: "govuk-input--width-2",
+            value: data['createJob']['closing-date'].month
+          }, {
+            name: "createJob[closing-date][year]",
+            label: "Year",
+            classes: "govuk-input--width-4",
+            value: data['createJob']['closing-date'].year
+          }]
+        }) }}
+
+        {{ govukRadios({
+          idPrefix: "createJob[closing-time]",
+          name: "createJob[closing-time]",
+          fieldset: {
+            legend: {
+              text: "Closing time",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "9am",
+              text: "9am",
+              checked: checked("['createJob']['closing-time']", "9am")
+            },
+            {
+              value: "12pm (midday)",
+              text: "12pm (midday)",
+              checked: checked("['createJob']['closing-time']", "12pm (midday)")
+            },
+            {
+              value: "5pm",
+              text: "5pm",
+              checked: checked("['createJob']['closing-time']", "5pm")
+            },
+            {
+              value: "11:59pm",
+              text: "11:59pm",
+              checked: checked("['createJob']['closing-time']", "11:59pm")
+            }
+          ]
+        }) }}
+
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+
+      </form>
+
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  
+  <script>
+
+  var today = new Date();
+
+  // Define month names
+  var monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
+  // Format the date
+  var formattedDate = today.getDate() + ' ' + monthNames[today.getMonth()] + ' ' + today.getFullYear();
+
+  // Put the formatted date into the 'todayDate' div
+  document.getElementById('todayDate').textContent = 'Today (' + formattedDate + ')';
+  document.getElementById('createJob[publishDate]').value = 'Today (' + formattedDate + ')';
+
+  // Calculate tomorrow's date
+  var tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+
+  // Format tomorrow's date
+  var formattedTomorrow = tomorrow.getDate() + ' ' + monthNames[tomorrow.getMonth()] + ' ' + tomorrow.getFullYear();
+
+  // Set the formatted date as the value of the input field with ID 'createJob[publishDate]-2'
+  document.getElementById('createJob[publishDate]-2').value = 'Tomorrow (' + formattedTomorrow + ')';
+  document.getElementById('tomorrowDate').textContent = 'Tomorrow (' + formattedTomorrow + ')';
+
+  </script>
+
+{% endblock %}

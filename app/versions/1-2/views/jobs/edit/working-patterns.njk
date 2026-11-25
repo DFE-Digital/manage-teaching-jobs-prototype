@@ -1,0 +1,114 @@
+{% extends "layout.njk" %}
+
+{% set heading = 'Working patterns' %}
+{% set caption = 'Create job listing - section 1 of 4' %}
+{% set title = heading + ' - ' + caption %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back();"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if errorSummary.items.length %}
+        {{ govukErrorSummary({
+          titleText: 'There’s a problem',
+          errorList: errorSummary.items
+        }) }}
+      {% endif %}
+
+      {% set h1 %}
+        <span class="govuk-caption-l">
+          {{caption}}
+        </span>
+        {{heading}}
+      {% endset %}
+
+      {% set fullTimeDetails %}
+        {{ govukCharacterCount({
+          name: "createJob[fullTimeDetails]",
+          id: "createJob[fullTimeDetails]",
+          maxwords: 50,
+          label: {
+            text: "Details",
+            classes: 'govuk-label--s'
+          },
+          value: data['createJob']['fullTimeDetails'],
+          errorMessage: inlineErrors['createJob'].partTimeDetails
+        }) }}
+      {% endset %}
+
+      {% set partTimeDetails %}
+        {{ govukCharacterCount({
+          name: "createJob[partTimeDetails]",
+          id: "createJob[partTimeDetails]",
+          maxwords: 50,
+          label: {
+            text: "Details",
+            classes: 'govuk-label--s'
+          },
+          value: data['createJob']['partTimeDetails'],
+          errorMessage: inlineErrors['createJob'].partTimeDetails
+        }) }}
+      {% endset %}
+
+      <form action="/jobs/new/working-patterns" method="post">
+
+        {{ govukCheckboxes({
+          idPrefix: "createJob[workingPatterns]",
+          name: "createJob[workingPatterns]",
+          fieldset: {
+            legend: {
+              html: h1,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          errorMessage: inlineErrors['createJob'].workingPatterns,
+          items: [
+            {
+              value: "Full time",
+              text: "Full time",
+              checked: checked("['createJob']['workingPatterns']", "Full time"),
+              hint: {
+                text: 'Usually at least 36.5 hours a week',
+                text: 'Usually at least 27.5 hours a week'
+              },
+              conditional: {
+                html: fullTimeDetails
+              }
+            },
+            {
+              value: "Part time",
+              text: "Part time",
+              checked: checked("['createJob']['workingPatterns']", "Part time"),
+              conditional: {
+                html: partTimeDetails
+              }
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Save and continue"
+        }) }}
+
+        {{ govukButton({
+          text: 'Save and finish later',
+          classes: 'govuk-!-margin-left-1 govuk-button--secondary'
+        }) }}
+      </form>
+      <p><a href="#">Cancel</a></p>
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

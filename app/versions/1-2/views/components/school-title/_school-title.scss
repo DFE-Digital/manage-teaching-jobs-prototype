@@ -1,0 +1,24 @@
+.app-school-title {
+
+  margin-bottom: govuk-spacing(7);
+
+  @include govuk-clearfix;
+
+  img,
+  .app-school-title__logo {
+    float: left;
+    margin-right: govuk-spacing(3);
+    width: 70px;
+    height: auto;
+    max-height: 70px;
+    object-fit: contain;
+  }
+}
+
+.app-school-title--preview {
+  img,
+  .app-school-title__logo {
+    width: 100px;
+    max-height: 100px;
+  }
+}
