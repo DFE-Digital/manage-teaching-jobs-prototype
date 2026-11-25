@@ -4,6 +4,10 @@
   padding-top: 20px;
 }
 
+.app-account-main-wrapper .moj-page-header-actions {
+  align-items: flex-end;
+}
+
 // Candidate profiles retirement — two-thirds width per layout guidance
 .app-profiles-retired-banner {
   box-sizing: border-box;
@@ -85,6 +89,11 @@
 .app-account-featured__icon--notifications {
   background: #cce2d8;
   color: #00401a;
+}
+
+.app-account-featured__icon--profile {
+  background: #f3f2f1;
+  color: #0b0c0c;
 }
 
 .app-account-featured-list__text {

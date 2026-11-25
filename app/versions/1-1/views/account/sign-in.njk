@@ -28,7 +28,7 @@
           type: "email",
           autocomplete: "email",
           spellcheck: false,
-          value: "rachael@courtland.sch.uk"
+          value: data.emailAddress or "rachael@courtland.sch.uk"
         }) }}
 
         {{ govukInput({
@@ -39,7 +39,7 @@
             classes: "govuk-label--m"
           },
           type: "password",
-          value: "Courtland1"
+          value: data.password or "Courtland1"
         }) }}
 
         {{ govukButton({

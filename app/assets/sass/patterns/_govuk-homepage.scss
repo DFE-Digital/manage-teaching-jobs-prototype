@@ -151,6 +151,10 @@
   margin-bottom: 15px;
 }
 
+.app-prototype-index__group + .app-prototype-index__group {
+  margin-top: 30px;
+}
+
 .app-prototype-index__heading-row {
   display: flex;
   flex-wrap: wrap;

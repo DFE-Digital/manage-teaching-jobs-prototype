@@ -1,4 +1,5 @@
-{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% from "components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% set teachingVacanciesServiceUrl = "https://teaching-vacancies.service.gov.uk/" %}
 
 {% if not homepage %}
   {% set showOrganisationTools = not user or user.organisation.name != "Hope college2" %}
@@ -27,10 +28,15 @@
       current: primaryNavId == "notifications"
     }) %}
   {% endif %}
+  {% set _ = navigation.push({
+    href: "/organisation",
+    text: "Profile",
+    current: primaryNavId == "organisation"
+  }) %}
 
   {{ govukServiceNavigation({
     serviceName: "Teaching Vacancies",
-    serviceUrl: "/home" if user else "/jobs",
+    serviceUrl: teachingVacanciesServiceUrl,
     navigationId: "service-navigation",
     navigation: navigation
   }) }}

@@ -47,14 +47,26 @@
     <div class="govuk-grid-column-full app-prototype-index-column">
       <section class="app-prototype-index">
         <h2 class="govuk-heading-m app-prototype-index__heading">Versions</h2>
-        <ul class="app-prototype-list">
-          {% call prototypeItem(latestPrefix + "/index", "Version 1.1", "Latest hiring staff prototype (current work).") %}
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1d70b8" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="3.25"/><path d="M5.5 19.25c.8-3.2 3-5 6.5-5s5.7 1.8 6.5 5"/><path d="M19 4.5v4M17 6.5h4"/></svg>
-          {% endcall %}
-          {% call prototypeItem(frozenPrefix + "/index", "Version 1.0", "Frozen baseline snapshot.") %}
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1d70b8" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="3.25"/><path d="M5.5 19.25c.8-3.2 3-5 6.5-5s5.7 1.8 6.5 5"/></svg>
-          {% endcall %}
-        </ul>
+
+        <div class="app-prototype-index__group">
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Current</h3>
+          <p class="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-4">Version 1.0 — frozen baseline aligned with the hiring staff experience in use today.</p>
+          <ul class="app-prototype-list">
+            {% call prototypeItem(frozenPrefix + "/index", "Version 1.0", "Open the current hiring staff prototype.") %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1d70b8" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="3.25"/><path d="M5.5 19.25c.8-3.2 3-5 6.5-5s5.7 1.8 6.5 5"/></svg>
+            {% endcall %}
+          </ul>
+        </div>
+
+        <div class="app-prototype-index__group">
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">Work in progress</h3>
+          <p class="govuk-body govuk-!-margin-top-0 govuk-!-margin-bottom-4">Version 1.1 — ideation and to-be journey design. Not for production comparison.</p>
+          <ul class="app-prototype-list">
+            {% call prototypeItem(latestPrefix + "/index", "Version 1.1", "Open the WIP hiring staff prototype.") %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#1d70b8" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="8" r="3.25"/><path d="M5.5 19.25c.8-3.2 3-5 6.5-5s5.7 1.8 6.5 5"/><path d="M19 4.5v4M17 6.5h4"/></svg>
+            {% endcall %}
+          </ul>
+        </div>
       </section>
     </div>
   </div>
