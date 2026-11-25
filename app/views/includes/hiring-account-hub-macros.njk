@@ -1,0 +1,17 @@
+{% macro accountHubIcon(icon) %}
+  <span class="app-account-featured__icon app-account-featured__icon--{{ icon }}" aria-hidden="true">
+    {% include "includes/account-hub-icons/" + icon + ".njk" %}
+  </span>
+{% endmacro %}
+
+{% macro accountHubFeaturedItem(href, linkTitle, description, icon) %}
+  <li class="app-account-featured-list__item">
+    <a class="app-account-featured-list__item-link" href="{{ href }}">
+      {{ accountHubIcon(icon) }}
+      <span class="app-account-featured-list__text">
+        <span class="app-account-featured-list__title">{{ linkTitle }}</span>
+        <span class="app-account-featured-list__description">{{ description }}</span>
+      </span>
+    </a>
+  </li>
+{% endmacro %}
