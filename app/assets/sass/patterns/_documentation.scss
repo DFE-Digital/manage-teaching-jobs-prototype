@@ -147,3 +147,26 @@
     margin: 0;
   }
 }
+
+.app-documentation-figure {
+  margin: 0;
+  padding: 15px;
+  border: 1px solid #b1b4b6;
+  background: #f8f8f8;
+}
+
+.app-documentation-figure__image {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  height: auto;
+  border: 1px solid #b1b4b6;
+}
+
+.app-documentation-figure--compact {
+  max-width: 720px;
+}
+
+.app-fe-training-tag {
+  cursor: help;
+}

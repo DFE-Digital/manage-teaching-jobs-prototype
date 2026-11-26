@@ -2,14 +2,16 @@
 /**
  * Capture #3436 additional allowances documentation screenshots (hiring staff).
  *   Terminal 1: PORT=3100 npm start
- *   Terminal 2: npm run capture:fe-additional-allowances-docs
+ *   Terminal 2: PROTOTYPE_BASE_URL=http://127.0.0.1:NNNN npm run capture:fe-additional-allowances-docs
+ *   NNNN = “Listening on port” from npm run dev (often 3006; 3007 if 3006 is busy)
  */
 
 const fs = require('fs')
 const path = require('path')
 const { chromium } = require('playwright')
+const config = require('../lib/load-config.js')
 
-const BASE = process.env.PROTOTYPE_BASE_URL || 'http://127.0.0.1:3100'
+const BASE = process.env.PROTOTYPE_BASE_URL || `http://127.0.0.1:${Number(config.port) || 3000}`
 const OUT_DIR = path.join(__dirname, '../app/assets/images/documentation/fe-additional-allowances-3436')
 
 const CAPTURES = [
@@ -40,8 +42,8 @@ async function assertServerRunning () {
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
   } catch (err) {
     console.error(`\nPrototype not reachable at ${BASE} (${err.message}).\n`)
-    console.error('  Terminal 1:  PORT=3100 npm start')
-    console.error('  Terminal 2:  npm run capture:fe-additional-allowances-docs\n')
+    console.error('  Terminal 1:  npm run dev  (note Listening on port NNNN)')
+    console.error('  Terminal 2:  PROTOTYPE_BASE_URL=http://127.0.0.1:NNNN npm run capture:fe-additional-allowances-docs\n')
     process.exit(1)
   }
 }

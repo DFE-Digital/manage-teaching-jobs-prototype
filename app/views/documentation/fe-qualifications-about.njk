@@ -1,0 +1,147 @@
+{% extends "layout.njk" %}
+
+{% macro docScreenshot (file) -%}
+  /documentation/images/{{ guide.imageDir }}/{{ file }}
+{%- endmacro %}
+
+{% set contentPage = true %}
+{% set mainClasses = "govuk-main-wrapper--auto-spacing app-documentation app-guide-wrapper app-documentation-fe-qualifications" %}
+
+{% block pageTitle %}
+  {{ guide.guideTitle }} - Documentation - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    classes: "govuk-!-display-none-print govuk-breadcrumbs--collapse-on-mobile",
+    items: [
+      { text: "Prototype hub", href: "/" },
+      { text: "Documentation", href: "/documentation/about" },
+      { text: guide.guideTitle }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="app-guide app-guide--full-width">
+    <p class="govuk-body govuk-!-margin-bottom-2">
+      <span class="govuk-caption-xl">Design spec · Manage teaching jobs prototype · Card {{ guide.ticketRef }}</span>
+    </p>
+    <h1 class="govuk-heading-xl app-guide__title">{{ guide.guideTitle }}</h1>
+    <p class="govuk-body-l app-guide__description">{{ guide.guideDescription }}</p>
+
+    <p class="govuk-body">
+      Labels on the discovery card: {{ guide.ticketLabels | join(', ') }}.
+      Target jobseeker section: <strong>Qualifications and training opportunities</strong>.
+      Hiring staff change surface: <strong>About the role</strong> (create listing section 4 of 4).
+    </p>
+
+    <h2 class="govuk-heading-l" id="variations">Prototype variations</h2>
+    <p class="govuk-body">
+      Open as Hope college (Bob) using <code>{{ guide.collegeUserQuery }}</code>.
+      Compare <code>?v1</code> (baseline), <code>?v2</code> (hints), <code>?v3</code> (structured qualifications).
+    </p>
+
+    <table class="govuk-table govuk-!-margin-bottom-8">
+      <caption class="govuk-table__caption govuk-table__caption--m">Hiring staff — About the role</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Variant</th>
+          <th scope="col" class="govuk-table__header">Summary</th>
+          <th scope="col" class="govuk-table__header">Open in prototype</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        {% for variation in guide.variations %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><code>?{{ variation.query }}</code> — {{ variation.name }}</td>
+            <td class="govuk-table__cell">{{ variation.summary }}</td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="{{ variation.prototypePath }}">About the role</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% for variation in guide.variations %}
+      {% set imageUrl = docScreenshot(variation.screenshot) %}
+      <figure class="app-documentation-figure govuk-!-margin-bottom-8">
+        <figcaption class="govuk-heading-m govuk-!-margin-bottom-2">
+          Screen: {{ variation.name }} (<code>?{{ variation.query }}</code>)
+        </figcaption>
+        <img
+          class="app-documentation-figure__image"
+          src="{{ imageUrl }}"
+          alt="Screenshot of About the role at Hope college with {{ variation.name }} prototype changes"
+          width="960"
+          loading="lazy"
+        >
+        <p class="govuk-body-s govuk-!-margin-top-2">
+          <a class="govuk-link" href="{{ variation.prototypePath }}">Open live prototype</a>
+        </p>
+      </figure>
+    {% endfor %}
+
+    <h2 class="govuk-heading-l" id="jobseeker">Jobseeker listing (mock)</h2>
+    <p class="govuk-body">
+      {{ guide.jobseekerVariation.summary }}
+      <a class="govuk-link" href="{{ guide.jobseekerVariation.prototypePath }}">Open check preview</a>
+      (<code>?{{ guide.jobseekerVariation.query }}</code>).
+    </p>
+    {% set listingImage = docScreenshot(guide.jobseekerVariation.screenshot) %}
+    <figure class="app-documentation-figure govuk-!-margin-bottom-8">
+      <figcaption class="govuk-heading-m govuk-!-margin-bottom-2">
+        Screen: {{ guide.jobseekerVariation.name }}
+      </figcaption>
+      <img
+        class="app-documentation-figure__image"
+        src="{{ listingImage }}"
+        alt="Screenshot of college job listing showing training qualification tag"
+        width="960"
+        loading="lazy"
+      >
+    </figure>
+
+    <h2 class="govuk-heading-l" id="recommendations">Recommendations</h2>
+    {% for item in guide.suggestions %}
+      <div class="govuk-!-margin-bottom-8" id="{{ item.id }}">
+        <h3 class="govuk-heading-m">{{ item.title }}</h3>
+        <p class="govuk-body">{{ item.body }}</p>
+        <p class="govuk-body-s">Shown in prototype: <code>{{ item.appliesTo }}</code></p>
+        {% set itemImage = docScreenshot(item.screenshot) %}
+        <figure class="app-documentation-figure app-documentation-figure--compact">
+          <img
+            class="app-documentation-figure__image"
+            src="{{ itemImage }}"
+            alt="Screenshot illustrating {{ item.title }}"
+            width="960"
+            loading="lazy"
+          >
+        </figure>
+      </div>
+    {% endfor %}
+
+    <h2 class="govuk-heading-l" id="open-questions">Open questions (from card)</h2>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
+      <li>Search filter vs listing flag for “teaching qualification may not be required” — prototype shows a <strong>flag + tooltip</strong> only.</li>
+      <li>Whether structured data should sync to a dedicated jobseeker section or stay in free text.</li>
+    </ul>
+
+    <h2 class="govuk-heading-l" id="implementation">Implementation</h2>
+    <ul class="govuk-list govuk-list--bullet govuk-!-margin-bottom-8">
+      <li>View: <code>{{ guide.implementation.view }}</code></li>
+      <li>Variant query: <code>feAboutVariant</code> from <code>?v2</code> / <code>?v3</code> in <code>routes/job-create.js</code></li>
+      <li>This page: <code>documentation/fe-qualifications-about.njk</code>, data <code>{{ guide.implementation.data }}</code></li>
+    </ul>
+
+    <aside class="app-related govuk-!-margin-top-8">
+      <h2 class="govuk-heading-m app-related__heading">Related</h2>
+      <ul class="app-related__list">
+        <li class="app-related__item"><a class="govuk-link" href="/documentation/about">Documentation contents</a></li>
+        <li class="app-related__item"><a class="govuk-link" href="/documentation/job-listing-flow{{ guide.collegeUserQuery }}">Job listing flow</a></li>
+        <li class="app-related__item"><a class="govuk-link" href="/jobs/new/about?v3{{ guide.collegeUserQuery.replace('?', '&') }}">About the role (?v3)</a></li>
+      </ul>
+    </aside>
+  </div>
+{% endblock %}

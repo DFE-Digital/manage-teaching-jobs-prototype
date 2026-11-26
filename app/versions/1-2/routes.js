@@ -1,4 +1,6 @@
 const express = require('express')
+const fs = require('fs')
+const path = require('path')
 const config = require('../../config')
 const authentication = require('./middleware/authentication')
 const { isCollegeFeCreateJob } = require('./lib/fe-parity')
@@ -53,6 +55,24 @@ require('./routes/job-edit')(router)
 require('./routes/jobs')(router)
 require('./routes/jobseekers')(router)
 
+const DOC_IMAGE_ROOT = path.join(__dirname, '../../assets/images/documentation')
+
+router.get('/documentation/images/:dir/:file', (req, res) => {
+  const { dir, file } = req.params
+  if (!/^[a-z0-9-]+$/.test(dir) || !/^[a-z0-9.-]+\.png$/.test(file)) {
+    return res.sendStatus(400)
+  }
+  const resolved = path.resolve(DOC_IMAGE_ROOT, dir, file)
+  if (!resolved.startsWith(path.resolve(DOC_IMAGE_ROOT) + path.sep)) {
+    return res.sendStatus(400)
+  }
+  if (!fs.existsSync(resolved)) {
+    return res.sendStatus(404)
+  }
+  res.type('png')
+  res.sendFile(resolved)
+})
+
 router.get('/documentation', (req, res) => {
   res.redirect('/documentation/about')
 })
@@ -93,6 +113,16 @@ router.get('/documentation/your-account', (req, res) => {
 
 router.get('/documentation/your-account.html', (req, res) => {
   res.redirect(301, '/documentation/your-account')
+})
+
+router.get('/documentation/fe-qualifications-about', (req, res) => {
+  res.render('documentation/fe-qualifications-about', {
+    guide: require('../../data/fe-qualifications-about')
+  })
+})
+
+router.get('/documentation/fe-qualifications-about.html', (req, res) => {
+  res.redirect(301, '/documentation/fe-qualifications-about')
 })
 
 module.exports = router

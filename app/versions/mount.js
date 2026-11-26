@@ -55,7 +55,7 @@ function buildPrefixHtmlPattern () {
   const versionAlternation = VERSIONS.join('|')
   const roots = SHARED_ROOTS.map(root => root.slice(1)).join('|')
   return new RegExp(
-    `(\\s(?:href|action|formaction)=["'])\\/(?!["']|\\/|${versionAlternation}(?:\\/|["'?])|(?:${roots})(?:\\/|["'?]))`,
+    `(\\s(?:href|action|formaction|src)=["'])\\/(?!["']|\\/|${versionAlternation}(?:\\/|["'?])|(?:${roots})(?:\\/|["'?]))`,
     'gi'
   )
 }

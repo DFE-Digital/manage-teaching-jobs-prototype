@@ -7,13 +7,23 @@ const { isCollegeFeCreateJob } = require('../lib/fe-parity')
 const buildCreateJobCheckDisplay = require('../lib/create-job-check-display')
 const buildCreateJobSubjectItems = require('../../../lib/build-create-job-subject-items')
 
+function feAboutVariantFromQuery (query) {
+  if (query.v3 !== undefined) return 3
+  if (query.v2 !== undefined) return 2
+  return 1
+}
+
 function renderCreateJobPage (view, req, res) {
-  res.render(view, {
+  const locals = {
     hideAdditionalAllowances: isCollegeFeCreateJob(
       req.session.data || {},
       req.session.user
     )
-  })
+  }
+  if (view === 'jobs/new/about') {
+    locals.feAboutVariant = feAboutVariantFromQuery(req.query || {})
+  }
+  res.render(view, locals)
 }
 
 module.exports = router => {

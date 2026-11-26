@@ -17,6 +17,7 @@
     "rapidtest": "jest --bail",
     "test": "gulp generate-assets && jest && npm run lint",
     "capture:fe-additional-allowances-docs": "node scripts/capture-fe-additional-allowances-docs.js",
+    "capture:fe-qualifications-about-docs": "node scripts/capture-fe-qualifications-about-docs.js",
     "install:git-hooks": "node scripts/install-git-hooks.js"
   },
   "dependencies": {

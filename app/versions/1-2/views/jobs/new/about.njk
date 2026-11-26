@@ -5,6 +5,7 @@
 {% set title = heading + ' - ' + caption %}
 
 {% set roleType %}{{data ['roletype'] }}{% endset %}
+{% set feAboutVariant = feAboutVariant or 1 %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -15,8 +16,10 @@
 
 {% if user.organisation.name == 'Hope college' %}
   {% set orgType = 'college' %}
+  {% set isFeCollege = true %}
 {% else %}
   {% set orgType = 'school' %}
+  {% set isFeCollege = false %}
 {% endif %}
 
 
@@ -66,49 +69,105 @@
           html: example
         }) }}
 
+      {% if isFeCollege and feAboutVariant >= 2 %}
+        <div class="govuk-inset-text govuk-!-margin-top-6" id="documentation-inset">
+          <p class="govuk-body govuk-!-margin-bottom-0">
+            Candidates often want to know whether a teaching qualification is required and whether you offer training.
+            Be clear about vocational experience and any support towards a teaching qualification.
+          </p>
+        </div>
+      {% endif %}
+
       <form action="/jobs/new/upload">
 
-        {{ govukRadios({
-          idPrefix: "createJob[suitability]",
-          name: "createJob[suitability]",
-          fieldset: {
-            legend: {
-              text: "Is this role suitable for an early career teacher (ECT)?",
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          hint: {
-            text: 'Early career teachers were previously called newly qualified teachers (NQT)'
-          },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes"
+        {% if isFeCollege and feAboutVariant >= 2 %}
+          {{ govukRadios({
+            idPrefix: "createJob[feTeachingSuitability]",
+            name: "createJob[feTeachingSuitability]",
+            fieldset: {
+              legend: {
+                text: "Is this role suitable for someone who is new to teaching in further education?",
+                classes: "govuk-fieldset__legend--m"
+              },
+              attributes: {
+                id: "documentation-ect"
+              }
             },
-            {
-              value: "No",
-              text: "No"
-            }
-          ]
-        }) }}
+            hint: {
+              text: "For example, someone with industry experience who may need mentoring or an initial teaching qualification."
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes"
+              },
+              {
+                value: "No",
+                text: "No"
+              }
+            ]
+          }) }}
+        {% elif not isFeCollege or feAboutVariant < 2 %}
+          {{ govukRadios({
+            idPrefix: "createJob[suitability]",
+            name: "createJob[suitability]",
+            fieldset: {
+              legend: {
+                text: "Is this role suitable for an early career teacher (ECT)?",
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: 'Early career teachers were previously called newly qualified teachers (NQT)'
+            },
+            items: [
+              {
+                value: "Yes",
+                text: "Yes"
+              },
+              {
+                value: "No",
+                text: "No"
+              }
+            ]
+          }) }}
+        {% endif %}
 
+        {% if isFeCollege and feAboutVariant >= 2 %}
+          {% set skillsLabel = 'What skills, experience and qualifications are you looking for?' %}
+          {% set skillsHint = 'Start with subject or industry experience. For example: relevant experience in construction; teaching experience is desirable, not essential.' %}
+        {% else %}
+          {% set skillsLabel = 'What skills and experience are you looking for?' %}
+          {% set skillsHint = false %}
+        {% endif %}
+
+        <div id="documentation-skills">
         {{ govukCharacterCount({
           id: "createJob[skills]",
           name: "createJob[skills]",
           label: {
-            html: 'What skills and experience are you looking for?',
+            html: skillsLabel,
             classes: 'govuk-label--m'
           },
+          hint: {
+            text: skillsHint
+          } if skillsHint,
           maxwords: 150
         }) }}
+        </div>
 
-
-        {% if user.organisation.name == 'Hope college' %}
+        {% if isFeCollege and feAboutVariant >= 2 %}
+          {% set headingType = 'What does your college offer its staff, including training?' %}
+          {% set benefitsHint = 'Include training and professional development, especially if you support staff to gain a teaching qualification while working.' %}
+        {% elif user.organisation.name == 'Hope college' %}
           {% set headingType = 'What does your college offer its staff?' %}
+          {% set benefitsHint = false %}
         {% else %}
           {% set headingType = 'What does your school offer its staff?' %}
+          {% set benefitsHint = false %}
         {% endif %}
 
+        <div id="documentation-benefits">
         {{ govukCharacterCount({
           id: "createJob[benefits]",
           name: "createJob[benefits]",
@@ -116,44 +175,67 @@
             html: headingType,
             classes: 'govuk-label--m'
           },
+          hint: {
+            text: benefitsHint
+          } if benefitsHint,
           maxwords: 150
         }) }}
+        </div>
 
-        {# {% set safeguardingNoticeDetails %}
-          {{ govukCharacterCount({
-            id: "createJob[safeguarding-notice-details]",
-            name: "createJob[safeguarding-notice-details]",
-            label: {
-              text: "Information about your commitment to safeguarding",
-              classes: "govuk-label--s"
-            },
-            maxwords: 100
-          }) }}
-        {% endset %}
+        {% if isFeCollege and feAboutVariant >= 3 %}
+          {% set trainingDetailsHtml %}
+            {{ govukCharacterCount({
+              id: "createJob[training-offer-details]",
+              name: "createJob[training-offer-details]",
+              label: {
+                text: "What training do you offer?",
+                classes: "govuk-label--s"
+              },
+              hint: {
+                text: "For example: mentoring, in-college training, or support to achieve a teaching qualification."
+              },
+              maxwords: 50
+            }) }}
+          {% endset %}
 
-        {{ govukRadios({
-          idPrefix: "createJob[safeguarding-notice]",
-          name: "createJob[safeguarding-notice]",
-          fieldset: {
-            legend: {
-              text: "Do you want to give information about your commitment to safeguarding?",
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: [
-            {
-              value: "Yes",
-              text: "Yes",
-              conditional: {
-                html: safeguardingNoticeDetails
+          {{ govukRadios({
+            idPrefix: "createJob[teaching-qualification]",
+            name: "createJob[teaching-qualification]",
+            fieldset: {
+              legend: {
+                text: "Qualifications and training opportunities",
+                classes: "govuk-fieldset__legend--m"
+              },
+              attributes: {
+                id: "documentation-qualifications"
               }
             },
-            {
-              value: "No",
-              text: "No"
-            }
-          ]
-        }) }} #}
+            hint: {
+              text: "This helps jobseekers see whether a teaching qualification is required and if you offer training on the job."
+            },
+            items: [
+              {
+                value: "required",
+                text: "A teaching qualification is required"
+              },
+              {
+                value: "desirable",
+                text: "A teaching qualification is desirable"
+              },
+              {
+                value: "not-required-industry",
+                text: "Not required — industry experience is sufficient"
+              },
+              {
+                value: "train-on-job",
+                text: "Not required — we will support you to train on the job",
+                conditional: {
+                  html: trainingDetailsHtml
+                }
+              }
+            ]
+          }) }}
+        {% endif %}
 
         {% set otherInformationDetails %}
           {{ govukCharacterCount({
@@ -167,15 +249,29 @@
           }) }}
         {% endset %}
 
+        {% if isFeCollege and feAboutVariant >= 3 %}
+          {% set otherInformationLegend = "Do you want to add anything else about the role?" %}
+          {% set otherInformationHint = "Do not repeat skills or qualifications you have already entered above." %}
+        {% else %}
+          {% set otherInformationLegend = "Do you want to add further details about the role?" %}
+          {% set otherInformationHint = false %}
+        {% endif %}
+
         {{ govukRadios({
           idPrefix: "createJob[other-information]",
           name: "createJob[other-information]",
           fieldset: {
             legend: {
-              text: "Do you want to add further details about the role?",
+              text: otherInformationLegend,
               classes: "govuk-fieldset__legend--m"
+            },
+            attributes: {
+              id: "documentation-further-details"
             }
           },
+          hint: {
+            text: otherInformationHint
+          } if otherInformationHint,
           items: [
             {
               value: "Yes",
@@ -202,7 +298,15 @@
       </form>
       <p><a href="#">Cancel</a></p>
 
-
+      {% if isFeCollege %}
+        <p class="govuk-body-s govuk-!-margin-top-6">
+          Prototype variations:
+          <a class="govuk-link" href="/jobs/new/about?v1">?v1</a>,
+          <a class="govuk-link" href="/jobs/new/about?v2">?v2</a>,
+          <a class="govuk-link" href="/jobs/new/about?v3">?v3</a>
+          — see <a class="govuk-link" href="/documentation/fe-qualifications-about">documentation</a>.
+        </p>
+      {% endif %}
 
     </div>
   </div>

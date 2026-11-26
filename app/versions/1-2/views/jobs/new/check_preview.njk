@@ -92,6 +92,20 @@
 			</div>
 			<h2 class="govuk-heading-m">Arrange a visit</h2>
 			<p>To arrange a visit and increase the chance of a successful application, email <a href="mailto:"></a>.</p>
+
+			{% if query.v2 is defined %}
+			<h2 class="govuk-heading-m" id="documentation-listing">Qualifications and training opportunities</h2>
+			<p class="govuk-!-margin-bottom-2">
+				<strong
+					class="govuk-tag app-fe-training-tag"
+					title="You may not need a teaching qualification yet. The employer may support you to qualify while working."
+				>Training towards teaching qualification available</strong>
+			</p>
+			<div class="app-prose govuk-!-margin-bottom-6">
+				<p>Applicants should hold relevant industry experience in construction or a related trade. A recognised teaching qualification, or willingness to work towards one with college support, is desirable.</p>
+			</div>
+			{% endif %}
+
 			<h2 class="govuk-heading-m">Further information about the job</h2>
 			<div class="app-prose">
 				<p>Applicants should hold a relevant degree, HNC/HND, or industry-recognised qualification in construction or a related trade. A recognised teaching qualification, or willingness to work towards one, is desirable. Recent industry experience and knowledge of health and safety requirements would be an advantage. An enhanced DBS check will be required.</p>

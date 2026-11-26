@@ -19,6 +19,9 @@ function copyDir (src, dest) {
       copyDir(srcPath, destPath)
     } else if (name.endsWith('.png')) {
       fs.copyFileSync(srcPath, destPath)
+      try {
+        fs.chmodSync(destPath, 0o644)
+      } catch (_) {}
     }
   }
 }
