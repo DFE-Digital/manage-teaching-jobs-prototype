@@ -1,6 +1,6 @@
 /**
  * FE “About the role” qualifications hints — design spec (#3080)
- * Prototype: GET /jobs/new/about (Hope college) with ?v1 | ?v2 | ?v3
+ * Prototype: GET /jobs/new/about (Hope college) with ?v1 | ?v2 | ?v3 | ?v4
  */
 
 const COLLEGE_USER_QUERY = '?userEmailAddress=bob@hopecollege.sch.uk'
@@ -43,6 +43,15 @@ module.exports = {
       summary: 'v2 plus “Qualifications and training opportunities” radios and optional training details; hints on further details.',
       prototypePath: withCollegeUser('/jobs/new/about?v3'),
       screenshot: 'about-v3.png'
+    },
+    {
+      id: 'v4',
+      name: 'Content-improved version',
+      query: 'v4',
+      summary:
+        'Single intro for college profile content; FE suitability and field hints; no inset or structured qualification radios; standard “further details” question.',
+      prototypePath: withCollegeUser('/jobs/new/about?v4'),
+      screenshot: 'about-v4.png'
     }
   ],
   jobseekerVariation: {
@@ -66,16 +75,16 @@ module.exports = {
       id: 'skills',
       title: 'Skills, experience and qualifications field',
       body: 'Relabel for FE; hint with construction lecturer example; optional “what good looks like” details.',
-      appliesTo: 'v2, v3',
-      screenshot: 'about-v2.png',
+      appliesTo: 'v2, v3, v4',
+      screenshot: 'about-v4-skills.png',
       anchor: 'skills'
     },
     {
       id: 'benefits',
       title: 'What the college offers (including training)',
       body: 'Hint prompts colleges to mention support towards a teaching qualification.',
-      appliesTo: 'v2, v3',
-      screenshot: 'about-v2.png',
+      appliesTo: 'v2, v3, v4',
+      screenshot: 'about-v4-benefits.png',
       anchor: 'benefits'
     },
     {
@@ -90,17 +99,25 @@ module.exports = {
       id: 'ect',
       title: 'Replace ECT question for FE',
       body: 'Hide school-centric ECT/NQT wording; ask if the role suits someone new to teaching in FE.',
-      appliesTo: 'v2, v3',
-      screenshot: 'about-v2.png',
+      appliesTo: 'v2, v3, v4',
+      screenshot: 'about-v4-ect.png',
       anchor: 'ect'
     },
     {
       id: 'further-details',
       title: 'Further details about the role',
-      body: 'Hint not to repeat qualifications already captured above.',
-      appliesTo: 'v3',
-      screenshot: 'about-v3.png',
+      body: 'Yes/No with optional free text. v3 adds a hint not to repeat qualifications; v4 uses the standard question only.',
+      appliesTo: 'v3, v4',
+      screenshot: 'about-v4-further-details.png',
       anchor: 'further-details'
+    },
+    {
+      id: 'profile-intro',
+      title: 'College profile intro',
+      body: 'One sentence that college description and safeguarding from the profile appear on the listing, with expandable previews.',
+      appliesTo: 'v4',
+      screenshot: 'about-v4-profile-intro.png',
+      anchor: 'profile-intro'
     },
     {
       id: 'listing',

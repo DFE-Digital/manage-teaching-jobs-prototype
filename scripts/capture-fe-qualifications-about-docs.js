@@ -43,6 +43,37 @@ const CAPTURES = [
     fullPage: true
   },
   {
+    file: 'about-v4.png',
+    path: `${PREFIX}/jobs/new/about?v4&${COLLEGE}`,
+    selector: '#main-content',
+    fullPage: true
+  },
+  {
+    file: 'about-v4-profile-intro.png',
+    path: `${PREFIX}/jobs/new/about?v4&${COLLEGE}`,
+    selector: '#documentation-profile-intro'
+  },
+  {
+    file: 'about-v4-ect.png',
+    path: `${PREFIX}/jobs/new/about?v4&${COLLEGE}`,
+    selector: '.govuk-form-group:has(#documentation-ect)'
+  },
+  {
+    file: 'about-v4-skills.png',
+    path: `${PREFIX}/jobs/new/about?v4&${COLLEGE}`,
+    selector: '#documentation-skills'
+  },
+  {
+    file: 'about-v4-benefits.png',
+    path: `${PREFIX}/jobs/new/about?v4&${COLLEGE}`,
+    selector: '#documentation-benefits'
+  },
+  {
+    file: 'about-v4-further-details.png',
+    path: `${PREFIX}/jobs/new/about?v4&${COLLEGE}`,
+    selector: '.govuk-form-group:has(#documentation-further-details)'
+  },
+  {
     file: 'listing-v2.png',
     path: `${PREFIX}/jobs/new/check_preview?v2`,
     selector: '#documentation-listing',
@@ -103,15 +134,17 @@ async function main () {
     try {
       await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 })
       await page.waitForTimeout(800)
-      if (capture.scrollTo) {
-        await page.locator(capture.scrollTo).scrollIntoViewIfNeeded()
+      const scrollTarget = capture.scrollTo || capture.selector
+      if (scrollTarget) {
+        const loc = page.locator(scrollTarget).first()
+        await loc.scrollIntoViewIfNeeded()
         await page.waitForTimeout(300)
       }
       const outPath = path.join(OUT_DIR, capture.file)
-      const el = await page.$(capture.selector)
-      if (el && !capture.fullPage) {
+      const el = capture.selector ? await page.$(capture.selector) : null
+      if (el && capture.fullPage) {
         await el.screenshot({ path: outPath })
-      } else if (el && capture.fullPage) {
+      } else if (el) {
         await el.screenshot({ path: outPath })
       } else {
         await page.screenshot({ path: outPath, fullPage: Boolean(capture.fullPage) })

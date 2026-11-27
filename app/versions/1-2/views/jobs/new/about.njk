@@ -35,7 +35,25 @@
         {{heading}}
       </h1>
 
-        {% if user.organisation.name == 'Hope college' %}
+        {% if isFeCollege and feAboutVariant == 4 %}
+          <div id="documentation-profile-intro">
+            <p>Your college description and safeguarding statement will be included in the job listing.</p>
+            {% set example %}
+              <p class="govuk-!-margin-bottom-0">{{user.organisation.about | nl2br | safe}}</p>
+            {% endset %}
+            {{ govukDetails({
+              summaryText: "View your college description",
+              html: example
+            }) }}
+            {% set safeguardingExample %}
+              <p class="govuk-!-margin-bottom-0">{{user.organisation.safeguardingCommitment | nl2br | safe}}</p>
+            {% endset %}
+            {{ govukDetails({
+              summaryText: "View your commitment to safeguarding statement",
+              html: safeguardingExample
+            }) }}
+          </div>
+        {% elif user.organisation.name == 'Hope college' %}
           <p>Your organisation description from your college profile will be included in the job listing.</p>
           {% set example %}
             <p class="govuk-!-margin-bottom-0">{{user.organisation.about | nl2br | safe}}</p>
@@ -56,20 +74,22 @@
         {% endif %}
         
 
-        {% if user.organisation.schools %}
-          <p>Your commitment to safeguarding statement from your organisation profile will be included in the job listing.</p>
-        {% else %}
-          <p>Your commitment to safeguarding statement from your {{orgType}} profile will be included in the job listing.</p>
+        {% if not (isFeCollege and feAboutVariant == 4) %}
+          {% if user.organisation.schools %}
+            <p>Your commitment to safeguarding statement from your organisation profile will be included in the job listing.</p>
+          {% else %}
+            <p>Your commitment to safeguarding statement from your {{orgType}} profile will be included in the job listing.</p>
+          {% endif %}
+          {% set example %}
+            <p class="govuk-!-margin-bottom-0">{{user.organisation.safeguardingCommitment | nl2br | safe}}</p>
+          {% endset %}
+          {{ govukDetails({
+            summaryText: "View your commitment to safeguarding statement",
+            html: example
+          }) }}
         {% endif %}
-        {% set example %}
-          <p class="govuk-!-margin-bottom-0">{{user.organisation.safeguardingCommitment | nl2br | safe}}</p>
-        {% endset %}
-        {{ govukDetails({
-          summaryText: "View your commitment to safeguarding statement",
-          html: example
-        }) }}
 
-      {% if isFeCollege and feAboutVariant >= 2 %}
+      {% if isFeCollege and (feAboutVariant == 2 or feAboutVariant == 3) %}
         <div class="govuk-inset-text govuk-!-margin-top-6" id="documentation-inset">
           <p class="govuk-body govuk-!-margin-bottom-0">
             Candidates often want to know whether a teaching qualification is required and whether you offer training.
@@ -81,6 +101,11 @@
       <form action="/jobs/new/upload">
 
         {% if isFeCollege and feAboutVariant >= 2 %}
+          {% if feAboutVariant == 4 %}
+            {% set feSuitabilityHint = "For example, someone moving into teaching from industry." %}
+          {% else %}
+            {% set feSuitabilityHint = "For example, someone with industry experience who may need mentoring or an initial teaching qualification." %}
+          {% endif %}
           {{ govukRadios({
             idPrefix: "createJob[feTeachingSuitability]",
             name: "createJob[feTeachingSuitability]",
@@ -94,7 +119,7 @@
               }
             },
             hint: {
-              text: "For example, someone with industry experience who may need mentoring or an initial teaching qualification."
+              text: feSuitabilityHint
             },
             items: [
               {
@@ -135,7 +160,11 @@
 
         {% if isFeCollege and feAboutVariant >= 2 %}
           {% set skillsLabel = 'What skills, experience and qualifications are you looking for?' %}
-          {% set skillsHint = 'Start with subject or industry experience. For example: relevant experience in construction; teaching experience is desirable, not essential.' %}
+          {% if feAboutVariant == 4 %}
+            {% set skillsHint = 'Include any relevant industry experience. Say whether a teaching qualification is essential or desirable.' %}
+          {% else %}
+            {% set skillsHint = 'Start with subject or industry experience. For example: relevant experience in construction; teaching experience is desirable, not essential.' %}
+          {% endif %}
         {% else %}
           {% set skillsLabel = 'What skills and experience are you looking for?' %}
           {% set skillsHint = false %}
@@ -158,7 +187,11 @@
 
         {% if isFeCollege and feAboutVariant >= 2 %}
           {% set headingType = 'What does your college offer its staff, including training?' %}
-          {% set benefitsHint = 'Include training and professional development, especially if you support staff to gain a teaching qualification while working.' %}
+          {% if feAboutVariant == 4 %}
+            {% set benefitsHint = 'Say if you’ll support staff to gain a teaching qualification while they work.' %}
+          {% else %}
+            {% set benefitsHint = 'Include training and professional development, especially if you support staff to gain a teaching qualification while working.' %}
+          {% endif %}
         {% elif user.organisation.name == 'Hope college' %}
           {% set headingType = 'What does your college offer its staff?' %}
           {% set benefitsHint = false %}
@@ -182,7 +215,7 @@
         }) }}
         </div>
 
-        {% if isFeCollege and feAboutVariant >= 3 %}
+        {% if isFeCollege and feAboutVariant == 3 %}
           {% set trainingDetailsHtml %}
             {{ govukCharacterCount({
               id: "createJob[training-offer-details]",
@@ -249,7 +282,7 @@
           }) }}
         {% endset %}
 
-        {% if isFeCollege and feAboutVariant >= 3 %}
+        {% if isFeCollege and feAboutVariant == 3 %}
           {% set otherInformationLegend = "Do you want to add anything else about the role?" %}
           {% set otherInformationHint = "Do not repeat skills or qualifications you have already entered above." %}
         {% else %}
@@ -303,7 +336,8 @@
           Prototype variations:
           <a class="govuk-link" href="/jobs/new/about?v1">?v1</a>,
           <a class="govuk-link" href="/jobs/new/about?v2">?v2</a>,
-          <a class="govuk-link" href="/jobs/new/about?v3">?v3</a>
+          <a class="govuk-link" href="/jobs/new/about?v3">?v3</a>,
+          <a class="govuk-link" href="/jobs/new/about?v4">?v4</a>
           — see <a class="govuk-link" href="/documentation/fe-qualifications-about">documentation</a>.
         </p>
       {% endif %}

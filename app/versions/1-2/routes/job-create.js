@@ -8,8 +8,10 @@ const buildCreateJobCheckDisplay = require('../lib/create-job-check-display')
 const buildCreateJobSubjectItems = require('../../../lib/build-create-job-subject-items')
 
 function feAboutVariantFromQuery (query) {
+  if (query.v4 !== undefined) return 4
   if (query.v3 !== undefined) return 3
   if (query.v2 !== undefined) return 2
+  if (query.v1 !== undefined) return 1
   return 1
 }
 
